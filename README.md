@@ -165,3 +165,8 @@ Added Lodgify Motion Designer (EMEA remote, Barcelona-headquartered freelance mo
 ## 2026-07-29 Round 67
 
 Added one sanitized Paradox Creative Director - EdTech route from the official Ashby requisition. It is a conditional senior brand/content adjacency: Barcelona/Spain remote is indexed, but French fluency, content leadership and freshness/entity confirmation are hard gates. The public runtime patch preserves the private tracker/public dataset split.
+
+
+## 2026-07-29 Round 68
+
+Added two sanitized audit records for the official China-brand Europe sweep and the second ATS rotation. No new independently verified Barcelona/Spain brand-visual vacancy was found; location-ineligible, historical and already-tracked roles remain clearly separated from current opportunities.
