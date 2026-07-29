@@ -1,9 +1,13 @@
 param(
-  [string]$TrackerPath = 'F:\Installer_Packages (EN Path Req.)\Codex Storage\Projects\Codex-Barcelona-brand-design-resources-20260728-200001\barcelona-brand-design-job-tracker.md',
+  [string]$TrackerPath = $env:BARCELONA_TRACKER_PATH,
   [string]$OutputPath = (Join-Path (Split-Path $PSScriptRoot -Parent) 'data.js')
 )
 
 $ErrorActionPreference = 'Stop'
+
+if (-not $TrackerPath) {
+  throw 'Provide -TrackerPath or set BARCELONA_TRACKER_PATH to the private tracker file.'
+}
 
 function Split-MarkdownRow {
   param([string]$Line)
@@ -420,4 +424,3 @@ $content = "window.JOB_META = $jsonMeta;`nwindow.JOB_OPPORTUNITIES = $jsonData;`
 $utf8 = [System.Text.UTF8Encoding]::new($false)
 [System.IO.File]::WriteAllText($out, $content, $utf8)
 Write-Output "Generated $(@($sorted).Count) records -> $out"
-

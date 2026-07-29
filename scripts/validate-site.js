@@ -455,4 +455,3 @@ if (failures.length) {
 } else {
   console.log(JSON.stringify({ ok: true, summary }, null, 2));
 }
-
