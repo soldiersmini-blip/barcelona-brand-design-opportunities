@@ -177,3 +177,5 @@ Strict official-source rotation added no new tracker row: the Factorial `++hello
 
 Follow-up public sync: synchronized the latest sanitized screening data from the authoritative tracker, bringing the public dataset to 1043 records without exposing local filesystem paths (commit `6cdb2ef`). The Round 66–68 overlay scripts keep ID-based duplicate protection.
 The homepage data loader cache key was advanced to `data.js?v=6cdb2ef` in commit `6e9b609`, so devices cannot remain on the older public data snapshot.
+
+Round 70 added one sanitized official Lever screening record for Jobgether's Senior Creative Designer (Spain). It remains verify-first because the partner is anonymous and the page's Ukraine/Poland employment-support text conflicts with an assumed Spain payroll route. The public data update is commit `fda8115`; the homepage loader is advanced to `data.js?v=fda8115`.
