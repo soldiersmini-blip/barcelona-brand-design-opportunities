@@ -156,6 +156,9 @@ function Get-Tier {
   # salary and paid-test evidence, but it is junior/part-time audiovisual
   # production rather than a core VI/system role.
   if (HasText $t '4440441421') { return 'C' }
+  # Current Barcelona content-production ATS routes. Keep them visible as
+  # secondary digital-brand opportunities, not homepage-core VI roles.
+  if (HasText $t '8634079002|5096089008') { return 'C' }
   # A flexible Chinese-language social-content role where Spanish is only a plus.
   # Surface it in the worth-applying group despite its Madrid classification.
   if (HasText $t 'information-id-16240692') { return 'B' }
