@@ -179,3 +179,6 @@ Follow-up public sync: synchronized the latest sanitized screening data from the
 The homepage data loader cache key was advanced to `data.js?v=6cdb2ef` in commit `6e9b609`, so devices cannot remain on the older public data snapshot.
 
 Round 70 added one sanitized official Lever screening record for Jobgether's Senior Creative Designer (Spain). It remains verify-first because the partner is anonymous and the page's Ukraine/Poland employment-support text conflicts with an assumed Spain payroll route. The public data update is commit `fda8115`; the homepage loader is advanced to `data.js?v=fda8115`.
+## 2026-07-29 Round 71
+
+The public screening dataset was regenerated to 1,049 records after adding three official Maneuver Marketing Ashby routes: Creative Strategist (TikTok Shop), Creative Strategist (AppLovin), and Performance Designer. Spain/Europe eligibility, contract entity and the strategy-versus-hands-on design split remain explicitly marked for verification. The public payload is sanitized and the homepage data loader uses a cache-busting key.
