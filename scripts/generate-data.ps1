@@ -152,6 +152,10 @@ function Get-Tier {
   # The official board lists this Barcelona role, but its direct requisition
   # returned a cache miss; keep it verify-first until the full brief is readable.
   if (HasText $t '5233984008') { return 'C' }
+  # Colvin is a readable Barcelona employer listing with concrete contract,
+  # salary and paid-test evidence, but it is junior/part-time audiovisual
+  # production rather than a core VI/system role.
+  if (HasText $t '4440441421') { return 'C' }
   # A flexible Chinese-language social-content role where Spanish is only a plus.
   # Surface it in the worth-applying group despite its Madrid classification.
   if (HasText $t 'information-id-16240692') { return 'B' }
