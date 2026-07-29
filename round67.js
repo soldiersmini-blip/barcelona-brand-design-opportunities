@@ -1,0 +1,9 @@
+(() => {
+  const record = {"id":1041,"section":"2026-07-29 Round 67: Paradox brand-content ATS check and Chinese-channel refresh","source":"Paradox / official Ashby","opportunity":"Creative Director - EdTech (French fluent) (new)","fit":"B/C-level brand-content and creative-direction adjacency; dual-brand strategy, visual storytelling, campaign/content systems and team leadership; not a conventional static VI role","location":"Official indexed detail lists Remote Spain and Barcelona Remote; full-time; remote; Dubai/Lisbon offices also named","status":"Official Ashby requisition 418801f8-b05b-4058-80d1-b1b6889399af returns HTTP 200, while the direct page is a JavaScript shell. Indexed employer-origin detail exposes Barcelona/Spain remote, Apply and the brand/content mission; indexing is about three months old, so verify-first.","contact":"Official ATS/detail: https://jobs.ashbyhq.com/paradox/418801f8-b05b-4058-80d1-b1b6889399af/","analysis":"Only pursue if French is genuinely professional and there is credible evidence of audience/content leadership, scripting and creative-team direction. First confirm freshness, Spain contract/entity, compensation and Barcelona eligibility; do not use a pure graphic-design application.","score":94,"tier":"C","sourceGroup":"other","postedAt":"","freshnessTag":"unknown","links":["https://jobs.ashbyhq.com/paradox/418801f8-b05b-4058-80d1-b1b6889399af/"],"locationTag":"Barcelona area","typeTag":"Brand / visual"};
+  if (Array.isArray(window.JOB_OPPORTUNITIES) && !window.JOB_OPPORTUNITIES.some((item) => item.id === record.id)) {
+    window.JOB_OPPORTUNITIES.push(record);
+  }
+  if (window.JOB_META && Array.isArray(window.JOB_OPPORTUNITIES)) {
+    window.JOB_META.total = window.JOB_OPPORTUNITIES.length;
+  }
+})();
