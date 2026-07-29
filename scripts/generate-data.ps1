@@ -149,6 +149,9 @@ function Get-Tier {
   $t = $Combined.ToLowerInvariant()
   # OneKey is global-remote only until Spain contracting is confirmed.
   if (HasText $t 'onekeyhq\.atlassian\.net/wiki|gr4yl99ujhl\.typeform\.com') { return 'C' }
+  # The official board lists this Barcelona role, but its direct requisition
+  # returned a cache miss; keep it verify-first until the full brief is readable.
+  if (HasText $t '5233984008') { return 'C' }
   # A flexible Chinese-language social-content role where Spanish is only a plus.
   # Surface it in the worth-applying group despite its Madrid classification.
   if (HasText $t 'information-id-16240692') { return 'B' }

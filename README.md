@@ -185,3 +185,7 @@ The public screening dataset was regenerated to 1,049 records after adding three
 ## 2026-07-29 OneKey location correction
 
 OneKey Brand Visual Designer is retained as a strong Chinese brand/VI watchline, but its official evidence does not confirm Spain payroll or resident eligibility. The public screening card now labels it `Global remote / Spain unconfirmed` and tier C, so it is excluded from Barcelona/Spain immediate-priority views until written eligibility is obtained.
+
+## 2026-07-29 Barcelona-first homepage correction
+
+The public homepage now prioritizes Barcelona-local opportunities before Spain-eligible remote routes. Priority cards explicitly show language and contract/status gates; a global-remote role without Spain eligibility is not treated as a Barcelona opportunity. Round 73 added one sanitized C-level verify-first Remedy Edge Spain Greenhouse board route, `Freelance Visual Communication Specialist`, whose official Barcelona listing is current but whose direct detail returned a cache miss; it remains outside the homepage until the full brief is recoverable.

@@ -11,7 +11,10 @@ const meta = window.JOB_META || {};
 // The homepage is deliberately Chinese-first. English-first roles remain in the
 // searchable database, but they must not crowd out opportunities the user can
 // actually contact today.
-const PRIORITY_IDS = [759, 758, 813, 702, 778];
+// Homepage priority is location-first: Barcelona local roles come before
+// Madrid/unclear remote or stale Chinese-channel leads. Language and contract
+// gates remain explicit on each card instead of being hidden by the homepage.
+const PRIORITY_IDS = [778, 559, 871, 884, 1020];
 
 const IDENTITY_ALIASES = Object.freeze({
   95: "qustodio-digital-designer-marketing",
@@ -3894,9 +3897,7 @@ els.loadMore.addEventListener("click", () => {
 
 function initStats() {
   els.totalCount.textContent = allData.length;
-  els.priorityCount.textContent = priorityItems.filter((item) =>
-    ["chinese", "chineseCheck"].includes(applicationLanguagePath(item).key),
-  ).length;
+  els.priorityCount.textContent = priorityItems.length;
   els.chineseTotal.textContent = allData.filter((item) => sourceGroup(item) === "chinese").length;
   els.recentChineseTotal.textContent = dedupedData.filter(
     (item) =>

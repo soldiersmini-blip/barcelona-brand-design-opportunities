@@ -57,10 +57,14 @@ function check(condition, message) {
 check(test.allData.length > 700, "机会数据没有完整载入");
 check(test.priorityItems.length === 5, "首页中文重点机会数量不是 5");
 check(
-  [702, 758, 759, 778, 813].every((id) =>
+  [778, 559, 871, 884, 1020].every((id) =>
     test.priorityItems.some((item) => item.id === id),
   ),
-  "可先中文联系的重点设计 / 内容岗位未完整进入首页",
+  "巴塞罗那优先岗位未完整进入首页",
+);
+check(
+  test.priorityItems.every((item) => item.locationTag === "Barcelona area"),
+  "首页优先岗位混入了非 Barcelona 地点或未确认远程资格",
 );
 check(test.dedupedData.length > 0 && test.dedupedData.length < test.allData.length, "去重逻辑没有生效");
 const recentChinese = test.dedupedData.filter(
@@ -84,8 +88,8 @@ for (const item of test.priorityItems) {
   check(Boolean(test.directionKey(item)), `重点机会 ${item.id} 缺少招聘方向`);
   check(Boolean(test.languageInfo(item).label), `重点机会 ${item.id} 缺少语言说明`);
   check(
-    ["chinese", "chineseCheck", "basicSpanish"].includes(test.applicationLanguagePath(item).key),
-    `重点机会 ${item.id} 不是中文可联系路径`,
+    ["chinese", "chineseCheck", "basicSpanish", "english"].includes(test.applicationLanguagePath(item).key),
+    `重点机会 ${item.id} 缺少可执行的语言路径`,
   );
 }
 
