@@ -1,66 +1,39 @@
-# 巴塞罗那华人设计机会看板
+# 宸村缃楅偅鍗庝汉璁捐鏈轰細鐪嬫澘
 
-这是一个纯静态求职看板，用于浏览巴塞罗那及西班牙华人、中文与轻语言方向的品牌视觉、VI、数字品牌延展、平面设计、新媒体和相邻机会。
+杩欐槸涓€涓函闈欐€佹眰鑱岀湅鏉匡紝鐢ㄤ簬娴忚宸村缃楅偅鍙婅タ鐝墮鍗庝汉銆佷腑鏂囦笌杞昏瑷€鏂瑰悜鐨勫搧鐗岃瑙夈€乂I銆佹暟瀛楀搧鐗屽欢灞曘€佸钩闈㈣璁°€佹柊濯掍綋鍜岀浉閭绘満浼氥€?
+## 椤甸潰缁撴瀯
 
-## 页面结构
+- 鈥滈噸鐐规姇閫掆€濅繚鐣欏綋鍓嶄笌鍓嶄竴杞粛鍊煎緱鍏堝鐞嗙殑鏈轰細锛屾柊澧炲矖浣嶄笉浼氱洿鎺ユ妸鏄ㄦ棩绮鹃€夋尋鍒颁笉鍙鍖哄煙銆傞椤靛悓鏃舵樉绀哄幓閲嶅悗鐨勯〉闈㈢姸鎬佹憳瑕侊紝鐐瑰嚮鈥滈〉闈㈡樉绀哄彲鎶?/ 闇€鍏堢‘璁?/ 宸插叧闂€濆嵆鍙洿鎺ュ簲鐢ㄥ搴旂姸鎬佺瓫閫夈€?- 棣栭〉鍙睍绀哄彲浠ュ厛鐢ㄤ腑鏂囪仈绯荤殑閲嶇偣鏈轰細锛岃嫳璇敵璇峰矖涓嶄細娣峰湪棣栭〉锛涙瘡寮犻噸鐐瑰崱閮芥爣鏄庡疄闄呮姇閫掕瑷€锛屽苟鎻愪緵涓€閿鍒剁殑涓枃璇㈤棶銆?- 鈥滃畬鏁存満浼氬簱鈥濋粯璁や娇鐢ㄢ€滀腑鏂囪兘鎶曗€濈敾鍍忥紝淇濈暀 A/B/C 涓綅浜?Barcelona 鎴栧彲鍦ㄨタ鐝墮杩滅▼鎵挎帴鐨勪腑鏂囪仈绯绘満浼氾紱鍙垏鎹⑩€滄湰杞彉鍖栤€濄€佽繎 30 澶╁崕浜哄矖銆丄/B銆佸彲鎶?鍐疯仈绯讳笌鎺掗櫎/宸茶繃鏈熴€?- 涓€у寲棰勮鍖呮嫭鈥滀腑鏂囪兘鎶曪紙榛樿锛夈€佺幇鍦ㄥ彲鑱旂郴銆佸叏閮ㄤ腑鏂囨柟鍚戯紙鍚棬妲涳級銆佽嫳璇矖浣嶅閫夈€佸搧鐗?VI锛堝叏璇锛夈€佸亸姝ｅ紡 / 閬垮紑浣庤柂瀹炰範鈥濓紱鈥滅幇鍦ㄥ彲鑱旂郴鈥濆彧淇濈暀涓枃鍙厛鑱旂郴銆佹湁鍏蜂綋鍏ュ彛銆佽繎鏈熷彂甯冩垨鏄庣‘寮€鏀俱€佸苟閬垮紑浣庤柂瀹炰範鐨?Barcelona / 瑗跨彮鐗欒繙绋嬫満浼氾紱鍖归厤鍒嗘妸涓枃鍙仈绯汇€佸熀纭€瑗胯銆佽嫳鏂囨潗鏂欏拰瑗胯纭棬妲涘垎寮€璁＄畻銆?- 鈥滀腑鏂囦紭鍏堚€濅笉绛夊悓浜庘€滃彧鐪嬪崕浜虹綉绔欌€濓細瀹冭繕浼氳瘑鍒槑纭渶瑕佷腑鏂囥€佹湇鍔′腑鍥藉競鍦烘垨鐢变腑鍥藉搧鐗屽湪棰嗚嫳/瀹樼綉鍙戝竷鐨勮タ鐝墮宀椾綅锛屽苟浠モ€滀腑鏂囩浉鍏斥€濇爣璁般€傝棰勮榛樿鍙湅 Barcelona銆丮adrid 鎴栧彲鍦ㄨタ鐝墮鎵挎帴鐨勮繙绋嬫満浼氾紝鍚屾椂鎺掗櫎绾洃鎺у叆鍙ｃ€侀潪璁捐鍐呭鏂瑰悜鍜?D / X 绾т綆浠峰€兼垨椋庨櫓椤广€?- 鎵嬪姩绛涢€夊彲鐙珛鎺у埗鈥滀腑鏂囧彲鐩存帴鑱旂郴 / 鍏堜腑鏂囩‘璁?/ 鍩虹瑗胯 / 鑻辨枃鏉愭枡 / 瑗胯纭棬妲涒€濄€佽繎 7 / 30 / 90 澶┿€佹槑纭彂甯冩棩鏈熴€佸疄涔犲拰浣庤柂椋庨櫓锛涒€滀富瑕佹姇閫掗樆鍔涒€濅篃鍙崟鐙煡鐪嬭嫳鏂囨潗鏂欍€佽タ璇€佹湰鍦拌瑷€銆佷綆钖€佸疄涔犲崗璁€佺姸鎬佸緟鏍搁獙鎴栧尶鍚嶅鎴?/ 鑱氬悎鍏ュ彛銆?- 姣忔潯鏈轰細鍙湪娴忚鍣ㄦ湰鍦版爣涓衡€滄湭鏍囪 / 寰呮姇 / 宸叉姇閫?/ 璺宠繃鈥濓紝骞舵寜杩涘害绛涢€夛紱杩欎簺鐘舵€佷笉浼氫笂浼犮€傛帓搴忓彲鍒囨崲鈥滄櫤鑳芥帹鑽愩€佹渶鏂板彂甯冦€佷笌浣犳渶鍖归厤銆佹姇閫掑彲淇″害銆佸師濮嬫潈閲嶁€濄€?- 鈥滃彧鐪嬫湁鍏蜂綋鎶曢€掑叆鍙ｂ€濋粯璁ゅ紑鍚紝浣嗕笉浼氭妸鈥滃瓨鍦ㄩ摼鎺モ€濊鍐欐垚鈥滃矖浣嶄竴瀹氬紑鏀锯€濓紱鎶曢€掔姸鎬佸彟鍒嗕负鈥滈〉闈㈡樉绀哄彲鎶曘€侀渶鍏堢‘璁ゃ€佸凡鍏抽棴 / 鍘嗗彶鈥濄€?- 鎶曢€掔姸鎬侀粯璁ゆ帓闄ゅ凡鍏抽棴宀椾綅锛屽彲鍗曠嫭鏌ョ湅鈥滀粎鐪嬮〉闈㈡樉绀哄彲鎶曗€濃€滈渶鍏堢‘璁?/ 鍙喎鑱旂郴鈥濇垨鍘嗗彶妗ｆ銆?- 鐐瑰嚮鈥滈鑻扁€濇垨鈥滃叕鍙稿畼缃?/ 鍏朵粬鈥濅細鑷姩鍒囨崲鍒板畬鏁存。妗堬紝閬垮厤鍑虹幇璇鎬х殑 0 鏉＄粨鏋溿€?- 鏉ユ簮鍒嗕负鍗庝汉缃?/ 涓枃绀惧尯銆侀鑻便€佸叕鍙稿畼缃?/ 鍏朵粬銆?- 鍗庝汉娓犻亾鍙妸鍏蜂綋鎷涜仒璇︽儏銆侀偖浠跺拰鍙洿鎺ヨ仈绯诲叆鍙ｆ樉绀轰负鎸夐挳锛涘垎绫婚椤点€佹悳绱㈠垪琛ㄣ€佹棫鐗堝崕淇¤鎯呬笌鐮旂┒绱㈠紩浼氳鑷姩闅愯棌銆?- 鍗＄墖鍙妸鎷涜仒鍘熸枃鏄庣‘鏍囨敞鐨勬棩鏈燂紝鎴栧甫鏂拌亴浣嶇紪鍙枫€佸彲鐢辫鎯呴〉鐩稿鏃堕棿鍙潬鎺ㄥ畾鐨勬棩鏈熷綋浣滃彂甯冩棩鏈燂紱鏈疆澶嶆牳鏃ユ湡銆佹姄鍙栨棩鏈熸垨鍗曠函鎼滅储鍒楄〃閲嶆帓涓嶄細浼鎴愭柊宀椾綅銆?- 鈥滄櫤鑳芥帹鑽愨€濆悓鏃惰€冭檻鍖归厤搴︺€佸彂甯冩棩鏈熴€佸綋鍓嶆姇閫掔姸鎬佸拰鏈夋晥鍏ュ彛锛涙湁鏄庣‘鍙戝竷鏃ユ湡涓斾粛鏄剧ず鍙姇鐨勮繎鏈熷矖浣嶄細鎺掑湪鏃ユ湡鏈煡鐨勬棫鍐风嚎绱箣鍓嶏紝鏃ユ湡鏃犳硶纭鏃跺瀹炴樉绀衡€滃彂甯冩椂闂存湭纭鈥濄€?- 鐘舵€佽瘑鍒彧鎶婂畬鏁村崟璇?`closed` 褰撲綔鍏抽棴淇″彿锛沗salary not disclosed`锛堣柂璧勬湭鍏紑锛変笉浼氬啀瀵艰嚧宀椾綅琚钘忋€傚綋鍓嶇姸鎬佹仮澶嶄細鏄剧ず涓衡€滅姸鎬佹洿鏂扳€濓紝骞朵笌鏃ц褰曞悎骞躲€?- 鏅€氬崱鐗囧厛鏄剧ず涓枃缁撹銆佸疄闄呮姇閫掕瑷€鍜屼腑瑗挎枃宀椾綅瀵圭収锛涗腑鏂囪仈绯昏矾寰勪細闄勫彲澶嶅埗鐨勪腑鏂囪闂紝鑻辫澶囬€夊矖浣嶄細闄勭畝鐭嫳鏂囪闂強瀹屾暣涓枃鎰忔€濓紝鐢ㄦ潵鍏堢‘璁ゅ伐浣滆瑷€鍜岃嫳璇矡閫氬己搴︼紱鑻辨枃鎴栬タ鏂囧師濮嬭褰曢粯璁ゆ姌鍙犮€?- 鐩稿悓鎷涜仒閾炬帴浼氳嚜鍔ㄥ幓閲嶏紱瀵瑰凡鏍稿疄鐨?LinkedIn 鍚屽矖閲嶅彂杩樹細浣跨敤绋冲畾宀椾綅韬唤鍚堝苟鏂版棫缂栧彿锛屼繚鐣欐渶鏂扮敵璇峰叆鍙ｅ苟娌跨敤娴忚鍣ㄦ湰鍦版姇閫掕繘搴︺€傚畬鏁村師濮嬫暟鎹粛淇濈暀鍦?`data.js`銆?
+## 鏂囦欢
 
-- “重点投递”保留当前与前一轮仍值得先处理的机会，新增岗位不会直接把昨日精选挤到不可见区域。首页同时显示去重后的页面状态摘要，点击“页面显示可投 / 需先确认 / 已关闭”即可直接应用对应状态筛选。
-- 首页只展示可以先用中文联系的重点机会，英语申请岗不会混在首页；每张重点卡都标明实际投递语言，并提供一键复制的中文询问。
-- “完整机会库”默认使用“中文能投”画像，保留 A/B/C 中位于 Barcelona 或可在西班牙远程承接的中文联系机会；可切换“本轮变化”、近 30 天华人岗、A/B、可投/冷联系与排除/已过期。
-- 个性化预设包括“中文能投（默认）、现在可联系、全部中文方向（含门槛）、英语岗位备选、品牌 VI（全语种）、偏正式 / 避开低薪实习”；“现在可联系”只保留中文可先联系、有具体入口、近期发布或明确开放、并避开低薪实习的 Barcelona / 西班牙远程机会；匹配分把中文可联系、基础西语、英文材料和西语硬门槛分开计算。
-- “中文优先”不等同于“只看华人网站”：它还会识别明确需要中文、服务中国市场或由中国品牌在领英/官网发布的西班牙岗位，并以“中文相关”标记。该预设默认只看 Barcelona、Madrid 或可在西班牙承接的远程机会，同时排除纯监控入口、非设计内容方向和 D / X 级低价值或风险项。
-- 手动筛选可独立控制“中文可直接联系 / 先中文确认 / 基础西语 / 英文材料 / 西语硬门槛”、近 7 / 30 / 90 天、明确发布日期、实习和低薪风险；“主要投递阻力”也可单独查看英文材料、西语、本地语言、低薪、实习协议、状态待核验或匿名客户 / 聚合入口。
-- 每条机会可在浏览器本地标为“未标记 / 待投 / 已投递 / 跳过”，并按进度筛选；这些状态不会上传。排序可切换“智能推荐、最新发布、与你最匹配、投递可信度、原始权重”。
-- “只看有具体投递入口”默认开启，但不会把“存在链接”误写成“岗位一定开放”；投递状态另分为“页面显示可投、需先确认、已关闭 / 历史”。
-- 投递状态默认排除已关闭岗位，可单独查看“仅看页面显示可投”“需先确认 / 可冷联系”或历史档案。
-- 点击“领英”或“公司官网 / 其他”会自动切换到完整档案，避免出现误导性的 0 条结果。
-- 来源分为华人网 / 中文社区、领英、公司官网 / 其他。
-- 华人渠道只把具体招聘详情、邮件和可直接联系入口显示为按钮；分类首页、搜索列表、旧版华信详情与研究索引会被自动隐藏。
-- 卡片只把招聘原文明确标注的日期，或带新职位编号、可由详情页相对时间可靠推定的日期当作发布日期；本轮复核日期、抓取日期或单纯搜索列表重排不会伪装成新岗位。
-- “智能推荐”同时考虑匹配度、发布日期、当前投递状态和有效入口；有明确发布日期且仍显示可投的近期岗位会排在日期未知的旧冷线索之前，日期无法确认时如实显示“发布时间未确认”。
-- 状态识别只把完整单词 `closed` 当作关闭信号；`salary not disclosed`（薪资未公开）不会再导致岗位被误藏。当前状态恢复会显示为“状态更新”，并与旧记录合并。
-- 普通卡片先显示中文结论、实际投递语言和中西文岗位对照；中文联系路径会附可复制的中文询问，英语备选岗位会附简短英文询问及完整中文意思，用来先确认工作语言和英语沟通强度；英文或西文原始记录默认折叠。
-- 相同招聘链接会自动去重；对已核实的 LinkedIn 同岗重发还会使用稳定岗位身份合并新旧编号，保留最新申请入口并沿用浏览器本地投递进度。完整原始数据仍保留在 `data.js`。
+- `index.html`锛氶〉闈㈢粨鏋?- `styles.css`锛氳瑙変笌鍝嶅簲寮忔牱寮?- `app.js`锛氱瓫閫夈€佸幓閲嶃€佷腑鏂囨暣鐞嗗拰浜や簰
+- `data.js`锛氫粠杩借釜琛ㄧ敓鎴愮殑鏈轰細鏁版嵁
+- `scripts/generate-data.ps1`锛氶噸鏂扮敓鎴?`data.js`
+- `scripts/validate-site.js`锛氭鏌ユ暟鎹€侀噸鐐规満浼氬拰椤甸潰鍏冪礌鏄惁瀹屾暣
 
-## 文件
-
-- `index.html`：页面结构
-- `styles.css`：视觉与响应式样式
-- `app.js`：筛选、去重、中文整理和交互
-- `data.js`：从追踪表生成的机会数据
-- `scripts/generate-data.ps1`：重新生成 `data.js`
-- `scripts/validate-site.js`：检查数据、重点机会和页面元素是否完整
-
-## 本地检查
-
-直接双击 `index.html` 即可浏览。修改后可运行：
+## 鏈湴妫€鏌?
+鐩存帴鍙屽嚮 `index.html` 鍗冲彲娴忚銆備慨鏀瑰悗鍙繍琛岋細
 
 ```powershell
 node .\scripts\validate-site.js
 node --check .\app.js
 ```
 
-## GitHub Pages 发布
+## GitHub Pages 鍙戝竷
 
-1. 创建一个 GitHub 仓库。
-2. 把本目录中的全部文件上传到仓库根目录。
-3. 在仓库 `Settings → Pages` 中选择：
-   - Source：`Deploy from a branch`
-   - Branch：`main`
-   - Folder：`/root`
-4. 保存并等待 GitHub 生成 Pages 地址。
+1. 鍒涘缓涓€涓?GitHub 浠撳簱銆?2. 鎶婃湰鐩綍涓殑鍏ㄩ儴鏂囦欢涓婁紶鍒颁粨搴撴牴鐩綍銆?3. 鍦ㄤ粨搴?`Settings 鈫?Pages` 涓€夋嫨锛?   - Source锛歚Deploy from a branch`
+   - Branch锛歚main`
+   - Folder锛歚/root`
+4. 淇濆瓨骞剁瓑寰?GitHub 鐢熸垚 Pages 鍦板潃銆?
+## 鏇存柊鏈轰細鏁版嵁
 
-## 更新机会数据
-
-更新主追踪目录中的 F:\Installer_Packages (EN Path Req.)\Codex Storage\Projects\Codex-Barcelona-brand-design-resources-20260728-200001\barcelona-brand-design-job-tracker.md 后，在本目录运行：
-
+鏇存柊涓昏拷韪洰褰曚腑鐨?F:\Installer_Packages (EN Path Req.)\Codex Storage\Projects\Codex-Barcelona-brand-design-resources-20260728-200001\barcelona-brand-design-job-tracker.md 鍚庯紝鍦ㄦ湰鐩綍杩愯锛?
 ```powershell
 .\scripts\generate-data.ps1 -TrackerPath "F:\Installer_Packages (EN Path Req.)\Codex Storage\Projects\Codex-Barcelona-brand-design-resources-20260728-200001\barcelona-brand-design-job-tracker.md"
 node .\scripts\validate-site.js
 ```
 
-确认通过后提交新的 `data.js`。
-
+纭閫氳繃鍚庢彁浜ゆ柊鐨?`data.js`銆?
 
 ## 2026-07-29 Round 32
 
@@ -82,19 +55,19 @@ Regenerated from the authoritative tracker with LiveFlow Senior Motion Designer,
 
 ## 2026-07-29 Round 38
 
-Added Storyblok 2D Motion Designer – Europe and current VML Barcelona ART DIRECTOR, Senior Art Director and Product Designer routes. Added a lead-only InfoHuaxin Chinese-channel record, corrected Waiis to the newer Manresa listing, and added curated display rules so new roles expose accurate direction, location, language risk and next action.
+Added Storyblok 2D Motion Designer 鈥?Europe and current VML Barcelona ART DIRECTOR, Senior Art Director and Product Designer routes. Added a lead-only InfoHuaxin Chinese-channel record, corrected Waiis to the newer Manresa listing, and added curated display rules so new roles expose accurate direction, location, language risk and next action.
 ## 2026-07-29 Round 39
 
 Regenerated from the authoritative tracker after adding The Builder Studios official Visual Designer (Remote EU freelance, verify-first). Co-Star and Circle.so were rechecked but not duplicated. The curated current-opportunity block should preserve the main screening site's apply/verify-first behavior.
 ## 2026-07-29 Round 40
 
-Added COROS Brand Creative Producer and HKU Europe Marketing & Branding Officer from current official/Casa Asia detail sources. Added the “品牌系统 / motion 核心” preset for focused brand-system, VI, digital-brand and motion screening.
+Added COROS Brand Creative Producer and HKU Europe Marketing & Branding Officer from current official/Casa Asia detail sources. Added the 鈥滃搧鐗岀郴缁?/ motion 鏍稿績鈥?preset for focused brand-system, VI, digital-brand and motion screening.
 ## 2026-07-29 Round 41
 
 Added PVcase and Storisell motion routes and retained Revolut Motion Designer as verify-first due to an official-page cache miss. Existing Lodgify/Kestra records were not duplicated.
 ## 2026-07-29 Round 42
 
-Added Santander España Creative Tech & Digital Designer (Madrid, official Workday; CRM/email lifecycle, Figma systems, modular brand work and AI-assisted production). Refreshed Appspace, NEORIS and Dragons official routes without duplicates; verify-first and closed/watchlist records remain excluded from direct-apply counts.
+Added Santander Espa帽a Creative Tech & Digital Designer (Madrid, official Workday; CRM/email lifecycle, Figma systems, modular brand work and AI-assisted production). Refreshed Appspace, NEORIS and Dragons official routes without duplicates; verify-first and closed/watchlist records remain excluded from direct-apply counts.
 
 ## 2026-07-29 Round 43
 
@@ -122,7 +95,7 @@ Added Designity Motion Designer (AI-Driven) and two Pocket Worlds / Highrise off
 - Rechecked existing Synthesia, Finary and 10x Team routes; kept Bounce as closed history; Chinese channels produced no new independently verifiable pure design role.
 - Regenerate data from the authoritative tracker before validation.
 ## 2026-07-29 Round 49
-- Added Paradox Creative Director – EdTech, The Flex / Base360 AI Video Creator and EverAI Senior AI Vertical Mini-Series Director as verify-first Spain/Europe-remote brand-content and AI-video routes.
+- Added Paradox Creative Director 鈥?EdTech, The Flex / Base360 AI Video Creator and EverAI Senior AI Vertical Mini-Series Director as verify-first Spain/Europe-remote brand-content and AI-video routes.
 - Rechecked existing Fail Fast, Hostinger, Ruby Labs, Kraken and Welltech routes; Chinese channels yielded no new independently verifiable pure design role.
 - Regenerate data from the authoritative tracker before validation.
 ## 2026-07-29 Round 50
@@ -139,19 +112,19 @@ Added Designity Motion Designer (AI-Driven) and two Pocket Worlds / Highrise off
 - Chinese-circle sources produced no new independently verifiable pure design role. Regenerate data from the authoritative tracker before validation.
 ## 2026-07-29 Round 53
 - Added Siena AI Motion Designer & Video Producer as a verify-first Remote - Europe contractor route from the official Ashby requisition; Spain contract and payment eligibility still need confirmation.
-- Rechecked CATORCE, EuroLeague and LiveFlow without duplicates; Appodeal’s old Motion Designer detail now redirects to the current board and is kept as closed/history.
+- Rechecked CATORCE, EuroLeague and LiveFlow without duplicates; Appodeal鈥檚 old Motion Designer detail now redirects to the current board and is kept as closed/history.
 - Chinese-circle sources produced no new independently verifiable pure design role. Regenerate data from the authoritative tracker before validation.
 ## 2026-07-29 Round 54
 - Added Labhouse Marketing Video Editor from the official Ashby requisition as a verify-first Barcelona / Spain remote performance-video and AI-creative route; English + Spanish, hybrid rhythm and technical case are visible in the next-action note.
-- Rechecked DuckDuckGo and BYD Europe without duplication; FREENOW’s old Barcelona Junior Motion Designer route now redirects to the current board and is kept closed/history.
+- Rechecked DuckDuckGo and BYD Europe without duplication; FREENOW鈥檚 old Barcelona Junior Motion Designer route now redirects to the current board and is kept closed/history.
 - China-linked Europe sources produced no new independently verifiable pure design role. Regenerate data from the authoritative tracker before validation.
 ## 2026-07-29 Round 55
 - No new untracked row was added after strict deduplication; refreshed Labhouse Marketing Video Editor and the existing Remedy Edge Spain Graphic Designer Trainee from official ATS details.
-- Rechecked DDB Spain, Scopely, The Mind Company and BYD Europe without duplicates; VML The Cocktail’s old Art Director detail is kept closed/history after redirecting to the current board.
+- Rechecked DDB Spain, Scopely, The Mind Company and BYD Europe without duplicates; VML The Cocktail鈥檚 old Art Director detail is kept closed/history after redirecting to the current board.
 - Chinese-brand Europe sources produced no new independently verifiable pure visual-design role. Regenerate data from the authoritative tracker before validation.
 ## 2026-07-29 Round 56
 - Added Deel Art Director | Web Design as a verify-first Spain-remote senior web-brand/design-system route from the official Ashby requisition.
-- Rechecked Appspace, CATORCE/DCO, DDB Spain and BYD Europe without duplicates; VML/The Cocktail’s old Art Director route remains closed/history.
+- Rechecked Appspace, CATORCE/DCO, DDB Spain and BYD Europe without duplicates; VML/The Cocktail鈥檚 old Art Director route remains closed/history.
 - Chinese-circle sources produced no new independently verifiable pure design role. Regenerate data from the authoritative tracker before validation.
 ## 2026-07-29 Round 57
 - Added Zak Group Senior Brand Designer (Freelance), Together Senior Brand Designer (Remote UK & Europe) and HelloKindred Senior Graphic Designer (Remote-first, Spain eligibility unconfirmed) from official employer-origin pages.
@@ -176,4 +149,7 @@ Added Ashby Staff Design Engineer - EU and SearchApi Frontend Engineer & UI Desi
 ## 2026-07-29 Round 62
 
 Added Kyndryl Vital Lead, Visual Designer from the official Madrid Workday route as a conditional digital/AI visual-design priority. Fluent English and Spanish, Madrid hybrid cadence and exact salary remain gates. HP, UNIQLO, Savills and Sanofi were refreshed without duplicate rows; Casa Asia and Chinese-circle sources produced no new pure visual-design role. Regenerate data from the authoritative tracker before validation.
+## 2026-07-29 Round 63
+
+Added Algofy Graphic & Web Designer from the official careers page as a verify-first Spain/hybrid route with digital marketing, web, branding, print and packaging scope. Reopened Revolut Digital Designer (Brand) without duplication and corrected Stripe ATS `7769564` to the current Motion Designer, Stripe Identity detail; the old Stripe title remains historical/status-conflict only. Casa Asia and Chinese-circle sources produced no new independently verifiable pure visual-design role. Regenerate data from the authoritative tracker before validation.
 
