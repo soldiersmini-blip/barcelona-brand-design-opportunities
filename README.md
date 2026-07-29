@@ -160,3 +160,8 @@ Added JustMarkets Motion Designer / Video Editor from the official careers page 
 ## 2026-07-29 Round 65
 
 Added Lodgify Motion Designer (EMEA remote, Barcelona-headquartered freelance motion/brand route) and Tripledot Studios Motion Designer (Barcelona permanent full-time hybrid marketing route) from official Lever/Pinpoint details. Lodgify is the stronger new lead; Tripledot remains verify-first because the accessible ATS shell does not expose its responsibilities or required skills. Rechecked existing Barcelona routes and Casa Asia without duplicates. The public repository contains a sanitized screening dataset; private tracker paths and raw local columns are intentionally omitted.
+
+
+## 2026-07-29 Round 67
+
+Added one sanitized Paradox Creative Director - EdTech route from the official Ashby requisition. It is a conditional senior brand/content adjacency: Barcelona/Spain remote is indexed, but French fluency, content leadership and freshness/entity confirmation are hard gates. The public runtime patch preserves the private tracker/public dataset split.
