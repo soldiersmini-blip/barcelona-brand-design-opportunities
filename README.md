@@ -174,3 +174,5 @@ Added two sanitized audit records for the official China-brand Europe sweep and 
 ## 2026-07-29 Round 69
 
 Strict official-source rotation added no new tracker row: the Factorial `++hellohello` Senior Brand Designer route remains verify-first after a direct-detail cache miss, while Nordhealth Design Engineer - Brand & Web returned 410 Gone. Fixed two raw unescaped newlines in the public `data.js` and added a cache-busting loader; the public GitHub Pages site keeps its mobile viewport, favicon and standalone manifest. GitHub Pages is static hosting and has no sleeping application server.
+
+Follow-up public sync: synchronized the latest sanitized screening data from the authoritative tracker, bringing the public dataset to 1043 records without exposing local filesystem paths (commit `6cdb2ef`). The Round 66–68 overlay scripts keep ID-based duplicate protection.
