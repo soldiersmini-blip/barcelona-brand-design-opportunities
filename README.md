@@ -27,9 +27,9 @@ node --check .\app.js
 4. 淇濆瓨骞剁瓑寰?GitHub 鐢熸垚 Pages 鍦板潃銆?
 ## 鏇存柊鏈轰細鏁版嵁
 
-鏇存柊涓昏拷韪洰褰曚腑鐨?F:\Installer_Packages (EN Path Req.)\Codex Storage\Projects\Codex-Barcelona-brand-design-resources-20260728-200001\barcelona-brand-design-job-tracker.md 鍚庯紝鍦ㄦ湰鐩綍杩愯锛?
+鏇存柊涓昏拷韪洰褰曚腑鐨?the private authoritative tracker 鍚庯紝鍦ㄦ湰鐩綍杩愯锛?
 ```powershell
-.\scripts\generate-data.ps1 -TrackerPath "F:\Installer_Packages (EN Path Req.)\Codex Storage\Projects\Codex-Barcelona-brand-design-resources-20260728-200001\barcelona-brand-design-job-tracker.md"
+.\scripts\generate-data.ps1 -TrackerPath "the private authoritative tracker"
 node .\scripts\validate-site.js
 ```
 
@@ -156,3 +156,7 @@ Added Algofy Graphic & Web Designer from the official careers page as a verify-f
 
 Added JustMarkets Motion Designer / Video Editor from the official careers page as a verify-first Europe remote-work route. Refreshed Reboot, Lateral Thinking, Rocket Digital, Fail Fast and Casa Asia through current official pages without duplicate rows. Spain payroll, exact remote policy and motion-versus-brand fit remain explicit gates for JustMarkets. Regenerate data from the authoritative tracker before validation.
 
+
+## 2026-07-29 Round 65
+
+Added Lodgify Motion Designer (EMEA remote, Barcelona-headquartered freelance motion/brand route) and Tripledot Studios Motion Designer (Barcelona permanent full-time hybrid marketing route) from official Lever/Pinpoint details. Lodgify is the stronger new lead; Tripledot remains verify-first because the accessible ATS shell does not expose its responsibilities or required skills. Rechecked existing Barcelona routes and Casa Asia without duplicates. The public repository contains a sanitized screening dataset; private tracker paths and raw local columns are intentionally omitted.
