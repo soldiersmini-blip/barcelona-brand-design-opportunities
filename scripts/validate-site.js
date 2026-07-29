@@ -55,9 +55,9 @@ function check(condition, message) {
 }
 
 check(test.allData.length > 700, "机会数据没有完整载入");
-check(test.priorityItems.length === 6, "首页中文重点机会数量不是 6");
+check(test.priorityItems.length === 5, "首页中文重点机会数量不是 5");
 check(
-  [702, 758, 759, 778, 813, 917].every((id) =>
+  [702, 758, 759, 778, 813].every((id) =>
     test.priorityItems.some((item) => item.id === id),
   ),
   "可先中文联系的重点设计 / 内容岗位未完整进入首页",
@@ -180,7 +180,7 @@ check(
 check(test.applicationLanguagePath(test.allData.find((item) => item.id === 759)).key === "chinese", "Insbrand 没有识别为中文可联系");
 check(test.applicationLanguagePath(test.allData.find((item) => item.id === 778)).key === "basicSpanish", "巴塞华人广告岗没有标出基础西语");
 check(test.applicationLanguagePath(test.allData.find((item) => item.id === 917)).key === "chinese", "OneKey 没有识别为中文可申请");
-check(test.allData.find((item) => item.id === 917).tier === "A", "OneKey 没有进入 A 级重点");
+check(test.allData.find((item) => item.id === 917).tier === "C", "OneKey 没有保持在全球远程待确认层");
 check(test.applicationLanguagePath(test.allData.find((item) => item.id === 918)).key === "english", "Huqiao 英语硬门槛没有隔离到外语备选");
 check(test.allData.find((item) => item.id === 918).tier === "C", "Huqiao 没有保持在低薪英语备选层");
 check(test.allData.find((item) => item.id === 918).postedAt === "2026-07-25", "Huqiao 当前重发日期没有识别");

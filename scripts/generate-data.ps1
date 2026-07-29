@@ -138,6 +138,8 @@ function Get-Score {
     $score += 15
   }
 
+  if (HasText $t 'onekeyhq\.atlassian\.net/wiki|gr4yl99ujhl\.typeform\.com') { $score -= 30 }
+
   if ($score -lt 0) { return 0 }
   return [int]$score
 }
@@ -145,6 +147,8 @@ function Get-Score {
 function Get-Tier {
   param([int]$Score, [string]$Combined)
   $t = $Combined.ToLowerInvariant()
+  # OneKey is global-remote only until Spain contracting is confirmed.
+  if (HasText $t 'onekeyhq\.atlassian\.net/wiki|gr4yl99ujhl\.typeform\.com') { return 'C' }
   # A flexible Chinese-language social-content role where Spanish is only a plus.
   # Surface it in the worth-applying group despite its Madrid classification.
   if (HasText $t 'information-id-16240692') { return 'B' }
@@ -289,6 +293,7 @@ function Get-LocationTag {
   if ($Combined -match '(?i)2984918|4440523503|4443321807|4434837522') { return 'Remote / Europe' }
   if ($Combined -match '(?i)i91352\.html') { return 'Other / unclear' }
   if ($Combined -match '(?i)i69362\.html') { return 'Madrid area' }
+  if ($Combined -match '(?i)onekeyhq\.atlassian\.net/wiki|gr4yl99ujhl\.typeform\.com') { return 'Global remote / Spain unconfirmed' }
   if ($Combined -match '(?i)barcelona|barcelon|badalona|cornell|hospitalet|sant cugat|glories|glòries') { return 'Barcelona area' }
   if ($Combined -match '(?i)remote|remoto|europe') { return 'Remote / Europe' }
   if ($Combined -match '(?i)madrid|getafe|pinto|parla|alcobendas|sese') { return 'Madrid area' }

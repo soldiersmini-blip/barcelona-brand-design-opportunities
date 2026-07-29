@@ -182,3 +182,6 @@ Round 70 added one sanitized official Lever screening record for Jobgether's Sen
 ## 2026-07-29 Round 71
 
 The public screening dataset was regenerated to 1,049 records after adding three official Maneuver Marketing Ashby routes: Creative Strategist (TikTok Shop), Creative Strategist (AppLovin), and Performance Designer. Spain/Europe eligibility, contract entity and the strategy-versus-hands-on design split remain explicitly marked for verification. The public payload is sanitized and the homepage data loader uses a cache-busting key.
+## 2026-07-29 OneKey location correction
+
+OneKey Brand Visual Designer is retained as a strong Chinese brand/VI watchline, but its official evidence does not confirm Spain payroll or resident eligibility. The public screening card now labels it `Global remote / Spain unconfirmed` and tier C, so it is excluded from Barcelona/Spain immediate-priority views until written eligibility is obtained.

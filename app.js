@@ -11,7 +11,7 @@ const meta = window.JOB_META || {};
 // The homepage is deliberately Chinese-first. English-first roles remain in the
 // searchable database, but they must not crowd out opportunities the user can
 // actually contact today.
-const PRIORITY_IDS = [917, 759, 758, 813, 702, 778];
+const PRIORITY_IDS = [759, 758, 813, 702, 778];
 
 const IDENTITY_ALIASES = Object.freeze({
   95: "qustodio-digital-designer-marketing",
@@ -1394,15 +1394,15 @@ Object.assign(CURATED, {
     direction: "brand",
     company: "OneKey",
     chineseFit: true,
-    statusKey: "live",
+    statusKey: "verify",
     experienceKey: "mid",
     experienceLabel: "中高级 / 3 年以上",
     locationKey: "remote",
-    locationLabel: "全球远程（需确认西班牙签约）",
-    titleZh: "品牌视觉设计师（VI 与数字品牌延展）",
+    locationLabel: "全球远程 / 西班牙资格未确认",
+    titleZh: "品牌视觉设计师（全球远程待确认）",
     titleEs: "Diseñador/a visual de marca",
-    reason: "本轮最强中文机会：官方中文岗位页仍在当前招聘目录，职责精确覆盖品牌视觉系统、硬件、App、网站和线上线下延展；英语阅读只列为加分项，初筛后的实操测试明确付费。",
-    next: "先用中文申请并附作品集；首页放完整 VI / 品牌手册，再放 3C 或硬件渲染、App / 网站和 Campaign 延展。提交前确认是否接受西班牙居民、合同主体、薪资币种、核心时区、税务与社保。",
+    reason: "方向很匹配：品牌视觉系统、硬件、App、网站和线上线下延展；但官方只证明全球远程，没有证明西班牙居民可签约，因此不属于 Barcelona/Spain 直接机会。",
+    next: "先确认西班牙雇佣实体/contractor、税务社保、薪资币种、核心时区和付费测试/IP 条款；书面确认前不要按 Barcelona 岗位投入定制材料。确认可签后再用中文提交完整 VI、3C/硬件、App/web 与数字延展案例。",
     languageKey: "unknown",
     language: "中文岗位页和申请流程；英语阅读仅为加分项",
     applicationMode: "chinese",
