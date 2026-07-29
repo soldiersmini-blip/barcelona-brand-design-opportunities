@@ -2200,61 +2200,6 @@ Object.assign(CURATED, {
     changeType: "round66",
   },
 });
-
-Object.assign(CURATED, {
-  1041: {
-    direction: "brand",
-    company: "Paradox",
-    statusKey: "verify",
-    locationKey: "barcelona",
-    locationLabel: "Remote Spain / Barcelona Remote · full-time",
-    titleZh: "品牌内容创意总监（EdTech，法语流利）",
-    titleEs: "Creative Director - EdTech (French fluent)",
-    reason: "官方 Ashby 索引把它列为 Barcelona / Spain remote 的品牌与内容创意总监：负责双品牌架构、内容工厂、视觉叙事、脚本、campaign、团队质量和 performance creative。它不是普通平面岗位，而是高阶 brand-content leadership 方向。",
-    next: "先确认岗位是否仍接受申请、Spain 合同实体、薪资和 Barcelona 资格。只有法语达到专业工作水平且能证明内容品牌增长、脚本、团队领导时再投；不要用纯平面设计材料硬投。",
-    language: "法语 Native/Bilingual + 英语流利；内容品牌领导经验硬门槛",
-    applicationMode: "english",
-    experienceKey: "senior",
-    experienceLabel: "资深 / 创意领导",
-    changeType: "new",
-  },
-});
-
-Object.assign(CURATED, {
-  1042: {
-    direction: "brand",
-    company: "中国品牌欧洲入口复核",
-    statusKey: "verify",
-    locationKey: "remote",
-    locationLabel: "Hoofddorp / Courbevoie / Uxbridge / London — 非 Barcelona",
-    titleZh: "BYD、Trip.com 等中国品牌欧洲视觉岗位复核",
-    titleEs: "China-brand Europe ATS refresh",
-    reason: "本轮逐条打开 BYD Europe、Trip.com、ByteDance、HONOR 与 DJI 官方入口；BYD 中文设计岗仍在荷兰，法国/英国岗位有明确地点，Trip.com Creative Marketing Manager 为 London。这里是来源审计，不是新增的 Barcelona/Spain 职位。",
-    next: "保留 BYD 中文 + 英语的欧洲品牌视觉路线作为备选，但不要把它当成 Barcelona/Spain remote；Trip.com 先确认页面发布日期和是否仍接受申请。",
-    language: "中文可联系价值高；实际投递语言和合同需分别确认",
-    applicationMode: "english",
-    experienceKey: "senior",
-    experienceLabel: "既有岗位复核",
-    changeType: "round68",
-  },
-  1043: {
-    direction: "brand",
-    company: "官方 ATS 轮换复核",
-    statusKey: "closed",
-    locationKey: "remote",
-    locationLabel: "Europe remote / Barcelona / Madrid / EMEA — 混合审计记录",
-    titleZh: "Pocket Worlds、OFF+BRAND、CATORCE 等现有路线复核",
-    titleEs: "Existing ATS rotation audit",
-    reason: "本条记录汇总本轮对既有官方 Ashby、Greenhouse 和雇主招聘页的状态复核，不代表新增职位；关闭、重定向、实习、语言硬门槛和非西班牙路线继续留在历史/待核验层。",
-    next: "优先处理仍有 Spain/EMEA 资格和当前 Apply 控件的既有卡片；不要从这条审计摘要直接投递。",
-    language: "按各既有职位分别确认",
-    applicationMode: "english",
-    experienceKey: "unknown",
-    experienceLabel: "来源复核",
-    changeType: "round68",
-  },
-});
-
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
