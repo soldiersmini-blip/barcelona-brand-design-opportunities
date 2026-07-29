@@ -152,4 +152,7 @@ Added Kyndryl Vital Lead, Visual Designer from the official Madrid Workday route
 ## 2026-07-29 Round 63
 
 Added Algofy Graphic & Web Designer from the official careers page as a verify-first Spain/hybrid route with digital marketing, web, branding, print and packaging scope. Reopened Revolut Digital Designer (Brand) without duplication and corrected Stripe ATS `7769564` to the current Motion Designer, Stripe Identity detail; the old Stripe title remains historical/status-conflict only. Casa Asia and Chinese-circle sources produced no new independently verifiable pure visual-design role. Regenerate data from the authoritative tracker before validation.
+## 2026-07-29 Round 64
+
+Added JustMarkets Motion Designer / Video Editor from the official careers page as a verify-first Europe remote-work route. Refreshed Reboot, Lateral Thinking, Rocket Digital, Fail Fast and Casa Asia through current official pages without duplicate rows. Spain payroll, exact remote policy and motion-versus-brand fit remain explicit gates for JustMarkets. Regenerate data from the authoritative tracker before validation.
 
