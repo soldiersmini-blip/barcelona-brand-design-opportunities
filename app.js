@@ -2182,6 +2182,25 @@ Object.assign(CURATED, {
     experienceLabel: "高级 / AI narrative video",
     changeType: "new",
   },  },});
+Object.assign(CURATED, {
+  1040: {
+    direction: "brand",
+    company: "Roman / La Casa de Carlota",
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / indefinite full-time",
+    titleZh: "初级平面设计师（LCDC 品牌、编辑与数字）",
+    titleEs: "Junior Graphic Designer LCDC",
+    reason: "官方 Roman board 与 Factorial 详情已重新显示当前 Apply：Barcelona、无限期、全职、混合办公、9 月入职。职责直接覆盖 branding、editorial、campaign、digital content、art direction、各类格式适配与视觉一致性，是本轮最贴品牌核心的重开岗位。",
+    next: "这是西语挑战岗，不进入中文首投。只有能处理中高加泰语与西语工作环境时再投；材料突出品牌概念、编辑系统、数字 campaign、Adobe 执行、少量 motion/AI，并先确认 2026 年 9 月入职、薪资与每周到岗节奏。",
+    language: "加泰语 + 西语中高水平为硬门槛；英语中等为加分",
+    applicationMode: "spanish",
+    experienceKey: "junior",
+    experienceLabel: "初级 / 1–3 年",
+    changeType: "round66",
+  },
+});
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
