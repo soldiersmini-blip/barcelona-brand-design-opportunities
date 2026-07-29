@@ -1,4 +1,11 @@
 const allData = Array.isArray(window.JOB_OPPORTUNITIES) ? window.JOB_OPPORTUNITIES : [];
+for (const item of allData) {
+  if (!item.searchText) {
+    item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+      .filter(Boolean)
+      .join(" ");
+  }
+}
 const meta = window.JOB_META || {};
 
 // The homepage is deliberately Chinese-first. English-first roles remain in the
