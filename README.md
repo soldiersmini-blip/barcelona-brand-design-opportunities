@@ -189,3 +189,7 @@ OneKey Brand Visual Designer is retained as a strong Chinese brand/VI watchline,
 ## 2026-07-29 Barcelona-first homepage correction
 
 The public homepage now prioritizes Barcelona-local opportunities before Spain-eligible remote routes. Priority cards explicitly show language and contract/status gates; a global-remote role without Spain eligibility is not treated as a Barcelona opportunity. Round 73 added one sanitized C-level verify-first Remedy Edge Spain Greenhouse board route, `Freelance Visual Communication Specialist`, whose official Barcelona listing is current but whose direct detail returned a cache miss; it remains outside the homepage until the full brief is recoverable.
+
+## 2026-07-30 Round 98
+
+Added one sanitized official Barcelona-area route: Bakken & Bæck `Freelance — Senior Art Director` (`1100`). The employer detail and Teamtailor form explicitly offer Barcelona as a location; the role covers image-led brand worlds, art direction, photography/film, CGI, motion and digital systems. The public loader cache key is `data.js?v=0078ca205102`; homepage priority remains the five Barcelona-local core records.
