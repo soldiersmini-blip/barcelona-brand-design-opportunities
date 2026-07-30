@@ -197,3 +197,7 @@ Added one sanitized official Barcelona-area route: Bakken & Bæck `Freelance —
 ## 2026-07-30 Round 99
 
 Added one sanitized official Barcelona city route: Primark `Visual Merchandising Manager` (`JR-11491`). It is a fixed-term Plaça Catalunya retail-visual role, kept outside the five-card brand/VI homepage core. The Chinese-channel sweep produced no new independently verified row; the existing InfoHuaxin/Xihua advertising-shop lead remains clearly marked as a Chinese direct-contact, verification-first route. Public data total: 1101; loader cache key: `data.js?v=011a0c51ac`.
+
+## 2026-07-30 Round 100
+
+Added one sanitized official Barcelona studio route: THRU `Graphic Designer with Motion Skills`. The official brief covers motion identities, reusable motion systems, templates, guidelines and brand/product digital solutions; the job is on-site in Barcelona with partial Friday remote work. The role stays outside the five-card homepage core because the application requires an unpaid After Effects exercise and the page/search index show conflicting September closing dates. Chinese and metropolitan-area sweeps produced no new independently verified row. Public data total: 1102; loader cache key: `data.js?v=bde4dda8d6`.
