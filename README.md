@@ -205,3 +205,7 @@ Added one sanitized official Barcelona studio route: THRU `Graphic Designer with
 ## 2026-07-30 Round 101
 
 Added one sanitized official Barcelona agency route: Karmina `Graphic Designer Barcelona`. The page specifies Barcelona, hybrid, full-time, permanent contract, immediate incorporation and work across brand-identity implementation, digital campaigns, social assets and motion-adjacent pieces. It is kept outside the five-card homepage core because the page is an ongoing/talent-pool route rather than a confirmed unique ATS requisition, and it requires native Spanish and Catalan. Public data total: 1103; loader cache key: `data.js?v=63fc767db7`.
+
+## 2026-07-30 Round 102
+
+Added one sanitized official Barcelona-local route: Glovo `Motion Designer (They/She/He)`. The official employer page states Barcelona, full-time, Marketing & Growth and Brand Design scope across scalable motion systems, paid social/display/TV and brand consistency. It stays outside the five-card homepage core because the work is performance-heavy and the linked SmartRecruiters form needs manual confirmation. Holded, Avidalia, Factorial and Trivelta stale/closed copies were not promoted. Public data total: 1104; loader cache key: `data.js?v=39d3cb0e6d6f`.
