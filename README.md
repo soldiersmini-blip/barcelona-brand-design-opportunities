@@ -201,3 +201,7 @@ Added one sanitized official Barcelona city route: Primark `Visual Merchandising
 ## 2026-07-30 Round 100
 
 Added one sanitized official Barcelona studio route: THRU `Graphic Designer with Motion Skills`. The official brief covers motion identities, reusable motion systems, templates, guidelines and brand/product digital solutions; the job is on-site in Barcelona with partial Friday remote work. The role stays outside the five-card homepage core because the application requires an unpaid After Effects exercise and the page/search index show conflicting September closing dates. Chinese and metropolitan-area sweeps produced no new independently verified row. Public data total: 1102; loader cache key: `data.js?v=bde4dda8d6`.
+
+## 2026-07-30 Round 101
+
+Added one sanitized official Barcelona agency route: Karmina `Graphic Designer Barcelona`. The page specifies Barcelona, hybrid, full-time, permanent contract, immediate incorporation and work across brand-identity implementation, digital campaigns, social assets and motion-adjacent pieces. It is kept outside the five-card homepage core because the page is an ongoing/talent-pool route rather than a confirmed unique ATS requisition, and it requires native Spanish and Catalan. Public data total: 1103; loader cache key: `data.js?v=63fc767db7`.
