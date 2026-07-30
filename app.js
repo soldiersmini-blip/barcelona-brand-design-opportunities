@@ -2695,12 +2695,19 @@ function confidenceScore(item) {
 function sortRecords(records) {
   const mode = els.sortFilter?.value || "smart";
   const compareScore = (a, b) => (b.score || 0) - (a.score || 0);
+  // The user's actual constraint is Barcelona first. Keep location as the
+  // first sort key so a high-scoring Europe-remote role cannot crowd out a
+  // lower-scoring but genuinely local opportunity in the default view.
+  const locationOrder = { barcelona: 4, remote: 3, madrid: 2, other: 1 };
+  const compareLocation = (a, b) =>
+    (locationOrder[locationBucket(b)] || 0) - (locationOrder[locationBucket(a)] || 0);
   const compareMatch = (a, b) =>
-    personalMatchScore(b) - personalMatchScore(a) || compareScore(a, b);
+    compareLocation(a, b) || personalMatchScore(b) - personalMatchScore(a) || compareScore(a, b);
 
   if (mode === "latest") {
     records.sort(
       (a, b) =>
+        compareLocation(a, b) ||
         postedTimestamp(b) - postedTimestamp(a) ||
         rankingScore(b) - rankingScore(a) ||
         compareScore(a, b),
@@ -2714,6 +2721,7 @@ function sortRecords(records) {
   if (mode === "confidence") {
     records.sort(
       (a, b) =>
+        compareLocation(a, b) ||
         confidenceScore(b) - confidenceScore(a) ||
         postedTimestamp(b) - postedTimestamp(a) ||
         compareMatch(a, b),
@@ -2726,6 +2734,7 @@ function sortRecords(records) {
   }
   records.sort(
     (a, b) =>
+      compareLocation(a, b) ||
       rankingScore(b) - rankingScore(a) ||
       postedTimestamp(b) - postedTimestamp(a) ||
       compareScore(a, b),
