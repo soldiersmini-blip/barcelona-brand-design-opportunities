@@ -2884,6 +2884,7 @@ function directionKey(item) {
 }
 
 function locationBucket(item) {
+  if (item.locationTag === "Other / unclear") return "other";
   const curated = CURATED[item.id];
   if (curated?.locationKey) return curated.locationKey;
   const text = `${item.location || ""} ${item.rawColumns?.Location || ""}`;
@@ -2892,7 +2893,6 @@ function locationBucket(item) {
   }
   const hasEuropeRemoteSignal = /remote|remoto|远程|europe|eu based|europe-wide/i.test(text);
   const hasOnsiteOnlySignal = /on[- ]?site|onsite|office[- ]?only|现场办公|办公室办公/i.test(text);
-  if (hasEuropeRemoteSignal && !hasOnsiteOnlySignal) return "remote";
   if (
     /not barcelona|rather than barcelona|非巴塞|不在巴塞|valencia|warsaw|shanghai|上海|london|paris|lisbon|milano|milan|berlin|amsterdam|hoofddorp|schiedam|courbevoie|uxbridge|budapest/i.test(
       text,
@@ -2907,6 +2907,7 @@ function locationBucket(item) {
   if (item.locationTag === "Barcelona area") return "barcelona";
   if (item.locationTag === "Madrid area") return "madrid";
   if (item.locationTag === "Remote / Europe" && !hasOnsiteOnlySignal) return "remote";
+  if (hasEuropeRemoteSignal && !hasOnsiteOnlySignal) return "remote";
   if (/barcelona|barcelon|巴塞|badalona|cornell|hospitalet|sant cugat|gl[oò]ries/i.test(text)) {
     return "barcelona";
   }

@@ -190,6 +190,9 @@ check(test.allData.find((item) => item.id === 918).tier === "C", "Huqiao 没有�
 check(test.allData.find((item) => item.id === 918).postedAt === "2026-07-25", "Huqiao 当前重发日期没有识别");
 check(test.hasOpaqueEmployerRisk(test.allData.find((item) => item.id === 919)), "TT3Labs 匿名雇主风险没有识别");
 check(test.allData.find((item) => item.id === 919).tier === "C", "TT3Labs 高风险岗位没有保持在 C 级");
+check(test.locationBucket(test.allData.find((item) => item.id === 919)) === "other", "全球远程且西班牙资格未确认的 TT3Labs 岗位被误判为欧洲远程");
+test.state.preset = "profile";
+check(!test.matchesPreset(test.allData.find((item) => item.id === 919)), "匿名全球远程 TT3Labs 岗位混入默认中文能投");
 check(test.applicationStatus(test.allData.find((item) => item.id === 920)).key === "verify", "较早中文兼职没有标为先核验");
 check(test.applicationLanguagePath(test.allData.find((item) => item.id === 906)).key === "english", "INFiLED 英语申请没有与中文投递拆开");
 check(test.languageInfo(test.allData.find((item) => item.id === 706)).key === "spanish", "三语必需岗位被误判成低语言门槛");
