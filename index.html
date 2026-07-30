@@ -235,6 +235,7 @@
               <option value="social">新媒体 / 短视频</option>
               <option value="ecommerce">电商视觉</option>
               <option value="production">广告印刷 / 平面制作</option>
+              <option value="motion">动态品牌 / Motion</option>
               <option value="other">其他相关</option>
             </select>
           </label>
@@ -356,7 +357,7 @@
             全部来源 <span id="allSourceCount">0</span>
           </button>
           <button class="source-tab" type="button" data-source="chinese" role="tab">
-            华人网 / 中文社区 <span id="chineseCount">0</span>
+            华人来源（当前筛选内） <span id="chineseCount">0</span>
           </button>
           <button class="source-tab" type="button" data-source="linkedin" role="tab">
             领英（当前筛选内） <span id="linkedinCount">0</span>
@@ -365,6 +366,7 @@
             公司官网 / 其他 <span id="otherCount">0</span>
           </button>
         </div>
+        <p id="sourceTabsNote" class="source-tabs__note"></p>
 
         <div id="resultsList" class="results-list" aria-live="polite"></div>
 

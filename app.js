@@ -2224,6 +2224,7 @@ const els = {
   chineseCount: document.querySelector("#chineseCount"),
   linkedinCount: document.querySelector("#linkedinCount"),
   otherCount: document.querySelector("#otherCount"),
+  sourceTabsNote: document.querySelector("#sourceTabsNote"),
   searchInput: document.querySelector("#searchInput"),
   directionFilter: document.querySelector("#directionFilter"),
   locationFilter: document.querySelector("#locationFilter"),
@@ -2313,6 +2314,10 @@ const DIRECTION_LABELS = {
   production: {
     zh: "广告印刷 / 平面制作",
     es: "Imprenta / producción gráfica",
+  },
+  motion: {
+    zh: "动态品牌 / Motion",
+    es: "Motion design / vídeo de marca",
   },
   other: {
     zh: "其他设计相关",
@@ -2642,7 +2647,7 @@ function personalMatchScore(item) {
     english: -18,
     spanish: -30,
   };
-  const directionPoints = { brand: 20, digital: 17, ecommerce: 13, social: 11, production: 8, other: 0 };
+  const directionPoints = { brand: 20, digital: 17, motion: 18, ecommerce: 13, social: 11, production: 8, other: 0 };
   const freshnessPoints = { week: 10, month: 7, quarter: 3, older: 0, old: -5, unknown: 0 };
 
   let score =
@@ -3222,6 +3227,7 @@ function genericNext(item) {
     social: "社媒视觉、短视频封面、剪辑和内容栏目",
     ecommerce: "产品图、电商 Banner、详情页和店铺视觉",
     production: "菜单、招牌、海报、传单和印刷落地",
+    motion: "品牌动效、视频与跨渠道动态延展",
     other: "最贴近岗位职责的",
   }[direction];
   return `打开原招聘渠道核对状态，准备一份精简简历，并优先展示${portfolio}案例。`;
@@ -3472,6 +3478,7 @@ function chineseOutreachText(item) {
     social: "社媒视觉、短视频与品牌内容",
     ecommerce: "产品图、详情页和电商视觉",
     production: "平面设计、菜单、招牌和印刷落地",
+    motion: "品牌动效、视频与动态视觉系统",
     other: "视觉设计与内容制作",
   }[directionKey(item)];
   return `你好，我看到${company}在招聘“${role}”。我目前在巴塞罗那，主要做${focus}，中文沟通没有问题，西语和英语还在学习。请问这个岗位现在还在招聘吗？日常工作能否主要用中文沟通？如果合适，我可以先发作品集和简历给您。谢谢！`;
@@ -3486,6 +3493,7 @@ function englishOutreachText(item) {
     social: "social visuals, short-form video, and branded content",
     ecommerce: "product visuals, e-commerce pages, and campaign assets",
     production: "graphic design, print materials, and production-ready artwork",
+    motion: "brand motion, video, and dynamic visual systems",
     other: "visual design and branded content",
   }[directionKey(item)];
   return {
@@ -3639,6 +3647,7 @@ function updateSourceCounts(records) {
   els.chineseCount.textContent = base.filter((item) => sourceGroup(item) === "chinese").length;
   els.linkedinCount.textContent = base.filter((item) => sourceGroup(item) === "linkedin").length;
   els.otherCount.textContent = base.filter((item) => sourceGroup(item) === "other").length;
+  els.sourceTabsNote.textContent = `这里显示当前筛选结果的来源分布；全库中文来源线索共 ${allData.filter((item) => sourceGroup(item) === "chinese").length} 条。`;
 }
 
 function renderResultCard(item) {
