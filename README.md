@@ -193,3 +193,7 @@ The public homepage now prioritizes Barcelona-local opportunities before Spain-e
 ## 2026-07-30 Round 98
 
 Added one sanitized official Barcelona-area route: Bakken & Bæck `Freelance — Senior Art Director` (`1100`). The employer detail and Teamtailor form explicitly offer Barcelona as a location; the role covers image-led brand worlds, art direction, photography/film, CGI, motion and digital systems. The public loader cache key is `data.js?v=0078ca205102`; homepage priority remains the five Barcelona-local core records.
+
+## 2026-07-30 Round 99
+
+Added one sanitized official Barcelona city route: Primark `Visual Merchandising Manager` (`JR-11491`). It is a fixed-term Plaça Catalunya retail-visual role, kept outside the five-card brand/VI homepage core. The Chinese-channel sweep produced no new independently verified row; the existing InfoHuaxin/Xihua advertising-shop lead remains clearly marked as a Chinese direct-contact, verification-first route. Public data total: 1101; loader cache key: `data.js?v=011a0c51ac`.
