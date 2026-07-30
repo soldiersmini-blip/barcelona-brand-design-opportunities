@@ -2208,6 +2208,7 @@ const els = {
   priorityCount: document.querySelector("#priorityCount"),
   chineseTotal: document.querySelector("#chineseTotal"),
   recentChineseTotal: document.querySelector("#recentChineseTotal"),
+  chineseStatsNote: document.querySelector("#chineseStatsNote"),
   liveCount: document.querySelector("#liveCount"),
   verifyCount: document.querySelector("#verifyCount"),
   closedCount: document.querySelector("#closedCount"),
@@ -3908,12 +3909,25 @@ function initStats() {
   els.totalCount.textContent = allData.length;
   els.priorityCount.textContent = priorityItems.length;
   els.chineseTotal.textContent = allData.filter((item) => sourceGroup(item) === "chinese").length;
-  els.recentChineseTotal.textContent = dedupedData.filter(
+  const previousPreset = state.preset;
+  state.preset = "actionable";
+  const actionableChinese = dedupedData.filter(
+    (item) =>
+      ["A", "B", "C"].includes(item.tier) &&
+      matchesPreset(item) &&
+      ["chinese", "chineseCheck", "basicSpanish"].includes(applicationLanguagePath(item).key),
+  ).length;
+  state.preset = "chinese";
+  const strictChinese = dedupedData.filter((item) => matchesPreset(item) && toLinks(item).length > 0).length;
+  state.preset = previousPreset;
+  els.recentChineseTotal.textContent = actionableChinese;
+  const recentChinese = dedupedData.filter(
     (item) =>
       sourceGroup(item) === "chinese" &&
       ["week", "month"].includes(item.freshnessTag) &&
       item.tier !== "X",
   ).length;
+  els.chineseStatsNote.textContent = `严格中文优先去重 ${strictChinese} 条 · 近 30 天中文来源 ${recentChinese} 条。中文来源线索不等于当前可投岗位。`;
   const statusSummary = getStatusSummary();
   els.liveCount.textContent = statusSummary.live;
   els.verifyCount.textContent = statusSummary.verify;
