@@ -341,7 +341,7 @@ check(
   personalized.every(
     (item) =>
       ["barcelona", "remote"].includes(test.locationBucket(item)) &&
-      ["chinese", "chineseCheck"].includes(test.applicationLanguagePath(item).key) &&
+      test.applicationLanguagePath(item).key === "chinese" &&
       test.isChineseRelevant(item) &&
       !test.isResearchOnly(item) &&
       test.applicationStatus(item).key !== "closed" &&
@@ -351,7 +351,7 @@ check(
 );
 check(
   personalized.every(
-    (item) => !["english", "spanish", "basicSpanish"].includes(test.applicationLanguagePath(item).key),
+    (item) => test.applicationLanguagePath(item).key === "chinese",
   ),
   "默认首页仍混入需要英文材料、英文沟通或基础西语的岗位",
 );

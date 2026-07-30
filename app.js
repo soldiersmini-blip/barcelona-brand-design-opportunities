@@ -2752,10 +2752,11 @@ function matchesPreset(item) {
     const applicationLanguage = applicationLanguagePath(item).key;
     return (
       ["barcelona", "remote"].includes(location) &&
-      ["chinese", "chineseCheck"].includes(applicationLanguage) &&
+      applicationLanguage === "chinese" &&
       isChineseRelevant(item) &&
       ["A", "B", "C"].includes(item.tier) &&
       direction !== "other" &&
+      !hasOpaqueEmployerRisk(item) &&
       !isResearchOnly(item) &&
       applicationStatus(item).key !== "closed"
     );
@@ -2776,6 +2777,7 @@ function matchesPreset(item) {
       currentEnough &&
       !isInternshipRole(item) &&
       !hasLowPayRisk(item) &&
+      !hasOpaqueEmployerRisk(item) &&
       !isResearchOnly(item) &&
       status !== "closed"
     );
@@ -2898,6 +2900,13 @@ function locationBucket(item) {
   ) {
     return "other";
   }
+  // An explicit location tag is stronger than a generic word such as
+  // "remote" in a global listing. Do not turn worldwide/unclear jobs into
+  // Spain-eligible remote roles merely because the description says remote.
+  if (item.locationTag === "Other / unclear") return "other";
+  if (item.locationTag === "Barcelona area") return "barcelona";
+  if (item.locationTag === "Madrid area") return "madrid";
+  if (item.locationTag === "Remote / Europe" && !hasOnsiteOnlySignal) return "remote";
   if (/barcelona|barcelon|巴塞|badalona|cornell|hospitalet|sant cugat|gl[oò]ries/i.test(text)) {
     return "barcelona";
   }
