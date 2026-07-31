@@ -2252,6 +2252,7 @@ const els = {
 const state = {
   scope: "all",
   source: "all",
+  sourceLibrary: false,
   preset: "profile",
   progressFilter: "all",
   limit: 18,
@@ -3577,6 +3578,9 @@ function renderPriority() {
 }
 
 function baseRecords() {
+  if (state.sourceLibrary === "chinese") {
+    return dedupedData.filter((item) => sourceGroup(item) === "chinese");
+  }
   if (state.scope === "latestRound") {
     return latestRoundItems;
   }
@@ -3643,11 +3647,16 @@ function matchesFilters(item, ignoreSource = false) {
 
 function updateSourceCounts(records) {
   const base = records.filter((item) => matchesFilters(item, true));
+  const chineseLibrarySize = dedupedData.filter((item) => sourceGroup(item) === "chinese").length;
   els.allSourceCount.textContent = base.length;
-  els.chineseCount.textContent = base.filter((item) => sourceGroup(item) === "chinese").length;
+  els.chineseCount.textContent = chineseLibrarySize;
   els.linkedinCount.textContent = base.filter((item) => sourceGroup(item) === "linkedin").length;
   els.otherCount.textContent = base.filter((item) => sourceGroup(item) === "other").length;
-  els.sourceTabsNote.textContent = `这里显示当前筛选结果的来源分布；全库中文来源线索共 ${allData.filter((item) => sourceGroup(item) === "chinese").length} 条。`;
+  const chineseRawCount = allData.filter((item) => sourceGroup(item) === "chinese").length;
+  els.sourceTabsNote.textContent =
+    state.sourceLibrary === "chinese"
+      ? `已进入华人中文全库：当前展示去重后的全部中文来源记录，共 ${chineseLibrarySize} 条；原始来源线索共 ${chineseRawCount} 条，包含当前、待核验、历史和风险记录。`
+      : `来源分布按当前筛选统计；点击“华人中文全库（去重）”可清除其他条件，集中查看全部中文来源记录。原始中文来源线索共 ${chineseRawCount} 条。`;
 }
 
 function renderResultCard(item) {
@@ -3811,6 +3820,7 @@ function applyPreset(preset) {
   state.preset = preset;
   state.scope = ["profile", "actionable", "chinese", "core", "none"].includes(preset) ? "all" : "ab";
   state.source = "all";
+  state.sourceLibrary = false;
   state.progressFilter = "all";
   els.searchInput.value = "";
   els.directionFilter.value = "all";
@@ -3834,7 +3844,34 @@ function applyPreset(preset) {
 
 function clearPresetForManualFilters() {
   state.preset = "none";
+  state.sourceLibrary = false;
   syncPresetUi();
+}
+
+function activateChineseLibrary() {
+  state.scope = "all";
+  state.source = "chinese";
+  state.sourceLibrary = "chinese";
+  state.preset = "none";
+  state.progressFilter = "all";
+  els.searchInput.value = "";
+  els.directionFilter.value = "all";
+  els.locationFilter.value = "all";
+  els.languageFilter.value = "all";
+  els.statusFilter.value = "all";
+  els.freshnessFilter.value = "all";
+  els.sortFilter.value = "latest";
+  els.laborFilter.value = "all";
+  els.experienceFilter.value = "all";
+  els.riskFilter.value = "all";
+  els.validRouteOnly.checked = false;
+  els.excludeLowPay.checked = false;
+  els.excludeInternships.checked = false;
+  syncPresetUi();
+  syncScopeUi();
+  syncSourceUi();
+  syncProgressFilterUi();
+  resetLimitAndRender();
 }
 
 els.presetButtons.forEach((button) => {
@@ -3846,6 +3883,7 @@ els.scopeButtons.forEach((button) => {
     clearPresetForManualFilters();
     state.scope = button.dataset.scope;
     state.source = "all";
+    state.sourceLibrary = false;
     syncScopeUi();
     syncSourceUi();
     resetLimitAndRender();
@@ -3854,8 +3892,13 @@ els.scopeButtons.forEach((button) => {
 
 els.sourceTabs.forEach((button) => {
   button.addEventListener("click", () => {
+    if (button.dataset.source === "chinese") {
+      activateChineseLibrary();
+      return;
+    }
     clearPresetForManualFilters();
     state.source = button.dataset.source;
+    state.sourceLibrary = false;
     if (state.scope === "recentChinese" && !["all", "chinese"].includes(state.source)) {
       state.scope = "all";
       syncScopeUi();
