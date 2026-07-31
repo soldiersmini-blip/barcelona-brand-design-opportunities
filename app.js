@@ -2225,6 +2225,9 @@ const els = {
   linkedinCount: document.querySelector("#linkedinCount"),
   otherCount: document.querySelector("#otherCount"),
   sourceTabsNote: document.querySelector("#sourceTabsNote"),
+  chineseLibraryViews: document.querySelector("#chineseLibraryViews"),
+  chineseActiveCount: document.querySelector("#chineseActiveCount"),
+  chineseClosedCount: document.querySelector("#chineseClosedCount"),
   searchInput: document.querySelector("#searchInput"),
   directionFilter: document.querySelector("#directionFilter"),
   locationFilter: document.querySelector("#locationFilter"),
@@ -2244,6 +2247,7 @@ const els = {
   scopeButtons: [...document.querySelectorAll(".scope-button")],
   presetButtons: [...document.querySelectorAll(".preset-button")],
   sourceTabs: [...document.querySelectorAll(".source-tab")],
+  chineseLibraryViewButtons: [...document.querySelectorAll(".source-library-view")],
   progressFilterButtons: [...document.querySelectorAll(".progress-filter-button")],
   statusSummaryButtons: [...document.querySelectorAll(".status-summary__item")],
 
@@ -2253,6 +2257,7 @@ const state = {
   scope: "all",
   source: "all",
   sourceLibrary: false,
+  sourceLibraryView: "active",
   preset: "profile",
   progressFilter: "all",
   limit: 18,
@@ -3611,7 +3616,10 @@ function renderPriority() {
 
 function baseRecords() {
   if (state.sourceLibrary === "chinese") {
-    return dedupedData.filter((item) => sourceGroup(item) === "chinese");
+    const chineseRecords = dedupedData.filter((item) => sourceGroup(item) === "chinese");
+    return chineseRecords.filter((item) =>
+      state.sourceLibraryView === "closed" ? isClosedLibraryRecord(item) : !isClosedLibraryRecord(item),
+    );
   }
   if (state.scope === "latestRound") {
     return latestRoundItems;
@@ -3677,18 +3685,30 @@ function matchesFilters(item, ignoreSource = false) {
   return true;
 }
 
+function isClosedLibraryRecord(item) {
+  return item.tier === "X" || applicationStatus(item).key === "closed";
+}
+
 function updateSourceCounts(records) {
   const base = records.filter((item) => matchesFilters(item, true));
   const chineseLibrarySize = dedupedData.filter((item) => sourceGroup(item) === "chinese").length;
+  const chineseActiveSize = dedupedData.filter(
+    (item) => sourceGroup(item) === "chinese" && !isClosedLibraryRecord(item),
+  ).length;
+  const chineseClosedSize = chineseLibrarySize - chineseActiveSize;
   els.allSourceCount.textContent = base.length;
-  els.chineseCount.textContent = chineseLibrarySize;
+  els.chineseCount.textContent = chineseActiveSize;
+  els.chineseActiveCount.textContent = chineseActiveSize;
+  els.chineseClosedCount.textContent = chineseClosedSize;
   els.linkedinCount.textContent = base.filter((item) => sourceGroup(item) === "linkedin").length;
   els.otherCount.textContent = base.filter((item) => sourceGroup(item) === "other").length;
   const chineseRawCount = allData.filter((item) => sourceGroup(item) === "chinese").length;
   els.sourceTabsNote.textContent =
     state.sourceLibrary === "chinese"
-      ? `已进入华人中文全库：当前展示去重后的全部中文来源记录，共 ${chineseLibrarySize} 条；原始来源线索共 ${chineseRawCount} 条，包含当前、待核验、历史和风险记录。`
-      : `来源分布按当前筛选统计；点击“华人中文全库（去重）”可清除其他条件，集中查看全部中文来源记录。原始中文来源线索共 ${chineseRawCount} 条。`;
+      ? state.sourceLibraryView === "closed"
+        ? `当前查看关闭 / 历史 / 排除分栏，共 ${chineseClosedSize} 条；这些记录保留作证据和复盘，不应占用当前申请时间。中文来源原始线索共 ${chineseRawCount} 条。`
+        : `当前查看华人中文可用池，共 ${chineseActiveSize} 条；默认排除关闭、过期和风险排除记录。中文来源原始线索共 ${chineseRawCount} 条。`
+      : `来源分布按当前筛选统计；点击“华人中文全库（去重）”可进入中文来源分栏。原始中文来源线索共 ${chineseRawCount} 条。`;
 }
 
 function renderResultCard(item) {
@@ -3852,6 +3872,14 @@ function syncSourceUi() {
   );
 }
 
+function syncChineseLibraryUi() {
+  const visible = state.sourceLibrary === "chinese";
+  els.chineseLibraryViews.hidden = !visible;
+  els.chineseLibraryViewButtons.forEach((button) =>
+    button.classList.toggle("is-active", button.dataset.libraryView === state.sourceLibraryView),
+  );
+}
+
 function syncProgressFilterUi() {
   els.progressFilterButtons.forEach((button) =>
     button.classList.toggle("is-active", button.dataset.progressFilter === state.progressFilter),
@@ -3863,6 +3891,7 @@ function applyPreset(preset) {
   state.scope = ["profile", "actionable", "chinese", "core", "none"].includes(preset) ? "all" : "ab";
   state.source = "all";
   state.sourceLibrary = false;
+  state.sourceLibraryView = "active";
   state.progressFilter = "all";
   els.searchInput.value = "";
   els.directionFilter.value = "all";
@@ -3880,6 +3909,7 @@ function applyPreset(preset) {
   syncPresetUi();
   syncScopeUi();
   syncSourceUi();
+  syncChineseLibraryUi();
   syncProgressFilterUi();
   resetLimitAndRender();
 }
@@ -3887,13 +3917,16 @@ function applyPreset(preset) {
 function clearPresetForManualFilters() {
   state.preset = "none";
   state.sourceLibrary = false;
+  state.sourceLibraryView = "active";
   syncPresetUi();
+  syncChineseLibraryUi();
 }
 
-function activateChineseLibrary() {
+function activateChineseLibrary(view = "active") {
   state.scope = "all";
   state.source = "chinese";
   state.sourceLibrary = "chinese";
+  state.sourceLibraryView = view;
   state.preset = "none";
   state.progressFilter = "all";
   els.searchInput.value = "";
@@ -3912,6 +3945,7 @@ function activateChineseLibrary() {
   syncPresetUi();
   syncScopeUi();
   syncSourceUi();
+  syncChineseLibraryUi();
   syncProgressFilterUi();
   resetLimitAndRender();
 }
@@ -3926,8 +3960,10 @@ els.scopeButtons.forEach((button) => {
     state.scope = button.dataset.scope;
     state.source = "all";
     state.sourceLibrary = false;
+    state.sourceLibraryView = "active";
     syncScopeUi();
     syncSourceUi();
+    syncChineseLibraryUi();
     resetLimitAndRender();
   });
 });
@@ -3941,11 +3977,13 @@ els.sourceTabs.forEach((button) => {
     clearPresetForManualFilters();
     state.source = button.dataset.source;
     state.sourceLibrary = false;
+    state.sourceLibraryView = "active";
     if (state.scope === "recentChinese" && !["all", "chinese"].includes(state.source)) {
       state.scope = "all";
       syncScopeUi();
     }
     syncSourceUi();
+    syncChineseLibraryUi();
     resetLimitAndRender();
   });
 });
@@ -3955,10 +3993,12 @@ els.statusSummaryButtons.forEach((button) => {
     clearPresetForManualFilters();
     state.scope = "all";
     state.source = "all";
+    state.sourceLibraryView = "active";
     state.progressFilter = "all";
     els.statusFilter.value = button.dataset.status;
     syncScopeUi();
     syncSourceUi();
+    syncChineseLibraryUi();
     syncProgressFilterUi();
     resetLimitAndRender();
     document.querySelector("#database")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -3972,8 +4012,10 @@ els.progressFilterButtons.forEach((button) => {
       clearPresetForManualFilters();
       state.scope = "all";
       state.source = "all";
+      state.sourceLibraryView = "active";
       syncScopeUi();
       syncSourceUi();
+      syncChineseLibraryUi();
     }
     syncProgressFilterUi();
     resetLimitAndRender();
@@ -4005,6 +4047,10 @@ els.resetFilters.addEventListener("click", () => {
 });
 
 els.loadMore.addEventListener("click", loadMoreResults);
+
+els.chineseLibraryViewButtons.forEach((button) => {
+  button.addEventListener("click", () => activateChineseLibrary(button.dataset.libraryView));
+});
 
 if ("IntersectionObserver" in window) {
   autoLoadObserver = new IntersectionObserver(
@@ -4046,6 +4092,7 @@ function initStats() {
   els.updatedAt.textContent = meta.generatedAt ? meta.generatedAt.slice(0, 10) : "—";
 }
 
+syncChineseLibraryUi();
 initStats();
 renderPriority();
 renderResults();

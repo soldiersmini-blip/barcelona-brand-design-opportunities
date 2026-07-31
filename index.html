@@ -368,6 +368,16 @@
         </div>
         <p id="sourceTabsNote" class="source-tabs__note"></p>
 
+        <div id="chineseLibraryViews" class="source-library-filter" hidden aria-label="中文来源状态分栏">
+          <span class="source-library-filter__label">中文来源分栏</span>
+          <button class="source-library-view is-active" type="button" data-library-view="active">
+            可用 / 待核验 <span id="chineseActiveCount">0</span>
+          </button>
+          <button class="source-library-view" type="button" data-library-view="closed">
+            关闭 / 历史 / 排除 <span id="chineseClosedCount">0</span>
+          </button>
+        </div>
+
         <div id="resultsList" class="results-list" aria-live="polite"></div>
 
         <div class="load-more-wrap">
