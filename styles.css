@@ -1744,7 +1744,9 @@ a.contact-token:hover {
 
 .result-card {
   display: flex;
+  flex-direction: column;
   min-width: 0;
+  max-width: 100%;
   height: auto;
   border-radius: 18px;
   box-shadow: 0 8px 24px rgba(23, 33, 29, 0.045);
@@ -1759,12 +1761,19 @@ a.contact-token:hover {
 
 .result-card__main {
   display: flex;
-  flex: none;
+  flex: 1 1 auto;
   min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
   align-items: stretch;
   flex-direction: column;
   gap: 14px;
   padding: 17px;
+}
+
+.result-card > .card-details {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .result-card__identity {
@@ -1833,6 +1842,8 @@ a.contact-token:hover {
 
 .result-card__aside {
   display: grid;
+  min-width: 0;
+  width: 100%;
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: 10px;
@@ -1842,11 +1853,21 @@ a.contact-token:hover {
 
 .result-card__progress {
   min-width: 0;
+  width: 100%;
+}
+
+.result-card__progress .progress-control,
+.result-card__progress .progress-control select {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .result-card__links {
   grid-column: 1 / -1;
   display: grid;
+  min-width: 0;
+  width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
   gap: 6px;
   margin-top: 0;
