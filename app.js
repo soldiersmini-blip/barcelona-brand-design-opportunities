@@ -3314,10 +3314,39 @@ function linkLabel(href, index) {
   return index === 0 ? "打开投递渠道" : "补充资料";
 }
 
+function sourceEvidenceLinks(item) {
+  const raw = Array.isArray(item.links) ? item.links : item.links ? [item.links] : [];
+  const contactUrls = String(item.contact || "").match(/https?:\/\/[^\s<>"'，。；;）】)]+/gi) || [];
+  return [...new Set([...raw, ...contactUrls])]
+    .map((href) => String(href).replace(/[),.;!?，。；）】]+$/g, ""))
+    .filter((href) => /^https?:\/\//i.test(href));
+}
+
+function sourceEvidenceLabel(href) {
+  if (/bbs\.eus/i.test(href)) return "打开 BBS 来源页";
+  if (/infohuaxin|eulam/i.test(href)) return "打开华信来源页";
+  if (/xihua/i.test(href)) return "打开西华原帖";
+  if (/huarenjie/i.test(href)) return "打开华人街原帖";
+  return "查看原始来源";
+}
+
 function renderLinks(item, node, compact = false) {
   node.innerHTML = "";
   const links = toLinks(item).slice(0, compact ? 2 : 3);
   if (!links.length) {
+    const evidenceLinks = sourceEvidenceLinks(item).slice(0, compact ? 1 : 2);
+    evidenceLinks.forEach((href) => {
+      const link = document.createElement("a");
+      link.className = "action-link action-link--evidence";
+      link.href = href;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      link.title = "来源证据页，不代表当前开放或可直接投递";
+      link.textContent = sourceEvidenceLabel(href);
+      node.appendChild(link);
+    });
+    if (evidenceLinks.length) return;
+
     const span = document.createElement("span");
     span.className = "no-link";
     span.textContent =

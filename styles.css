@@ -319,6 +319,12 @@ p {
   color: white;
 }
 
+.action-link--evidence {
+  border-style: dashed;
+  background: var(--surface-soft);
+  color: var(--ink-soft);
+}
+
 .button--primary:hover,
 .action-link--primary:hover {
   background: #29332e;
