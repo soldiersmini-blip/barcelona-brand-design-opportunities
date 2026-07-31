@@ -2259,6 +2259,9 @@ const state = {
 };
 
 const PROGRESS_STORAGE_KEY = "barcelona-opportunity-progress-v1";
+
+let autoLoadObserver = null;
+let autoLoading = false;
 const PROGRESS_LABELS = {
   untracked: "未标记",
   shortlist: "待投",
@@ -3786,6 +3789,16 @@ function renderResults() {
   }
 }
 
+function loadMoreResults() {
+  if (autoLoading || els.loadMore.hidden) return;
+  autoLoading = true;
+  state.limit += 18;
+  renderResults();
+  window.requestAnimationFrame(() => {
+    autoLoading = false;
+  });
+}
+
 function resetLimitAndRender() {
   state.limit = 18;
   renderResults();
@@ -3962,10 +3975,17 @@ els.resetFilters.addEventListener("click", () => {
   applyPreset("profile");
 });
 
-els.loadMore.addEventListener("click", () => {
-  state.limit += 18;
-  renderResults();
-});
+els.loadMore.addEventListener("click", loadMoreResults);
+
+if ("IntersectionObserver" in window) {
+  autoLoadObserver = new IntersectionObserver(
+    (entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) loadMoreResults();
+    },
+    { rootMargin: "0px 0px 160px 0px" },
+  );
+  autoLoadObserver.observe(els.loadMore);
+}
 
 function initStats() {
   els.totalCount.textContent = allData.length;
