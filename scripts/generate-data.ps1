@@ -279,6 +279,10 @@ function Get-Tier {
   # PepsiCo brand-design requisition are B; Spanish/editorial backups stay C.
   if (HasText $t '4441496960|pepsicojobs\.com/jobs/434628|66669622-designer-food-ventures') { return 'B' }
   if (HasText $t '4442614068|1215063575') { return 'C' }
+  # Raval Eyewear is a Barcelona employer-origin brand-design lead whose
+  # LinkedIn detail was rate-limited during verification; keep it visible as
+  # a C-level verify-first local lead rather than a confirmed A/B opening.
+  if (HasText $t '4431660503|ravaleyewear\.com') { return 'C' }
   # Superseded All Yours listing: keep the current 111968 detail only.
   if (HasText $t '111992|4422334674') { return 'X' }
   # Mass-reposted "order processing" copy has no verifiable employer and uses
@@ -336,6 +340,7 @@ $lines = Get-Content -LiteralPath $tracker -Encoding UTF8
 
 $section = ''
 $headers = @()
+$skipSection = $false
 $records = New-Object System.Collections.Generic.List[object]
 $i = 0
 
@@ -344,6 +349,23 @@ while ($i -lt $lines.Count) {
   if ($line -match '^##\s+(.+)$') {
     $section = $Matches[1].Trim()
     $headers = @()
+    $skipSection = $false
+    $i++
+    continue
+  }
+
+  if ($line -match '<!--\s*audit-only\b') {
+    $skipSection = $true
+    $i++
+    continue
+  }
+
+  if ($skipSection) {
+    $i++
+    continue
+  }
+
+  if ($line -match '<!--\s*record-skip\b') {
     $i++
     continue
   }
