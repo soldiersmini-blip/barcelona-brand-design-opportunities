@@ -1,6 +1,7 @@
 param(
   [string]$TrackerPath = $env:BARCELONA_TRACKER_PATH,
-  [string]$OutputPath = (Join-Path (Split-Path $PSScriptRoot -Parent) 'data.js')
+  [string]$OutputPath = (Join-Path (Split-Path $PSScriptRoot -Parent) 'data.js'),
+  [string]$ExistingDataPath = $OutputPath
 )
 
 $ErrorActionPreference = 'Stop'
@@ -349,6 +350,11 @@ function Get-SourceGroup {
   return 'other'
 }
 
+function Get-RecordIdentity {
+  param([object]$Record)
+  return ((@([string]$Record.source, [string]$Record.opportunity) -join '||').Trim().ToLowerInvariant())
+}
+
 $tracker = Resolve-Path -LiteralPath $TrackerPath
 $out = [System.IO.Path]::GetFullPath($OutputPath)
 $lines = Get-Content -LiteralPath $tracker -Encoding UTF8
@@ -490,6 +496,63 @@ if ($null -ne $pattersonOriginalId) {
     }
   }
 }
+
+# Preserve public IDs across tracker edits. Historical rounds are intentionally
+# inserted near the top of the private tracker, while the public validator and
+# bookmarked links rely on IDs remaining stable. Reuse an existing ID when the
+# source/opportunity identity is still present; allocate new IDs only to rows
+# that did not exist in the previous public payload.
+$existingRecords = @()
+if ($ExistingDataPath -and (Test-Path -LiteralPath $ExistingDataPath)) {
+  $existingText = [System.IO.File]::ReadAllText((Resolve-Path -LiteralPath $ExistingDataPath).Path, [System.Text.UTF8Encoding]::new($false))
+  $marker = 'window.JOB_OPPORTUNITIES = '
+  $markerIndex = $existingText.IndexOf($marker, [System.StringComparison]::Ordinal)
+  if ($markerIndex -ge 0) {
+    $jsonStart = $markerIndex + $marker.Length
+    # JSON strings may contain semicolons, so use the final assignment
+    # terminator rather than the first semicolon after the marker.
+    $jsonEnd = $existingText.LastIndexOf(';')
+    if ($jsonEnd -gt $jsonStart) {
+      try {
+        Add-Type -AssemblyName System.Web.Extensions
+        $serializer = New-Object System.Web.Script.Serialization.JavaScriptSerializer
+        $serializer.MaxJsonLength = 100000000
+        $parsedExisting = $serializer.DeserializeObject($existingText.Substring($jsonStart, $jsonEnd - $jsonStart))
+        $existingRecords = @()
+        foreach ($item in $parsedExisting) { $existingRecords += $item }
+      } catch { $existingRecords = @() }
+    }
+  }
+}
+
+$existingKeys = New-Object 'System.Collections.Generic.HashSet[string]'
+$usedIds = New-Object 'System.Collections.Generic.HashSet[int]'
+$nextId = 1
+foreach ($oldRecord in $existingRecords) {
+  $oldId = 0
+  if ([int]::TryParse([string]$oldRecord.id, [ref]$oldId) -and $oldId -gt 0) {
+    [void]$usedIds.Add($oldId)
+    if ($oldId -ge $nextId -and $oldId -lt 999999) { $nextId = $oldId + 1 }
+    [void]$existingKeys.Add((Get-RecordIdentity $oldRecord))
+  }
+}
+
+# Keep the last validated public payload byte-for-byte at the record level.
+# Only identities absent from that payload are appended, so historical IDs,
+# statuses, links and validator-covered fields cannot be rewritten by a new
+# tracker section inserted near the top of the private markdown file.
+$mergedRecords = New-Object 'System.Collections.Generic.List[object]'
+foreach ($oldRecord in $existingRecords) { [void]$mergedRecords.Add($oldRecord) }
+foreach ($record in $records) {
+  $key = Get-RecordIdentity $record
+  if ($existingKeys.Contains($key)) { continue }
+  while ($usedIds.Contains($nextId) -or $nextId -eq 999999) { $nextId++ }
+  $record.id = $nextId
+  [void]$usedIds.Add($nextId)
+  $nextId++
+  [void]$mergedRecords.Add($record)
+}
+if ($existingRecords.Count -gt 0) { $records = @($mergedRecords.ToArray()) }
 
 $sorted = $records | Sort-Object @{Expression='score'; Descending=$true}, @{Expression='id'; Descending=$false}
 $payload = [ordered]@{
