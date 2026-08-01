@@ -287,6 +287,11 @@ function Get-Tier {
   # with an official CV contact, but language and exact application status need
   # confirmation; keep it visible as a C-level local brand-content lead.
   if (HasText $t '4440947485|ae95a5929ce854cb|iconico\.es') { return 'C' }
+  # BYPHASSE is a Barcelona employer-origin senior graphic-design route with
+  # a readable LinkedIn brief and an official careers/contact site, but it is
+  # temporary and Spanish-led with no direct ATS requisition; keep it visible
+  # as a local verify-first challenge, not as a Chinese-language core role.
+  if (HasText $t '4379926338|byphasse\.com') { return 'C' }
   # Superseded All Yours listing: keep the current 111968 detail only.
   if (HasText $t '111992|4422334674') { return 'X' }
   # Mass-reposted "order processing" copy has no verifiable employer and uses
