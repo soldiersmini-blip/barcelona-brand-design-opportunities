@@ -292,6 +292,11 @@ function Get-Tier {
   # temporary and Spanish-led with no direct ATS requisition; keep it visible
   # as a local verify-first challenge, not as a Chinese-language core role.
   if (HasText $t '4379926338|byphasse\.com') { return 'C' }
+  # Cal Fruitós is a current Barcelona-local brand/packaging route with a
+  # readable LinkedIn brief and an official employer careers link, but the
+  # role is fully on-site, Catalan/Spanish-led and its ATS detail was not
+  # independently readable; keep it visible as a C-level verify-first lead.
+  if (HasText $t '4404037331|calfruitos\.com|treballaambnosaltres\.calfruitos\.com') { return 'C' }
   # Superseded All Yours listing: keep the current 111968 detail only.
   if (HasText $t '111992|4422334674') { return 'X' }
   # Mass-reposted "order processing" copy has no verifiable employer and uses
