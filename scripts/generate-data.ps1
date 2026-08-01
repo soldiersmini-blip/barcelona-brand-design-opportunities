@@ -316,6 +316,7 @@ function Get-Tier {
 
 function Get-LocationTag {
   param([string]$Combined)
+  if ($Combined -match '(?i)b1bcd63b-91fd-4a6d-b71b-ac6285087d10') { return 'Remote / Europe' }
   if ($Combined -match '(?i)oulang\.ai/listing/2417332') { return 'Remote / Europe' }
   if ($Combined -match '(?i)5b5689c2-5dae-4891-935a-052108c47362|4444389687') { return 'Remote / Europe' }
   if ($Combined -match '(?i)2984918|4440523503|4443321807|4434837522') { return 'Remote / Europe' }
