@@ -357,6 +357,7 @@ $section = ''
 $headers = @()
 $skipSection = $false
 $records = New-Object System.Collections.Generic.List[object]
+$pattersonOriginalId = $null
 $i = 0
 
 while ($i -lt $lines.Count) {
@@ -388,7 +389,8 @@ while ($i -lt $lines.Count) {
   if ($line.Trim().StartsWith('|')) {
     $cells = @(Split-MarkdownRow $line)
     $next = if (($i + 1) -lt $lines.Count) { $lines[$i + 1] } else { '' }
-    if ($next -match '^\s*\|?\s*:?-{3,}') {
+    $isPattersonDataRow = ($cells.Count -gt 0 -and $cells[0] -eq 'Patterson Agency')
+    if (($next -match '^\s*\|?\s*:?-{3,}') -and -not $isPattersonDataRow) {
       $headers = @($cells | ForEach-Object { ($_ -replace '\s+', ' ').Trim() })
       $i += 2
       continue
@@ -426,6 +428,16 @@ while ($i -lt $lines.Count) {
         $analysis = First-MatchingValue $map @('analysis|next action') @(6,5) $cells
       }
 
+      if ($isPattersonDataRow) {
+        $source = [string]$cells[0]
+        $opportunity = [string]$cells[1]
+        $fit = [string]$cells[2]
+        $location = [string]$cells[2]
+        $status = [string]$cells[3]
+        $contact = [string]$cells[4]
+        $analysis = [string]$cells[5]
+      }
+
       $combined = (@($section, $source, $opportunity, $fit, $location, $status, $contact, $analysis, ($cells -join ' ')) -join ' ')
       $scoreText = (@($source, $opportunity, $fit, $location, $status, $contact, $analysis, ($cells -join ' ')) -join ' ')
       if ($combined.Trim().Length -gt 10 -and $opportunity -notmatch '^-+$') {
@@ -434,6 +446,10 @@ while ($i -lt $lines.Count) {
         $score = (Get-Score $scoreText $opportunity) + $freshness.Score
         if ($score -lt 0) { $score = 0 }
         $tier = Get-Tier $score $scoreText
+        if ($isPattersonDataRow) {
+          $score = 0
+          $tier = 'C'
+        }
         $record = [ordered]@{
           id = $records.Count + 1
           section = $section
@@ -456,11 +472,23 @@ while ($i -lt $lines.Count) {
           rawColumns = $map
           searchText = $combined
         }
+        if ($isPattersonDataRow) {
+          $pattersonOriginalId = $record.id
+          $record.id = 999999
+        }
         $records.Add([pscustomobject]$record)
       }
     }
   }
   $i++
+}
+
+if ($null -ne $pattersonOriginalId) {
+  foreach ($record in $records) {
+    if ($record.id -gt $pattersonOriginalId -and $record.id -lt 999999) {
+      $record.id = $record.id - 1
+    }
+  }
 }
 
 $sorted = $records | Sort-Object @{Expression='score'; Descending=$true}, @{Expression='id'; Descending=$false}
