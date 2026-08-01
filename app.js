@@ -3142,7 +3142,18 @@ function isStale(item) {
   return applicationStatus(item).key !== "live";
 }
 
+// Appspace's cached Greenhouse snippets kept showing the old role after the
+// official detail began redirecting to the current board. Keep this exact
+// requisition in history until a fresh employer-board check restores it.
+function isKnownClosedRoute(item) {
+  const text = `${item.source || ""} ${item.opportunity || ""} ${item.contact || ""} ${item.searchText || ""}`;
+  return /appspace/i.test(text) && /5813989004/.test(text);
+}
+
 function applicationStatus(item) {
+  if (isKnownClosedRoute(item)) {
+    return { key: "closed", label: "已关闭 / 历史" };
+  }
   const curated = CURATED[item.id];
   if (curated?.statusKey) {
     return {
