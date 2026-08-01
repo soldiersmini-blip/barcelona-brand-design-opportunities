@@ -283,6 +283,10 @@ function Get-Tier {
   # LinkedIn detail was rate-limited during verification; keep it visible as
   # a C-level verify-first local lead rather than a confirmed A/B opening.
   if (HasText $t '4431660503|ravaleyewear\.com') { return 'C' }
+  # ICÓNICO / ÚNICO is a Barcelona employer-origin graphic/multimedia role
+  # with an official CV contact, but language and exact application status need
+  # confirmation; keep it visible as a C-level local brand-content lead.
+  if (HasText $t '4440947485|ae95a5929ce854cb|iconico\.es') { return 'C' }
   # Superseded All Yours listing: keep the current 111968 detail only.
   if (HasText $t '111992|4422334674') { return 'X' }
   # Mass-reposted "order processing" copy has no verifiable employer and uses
