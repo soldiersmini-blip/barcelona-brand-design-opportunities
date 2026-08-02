@@ -670,6 +670,25 @@ if ($existingRecords.Count -gt 0) {
         }
       }
 
+      # The BYD Europe Chinese-speaker graphic-design route is now explicitly
+      # inactive on the employer's own Teamtailor detail. Keep the historical
+      # record for benchmarking, but remove it from the usable/open pool.
+      if ([string]$existingRecord.source -eq 'BYD Europe' -and [string]$existingRecord.opportunity -eq 'Graphic Designer-Chinese speaker') {
+        $existingRecord.location = 'Hoofddorp, Netherlands; full-time; closed historical'
+        $existingRecord.status = 'Official BYD Teamtailor detail now explicitly says "This position is no longer active"; the historical role required fluent Chinese and English and 5+ years; not Barcelona or Spain'
+        $existingRecord.contact = 'Official closed detail: https://careers.bydeurope.com/jobs/5897741-graphic-designer-chinese-speaker'
+        $existingRecord.analysis = 'Move to closed/history. Keep as a high-value Chinese-brand visual-system benchmark, but do not apply through the expired route or present it as Spain/Barcelona.'
+        $existingRecord.tier = 'X'
+        $existingRecord.score = 42
+        $existingRecord.links = @('https://careers.bydeurope.com/jobs/5897741-graphic-designer-chinese-speaker')
+        if ($existingRecord.rawColumns) {
+          $existingRecord.rawColumns['Fit / location'] = $existingRecord.location
+          $existingRecord.rawColumns['Status / language / compensation'] = $existingRecord.status
+          $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
+          $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
+        }
+      }
+
       # Refresh the existing Adsmurai record from the employer's live careers
       # page, which is stronger evidence than the LinkedIn cache-miss page.
       if ([string]$existingRecord.source -match 'Adsmurai' -and [string]$existingRecord.opportunity -eq 'Digital Graphic Designer (They/He/She)') {
