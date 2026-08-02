@@ -879,6 +879,22 @@ foreach ($mergedRecord in $records) {
       $mergedRecord.rawColumns['Contact / application'] = $mergedRecord.contact
     }
   }
+  if ($mergedRecord.source -like '*Axo Longevity / Wellfound*') {
+    $mergedRecord.section = '2026-08-02 Round 308: Axo Longevity Barcelona / Europe remote visual-product route'
+    $mergedRecord.fit = 'C-level Barcelona / Europe remote visual fallback; product UI, web/landing, brand/visual system, social creative and Figma-library scope; non-Chinese role below the Chinese/VI priority queue'
+    $mergedRecord.tier = 'C'
+    $mergedRecord.location = 'Barcelona; Remote Everywhere; official detail says Remote (Europe preferred); onsite or remote; full-time; Central European Time preferred; Spain contract, tax and social-security details unconfirmed'
+    $mergedRecord.locationTag = 'Barcelona area'
+    $mergedRecord.status = 'Original Wellfound detail currently shows Actively Hiring, Apply Now, reposted 1 week ago, recruiter recently active and Visa Sponsorship Available; fluent English required; Spanish/Dutch/German are pluses; 3–5+ years; salary and Spain employment entity not published'
+    $mergedRecord.contact = 'Wellfound original detail: https://wellfound.com/jobs/3628458-visual-product-designer; application is the page Apply Now flow; hiring contact Sergio Antonio Tang Sanchez'
+    $mergedRecord.links = @('https://wellfound.com/jobs/3628458-visual-product-designer')
+    if ($mergedRecord.rawColumns) {
+      $mergedRecord.rawColumns['Fit / priority'] = $mergedRecord.fit
+      $mergedRecord.rawColumns['Location'] = $mergedRecord.location
+      $mergedRecord.rawColumns['Status / language / compensation'] = $mergedRecord.status
+      $mergedRecord.rawColumns['Contact / application'] = $mergedRecord.contact
+    }
+  }
   if ([string]$mergedRecord.section -match 'Round 190' -and [string]$mergedRecord.opportunity -match 'Rotulista') {
     $mergedRecord.tier = 'C'
   }
