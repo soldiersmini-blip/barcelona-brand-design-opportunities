@@ -845,6 +845,13 @@ foreach ($oldRecord in $existingRecords) {
   }
 }
 
+# Round 239 is a private historical/recruiter-status section. The previous
+# payload repair removed its old copy, so also exclude the freshly parsed
+# tracker row; otherwise every regeneration resurrects it as a new card.
+$records = @($records | Where-Object {
+  [string]$_.section -notmatch '^2026-08-02 Round 239: one new Barcelona English-first digital-design route'
+})
+
 # Keep the last validated public payload byte-for-byte at the record level.
 # Only identities absent from that payload are appended, so historical IDs,
 # statuses, links and validator-covered fields cannot be rewritten by a new
