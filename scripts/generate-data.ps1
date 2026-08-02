@@ -298,6 +298,11 @@ function Get-Tier {
   # role is fully on-site, Catalan/Spanish-led and its ATS detail was not
   # independently readable; keep it visible as a C-level verify-first lead.
   if (HasText $t '4404037331|calfruitos\.com|treballaambnosaltres\.calfruitos\.com') { return 'C' }
+  # Round 206 Barcelona employer-origin routes. Checkin is Santa Susanna and
+  # fully onsite; Next'media has Barcelona creative-production openings. Keep
+  # all three visible as secondary C-level routes because Chinese-language,
+  # Spanish/English workflow and full employment terms are not confirmed.
+  if (HasText $t '4431503397|4434467906|4419847005') { return 'C' }
   # El Prat signage/print production is a useful Barcelona-metro backup, but
   # it is not a Chinese-language or brand/VI role; keep the explicit C-level
   # tracker classification despite the generic local-designer score.
