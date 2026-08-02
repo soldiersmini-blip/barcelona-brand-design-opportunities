@@ -670,6 +670,27 @@ if ($existingRecords.Count -gt 0) {
         }
       }
 
+      # The Huarenjie Insbrand listing is a useful Barcelona brand-design lead,
+      # but the original page is now a cache miss, its update field is blank,
+      # and the search result is roughly two months old. Keep both preserved
+      # duplicates as watch-only so an old Chinese-community ad cannot appear
+      # as a current open role until the employer reconfirms it.
+      if (([string]$existingRecord.source -match '(?i)Insbrand' -or [string]$existingRecord.opportunity -match '(?i)Insbrand') -and [string]$existingRecord.opportunity -match '(?i)designer') {
+        $existingRecord.location = 'Barcelona; part-time; current status unverified; watch-only'
+        $existingRecord.status = 'Huarenjie original listing `info-15713712.html` returned cache miss in the latest check; its update field is blank and the search result is about two months old. The ad requests a portfolio/CV for a Barcelona Insbrand part-time designer, but current opening, employer terms, hours, pay, language and exact application route are not confirmed. Insbrand official site confirms a Barcelona presence/contact only, not that this role remains open.'
+        $existingRecord.contact = 'Watch-only listing: https://www.huarenjiewang.com/info-15713712.html ; official company/contact: https://www.insbrand.es/ ; jacksun@insbrand.es ; +34 678 667 226'
+        $existingRecord.analysis = 'Move out of the current actionable pool and keep as a Chinese-community watch lead. If manually checking, send a short Chinese/English inquiry asking whether the role is still open, exact Barcelona address, contract or freelance terms, hourly/monthly pay, working language and portfolio format; do not send identity documents before confirmation.'
+        $existingRecord.tier = 'X'
+        $existingRecord.score = 36
+        $existingRecord.links = @('https://www.huarenjiewang.com/info-15713712.html', 'https://www.insbrand.es/')
+        if ($existingRecord.rawColumns) {
+          $existingRecord.rawColumns['Fit / location'] = $existingRecord.location
+          $existingRecord.rawColumns['Status / language / compensation'] = $existingRecord.status
+          $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
+          $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
+        }
+      }
+
       # The BYD Europe Chinese-speaker graphic-design route is now explicitly
       # inactive on the employer's own Teamtailor detail. Keep the historical
       # record for benchmarking, but remove it from the usable/open pool.
