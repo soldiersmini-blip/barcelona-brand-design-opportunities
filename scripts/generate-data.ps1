@@ -544,12 +544,27 @@ if ($ExistingDataPath -and (Test-Path -LiteralPath $ExistingDataPath)) {
 
 # Never carry audit/status-only rounds back into the public payload when a
 # previous run accidentally published them. These rounds are private source
-# evidence; Round 233 is rebuilt from the tracker below so its classification
-# and link parsing are refreshed as well.
+# evidence. Round 233 and Round 234 are intentionally public current-card
+# sections, so keep their existing records available for ID stability.
 if ($existingRecords.Count -gt 0) {
   $existingRecords = @($existingRecords | Where-Object {
-    [string]$_.section -notmatch '^2026-08-02 Round (226|227|228|229|230|231|232|233|234|235|236|237|238)'
+    [string]$_.section -notmatch '^2026-08-02 Round (226|227|228|229|230|231|232|235|236|237|238)'
   })
+
+  # Repair the one intermediate Round 239 regeneration that allocated the
+  # new row before the two latest public-card IDs. Remove that round's
+  # generated copy so the tracker row below is appended after the preserved
+  # IDs, and restore the known public IDs for the Round 233/234 cards.
+  $existingRecords = @($existingRecords | Where-Object {
+    [string]$_.section -notmatch '^2026-08-02 Round 239: one new Barcelona English-first digital-design route'
+  })
+  foreach ($existingRecord in $existingRecords) {
+    if ([string]$existingRecord.source -eq 'Coty / official careers' -and [string]$existingRecord.opportunity -match '^E-commerce Product Content Intern') {
+      $existingRecord.id = 1266
+    } elseif ([string]$existingRecord.source -like 'InfoHuaxin*' -and [string]$existingRecord.contact -match 'Q371086689') {
+      $existingRecord.id = 1267
+    }
+  }
 }
 
 $existingKeys = New-Object 'System.Collections.Generic.HashSet[string]'
