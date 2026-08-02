@@ -307,6 +307,10 @@ function Get-Tier {
   # but Catalan C1 and English B2 are hard gates; keep it secondary rather than
   # allowing the generic Barcelona/graphic score to enter the homepage core.
   if (HasText $t '4401651451') { return 'C' }
+  # BRUTALIA is a Barcelona-local brand/content design route with a direct
+  # JobToday application signal, but the contract and language still need
+  # confirmation. Keep it in the secondary C-level queue.
+  if (HasText $t 'eg26mz|brutalia') { return 'C' }
   # Coty's Barcelona ecommerce-content internship is a genuine employer-origin
   # route, but it requires an internship agreement and fluent Spanish/English;
   # keep it visible as a secondary C-level digital-brand opportunity.
@@ -563,6 +567,18 @@ if ($existingRecords.Count -gt 0) {
       $existingRecord.id = 1266
     } elseif ([string]$existingRecord.source -like 'InfoHuaxin*' -and [string]$existingRecord.contact -match 'Q371086689') {
       $existingRecord.id = 1267
+    }
+
+    # Keep the newly added BRUTALIA route in the explicit secondary C queue
+    # and repair link extraction if an earlier generation captured Markdown
+    # punctuation together with the first URL.
+    if ([string]$existingRecord.source -match '(?i)BRUTALIA' -and [string]$existingRecord.opportunity -match '(?i)Diseñador/a Gráfico/a') {
+      $existingRecord.tier = 'C'
+      $existingRecord.contact = 'JOB TODAY detail/application: https://jobtoday.com/es/trabajo/disenador-a-grafico-a-EG26MZ?locale=es ; Barcelona business identity reference: https://www.paginasamarillas.es/f/barcelona/brutalia-gourmet-pasta-lab_236929022_000000001.html'
+      $existingRecord.links = @('https://jobtoday.com/es/trabajo/disenador-a-grafico-a-EG26MZ?locale=es', 'https://www.paginasamarillas.es/f/barcelona/brutalia-gourmet-pasta-lab_236929022_000000001.html')
+      if ($existingRecord.rawColumns) {
+        $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
+      }
     }
 
     # Correct the preserved public copy after the official Velvet Caviar
@@ -834,6 +850,17 @@ if ($existingRecords.Count -gt 0) { $records = @($mergedRecords.ToArray()) }
 # The current round's explicit tracker classification must also apply when a
 # record was already appended in an earlier publish of the same round.
 foreach ($mergedRecord in $records) {
+  if ([string]$mergedRecord.source -match '(?i)BRUTALIA') {
+    $mergedRecord.section = '2026-08-02 Round 291: BRUTALIA Barcelona brand-visual secondary route'
+    $mergedRecord.fit = 'C级；Barcelona 本地品牌视觉、campaign、内容与品牌一致性延展；国际团队岗位'
+    $mergedRecord.tier = 'C'
+    $mergedRecord.contact = 'JOB TODAY detail/application: https://jobtoday.com/es/trabajo/disenador-a-grafico-a-EG26MZ?locale=es ; Barcelona business identity reference: https://www.paginasamarillas.es/f/barcelona/brutalia-gourmet-pasta-lab_236929022_000000001.html'
+    $mergedRecord.links = @('https://jobtoday.com/es/trabajo/disenador-a-grafico-a-EG26MZ?locale=es', 'https://www.paginasamarillas.es/f/barcelona/brutalia-gourmet-pasta-lab_236929022_000000001.html')
+    if ($mergedRecord.rawColumns) {
+      $mergedRecord.rawColumns['Priority fit'] = $mergedRecord.fit
+      $mergedRecord.rawColumns['Original detail / application'] = $mergedRecord.contact
+    }
+  }
   if ([string]$mergedRecord.section -match 'Round 190' -and [string]$mergedRecord.opportunity -match 'Rotulista') {
     $mergedRecord.tier = 'C'
   }
