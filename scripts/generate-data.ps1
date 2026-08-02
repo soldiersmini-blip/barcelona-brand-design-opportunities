@@ -150,6 +150,9 @@ function Get-Tier {
   $t = $Combined.ToLowerInvariant()
   # OneKey is global-remote only until Spain contracting is confirmed.
   if (HasText $t 'onekeyhq\.atlassian\.net/wiki|gr4yl99ujhl\.typeform\.com') { return 'C' }
+  # Xinming's visual-system direction is global remote and Spain eligibility is
+  # unconfirmed; keep it visible as a C-level verification route.
+  if (HasText $t 'xinming\.sg/about-careers|xinmingshe@gmail\.com') { return 'C' }
   # The official board lists this Barcelona role, but its direct requisition
   # returned a cache miss; keep it verify-first until the full brief is readable.
   if (HasText $t '5233984008') { return 'C' }
@@ -345,6 +348,7 @@ function Get-LocationTag {
   if ($Combined -match '(?i)i91352\.html') { return 'Other / unclear' }
   if ($Combined -match '(?i)i69362\.html') { return 'Madrid area' }
   if ($Combined -match '(?i)onekeyhq\.atlassian\.net/wiki|gr4yl99ujhl\.typeform\.com') { return 'Global remote / Spain unconfirmed' }
+  if ($Combined -match '(?i)xinming\.sg/about-careers|xinmingshe@gmail\.com') { return 'Global remote / Spain unconfirmed' }
   if ($Combined -match '(?i)barcelona|barcelon|badalona|cornell|hospitalet|sant cugat|glories|glòries') { return 'Barcelona area' }
   if ($Combined -match '(?i)remote|remoto|europe') { return 'Remote / Europe' }
   if ($Combined -match '(?i)madrid|getafe|pinto|parla|alcobendas|sese') { return 'Madrid area' }
@@ -859,6 +863,20 @@ foreach ($mergedRecord in $records) {
     if ($mergedRecord.rawColumns) {
       $mergedRecord.rawColumns['Priority fit'] = $mergedRecord.fit
       $mergedRecord.rawColumns['Original detail / application'] = $mergedRecord.contact
+    }
+  }
+  if ($mergedRecord.source -like '*Xinming Design*') {
+    $mergedRecord.section = '2026-08-02 Round 307: Xinming global-remote visual-system route'
+    $mergedRecord.fit = 'C-level verification-first; strong Chinese brand/VI, LOGO, Visual OS, website rollout and brand-extension match; not a local fixed vacancy'
+    $mergedRecord.tier = 'C'
+    $mergedRecord.location = 'Global remote; official page says any region; China/Singapore UTC+8 core window; Spain contracting, tax and social security unconfirmed'
+    $mergedRecord.locationTag = 'Global remote / Spain unconfirmed'
+    $mergedRecord.contact = 'Official Careers: https://www.xinming.sg/about-careers/ ; application: mailto:xinmingshe@gmail.com ; subject: application role / name / city-country'
+    $mergedRecord.links = @('https://www.xinming.sg/about-careers/', 'mailto:xinmingshe@gmail.com')
+    if ($mergedRecord.rawColumns) {
+      $mergedRecord.rawColumns['Fit / priority'] = $mergedRecord.fit
+      $mergedRecord.rawColumns['Location'] = $mergedRecord.location
+      $mergedRecord.rawColumns['Contact / application'] = $mergedRecord.contact
     }
   }
   if ([string]$mergedRecord.section -match 'Round 190' -and [string]$mergedRecord.opportunity -match 'Rotulista') {
