@@ -578,6 +578,45 @@ if ($existingRecords.Count -gt 0) {
         $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
       }
     }
+
+    if ([string]$existingRecord.source -eq 'Glovo' -and [string]$existingRecord.opportunity -eq 'Senior Graphic Designer') {
+      $existingRecord.location = 'Barcelona, Spain; full-time; Marketing & Growth; hybrid with two days working from home and up to three weeks remote per year'
+      $existingRecord.status = 'Official Glovo Careers page is live and shows Apply; role covers brand guardianship and end-to-end social, PR and Global Affairs visual assets; expert Illustrator/Photoshop/Lightroom/Canva; Premiere Pro/After Effects and workflow coordination are bonuses; Spanish not stated; work authorization/salary not published'
+      $existingRecord.contact = 'Official employer detail/application: https://careers.glovoapp.com/job/senior-graphic-designerthey-she-he-in-barcelona-jid-744000116434377/ ; LinkedIn mirror: https://es.linkedin.com/jobs/view/senior-graphic-designer-they-she-he-at-glovo-4387384420'
+      $existingRecord.analysis = 'Strong Barcelona brand-guardian and production match. Prepare a portfolio section showing social/PR campaigns, brand consistency, fast multi-stakeholder delivery and a small motion example; confirm Spanish workflow, salary band and work authorization before submitting.'
+      if ($existingRecord.rawColumns) {
+        $existingRecord.rawColumns['Fit / location'] = $existingRecord.location
+        $existingRecord.rawColumns['Status / language / compensation'] = $existingRecord.status
+        $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
+        $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
+      }
+    }
+
+    if ([string]$existingRecord.source -eq 'Skello' -and [string]$existingRecord.opportunity -eq 'Global Brand Designer Spain') {
+      $existingRecord.location = 'Barcelona; full-time; possible partial remote; Spain/Italy market focus'
+      $existingRecord.status = 'Official ATS is live and shows Apply now; identity, campaigns, design-system evolution, motion and event creative; native Spanish and strong English are mandatory, French a bonus; 4+ years; salary/visa not published'
+      $existingRecord.contact = 'Official ATS/detail/application: https://skello.welcomekit.co/jobs/global-brand-designer-spain_barcelona'
+      $existingRecord.analysis = 'Extremely strong Barcelona VI/brand-system match, but Spanish-native language gate is hard. Apply only if the language requirement is met; otherwise use it as a local-market benchmark and monitor for English-first variants.'
+      if ($existingRecord.rawColumns) {
+        $existingRecord.rawColumns['Fit / location'] = $existingRecord.location
+        $existingRecord.rawColumns['Status / language / compensation'] = $existingRecord.status
+        $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
+        $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
+      }
+    }
+
+    if ([string]$existingRecord.source -eq 'Huqiao Games' -and [string]$existingRecord.opportunity -eq 'Visual Designer (Bilingual Mandarin & English)') {
+      $existingRecord.location = 'Spain listing; fully remote / EU hours; closed'
+      $existingRecord.status = 'Original Spain LinkedIn detail explicitly says Ya no se aceptan solicitudes; historical brief required fluent Mandarin and English, 3+ years, Adobe/Premiere/After Effects/Figma/Canva, Chinese-platform visual content and video; USD1,500/month + bonuses'
+      $existingRecord.contact = 'Closed original detail: https://es.linkedin.com/jobs/view/visual-designer-bilingual-mandarin-english-at-huqiao-games-4430688607 ; related Hong Kong repost is not proof of Spain eligibility'
+      $existingRecord.analysis = 'Keep in closed/monitoring section only. Do not apply through the closed Spain URL or infer a Spain contract from the related Hong Kong listing.'
+      if ($existingRecord.rawColumns) {
+        $existingRecord.rawColumns['Fit / location'] = $existingRecord.location
+        $existingRecord.rawColumns['Status / language / compensation'] = $existingRecord.status
+        $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
+        $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
+      }
+    }
   }
 }
 
