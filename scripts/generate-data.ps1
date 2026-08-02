@@ -708,6 +708,43 @@ if ($existingRecords.Count -gt 0) {
         }
       }
 
+      # Waiis published a newer employer post for the same design identity,
+      # now located in Manresa. Supersede older Barcelona-city duplicates and
+      # leave the newer 4441945681 record as the single current line.
+      if ([string]$existingRecord.source -eq 'Waiis' -and [string]$existingRecord.opportunity -match 'Graphic Designer') {
+        $existingRecord.location = 'Manresa, Barcelona province; hybrid; superseded Barcelona-city copy'
+        $existingRecord.status = 'Newer employer LinkedIn post 4441945681 lists Manresa, 4 office days/1 remote day negotiable and EUR35,000–40,000 gross/year; older Barcelona detail 4430297597 shows a hired/status conflict'
+        $existingRecord.contact = 'Use the newer current identity instead: https://es.linkedin.com/jobs/view/graphic-designer-and-copywriter-at-waiis-4441945681 ; mailto:andrea@waiis.com'
+        $existingRecord.analysis = 'Move this older Barcelona-city duplicate to history/superseded. Keep only the newer Manresa record for verification; confirm commute, language and employment versus freelance before applying.'
+        $existingRecord.tier = 'X'
+        $existingRecord.score = 42
+        $existingRecord.links = @('https://es.linkedin.com/jobs/view/graphic-designer-and-copywriter-at-waiis-4441945681', 'mailto:andrea@waiis.com')
+        if ($existingRecord.rawColumns) {
+          $existingRecord.rawColumns['Fit / location'] = $existingRecord.location
+          $existingRecord.rawColumns['Status / language / compensation'] = $existingRecord.status
+          $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
+          $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
+        }
+      }
+
+      # The Liados Art Director & Graphic Design LinkedIn detail now redirects
+      # to an expired-jobs search page; retain it only as agency benchmark.
+      if ([string]$existingRecord.source -eq 'Liados' -and [string]$existingRecord.opportunity -eq 'Art Director & Graphic Design') {
+        $existingRecord.location = 'Barcelona / Poblenou; closed historical'
+        $existingRecord.status = 'Original LinkedIn detail 4437151743 now redirects to an expired-jobs search page; historical role was indefinite, 37.5 hours/week, Poblenou, salary by experience, and direct email jobs@liadosclab.com'
+        $existingRecord.contact = 'Closed original detail: https://es.linkedin.com/jobs/view/art-director-graphic-design-at-liados-4437151743'
+        $existingRecord.analysis = 'Move to closed/history. Keep Liados as a Barcelona creative-studio benchmark, but do not apply through the expired LinkedIn route.'
+        $existingRecord.tier = 'X'
+        $existingRecord.score = 42
+        $existingRecord.links = @('https://es.linkedin.com/jobs/view/art-director-graphic-design-at-liados-4437151743')
+        if ($existingRecord.rawColumns) {
+          $existingRecord.rawColumns['Fit / location'] = $existingRecord.location
+          $existingRecord.rawColumns['Status / language / compensation'] = $existingRecord.status
+          $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
+          $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
+        }
+      }
+
       # Refresh the existing Adsmurai record from the employer's live careers
       # page, which is stronger evidence than the LinkedIn cache-miss page.
       if ([string]$existingRecord.source -match 'Adsmurai' -and [string]$existingRecord.opportunity -eq 'Digital Graphic Designer (They/He/She)') {
