@@ -559,6 +559,17 @@ if ($existingRecords.Count -gt 0) {
     [string]$_.section -notmatch '^2026-08-02 Round (226|227|228|229|230|231|232|235|236|237|238|262)'
   })
 
+  # Round 314 was first generated while its Chinese-source audit table still
+  # shared a public section with the lastminute.com row. Remove those four
+  # accidental audit copies from the previous payload while retaining the
+  # genuine lastminute.com record and the private audit in the tracker.
+  $existingRecords = @($existingRecords | Where-Object {
+    -not (
+      [string]$_.source -match '^(Xihua Cataluña current board \+ design filter|InfoHuaxin / EULAM|Huarenjie / BBS\.eus / ES02 / SpainCN|Other candidate status checks)$' -and
+      ([string]$_.section -match '^2026-08-02 Round 314' -or [int]$_.id -in @(1285, 1286, 1287, 1288))
+    )
+  })
+
   # Repair the one intermediate Round 239 regeneration that allocated the
   # new row before the two latest public-card IDs. Remove that round's
   # generated copy so the tracker row below is appended after the preserved
@@ -850,6 +861,16 @@ foreach ($record in $records) {
   [void]$mergedRecords.Add($record)
 }
 if ($existingRecords.Count -gt 0) { $records = @($mergedRecords.ToArray()) }
+
+# Final guard against the one-time Round 314 audit leakage: regardless of
+# whether an accidental copy came from the previous payload or was parsed
+# before the audit-only marker, these four source labels are private evidence,
+# never public opportunity cards.
+$records = @($records | Where-Object {
+  $privateRound314Sources = @('Xihua Cataluña current board + design filter','InfoHuaxin / EULAM','Huarenjie / BBS.eus / ES02 / SpainCN','Other candidate status checks')
+  -not ($privateRound314Sources -contains [string]$_.source -and ([string]$_.section -like '2026-08-02 Round 314*' -or [int]$_.id -in @(1285,1286,1287,1288)))
+})
+$records = @($records | Where-Object { [int]$_.id -ne 1285 })
 
 # The current round's explicit tracker classification must also apply when a
 # record was already appended in an earlier publish of the same round.
