@@ -307,6 +307,10 @@ function Get-Tier {
   # but Catalan C1 and English B2 are hard gates; keep it secondary rather than
   # allowing the generic Barcelona/graphic score to enter the homepage core.
   if (HasText $t '4401651451') { return 'C' }
+  # Coty's Barcelona ecommerce-content internship is a genuine employer-origin
+  # route, but it requires an internship agreement and fluent Spanish/English;
+  # keep it visible as a secondary C-level digital-brand opportunity.
+  if (HasText $t '98318|careers\.coty\.com/job/Barcelona-E-commerce-SEO-Intern') { return 'C' }
   # El Prat signage/print production is a useful Barcelona-metro backup, but
   # it is not a Chinese-language or brand/VI role; keep the explicit C-level
   # tracker classification despite the generic local-designer score.
@@ -544,7 +548,7 @@ if ($ExistingDataPath -and (Test-Path -LiteralPath $ExistingDataPath)) {
 # and link parsing are refreshed as well.
 if ($existingRecords.Count -gt 0) {
   $existingRecords = @($existingRecords | Where-Object {
-    [string]$_.section -notmatch '^2026-08-02 Round (226|227|228|229|230|231|232|233)'
+    [string]$_.section -notmatch '^2026-08-02 Round (226|227|228|229|230|231|232|233|234)'
   })
 }
 
