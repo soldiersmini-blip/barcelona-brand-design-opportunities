@@ -538,6 +538,16 @@ if ($ExistingDataPath -and (Test-Path -LiteralPath $ExistingDataPath)) {
   }
 }
 
+# Never carry audit/status-only rounds back into the public payload when a
+# previous run accidentally published them. These rounds are private source
+# evidence; Round 233 is rebuilt from the tracker below so its classification
+# and link parsing are refreshed as well.
+if ($existingRecords.Count -gt 0) {
+  $existingRecords = @($existingRecords | Where-Object {
+    [string]$_.section -notmatch '^2026-08-02 Round (226|227|228|229|230|231|232|233)'
+  })
+}
+
 $existingKeys = New-Object 'System.Collections.Generic.HashSet[string]'
 $usedIds = New-Object 'System.Collections.Generic.HashSet[int]'
 $nextId = 1
