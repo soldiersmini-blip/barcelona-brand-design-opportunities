@@ -745,6 +745,24 @@ if ($existingRecords.Count -gt 0) {
         }
       }
 
+      # Refresh the single Chinese-local design identity from the current
+      # Xihua board activity. The forum title now says two openings, but it is
+      # still the same tid/contact identity already represented by public ID
+      # 778; do not create a second card for the headcount change.
+      if ([string]$existingRecord.contact -match '4274158' -and [string]$existingRecord.opportunity -match 'Graphic Designer') {
+        $existingRecord.location = 'Barcelona; Chinese-language; local advertising / print design'
+        $existingRecord.status = 'Xihua Catalonia board listing for the same thread tid=636246 was active/bumped on 2026-08-02 and now reads "广告店招全职设计师2名"; InfoHuaxin detail 4274158 remains dated 2026-07-25 and valid until 2026-08-09 10:22; requirements include graphic-design experience, AI/Adobe Illustrator and legal work residence; latest board activity confirms the identity is still circulating, but employer legal name, exact address, contract and daily Spanish remain unverified'
+        $existingRecord.contact = 'Current InfoHuaxin detail: https://infohuaxin.com/showinfo.asp?id=4274158 ; ES02 detail: https://www.es02.com/jobs/Recruitment/barcelona/i175449.html ; Xihua thread/listing: https://xihua.es/forum.php?extra=page%3D1&mod=viewthread&tid=636246 ; current contact identity: WeChat A644055418 / phone 644055418'
+        $existingRecord.analysis = 'Keep as the single current Chinese Barcelona design lead; the headcount changed from one to two in the bumped forum title, not a new employer. Contact through the latest 644055418 identity first and confirm company legal name, exact address, employment contract, full insurance, hours, trial period, portfolio format and whether the two vacancies remain open before sending a concise Chinese CV plus Illustrator/print-production samples. Do not send passport or residence scans before verification.'
+        $existingRecord.links = @('https://infohuaxin.com/showinfo.asp?id=4274158', 'https://www.es02.com/jobs/Recruitment/barcelona/i175449.html', 'https://xihua.es/forum.php?extra=page%3D1&mod=viewthread&tid=636246')
+        if ($existingRecord.rawColumns) {
+          $existingRecord.rawColumns['Fit / location'] = $existingRecord.location
+          $existingRecord.rawColumns['Status / language / compensation'] = $existingRecord.status
+          $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
+          $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
+        }
+      }
+
       # Refresh the existing Adsmurai record from the employer's live careers
       # page, which is stronger evidence than the LinkedIn cache-miss page.
       if ([string]$existingRecord.source -match 'Adsmurai' -and [string]$existingRecord.opportunity -eq 'Digital Graphic Designer (They/He/She)') {
