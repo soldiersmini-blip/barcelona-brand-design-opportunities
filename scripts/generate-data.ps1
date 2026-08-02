@@ -303,6 +303,10 @@ function Get-Tier {
   # all three visible as secondary C-level routes because Chinese-language,
   # Spanish/English workflow and full employment terms are not confirmed.
   if (HasText $t '4431503397|4434467906|4419847005') { return 'C' }
+  # Newlink is a current Barcelona agency role with strong brand/content scope,
+  # but Catalan C1 and English B2 are hard gates; keep it secondary rather than
+  # allowing the generic Barcelona/graphic score to enter the homepage core.
+  if (HasText $t '4401651451') { return 'C' }
   # El Prat signage/print production is a useful Barcelona-metro backup, but
   # it is not a Chinese-language or brand/VI role; keep the explicit C-level
   # tracker classification despite the generic local-designer score.
