@@ -634,6 +634,23 @@ if ($existingRecords.Count -gt 0) {
           $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
         }
       }
+
+      # Refresh the existing Rocket Digital social-design record from the
+      # employer's live Factorial detail and application route.
+      if ([string]$existingRecord.source -match 'Rocket Digital' -and [string]$existingRecord.opportunity -eq 'Graphic Designer Social Media') {
+        $existingRecord.location = 'Barcelona; hybrid; permanent; full-time; SMO Team; office at Calle Alaba 111'
+        $existingRecord.status = 'Official Rocket Digital Factorial detail 306705 is live and shows Apply now, Permanent, Full time and Hybrid in Barcelona; role covers organic social visual universes, reusable templates, brand consistency, posts/stories/reels/covers/carousels, Adobe, Figma, basic short-form editing and AI-generated visual assets; Spanish workflow, salary and exact office cadence are not published'
+        $existingRecord.contact = 'Official detail: https://rock-et.factorial.es/job_posting/graphic-designer-social-media-306705 ; official application: https://rock-et.factorial.es/apply/graphic-designer-social-media-306705 ; employer jobs hub: https://rock-et.factorial.es/'
+        $existingRecord.analysis = 'Strong Barcelona digital-brand extension route, but social-first rather than core VI. Apply with brand-to-social systems, reusable template governance, motion-lite variants, AI-assisted production and evidence of consistent multi-channel execution; confirm Spanish as a daily working language, salary and onsite rhythm before investing.'
+        $existingRecord.links = @('https://rock-et.factorial.es/job_posting/graphic-designer-social-media-306705', 'https://rock-et.factorial.es/apply/graphic-designer-social-media-306705', 'https://rock-et.factorial.es/')
+        if ($existingRecord.rawColumns) {
+          $existingRecord.rawColumns['Last verified'] = '2026-08-02'
+          $existingRecord.rawColumns['Fit / location'] = $existingRecord.location
+          $existingRecord.rawColumns['Status / language / compensation'] = $existingRecord.status
+          $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
+          $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
+        }
+      }
     }
   }
 
