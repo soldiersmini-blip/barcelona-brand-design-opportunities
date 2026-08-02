@@ -605,7 +605,7 @@ if ($existingRecords.Count -gt 0) {
       }
     }
 
-    if ([string]$existingRecord.source -eq 'Huqiao Games' -and [string]$existingRecord.opportunity -eq 'Visual Designer (Bilingual Mandarin & English)') {
+      if ([string]$existingRecord.source -eq 'Huqiao Games' -and [string]$existingRecord.opportunity -eq 'Visual Designer (Bilingual Mandarin & English)') {
       $existingRecord.location = 'Spain listing; fully remote / EU hours; closed'
       $existingRecord.status = 'Original Spain LinkedIn detail explicitly says Ya no se aceptan solicitudes; historical brief required fluent Mandarin and English, 3+ years, Adobe/Premiere/After Effects/Figma/Canva, Chinese-platform visual content and video; USD1,500/month + bonuses'
       $existingRecord.contact = 'Closed original detail: https://es.linkedin.com/jobs/view/visual-designer-bilingual-mandarin-english-at-huqiao-games-4430688607 ; related Hong Kong repost is not proof of Spain eligibility'
@@ -615,10 +615,27 @@ if ($existingRecords.Count -gt 0) {
         $existingRecord.rawColumns['Status / language / compensation'] = $existingRecord.status
         $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
         $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
+        }
+      }
+
+      # Refresh the existing Stark Future local lead from the current LinkedIn
+      # detail. Keep it verify-first because the exact requisition is not shown
+      # on the employer's public careers list in this pass.
+      if ([string]$existingRecord.source -eq 'Stark Future' -and [string]$existingRecord.opportunity -eq 'Graphic Designer') {
+        $existingRecord.location = 'Sant Boi de Llobregat / Barcelona metro; on-site; full-time; premium motorcycle brand'
+        $existingRecord.status = 'Current LinkedIn detail shows Solicitar, about 2 days ago and 67 applicants; scope covers Brand & Retail Assets, marketing/digital content, packaging, product documentation, corporate/internal communications, presentations and templates; Adobe Photoshop/Illustrator essential, Figma and Blender valued; Spanish/English and salary not published; official careers list currently does not surface the exact requisition, so verify before applying'
+        $existingRecord.contact = 'LinkedIn detail/application: https://es.linkedin.com/jobs/view/graphic-designer-at-stark-future-sl-4424557342 ; official employer careers: https://careers.starkfuture.com/ ; general HR contact shown in company materials: HR@starkfuture.com'
+        $existingRecord.analysis = 'Strong Barcelona-metro brand, packaging and digital-extension match. Prepare premium-brand identity, packaging/manuals, retail/dealer assets, campaign content and presentation-template cases; confirm the exact ATS route, on-site schedule, working language, salary and work authorization before applying. Do not treat the third-party EUR30,000-50,000 range as verified.'
+        $existingRecord.links = @('https://es.linkedin.com/jobs/view/graphic-designer-at-stark-future-sl-4424557342', 'https://careers.starkfuture.com/', 'mailto:HR@starkfuture.com')
+        if ($existingRecord.rawColumns) {
+          $existingRecord.rawColumns['Fit / location'] = $existingRecord.location
+          $existingRecord.rawColumns['Status / language / compensation'] = $existingRecord.status
+          $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
+          $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
+        }
       }
     }
   }
-}
 
 $existingKeys = New-Object 'System.Collections.Generic.HashSet[string]'
 $usedIds = New-Object 'System.Collections.Generic.HashSet[int]'
