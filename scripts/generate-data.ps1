@@ -689,6 +689,25 @@ if ($existingRecords.Count -gt 0) {
         }
       }
 
+      # The LONBALI Barcelona graphic-designer detail now explicitly says
+      # applications are no longer accepted. Close every preserved duplicate
+      # of this identity so stale LinkedIn mirrors cannot keep it actionable.
+      if ([string]$existingRecord.source -match 'Lonbali' -and [string]$existingRecord.opportunity -match 'gr.fica|Graphic Designer') {
+        $existingRecord.location = 'Barcelona; full-time; closed historical'
+        $existingRecord.status = 'Original LinkedIn detail explicitly says "No longer accepting applications"; historical scope covered paid social, e-commerce, social, AI content, video/motion, retail signage and packaging; Spanish fluent/native and medium/high English were required'
+        $existingRecord.contact = 'Official closed original detail: https://es.linkedin.com/jobs/view/dise%C3%B1ador-a-gr%C3%A1fica-at-lonbali-4438899857'
+        $existingRecord.analysis = 'Move to closed/history. Keep as a useful Barcelona fashion/e-commerce brand-extension benchmark, but do not apply through the expired LinkedIn route or present it as open.'
+        $existingRecord.tier = 'X'
+        $existingRecord.score = 42
+        $existingRecord.links = @('https://es.linkedin.com/jobs/view/dise%C3%B1ador-a-gr%C3%A1fica-at-lonbali-4438899857')
+        if ($existingRecord.rawColumns) {
+          $existingRecord.rawColumns['Fit / location'] = $existingRecord.location
+          $existingRecord.rawColumns['Status / language / compensation'] = $existingRecord.status
+          $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
+          $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
+        }
+      }
+
       # Refresh the existing Adsmurai record from the employer's live careers
       # page, which is stronger evidence than the LinkedIn cache-miss page.
       if ([string]$existingRecord.source -match 'Adsmurai' -and [string]$existingRecord.opportunity -eq 'Digital Graphic Designer (They/He/She)') {
