@@ -651,6 +651,40 @@ if ($existingRecords.Count -gt 0) {
           $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
         }
       }
+
+      # The Sanofi LinkedIn search card is misleadingly fresh, but the
+      # employer's Workday page records an end date of 2026-05-15.
+      if ([string]$existingRecord.source -match 'Sanofi' -and [string]$existingRecord.opportunity -eq 'Graphic Designer') {
+        $existingRecord.location = 'Barcelona; full-time; closed historical'
+        $existingRecord.status = 'Official Sanofi Workday requisition R2834888 lists an application end date of 2026-05-15; the current LinkedIn search snippet is stale and must not be treated as open; English required; scope included scientific visual communications, video, templates, presentations, infographics and brand-guideline work'
+        $existingRecord.contact = 'Official closed Workday detail: https://sanofi.wd3.myworkdayjobs.com/en-US/SanofiCareers/job/Graphic-Designer_R2834888 ; LinkedIn historical detail: https://es.linkedin.com/jobs/view/graphic-designer-at-sanofi-4375153147'
+        $existingRecord.analysis = 'Move to closed/history. Keep the role as a useful benchmark for English-first Barcelona visual communication, but do not apply through the stale LinkedIn result or claim the requisition is currently open.'
+        $existingRecord.tier = 'X'
+        $existingRecord.score = 42
+        $existingRecord.links = @('https://sanofi.wd3.myworkdayjobs.com/en-US/SanofiCareers/job/Graphic-Designer_R2834888', 'https://es.linkedin.com/jobs/view/graphic-designer-at-sanofi-4375153147')
+        if ($existingRecord.rawColumns) {
+          $existingRecord.rawColumns['Fit / location'] = $existingRecord.location
+          $existingRecord.rawColumns['Status / language / compensation'] = $existingRecord.status
+          $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
+          $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
+        }
+      }
+
+      # Refresh the existing Adsmurai record from the employer's live careers
+      # page, which is stronger evidence than the LinkedIn cache-miss page.
+      if ([string]$existingRecord.source -match 'Adsmurai' -and [string]$existingRecord.opportunity -eq 'Digital Graphic Designer (They/He/She)') {
+        $existingRecord.location = 'Barcelona headquarters; permanent; hybrid with 2 remote days; CREATIV_ team'
+        $existingRecord.status = 'Official Adsmurai careers page currently lists Digital Graphic Designer (They/He/She) as an open Barcelona role; LinkedIn detail 4443148299 shows about 1 day and 156 applicants but direct page cache-missed; Spanish and fluent English (C1 nice to have) are requested; salary not published'
+        $existingRecord.contact = 'Official employer careers: https://www.adsmurai.com/en/careers ; LinkedIn detail/application: https://es.linkedin.com/jobs/view/digital-graphic-designer-they-he-she-at-adsmurai-4443148299'
+        $existingRecord.analysis = 'Strong Barcelona digital-brand production route. Prepare paid-social and e-commerce creative systems, static/motion variants, AI-assisted workflows and examples of visual consistency across platforms; confirm exact application form, Spanish daily workflow and salary before submitting.'
+        $existingRecord.links = @('https://www.adsmurai.com/en/careers', 'https://es.linkedin.com/jobs/view/digital-graphic-designer-they-he-she-at-adsmurai-4443148299')
+        if ($existingRecord.rawColumns) {
+          $existingRecord.rawColumns['Fit / location'] = $existingRecord.location
+          $existingRecord.rawColumns['Status / language / compensation'] = $existingRecord.status
+          $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
+          $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
+        }
+      }
     }
   }
 
