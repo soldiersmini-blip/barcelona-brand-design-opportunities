@@ -298,6 +298,10 @@ function Get-Tier {
   # role is fully on-site, Catalan/Spanish-led and its ATS detail was not
   # independently readable; keep it visible as a C-level verify-first lead.
   if (HasText $t '4404037331|calfruitos\.com|treballaambnosaltres\.calfruitos\.com') { return 'C' }
+  # El Prat signage/print production is a useful Barcelona-metro backup, but
+  # it is not a Chinese-language or brand/VI role; keep the explicit C-level
+  # tracker classification despite the generic local-designer score.
+  if (HasText $t '4435823678') { return 'C' }
   # Superseded All Yours listing: keep the current 111968 detail only.
   if (HasText $t '111992|4422334674') { return 'X' }
   # Mass-reposted "order processing" copy has no verifiable employer and uses
@@ -553,6 +557,14 @@ foreach ($record in $records) {
   [void]$mergedRecords.Add($record)
 }
 if ($existingRecords.Count -gt 0) { $records = @($mergedRecords.ToArray()) }
+
+# The current round's explicit tracker classification must also apply when a
+# record was already appended in an earlier publish of the same round.
+foreach ($mergedRecord in $records) {
+  if ([string]$mergedRecord.section -match 'Round 190' -and [string]$mergedRecord.opportunity -match 'Rotulista') {
+    $mergedRecord.tier = 'C'
+  }
+}
 
 $sorted = $records | Sort-Object @{Expression='score'; Descending=$true}, @{Expression='id'; Descending=$false}
 $payload = [ordered]@{
