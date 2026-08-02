@@ -564,6 +564,20 @@ if ($existingRecords.Count -gt 0) {
     } elseif ([string]$existingRecord.source -like 'InfoHuaxin*' -and [string]$existingRecord.contact -match 'Q371086689') {
       $existingRecord.id = 1267
     }
+
+    # Correct the preserved public copy after the official Velvet Caviar
+    # careers page was re-opened: the company accepts applications by email,
+    # while the LinkedIn listing remains a separate status check.
+    if ([string]$existingRecord.source -eq 'Velvet Caviar' -and [string]$existingRecord.opportunity -eq 'Graphic Designer - eCommerce Fashion Brand') {
+      $existingRecord.status = 'LinkedIn snapshot still shows Solicitar, about 1 week ago and 200+ applicants; direct re-open returned cache miss in this pass; salary EUR30,000-40,000/year; 2+ years; no Spanish requirement stated; New York overlap until 18:00 Monday-Friday; verify role status before applying'
+      $existingRecord.contact = 'LinkedIn detail/application: https://es.linkedin.com/jobs/view/graphic-designer-ecommerce-fashion-brand-at-velvet-caviar-4413468201 ; official careers application email: jobs@velvetcaviar.com ; careers page: https://velvetcaviar.com/pages/careers'
+      $existingRecord.analysis = 'Email campaigns, social static/motion, website/Amazon banners, landing pages, ads, patterns, photo retouching and AI; Adobe/After Effects/Illustrator; strong branding/typography. Spain-remote fallback, not Barcelona-local and not Chinese. Send CV + portfolio + preferred position to jobs@velvetcaviar.com, and separately verify that this exact role is still open on LinkedIn.'
+      if ($existingRecord.rawColumns) {
+        $existingRecord.rawColumns['Status / language / compensation'] = $existingRecord.status
+        $existingRecord.rawColumns['Original detail / application'] = $existingRecord.contact
+        $existingRecord.rawColumns['Analysis / next action'] = $existingRecord.analysis
+      }
+    }
   }
 }
 
