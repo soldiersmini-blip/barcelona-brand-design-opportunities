@@ -548,7 +548,7 @@ if ($ExistingDataPath -and (Test-Path -LiteralPath $ExistingDataPath)) {
 # sections, so keep their existing records available for ID stability.
 if ($existingRecords.Count -gt 0) {
   $existingRecords = @($existingRecords | Where-Object {
-    [string]$_.section -notmatch '^2026-08-02 Round (226|227|228|229|230|231|232|235|236|237|238)'
+    [string]$_.section -notmatch '^2026-08-02 Round (226|227|228|229|230|231|232|235|236|237|238|262)'
   })
 
   # Repair the one intermediate Round 239 regeneration that allocated the
