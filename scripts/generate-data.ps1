@@ -548,7 +548,7 @@ if ($ExistingDataPath -and (Test-Path -LiteralPath $ExistingDataPath)) {
 # and link parsing are refreshed as well.
 if ($existingRecords.Count -gt 0) {
   $existingRecords = @($existingRecords | Where-Object {
-    [string]$_.section -notmatch '^2026-08-02 Round (226|227|228|229|230|231|232|233|234|235|236|237)'
+    [string]$_.section -notmatch '^2026-08-02 Round (226|227|228|229|230|231|232|233|234|235|236|237|238)'
   })
 }
 
