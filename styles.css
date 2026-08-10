@@ -1044,6 +1044,11 @@ main {
   display: grid;
   gap: 12px;
   margin-top: 20px;
+  /* Preserve the JavaScript score-descending order visually: left-to-right,
+     then top-to-bottom. This prevents a browser/grid direction override from
+     making later low-score cards appear before the first high-score row. */
+  grid-auto-flow: row;
+  direction: ltr;
 }
 
 .result-card {
@@ -1791,6 +1796,8 @@ a.contact-token:hover {
 /* Compact scan cards: keep the job database readable at a glance. */
 .results-list {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-flow: row;
+  direction: ltr;
   align-items: start;
   gap: 16px;
 }

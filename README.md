@@ -209,3 +209,7 @@ Added one sanitized official Barcelona agency route: Karmina `Graphic Designer B
 ## 2026-07-30 Round 102
 
 Added one sanitized official Barcelona-local route: Glovo `Motion Designer (They/She/He)`. The official employer page states Barcelona, full-time, Marketing & Growth and Brand Design scope across scalable motion systems, paid social/display/TV and brand consistency. It stays outside the five-card homepage core because the work is performance-heavy and the linked SmartRecruiters form needs manual confirmation. Holded, Avidalia, Factorial and Trivelta stale/closed copies were not promoted. Public data total: 1104; loader cache key: `data.js?v=39d3cb0e6d6f`.
+
+## 2026-08-03 Round475
+
+Audit-only refresh. Chinese-community sources again produced 0 new strict Barcelona Chinese-language graphic/brand/VI employer details; ID 778 / A644055418 remains the same tracked Barcelona advertising-shop line until its 2026-08-09 10:22 Europe/Paris original-page checkpoint. Lateral Thinking, Savills, Stripe, BYD, Casa Asia and several LinkedIn-indexed Barcelona design results were rechecked or deduped against existing records; Dragons Senior Art Director remains closed/history. No Round475 public job card was added, and the current static site validation remains green at 1293 total records / 1160 deduped.

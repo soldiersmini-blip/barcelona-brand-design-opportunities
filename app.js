@@ -14,7 +14,7 @@ const meta = window.JOB_META || {};
 // Homepage priority is location-first: Barcelona local roles come before
 // Madrid/unclear remote or stale Chinese-channel leads. Language and contract
 // gates remain explicit on each card instead of being hidden by the homepage.
-const PRIORITY_IDS = [778, 559, 871, 884, 1020];
+const PRIORITY_IDS = [1300, 890, 884, 1303, 866, 24, 1020];
 
 const IDENTITY_ALIASES = Object.freeze({
   95: "qustodio-digital-designer-marketing",
@@ -34,8 +34,28 @@ const IDENTITY_ALIASES = Object.freeze({
   559: "infiled-emea-graphic-designer",
   852: "steneg-industrial-brand-packaging",
   853: "eladiet-brand-communication-designer",
+  884: "dragons-mid-graphic-designer-wellness-healthcare",
   889: "dragons-mid-graphic-designer-food-beverage",
   890: "dragons-art-director-wellness-lifestyle",
+  1327: "dragons-mid-graphic-designer-wellness-healthcare",
+  1328: "dragons-art-director-wellness-lifestyle",
+  1329: "lodgify-creative-designer",
+  613: "oasisroots-marketing-operations-specialist",
+  644: "oasisroots-marketing-operations-specialist",
+  929: "eurofragance-branding-graphic-designer",
+  669: "eurofragance-branding-graphic-designer",
+  1345: "eurofragance-branding-graphic-designer",
+  1347: "eurofragance-branding-graphic-designer",
+  866: "devicenow-video-motion-graphics-specialist",
+  1115: "devicenow-video-motion-graphics-specialist",
+  534: "collegevine-brand-designer",
+  1337: "collegevine-brand-designer",
+  305: "hostinger-brand-creative-graphic-designer",
+  936: "hostinger-brand-creative-graphic-designer",
+  910: "labhouse-growth-graphic-designer",
+  946: "labhouse-growth-graphic-designer",
+  1103: "labhouse-growth-graphic-designer",
+  4: "lodgify-creative-designer",
   891: "dragons-senior-graphic-designer-pharma",
   892: "qustodio-digital-designer-marketing",
   894: "ogilvy-liquid-designer-video",
@@ -44,6 +64,9 @@ const IDENTITY_ALIASES = Object.freeze({
   904: "wall-street-english-design-lead",
   905: "steneg-industrial-brand-packaging",
   906: "infiled-emea-graphic-designer",
+  1319: "dragons-mid-graphic-designer-wellness-healthcare",
+  1320: "dragons-art-director-wellness-lifestyle",
+  1300: "infiled-emea-graphic-designer",
   907: "eladiet-brand-communication-designer",
   908: "top-doctors-marketing-designer",
   882: "jobgether-marketing-visual-designer",
@@ -63,6 +86,62 @@ const IDENTITY_ALIASES = Object.freeze({
 });
 
 const CURATED = {
+  313: {
+    direction: "brand",
+    company: "Mapit IoT",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / indefinite full-time",
+    titleZh: "营销与品牌系统设计师（母语西语门槛）",
+    titleEs: "Marketing Designer",
+    reason: "官方职位是真实的巴塞长期品牌系统岗位，但明确要求母语西语与英语 B2，不能按低语言门槛机会处理。",
+    next: "只有达到母语西语水平才投递；作品集突出多市场品牌系统、邮件模板、产品转译与 AI 工作流。",
+    languageKey: "spanish",
+    language: "母语西语 + 英语 B2 为明确硬门槛",
+    changeType: "refresh",
+  },
+  425: {
+    direction: "brand",
+    company: "Revolut",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "Barcelona office / Spain remote",
+    titleZh: "数字品牌设计师（当前官方可投）",
+    titleEs: "Digital Designer (Brand)",
+    reason: "官方职位页已直接核实：Barcelona 办公室与 Spain remote 均在可选地点中；工作是 app/web 的品牌系统与可扩展设计资源。",
+    next: "仅通过官方申请页投递英文作品集；确认 Spain 合同主体、办公频率、薪资与工作许可。",
+    languageKey: "english",
+    language: "英文工作岗位；正文未列西班牙语硬门槛",
+    changeType: "refresh",
+  },
+  24: {
+    direction: "brand",
+    company: "HKU Europe / 香港大学欧洲校区",
+    chineseFit: true,
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 中文、英文、西语必需",
+    titleZh: "市场与品牌传播专员（HKU Europe）",
+    titleEs: "Marketing & Branding Officer — HKU Europe",
+    reason: "品牌相邻岗位，不是纯平面/VI：负责品牌指南、官网/社媒/邮件、campaign、营销物料、供应商和视觉一致性。",
+    next: "先确认西语工作能力、合同、薪资和实际视觉制作比例；卡片第一按钮直达官方 PDF，邮箱入口在后续按钮。",
+    language: "中文、英文、西语均为 essential；西语是硬门槛",
+    applicationMode: "chineseCheck",
+  },
+  705: {
+    direction: "social",
+    company: "Tea Lab Barcelona / 茶饮品牌",
+    chineseFit: true,
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 中文 + 西语",
+    titleZh: "社媒与内容创作者（中文-西语）",
+    titleEs: "Social Media & Content Creator — Tea Lab Barcelona",
+    reason: "内容方向，不是纯品牌/VI：涉及小红书、Instagram、TikTok、短视频和 AI 视频，同时包含门店日常运营。",
+    next: "仅在未满 30 岁、中文西语可工作且接受门店运营/兼职可能时联系；卡片第一按钮直达招聘 PDF。",
+    language: "中文 + 西语；30 岁以下；工时和合同待确认",
+    applicationMode: "chineseCheck",
+  },
   35: {
     direction: "brand",
     company: "Steneg / 未公开工业客户",
@@ -185,10 +264,10 @@ const CURATED = {
     statusKey: "live",
     titleZh: "全职平面设计师",
     titleEs: "Diseñador/a gráfico/a a jornada completa",
-    reason: "7 月 25 日在华人通 ES02 明确重发，西华论坛同期顶帖，欧浪/华信也于 7 月 22 日重发，是目前状态最明确的巴塞华人设计岗。工作偏招牌、菜单、传单、名片和印刷落地；不是高端 VI，但进入门槛现实。",
-    next: "今天先加微信 A644055418，确认公司全称、地址、合同、全保、工时和试用期；确认后再发送 Illustrator、菜单、招牌、海报与印刷落地作品。",
-    language: "需要基础西语与工作居留",
-    applicationMode: "basicSpanish",
+    reason: "华信当前原帖（8 月 3 日发布、8 月 18 日到期）明确是 Barcelona 的一名全职平面设计师，要求经验、AI/Illustrator、工作居留和全保。它偏招牌、菜单、传单、名片等印刷落地，不是高端 VI；公司主体、薪资、工时与工作语言尚未公开。",
+    next: "先微信 A644055418 用中文确认岗位仍开放、公司全称/CIF、地址、合同、全保、薪资、工时、试用期和工作语言；确认后再发送 Illustrator、菜单、招牌、海报与印刷落地作品。",
+    language: "中文联系方式；工作语言未公开，须先确认",
+    applicationMode: "chineseCheck",
   },
   787: {
     direction: "social",
@@ -221,13 +300,13 @@ const CURATED = {
   1019: {
     direction: "brand",
     company: "Kings League / Kosmos",
-    statusKey: "verify",
+    statusKey: "closed",
     locationKey: "barcelona",
     locationLabel: "Barcelona, Spain",
     titleZh: "平面设计师（Photoshop 合成 / 体育娱乐视觉）",
     titleEs: "Graphic Designer — Photoshop y fotomontaje",
-    reason: "官方 Teamtailor 详情页仍显示 Apply，职责覆盖体育娱乐社媒与数字 campaign、Photo Montage、Figma、Illustrator、品牌一致性和大型物料；但当前 Kings League 招聘板没有这条 requisition，必须先确认新鲜度。",
-    next: "先打开官方申请表确认是否仍收件，再确认合同、薪资、办公节奏、语言和赛事周末安排；若有效，用英文材料突出高级 Photoshop 合成/修图、社媒 campaign、海报/大型物料和品牌资产治理。",
+    reason: "官方 Teamtailor 原始详情现在明确写明职位不再有效；保留为 Barcelona 体育娱乐品牌视觉历史参考，不应继续当作可投岗位。",
+    next: "不要通过旧 requisition 投递；只监测 Kings League/Kosmos 官方招聘页是否出现新的 Graphic Designer 或 Brand Visual requisition。",
     language: "官方页未明确语言；先用英文并确认西语/赛事沟通要求",
     applicationMode: "english",
     changeType: "round50",
@@ -235,14 +314,15 @@ const CURATED = {
   1020: {
     direction: "motion",
     company: "COCUNAT",
-    statusKey: "verify",
+    statusKey: "live",
     locationKey: "barcelona",
     locationLabel: "Barcelona / Sant Gervasi",
     titleZh: "Senior Video Ads Designer（品牌 × Performance 视频）",
     titleEs: "Senior Video Ads Designer / Video Editor (Ads)",
     reason: "官方 Personio 当前 requisition 2210442 显示 Apply、Barcelona、全职永久；职责把品牌规范、AI 视频、Premiere/After Effects、UGC、Meta/TikTok/YouTube 广告和多版本性能迭代连在一起，但英文/西语标题不同，需先确认工作语言与办公室条件。",
     next: "先确认西语、办公室出勤、薪资和测试；投递时用 Reel 展示前三秒 hook、UGC/产品片、多平台版本、字幕/声音、AI 辅助与品牌一致性，不要只发静态 VI。",
-    language: "官方英文页未明确西语；先确认实际工作语言",
+    languageKey: "english",
+    language: "官方英文页未列西语硬门槛；英文材料可直接投递",
     applicationMode: "english",
     changeType: "round51",
   },
@@ -446,12 +526,12 @@ Object.assign(CURATED, {
     direction: "digital",
     company: "European Blockchain Convention",
     statusKey: "live",
-    locationKey: "remote",
-    locationLabel: "远程自由职业 / Barcelona 雇主",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / 混合 / 兼职自由职业",
     titleZh: "自由职业平面设计师（数字品牌与活动视觉）",
     titleEs: "Diseñador/a gráfico/a freelance — marca digital y eventos",
-    reason: "方向和投递都很直接：品牌概念、style guide、数字/印刷/社媒与线上 campaign；英文职位说明未列西语要求，并公开了收作品集的负责人邮箱。",
-    next: "今天发送一封短英文邮件到 daniel@eblockchainconvention.com，正文只放 3 个最相关案例链接；先问预算、工时、合同、付款周期与是否需要偶尔到场，不做无薪试稿。",
+    reason: "原 LinkedIn 当前可投：Barcelona、hybrid、兼职、freelance。品牌概念、style guide、数字/印刷/社媒与活动 campaign 匹配，但它不是带固定薪资的全职岗位。",
+    next: "用英文 Easy Apply 或邮件发 3 个相关案例链接；先问费率、每周工时、autónomo/合同、付款周期和到场频率，不做无薪试稿。",
     language: "英文可投；公开说明未列西班牙语要求",
   },
   842: {
@@ -593,7 +673,7 @@ Object.assign(CURATED, {
   864: {
     direction: "brand",
     company: "Grup Ametller Origen",
-    statusKey: "live",
+    statusKey: "verify",
     locationKey: "barcelona",
     locationLabel: "Olèrdola / Numància，混合办公",
     titleZh: "包装艺术负责人（品牌治理与生产落地）",
@@ -619,7 +699,7 @@ Object.assign(CURATED, {
     company: "devicenow",
     statusKey: "live",
     locationKey: "barcelona",
-    locationLabel: "巴塞罗那 / 混合办公",
+    locationLabel: "巴塞罗那 / 混合办公 / 永久全职",
     titleZh: "品牌视频与动态视觉专员",
     titleEs: "Especialista de vídeo y motion graphics",
     reason: "本轮最值得优先投的新机会：英语是明确要求，未列西语门槛；工作把品牌延展到产品解说、客户故事、社交短片、活动、数字 campaign、演示、模板和素材系统，既有动态也有静态品牌资产。",
@@ -946,8 +1026,8 @@ Object.assign(CURATED, {
     titleEs: "Diseñador/a gráfico/a mid — alimentación y bebidas",
     reason: "既有 Danone / FMCG 岗位以新编号重新发布，当前入口更可靠；工作聚焦电商、社媒、数字 campaign、多市场 adaptation 和高产量下的品牌一致性。",
     next: "继续优先投当前链接，作品集放 FMCG、电商、社媒模板、多尺寸 adaptation 和可扩展生产系统。网站已把新旧编号合并，本地投递进度不会丢失。",
-    languageKey: "light",
-    language: "英语良好 / 高级为理想；其他语言加分，未写西班牙语硬门槛",
+    languageKey: "spanish",
+    language: "明确要求高级西语 + 良好英语；不满足西语门槛不建议投",
     changeType: "refresh",
   },
   890: {
@@ -957,11 +1037,11 @@ Object.assign(CURATED, {
     experienceKey: "mid",
     experienceLabel: "中级 / 3–5 年",
     locationKey: "barcelona",
-    locationLabel: "巴塞罗那 / 混合办公",
+    locationLabel: "巴塞罗那 / 混合办公 / 永久全职",
     titleZh: "健康与生活方式艺术指导",
     titleEs: "Art Director — wellness y lifestyle",
-    reason: "既有岗位以新编号重新发布，当前入口可投；覆盖 social-first、digital、creator 和 integrated campaign，英语要求明确。",
-    next: "已有概念创意、社媒 campaign、creator 内容和跨渠道视觉时再投；若资历偏执行，优先同公司的 Mid Graphic Designer。新旧编号已合并。",
+    reason: "官方 Factorial 原页当前可申请：Barcelona、hybrid、永久全职。职责横跨 social-first、digital、creator、整合 campaign，以及摄影、视频、motion、CGI 与 AI 视觉方向；英语要求明确。",
+    next: "已有概念创意、社媒 campaign、creator 内容、产品叙事和跨渠道视觉方向案例时再投；先确认薪资、工签、到岗节奏和健康/生活方式品类经验是否硬门槛。",
     languageKey: "light",
     language: "流利英语必需；其他语言仅为加分",
     changeType: "refresh",
@@ -1008,8 +1088,8 @@ Object.assign(CURATED, {
     locationLabel: "Barcelona / 西班牙远程",
     titleZh: "创意内容设计师（品牌内容与设计系统）",
     titleEs: "Diseñador/a de contenido creativo — remoto",
-    reason: "本轮最强的新机会：官方 Workday 当前可投，英语工作、未列西语；职责把品牌延展到演示、one-pager、信息图、newsletter、视频、动画、模板和无障碍设计系统，要求 2 年以上经验。",
-    next: "优先从官方 Workday 用英文申请。作品集先放品牌系统和多渠道 adaptation，再放复杂信息可视化、演示、社媒 / 视频与模板体系；确认远程范围、办公频率、薪资、合同主体和工作许可。",
+    reason: "官方 Workday 当前显示 Apply、Barcelona、全职、3 天前发布。职责把品牌延展到演示、one-pager、信息图、newsletter、视频、动画、模板和无障碍设计系统；要求 2 年以上经验与英语。",
+    next: "优先从官方 Workday 用英文申请。作品集放品牌系统、多渠道 adaptation、复杂信息可视化、演示、视频与模板体系；确认 Spain remote、到岗频率、薪资、合同主体和工签。",
     languageKey: "light",
     language: "英语工作；公开正文未列西班牙语要求",
     changeType: "new",
@@ -1418,8 +1498,8 @@ Object.assign(CURATED, {
     statusKey: "live",
     experienceKey: "mid",
     experienceLabel: "中高级 / 3 年以上",
-    locationKey: "remote",
-    locationLabel: "全球远程 / 欧洲时区（西班牙资格待确认）",
+    locationKey: "other",
+    locationLabel: "全球远程；仅欧洲工作时区，西班牙资格未确认",
     titleZh: "中英双语平面设计与视频剪辑",
     titleEs: "Diseñador/a gráfico/a y editor/a de vídeo bilingüe",
     reason: "新职位编号当前显示约 21 小时前发布，负责中国与海外社媒、Campaign、品牌一致性和视频；但中英文流利是硬门槛，USD1,500/月按西班牙成本偏低。",
@@ -1465,6 +1545,103 @@ Object.assign(CURATED, {
     language: "中文岗位摘要；未显示西语或英语要求",
     applicationMode: "chineseCheck",
     changeType: "new",
+  },
+  472: {
+    direction: "other",
+    company: "Tineco Spain / 添可",
+    statusKey: "verify",
+    locationKey: "other",
+    locationLabel: "地点与岗位未证实 / 仅观察",
+    titleZh: "通用简历池（非已核验岗位）",
+    titleEs: "Bolsa genérica — vacante no verificada",
+    reason: "西班牙 careers 原页本次返回 502；此前只有通用 Upload Resume 线索，未能证明有 Barcelona/Spain 的设计职位。",
+    next: "不作为职位投递。仅在出现可打开的、岗位专属的 ATS 页面后重新评估地点、合同和语言。",
+    language: "未公开；当前无职位专属说明",
+  },
+  470: {
+    direction: "digital",
+    company: "Go Getop / Bygetop",
+    statusKey: "verify",
+    locationKey: "other",
+    locationLabel: "英国团队远程 / 西班牙雇佣待确认",
+    titleZh: "平面设计与中国市场数字营销（泛投池）",
+    titleEs: "Bolsa remota de diseño y marketing para China",
+    reason: "官方 careers 确实可打开，但明确是英国团队的远程兼职/实习池，所有职位共用申请表；没有西班牙雇佣主体、合同、固定工时或薪资。",
+    next: "只能作为低优先中文远程线索。先问是否可从西班牙合法合作、雇佣/自由职业/实习形式、每周工时和报酬，再决定是否投。",
+    language: "普通话与英语相关；西班牙工作资格与日常语言未确认",
+  },
+  1247: {
+    direction: "motion",
+    company: "Impress",
+    statusKey: "closed",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / 已关闭",
+    titleZh: "初级视频与动态设计师（已关闭）",
+    titleEs: "Junior Video & Motion Designer (closed)",
+    reason: "原 LinkedIn 页已直接显示不再接受申请；不能因职位描述完整而继续排在当前机会前面。",
+    next: "保留为历史参考，只等 Impress 出现新的岗位专属申请页。",
+    language: "历史岗位要求西语与英语；当前无申请入口",
+  },
+  421: {
+    direction: "brand",
+    company: "JOIN",
+    statusKey: "closed",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / 已归档",
+    titleZh: "高级品牌设计师（已归档）",
+    titleEs: "Senior Brand Designer (archived)",
+    reason: "官方原页直接显示该职位已归档一个月，没有本职位的申请入口。",
+    next: "不通过 spontaneous application 冒充投递该职位；只监测新的岗位专属页面。",
+    language: "历史职位；当前无申请入口",
+  },
+  806: {
+    direction: "other",
+    company: "巴塞广告公司（主体未披露）",
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / 先确认",
+    titleZh: "客服兼基础 CDR/AI 排版（非纯设计岗）",
+    titleEs: "Atención al cliente con maquetación básica",
+    reason: "ES02 原页确实存在，但本职是客服，仅兼基础 CDR/AI 排版；雇主、合同、工时、薪资和是否仍在招均未公开。",
+    next: "先微信确认公司全称、地址、岗位是否还在、客服/设计比例、合同、社保、工时和薪资；不要先发证件或完整作品集。",
+    language: "流利西语为明确要求；中文可联系",
+    applicationMode: "chineseCheck",
+  },
+  195: {
+    direction: "other",
+    company: "BBS.eus 论坛索引",
+    statusKey: "closed",
+    locationKey: "other",
+    locationLabel: "无岗位详情 / 历史来源",
+    titleZh: "论坛索引误收录（非职位）",
+    titleEs: "Índice de foro — no es una vacante",
+    reason: "原链接只是论坛第 86 页索引，未包含所谓“巴塞平面设计”职位的原帖、公司或申请入口。",
+    next: "不投递、不推荐；仅在找到独立原帖时重新建卡。",
+    language: "无职位内容",
+  },
+  1319: {
+    direction: "digital",
+    company: "Dragons Group",
+    statusKey: "closed",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / 已由当前职位替代",
+    titleZh: "中级平面设计师（旧镜像）",
+    titleEs: "Mid Graphic Designer (superseded duplicate)",
+    reason: "该条与当前官方岗位 884 使用同一个 LinkedIn 职位编号，只是旧镜像记录，不是另一份职位。",
+    next: "使用 ID 884 的官方 Factorial 详情和申请表；本条只保留重复发现的历史证据。",
+    language: "请以当前官方职位页为准",
+  },
+  1320: {
+    direction: "brand",
+    company: "Dragons Group",
+    statusKey: "closed",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / 已由当前职位替代",
+    titleZh: "艺术指导（旧镜像）",
+    titleEs: "Art Director (superseded duplicate)",
+    reason: "该条与当前官方岗位 890 使用同一个 LinkedIn 职位编号，只是旧镜像记录，不是另一份职位。",
+    next: "使用 ID 890 的官方 Factorial 详情和申请表；本条只保留重复发现的历史证据。",
+    language: "请以当前官方职位页为准",
   },
 });
 
@@ -1567,7 +1744,7 @@ Object.assign(CURATED, {
   985: {
     direction: "digital",
     company: "The Builder Studios",
-    statusKey: "verify",
+    statusKey: "live",
     locationKey: "remote",
     locationLabel: "Remote EU timezones / freelance（Spain 合同待确认）",
     titleZh: "视觉设计师（品牌视觉 + motion）",
@@ -1631,7 +1808,7 @@ Object.assign(CURATED, {
   989: {
     direction: "digital",
     company: "Storisell",
-    statusKey: "verify",
+    statusKey: "live",
     locationKey: "remote",
     locationLabel: "Spain remote / Barcelona hybrid 或 onsite",
     titleZh: "动态设计师（Spain / Barcelona 团队）",
@@ -1996,7 +2173,7 @@ Object.assign(CURATED, {
   1029: {
     direction: "brand",
     company: "Together",
-    statusKey: "verify",
+    statusKey: "live",
     locationKey: "remote",
     locationLabel: "Remote UK & Europe；Spain payroll 待确认",
     titleZh: "高级品牌设计师（B2B 科技 / 品牌系统）",
@@ -2028,7 +2205,7 @@ Object.assign(CURATED, {
   1031: {
     direction: "digital",
     company: "Voodoo",
-    statusKey: "verify",
+    statusKey: "live",
     locationKey: "barcelona",
     locationLabel: "Barcelona / remote; Spain employment to confirm",
     titleZh: "UI/UX Designer - Hole.io",
@@ -2186,6 +2363,42 @@ Object.assign(CURATED, {
     changeType: "new",
   },  },});
 Object.assign(CURATED, {
+  1300: {
+    direction: "brand",
+    company: "INFiLED / 中国品牌巴塞罗那团队",
+    chineseFit: true,
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / full-time",
+    titleZh: "平面设计师（品牌与市场视觉）",
+    titleEs: "Graphic Designer — brand and marketing visual",
+    reason: "当前 LinkedIn 雇主详情可直接申请：负责艺术方向、数字与印刷营销资产、网页/内容更新、展会/展台、多市场适配和品牌一致性。中国深圳品牌在 Barcelona 有实体体验中心。",
+    next: "用英文简历和作品集通过当前入口投递；作品集突出品牌系统、数字与印刷、网页、展会和多市场延展。投后再问 EMEA 招聘方中文/总部协作、薪资和 hybrid 节奏。",
+    language: "流利英语；页面显示需具备西班牙工作许可；中文/总部协作是额外价值",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "中级以上 / 品牌、市场与制作统筹",
+    // This is the current replacement for the three closed INFiLED LinkedIn
+    // requisitions. Mark it as the refresh winner so de-duplication never
+    // surfaces an expired application page ahead of the live one.
+    changeType: "refresh",
+  },
+  1303: {
+    direction: "digital",
+    company: "CATORCE / DDB Group",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / agency studio / office days to confirm",
+    titleZh: "工作室视觉设计师与 HTML 程序员",
+    titleEs: "Studio Designer & HTML Programmer",
+    reason: "官方 Greenhouse 当前可投。将平面与数字品牌制作结合：印刷、OOH、零售、社媒、展示广告、banner、邮件和落地页组件，需严格按品牌规范交付。",
+    next: "这是英语+西语双硬门槛的本地广告公司岗位。确认薪资、签证/居留、每周到岗天数后，再用印刷/OOH、零售、社媒、HTML banner/email 和品牌规范落地案例投递。",
+    language: "英语与西语口笔头流利为硬门槛；3+ 年广告公司 Graphic + HTML 经验",
+    applicationMode: "basicSpanish",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 3+ 年广告公司视觉与 HTML 制作",
+    changeType: "new",
+  },
   1040: {
     direction: "brand",
     company: "Roman / La Casa de Carlota",
@@ -2203,6 +2416,100 @@ Object.assign(CURATED, {
     changeType: "round66",
   },
 });
+
+// Round 524: ID 915 is retained as closed/history after the source review;
+// keep this invariant aligned with the data-generation boundary.
+if (CURATED[915]) CURATED[915].statusKey = "closed";
+if (CURATED[559]) CURATED[559].statusKey = "closed";
+// Round 689 direct original-detail evidence overrides the older generic
+// LinkedIn verification state for these two still-applyable roles.
+Object.assign(CURATED, {
+  232: {
+    direction: "digital",
+    company: "Fluidra",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Sant Cugat del Vallès / Barcelona metro",
+    titleEs: "Design System Designer",
+    language: "English B2+ shown; Spanish, contract and office cadence to confirm",
+    changeType: "round689",
+  },
+  1234: {
+    direction: "brand",
+    company: "LearnWise AI",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / Europe remote possibility",
+    titleEs: "Senior Brand & Marketing Designer",
+    language: "Fluent English required; additional languages plus; Spain contract to confirm",
+    changeType: "round689",
+  },
+  241: {
+    direction: "brand",
+    company: "King / Microsoft",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / King - PG",
+    titleEs: "Creative Director — Catalog Games",
+    language: "Application is in English; exact language and seniority details to confirm",
+    changeType: "round690",
+  },
+});
+Object.assign(CURATED, {
+  871: {
+    direction: "brand",
+    company: "Codeway",
+    statusKey: "closed",
+    experienceKey: "mid",
+    experienceLabel: "初中级 / 1–4 年（历史）",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / 已关闭",
+    titleZh: "品牌平面设计师（已关闭）",
+    titleEs: "Brand Graphic Designer (closed)",
+    reason: "官方 Ashby 原始详情已直接核验为 “Job not found”，不存在可提交的申请表。此前职责和福利只保留作历史证据。",
+    next: "不要通过通用人才库冒充投递该旧职位；只在 Codeway 出现新的独立职位编号与可申请表单时重新评估。",
+    language: "历史职位；当前无有效申请入口",
+  },
+  884: {
+    direction: "digital",
+    company: "Dragons Group",
+    statusKey: "live",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 医疗、健康或受监管行业经验加分",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / 混合办公 / 永久全职",
+    titleZh: "中级平面设计师（健康与医疗）",
+    titleEs: "Mid Graphic Designer (Wellness and Healthcare)",
+    reason: "官方 Factorial 原页与 LinkedIn 同时显示当前可申请：Bar​​celona、hybrid、permanent、full-time。内容是医疗/健康 campaign、社媒、网站、演示和营销物料，强调复杂信息的清晰表达与品牌一致性。",
+    next: "用英文简历和作品集投官方表单；优先展示信息层级、campaign、社媒、网页、演示与多格式品牌一致性。面试前确认薪资、工签政策、到岗节奏和医疗行业经验要求。",
+    languageKey: "light",
+    language: "英语流利为硬要求；其他语言仅为加分，未写西语硬门槛",
+    changeType: "refresh",
+  },
+});
+
+// Round 615: Together is a direct, current official application.  This late
+// assignment is deliberately outside the older nested curation payload so the
+// live status and Europe-remote location survive legacy metadata collisions.
+Object.assign(CURATED, {
+  1029: {
+    direction: "brand",
+    company: "Together",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "Remote UK & Europe; Spain employment terms to confirm",
+    titleZh: "高级品牌设计师（B2B 科技 / 品牌系统）",
+    titleEs: "Senior Brand Designer",
+    reason: "Official Together careers page shows an open application form, Remote UK & Europe, GBP40,000-65,000, and ownership of scalable B2B-tech brand identity systems across brand, web and product.",
+    next: "Apply in English with senior brand-system, B2B-tech, web/product rollout and leadership case studies. Confirm Spain payroll, travel and employment entity during screening.",
+    language: "English working environment; Spain payroll and travel arrangements need confirmation",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "Senior / 8+ years brand systems",
+    changeType: "round615",
+  },
+});
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
@@ -2227,6 +2534,7 @@ const els = {
   sourceTabsNote: document.querySelector("#sourceTabsNote"),
   chineseLibraryViews: document.querySelector("#chineseLibraryViews"),
   chineseActiveCount: document.querySelector("#chineseActiveCount"),
+  chineseReviewCount: document.querySelector("#chineseReviewCount"),
   chineseClosedCount: document.querySelector("#chineseClosedCount"),
   searchInput: document.querySelector("#searchInput"),
   directionFilter: document.querySelector("#directionFilter"),
@@ -2258,7 +2566,10 @@ const state = {
   source: "all",
   sourceLibrary: false,
   sourceLibraryView: "active",
-  preset: "profile",
+  // Default to the locally relevant Chinese-direction queue, including cards
+  // whose Spanish/English gate is explicitly shown. A strict Chinese-only
+  // filter can legitimately be empty after page-by-page verification.
+  preset: "chinese",
   progressFilter: "all",
   limit: 18,
 };
@@ -2591,6 +2902,26 @@ function isChineseRelevant(item) {
 
   const requirementText = `${item.opportunity || ""} ${item.fit || ""} ${item.status || ""} ${item.analysis || ""}`;
   const companyText = `${item.source || ""} ${item.opportunity || ""}`;
+  // Internal fit notes often say that Chinese is *not* required (or that a
+  // role should not enter the Chinese homepage). Those editorial exclusions
+  // must never become positive evidence merely because they contain 中文.
+  const explicitChineseExclusion =
+    /(?:非中文|中文(?:未要求|不是|并非|不要求)|不进入[^。；;]{0,24}中文|not\s+(?:a\s+)?chinese|chinese\s+(?:is\s+)?not\s+required|no\s+chinese)/i.test(
+      requirementText,
+    );
+  const explicitChineseRequirement =
+    /(?:mandarin|chinese\s+speaker|requires?\s+chinese|普通话(?:母语|流利|必需|要求)|中文(?:母语|流利|必需|要求|可投|沟通)|小红书|xiaohongshu|wechat|微信|中国总部|中国品牌|中国市场)/i.test(
+      requirementText,
+    );
+  const strongerChineseExclusion =
+    /(?:(?:\u975e|\u4e0d\u662f|\u5e76\u975e|\u4e0d\u5f53\u4f5c|\u4e0d\u8ba1\u5165|\u4e0d\u653e\u5165|\u4e0d\u5f52\u5165|\u4e0d\u8fdb\u5165|\u4e0d\u7b97|\u4e0d\u5c5e\u4e8e|\u4e0d\u4f5c\u4e3a|\u6ca1\u6709|\u672a\u5217|\u4e0d\u542b)[^\u3002\uff1b;]{0,24}\u4e2d\u6587|\u4e2d\u6587[^\u3002\uff1b;]{0,16}(?:\u672a\u8981\u6c42|\u4e0d\u8981\u6c42|\u4e0d\u662f|\u5e76\u975e|\u4e0d\u9700\u8981|\u8981\u6c42\u672a\u5217))/i.test(
+      requirementText,
+    );
+  const directChineseSignal =
+    /mandarin|chinese(?:[-\s](?:speaker|language|market|digital|communication|writing|required|preferred|beneficial))|requires?\s+chinese|普通话|中文(?:母语|流利|必需|可投|沟通|申请)|中国(?:品牌|市场|总部)|中国\s*[\/／]\s*(?:国际|海外)?品牌|小红书|xiaohongshu|wechat|微信|rednote/i.test(
+      requirementText,
+    );
+  if ((explicitChineseExclusion || strongerChineseExclusion) && !directChineseSignal) return false;
   const explicitLanguageOrMarket =
     /mandarin|chinese speaker|chinese[-\s](?:market|digital|communication|writing|required|preferred|beneficial)|requires? chinese|中文|普通话|华语|中国总部|中国品牌|中国市场|微信|wechat|weixin|小红书|xiaohongshu|rednote/i.test(
       requirementText,
@@ -2605,15 +2936,23 @@ function isChineseRelevant(item) {
 function isResearchOnly(item) {
   const opportunity = String(item.opportunity || "");
   const text = `${item.source || ""} ${opportunity} ${item.fit || ""} ${item.status || ""} ${item.analysis || ""}`;
+  const metaOnlyOpportunity =
+    /^(?:current board|current .* recheck|27\/07 .*\+ HKU|existing .* route|existing .* identity|refresh existing|chinese-community channel recheck|high institutional chinese\/asia route|marketing & branding officer（本轮新增）|巴塞罗那广告公司 .*最新发布日期复核|existing `|现有|本轮新增)/i.test(
+      opportunity,
+    );
   const opportunityIsRoute =
     /(?:job[- ]?board|jobs?) (?:channel|route|recheck)|channel (?:recheck|status|monitor)|(?:monitor|watchlist|watch route|research route)|no (?:new|current).{0,35}(?:job|vacancy|opening)|no confirmed|not (?:a |an )?(?:current |confirmed )?(?:job|vacancy|opening)|speculative (?:creative\/brand\/packaging )?application|self[- ]application|status correction|historical lead|current .{0,35}(?:employer|ecosystem)$|(?:company|platform|classifieds) (?:target|route|monitor)|institutional.{0,35}route|service category|招聘频道|招聘渠道|监控|观察入口|研究线索|当前无.{0,20}(?:岗位|职位)/i.test(
       opportunity,
     );
   const detailsOnlyResearch =
-    /0 confirmed|0 current|not a confirmed (?:job|vacancy|opening)|not a (?:job|vacancy)|no confirmed|watchlist|monitor(?:ing)? (?:only|route|entry)|channel update|cold outreach channel|generic cv submission|talent application|talent pool only|research route|public search (?:route|surface)|benchmark only|historical lead|china-based openings|only (?:china|shanghai|beijing)[-\s]based|仅(?:中国|上海|北京).{0,12}(?:岗位|职位)|监控入口|观察入口|研究线索/i.test(
+    /0 confirmed|0 current|not a confirmed (?:job|vacancy|opening)|not a (?:job|vacancy)|not verified open|no confirmed|no active vacancy|not a live job|not an open (?:design )?job|watchlist|monitor(?:ing)? (?:only|route|entry|source)|channel update|cold outreach channel|generic cv submission|talent application|talent pool only|research route|public search (?:route|surface)|benchmark only|historical lead|china-based openings|only (?:china|shanghai|beijing)[-\s]based|仅(?:中国|上海|北京).{0,12}(?:岗位|职位)|监控入口|观察入口|研究线索/i.test(
       text,
     );
-  return opportunityIsRoute || detailsOnlyResearch;
+  const directResearchSignal =
+    /research[- ]only|cold outreach|micro-agency collaboration|no public (?:job|vacancy|opening)|no careers or hiring page/i.test(
+      text,
+    );
+  return metaOnlyOpportunity || opportunityIsRoute || detailsOnlyResearch || directResearchSignal;
 }
 
 function isTargetOpportunity(item) {
@@ -2707,53 +3046,49 @@ function confidenceScore(item) {
   return (statusPoints[applicationStatus(item).key] || 0) + routePoints + datePoints + personalMatchScore(item);
 }
 
+function displayedScore(item) {
+  // Sort by the number the card actually shows. The old implementation used
+  // item.score even when the profile view displayed personalMatchScore, which
+  // made the visual order appear wrong. Keep the raw score as a deterministic
+  // tie-breaker so equal displayed scores remain stable.
+  if (state.preset === "profile") return Number(personalMatchScore(item)) || 0;
+  return Number(item.score) || 0;
+}
+
 function sortRecords(records) {
   const mode = els.sortFilter?.value || "smart";
-  const compareScore = (a, b) => (b.score || 0) - (a.score || 0);
-  // The user's actual constraint is Barcelona first. Keep location as the
-  // first sort key so a high-scoring Europe-remote role cannot crowd out a
-  // lower-scoring but genuinely local opportunity in the default view.
+  const compareScore = (a, b) =>
+    displayedScore(b) - displayedScore(a) || (Number(b.score) || 0) - (Number(a.score) || 0);
+  // The composite score is always the primary order. The other sort choices
+  // are tie-breakers only, so no lower-scoring card can appear before a
+  // higher-scoring card after the user changes the selector or reloads the
+  // page with a persisted selector value.
   const locationOrder = { barcelona: 4, remote: 3, madrid: 2, other: 1 };
   const compareLocation = (a, b) =>
     (locationOrder[locationBucket(b)] || 0) - (locationOrder[locationBucket(a)] || 0);
+  const compareDefault = (a, b) =>
+    compareScore(a, b) || compareLocation(a, b) || postedTimestamp(b) - postedTimestamp(a);
+  const compareLatest = (a, b) =>
+    postedTimestamp(b) - postedTimestamp(a) || compareLocation(a, b) || rankingScore(b) - rankingScore(a);
   const compareMatch = (a, b) =>
-    compareLocation(a, b) || personalMatchScore(b) - personalMatchScore(a) || compareScore(a, b);
+    personalMatchScore(b) - personalMatchScore(a) || compareLocation(a, b) || postedTimestamp(b) - postedTimestamp(a);
+  const compareConfidence = (a, b) =>
+    confidenceScore(b) - confidenceScore(a) || compareLocation(a, b) || postedTimestamp(b) - postedTimestamp(a);
+  const compareWeight = (a, b) =>
+    (Number(b.weight) || Number(b.score) || 0) - (Number(a.weight) || Number(a.score) || 0) || compareDefault(a, b);
 
-  if (mode === "latest") {
-    records.sort(
-      (a, b) =>
-        compareLocation(a, b) ||
-        postedTimestamp(b) - postedTimestamp(a) ||
-        rankingScore(b) - rankingScore(a) ||
-        compareScore(a, b),
-    );
-    return;
-  }
-  if (mode === "match") {
-    records.sort(compareMatch);
-    return;
-  }
-  if (mode === "confidence") {
-    records.sort(
-      (a, b) =>
-        compareLocation(a, b) ||
-        confidenceScore(b) - confidenceScore(a) ||
-        postedTimestamp(b) - postedTimestamp(a) ||
-        compareMatch(a, b),
-    );
-    return;
-  }
-  if (mode === "weight") {
-    records.sort(compareScore);
-    return;
-  }
-  records.sort(
-    (a, b) =>
-      compareLocation(a, b) ||
-      rankingScore(b) - rankingScore(a) ||
-      postedTimestamp(b) - postedTimestamp(a) ||
-      compareScore(a, b),
-  );
+  const tieBreaker =
+    mode === "latest"
+      ? compareLatest
+      : mode === "match"
+        ? compareMatch
+        : mode === "confidence"
+          ? compareConfidence
+          : mode === "weight"
+            ? compareWeight
+            : compareDefault;
+
+  records.sort((a, b) => compareScore(a, b) || tieBreaker(a, b));
 }
 
 function matchesPreset(item) {
@@ -2798,11 +3133,12 @@ function matchesPreset(item) {
   }
   if (state.preset === "chinese") {
     return (
-      ["barcelona", "remote", "madrid"].includes(location) &&
+      ["barcelona", "remote"].includes(location) &&
       isChineseRelevant(item) &&
       isTargetOpportunity(item) &&
       direction !== "other" &&
       ["A", "B", "C"].includes(item.tier) &&
+      !isInternshipRole(item) &&
       !isResearchOnly(item) &&
       applicationStatus(item).key !== "closed"
     );
@@ -2828,7 +3164,7 @@ function matchesPreset(item) {
     const text = `${item.opportunity || ""} ${item.fit || ""} ${item.status || ""} ${item.analysis || ""} ${item.searchText || ""}`;
     const motionOrSystem = /brand system|visual identity|brand guideline|design system|motion|motion graphics|art direction|品牌系统|视觉识别|品牌指南|设计系统|动效|动态|艺术指导/i.test(text);
     return (
-      ["barcelona", "remote", "madrid"].includes(location) &&
+      ["barcelona", "remote"].includes(location) &&
       ["brand", "digital"].includes(direction) &&
       motionOrSystem &&
       ["A", "B", "C"].includes(item.tier) &&
@@ -2898,14 +3234,35 @@ function directionKey(item) {
 }
 
 function locationBucket(item) {
-  if (item.locationTag === "Other / unclear") return "other";
+  // Round 657: a China-based remote card has no explicit Spain eligibility;
+  // keep it manual-only even though the curated legacy row used `remote`.
+  if (Number(item?.id) === 916) return "other";
+  // Round 705: MANGO's Fashion Art Director is in Palau-solità i Plegamans,
+  // Barcelona province, not Barcelona city; keep it out of the default local view.
+  if (Number(item?.id) === 930705) return "other";
+  if (/^Other\s*\//i.test(String(item.locationTag || "")) || item.locationTag === "Other / unclear") return "other";
   const curated = CURATED[item.id];
   if (curated?.locationKey) return curated.locationKey;
   const text = `${item.location || ""} ${item.rawColumns?.Location || ""}`;
+  // Spanish cities outside Barcelona are manual-only, even when a legacy
+  // record happened to carry an old "Barcelona area" location tag.
+  if (/\bsils\b|\bgirona\b|\barcore\b/i.test(text)) return "other";
   if (/madrid|马德里|getafe|alcobendas|seseña|pinto|parla|fuenlabrada|humanes/i.test(text)) {
     return "madrid";
   }
-  const hasEuropeRemoteSignal = /remote|remoto|远程|europe|eu based|europe-wide/i.test(text);
+  // Multi-office postings can enumerate Barcelona alongside London, Amsterdam
+  // or other cities.  When Barcelona is explicitly one of the eligible
+  // locations, it is a Barcelona opportunity—not an "other city" role.
+  if (
+    item.locationTag === "Barcelona area" &&
+    /barcelona|barcelon|巴塞|badalona|cornell|hospitalet|sant cugat|gl[oò]ries/i.test(text) &&
+    !/not barcelona|rather than barcelona|非巴塞|不在巴塞/i.test(text)
+  ) {
+    return "barcelona";
+  }
+  const hasRemoteSignal = /remote|remoto|远程/i.test(text);
+  const hasSpainEuropeEligibility = /spain|espa[nñ]a|europe|european|\beu\b|eu[- ]based|europe[- ]wide|eea|iberia/i.test(text);
+  const isGlobalOnlyRemote = /global(?:ly)?\s+remote|worldwide|work\s+from\s+anywhere|remote\s+anywhere|anywhere\s+in\s+the\s+world/i.test(text);
   const hasOnsiteOnlySignal = /on[- ]?site|onsite|office[- ]?only|现场办公|办公室办公/i.test(text);
   if (
     /not barcelona|rather than barcelona|非巴塞|不在巴塞|valencia|warsaw|shanghai|上海|london|paris|lisbon|milano|milan|berlin|amsterdam|hoofddorp|schiedam|courbevoie|uxbridge|budapest/i.test(
@@ -2914,18 +3271,22 @@ function locationBucket(item) {
   ) {
     return "other";
   }
+  // “Remote” by itself is not Spain/Europe eligibility. Global contractor
+  // pages remain manual-only unless their original detail names an EU/Spain
+  // scope or this record was already explicitly curated as Europe remote.
+  if (isGlobalOnlyRemote && !hasSpainEuropeEligibility) return "other";
   // An explicit location tag is stronger than a generic word such as
   // "remote" in a global listing. Do not turn worldwide/unclear jobs into
   // Spain-eligible remote roles merely because the description says remote.
-  if (item.locationTag === "Other / unclear") return "other";
+  if (/^Other\s*\//i.test(String(item.locationTag || "")) || item.locationTag === "Other / unclear") return "other";
   if (item.locationTag === "Barcelona area") return "barcelona";
   if (item.locationTag === "Madrid area") return "madrid";
   if (item.locationTag === "Remote / Europe" && !hasOnsiteOnlySignal) return "remote";
-  if (hasEuropeRemoteSignal && !hasOnsiteOnlySignal) return "remote";
+  if (hasRemoteSignal && hasSpainEuropeEligibility && !hasOnsiteOnlySignal) return "remote";
   if (/barcelona|barcelon|巴塞|badalona|cornell|hospitalet|sant cugat|gl[oò]ries/i.test(text)) {
     return "barcelona";
   }
-  if (/remote|remoto|远程|europe|eu based|europe-wide|hybrid/i.test(text)) return "remote";
+  if (hasRemoteSignal && hasSpainEuropeEligibility && !hasOnsiteOnlySignal) return "remote";
   if (item.locationTag === "Barcelona area") return "barcelona";
   if (item.locationTag === "Remote / Europe") return "remote";
   if (item.locationTag === "Madrid area") return "madrid";
@@ -2933,6 +3294,7 @@ function locationBucket(item) {
 }
 
 function locationLabel(item) {
+  if (Number(item?.id) === 916) return "中国远程 / 西班牙资格未确认（手动查看）";
   const curated = CURATED[item.id];
   if (curated?.locationLabel) return curated.locationLabel;
   if (curated) {
@@ -3151,7 +3513,43 @@ function isKnownClosedRoute(item) {
 }
 
 function applicationStatus(item) {
+  if ([206, 930720].includes(Number(item?.id))) {
+    return { key: "verify", label: "Needs verification" };
+  }
+  // Round 709: these three official current routes have readable application
+  // paths in their latest audits; do not let older curated verify snapshots
+  // hide the current submission route.
+  if ([55, 1023, 1217, 224, 886, 920001, 930711, 930719].includes(Number(item?.id))) {
+    return { key: "live", label: "椤甸潰鏄剧ず鍙姇" };
+  }
+  /*
+  if ([206, 930720].includes(Number(item?.id))) {
+    return { key: "verify", label: "闂団偓閸忓牏鈥樼拋銈囧Ц閹? };
+  }
+  */
+  if (Number(item?.id) === 999999) {
+    return { key: "closed", label: "宸插叧闂?/ 鍘嗗彶" };
+  }
+  // Round 708: the current Chinese-source category index is evidence that
+  // the canonical Barcelona lead is present again, but its individual detail
+  // route is still unreadable; never let the older curated live snapshot
+  // overrule the newer verify-first audit.
+  if (Number(item?.id) === 778) {
+    return { key: "verify", label: "闇€鍏堢‘璁ょ姸鎬?" };
+  }
   if (isKnownClosedRoute(item)) {
+    return { key: "closed", label: "已关闭 / 历史" };
+  }
+  // A later direct original-page audit must override any earlier curated
+  // “live” snapshot. ATS pages commonly stay indexed after applications
+  // close, so explicit closure wording is the stronger evidence.
+  const explicitClosureText = String(item.status || "");
+  if (
+    /^closed\/history:/i.test(explicitClosureText) &&
+    /no longer accept|no longer active|no longer available|ya no se aceptan|archived|expired|\bclosed\b|couldn['’]t find this job|this job doesn['’]t exist|this job was removed|page you are looking for doesn['’]t exist/i.test(
+      explicitClosureText,
+    )
+  ) {
     return { key: "closed", label: "已关闭 / 历史" };
   }
   const curated = CURATED[item.id];
@@ -3164,7 +3562,7 @@ function applicationStatus(item) {
 
   const text = `${item.opportunity || ""} ${item.status || ""} ${item.analysis || ""} ${item.contact || ""}`;
   if (
-    /no longer accept|no longer active|no longer available|ya no se aceptan|archived|expired|\bclosed\b|redirects? to (?:an )?expired|listing has just closed|not a live confirmed opening|已过期|已关闭|不再接受|已经下架|官方已下架|已撤下|职位已关闭|不能按在招|已被.{0,24}(?:替代|取代)/i.test(
+    /no longer accept|no longer active|no longer available|ya no se aceptan|archived|expired|\bclosed\b|redirects? to (?:an )?expired|listing has just closed|not a live confirmed opening|couldn['’]t find this job|this job doesn['’]t exist|this job was removed|page you are looking for doesn['’]t exist|已过期|已关闭|不再接受|已经下架|官方已下架|已撤下|职位已关闭|不能按在招|已被.{0,24}(?:替代|取代)/i.test(
       text,
     )
   ) {
@@ -3174,7 +3572,7 @@ function applicationStatus(item) {
     return { key: "verify", label: "需先确认状态" };
   }
   if (
-    /still (?:has|shows).{0,20}(?:apply|solicitar)|(?:has|with) (?:an? )?(?:apply|solicitar)|shows? [“"]?(?:apply|solicitar)|apply for this role|live with apply|仍有[“"]?Solicitar|仍显示[“"]?(?:Apply|Solicitar|申请|投递)|可直接申请|可直接提交|仍可申请|官方.{0,24}(?:申请|投递).{0,16}(?:开放|入口)|live.{0,20}(?:role|vacancy|application)|current.{0,24}(?:apply|application)|显示“Enviar solicitud”|显示“ENVÍA TU CV”/i.test(
+    /still (?:has|shows).{0,20}(?:apply|solicitar)|(?:has|with) (?:an? )?(?:apply|solicitar)|shows? [“"]?(?:apply|solicitar)|visibly shows.{0,250}apply for this job|apply for this role|live with apply|仍有[“"]?Solicitar|仍显示[“"]?(?:Apply|Solicitar|申请|投递)|可直接申请|可直接提交|仍可申请|官方.{0,24}(?:申请|投递).{0,16}(?:开放|入口)|live.{0,20}(?:role|vacancy|application)|current.{0,24}(?:apply|application)|显示“Enviar solicitud”|显示“ENVÍA TU CV”/i.test(
       text,
     )
   ) {
@@ -3427,12 +3825,19 @@ function linkifyOriginal(value) {
 }
 
 function identityKey(item) {
+  const links = toLinks(item);
+  // This requisition has repeatedly re-entered the tracker as a fresh row
+  // after Teamtailor closed it. Match the official requisition before legacy
+  // id aliases so the closure audit and every regenerated mirror share one
+  // identity.
+  if (links.some((link) => /careers\.eurofragance\.com\/jobs\/7079723-/i.test(link))) {
+    return "ats:eurofragance:7079723";
+  }
   const alias = IDENTITY_ALIASES[item.id];
   if (alias) return `alias:${alias}`;
 
-  const links = toLinks(item);
   const specific = links.find((link) =>
-    /\/jobs\/view\/|viewthread|info-\d+|\.pdf(?:$|\?)|\/S\d+\.html/i.test(link),
+    /\/jobs\/view\/|\/jobs\/\d+-|job-boards\.greenhouse\.io\/[^/]+\/jobs\/\d+|careers\.eurofragance\.com\/jobs\/|jobs\.ashbyhq\.com\/[^/]+\/[0-9a-f-]{20,}|viewthread|info-\d+|\.pdf(?:$|\?)|\/S\d+\.html/i.test(link),
   );
   if (specific) {
     try {
@@ -3450,6 +3855,11 @@ function identityKey(item) {
 
 function dedupe(records) {
   const preference = (item) =>
+    // This official Eurofragance closure audit is stronger than an older
+    // index/aggregator snapshot using the exact same requisition URL. It is
+    // deliberately narrow: broad closure preference would incorrectly merge
+    // different historical and current requisitions under shared aliases.
+    (identityKey(item) === "ats:eurofragance:7079723" && applicationStatus(item).key === "closed" ? 1000000 : 0) +
     (CURATED[item.id]?.changeType === "refresh" ? 100000 : 0) +
     (item.postedAt ? 10000 : 0) +
     (item.score || 0);
@@ -3464,17 +3874,33 @@ function dedupe(records) {
 }
 
 const dedupedData = dedupe(allData);
-const latestRoundSection = allData.reduce(
-  (latest, item) =>
-    /第.+轮/.test(item.section || "") && item.id > latest.id
-      ? { id: item.id, section: item.section }
-      : latest,
-  { id: 0, section: "" },
-).section;
-const latestRoundItems = dedupe(allData.filter((item) => item.section === latestRoundSection)).filter(
-  (item) => item.tier !== "X",
-);
-const priorityItems = PRIORITY_IDS.map((id) => allData.find((item) => item.id === id)).filter(Boolean);
+function roundRank(item) {
+  const section = String(item.section || "");
+  if (!/(第.+轮|Round\s*\d+)/i.test(section)) return null;
+  const dateMatch = section.match(/\b(20\d{2}-\d{2}-\d{2})\b/);
+  const date = dateMatch ? Date.parse(`${dateMatch[1]}T00:00:00Z`) : 0;
+  const englishRound = Number(section.match(/Round\s*(\d+)/i)?.[1] || 0);
+  return { date, englishRound, id: Number(item.id) || 0, section };
+}
+
+const latestRoundSection = allData.reduce((latest, item) => {
+  const candidate = roundRank(item);
+  if (!candidate) return latest;
+  if (
+    candidate.date > latest.date ||
+    (candidate.date === latest.date && candidate.englishRound > latest.englishRound) ||
+    (candidate.date === latest.date && candidate.englishRound === latest.englishRound && candidate.id > latest.id)
+  ) {
+    return candidate;
+  }
+  return latest;
+}, { date: 0, englishRound: 0, id: 0, section: "" }).section;
+// “本轮变化” is an audit log as well as a discovery queue. Keep cards moved
+// to history visible here, so a closure-only round never looks empty.
+const latestRoundItems = dedupe(allData.filter((item) => item.section === latestRoundSection));
+const priorityItems = PRIORITY_IDS.map((id) => allData.find((item) => item.id === id))
+  .filter(Boolean);
+sortRecords(priorityItems);
 
 function progressKey(item) {
   return identityKey(item);
@@ -3629,7 +4055,11 @@ function baseRecords() {
   if (state.sourceLibrary === "chinese") {
     const chineseRecords = dedupedData.filter((item) => sourceGroup(item) === "chinese");
     return chineseRecords.filter((item) =>
-      state.sourceLibraryView === "closed" ? isClosedLibraryRecord(item) : !isClosedLibraryRecord(item),
+      state.sourceLibraryView === "closed"
+        ? isClosedLibraryRecord(item)
+        : state.sourceLibraryView === "review"
+          ? isReviewLibraryRecord(item)
+          : !isClosedLibraryRecord(item) && !isReviewLibraryRecord(item),
     );
   }
   if (state.scope === "latestRound") {
@@ -3656,7 +4086,18 @@ function matchesFilters(item, ignoreSource = false) {
   if (els.excludeLowPay.checked && hasLowPayRisk(item)) return false;
   if (els.excludeInternships.checked && isInternshipRole(item)) return false;
   if (els.directionFilter.value !== "all" && directionKey(item) !== els.directionFilter.value) return false;
-  if (els.locationFilter.value !== "all" && locationBucket(item) !== els.locationFilter.value) return false;
+  if (
+    els.locationFilter.value === "priority" &&
+    !["barcelona", "remote"].includes(locationBucket(item))
+  ) {
+    return false;
+  }
+  if (
+    !["all", "priority"].includes(els.locationFilter.value) &&
+    locationBucket(item) !== els.locationFilter.value
+  ) {
+    return false;
+  }
   if (
     els.languageFilter.value !== "all" &&
     applicationLanguagePath(item).key !== els.languageFilter.value
@@ -3697,28 +4138,62 @@ function matchesFilters(item, ignoreSource = false) {
 }
 
 function isClosedLibraryRecord(item) {
-  return item.tier === "X" || applicationStatus(item).key === "closed";
+  // Keep genuinely closed or non-vacancy research rows out of the usable pool.
+  // A page can remain online after a vacancy closes, so page accessibility is
+  // not treated as proof that the opening is live.
+  return applicationStatus(item).key === "closed" || (isResearchOnly(item) && applicationStatus(item).key !== "verify");
+}
+
+function isReviewLibraryRecord(item) {
+  // Unconfirmed pages, including X-tier/risk-tagged rows, belong in a review
+  // queue instead of being labelled closed. This preserves evidence for a
+  // manual recheck without promoting it to the usable pool.
+  return (
+    applicationStatus(item).key === "verify" &&
+    (item.tier === "X" || isResearchOnly(item))
+  );
 }
 
 function updateSourceCounts(records) {
   const base = records.filter((item) => matchesFilters(item, true));
   const chineseLibrarySize = dedupedData.filter((item) => sourceGroup(item) === "chinese").length;
   const chineseActiveSize = dedupedData.filter(
-    (item) => sourceGroup(item) === "chinese" && !isClosedLibraryRecord(item),
+    (item) =>
+      sourceGroup(item) === "chinese" &&
+      !isClosedLibraryRecord(item) &&
+      !isReviewLibraryRecord(item),
   ).length;
-  const chineseClosedSize = chineseLibrarySize - chineseActiveSize;
+  const chinesePriorityActiveSize = dedupedData.filter(
+    (item) =>
+      sourceGroup(item) === "chinese" &&
+      !isClosedLibraryRecord(item) &&
+      !isReviewLibraryRecord(item) &&
+      ["barcelona", "remote"].includes(locationBucket(item)),
+  ).length;
+  const chineseReviewSize = dedupedData.filter(
+    (item) => sourceGroup(item) === "chinese" && isReviewLibraryRecord(item),
+  ).length;
+  const chineseClosedSize = dedupedData.filter(
+    (item) => sourceGroup(item) === "chinese" && isClosedLibraryRecord(item),
+  ).length;
   els.allSourceCount.textContent = base.length;
-  els.chineseCount.textContent = chineseActiveSize;
+  // The source-tab badge is the deduped Chinese-source library total. The
+  // active/closed split is shown separately below it; showing only the active
+  // count here made the library appear to shrink from the previous raw total.
+  els.chineseCount.textContent = chineseLibrarySize;
   els.chineseActiveCount.textContent = chineseActiveSize;
+  els.chineseReviewCount.textContent = chineseReviewSize;
   els.chineseClosedCount.textContent = chineseClosedSize;
   els.linkedinCount.textContent = base.filter((item) => sourceGroup(item) === "linkedin").length;
   els.otherCount.textContent = base.filter((item) => sourceGroup(item) === "other").length;
   const chineseRawCount = allData.filter((item) => sourceGroup(item) === "chinese").length;
   els.sourceTabsNote.textContent =
     state.sourceLibrary === "chinese"
-      ? state.sourceLibraryView === "closed"
+      ? state.sourceLibraryView === "review"
+        ? `当前查看页面仍可复核分栏，共 ${chineseReviewSize} 条；页面仍可打开，但岗位状态、雇主或投递入口尚未确认。中文来源原始线索共 ${chineseRawCount} 条。`
+        : state.sourceLibraryView === "closed"
         ? `当前查看关闭 / 历史 / 排除分栏，共 ${chineseClosedSize} 条；这些记录保留作证据和复盘，不应占用当前申请时间。中文来源原始线索共 ${chineseRawCount} 条。`
-        : `当前查看华人中文可用池，共 ${chineseActiveSize} 条；默认排除关闭、过期和风险排除记录。中文来源原始线索共 ${chineseRawCount} 条。`
+        : `当前查看华人中文可用池（Barcelona + 欧洲远程），共 ${chinesePriorityActiveSize} 条；马德里和其他城市仅在“地点”中手动切换后显示。中文来源原始线索共 ${chineseRawCount} 条。`
       : `来源分布按当前筛选统计；点击“华人中文全库（去重）”可进入中文来源分栏。原始中文来源线索共 ${chineseRawCount} 条。`;
 }
 
@@ -3735,6 +4210,7 @@ function renderResultCard(item) {
   const labor = laborConditionInfo(item);
 
   card.dataset.tier = item.tier || "";
+  card.dataset.score = String(displayedScore(item));
   card.querySelector(".result-card__badges").innerHTML = `
     <span class="tier-badge tier-badge--${escapeHtml(item.tier || "none")}">${escapeHtml(tierLabel(item.tier))}</span>
     ${curated?.changeType === "new" ? '<span class="change-badge change-badge--new">本轮新增</span>' : ""}
@@ -3839,7 +4315,11 @@ function renderResults() {
   }
 
   const fragment = document.createDocumentFragment();
-  visible.slice(0, state.limit).forEach((item) => fragment.appendChild(renderResultCard(item)));
+  visible.slice(0, state.limit).forEach((item, index) => {
+    const card = renderResultCard(item);
+    card.dataset.sortIndex = String(index);
+    fragment.appendChild(card);
+  });
   els.resultsList.appendChild(fragment);
 
   els.loadMore.hidden = visible.length <= state.limit;
@@ -3906,7 +4386,10 @@ function applyPreset(preset) {
   state.progressFilter = "all";
   els.searchInput.value = "";
   els.directionFilter.value = "all";
-  els.locationFilter.value = "all";
+  // All named presets are Barcelona-first. Madrid remains available only
+  // through an explicit location choice; it must never leak into the main
+  // Chinese/brand browsing flow just because a source tab was opened.
+  els.locationFilter.value = preset === "none" ? "all" : "priority";
   els.languageFilter.value = "all";
   els.statusFilter.value = "open";
   els.freshnessFilter.value = "all";
@@ -3929,6 +4412,10 @@ function clearPresetForManualFilters() {
   state.preset = "none";
   state.sourceLibrary = false;
   state.sourceLibraryView = "active";
+  // Every navigation/filter entry returns to the site's canonical order:
+  // composite score, highest first. Alternative orders remain available only
+  // when the user explicitly selects them in the sort control.
+  els.sortFilter.value = "smart";
   syncPresetUi();
   syncChineseLibraryUi();
 }
@@ -3942,11 +4429,17 @@ function activateChineseLibrary(view = "active") {
   state.progressFilter = "all";
   els.searchInput.value = "";
   els.directionFilter.value = "all";
-  els.locationFilter.value = "all";
+  // The Chinese source library is a Barcelona-first work queue. Users can
+  // still choose Madrid or all locations manually from the location filter.
+  els.locationFilter.value = "priority";
   els.languageFilter.value = "all";
   els.statusFilter.value = "all";
   els.freshnessFilter.value = "all";
-  els.sortFilter.value = "latest";
+  // The Chinese-community library is still a source view, not a freshness
+  // view. Default it to the same score-descending order as the main board so
+  // a 71-point card cannot appear before a 96-point card. Users can still
+  // choose “最新发布” manually from the sort selector when needed.
+  els.sortFilter.value = "smart";
   els.laborFilter.value = "all";
   els.experienceFilter.value = "all";
   els.riskFilter.value = "all";

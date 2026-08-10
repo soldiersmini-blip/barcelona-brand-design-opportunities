@@ -158,12 +158,12 @@
               <p class="section-kicker">按你的条件定制</p>
               <h3 id="personalFilterTitle">一键切换求职策略</h3>
             </div>
-            <p id="presetNote">默认只显示有明确中文联系路径的 Barcelona / 西班牙远程机会；仅能先中文确认、全球远程或地点未确认的岗位会留在含门槛中文池。</p>
+            <p id="presetNote">默认显示 Barcelona / 明确 Spain 或 Europe remote 的中文方向机会；基础西语、英文或合同门槛会在卡片上明示。全球远程但未确认西班牙资格的岗位不会混进默认列表。</p>
           </div>
           <div class="preset-buttons" role="group" aria-label="个性化筛选">
-            <button class="preset-button is-active" type="button" data-preset="profile">中文能投（默认）</button>
+            <button class="preset-button" type="button" data-preset="profile">仅中文可直接联系</button>
             <button class="preset-button" type="button" data-preset="actionable">现在可联系</button>
-            <button class="preset-button" type="button" data-preset="chinese">全部中文方向（含门槛）</button>
+            <button class="preset-button is-active" type="button" data-preset="chinese">巴塞中文方向（默认）</button>
             <button class="preset-button" type="button" data-preset="stable">偏正式 / 避开低薪实习</button>
             <button class="preset-button" type="button" data-preset="core">品牌系统 / motion 核心</button>
           </div>
@@ -243,7 +243,8 @@
           <label>
             <span>地点</span>
             <select id="locationFilter">
-              <option value="all">全部地点</option>
+              <option value="priority" selected>Barcelona + 欧洲远程（默认）</option>
+              <option value="all">全部地点（含马德里 / 其他）</option>
               <option value="barcelona">巴塞罗那及周边</option>
               <option value="remote">远程 / 欧洲</option>
               <option value="madrid">马德里及周边</option>
@@ -288,13 +289,13 @@
           </label>
 
           <label>
-            <span>排序方式</span>
+            <span>排序方式（综合分始终从高到低）</span>
             <select id="sortFilter">
-              <option value="smart">智能推荐</option>
-              <option value="latest">最新发布</option>
-              <option value="match">与你最匹配</option>
-              <option value="confidence">投递可信度</option>
-              <option value="weight">原始权重</option>
+              <option value="smart">综合分（高 → 低，默认）</option>
+              <option value="latest">综合分（高 → 低；同分看最新）</option>
+              <option value="match">综合分（高 → 低；同分看匹配）</option>
+              <option value="confidence">综合分（高 → 低；同分看可信度）</option>
+              <option value="weight">综合分（高 → 低；同分看权重）</option>
             </select>
           </label>
 
@@ -372,6 +373,9 @@
           <span class="source-library-filter__label">中文来源分栏</span>
           <button class="source-library-view is-active" type="button" data-library-view="active">
             可用 / 待核验 <span id="chineseActiveCount">0</span>
+          </button>
+          <button class="source-library-view" type="button" data-library-view="review">
+            页面仍可复核<span id="chineseReviewCount">0</span>
           </button>
           <button class="source-library-view" type="button" data-library-view="closed">
             关闭 / 历史 / 排除 <span id="chineseClosedCount">0</span>
