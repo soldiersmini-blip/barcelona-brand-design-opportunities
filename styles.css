@@ -1989,3 +1989,14 @@ a.contact-token:hover {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* The board is for reading opportunity cards; keep the data controls in the
+   runtime for compatibility, but remove the unused filter dashboard from the
+   user-facing layout. Source tabs and the Chinese active/review/history split
+   remain available because they are the meaningful browsing sections. */
+.database-section > .personal-filter,
+.database-section > .scope-switcher,
+.database-section > .filters,
+.database-section > .progress-filter-bar {
+  display: none !important;
+}
