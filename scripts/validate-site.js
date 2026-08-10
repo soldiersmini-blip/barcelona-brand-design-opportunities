@@ -199,8 +199,12 @@ check(
 );
 check(indexHtml.includes('value="priority"'), "缺少 Barcelona + Europe remote 默认地点范围");
 check(
-  appSource.includes('els.locationFilter.value = "priority";'),
-  "中文来源库没有默认锁定 Barcelona + Europe remote",
+  appSource.includes('els.locationFilter.value = preset === "none" ? "all" : "priority";'),
+  "首页默认预设没有锁定 Barcelona + Europe remote",
+);
+check(
+  appSource.includes('state.sourceLibrary = "chinese"') && appSource.includes('els.locationFilter.value = "all";'),
+  "中文来源全库没有切换到全部地点以保留完整证据",
 );
 
 const sortModes = ["smart", "latest", "match", "confidence", "weight"];

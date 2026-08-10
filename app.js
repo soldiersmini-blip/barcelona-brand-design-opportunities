@@ -4193,7 +4193,7 @@ function updateSourceCounts(records) {
         ? `当前查看页面仍可复核分栏，共 ${chineseReviewSize} 条；页面仍可打开，但岗位状态、雇主或投递入口尚未确认。中文来源原始线索共 ${chineseRawCount} 条。`
         : state.sourceLibraryView === "closed"
         ? `当前查看关闭 / 历史 / 排除分栏，共 ${chineseClosedSize} 条；这些记录保留作证据和复盘，不应占用当前申请时间。中文来源原始线索共 ${chineseRawCount} 条。`
-        : `当前查看华人中文可用池（Barcelona + 欧洲远程），共 ${chineseActiveSize} 条；数字与当前显示的卡片数量保持一致。马德里和其他城市仅在“地点”中手动切换后显示。中文来源原始线索共 ${chineseRawCount} 条。`
+        : `当前查看华人中文全库可用池，共 ${chineseActiveSize} 条；数字与当前显示的卡片数量保持一致。Barcelona 卡片按分数优先，马德里和其他城市在这里保留并带地点标签。中文来源原始线索共 ${chineseRawCount} 条。`
       : `来源分布按当前筛选统计；点击“华人中文全库（去重）”可进入中文来源分栏。原始中文来源线索共 ${chineseRawCount} 条。`;
 }
 
@@ -4429,9 +4429,10 @@ function activateChineseLibrary(view = "active") {
   state.progressFilter = "all";
   els.searchInput.value = "";
   els.directionFilter.value = "all";
-  // The Chinese source library is a Barcelona-first work queue. Users can
-  // still choose Madrid or all locations manually from the location filter.
-  els.locationFilter.value = "priority";
+  // The Chinese source library is the full deduped source library. The
+  // homepage remains Barcelona/Europe-remote only; other locations are shown
+  // here with their labels instead of disappearing from the source archive.
+  els.locationFilter.value = "all";
   els.languageFilter.value = "all";
   els.statusFilter.value = "all";
   els.freshnessFilter.value = "all";
