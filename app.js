@@ -4157,25 +4157,25 @@ function isReviewLibraryRecord(item) {
 function updateSourceCounts(records) {
   const base = records.filter((item) => matchesFilters(item, true));
   const chineseLibrarySize = dedupedData.filter((item) => sourceGroup(item) === "chinese").length;
-  const chineseActiveSize = dedupedData.filter(
+  const chineseActiveRecords = dedupedData.filter(
     (item) =>
       sourceGroup(item) === "chinese" &&
       !isClosedLibraryRecord(item) &&
       !isReviewLibraryRecord(item),
-  ).length;
-  const chinesePriorityActiveSize = dedupedData.filter(
-    (item) =>
-      sourceGroup(item) === "chinese" &&
-      !isClosedLibraryRecord(item) &&
-      !isReviewLibraryRecord(item) &&
-      ["barcelona", "remote"].includes(locationBucket(item)),
-  ).length;
-  const chineseReviewSize = dedupedData.filter(
+  );
+  const chineseReviewRecords = dedupedData.filter(
     (item) => sourceGroup(item) === "chinese" && isReviewLibraryRecord(item),
-  ).length;
-  const chineseClosedSize = dedupedData.filter(
+  );
+  const chineseClosedRecords = dedupedData.filter(
     (item) => sourceGroup(item) === "chinese" && isClosedLibraryRecord(item),
-  ).length;
+  );
+  // Keep badge counts aligned with the cards currently rendered. The old
+  // badge counted the whole active pool (55) while the default filters only
+  // rendered the seven Barcelona/remote cards that passed them.
+  const visibleUnderCurrentFilters = (item) => matchesFilters(item, true);
+  const chineseActiveSize = chineseActiveRecords.filter(visibleUnderCurrentFilters).length;
+  const chineseReviewSize = chineseReviewRecords.filter(visibleUnderCurrentFilters).length;
+  const chineseClosedSize = chineseClosedRecords.filter(visibleUnderCurrentFilters).length;
   els.allSourceCount.textContent = base.length;
   // The source-tab badge is the deduped Chinese-source library total. The
   // active/closed split is shown separately below it; showing only the active
@@ -4193,7 +4193,7 @@ function updateSourceCounts(records) {
         ? `当前查看页面仍可复核分栏，共 ${chineseReviewSize} 条；页面仍可打开，但岗位状态、雇主或投递入口尚未确认。中文来源原始线索共 ${chineseRawCount} 条。`
         : state.sourceLibraryView === "closed"
         ? `当前查看关闭 / 历史 / 排除分栏，共 ${chineseClosedSize} 条；这些记录保留作证据和复盘，不应占用当前申请时间。中文来源原始线索共 ${chineseRawCount} 条。`
-        : `当前查看华人中文可用池（Barcelona + 欧洲远程），共 ${chinesePriorityActiveSize} 条；马德里和其他城市仅在“地点”中手动切换后显示。中文来源原始线索共 ${chineseRawCount} 条。`
+        : `当前查看华人中文可用池（Barcelona + 欧洲远程），共 ${chineseActiveSize} 条；数字与当前显示的卡片数量保持一致。马德里和其他城市仅在“地点”中手动切换后显示。中文来源原始线索共 ${chineseRawCount} 条。`
       : `来源分布按当前筛选统计；点击“华人中文全库（去重）”可进入中文来源分栏。原始中文来源线索共 ${chineseRawCount} 条。`;
 }
 
