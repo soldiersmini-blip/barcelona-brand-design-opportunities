@@ -10782,6 +10782,30 @@ foreach ($finalRecord in $records) {
   }
 }
 
+# Round 726: close the InfoHuaxin graphic-design lead after the user's current
+# board capture and a fresh feed check showed that post 4277693 is no longer
+# present in the live recruitment index. The old category-page snapshot is
+# retained as provenance, but it is not enough to keep a current application
+# card or an 86-point score. Normalize every same-route mirror together.
+foreach ($finalRecord in $records) {
+  if ((@($finalRecord.links) | ForEach-Object { [string]$_ }) -join ' ' -match '(?i)4277693') {
+    $finalRecord.section = '2026-08-10 Round 726 current-feed closure audit'
+    $finalRecord.source = 'InfoHuaxin / former Chinese-source listing'
+    <#
+    $finalRecord.opportunity = '全职平面设计师（华信旧帖）'
+    #>
+    $finalRecord.opportunity = 'Full-time Graphic Designer (historical)'
+    $finalRecord.fit = 'Former Barcelona Chinese-source graphic-design lead retained for provenance only; no current original detail confirmed'
+    $finalRecord.location = 'Barcelona; historical Chinese-source listing; current availability not confirmed'
+    $finalRecord.status = 'Closed/history: the current InfoHuaxin recruitment feed was checked against the user-provided 2026-08-09 board capture and no longer contains original post 4277693. The individual route is not readable as a current detail page. Earlier category-index text mentioned a Barcelona full-time graphic-design post, but that stale index snapshot is insufficient to present an active opportunity. Re-open only if the employer reposts a named role with a current detail page and verifiable application route.'
+    $finalRecord.contact = 'Historical source route: https://infohuaxin.com/showinfo.asp?id=4277693 ; category index retained for evidence: https://infohuaxin.com/showclass.asp?class1=13 ; contact from old snapshot: WeChat A644055418 / phone 0034-644055418'
+    $finalRecord.analysis = 'Move to closed/history. Do not contact from the old card as if a vacancy were confirmed; only re-check if the same employer publishes a new named design listing.'
+    $finalRecord.score = 10; $finalRecord.tier = 'X'; $finalRecord.locationTag = 'Other / historical Barcelona listing'; $finalRecord.typeTag = 'Historical graphic-design lead; no current detail'; $finalRecord.sourceGroup = 'chinese'; $finalRecord.postedAt = '2026-07-22'; $finalRecord.freshnessTag = 'older'; $finalRecord.freshnessAgeDays = 19
+    $finalRecord.links = @('https://infohuaxin.com/showinfo.asp?id=4277693','https://infohuaxin.com/showclass.asp?class1=13')
+    $finalRecord.searchText = 'InfoHuaxin 4277693 current feed checked 2026 08 10 user board capture no longer contains original post historical Barcelona Chinese graphic designer stale category snapshot closed history A644055418 do not present as current'
+  }
+}
+
 # Use explicit numeric scriptblocks instead of a property-name sort so the
 # generated data order itself is score-descending, not only the browser view.
 $sorted = @($records | Sort-Object `

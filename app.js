@@ -3534,7 +3534,7 @@ function applicationStatus(item) {
   // the canonical Barcelona lead is present again, but its individual detail
   // route is still unreadable; never let the older curated live snapshot
   // overrule the newer verify-first audit.
-  if (Number(item?.id) === 778) {
+  if (Number(item?.id) === 778 && item?.tier !== "X") {
     return { key: "verify", label: "闇€鍏堢‘璁ょ姸鎬?" };
   }
   if (isKnownClosedRoute(item)) {

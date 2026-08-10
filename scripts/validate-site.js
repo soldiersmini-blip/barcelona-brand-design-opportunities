@@ -266,7 +266,7 @@ check(test.applicationStatus(test.allData.find((item) => item.id === 1019)).key 
 check(test.allData.find((item) => item.id === 850).postedAt === "", "复核日期被错误当成 DashBook 发布日期");
 check(test.allData.find((item) => item.id === 859).postedAt === "", "复核日期被错误当成 Stripe Motion Designer 发布日期");
 check(test.allData.find((item) => item.id === 778).postedAt === "2026-07-22", "华人广告公司当前分类页日期没有被识别");
-check(test.allData.find((item) => item.id === 778).score === 86 && test.allData.find((item) => item.id === 778).tier === "C" && test.applicationStatus(test.allData.find((item) => item.id === 778)).key === "verify", "华信当前分类页仍列出的设计帖没有恢复为待核验状态");
+check(test.allData.find((item) => item.id === 778).score === 10 && test.allData.find((item) => item.id === 778).tier === "X" && test.applicationStatus(test.allData.find((item) => item.id === 778)).key === "closed", "华信旧分类页设计帖没有保持在关闭/历史状态");
 check([194, 499, 1382].every((id) => test.allData.find((item) => item.id === id).tier === "X"), "同联系方式的西华/分类网旧帖仍作为第二个活跃岗位出现");
 check(test.isChineseRelevant(test.allData.find((item) => item.id === 559)), "INFiLED 没有被识别为中文相关中国品牌岗位");
 check(test.isFreelanceRole(test.allData.find((item) => item.id === 855)), "Yellowcat 日薪自由职业岗位没有被识别");
@@ -823,7 +823,7 @@ check(r707DragonsLead && r707DragonsLead.score === 102 && test.locationBucket(r7
 const r707DragonsHealthcare = test.allData.find((item) => item.id === 930708);
 check(r707DragonsHealthcare && r707DragonsHealthcare.score === 96 && test.locationBucket(r707DragonsHealthcare) === "barcelona" && test.applicationStatus(r707DragonsHealthcare).key !== "closed", "Round 707: Dragons Senior Art Director Healthcare discovery regressed");
 const r708ChineseAd = test.allData.find((item) => item.id === 778);
-check(r708ChineseAd && r708ChineseAd.score === 86 && test.locationBucket(r708ChineseAd) === "barcelona" && test.applicationStatus(r708ChineseAd).key === "verify", "Round 708: current Chinese Barcelona graphic-design lead regressed");
+check(r708ChineseAd && r708ChineseAd.score === 10 && r708ChineseAd.tier === "X" && test.applicationStatus(r708ChineseAd).key === "closed", "Round 708/726: withdrawn InfoHuaxin graphic-design lead was not moved to history");
 const r709Adsmurai = test.allData.find((item) => item.id === 1023);
 check(r709Adsmurai && r709Adsmurai.score === 104 && test.locationBucket(r709Adsmurai) === "barcelona" && test.applicationStatus(r709Adsmurai).key === "live", "Round 709: Adsmurai Digital Art Director live-status refresh regressed");
 const r709Bcome = test.allData.find((item) => item.id === 55);
