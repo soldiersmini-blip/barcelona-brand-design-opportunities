@@ -235,11 +235,9 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 35/i.test(test.latestRoundSection) &&
-    [930880, 930881, 88, 778].every((id) =>
-      test.latestRoundItems.some((item) => Number(item.id) === id),
-    ),
-  "Round 33 的全榜失效入口没有完整进入‘本轮变化’",
+  /Round 36/i.test(test.latestRoundSection) &&
+    test.latestRoundItems.some((item) => Number(item.id) === 930882),
+  "Round 36 的新增官方远程岗位没有完整进入‘本轮变化’",
 );
 const round33AuditItems = test.allData.filter((item) => /Round 33 full-board direct-link reconciliation/i.test(String(item.section || "")));
 check(
@@ -1087,11 +1085,15 @@ check(r22Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Roun
 const r23ById = (id) => test.allData.find((item) => Number(item.id) === id);
 const r23Main = test.MY_OPPORTUNITY_IDS.map(r23ById).filter(Boolean);
 const r23VisibleMain = test.dedupedData.filter((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id)));
-check(test.MY_OPPORTUNITY_IDS.length === 199 && new Set(test.MY_OPPORTUNITY_IDS).size === 199, "Round 35: audited ID ledger must contain exactly 199 unique opportunities");
-check(r23Main.length === 199 && r23VisibleMain.length === 199, "Round 35: main ledger and visible deduplicated cards must both equal 199");
-check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 151 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 48, "Round 35: Barcelona/remote split must be exactly 151/48");
-check(r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 182 && r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 17, "Round 35: live/verify split must be exactly 182/17");
-check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 35: Chinese-relevant current opportunity count must remain evidence-backed at 6");
+check(test.MY_OPPORTUNITY_IDS.length === 200 && new Set(test.MY_OPPORTUNITY_IDS).size === 200, "Round 36: audited ID ledger must contain exactly 200 unique opportunities");
+check(r23Main.length === 200 && r23VisibleMain.length === 200, "Round 36: main ledger and visible deduplicated cards must both equal 200");
+check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 151 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 49, "Round 36: Barcelona/remote split must be exactly 151/49");
+check(r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 183 && r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 17, "Round 36: live/verify split must be exactly 183/17");
+check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 36: Chinese-relevant current opportunity count must remain evidence-backed at 6");
+const r36Duna = r23ById(930882);
+check(r36Duna && test.MY_OPPORTUNITY_SET.has(930882) && test.locationBucket(r36Duna) === "remote" && test.applicationStatus(r36Duna).key === "live", "Round 36: Duna Visual Designer is missing or misclassified");
+check(test.toLinks(r36Duna).some((url) => /jobs\.ashbyhq\.com\/duna\/6af4c831-00ee-4d94-93cb-709de9f1ee27$/i.test(url)) && test.toLinks(r36Duna).some((url) => /6af4c831-00ee-4d94-93cb-709de9f1ee27\/application$/i.test(url)), "Round 36: Duna exact job or application route is missing");
+check(test.MY_OPPORTUNITY_IDS.indexOf(1021) < test.MY_OPPORTUNITY_IDS.indexOf(930882) && test.MY_OPPORTUNITY_IDS.indexOf(930882) < test.MY_OPPORTUNITY_IDS.indexOf(930844), "Round 36: Duna audited rank is incoherent");
 for (const id of [930878, 930879]) {
   const item = r23ById(id);
   check(item && test.MY_OPPORTUNITY_SET.has(id) && test.locationBucket(item) === "barcelona" && test.applicationStatus(item).key === "live" && test.toLinks(item).length === 1, `Round 34: new Barcelona vacancy ${id} is missing, misclassified or lacks its exact application route`);

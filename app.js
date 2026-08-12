@@ -1371,6 +1371,38 @@ function applyRound35SourceUpdates() {
 
 applyRound35SourceUpdates();
 
+const ROUND36_SECTION = "2026-08-13 Round 36 official remote visual-design audit";
+[
+  {
+    id: 930882,
+    section: ROUND36_SECTION,
+    source: "Duna / official Ashby ATS and employer careers policy",
+    opportunity: "Visual Designer",
+    fit: "Worldwide remote full-time visual-design role; owns the visual language across GTM, web, presentations, social and information graphics; 3-6 years",
+    location: "Worldwide remote; Duna states that staff can work wherever and whenever they want; Barcelona/Spain residence is eligible, but the contract entity should be confirmed",
+    status: "Live/current. Duna's official careers page and Ashby job-board API were checked on 2026-08-13. The employer careers page lists Visual Designer as Mid/Senior and Remote. The exact Ashby record is listed, remote and full-time, with a working job detail and application route. The role creates sales decks, one-pagers, comparison charts, LinkedIn visuals, website and landing-page graphics, icons, illustrations, infographics and diagrams while working inside existing brand guidelines.",
+    contact: "Official detail: https://jobs.ashbyhq.com/duna/6af4c831-00ee-4d94-93cb-709de9f1ee27 ; official application: https://jobs.ashbyhq.com/duna/6af4c831-00ee-4d94-93cb-709de9f1ee27/application ; employer careers board: https://duna.com/careers ; employer remote policy: https://duna.com/careers/whats-in-it-for-you",
+    analysis: "A strong English-first remote route for visual brand extension rather than a new identity-system owner. Apply with concise cases for web and landing pages, sales presentations, social campaign systems, data visualisation, iconography and fast multi-format production. Confirm the Spain employment or contractor entity, salary range and occasional in-person expectations before accepting an interview process.",
+    score: 85,
+    tier: "B",
+    locationTag: "Worldwide remote",
+    typeTag: "Visual design / GTM / web / presentations / information graphics",
+    sourceGroup: "official",
+    postedAt: "2026-07-14",
+    freshnessTag: "month",
+    freshnessAgeDays: 30,
+    links: [
+      "https://jobs.ashbyhq.com/duna/6af4c831-00ee-4d94-93cb-709de9f1ee27",
+      "https://jobs.ashbyhq.com/duna/6af4c831-00ee-4d94-93cb-709de9f1ee27/application",
+      "https://duna.com/careers",
+      "https://duna.com/careers/whats-in-it-for-you",
+    ],
+    searchText: "Duna official Ashby Visual Designer remote worldwide full-time mid senior 3-6 years visual language GTM sales decks one-pagers comparison charts LinkedIn website landing pages icons illustrations infographics diagrams Adobe Figma brand guidelines work wherever Barcelona Spain",
+  },
+].forEach((record) => {
+  if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
+});
+
 // Round 20: a visible email or a fresh search-card timestamp cannot override a
 // closed original detail. Conversely, employer-owned ATS pages with an active
 // form and explicit Spain/global eligibility may be promoted into the board.
@@ -3053,6 +3085,9 @@ const ROUND35_RANKED_INSERTIONS = new Map([
   [859, [778, 1107]],
   [930825, [930881]],
 ]);
+const ROUND36_RANKED_INSERTIONS = new Map([
+  [1021, [930882]],
+]);
 // THRU still exposes the complete role brief and a future closing date, but
 // the same official page ends with "NO JOB OPENINGS". Keep the lead visible as
 // verify-first evidence without allowing the contradictory page to occupy a
@@ -3066,6 +3101,7 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
     .flatMap((id) => [id, ...(ROUND34_RANKED_INSERTIONS.get(id) || [])])
     .filter((id) => !ROUND35_DEMOTED_IDS.has(id))
     .flatMap((id) => [id, ...(ROUND35_RANKED_INSERTIONS.get(id) || [])])
+    .flatMap((id) => [id, ...(ROUND36_RANKED_INSERTIONS.get(id) || [])])
     .filter((id) => !ROUND32_EXCLUDED_IDS.has(id)),
 );
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
@@ -3749,6 +3785,23 @@ Object.assign(CURATED, {
     experienceKey: "unknown",
     experienceLabel: "有经验 / 年限未公开",
     changeType: "round-35-restored-current-reposts",
+  },
+  930882: {
+    direction: "digital",
+    company: "Duna",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "全球远程 / Barcelona 可居住 / 全职",
+    titleZh: "视觉设计师（品牌延展、网页与信息图形）",
+    titleEs: "Visual Designer",
+    reason: "2026-08-13 已逐字读取 Duna 官方 Ashby 职位数据，并与雇主 careers 页面交叉核对。岗位当前为 listed、Remote、FullTime；负责 GTM 视觉语言、销售演示、单页资料、对比图、LinkedIn、网站与落地页视觉、图标、插画、信息图和复杂概念图示，要求在现有品牌指南内高质量执行。",
+    next: "优先提交网页、演示、社媒系统、图表信息可视化和快速多格式延展案例。该岗不是从零搭建 VI 的品牌负责人；进入面试前确认西班牙用工/合同主体、薪资范围以及线下团队周安排。",
+    language: "官方职位全文为英语；未列其他语言硬门槛",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "中级至高级 / 3–6 年",
+    changeType: "round-36-new-official",
   },
 });
 
