@@ -234,11 +234,11 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 17/i.test(test.latestRoundSection) &&
-    [897, 871, 930853].every((id) =>
+  /Round 18/i.test(test.latestRoundSection) &&
+    [162, 117, 308, 930854, 930855].every((id) =>
       test.latestRoundItems.some((item) => Number(item.id) === id),
     ),
-  "第十七轮新增与关闭复核没有完整进入“本轮变化”",
+  "第十八轮新增、刷新与关闭复核没有完整进入“本轮变化”",
 );
 check(!/id="excludeLowPay"[^>]*checked/.test(indexHtml), "默认主表仍会暗中排除低薪风险卡片，导致总数与可见卡片不一致");
 check(!appSource.includes("item.postingDate"), "页面仍引用不存在的 postingDate 字段");
@@ -1006,6 +1006,19 @@ check(r673Titan && test.isResearchOnly(r673Titan) && r673Titan.tier === "D" && t
 const r674Turbopuffer = test.allData.find((item) => item.id === 12);
 check(r674Turbopuffer && test.applicationStatus(r674Turbopuffer).key === "live" && r674Turbopuffer.score === 94 && r674Turbopuffer.tier === "B", "Round 674: turbopuffer official Designer role was not promoted");
 check(r674Turbopuffer && test.toLinks(r674Turbopuffer).some((url) => /jobs\.ashbyhq\.com\/turbopuffer\/f3d9a49d-7ec1-4d9b-8dd2-d55bf05f32f6/i.test(url)), "Round 674: turbopuffer official application route was lost");
+
+const r18Hp = test.allData.find((item) => item.id === 162);
+check(r18Hp && test.MY_OPPORTUNITY_SET.has(162) && test.applicationStatus(r18Hp).key === "live" && test.locationBucket(r18Hp) === "barcelona" && test.toLinks(r18Hp).some((url) => /Graphic-Designer_3165191-1/i.test(url)), "Round 18: HP official Workday Graphic Designer audit missing or misclassified");
+check(r18Hp && /marketing|communications|collateral/i.test(`${r18Hp.fit} ${r18Hp.analysis}`), "Round 18: HP misleading title is no longer qualified by its actual marketing-communications scope");
+const r18Ps21 = test.allData.find((item) => item.id === 930854);
+check(r18Ps21 && test.MY_OPPORTUNITY_SET.has(930854) && test.applicationStatus(r18Ps21).key === "live" && test.locationBucket(r18Ps21) === "barcelona" && test.directionKey(r18Ps21) === "motion" && test.toLinks(r18Ps21).some((url) => /4443271761/i.test(url)), "Round 18: PS21Barna original-detail motion opportunity missing or misclassified");
+const r18Haan = test.allData.find((item) => item.id === 930855);
+check(r18Haan && !test.MY_OPPORTUNITY_SET.has(930855) && test.applicationStatus(r18Haan).key === "closed" && test.toLinks(r18Haan).some((url) => /4378324658/i.test(url)), "Round 18: HAAN closed original detail was restored or lost");
+const r18Ddb = test.allData.find((item) => item.id === 308);
+check(r18Ddb && test.applicationStatus(r18Ddb).key === "live" && test.toLinks(r18Ddb).some((url) => /uneteaddbspain\/jobs\/5137116008/i.test(url)), "Round 18: DDB official Greenhouse refresh regressed");
+const r18Lateral = test.allData.find((item) => item.id === 117);
+check(r18Lateral && test.applicationStatus(r18Lateral).key === "live" && test.toLinks(r18Lateral).some((url) => /4436668875/i.test(url)), "Round 18: Lateral Thinking current original-detail refresh regressed");
+check(test.MY_OPPORTUNITY_IDS.length === 160, "Round 18: reviewed main opportunity count regressed");
 
 test.state.preset = "chinese";
 const r588ScoreOrder = test.dedupedData.slice();

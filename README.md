@@ -16,14 +16,15 @@
 
 ## 数据分区
 
-- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 158 条主表。
+- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 160 条主表。
 - `华人中文全库`：华人网、中文社区、Casa Asia 和中国公司相关来源的完整线索。
 - `页面仍可复核`：详情还在，但状态、地点或申请控制需要再次确认的记录。
 - `关闭 / 历史 / 排除`：已过期、错误地点、重复、非设计岗或无法证实的记录。历史不会删除。
 
 ## 关键文件
 
-- `AUDIT-2026-08-12-ROUND17.md`：纠正 D&M 与 Codeway 搜索缓存状态，把新发现的 El Prat 印前生产岗隔离到主排名之外，并确认主表保持 158 条可信机会。
+- `AUDIT-2026-08-12-ROUND18.md`：新增 HP 官方 Workday 与 PS21Barna 原始详情两条 Barcelona 备选，确认 DDB、Lateral Thinking 仍可申请，并把 HAAN 的新鲜搜索缓存保留为已关闭历史；主表更新为 160 条。
+- `AUDIT-2026-08-12-ROUND17.md`：纠正 D&M 与 Codeway 搜索缓存状态，把新发现的 El Prat 印前生产岗隔离到主排名之外，并确认当轮主表保持 158 条可信机会。
 - `AUDIT-2026-08-12-ROUND16.md`：新增 Luppa 与 Newlink、恢复 The Colour Monster 为待确认，并逐条记录本轮关闭/无新增结论后的 158 条现行总账。
 - `AUDIT-2026-08-12-ROUND15.md`：纠正 MANGO 与 BRUTALIA 地点、恢复 Grupo RV、新增 Andilana，并隔离非传统 AI 项目池后的 155 条历史总账。
 - `AUDIT-2026-08-12-ROUND14.md`：新增 Xapo、Kraken、Omnicom PowerPoint、Finary，恢复 DORTOKA，并关闭 Sanofi 与 Stanley 后的 151 条历史总账。

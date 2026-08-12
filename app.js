@@ -872,6 +872,46 @@ const allData = Array.isArray(window.JOB_OPPORTUNITIES) ? window.JOB_OPPORTUNITI
     freshnessAgeDays: 0,
     links: ["https://join.com/companies/egp/15718560-disenador-preimpresor"],
   },
+  {
+    id: 930854,
+    section: "2026-08-12 Round 18 original-detail audit",
+    source: "Jungle / PS21Barna / current LinkedIn employer detail",
+    opportunity: "Art Director / Video Editor",
+    fit: "Barcelona hybrid full-time advertising-agency role; narrative editing, social formats, basic motion graphics, colour and visual finishing",
+    location: "Barcelona city, Carrer d'Àlaba; full-time; hybrid; permanent-contract wording shown in the employer's current role family",
+    status: "The current LinkedIn employer detail 4443271761 was opened and read in full on 2026-08-12. It shows Solicitar, Barcelona and a complete brief. The work is primarily advertising video editing and post-production rather than brand-identity ownership. It requires three to four years in an agency or production company plus a strong showreel; salary and an explicit language level are not published.",
+    contact: "Current original detail/application: https://es.linkedin.com/jobs/view/art-director-video-editor-ps21barna-at-jungle-4443271761",
+    analysis: "Keep as a secondary motion/content opportunity, not a top VI card. Apply only with strong Premiere, After Effects, Photoshop/Illustrator and DaVinci work showing narrative editing, social-format adaptation, title/motion, colour and audio finishing. Confirm daily Spanish, salary, contract, office days and work authorisation before proceeding.",
+    score: 64,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Advertising video editing / motion / visual finishing",
+    sourceGroup: "linkedin",
+    postedAt: "",
+    freshnessTag: "month",
+    freshnessAgeDays: null,
+    links: ["https://es.linkedin.com/jobs/view/art-director-video-editor-ps21barna-at-jungle-4443271761"],
+  },
+  {
+    id: 930855,
+    section: "2026-08-12 Round 18 original-detail audit",
+    source: "HAAN / original LinkedIn employer detail",
+    opportunity: "Junior Art Director",
+    fit: "Excellent Barcelona junior graphic and art-direction brief covering campaigns, social, retail, ecommerce, packaging, presentations and shootings, but no longer accepting applications",
+    location: "Barcelona city centre; Monday to Thursday onsite and Friday from home; contract details no longer actionable",
+    status: "Closed/history: the original LinkedIn employer detail 4378324658 was opened on 2026-08-12 and explicitly says Ya no se aceptan solicitudes. The role covered roughly 70% graphic design and 30% art direction, but there is no current application route.",
+    contact: "Closed original detail: https://es.linkedin.com/jobs/view/junior-art-director-at-haan-4378324658",
+    analysis: "Preserve as a useful portfolio benchmark, not a live card. Do not apply through mirrors or infer that the fresh-looking search timestamp reopened the role; restore only after HAAN publishes a new requisition with a working application control.",
+    score: 36,
+    tier: "X",
+    locationTag: "Barcelona area",
+    typeTag: "Closed junior graphic / art direction benchmark",
+    sourceGroup: "linkedin",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: ["https://es.linkedin.com/jobs/view/junior-art-director-at-haan-4378324658"],
+  },
 ].forEach((record) => {
   if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
 });
@@ -1148,7 +1188,7 @@ const MY_OPPORTUNITY_IDS = Object.freeze([
   930705, 668, 1102, 884, 203, 601, 284, 920001, 930812, 190, 577, 55,
   1278, 1314, 314, 207, 78, 444, 458, 258, 5106, 960, 238, 156, 928, 147, 604,
   930822, 304, 170, 1038, 84, 930815, 930824, 930831, 279, 12, 859, 305, 1011, 445, 1029, 188, 922, 483, 958, 930845,
-  930823, 930825, 930818, 930820, 930821, 930828, 930840, 930827, 930829, 921, 228, 178, 2942, 1105, 890, 891, 930841, 930637, 930833, 930819, 930826, 930707, 930708, 134, 277, 109,
+  930823, 162, 930825, 930818, 930820, 930821, 930828, 930840, 930827, 930829, 921, 228, 178, 2942, 1105, 890, 891, 930841, 930637, 930833, 930819, 930854, 930826, 930707, 930708, 134, 277, 109,
   117, 93, 1296, 375, 210, 930842, 930848, 930719, 89, 1023, 385, 930817, 841, 903, 1108, 855, 874, 875, 876,
   1227, 397, 1274, 396, 1240, 217, 985, 977, 989, 870, 990001, 27, 1303, 308, 1020, 351, 1081, 930843,
   1080, 1099, 981, 1097, 1101, 24, 25, 930835, 484, 278, 1293, 1255, 37, 889,
@@ -1745,6 +1785,121 @@ Object.assign(CURATED, {
     reason: "方向很贴美容电商、Amazon、CRM 邮件、社媒和包装，但原 Domestika 职位已跳回列表，不能按当前空缺展示。",
     next: "仅作冷询问：从品牌官方联系页礼貌询问未来是否还需要长期自由职业设计师；不要把客服邮箱写成招聘邮箱，也不要声称职位仍开放。",
     language: "原职位未写语言要求；当前已下线",
+  },
+});
+
+// Round 18: refresh current Barcelona roles against their original employer
+// detail or official ATS. Search-result timestamps never override the actual
+// application state, and misleading titles are described by their real scope.
+const round18Hp = allData.find((item) => Number(item.id) === 162);
+if (round18Hp) {
+  Object.assign(round18Hp, {
+    section: "2026-08-12 Round 18 original-detail audit",
+    source: "HP / official Workday ATS",
+    opportunity: "Graphic Designer",
+    fit: "Sant Cugat hybrid full-time; marketing collateral and communications-program leadership rather than a pure hands-on VI role",
+    location: "Sant Cugat del Vallès, Barcelona province; full-time; hybrid model depending on role and function",
+    status: "HP's official Workday requisition 3165191 was opened on 2026-08-12 and shows Apply, Sant Cugat del Valles, Full time, Posted 4 Days Ago and an active application route. The title says Graphic Designer, but the detailed responsibilities are mainly marketing collateral, customer-reference management, awareness and promotional programmes, communications planning, measurement, budgets and agency coordination. Four to seven years in direct marketing, communications or a related field is recommended; no design software, salary, Spanish requirement or sponsorship policy is published.",
+    contact: "Official detail/application: https://hp.wd5.myworkdayjobs.com/en-US/externalcareersite/job/Sant-Cugat-del-Valles-Barcelona-Spain/Graphic-Designer_3165191-1",
+    analysis: "Add to the reviewed Barcelona board, but keep below genuine brand/VI roles. It may suit a designer with strong marketing-communications and programme-management evidence; do not assume the day-to-day is hands-on graphic design. Confirm portfolio expectations, actual creative-production share, working language, salary, hybrid days and work authorisation before applying.",
+    score: 66,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Marketing communications / collateral / programme management",
+    sourceGroup: "official",
+    postedAt: "2026-08-08",
+    freshnessTag: "week",
+    freshnessAgeDays: 4,
+    links: ["https://hp.wd5.myworkdayjobs.com/en-US/externalcareersite/job/Sant-Cugat-del-Valles-Barcelona-Spain/Graphic-Designer_3165191-1"],
+    searchText: "HP official Workday 3165191 Graphic Designer Sant Cugat del Valles Barcelona full-time hybrid Apply posted four days marketing collateral direct mail catalog brochures spec sheets white papers sales tools newsletters email customer references communications programmes measurement budgets 4-7 years not pure VI",
+  });
+}
+
+const round18Ddb = allData.find((item) => Number(item.id) === 308);
+if (round18Ddb) {
+  Object.assign(round18Ddb, {
+    section: "2026-08-12 Round 18 original-detail audit",
+    status: "DDB Spain's official Greenhouse requisition 5137116008 was opened on 2026-08-12 and shows Barcelona, Apply and a complete application form. It leads CRM and email visual design, responsive communications, CMS-based web design, components, styles and digital brand guides. More than four years, Figma, Adobe, UX/UI and responsive-design experience are required; the Spanish-language application asks for portfolio, salary expectation, notice period, office availability and work authorisation.",
+    contact: "Official detail/application: https://job-boards.greenhouse.io/uneteaddbspain/jobs/5137116008",
+    analysis: "Keep as a current Barcelona digital-brand extension opportunity. It is strong for Figma systems, email, web components and brand-guideline implementation, but senior and Spanish-first; confirm salary and office rhythm before applying.",
+    links: ["https://job-boards.greenhouse.io/uneteaddbspain/jobs/5137116008"],
+    searchText: "DDB Spain TBWA DDB current official Greenhouse 5137116008 Digital Art Director Barcelona Apply CRM email newsletters responsive CMS web components styles digital brand guides Figma Adobe UX UI HTML CSS Spanish workflow 4 years",
+  });
+}
+
+const round18Lateral = allData.find((item) => Number(item.id) === 117);
+if (round18Lateral) {
+  Object.assign(round18Lateral, {
+    section: "2026-08-12 Round 18 original-detail audit",
+    status: "The current LinkedIn employer detail 4436668875 was opened again on 2026-08-12 and still shows Barcelona and Solicitar. The role owns visual strategy for brand experiences across visual identity, key visuals, signage, print, digital/offline assets, installations and production supervision. Five-plus years and fluent Spanish are explicit; English and Catalan are advantages.",
+    contact: "Current original detail/application: https://es.linkedin.com/jobs/view/we%E2%80%99re-hiring-%E2%80%93-art-director-at-lateral-thinking-4436668875",
+    analysis: "Keep live but below low-language-barrier roles. The VI and experiential-brand fit is excellent, while fluent Spanish, seniority and hands-on production/installation supervision are hard gates.",
+    links: ["https://es.linkedin.com/jobs/view/we%E2%80%99re-hiring-%E2%80%93-art-director-at-lateral-thinking-4436668875"],
+    searchText: "Lateral Thinking current original LinkedIn 4436668875 Art Director Barcelona Solicitar brand experiences visual strategy visual identity key visual signage print digital offline assets installations production fluent Spanish 5 years English Catalan plus",
+  });
+}
+
+Object.assign(CURATED, {
+  162: {
+    direction: "production",
+    company: "HP",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Sant Cugat del Vallès / hybrid / full-time",
+    titleZh: "平面设计师（实际偏市场传播与物料统筹）",
+    titleEs: "Graphic Designer",
+    reason: "官方 Workday 当前有 Apply，地点和全职状态明确；但正文重心是营销物料、客户案例库、传播项目、效果衡量、预算与代理商管理，并未列出设计软件或纯 VI 产出要求。",
+    next: "可作为 Barcelona 正式岗位备选，但先确认实际动手设计占比、作品集要求、团队工作语言、薪资、混合办公天数与工签；不要仅凭 Graphic Designer 标题高估匹配度。",
+    language: "官方英文职位页；未公开西语硬门槛，实际工作语言需确认",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "中高阶 / 推荐 4–7 年市场传播或相关经验",
+    changeType: "round-18-official-discovery",
+  },
+  308: {
+    ...CURATED[308],
+    statusKey: "live",
+    changeType: "round-18-official-refresh",
+  },
+  117: {
+    ...CURATED[117],
+    statusKey: "live",
+    changeType: "round-18-current-refresh",
+  },
+  930854: {
+    direction: "motion",
+    company: "Jungle / PS21Barna",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / Carrer d'Àlaba / hybrid full-time",
+    titleZh: "广告视频剪辑与基础动态视觉",
+    titleEs: "Art Director / Video Editor",
+    reason: "当前 LinkedIn 雇主详情有 Solicitar 和完整正文；真实工作以广告叙事剪辑、社媒格式、基础 motion、调色、修图、音频与素材管理为主，不是品牌 VI 主导岗。",
+    next: "仅作为 motion / 内容方向备选。用 showreel 证明 Premiere、After Effects、DaVinci、节奏叙事和多平台适配；先确认西语、薪资、合同、办公天数与工签。",
+    language: "正文和本地代理商流程为西语；未单列等级，按需要工作西语处理",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 3–4 年 agency 或 production 经验",
+    changeType: "round-18-original-discovery",
+  },
+  930855: {
+    direction: "brand",
+    company: "HAAN",
+    statusKey: "closed",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / closed history",
+    titleZh: "初级艺术指导（已关闭）",
+    titleEs: "Junior Art Director (closed)",
+    reason: "原始 LinkedIn 详情明确写明 Ya no se aceptan solicitudes；搜索列表的新鲜时间不能覆盖详情页关闭状态。",
+    next: "只保留作 70% 平面设计、30% 艺术指导的作品集参考；等待新的独立招聘编号，不通过镜像投递。",
+    language: "历史职位；当前无有效申请入口",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    experienceKey: "junior",
+    experienceLabel: "初中级 / 已关闭",
+    changeType: "round-18-closed-audit",
   },
 });
 
@@ -6926,13 +7081,27 @@ Object.assign(CURATED, {
     titleZh: "印前与数码印刷生产设计",
     titleEs: "Diseñador-preimpresor",
     reason: "当前 JOIN 雇主详情有 Aplicar ahora、正式申请表、无限期全职合同和 El Prat 地点；职责以印前、数码/大幅面印刷、材料参数、质量控制和生产监督为主，不是品牌 VI。页面同时写出 EUR14,000–16,000 与 EUR21,000–26,000 两组冲突年薪。",
-    next: "仅作为本地制作线备选；先书面确认真实薪资、工时、工作语言、设计与机器/生产占比、是否需要带人，再决定是否投递。它不进入品牌视觉 158 条主排名。",
+    next: "仅作为本地制作线备选；先书面确认真实薪资、工时、工作语言、设计与机器/生产占比、是否需要带人，再决定是否投递。它不进入品牌视觉主排名。",
     language: "未公开；本地印刷生产环境预计需要可工作的西语或加泰语，必须先确认",
     languageKey: "spanish",
     applicationMode: "spanish",
     experienceKey: "mid",
     experienceLabel: "要求既有印前或数码印刷生产经验",
     changeType: "round-17-review-library-only",
+  },
+});
+
+// Keep the Round 18 current-detail verdicts after all legacy metadata blocks.
+Object.assign(CURATED, {
+  117: {
+    ...CURATED[117],
+    statusKey: "live",
+    changeType: "round-18-current-refresh",
+  },
+  308: {
+    ...CURATED[308],
+    statusKey: "live",
+    changeType: "round-18-official-refresh",
   },
 });
 
