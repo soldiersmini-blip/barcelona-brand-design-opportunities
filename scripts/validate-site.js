@@ -125,8 +125,9 @@ check([930831, 930832, 930833].every((id) => auditedMain.some((item) => Number(i
 check([930834, 930835, 930836, 930837].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十二批新增的四条机会未完整进入主表");
 check([930838, 930839, 930840, 930841, 930842, 930843, 930844].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十三批新增的七条机会未完整进入主表");
 check([930838, 930839, 930840, 930841, 930842, 930843, 930844].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十三批官方或当前雇主可投岗位未全部进入 live");
-check([930845, 930846, 930847, 930848].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十四批新增的四条真实机会未完整进入主表");
-check([930845, 930846, 930847, 930848, 279, 958].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十四批新增或复核的当前岗位未全部进入 live");
+check([930845, 930847, 930848].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十四批仍有效的真实机会未完整进入主表");
+check([930845, 930847, 930848, 279, 958].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十四批仍有效或复核的当前岗位未全部进入 live");
+check(!test.MY_OPPORTUNITY_SET.has(930846) && test.applicationStatus(test.allData.find((item) => Number(item.id) === 930846)).key === "closed", "Round 21: Kraken Breakout 已移除的官方职位被旧的 Round 14 断言恢复");
 check([930705, 397, 1274, 930849].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十五批纠正、恢复与新增的四条 Barcelona 机会未完整进入主表");
 check([930705, 397, 1274, 930849, 884, 238, 396].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十五批原始页核验的当前岗位未全部进入 live");
 check([930852, 1301].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十六批仍然有效的两条 Barcelona 机会未完整进入主表");
@@ -234,11 +235,11 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 20/i.test(test.latestRoundSection) &&
-    [1245, 930851, 930859, 535, 930860, 930861].every((id) =>
+  /Round 21/i.test(test.latestRoundSection) &&
+    [930813, 296, 175, 930838, 446, 930820, 930834, 425, 4, 1828, 930844, 930836, 930837, 930812, 920001, 930712, 930846, 930862].every((id) =>
       test.latestRoundItems.some((item) => Number(item.id) === id),
     ),
-  "第十九轮关闭纠正与待复核线索没有完整进入“本轮变化”",
+  "Round 21 高分复核、替换与地区误标纠正没有完整进入‘本轮变化’",
 );
 check(!/id="excludeLowPay"[^>]*checked/.test(indexHtml), "默认主表仍会暗中排除低薪风险卡片，导致总数与可见卡片不一致");
 check(!appSource.includes("item.postingDate"), "页面仍引用不存在的 postingDate 字段");
@@ -1040,6 +1041,22 @@ check(r20Kraken && test.MY_OPPORTUNITY_SET.has(930860) && test.applicationStatus
 const r20Primer = test.allData.find((item) => item.id === 930861);
 check(r20Primer && !test.MY_OPPORTUNITY_SET.has(930861) && test.applicationStatus(r20Primer).key === "closed", "Round 20: Primer Job not found result was not preserved as closed history");
 check(test.MY_OPPORTUNITY_IDS.length === 160, "Round 20: reviewed main opportunity count regressed");
+
+const r21Breakout = test.allData.find((item) => item.id === 930846);
+check(r21Breakout && !test.MY_OPPORTUNITY_SET.has(930846) && test.applicationStatus(r21Breakout).key === "closed" && test.toLinks(r21Breakout).some((url) => /3096a5c6-a4fc-4b09-9953-aefd72d423f3/i.test(url)), "Round 21: removed Kraken Breakout requisition remained in the main ranking or lost its historical evidence");
+const r21Superside = test.allData.find((item) => item.id === 930862);
+check(r21Superside && !test.MY_OPPORTUNITY_SET.has(930862) && test.applicationStatus(r21Superside).key === "closed" && test.toLinks(r21Superside).some((url) => /jobs\.lever\.co\/superside\/f3d3064a-6df5-4a65-af08-132eeaf3688c/i.test(url)), "Round 21: Superside LATAM-only official ATS correction regressed");
+const r21Vml = test.allData.find((item) => item.id === 930712);
+check(r21Vml && test.MY_OPPORTUNITY_SET.has(930712) && test.applicationStatus(r21Vml).key === "live" && test.locationBucket(r21Vml) === "barcelona" && test.toLinks(r21Vml).some((url) => /vml\.com\/careers\/job\/8634604002-es-art-director/i.test(url)), "Round 21: current official VML Barcelona Art Director replacement is missing or misclassified");
+const r21Siemens = test.allData.find((item) => item.id === 930820);
+check(r21Siemens && test.MY_OPPORTUNITY_SET.has(930820) && test.applicationStatus(r21Siemens).key === "live" && test.locationBucket(r21Siemens) === "barcelona" && test.toLinks(r21Siemens).some((url) => /JobDetail\/516087/i.test(url)), "Round 21: Siemens Barcelona UI / Visual Designer official route is missing or misclassified");
+check(test.MY_OPPORTUNITY_IDS.indexOf(446) < test.MY_OPPORTUNITY_IDS.indexOf(930820) && test.MY_OPPORTUNITY_IDS.indexOf(930820) < test.MY_OPPORTUNITY_IDS.indexOf(930834), "Round 21: Siemens was not reranked between Refokus and Linear");
+const r21CrowdStrike = test.allData.find((item) => item.id === 930836);
+check(r21CrowdStrike && r21CrowdStrike.postedAt === "2026-08-08" && /Creative Content Designer/i.test(r21CrowdStrike.opportunity), "Round 21: CrowdStrike current title/date refresh regressed");
+const r21Main = test.MY_OPPORTUNITY_IDS.map((id) => test.allData.find((item) => Number(item.id) === id)).filter(Boolean);
+check(r21Main.length === 160, "Round 21: reviewed main opportunity count regressed");
+check(r21Main.filter((item) => test.locationBucket(item) === "barcelona").length === 120 && r21Main.filter((item) => test.locationBucket(item) === "remote").length === 40, "Round 21: Barcelona/remote main-board split is incorrect");
+check(r21Main.filter((item) => test.applicationStatus(item).key === "live").length === 156 && r21Main.filter((item) => test.applicationStatus(item).key === "verify").length === 4, "Round 21: live/verify status counts regressed");
 
 test.state.preset = "chinese";
 const r588ScoreOrder = test.dedupedData.slice();

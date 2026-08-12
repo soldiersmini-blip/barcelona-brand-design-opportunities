@@ -1002,6 +1002,30 @@ const allData = Array.isArray(window.JOB_OPPORTUNITIES) ? window.JOB_OPPORTUNITI
     ],
   },
   {
+    id: 930862,
+    section: "2026-08-12 Round 21 high-rank refresh and current replacement",
+    source: "Superside / official careers and Lever ATS",
+    opportunity: "AI Creative",
+    fit: "Strong branding, campaign and digital-experience brief, but the official application is LATAM-only rather than Spain remote",
+    location: "LATAM remote contractor; LinkedIn's Spain-remote search label conflicts with the official ATS",
+    status: "Excluded/history: LinkedIn job 4451415435 was opened on 2026-08-12 and labels the role Spain remote, but the employer-owned Superside careers page sends applicants to Lever requisition f3d3064a-6df5-4a65-af08-132eeaf3688c, whose application header explicitly says LATAM, Contractor and Remote. The form accepts Europe as a general profile answer, but that does not override the requisition's LATAM location.",
+    contact: "Official role: https://careers.superside.com/jobs/ai-creative ; official LATAM application: https://jobs.lever.co/superside/f3d3064a-6df5-4a65-af08-132eeaf3688c/apply ; conflicting LinkedIn result: https://www.linkedin.com/jobs/view/4451415435",
+    analysis: "Preserve this as a search-label warning, not as a Barcelona or Spain opportunity. The work itself is highly relevant—branding, campaigns, digital experiences, Figma, Adobe and generative AI—but a Barcelona resident should not invest in the application unless Superside confirms in writing that this exact requisition accepts Europe-based contractors.",
+    score: 18,
+    tier: "X",
+    locationTag: "Remote / other region",
+    typeTag: "Excluded LATAM AI creative / brand",
+    sourceGroup: "official",
+    postedAt: "2026-08-10",
+    freshnessTag: "week",
+    freshnessAgeDays: 2,
+    links: [
+      "https://careers.superside.com/jobs/ai-creative",
+      "https://jobs.lever.co/superside/f3d3064a-6df5-4a65-af08-132eeaf3688c/apply",
+      "https://www.linkedin.com/jobs/view/4451415435",
+    ],
+  },
+  {
     id: 930860,
     section: "2026-08-12 Round 20 high-rank recheck and official ATS discovery",
     source: "Kraken / official Ashby ATS + current LinkedIn employer detail",
@@ -1356,6 +1380,81 @@ for (const update of round15DirectEvidenceUpdates) {
   if (item) Object.assign(item, update);
 }
 
+const ROUND21_SECTION = "2026-08-12 Round 21 high-rank refresh and current replacement";
+const round21SourceUpdates = [
+  { id: 930813 },
+  { id: 296 },
+  { id: 175 },
+  { id: 930838 },
+  { id: 446 },
+  { id: 930820 },
+  { id: 930834 },
+  { id: 425 },
+  { id: 4 },
+  { id: 1828 },
+  { id: 930844 },
+  {
+    id: 930836,
+    source: "CrowdStrike / official Workday ATS + current LinkedIn employer detail",
+    opportunity: "Creative Content Designer (Remote)",
+    status: "Live/current: CrowdStrike official Workday requisition R29235 and current employer LinkedIn job 4439209874 were reopened on 2026-08-12. Workday shows Apply, Spain - Barcelona and full-time; LinkedIn shows the current title Creative Content Designer (Remote) and a posting four days earlier. The work covers presentation systems, templates, information design, video, motion and brand consistency.",
+    contact: "Official detail/application: https://crowdstrike.wd5.myworkdayjobs.com/crowdstrikecareers/job/Spain---Barcelona/Content-Developer--Sales-Enablement--Remote-_R29235 ; current employer detail: https://www.linkedin.com/jobs/view/4439209874",
+    postedAt: "2026-08-08",
+    freshnessTag: "week",
+    freshnessAgeDays: 4,
+    links: [
+      "https://crowdstrike.wd5.myworkdayjobs.com/crowdstrikecareers/job/Spain---Barcelona/Content-Developer--Sales-Enablement--Remote-_R29235",
+      "https://www.linkedin.com/jobs/view/4439209874",
+    ],
+  },
+  { id: 930837 },
+  { id: 930812 },
+  { id: 920001 },
+  {
+    id: 930712,
+    source: "VML / official careers + current LinkedIn employer detail",
+    opportunity: "ART DIRECTOR",
+    fit: "Barcelona hybrid art-direction role owning visual identity and high-impact campaigns; 5–6 years plus English and Catalan are hard gates",
+    location: "Barcelona, Spain; hybrid or onsite; VML says teams average four office days per week",
+    status: "Live/current: VML official requisition 17276 was opened and read on 2026-08-12. It lists Barcelona, Spain and a current ART DIRECTOR vacancy covering campaign concepts, visual direction, brand identity, Adobe and AI, with Figma, motion and video valued. The role requires 5–6 years of agency art direction plus medium-high English and Catalan.",
+    contact: "Official detail/application: https://www.vml.com/careers/job/8634604002-es-art-director ; current LinkedIn employer detail: https://es.linkedin.com/jobs/view/art-director-at-bav-group-m%C3%A9xico-4443713564",
+    analysis: "Add to the reviewed Barcelona board because the employer-owned VML page and requisition are current. Keep it in the lower senior-stretch section: the brand/identity scope is strong, but Catalan, 5–6 years of agency leadership and roughly four office days are meaningful barriers.",
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Art direction / visual identity / integrated campaigns",
+    sourceGroup: "official",
+    postedAt: "2026-08-10",
+    freshnessTag: "week",
+    freshnessAgeDays: 2,
+    links: [
+      "https://www.vml.com/careers/job/8634604002-es-art-director",
+      "https://es.linkedin.com/jobs/view/art-director-at-bav-group-m%C3%A9xico-4443713564",
+    ],
+  },
+  {
+    id: 930846,
+    source: "Kraken / Breakout Prop removed official Ashby requisition",
+    status: "Closed/history: Kraken's current official Ashby job-board API was checked on 2026-08-12 and no longer lists requisition 3096a5c6-a4fc-4b09-9953-aefd72d423f3. The former detail URL is preserved, but it is no longer a current application route.",
+    analysis: "Remove this former Spain-remote web-and-brand role from the current ranking while preserving its website, landing-page, campaign, guideline, component-library and AI-workflow brief as history. Restore only if Kraken publishes a new official requisition.",
+    score: 22,
+    tier: "X",
+  },
+  { id: 930862 },
+];
+
+function applyRound21SourceUpdates() {
+  for (const update of round21SourceUpdates) {
+    const item = allData.find((record) => Number(record.id) === update.id);
+    if (!item) continue;
+    Object.assign(item, update, { section: ROUND21_SECTION });
+    item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+      .filter(Boolean)
+      .join(" ");
+  }
+}
+
+applyRound21SourceUpdates();
+
 for (const item of allData) {
   if (!item.searchText) {
     item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
@@ -1378,11 +1477,11 @@ const PRIORITY_IDS = [930813, 910, 914, 1300, 1107, 866, 94, 930847];
 // the default board. This prevents old source indexes, Madrid posts, mirrors
 // and research notes from inflating the usable count.
 const MY_OPPORTUNITY_IDS = Object.freeze([
-  930813, 910, 914, 1300, 1107, 866, 94, 930847, 930816, 930839, 930860, 296, 535, 175, 930838, 930832, 930836, 930837, 446, 930834, 425, 4, 1828, 930844, 930846,
+  930813, 910, 914, 1300, 1107, 866, 94, 930847, 930816, 930839, 930860, 296, 535, 175, 930838, 930832, 930836, 930837, 446, 930820, 930834, 425, 4, 1828, 930844,
   930705, 668, 1102, 884, 203, 601, 284, 920001, 930812, 190, 577, 55,
   1278, 1314, 314, 207, 78, 444, 458, 258, 5106, 960, 238, 156, 928, 147, 604,
   930822, 304, 170, 1038, 84, 930815, 930824, 930831, 279, 12, 859, 305, 1011, 445, 1029, 188, 922, 483, 958, 930845,
-  930823, 162, 930825, 930818, 930820, 930821, 930828, 930840, 930827, 930829, 921, 228, 178, 2942, 1105, 890, 891, 930841, 930637, 930833, 930819, 930854, 930826, 930707, 930708, 134, 277, 109,
+  930823, 162, 930825, 930818, 930821, 930828, 930840, 930827, 930829, 921, 228, 178, 2942, 1105, 890, 891, 930841, 930637, 930833, 930819, 930854, 930826, 930707, 930708, 930712, 134, 277, 109,
   117, 93, 1296, 375, 210, 930842, 930848, 930719, 89, 1023, 385, 930817, 841, 903, 1108, 855, 874, 875, 876,
   1227, 397, 1274, 396, 1240, 217, 985, 977, 989, 870, 990001, 27, 1303, 308, 1020, 351, 1081, 930843,
   1080, 1099, 981, 1097, 1101, 24, 25, 930835, 484, 278, 1293, 1255, 37, 889,
@@ -7567,6 +7666,75 @@ for (const update of round20ClosedCorrections) {
     });
   }
 }
+
+// Round 21: keep search-engine and LinkedIn location labels subordinate to the
+// employer-owned ATS, replace a removed remote role with a current Barcelona
+// employer requisition, and move Siemens to the rank warranted by its local,
+// English-friendly visual-system scope and transparent salary.
+Object.assign(CURATED, {
+  930820: {
+    ...CURATED[930820],
+    statusKey: "live",
+    locationKey: "barcelona",
+    changeType: "round-21-reranked-current",
+  },
+  930712: {
+    direction: "brand",
+    company: "VML",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid 或 onsite / 平均每周约 4 天办公室",
+    titleZh: "艺术指导（品牌识别与整合 Campaign）",
+    titleEs: "ART DIRECTOR",
+    reason: "VML 官方 requisition 17276 当前列出 Barcelona, Spain，并公开完整 ART DIRECTOR 职责：从创意概念到视觉执行，负责 campaign、视觉方向与品牌识别，使用 Adobe 与 AI，Figma、Motion 和视频为加分项。岗位要求 5–6 年创意代理公司经验，以及中高水平英语和加泰罗尼亚语。",
+    next: "这是有真实官方入口的 Barcelona 品牌视觉机会，但不是低门槛岗位。仅在资历、Catalan 和高频到岗条件基本成立时投递；作品集应突出 identity、整合 campaign、概念提案、艺术指导与跨团队落地。",
+    language: "中高水平英语与加泰罗尼亚语为明确要求；本地客户沟通环境",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5–6 年代理公司艺术指导经验",
+    changeType: "round-21-promoted-official",
+  },
+  930846: {
+    ...CURATED[930846],
+    direction: "brand",
+    company: "Kraken / Breakout Prop",
+    statusKey: "closed",
+    locationKey: "remote",
+    locationLabel: "原 Spain 远程岗位 / 官方 ATS 已移除",
+    titleZh: "网页与品牌设计师—官方职位已移除",
+    titleEs: "Web and Brand Designer (closed)",
+    reason: "Kraken 当前官方 Ashby 职位板已不再列出 requisition 3096a5c6-a4fc-4b09-9953-aefd72d423f3。旧页面曾明确 Spain remote，并覆盖网站、landing page、campaign、品牌指南、组件库与 AI 工作流，但现在不能继续算作可投岗位。",
+    next: "保留旧职责作为作品集对标，不通过聚合页或缓存申请；等待 Kraken 发布新的独立官方 requisition 后再恢复。",
+    language: "历史英语远程岗位；当前无有效申请入口",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "历史要求 5+ 年 / 当前已关闭",
+    changeType: "round-21-closed-correction",
+  },
+  930862: {
+    direction: "brand",
+    company: "Superside",
+    statusKey: "closed",
+    locationKey: "remote",
+    locationLabel: "LATAM remote contractor / 不按 Spain 远程收录",
+    titleZh: "AI 创意设计师—官方申请限定 LATAM",
+    titleEs: "AI Creative (LATAM only)",
+    reason: "LinkedIn 搜索卡把岗位标成 Spain remote，但 Superside 官方 Careers 最终跳转到 Lever，申请页标题明确写 LATAM、Contractor、Remote。官方 ATS 优先于搜索卡地点标签，因此不能作为 Barcelona 或 Spain 机会进入主表。",
+    next: "只保留为误标警示。除非 Superside 书面确认该 requisition 接受 Europe/Spain 常住申请者，否则不投入作品集定制或申请时间。",
+    language: "英语工作语言；真正阻断项是 LATAM 地区限制",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "3–5 年 / LATAM contractor",
+    changeType: "round-21-location-exclusion",
+  },
+});
+
+// Reapply the Round 21 source verdicts after every historical refresh block so
+// a stale generated record cannot turn either excluded role back into live.
+applyRound21SourceUpdates();
 
 const els = {
   totalCount: document.querySelector("#totalCount"),
