@@ -12634,7 +12634,7 @@ function initStats() {
   els.liveCount.textContent = statusSummary.live;
   els.verifyCount.textContent = statusSummary.verify;
   els.closedCount.textContent = statusSummary.closed;
-  els.updatedAt.textContent = "2026-08-12";
+  els.updatedAt.textContent = "2026-08-13";
 }
 
 syncChineseLibraryUi();
