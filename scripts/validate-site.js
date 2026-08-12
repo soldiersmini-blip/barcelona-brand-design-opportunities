@@ -79,7 +79,7 @@ check(test.allData.find((item) => item.id === 872).tier === "X", "AQIPA named va
 check(test.allData.length > 700, "机会数据没有完整载入");
 check(test.priorityItems.length === 8, "首页重点机会数量不是 8");
 check(
-  [930813, 910, 914, 1300, 160, 1107, 866, 425].every((id) =>
+  [930813, 910, 914, 1300, 160, 1107, 866, 94].every((id) =>
     test.priorityItems.some((item) => item.id === id),
   ),
   "巴塞罗那优先岗位未完整进入首页",
@@ -123,6 +123,9 @@ check([930820, 930821, 930822, 930823, 178, 228, 930717].every((id) => auditedMa
 check([1245, 930824, 930825, 930826, 930827, 930828, 930829].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十批逐条核验的七条真实机会未完整进入主表");
 check([930831, 930832, 930833].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十一批逐条核验的三条真实机会未完整进入主表");
 check([930834, 930835, 930836, 930837].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十二批新增的四条机会未完整进入主表");
+check([930838, 930839, 930840, 930841, 930842, 930843, 930844].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十三批新增的七条机会未完整进入主表");
+check([930838, 930839, 930840, 930841, 930842, 930843, 930844].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十三批官方或当前雇主可投岗位未全部进入 live");
+check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 930835)).key === "verify", "匿名华人广告店线索不得在未确认雇主前提升为 live");
 check([914, 1107, 2942, 134, 977, 1255, 279].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十二批官方可投岗位未全部提升为 live");
 check([1239, 216, 930720, 206, 183, 239, 1301, 1294, 1241].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "第十二批已关闭或无具体 vacancy 的旧卡未全部移入历史区");
 check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 930708)).key === "live", "Dragons 医疗艺术指导的官方可投状态未恢复");
@@ -217,6 +220,13 @@ check(
     ),
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
+check(
+  [930835, 930838, 930839, 930840, 930841, 930842, 930843, 930844].every((id) =>
+    test.latestRoundItems.some((item) => Number(item.id) === id),
+  ),
+  "第十三轮新增与中文线索刷新没有完整进入“本轮变化”",
+);
+check(!/id="excludeLowPay"[^>]*checked/.test(indexHtml), "默认主表仍会暗中排除低薪风险卡片，导致总数与可见卡片不一致");
 check(!appSource.includes("item.postingDate"), "页面仍引用不存在的 postingDate 字段");
 check(!indexHtml.includes("\uFFFD") && !appSource.includes("\uFFFD"), "页面源码中出现了损坏字符");
 const nonActionableChineseRoutes = test.dedupedData.flatMap((item) =>

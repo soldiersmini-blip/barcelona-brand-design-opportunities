@@ -152,7 +152,7 @@
           </div>
         </div>
 
-        <div class="personal-filter" aria-labelledby="personalFilterTitle">
+        <div class="personal-filter" aria-labelledby="personalFilterTitle" hidden>
           <div class="personal-filter__intro">
             <div>
               <p class="section-kicker">按你的条件定制</p>
@@ -185,7 +185,7 @@
               <span>有具体投递入口</span>
             </label>
             <label class="route-toggle">
-              <input id="excludeLowPay" type="checkbox" checked />
+              <input id="excludeLowPay" type="checkbox" />
               <span>排除已识别的低薪 / 无薪风险</span>
             </label>
             <label class="route-toggle">
@@ -217,7 +217,7 @@
           </button>
         </div>
 
-        <div class="filters">
+        <div class="filters" hidden>
           <label class="search-field">
             <span>搜索公司、岗位、技能或联系方式</span>
             <input
