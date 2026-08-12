@@ -234,11 +234,11 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 18/i.test(test.latestRoundSection) &&
-    [162, 117, 308, 930854, 930855].every((id) =>
+  /Round 19/i.test(test.latestRoundSection) &&
+    [9001, 835, 930856, 930857, 930858, 930859].every((id) =>
       test.latestRoundItems.some((item) => Number(item.id) === id),
     ),
-  "第十八轮新增、刷新与关闭复核没有完整进入“本轮变化”",
+  "第十九轮关闭纠正与待复核线索没有完整进入“本轮变化”",
 );
 check(!/id="excludeLowPay"[^>]*checked/.test(indexHtml), "默认主表仍会暗中排除低薪风险卡片，导致总数与可见卡片不一致");
 check(!appSource.includes("item.postingDate"), "页面仍引用不存在的 postingDate 字段");
@@ -1018,7 +1018,17 @@ const r18Ddb = test.allData.find((item) => item.id === 308);
 check(r18Ddb && test.applicationStatus(r18Ddb).key === "live" && test.toLinks(r18Ddb).some((url) => /uneteaddbspain\/jobs\/5137116008/i.test(url)), "Round 18: DDB official Greenhouse refresh regressed");
 const r18Lateral = test.allData.find((item) => item.id === 117);
 check(r18Lateral && test.applicationStatus(r18Lateral).key === "live" && test.toLinks(r18Lateral).some((url) => /4436668875/i.test(url)), "Round 18: Lateral Thinking current original-detail refresh regressed");
-check(test.MY_OPPORTUNITY_IDS.length === 160, "Round 18: reviewed main opportunity count regressed");
+const r19Miin = test.allData.find((item) => item.id === 9001);
+check(r19Miin && !test.MY_OPPORTUNITY_SET.has(9001) && test.applicationStatus(r19Miin).key === "closed" && test.toLinks(r19Miin).some((url) => /empleos\.miin-cosmetics\.com\/jobs\/graphic-designer-barcelona-40h/i.test(url)), "Round 19: MiiN stale LinkedIn result was not anchored to the closed employer page");
+const r19Revolut = test.allData.find((item) => item.id === 835);
+check(r19Revolut && !test.MY_OPPORTUNITY_SET.has(835) && test.applicationStatus(r19Revolut).key === "closed" && test.toLinks(r19Revolut).some((url) => /4324505158/i.test(url)), "Round 19: Revolut stale fresh-result correction regressed");
+for (const id of [930856, 930857, 930858]) {
+  const closedLead = test.allData.find((item) => item.id === id);
+  check(closedLead && !test.MY_OPPORTUNITY_SET.has(id) && test.applicationStatus(closedLead).key === "closed" && test.locationBucket(closedLead) === "barcelona", `Round 19: closed Barcelona lead ${id} was restored or lost`);
+}
+const r19Europastry = test.allData.find((item) => item.id === 930859);
+check(r19Europastry && !test.MY_OPPORTUNITY_SET.has(930859) && test.applicationStatus(r19Europastry).key === "verify" && test.locationBucket(r19Europastry) === "barcelona" && test.toLinks(r19Europastry).length >= 1, "Round 19: Europastry verify-first lead was lost or falsely promoted");
+check(test.MY_OPPORTUNITY_IDS.length === 160, "Round 19: reviewed main opportunity count regressed");
 
 test.state.preset = "chinese";
 const r588ScoreOrder = test.dedupedData.slice();
