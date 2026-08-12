@@ -235,11 +235,11 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 21/i.test(test.latestRoundSection) &&
-    [930813, 296, 175, 930838, 446, 930820, 930834, 425, 4, 1828, 930844, 930836, 930837, 930812, 920001, 930712, 930846, 930862].every((id) =>
+  /Round 22/i.test(test.latestRoundSection) &&
+    [24, 930863, 930864, 930865].every((id) =>
       test.latestRoundItems.some((item) => Number(item.id) === id),
     ),
-  "Round 21 高分复核、替换与地区误标纠正没有完整进入‘本轮变化’",
+  "Round 22 新增机会与中文渠道复核没有完整进入‘本轮变化’",
 );
 check(!/id="excludeLowPay"[^>]*checked/.test(indexHtml), "默认主表仍会暗中排除低薪风险卡片，导致总数与可见卡片不一致");
 check(!appSource.includes("item.postingDate"), "页面仍引用不存在的 postingDate 字段");
@@ -1040,7 +1040,7 @@ const r20Kraken = test.allData.find((item) => item.id === 930860);
 check(r20Kraken && test.MY_OPPORTUNITY_SET.has(930860) && test.applicationStatus(r20Kraken).key === "live" && test.locationBucket(r20Kraken) === "remote" && /Spain/i.test(`${r20Kraken.location} ${r20Kraken.locationTag}`) && test.toLinks(r20Kraken).some((url) => /jobs\.ashbyhq\.com\/kraken\.com\/8ed4c65b-aaac-40d0-9d41-423683b7a1bd/i.test(url)), "Round 20: Kraken Spain-eligible remote official opportunity is missing or misclassified");
 const r20Primer = test.allData.find((item) => item.id === 930861);
 check(r20Primer && !test.MY_OPPORTUNITY_SET.has(930861) && test.applicationStatus(r20Primer).key === "closed", "Round 20: Primer Job not found result was not preserved as closed history");
-check(test.MY_OPPORTUNITY_IDS.length === 160, "Round 20: reviewed main opportunity count regressed");
+check(test.MY_OPPORTUNITY_IDS.length >= 160, "Round 20: reviewed main opportunity count regressed");
 
 const r21Breakout = test.allData.find((item) => item.id === 930846);
 check(r21Breakout && !test.MY_OPPORTUNITY_SET.has(930846) && test.applicationStatus(r21Breakout).key === "closed" && test.toLinks(r21Breakout).some((url) => /3096a5c6-a4fc-4b09-9953-aefd72d423f3/i.test(url)), "Round 21: removed Kraken Breakout requisition remained in the main ranking or lost its historical evidence");
@@ -1054,9 +1054,26 @@ check(test.MY_OPPORTUNITY_IDS.indexOf(446) < test.MY_OPPORTUNITY_IDS.indexOf(930
 const r21CrowdStrike = test.allData.find((item) => item.id === 930836);
 check(r21CrowdStrike && r21CrowdStrike.postedAt === "2026-08-08" && /Creative Content Designer/i.test(r21CrowdStrike.opportunity), "Round 21: CrowdStrike current title/date refresh regressed");
 const r21Main = test.MY_OPPORTUNITY_IDS.map((id) => test.allData.find((item) => Number(item.id) === id)).filter(Boolean);
-check(r21Main.length === 160, "Round 21: reviewed main opportunity count regressed");
-check(r21Main.filter((item) => test.locationBucket(item) === "barcelona").length === 120 && r21Main.filter((item) => test.locationBucket(item) === "remote").length === 40, "Round 21: Barcelona/remote main-board split is incorrect");
-check(r21Main.filter((item) => test.applicationStatus(item).key === "live").length === 156 && r21Main.filter((item) => test.applicationStatus(item).key === "verify").length === 4, "Round 21: live/verify status counts regressed");
+check(r21Main.length >= 160, "Round 21: reviewed main opportunity count regressed");
+check(r21Main.filter((item) => test.locationBucket(item) === "barcelona").length >= 120 && r21Main.filter((item) => test.locationBucket(item) === "remote").length >= 40, "Round 21: Barcelona/remote main-board baseline regressed");
+check(r21Main.filter((item) => test.applicationStatus(item).key === "live").length >= 156 && r21Main.filter((item) => test.applicationStatus(item).key === "verify").length >= 4, "Round 21: live/verify status baseline regressed");
+
+const r22Studio = test.allData.find((item) => item.id === 930863);
+check(r22Studio && test.MY_OPPORTUNITY_SET.has(930863) && test.applicationStatus(r22Studio).key === "live" && test.locationBucket(r22Studio) === "remote" && test.experienceInfo(r22Studio).key === "junior" && test.toLinks(r22Studio).some((url) => /thestudio\.na\.teamtailor\.com\/jobs\/682135/i.test(url)), "Round 22: THE/STUDIO official worldwide-remote brand-concept role is missing or misclassified");
+const r22Prime = test.allData.find((item) => item.id === 930864);
+check(r22Prime && test.MY_OPPORTUNITY_SET.has(930864) && test.applicationStatus(r22Prime).key === "live" && test.locationBucket(r22Prime) === "remote" && test.toLinks(r22Prime).some((url) => /4432554030/i.test(url)) && /part-time/i.test(r22Prime.searchText) && /contract/i.test(r22Prime.searchText), "Round 22: Prime Insights current remote role or its labor-condition caveat is missing");
+const r22Jobgether = test.allData.find((item) => item.id === 930865);
+check(r22Jobgether && test.MY_OPPORTUNITY_SET.has(930865) && test.applicationStatus(r22Jobgether).key === "verify" && test.locationBucket(r22Jobgether) === "remote" && test.hasOpaqueEmployerRisk(r22Jobgether) && test.toLinks(r22Jobgether).some((url) => /4451696654/i.test(url)), "Round 22: anonymous Jobgether listing was not kept at verify-first status");
+const r22Hku = test.allData.find((item) => item.id === 24);
+check(r22Hku && test.MY_OPPORTUNITY_SET.has(24) && test.applicationStatus(r22Hku).key === "live" && test.locationBucket(r22Hku) === "barcelona" && test.toLinks(r22Hku).some((url) => /Marketing-and-Branding-Officer-HKU-Europe-JD-13072026\.pdf/i.test(url)), "Round 22: Casa Asia / HKU current source refresh is missing");
+check(test.MY_OPPORTUNITY_IDS.indexOf(930847) < test.MY_OPPORTUNITY_IDS.indexOf(930863) && test.MY_OPPORTUNITY_IDS.indexOf(930863) < test.MY_OPPORTUNITY_IDS.indexOf(930816), "Round 22: THE/STUDIO was not inserted at its audited high-fit rank");
+check(test.MY_OPPORTUNITY_IDS.indexOf(930826) < test.MY_OPPORTUNITY_IDS.indexOf(930864) && test.MY_OPPORTUNITY_IDS.indexOf(930864) < test.MY_OPPORTUNITY_IDS.indexOf(930707), "Round 22: Prime Insights was not placed below stronger formal roles");
+check(test.MY_OPPORTUNITY_IDS.at(-1) === 930865, "Round 22: anonymous Jobgether listing must remain the lowest-ranked verify-first card");
+const r22Main = test.MY_OPPORTUNITY_IDS.map((id) => test.allData.find((item) => Number(item.id) === id)).filter(Boolean);
+check(r22Main.length === 163, "Round 22: reviewed main opportunity count must be exactly 163");
+check(r22Main.filter((item) => test.locationBucket(item) === "barcelona").length === 120 && r22Main.filter((item) => test.locationBucket(item) === "remote").length === 43, "Round 22: Barcelona/remote main-board split must be 120/43");
+check(r22Main.filter((item) => test.applicationStatus(item).key === "live").length === 158 && r22Main.filter((item) => test.applicationStatus(item).key === "verify").length === 5, "Round 22: live/verify status counts must be 158/5");
+check(r22Main.filter((item) => test.isChineseRelevant(item)).length === 5, "Round 22: Chinese-relevant current opportunity count must remain evidence-backed at 5");
 
 test.state.preset = "chinese";
 const r588ScoreOrder = test.dedupedData.slice();

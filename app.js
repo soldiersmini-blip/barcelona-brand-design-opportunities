@@ -1026,6 +1026,69 @@ const allData = Array.isArray(window.JOB_OPPORTUNITIES) ? window.JOB_OPPORTUNITI
     ],
   },
   {
+    id: 930863,
+    section: "2026-08-12 Round 22 current-source discovery and Chinese refresh",
+    source: "THE/STUDIO / official Teamtailor careers",
+    opportunity: "Visual Merchandising & Concept Specialist (AI & Trends focus)",
+    fit: "Global-remote early-career brand-concept role covering identity systems, logos, colour, graphic language, patterns, mascots, packaging and AI-assisted product mockups",
+    location: "Worldwide remote; full-time independent contractor; CET-friendly collaboration should be confirmed",
+    status: "Live/current: THE/STUDIO's official Teamtailor detail was opened and read in full on 2026-08-12. It shows Apply for this role, 100% remote work from anywhere worldwide and a full-time independent-contractor arrangement. The brief asks for 1–3 years or a strong portfolio, written English, Figma Slides and AI-supported concept development.",
+    contact: "Official detail/application: https://thestudio.na.teamtailor.com/jobs/682135-visual-merchandising-concept-specialist ; current LinkedIn employer detail: https://www.linkedin.com/jobs/view/4452733149/",
+    analysis: "One of the strongest newly found matches for an early-career Barcelona-based applicant: the work directly covers customer brand identity, moodboards, product concept decks, logos, colour, graphic language, patterns, mascots and packaging systems. Apply in English with concept-to-system cases and AI mockups, but confirm contractor rate, Spain invoicing/tax setup, paid leave, equipment, hours and time-zone overlap before accepting.",
+    score: 92,
+    tier: "A",
+    locationTag: "Worldwide remote",
+    typeTag: "Brand identity / concept systems / packaging / AI",
+    sourceGroup: "official",
+    postedAt: "2026-08-12",
+    freshnessTag: "today",
+    freshnessAgeDays: 0,
+    links: [
+      "https://thestudio.na.teamtailor.com/jobs/682135-visual-merchandising-concept-specialist",
+      "https://www.linkedin.com/jobs/view/4452733149/",
+    ],
+  },
+  {
+    id: 930864,
+    section: "2026-08-12 Round 22 current-source discovery and Chinese refresh",
+    source: "Prime Insights / current LinkedIn employer detail",
+    opportunity: "Graphic Designer",
+    fit: "Remote brand and product-visual role covering identity, vector illustration, mascots, icon systems, onboarding, rewards and localized marketing assets",
+    location: "Spain remote according to the current LinkedIn listing; Sweden-based team; CET overlap preferred",
+    status: "Live/current with labor-condition caveat: the current LinkedIn employer detail was opened on 2026-08-12. It lists a remote part-time Graphic Designer role and an application route, while the body says the collaboration may be contract or full-time depending on fit. No salary, hours or Spain employment entity is disclosed.",
+    contact: "Current original detail/application: https://es.linkedin.com/jobs/view/graphic-designer-at-prime-insights-4432554030",
+    analysis: "The visual scope is unusually relevant—identity systems, custom vector illustrations, mascots, icons, web/mobile onboarding, badges, reward visuals, video and localization—but the part-time header conflicts with the body. Apply in English only after confirming weekly hours, contract type, rate, Spain invoicing/payroll, paid test policy, IP terms and CET overlap.",
+    score: 72,
+    tier: "B",
+    locationTag: "Spain remote",
+    typeTag: "Brand identity / illustration / product visuals",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-12",
+    freshnessTag: "today",
+    freshnessAgeDays: 0,
+    links: ["https://es.linkedin.com/jobs/view/graphic-designer-at-prime-insights-4432554030"],
+  },
+  {
+    id: 930865,
+    section: "2026-08-12 Round 22 current-source discovery and Chinese refresh",
+    source: "Jobgether / anonymous partner-company LinkedIn listing",
+    opportunity: "UI/UX & Visual Designer (Mid-Level)",
+    fit: "Spain-remote visual and digital-design brief spanning responsive content sites, landing pages, conversion assets, Figma systems, logos, infographics, banners and campaign consistency",
+    location: "Spain remote according to LinkedIn; actual employer, employment entity and team location are undisclosed",
+    status: "Verify first: LinkedIn job 4451696654 was opened on 2026-08-12 and exposes an Easy Apply route, but the description explicitly says Jobgether is recruiting for an anonymous partner company. No employer-owned ATS, company name, salary, contract entity or public hiring-team identity was recovered.",
+    contact: "Original intermediary listing: https://www.linkedin.com/jobs/view/4451696654/",
+    analysis: "Keep at the bottom of the reviewable board rather than treating it as a high-confidence vacancy. The skills match is real, but do not provide identity documents, banking information, unpaid test work or private source files until the actual employer, company-domain contact, written compensation, Spain contract route and data controller are disclosed.",
+    score: 34,
+    tier: "D",
+    locationTag: "Spain remote",
+    typeTag: "Verify-first anonymous UI/UX / visual design",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-12",
+    freshnessTag: "today",
+    freshnessAgeDays: 0,
+    links: ["https://www.linkedin.com/jobs/view/4451696654/"],
+  },
+  {
     id: 930860,
     section: "2026-08-12 Round 20 high-rank recheck and official ATS discovery",
     source: "Kraken / official Ashby ATS + current LinkedIn employer detail",
@@ -1455,6 +1518,38 @@ function applyRound21SourceUpdates() {
 
 applyRound21SourceUpdates();
 
+const ROUND22_SECTION = "2026-08-12 Round 22 current-source discovery and Chinese refresh";
+const round22SourceUpdates = [
+  {
+    id: 24,
+    source: "Casa Asia / HKU Europe official vacancy index and original PDF",
+    status: "Live/current but confirm before preparing a full application: Casa Asia's official employment page was reopened on 2026-08-12 and still lists the 21/07/2026 HKU Europe Marketing & Branding Officer PDF. The page and PDF expose a direct application email but no closing date or employer ATS.",
+    contact: "Official Casa Asia employment index: https://www.casaasia.eu/empleo-2/ ; original JD PDF: https://static.casaasia.es/2026/07/Marketing-and-Branding-Officer-HKU-Europe-JD-13072026.pdf ; application email: ssoens@hku.hk",
+    analysis: "Keep as the clearest current Barcelona Chinese-branding route, but not as a pure VI role. Chinese, English and Spanish are all essential, and the work mixes brand guidelines, website/social/email, campaigns, events, suppliers, data and operational marketing. Send a short availability check first and ask about salary, contract, start date and the proportion of hands-on visual production.",
+    links: [
+      "https://static.casaasia.es/2026/07/Marketing-and-Branding-Officer-HKU-Europe-JD-13072026.pdf",
+      "https://www.casaasia.eu/empleo-2/",
+      "mailto:ssoens@hku.hk",
+    ],
+  },
+  { id: 930863 },
+  { id: 930864 },
+  { id: 930865 },
+];
+
+function applyRound22SourceUpdates() {
+  for (const update of round22SourceUpdates) {
+    const item = allData.find((record) => Number(record.id) === update.id);
+    if (!item) continue;
+    Object.assign(item, update, { section: ROUND22_SECTION });
+    item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+      .filter(Boolean)
+      .join(" ");
+  }
+}
+
+applyRound22SourceUpdates();
+
 for (const item of allData) {
   if (!item.searchText) {
     item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
@@ -1477,15 +1572,15 @@ const PRIORITY_IDS = [930813, 910, 914, 1300, 1107, 866, 94, 930847];
 // the default board. This prevents old source indexes, Madrid posts, mirrors
 // and research notes from inflating the usable count.
 const MY_OPPORTUNITY_IDS = Object.freeze([
-  930813, 910, 914, 1300, 1107, 866, 94, 930847, 930816, 930839, 930860, 296, 535, 175, 930838, 930832, 930836, 930837, 446, 930820, 930834, 425, 4, 1828, 930844,
+  930813, 910, 914, 1300, 1107, 866, 94, 930847, 930863, 930816, 930839, 930860, 296, 535, 175, 930838, 930832, 930836, 930837, 446, 930820, 930834, 425, 4, 1828, 930844,
   930705, 668, 1102, 884, 203, 601, 284, 920001, 930812, 190, 577, 55,
   1278, 1314, 314, 207, 78, 444, 458, 258, 5106, 960, 238, 156, 928, 147, 604,
   930822, 304, 170, 1038, 84, 930815, 930824, 930831, 279, 12, 859, 305, 1011, 445, 1029, 188, 922, 483, 958, 930845,
-  930823, 162, 930825, 930818, 930821, 930828, 930840, 930827, 930829, 921, 228, 178, 2942, 1105, 890, 891, 930841, 930637, 930833, 930819, 930854, 930826, 930707, 930708, 930712, 134, 277, 109,
+  930823, 162, 930825, 930818, 930821, 930828, 930840, 930827, 930829, 921, 228, 178, 2942, 1105, 890, 891, 930841, 930637, 930833, 930819, 930854, 930826, 930864, 930707, 930708, 930712, 134, 277, 109,
   117, 93, 1296, 375, 210, 930842, 930848, 930719, 89, 1023, 385, 930817, 841, 903, 1108, 855, 874, 875, 876,
   1227, 397, 1274, 396, 1240, 217, 985, 977, 989, 870, 990001, 27, 1303, 308, 1020, 351, 1081, 930843,
   1080, 1099, 981, 1097, 1101, 24, 25, 930835, 484, 278, 1293, 1255, 37, 889,
-  172, 86, 930717, 224, 930852, 1301, 930849, 930814, 920,
+  172, 86, 930717, 224, 930852, 1301, 930849, 930814, 920, 930865,
 ]);
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
 
@@ -7732,9 +7827,73 @@ Object.assign(CURATED, {
   },
 });
 
+// Round 22: add only roles whose original detail was opened this round, keep
+// anonymous recruitment at verify-first status, and record the no-new-result
+// Chinese-channel refresh without manufacturing extra cards.
+Object.assign(CURATED, {
+  24: {
+    ...CURATED[24],
+    statusKey: "live",
+    changeType: "round-22-source-refresh",
+  },
+  930863: {
+    direction: "brand",
+    company: "THE/STUDIO",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "全球远程 / 全职 independent contractor",
+    titleZh: "视觉商品与品牌概念设计师（AI 与趋势方向）",
+    titleEs: "Visual Merchandising & Concept Specialist",
+    reason: "官方 Teamtailor 页面当前显示 Apply for this role，并明确 100% 全球远程；1–3 年或强作品集即可。职责直接覆盖品牌识别、logo、色彩、图形语言、pattern、mascot、包装系统、moodboard 与 AI mockup，是本轮最贴近品牌视觉目标的新机会。",
+    next: "用英文提交概念到系统的案例，突出品牌识别、包装、产品系列延展、Figma Slides 和 AI 视觉验证；在接受前确认 contractor 报酬、Spain 开票与税务、工时、设备、休假和时区。",
+    language: "书面英语为明确要求；未列西班牙语门槛",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "junior",
+    experienceLabel: "初级至初中级 / 1–3 年或强作品集",
+    changeType: "round-22-new-official",
+  },
+  930864: {
+    direction: "brand",
+    company: "Prime Insights",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "Spain remote / 瑞典团队 / 偏好 CET 重叠",
+    titleZh: "平面与品牌视觉设计师（插画 / mascot / 产品视觉）",
+    titleEs: "Graphic Designer",
+    reason: "当前 LinkedIn 原始招聘页可投，职责覆盖视觉识别、矢量插画、mascot、icon、onboarding、badge、reward visual、网站/移动端/营销/视频与本地化。地点适合西班牙远程，但岗位标题写 part-time，正文又写可为 contract 或 full-time，劳动条件不够透明。",
+    next: "先用英文确认周工时、合同形态、报酬、Spain 雇佣或开票、付费测试、IP 条款和 CET 时段，再决定是否投入定制作品集。",
+    language: "英语远程协作；未列西班牙语硬门槛",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "初中级至中级 / 年限未硬性公开",
+    changeType: "round-22-new-linkedin",
+  },
+  930865: {
+    direction: "digital",
+    company: "Jobgether / 匿名合作公司",
+    statusKey: "verify",
+    locationKey: "remote",
+    locationLabel: "Spain remote / 实际雇主与合同主体未公开",
+    titleZh: "UI/UX 与视觉设计师（匿名雇主，先核验）",
+    titleEs: "UI/UX & Visual Designer (Mid-Level)",
+    reason: "LinkedIn 页面当前可 Easy Apply，视觉职责包含响应式内容网站、landing、CRO、Figma 系统、logo、infographic、banner 与 campaign；但正文明确由 Jobgether 为匿名合作公司招募，找不到雇主官方 ATS、薪资、合同主体和招聘团队身份。",
+    next: "只做最低成本的书面核验；在披露公司全称、公司域名联系人、Spain 合同路径、薪资和数据控制方前，不提交证件、银行资料、源文件或无薪测试。",
+    opaqueEmployer: true,
+    language: "英语岗位描述；实际团队语言未公开",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 实际雇主要求待核验",
+    changeType: "round-22-new-verify",
+  },
+});
+
 // Reapply the Round 21 source verdicts after every historical refresh block so
 // a stale generated record cannot turn either excluded role back into live.
 applyRound21SourceUpdates();
+applyRound22SourceUpdates();
 
 const els = {
   totalCount: document.querySelector("#totalCount"),
