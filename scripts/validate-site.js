@@ -91,7 +91,7 @@ check(
 test.state.preset = "mine";
 const auditedMain = test.dedupedData.filter((item) => test.matchesPreset(item));
 check(
-  auditedMain.length === test.MY_OPPORTUNITY_IDS.length && auditedMain.length >= 148,
+  auditedMain.length === test.MY_OPPORTUNITY_IDS.length && auditedMain.length >= 140,
   "逐条核验后的默认机会总表与人工审核 ID 清单数量不一致或发生倒退",
 );
 check(auditedMain.every((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id))), "默认机会总表混入未审核记录");
@@ -114,14 +114,17 @@ check([446, 928, 483, 930815].every((id) => auditedMain.some((item) => Number(it
 check([296, 4, 1102, 601, 577, 1038, 1011, 1105, 1240, 351, 484, 278, 224].every((id) => auditedMain.some((item) => Number(item.id) === id)), "研究库追回的十三条真实机会未完整进入主表");
 check([94, 1828, 604, 981, 1101].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第二批研究库追回的五条真实机会未完整进入主表");
 check([170, 445, 1108, 1081].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第三批研究库追回的四条真实机会未完整进入主表");
-check([1314, 1239, 958, 277, 109, 385, 217, 1080, 1099].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第四批研究库追回的九条真实机会未完整进入主表");
+check([1314, 958, 277, 109, 385, 217, 1080, 1099].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第四批研究库追回的当前机会未完整进入主表");
 check([314, 78, 458, 258, 921, 117, 210, 308, 1097, 870, 841, 875, 985, 989].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第五批研究库追回的十四条真实机会未完整进入主表");
-check([668, 5106, 134, 2942, 930720, 183, 239, 977, 1255, 1241, 876, 920].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第六批研究库追回的十二条真实机会未完整进入主表");
-check([447, 207, 444, 304, 89, 855, 874, 1227, 396, 172, 86, 1294].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第七批研究库追回的十二条真实机会未完整进入主表");
+check([668, 5106, 134, 2942, 977, 1255, 876, 920].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第六批研究库追回的当前机会未完整进入主表");
+check([207, 444, 304, 89, 855, 874, 1227, 396, 172, 86].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第七批研究库追回的当前机会未完整进入主表");
 check([930816, 1278, 930818, 930819, 93, 1296, 930817, 903, 1293, 37, 279].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第八批逐条核验的十一条真实机会未完整进入主表");
 check([930820, 930821, 930822, 930823, 178, 228, 930717].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第九批逐条核验的七条真实机会未完整进入主表");
 check([1245, 930824, 930825, 930826, 930827, 930828, 930829].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十批逐条核验的七条真实机会未完整进入主表");
 check([930831, 930832, 930833].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十一批逐条核验的三条真实机会未完整进入主表");
+check([930834, 930835, 930836, 930837].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十二批新增的四条机会未完整进入主表");
+check([914, 1107, 2942, 134, 977, 1255, 279].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十二批官方可投岗位未全部提升为 live");
+check([1239, 216, 930720, 206, 183, 239, 1301, 1294, 1241].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "第十二批已关闭或无具体 vacancy 的旧卡未全部移入历史区");
 check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 930708)).key === "live", "Dragons 医疗艺术指导的官方可投状态未恢复");
 check([120, 1079, 1217].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 Rocket Digital 或 Fhios 记录仍被标为可投");
 check([153, 220, 322, 894].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 UNIQLO、Desigual 或 Ogilvy 记录仍被标为可投");
@@ -368,9 +371,9 @@ check(test.applicationStatus({ opportunity: "Trivelta Graphic Designer", status:
 check(
   test.dedupedData.some((item) =>
     test.toLinks(item).some((url) => /4235534009/.test(url)) &&
-    test.applicationStatus(item).key === "verify"
+    test.applicationStatus(item).key === "live"
   ),
-  "Trivelta official Apply route with Barcelona hybrid conflict is not verify-first",
+  "Trivelta official Apply route was not promoted after the complete form was verified",
 );
 check(test.languageInfo(test.allData.find((item) => item.id === 873)).key === "light", "Talent-R 非西语岗位被错误归入西语硬门槛");
 check(test.applicationStatus(test.allData.find((item) => item.id === 874)).key === "live", "IKIGAI 官方表单没有保留当前可投状态");
@@ -613,11 +616,11 @@ check(test.isChineseRelevant(test.allData.find((item) => item.id === 913)), "ALO
 check(test.allData.find((item) => item.id === 913).tier === "X", "ALOHAS 已关闭岗位没有降为 X 级历史记录");
 check(test.identityKey(test.allData.find((item) => item.id === 111)) === test.identityKey(test.allData.find((item) => item.id === 913)), "ALOHAS 状态恢复没有与历史关闭记录合并");
 check(test.dedupedData.some((item) => item.id === 913) && !test.dedupedData.some((item) => item.id === 111), "ALOHAS 去重后没有保留恢复记录");
-check(test.applicationStatus(test.allData.find((item) => item.id === 914)).key === "verify", "Trivelta 官方 Greenhouse 的地点冲突状态没有保留");
+check(test.applicationStatus(test.allData.find((item) => item.id === 914)).key === "live", "Trivelta 官方 Greenhouse 完整申请表核验后没有提升为可投");
 check(test.applicationLanguagePath(test.allData.find((item) => item.id === 914)).key === "english", "Trivelta 没有隔离到英语岗位备选");
 check(test.identityKey(test.allData.find((item) => item.id === 399)) === test.identityKey(test.allData.find((item) => item.id === 914)), "Trivelta 状态刷新没有与旧记录合并");
 check(test.dedupedData.some((item) => item.id === 914) && !test.dedupedData.some((item) => item.id === 399), "Trivelta 去重后没有保留当前记录");
-check(test.CURATED[913].changeType === "refresh" && test.CURATED[914].changeType === "refresh", "第二十一轮状态修复没有正确标记");
+check(test.CURATED[913].changeType === "refresh" && test.CURATED[914].changeType === "round-12-promoted", "Trivelta 最新状态提升没有正确标记");
 check(test.allData.find((item) => item.id === 915).tier === "X", "欧浪远程电商岗位没有进入历史区");
 check(test.applicationLanguagePath(test.allData.find((item) => item.id === 915)).key === "chineseCheck", "欧浪远程电商岗位没有识别为可先中文确认");
 check(test.locationBucket(test.allData.find((item) => item.id === 915)) === "remote", "欧浪远程电商岗位历史地点没有保留远程标记");
@@ -748,7 +751,7 @@ const r588Thru = test.allData.find((item) => item.id === 1107);
 const r588Ozero = test.allData.filter((item) => [656, 657, 658].includes(item.id));
 check(r588Kave?.tier === "X" && test.locationBucket(r588Kave) === "other", "Round 588: Kave Home old Art Director was restored to the active Barcelona queue");
 check(r588Sierra?.score === 106 && test.locationBucket(r588Sierra) === "barcelona" && test.applicationStatus(r588Sierra).key === "live", "Round 588: SIERRA live Barcelona Art Director evidence regressed");
-check(r588Thru?.score === 108 && test.locationBucket(r588Thru) === "barcelona" && test.applicationStatus(r588Thru).key === "verify", "Round 588/2026-08-12: THRU page-status conflict was not preserved");
+check(r588Thru?.score === 108 && test.locationBucket(r588Thru) === "barcelona" && test.applicationStatus(r588Thru).key === "live", "Round 588/2026-08-12: THRU current official job detail was not promoted");
 check(r588Ozero.length === 3 && r588Ozero.every((item) => item.tier === "D" && test.locationBucket(item) === "other"), "Round 588: Ozero global-remote eligibility-unknown cards leaked into the default queue");
 
 // Round 651/652 regression checks: an expired LinkedIn snapshot must not stay
@@ -845,7 +848,8 @@ check(r698Catorce && test.applicationStatus(r698Catorce).key === "closed" && r69
 const r698Circle = test.allData.find((item) => item.id === 928);
 check(r698Circle && test.applicationStatus(r698Circle).key !== "closed" && r698Circle.score === 106 && test.locationBucket(r698Circle) === "remote", "Round 698: Circle official Greenhouse refresh regressed");
 const r698Linear = test.allData.find((item) => item.id === 216);
-check(r698Linear && test.applicationStatus(r698Linear).key !== "closed" && r698Linear.score === 98 && test.locationBucket(r698Linear) === "remote", "Round 698: Linear official careers/Ashby refresh regressed");
+const r698LinearReplacement = test.allData.find((item) => item.id === 930834);
+check(r698Linear && test.applicationStatus(r698Linear).key === "closed" && r698LinearReplacement && test.applicationStatus(r698LinearReplacement).key === "live" && test.locationBucket(r698LinearReplacement) === "remote", "Round 698: closed Linear Web & Brand was not replaced by current Production Designer Europe");
 const r699Coros = test.allData.find((item) => item.id === 668);
 check(r699Coros && test.applicationStatus(r699Coros).key === "live" && r699Coros.score === 96 && test.locationBucket(r699Coros) === "remote", "Round 699/2026-08-12: COROS canonical official careers record regressed");
 const r699AdsmuraiArt = test.allData.find((item) => item.id === 1023);
@@ -889,9 +893,9 @@ check(r709Bcome && r709Bcome.score === 94 && test.locationBucket(r709Bcome) === 
 const r709Fhios = test.allData.find((item) => item.id === 1217);
 check(r709Fhios && r709Fhios.score === 94 && test.locationBucket(r709Fhios) === "barcelona" && test.applicationStatus(r709Fhios).key === "closed", "Round 709/2026-08-12: Fhios official closure evidence regressed");
 const r709SlapsSenior = test.allData.find((item) => item.id === 134);
-const r709SlapsJunior = test.allData.find((item) => item.id === 211);
-check(r709SlapsSenior && r709SlapsSenior.score === 100 && test.locationBucket(r709SlapsSenior) === "barcelona" && test.applicationStatus(r709SlapsSenior).key === "verify", "Round 709: SLAPS Senior Art Director recalibration regressed");
-check(r709SlapsJunior && r709SlapsJunior.score === 82 && test.locationBucket(r709SlapsJunior) === "barcelona" && test.applicationStatus(r709SlapsJunior).key === "verify", "Round 709: SLAPS Junior Graphic Designer recalibration regressed");
+const r709SlapsJunior = test.allData.find((item) => item.id === 2942);
+check(r709SlapsSenior && r709SlapsSenior.score === 100 && test.locationBucket(r709SlapsSenior) === "barcelona" && test.applicationStatus(r709SlapsSenior).key === "live", "Round 709: SLAPS Senior Art Director current application route regressed");
+check(r709SlapsJunior && test.locationBucket(r709SlapsJunior) === "barcelona" && test.applicationStatus(r709SlapsJunior).key === "live", "Round 709: SLAPS Junior Graphic Designer current application route regressed");
 for (const id of [479, 1055]) {
   const duplicateSlaps = test.allData.find((item) => item.id === id);
   check(duplicateSlaps && test.applicationStatus(duplicateSlaps).key === "closed" && duplicateSlaps.tier === "X", `Round 709: SLAPS duplicate history row ${id} remained active`);
@@ -909,7 +913,7 @@ check(r711Patterson && r711Patterson.score === 10 && r711Patterson.tier === "X" 
 const r711MemeSocial = test.allData.find((item) => item.id === 930711);
 check(r711MemeSocial && r711MemeSocial.score === 86 && test.locationBucket(r711MemeSocial) === "barcelona" && test.applicationStatus(r711MemeSocial).key === "live" && test.toLinks(r711MemeSocial).some((url) => /4441035715/i.test(url)), "Round 711: MeMe Social Creative discovery missing or misclassified");
 const r712ColourMonster = test.allData.find((item) => item.id === 1301);
-check(r712ColourMonster && r712ColourMonster.score === 100 && test.locationBucket(r712ColourMonster) === "barcelona" && test.applicationStatus(r712ColourMonster).key === "verify" && test.toLinks(r712ColourMonster).some((url) => /4446592473/i.test(url)), "Round 712: The Colour Monster application-control audit regressed");
+check(r712ColourMonster && r712ColourMonster.score === 100 && test.locationBucket(r712ColourMonster) === "barcelona" && test.applicationStatus(r712ColourMonster).key === "closed" && test.toLinks(r712ColourMonster).some((url) => /4446592473/i.test(url)), "Round 712: The Colour Monster direct closed status regressed");
 const r712Pepsi = test.allData.find((item) => item.id === 920001);
 check(r712Pepsi && r712Pepsi.score === 112 && test.locationBucket(r712Pepsi) === "barcelona" && test.applicationStatus(r712Pepsi).key === "live" && test.toLinks(r712Pepsi).some((url) => /4440194840/i.test(url)), "Round 712: PepsiCo Senior Designer live-status audit regressed");
 const r713Bav = test.allData.find((item) => item.id === 930712);
@@ -930,7 +934,7 @@ const r721Stark = test.allData.find((item) => item.id === 190);
 const r721Estudiferrer = test.allData.find((item) => item.id === 1239);
 const r721Establishment = test.allData.find((item) => item.id === 930717);
 check(r721Stark && r721Stark.score === 100 && test.locationBucket(r721Stark) === "barcelona" && test.applicationStatus(r721Stark).key === "live" && test.toLinks(r721Stark).some((url) => /4424557342/i.test(url)), "Round 721: Stark Future current-detail recheck regressed");
-check(r721Estudiferrer && r721Estudiferrer.score === 94 && test.locationBucket(r721Estudiferrer) === "barcelona" && test.applicationStatus(r721Estudiferrer).key === "verify" && test.toLinks(r721Estudiferrer).some((url) => /4377161837/i.test(url)), "Round 721: Estudiferrer current-detail recheck regressed");
+check(r721Estudiferrer && r721Estudiferrer.score === 94 && test.locationBucket(r721Estudiferrer) === "barcelona" && test.applicationStatus(r721Estudiferrer).key === "closed" && test.toLinks(r721Estudiferrer).some((url) => /4377161837/i.test(url)), "Round 721: Estudiferrer direct closed status regressed");
 check(r721Establishment && r721Establishment.score === 72 && test.locationBucket(r721Establishment) === "barcelona" && test.applicationStatus(r721Establishment).key === "live" && test.toLinks(r721Establishment).some((url) => /4384477497/i.test(url)), "Round 721: Establishment Labs design-intern discovery missing or misclassified");
 const r722Uniqlo = test.allData.find((item) => test.toLinks(item).some((url) => /R00000004175039|4415503040/i.test(url)) && /UNIQLO/i.test(`${item.source} ${item.opportunity}`));
 check(r722Uniqlo && r722Uniqlo.score === 96 && test.locationBucket(r722Uniqlo) === "barcelona" && test.applicationStatus(r722Uniqlo).key === "closed" && test.toLinks(r722Uniqlo).some((url) => /fastretailing\.wd3\.myworkdayjobs\.com\/sv-SE/i.test(url)), "Round 722/2026-08-12: UNIQLO removed Workday state regressed");
@@ -946,8 +950,8 @@ const r725Adsmurai = test.allData.find((item) => item.id === 930719);
 const r725Ondeuev = test.allData.find((item) => item.id === 930720);
 const r725Semrush = test.allData.find((item) => item.id === 206);
 check(r725Adsmurai && r725Adsmurai.score === 98 && test.locationBucket(r725Adsmurai) === "barcelona" && test.applicationStatus(r725Adsmurai).key === "live" && test.toLinks(r725Adsmurai).some((url) => /8109023-digital-graphic-designer/i.test(url)), "Round 725: Adsmurai Barcelona ATS discovery missing or misclassified");
-check(r725Ondeuev && r725Ondeuev.score === 90 && test.locationBucket(r725Ondeuev) === "barcelona" && test.applicationStatus(r725Ondeuev).key === "verify" && test.toLinks(r725Ondeuev).some((url) => /4403400813/i.test(url)), "Round 725: Ondeuev senior digital/graphic capture missing or misclassified");
-check(r725Semrush && r725Semrush.score === 108 && test.locationBucket(r725Semrush) === "barcelona" && test.applicationStatus(r725Semrush).key === "verify" && test.toLinks(r725Semrush).some((url) => /JR100590/i.test(url)), "Round 725: Semrush official Workday recalibration regressed");
+check(r725Ondeuev && r725Ondeuev.score === 90 && test.locationBucket(r725Ondeuev) === "barcelona" && test.applicationStatus(r725Ondeuev).key === "closed" && test.toLinks(r725Ondeuev).some((url) => /4403400813/i.test(url)), "Round 725: Ondeuev direct closed status regressed");
+check(r725Semrush && r725Semrush.score === 108 && test.locationBucket(r725Semrush) === "barcelona" && test.applicationStatus(r725Semrush).key === "closed" && test.toLinks(r725Semrush).some((url) => /JR100590/i.test(url)), "Round 725: Semrush missing Workday route closure regressed");
 const r669Remedy = test.allData.find((item) => item.id === 958);
 check(r669Remedy && test.applicationStatus(r669Remedy).key === "live" && r669Remedy.score === 70 && test.isInternshipRole(r669Remedy), "Round 669: Remedy Edge internship status or score was not recalibrated");
 check(r669Remedy && test.toLinks(r669Remedy).some((url) => /job-boards\.greenhouse\.io\/remedyedgespain\/jobs\/5207341008/i.test(url)), "Round 669: Remedy Edge official application route was lost");
@@ -998,6 +1002,12 @@ if (process.env.SITE_VALIDATE_DETAIL === "1") {
 const summary = {
   total: test.allData.length,
   deduped: test.dedupedData.length,
+  mainTotal: auditedMain.length,
+  mainLive: auditedMain.filter((item) => test.applicationStatus(item).key === "live").length,
+  mainVerify: auditedMain.filter((item) => test.applicationStatus(item).key === "verify").length,
+  mainBarcelona: auditedMain.filter((item) => test.locationBucket(item) === "barcelona").length,
+  mainRemote: auditedMain.filter((item) => test.locationBucket(item) === "remote").length,
+  mainChineseRelevant: auditedMain.filter((item) => test.isChineseRelevant(item)).length,
   priority: test.priorityItems.length,
   actionableLinks: test.dedupedData.reduce((count, item) => count + test.toLinks(item).length, 0),
     personalized: personalized.length,

@@ -453,6 +453,92 @@ const allData = Array.isArray(window.JOB_OPPORTUNITIES) ? window.JOB_OPPORTUNITI
     freshnessAgeDays: 7,
     links: ["https://www.linkedin.com/jobs/view/4448188871/"],
   },
+  {
+    id: 930834,
+    section: "2026-08-12 official ATS discovery",
+    source: "Linear / official Ashby careers",
+    opportunity: "Production Designer (Europe)",
+    fit: "Europe remote full-time; web, brand and marketing production across campaigns, launches, decks and landing pages",
+    location: "Europe remote; Spain/Barcelona residency compatible subject to local contract confirmation",
+    status: "Linear's official Ashby board and Europe-specific requisition were opened on 2026-08-12. The page currently shows Apply for this Job, Full time and Remote / Europe. It asks for 2+ years and covers landing pages, ad campaigns, sales decks, launch materials, visual language, UI, motion and interaction.",
+    contact: "Official detail/application: https://jobs.ashbyhq.com/Linear/5b9997fd-7507-4437-8fd7-14178c99ab5d ; official board: https://jobs.ashbyhq.com/Linear",
+    analysis: "A strong English-first Europe-remote brand-production route. It is broader production design rather than a pure VI ownership role, but the visual-system, campaign and web overlap is substantial. Confirm Spain payroll or contractor terms, compensation and timezone expectations before interview.",
+    score: 88,
+    tier: "A",
+    locationTag: "Europe remote",
+    typeTag: "Brand production / web / campaign systems",
+    sourceGroup: "official",
+    postedAt: "2026-08-12",
+    freshnessTag: "week",
+    freshnessAgeDays: 0,
+    links: [
+      "https://jobs.ashbyhq.com/Linear/5b9997fd-7507-4437-8fd7-14178c99ab5d",
+      "https://jobs.ashbyhq.com/Linear",
+    ],
+  },
+  {
+    id: 930835,
+    section: "2026-08-12 Chinese-community recovery",
+    source: "西华论坛 / Barcelona 本地中文招聘帖",
+    opportunity: "广告店全职平面设计师",
+    fit: "Barcelona local Chinese-contact lead; advertising-shop graphic production, Illustrator and work permit required",
+    location: "Barcelona; full-time; exact shop identity and address not disclosed",
+    status: "The original Xihua post remains publicly readable. It was published on 2026-01-15 and asks for two experienced full-time graphic designers who can use Illustrator and already hold a work permit. It lists net pay of EUR 1,410-1,600 and basic Spanish, but gives no employer name, contract document, application form or recent confirmation.",
+    contact: "Original post: https://xihua.es/forum.php?extra=page%3D1&mod=viewthread&tid=636246 ; contact 陈: +34 644 055 418 ; WeChat A644055418",
+    analysis: "This is a real Barcelona Chinese-channel lead, but it is seven months old, low-information and opaque. Keep it only in the low-ranked verification area. Do not send documents before a phone or WeChat check confirms the shop identity, exact address, current vacancy, contract, hours, salary and data recipient.",
+    score: 20,
+    tier: "D",
+    locationTag: "Barcelona area",
+    typeTag: "Advertising print / graphic production",
+    sourceGroup: "chinese",
+    postedAt: "2026-01-15",
+    freshnessTag: "old",
+    freshnessAgeDays: 209,
+    links: ["https://xihua.es/forum.php?extra=page%3D1&mod=viewthread&tid=636246", "tel:+34644055418"],
+  },
+  {
+    id: 930836,
+    section: "2026-08-12 official ATS discovery",
+    source: "CrowdStrike / official Workday ATS",
+    opportunity: "Creative Content Designer (Remote)",
+    fit: "Barcelona remote full-time; visual storytelling, presentations, design systems, video, motion and brand consistency",
+    location: "Spain - Barcelona; remote; full-time",
+    status: "CrowdStrike official Workday requisition R29235 was opened and read in full on 2026-08-12. It shows Apply, Spain - Barcelona, Full time and Posted 6 Days Ago. The role asks for 2+ years, advanced PowerPoint/Google Slides, Adobe/Figma/Canva, video editing, English and global collaboration.",
+    contact: "Official detail/application: https://crowdstrike.wd5.myworkdayjobs.com/crowdstrikecareers/job/Spain---Barcelona/Content-Developer--Sales-Enablement--Remote-_R29235 ; LinkedIn employer detail: https://www.linkedin.com/jobs/view/4439209874/",
+    analysis: "A current, English-friendly Barcelona remote opportunity with a clean official application route. It is sales-enablement and learning content rather than pure identity design, so the portfolio should lead with presentation systems, information design, reusable templates, brand consistency, short video and motion examples.",
+    score: 89,
+    tier: "A",
+    locationTag: "Barcelona area",
+    typeTag: "Creative content / presentation system / motion",
+    sourceGroup: "official",
+    postedAt: "2026-08-06",
+    freshnessTag: "week",
+    freshnessAgeDays: 6,
+    links: [
+      "https://crowdstrike.wd5.myworkdayjobs.com/crowdstrikecareers/job/Spain---Barcelona/Content-Developer--Sales-Enablement--Remote-_R29235",
+      "https://www.linkedin.com/jobs/view/4439209874/",
+    ],
+  },
+  {
+    id: 930837,
+    section: "2026-08-12 current original-detail discovery",
+    source: "Velvet Caviar / current LinkedIn employer detail",
+    opportunity: "Graphic Designer - eCommerce Fashion Brand",
+    fit: "Spain remote full-time; email, social, web, Amazon, motion, photography and e-commerce brand production",
+    location: "Spain remote; full-time; collaboration with New York team until 18:00 Monday-Friday",
+    status: "The current LinkedIn employer detail 4413468201 was surfaced again on 2026-08-12 with an active application route. It states Spain, 100% remote, EUR 30,000-40,000, 2+ years and a full brief covering email, social, web, Amazon, ads, motion, Pantone, photography, retouching and AI-assisted production.",
+    contact: "Current original detail/application: https://es.linkedin.com/jobs/view/graphic-designer-ecommerce-fashion-brand-at-velvet-caviar-4413468201",
+    analysis: "A practical English-first Spain-remote e-commerce brand role with transparent pay. It is high-volume marketing production rather than VI strategy, and the application is LinkedIn rather than a company ATS. Confirm Spanish hiring entity, employee/contractor status, paid leave and exact New York overlap before accepting interviews.",
+    score: 88,
+    tier: "A",
+    locationTag: "Spain remote",
+    typeTag: "E-commerce brand / digital campaign / motion",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-10",
+    freshnessTag: "week",
+    freshnessAgeDays: 2,
+    links: ["https://es.linkedin.com/jobs/view/graphic-designer-ecommerce-fashion-brand-at-velvet-caviar-4413468201"],
+  },
 ].forEach((record) => {
   if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
 });
@@ -581,14 +667,14 @@ const PRIORITY_IDS = [930813, 910, 914, 1300, 160, 1107, 866, 425];
 // the default board. This prevents old source indexes, Madrid posts, mirrors
 // and research notes from inflating the usable count.
 const MY_OPPORTUNITY_IDS = Object.freeze([
-  930813, 910, 914, 1300, 160, 1107, 866, 94, 930816, 1245, 296, 175, 930832, 446, 425, 4, 1828,
-  668, 447, 1102, 884, 203, 601, 284, 920001, 930812, 190, 930715, 577, 55,
-  1278, 1314, 314, 207, 78, 444, 458, 258, 5106, 960, 238, 156, 1239, 928, 147, 216, 604,
+  930813, 910, 914, 1300, 160, 1107, 866, 94, 930816, 1245, 296, 175, 930832, 930836, 930837, 446, 930834, 425, 4, 1828,
+  668, 1102, 884, 203, 601, 284, 920001, 930812, 190, 930715, 577, 55,
+  1278, 1314, 314, 207, 78, 444, 458, 258, 5106, 960, 238, 156, 928, 147, 604,
   930822, 304, 170, 1038, 84, 930815, 930824, 930831, 12, 859, 305, 1011, 445, 1029, 188, 922, 483, 958,
-  930823, 930825, 930818, 930820, 930821, 930828, 930827, 930829, 921, 228, 178, 2942, 1105, 890, 891, 930637, 930833, 930819, 930826, 930707, 930708, 134, 277, 109, 930720,
-  117, 93, 1296, 206, 375, 210, 930719, 89, 183, 239, 1023, 385, 930817, 841, 903, 1108, 855, 874, 875, 876,
+  930823, 930825, 930818, 930820, 930821, 930828, 930827, 930829, 921, 228, 178, 2942, 1105, 890, 891, 930637, 930833, 930819, 930826, 930707, 930708, 134, 277, 109,
+  117, 93, 1296, 375, 210, 930719, 89, 1023, 385, 930817, 841, 903, 1108, 855, 874, 875, 876,
   1227, 396, 1240, 217, 985, 977, 989, 870, 990001, 27, 1303, 308, 1020, 351, 1081,
-  1080, 1099, 981, 1097, 1101, 24, 1301, 1294, 25, 484, 278, 1293, 1255, 37, 889, 1241,
+  1080, 1099, 981, 1097, 1101, 24, 25, 930835, 484, 278, 1293, 1255, 37, 889,
   172, 86, 930717, 224, 279, 930814, 920,
 ]);
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
@@ -5647,6 +5733,266 @@ Object.assign(CURATED, {
   },
 });
 
+const round12DirectEvidenceUpdates = [
+  {
+    id: 914,
+    status: "Official Greenhouse requisition 4235534009 was opened on 2026-08-12. It shows Apply for this job, a complete application form and Submit application. The page metadata says remote while the body says a Barcelona-based hybrid role, so the office cadence still needs confirmation.",
+    contact: "Official detail/application: https://job-boards.greenhouse.io/trivelta/jobs/4235534009",
+    links: ["https://job-boards.greenhouse.io/trivelta/jobs/4235534009"],
+  },
+  {
+    id: 1107,
+    status: "THRU's current jobs page was read in full on 2026-08-12. It lists Graphic Designer with Motion Skills, Barcelona onsite with partial Friday remote, full-time 40 hours, a three-month probation period, a 2026-09-15 closing date and direct email application.",
+    contact: "Official detail: https://thrumotion.com/jobs/ ; application email: jobs@thrumotion.com",
+    links: ["https://thrumotion.com/jobs/", "mailto:jobs@thrumotion.com"],
+  },
+  {
+    id: 2942,
+    status: "SLAPS' official careers board was opened on 2026-08-12 and says Open roles below. It lists Junior Graphic Designer in Barcelona as Full Time / Internship, and the role-specific application page currently exposes a Start control.",
+    contact: "Official role board: https://brandingthatslaps.com/careers/ ; official application: https://brandingthatslaps.com/apply/?job=1679",
+    links: ["https://brandingthatslaps.com/apply/?job=1679", "https://brandingthatslaps.com/careers/"],
+  },
+  {
+    id: 134,
+    status: "SLAPS' official careers board was opened on 2026-08-12 and lists Senior Art Director, Full Time, Barcelona under Open roles below. The role-specific application page currently exposes a Start control.",
+    contact: "Official role board: https://brandingthatslaps.com/careers/ ; official application: https://brandingthatslaps.com/apply/?job=3525",
+    links: ["https://brandingthatslaps.com/apply/?job=3525", "https://brandingthatslaps.com/careers/"],
+  },
+  {
+    id: 977,
+    status: "Injective's official Ashby requisition 01f72c59-0387-48db-b456-952f30bd0aa1 was opened on 2026-08-12. It shows Apply for this Job, Full time and Remote; Europe is an explicit eligible region. The brief asks for 3-5 years, fluent English and Europe timezone collaboration.",
+    contact: "Official detail/application: https://jobs.ashbyhq.com/injective/01f72c59-0387-48db-b456-952f30bd0aa1",
+    links: ["https://jobs.ashbyhq.com/injective/01f72c59-0387-48db-b456-952f30bd0aa1"],
+  },
+  {
+    id: 1255,
+    opportunity: "Graphic Design Intern",
+    status: "Gameloft's official SmartRecruiters form was opened on 2026-08-12. It shows Graphic Design Intern, Barcelona, Spain, a complete application form and Submit. The permanent/internship wording conflict is a contract caveat; the application form itself is open.",
+    contact: "Official application: https://jobs.smartrecruiters.com/oneclick-ui/company/Gameloft/publication/d1350cc7-6efb-487c-8e05-0b0872679bd6?dcr_ci=Gameloft",
+    links: ["https://jobs.smartrecruiters.com/oneclick-ui/company/Gameloft/publication/d1350cc7-6efb-487c-8e05-0b0872679bd6?dcr_ci=Gameloft"],
+  },
+  {
+    id: 279,
+    status: "DORTOKA's official jobs board and Graphic Design - Web detail were opened on 2026-08-12. The board lists DISEÑADOR GRÁFICO - DISEÑO WEB and provides a CV form; the detail also gives a direct email and Barcelona/Badalona office addresses.",
+    contact: "Official detail: https://www.dortoka.com/es/disenador-grafico-web/ ; official board/form: https://www.dortoka.com/es/trabaja-con-nosotros/ ; email: dortoka@dortoka.com",
+    links: ["https://www.dortoka.com/es/disenador-grafico-web/", "https://www.dortoka.com/es/trabaja-con-nosotros/", "mailto:dortoka@dortoka.com"],
+  },
+  {
+    id: 25,
+    status: "The original three-page Casa Asia PDF was downloaded, rendered and read in full on 2026-08-12. It is a Tea Lab Barcelona Chinese-Spanish Social Media & Content Creator / operations-partner brief with flexible hours, possible part-time work, negotiable pay and a direct email, but no closing date or live ATS.",
+    contact: "Original PDF: https://static.casaasia.es/2026/06/Social-Media-Content-Creator-Chino-Espanol-Tea-Lab-Barcelona.pdf ; application email: han980813@gmail.com",
+    links: ["https://static.casaasia.es/2026/06/Social-Media-Content-Creator-Chino-Espanol-Tea-Lab-Barcelona.pdf", "mailto:han980813@gmail.com"],
+  },
+  {
+    id: 920,
+    status: "The original Zhaopin detail was opened on 2026-08-12 and remains readable with an active direct-chat control. It is a Chengdu/Jinjiang part-time remote Brand Visual Designer role recruiting ten people, but it does not state Spain residency, overseas hiring or international payment eligibility.",
+    contact: "Original Zhaopin detail: https://www.zhaopin.com/jobdetail/CC481983130J40920987415.htm",
+    links: ["https://www.zhaopin.com/jobdetail/CC481983130J40920987415.htm"],
+  },
+];
+
+for (const update of round12DirectEvidenceUpdates) {
+  const item = allData.find((record) => Number(record.id) === update.id);
+  if (item) Object.assign(item, update);
+}
+
+Object.assign(CURATED, {
+  930834: {
+    direction: "brand",
+    company: "Linear",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "Europe remote / Barcelona 可居住 / 全职",
+    titleZh: "制作设计师（品牌、Web 与 Campaign 系统）",
+    titleEs: "Production Designer (Europe)",
+    reason: "Linear 官方 Ashby 的欧洲专用职位当前显示 Apply、Full time 和 Remote / Europe。岗位覆盖 landing page、广告 campaign、销售演示、产品发布物料、视觉语言延展、UI、motion 与 interaction；要求 2 年以上。",
+    next: "用英文提交品牌系统、Web/landing、campaign、演示模板和 motion 案例；首轮确认 Spain payroll 或 contractor、薪资、税务福利和欧洲时区重叠。",
+    language: "官方职位为英文，未列西班牙语要求",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "中初级 / 2 年以上",
+    changeType: "round-12-new",
+  },
+  930835: {
+    direction: "production",
+    company: "西华论坛未公开雇主 / Barcelona 广告店",
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 全职 / 店名与地址待核验",
+    titleZh: "广告店全职平面设计师（旧帖待电话确认）",
+    titleEs: "Diseñador/a gráfico/a para tienda de publicidad",
+    reason: "原始西华帖仍可读取：2026-01-15 发布，招两名有经验、会 Illustrator、已有工作居留的全职平面设计师，净薪 €1,410-1,600，基础西语。但帖子已约 7 个月，未公开店名、地址、合同文件或近期在招确认。",
+    next: "只先电话或微信核验店名、地址、当前是否仍招、合同、工时、薪资与材料接收人；未核验前不要发送证件或完整个人资料。",
+    language: "中文联系人；要求基础西班牙语，并明确需要工作居留",
+    languageKey: "chineseCheck",
+    applicationMode: "chinese",
+    experienceKey: "mid",
+    experienceLabel: "有经验 / 年限未公开 / 旧帖",
+    changeType: "round-12-new",
+  },
+  930836: {
+    direction: "digital",
+    company: "CrowdStrike",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Spain - Barcelona / remote / 全职",
+    titleZh: "创意内容设计师（演示系统、视频与 Motion）",
+    titleEs: "Creative Content Designer (Remote)",
+    reason: "CrowdStrike 官方 Workday 职位 R29235 当前显示 Apply、Spain - Barcelona、Full time 和 Posted 6 Days Ago。职责覆盖演示模板、信息设计、视觉叙事、视频、动画、可复用设计系统和品牌一致性；要求 2 年以上与英语。",
+    next: "优先用英文申请。作品集首页放演示系统、复杂信息可视化、品牌模板、短视频/motion 和多方协作案例；确认薪资、远程合同、福利与设备。",
+    language: "英语熟练为明确要求；未列西班牙语门槛",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "中初级 / 2 年以上",
+    changeType: "round-12-new",
+  },
+  930837: {
+    direction: "digital",
+    company: "Velvet Caviar",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "Spain remote / 全职 / €30k-40k",
+    titleZh: "电商品牌平面设计师（社媒、Web 与 Motion）",
+    titleEs: "Graphic Designer - eCommerce Fashion Brand",
+    reason: "当前 LinkedIn 雇主详情明确写 Spain、100% remote、€30,000-40,000、2 年以上，并覆盖 email、社媒、网站、Amazon、广告、motion、Pantone、摄影修图和 AI 辅助生产；申请入口当前可用。",
+    next: "用英文提交电商 campaign、社媒动静态、Web/Amazon、品牌版式、摄影修图和快速生产案例；确认西班牙雇佣主体、雇员/承包方式、带薪假和纽约团队时差。",
+    language: "英文跨国协作；未列西班牙语要求",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "中初级 / 2 年以上",
+    changeType: "round-12-new",
+  },
+  914: {
+    ...CURATED[914],
+    statusKey: "live",
+    reason: "Trivelta 官方 Greenhouse 职位 4235534009 当前有 Apply、完整表单和 Submit application。岗位要求 1-3 年，覆盖品牌、数字、社媒、印刷、活动与 landing page，英语工作；正文明确 Barcelona-based hybrid，但页面元数据写 remote。",
+    next: "可以立即投递。用英文提交品牌系统与跨数字/印刷/社媒的延展案例，并在表单或首轮确认 Barcelona 到岗频率、合同主体与薪资。",
+    changeType: "round-12-promoted",
+  },
+  1107: {
+    ...CURATED[1107],
+    statusKey: "live",
+    reason: "THRU 当前 jobs 页完整列出 Graphic Designer with Motion Skills，Barcelona 现场为主、周五部分远程、40 小时全职、3 个月试用，截止 2026-09-15，并提供 jobs@thrumotion.com。",
+    next: "在截止日前用英文发送 CV、品牌/motion 作品集和简短求职信；重点展示动态 VI、guidelines、After Effects、Adobe 与 Figma，并确认试用期后的永久合同和薪资。",
+    changeType: "round-12-promoted",
+  },
+  2942: {
+    ...CURATED[2942],
+    statusKey: "live",
+    reason: "SLAPS 官方 careers 页当前写 Open roles below，并列出 Barcelona 的 Junior Graphic Designer；职位标注 Full Time / Internship，专属申请页 ?job=1679 当前有 Start。",
+    next: "可从官方表单投递，但先在申请中确认究竟是正式全职、实习还是两条路径。作品集突出品牌识别、字体、版式、概念和跨媒介延展。",
+    changeType: "round-12-promoted",
+  },
+  134: {
+    ...CURATED[134],
+    statusKey: "live",
+    reason: "SLAPS 官方 careers 页当前在 Open roles below 中列出 Senior Art Director、Full Time、Barcelona；专属申请页 ?job=3525 当前有 Start。",
+    next: "只有资历确实达到 senior art direction 时投递；用完整品牌策略、视觉系统、campaign 概念和团队指导案例申请，并确认薪资与到岗节奏。",
+    changeType: "round-12-promoted",
+  },
+  977: {
+    ...CURATED[977],
+    statusKey: "live",
+    reason: "Injective 官方 Ashby 职位当前显示 Apply for this Job、Full time、Remote，并明确 Europe eligible。职责覆盖品牌识别、网站/landing、campaign、设计系统和 Figma；要求 3-5 年、流利英语与欧洲时区协作。",
+    next: "用英文提交身份系统、Web/landing、campaign 和可扩展组件案例；先确认 Spain 雇佣或 contractor、薪资币种、税务和时区。",
+    changeType: "round-12-promoted",
+  },
+  1255: {
+    ...CURATED[1255],
+    statusKey: "live",
+    reason: "Gameloft 官方 SmartRecruiters 当前打开 Barcelona 的 Graphic Design Intern 完整申请表并可 Submit，说明岗位仍接收申请；职位正文中 permanent 与 internship 的措辞冲突仍需确认。",
+    next: "如果具备实习协议资格，可以从官方表单投递；在首轮确认合同究竟是实习还是长期岗位、补贴/薪资、工时与学校协议要求。",
+    changeType: "round-12-promoted",
+  },
+  279: {
+    ...CURATED[279],
+    statusKey: "live",
+    reason: "DORTOKA 官方招聘板当前列出 DISEÑADOR GRÁFICO - DISEÑO WEB，并提供 CV 表单；职位详情覆盖 Web/mobile、平面、插画、Adobe、AE/Premiere、CSS/HTML 与 WordPress，并列出 Barcelona/Badalona 地址和邮箱。",
+    next: "用西语或双语提交 Web、平面、插画、motion 和 WordPress 案例；确认实际办公点、薪资、合同、工作语言与设计/前端职责比例。",
+    changeType: "round-12-promoted",
+  },
+  25: {
+    ...CURATED[25],
+    statusKey: "verify",
+    reason: "原始 3 页 PDF 已完整下载、渲染并逐页核验：这是 Tea Lab Barcelona 的中文/西语社媒内容与运营合伙人机会，含门店运营、小红书/Instagram/TikTok、短视频、campaign、活动和 AI 视频；要求 30 岁以下，薪资面议。PDF 无截止日、无 ATS，且已超过两个月。",
+    next: "只先发简短邮件确认仍招、实际雇佣关系、工时、薪资、门店运营占比和年龄条件；确认后再发送 CV、社媒账号和短视频/品牌内容作品。",
+    changeType: "round-12-reverified",
+  },
+  920: {
+    ...CURATED[920],
+    statusKey: "verify",
+    reason: "智联招聘原始详情当前仍可读并有立即沟通：成都锦江、兼职、招 10 人，职责覆盖社媒、网站、营销物料、品牌 VI 一致性与 PS/AI/InDesign/Canva。但正文未说明西班牙常住者、海外签约或跨境付款可行。",
+    next: "只先在智联直接询问是否接受西班牙常住者、合同主体、跨境付款、税务、时区和数据处理；得到书面确认前不要按欧洲远程正式机会投递。",
+    changeType: "round-12-reverified",
+  },
+  1239: {
+    ...CURATED[1239],
+    statusKey: "closed",
+    reason: "原始 LinkedIn 职位 4377161837 已明确显示 Ya no se aceptan solicitudes；页面约 6 个月前发布。",
+    next: "移入关闭/历史区，不再投递；仅在雇主发布新招聘编号时重新建卡。",
+    changeType: "round-12-closed",
+  },
+  216: {
+    ...CURATED[216],
+    statusKey: "closed",
+    reason: "旧 Linear Web & Brand 的 Ashby 职位 4f10… 已显示 Job not found，官方职位板也不再列出该岗位。当前新的 Production Designer (Europe) 已用独立卡片 930834 收录。",
+    next: "旧卡保留历史，不再投递；使用新的欧洲专用官方职位卡。",
+    changeType: "round-12-closed",
+  },
+  930720: {
+    ...CURATED[930720],
+    statusKey: "closed",
+    reason: "原始 LinkedIn 职位 4403400813 已明确显示 Ya no se aceptan solicitudes。",
+    next: "移入关闭/历史区；不再按当前机会显示。",
+    changeType: "round-12-closed",
+  },
+  206: {
+    ...CURATED[206],
+    statusKey: "closed",
+    reason: "Semrush 官方 Workday 路由当前明确显示 The page you are looking for doesn't exist，无法再进入申请流程。",
+    next: "移入关闭/历史区；只在 Semrush 官方发布新招聘编号时重建卡片。",
+    changeType: "round-12-closed",
+  },
+  183: {
+    ...CURATED[183],
+    statusKey: "closed",
+    reason: "Ogilvy 原始 LinkedIn 职位当前明确显示 Ya no se aceptan solicitudes。",
+    next: "移入关闭/历史区，不再投递。",
+    changeType: "round-12-closed",
+  },
+  239: {
+    ...CURATED[239],
+    statusKey: "closed",
+    reason: "Havas 原始 LinkedIn 职位当前明确显示 Ya no se aceptan solicitudes。",
+    next: "移入关闭/历史区，不再投递。",
+    changeType: "round-12-closed",
+  },
+  1301: {
+    ...CURATED[1301],
+    statusKey: "closed",
+    reason: "The Colour Monster 页面虽然仍显示 actively reviewing 的模板文案，但原始职位同时明确写 Ya no se aceptan solicitudes；直接关闭状态优先。",
+    next: "移入关闭/历史区，不再投递；如出现新的招聘编号再重新核验。",
+    changeType: "round-12-closed",
+  },
+  1294: {
+    ...CURATED[1294],
+    statusKey: "closed",
+    reason: "IMAGINA 官方 careers 页当前只提供没有合适职位时发送通用 CV 的入口，不存在可核验的 Graphic Designer 具体 vacancy。",
+    next: "移入历史/通用人才库，不计作当前岗位；如愿意可单独发送 speculative application。",
+    changeType: "round-12-closed",
+  },
+  1241: {
+    ...CURATED[1241],
+    statusKey: "closed",
+    reason: "Cal Fruitós 原始 LinkedIn 职位当前明确显示 Ya no se aceptan solicitudes，且约 4 个月前发布。",
+    next: "移入关闭/历史区，不再投递。",
+    changeType: "round-12-closed",
+  },
+});
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
@@ -6665,20 +7011,12 @@ function isKnownClosedRoute(item) {
 }
 
 function applicationStatus(item) {
-  if ([206, 930720].includes(Number(item?.id))) {
-    return { key: "verify", label: "Needs verification" };
-  }
   // Round 709: these three official current routes have readable application
   // paths in their latest audits; do not let older curated verify snapshots
   // hide the current submission route.
   if ([55, 1023, 224, 886, 920001, 930711, 930719].includes(Number(item?.id))) {
     return { key: "live", label: "页面显示可投" };
   }
-  /*
-  if ([206, 930720].includes(Number(item?.id))) {
-    return { key: "verify", label: "闂団偓閸忓牏鈥樼拋銈囧Ц閹? };
-  }
-  */
   if (Number(item?.id) === 999999) {
     return { key: "closed", label: "已关闭 / 历史" };
   }
