@@ -1001,9 +1001,114 @@ const allData = Array.isArray(window.JOB_OPPORTUNITIES) ? window.JOB_OPPORTUNITI
       "https://europastry.com/en/talent/",
     ],
   },
+  {
+    id: 930860,
+    section: "2026-08-12 Round 20 high-rank recheck and official ATS discovery",
+    source: "Kraken / official Ashby ATS + current LinkedIn employer detail",
+    opportunity: "Sr Brand Designer - Krak",
+    fit: "Spain-explicit remote full-time senior brand role owning visual identity, art direction, motion, 3D, illustration and scalable campaign systems",
+    location: "Spain explicitly eligible; remote; full-time",
+    status: "Live/current: Kraken's official Ashby requisition 8ed4c65b-aaac-40d0-9d41-423683b7a1bd was opened and read in full on 2026-08-12. Spain is explicitly listed among eligible countries, the page shows Apply for this Job, and applications are accepted on an ongoing basis unless a deadline is later added.",
+    contact: "Official detail/application: https://jobs.ashbyhq.com/kraken.com/8ed4c65b-aaac-40d0-9d41-423683b7a1bd ; current LinkedIn employer detail: https://www.linkedin.com/jobs/view/4446776467",
+    analysis: "A strong exact brand-system opportunity, but a real senior stretch: five-plus years and prior fintech or world-class fintech-agency work are explicit. Apply in English only with identity evolution, art direction, Figma systems, localization-ready campaign kits, motion/3D/illustration and AI-enabled production examples.",
+    score: 94,
+    tier: "A",
+    locationTag: "Spain remote",
+    typeTag: "Senior brand / identity / motion / scalable systems",
+    sourceGroup: "official",
+    postedAt: "2026-08-05",
+    freshnessTag: "week",
+    freshnessAgeDays: 7,
+    links: [
+      "https://jobs.ashbyhq.com/kraken.com/8ed4c65b-aaac-40d0-9d41-423683b7a1bd",
+      "https://jobs.ashbyhq.com/kraken.com/8ed4c65b-aaac-40d0-9d41-423683b7a1bd/application",
+      "https://www.linkedin.com/jobs/view/4446776467",
+    ],
+  },
+  {
+    id: 930861,
+    section: "2026-08-12 Round 20 high-rank recheck and official ATS discovery",
+    source: "Primer.io / removed official Ashby ATS detail",
+    opportunity: "Brand Designer",
+    fit: "Former remote-first brand-system role across web, campaigns, product marketing, social, events and sales collateral; official requisition removed",
+    location: "Remote-first in the former brief; current application no longer available",
+    status: "Closed/history: the indexed Primer Brand Designer requisition 5869d2db-b445-4676-9392-d95a3973500f was opened directly on 2026-08-12. The official Ashby page now says Job not found and provides only the general open-positions link.",
+    contact: "Removed official detail: https://jobs.ashbyhq.com/primer.io/5869d2db-b445-4676-9392-d95a3973500f",
+    analysis: "Preserve the former visual-identity and multi-channel brand brief as a portfolio benchmark, but do not count it as a current remote opportunity or apply through a mirror. Restore only after Primer publishes a new official requisition.",
+    score: 20,
+    tier: "X",
+    locationTag: "Europe remote",
+    typeTag: "Closed senior brand / visual system",
+    sourceGroup: "official",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: ["https://jobs.ashbyhq.com/primer.io/5869d2db-b445-4676-9392-d95a3973500f"],
+  },
 ].forEach((record) => {
   if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
 });
+
+// Round 20: a visible email or a fresh search-card timestamp cannot override a
+// closed original detail. Conversely, employer-owned ATS pages with an active
+// form and explicit Spain/global eligibility may be promoted into the board.
+const round20Supabase = allData.find((item) => Number(item.id) === 535);
+if (round20Supabase) {
+  Object.assign(round20Supabase, {
+    section: "2026-08-12 Round 20 high-rank recheck and official ATS discovery",
+    source: "Supabase / official Ashby ATS",
+    opportunity: "Brand Designer",
+    fit: "Global remote full-time brand role spanning visual storytelling, presentations, print, events, conferences, social and video",
+    location: "Global remote; official page says Supabase hires globally and team members can work from anywhere",
+    status: "Live/current: the official Supabase Ashby detail was opened and read in full on 2026-08-12. It shows Brand Designer, Remote, Full time, Apply for this Job and explicitly states 'We hire globally' and 'work from anywhere'. The team is distributed across 60+ countries.",
+    contact: "Official detail/application: https://jobs.ashbyhq.com/supabase/4a85c92b-1d0d-43ee-8dbc-0e45a58be208",
+    analysis: "A strong English-first remote brand opportunity with unusually clear global eligibility. Lead with visual storytelling for technical audiences, identity consistency, decks, conference/event systems, print, social and video; confirm compensation, Spain contract/payroll arrangement and annual off-site expectations during the first call.",
+    score: 92,
+    tier: "A",
+    locationTag: "Worldwide remote",
+    typeTag: "Brand storytelling / events / print / digital",
+    sourceGroup: "official",
+    links: ["https://jobs.ashbyhq.com/supabase/4a85c92b-1d0d-43ee-8dbc-0e45a58be208"],
+    searchText: "Supabase official Ashby Brand Designer global remote full time Apply hires globally work from anywhere English visual storytelling decks print events conferences swag social video Figma Adobe brand consistency",
+  });
+}
+
+const round20ClosedCorrections = [
+  {
+    id: 1245,
+    source: "Kilograph / closed current LinkedIn employer detail",
+    status: "Closed/history: the signed-in original LinkedIn employer detail 4437390159 was opened on 2026-08-12. It explicitly says Ya no se aceptan solicitudes. The direct careers@kilograph.com address remains visible in the former brief, but it does not override the named requisition's closed state.",
+    analysis: "Preserve the strong Barcelona brand-system, typography, digital/print and visual-storytelling brief as history. Do not present the direct email as a current job application; restore only after Kilograph confirms a new independent opening.",
+    score: 24,
+    tier: "X",
+  },
+  {
+    id: 930851,
+    source: "Luppa / closed current LinkedIn employer detail",
+    status: "Closed/history: the signed-in original LinkedIn employer detail 4440135299 was reopened on 2026-08-12 and explicitly says Ya no se aceptan solicitudes. The publisher-message control and the sentence asking for a CV and portfolio do not override that closed status.",
+    analysis: "Retain the visual-system and licensed-collection brief as a portfolio benchmark, but remove it from the current Barcelona ranking. Restore only if Luppa publishes a new job ID or confirms that applications have reopened.",
+    score: 24,
+    tier: "X",
+  },
+  {
+    id: 930859,
+    source: "Europastry / stale indexed listing + current exact-search correction",
+    status: "Closed/history: a signed-in exact LinkedIn search for Europastry Graphic Designer in Sant Cugat was run on 2026-08-12 and returned no exact match. Europastry's employer talent page exposes no named Graphic Designer vacancy, while the only complete brief remains an archived third-party copy.",
+    analysis: "Move the former packaging, print, branding and motion brief from review into history. A readable archive and an old indexed result are not a current application route; restore only after a new employer or LinkedIn job ID appears.",
+    score: 24,
+    tier: "X",
+  },
+];
+
+for (const update of round20ClosedCorrections) {
+  const item = allData.find((record) => Number(record.id) === update.id);
+  if (item) {
+    Object.assign(item, update, {
+      section: "2026-08-12 Round 20 high-rank recheck and official ATS discovery",
+      searchText: [update.source, update.status, update.analysis].join(" "),
+    });
+  }
+}
 
 const skyscannerCurrent = allData.find((item) => Number(item.id) === 930812);
 if (skyscannerCurrent) {
@@ -1266,14 +1371,14 @@ const meta = window.JOB_META || {};
 // Homepage priority is location-first: Barcelona local roles come before
 // Madrid/unclear remote or stale Chinese-channel leads. Language and contract
 // gates remain explicit on each card instead of being hidden by the homepage.
-const PRIORITY_IDS = [930813, 910, 914, 1300, 1107, 866, 94, 1245];
+const PRIORITY_IDS = [930813, 910, 914, 1300, 1107, 866, 94, 930847];
 
 // Canonical, evidence-backed opportunities for the user. The generated corpus
 // remains searchable, but only these independently reviewed identities enter
 // the default board. This prevents old source indexes, Madrid posts, mirrors
 // and research notes from inflating the usable count.
 const MY_OPPORTUNITY_IDS = Object.freeze([
-  930813, 910, 914, 1300, 1107, 866, 94, 930847, 930816, 930839, 1245, 930851, 296, 175, 930838, 930832, 930836, 930837, 446, 930834, 425, 4, 1828, 930844, 930846,
+  930813, 910, 914, 1300, 1107, 866, 94, 930847, 930816, 930839, 930860, 296, 535, 175, 930838, 930832, 930836, 930837, 446, 930834, 425, 4, 1828, 930844, 930846,
   930705, 668, 1102, 884, 203, 601, 284, 920001, 930812, 190, 577, 55,
   1278, 1314, 314, 207, 78, 444, 458, 258, 5106, 960, 238, 156, 928, 147, 604,
   930822, 304, 170, 1038, 84, 930815, 930824, 930831, 279, 12, 859, 305, 1011, 445, 1029, 188, 922, 483, 958, 930845,
@@ -7338,6 +7443,130 @@ Object.assign(CURATED, {
     changeType: "round-18-official-refresh",
   },
 });
+
+// Round 20 final verdicts are intentionally placed after every legacy metadata
+// block so stale search snapshots cannot restore the two closed high-rank cards.
+Object.assign(CURATED, {
+  1245: {
+    ...CURATED[1245],
+    direction: "brand",
+    company: "Kilograph",
+    statusKey: "closed",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 原始职位已关闭",
+    titleZh: "高级平面设计师 / 艺术指导—已停止接收申请",
+    titleEs: "Senior Graphic Designer / Art Director (closed)",
+    reason: "登录后打开原始 LinkedIn 职位 4437390159，页面明确显示 Ya no se aceptan solicitudes。正文保留 careers@kilograph.com 只能证明历史投递方式，不能覆盖职位关闭状态。",
+    next: "保留品牌系统、字体、数字/印刷延展与建筑视觉叙事要求作为作品集参考；只有 Kilograph 发布新职位编号或明确确认重新收件时才恢复。",
+    language: "历史岗位要求流利英语；当前无有效申请入口",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "原要求 3–5+ 年 / 当前已关闭",
+    changeType: "round-20-closed-correction",
+  },
+  930851: {
+    ...CURATED[930851],
+    direction: "brand",
+    company: "Luppa",
+    statusKey: "closed",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona 市区 / 原始职位已关闭",
+    titleZh: "高级平面与品牌视觉设计师—已停止接收申请",
+    titleEs: "Diseñador/a Gráfico/a Senior (closed)",
+    reason: "重新打开登录后的 LinkedIn 原始职位 4440135299，页面明确显示 Ya no se aceptan solicitudes。联系发布者和正文中的“发送 CV/作品集”不能覆盖关闭标记。",
+    next: "保留品牌视觉系统、授权 IP、B2B/B2C、多渠道数字延展和数据迭代要求作为作品集参考；等待新职位编号或雇主重新开放。",
+    language: "历史岗位要求高水平英语；当前无有效申请入口",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "原要求 5+ 年 / 当前已关闭",
+    changeType: "round-20-closed-correction",
+  },
+  930859: {
+    ...CURATED[930859],
+    direction: "brand",
+    company: "Europastry",
+    statusKey: "closed",
+    locationKey: "barcelona",
+    locationLabel: "Sant Cugat del Vallès / 当前无命名职位",
+    titleZh: "平面设计师（品牌、包装、印刷与动态）—旧索引已失效",
+    titleEs: "Graphic Designer (stale/closed)",
+    reason: "登录后的 LinkedIn 精确搜索已找不到 Europastry Graphic Designer，雇主人才页也没有命名岗位；目前只剩旧索引和第三方存档正文，不能继续列为待投或待确认机会。",
+    next: "保留为雇主监测词；只有 Europastry 官方人才页或新的 LinkedIn 职位编号出现后才重新加入复核区。",
+    language: "旧 JD 写英语 B2；当前无有效申请入口",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "旧要求 5+ 年 / 当前无职位",
+    changeType: "round-20-stale-correction",
+  },
+  535: {
+    ...CURATED[535],
+    direction: "brand",
+    company: "Supabase",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "全球远程 / 官方明确从任何地点招聘",
+    titleZh: "品牌设计师（开发者品牌、活动与多渠道视觉）",
+    titleEs: "Brand Designer",
+    reason: "Supabase 官方 Ashby 当前显示 Brand Designer、Remote、Full time 和 Apply for this Job，并明确写 We hire globally、work from anywhere；职责覆盖视觉叙事、演示、印刷、YouTube、会议活动、社媒与品牌一致性。",
+    next: "用英文作品集突出技术内容视觉化、品牌规范、演示系统、会议/活动、印刷与数字资产；首轮确认薪资、西班牙合同/发薪方式、福利适用范围和年度线下聚会。",
+    language: "英语异步全球团队；未列西语要求",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "公开 JD 未写固定年限 / 看作品集与全球协作经验",
+    changeType: "round-20-promoted-live",
+  },
+  930860: {
+    direction: "brand",
+    company: "Kraken / Krak",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "Spain 明确可申请 / 远程全职",
+    titleZh: "高级品牌设计师（品牌刷新、视觉系统、Motion 与 3D）",
+    titleEs: "Sr Brand Designer - Krak",
+    reason: "Kraken 官方 Ashby 当前明确列出 Spain、Remote、Full time 和 Apply for this Job，并说明无单独截止日时持续收件。岗位端到端负责视觉识别、艺术指导、网站/发布/CRM/付费与自然社媒、App Store、活动、Motion、3D、插画、Figma 组件库和本地化自动化。",
+    next: "仅在能支撑 5+ 年品牌设计与 fintech/高水平代理经验时优先投；英文材料突出身份系统、品牌刷新、Figma 模板、跨市场 campaign、Motion/3D/插画和 AI 生产流程，并确认薪资、Spain 合同和时区。",
+    language: "英语远程岗位；未列西语要求",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5+ 年 / fintech 或顶级代理经验",
+    changeType: "round-20-new-live",
+  },
+  930861: {
+    direction: "brand",
+    company: "Primer.io",
+    statusKey: "closed",
+    locationKey: "remote",
+    locationLabel: "原为远程 / 官方职位已移除",
+    titleZh: "品牌设计师—官方 ATS 已显示 Job not found",
+    titleEs: "Brand Designer (closed)",
+    reason: "搜索索引仍保留完整品牌系统正文，但 Primer 官方 Ashby requisition 5869d2db-b445-4676-9392-d95a3973500f 当前明确显示 Job not found。",
+    next: "只保留 web、campaign、产品营销、社媒、活动与销售物料的历史作品集要求；等待新的官方 requisition。",
+    language: "历史英语远程岗位；当前无有效入口",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "历史高级岗位 / 当前已关闭",
+    changeType: "round-20-closed-discovery",
+  },
+});
+
+// Reapply the Round 20 source-level closure verdicts after every historical
+// refresh block. Some older refreshes intentionally sit above this point and
+// must never be able to turn a closed original detail back into a live card.
+for (const update of round20ClosedCorrections) {
+  const item = allData.find((record) => Number(record.id) === update.id);
+  if (item) {
+    Object.assign(item, update, {
+      section: "2026-08-12 Round 20 high-rank recheck and official ATS discovery",
+      searchText: [update.source, update.status, update.analysis].join(" "),
+    });
+  }
+}
 
 const els = {
   totalCount: document.querySelector("#totalCount"),

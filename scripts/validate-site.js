@@ -79,7 +79,7 @@ check(test.allData.find((item) => item.id === 872).tier === "X", "AQIPA named va
 check(test.allData.length > 700, "机会数据没有完整载入");
 check(test.priorityItems.length === 8, "首页重点机会数量不是 8");
 check(
-  [930813, 910, 914, 1300, 1107, 866, 94, 1245].every((id) =>
+  [930813, 910, 914, 1300, 1107, 866, 94, 930847].every((id) =>
     test.priorityItems.some((item) => item.id === id),
   ),
   "巴塞罗那优先岗位未完整进入首页",
@@ -120,7 +120,7 @@ check([668, 5106, 134, 2942, 977, 1255, 876, 920].every((id) => auditedMain.some
 check([207, 444, 304, 89, 855, 874, 1227, 396, 172, 86].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第七批研究库追回的当前机会未完整进入主表");
 check([930816, 1278, 930818, 930819, 93, 1296, 930817, 903, 1293, 37, 279].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第八批逐条核验的十一条真实机会未完整进入主表");
 check([930820, 930821, 930822, 930823, 178, 228, 930717].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第九批逐条核验的七条真实机会未完整进入主表");
-check([1245, 930824, 930825, 930826, 930827, 930828, 930829].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十批逐条核验的七条真实机会未完整进入主表");
+check([930824, 930825, 930826, 930827, 930828, 930829].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十批仍然开放的六条真实机会未完整进入主表");
 check([930831, 930832, 930833].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十一批逐条核验的三条真实机会未完整进入主表");
 check([930834, 930835, 930836, 930837].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十二批新增的四条机会未完整进入主表");
 check([930838, 930839, 930840, 930841, 930842, 930843, 930844].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十三批新增的七条机会未完整进入主表");
@@ -129,9 +129,9 @@ check([930845, 930846, 930847, 930848].every((id) => auditedMain.some((item) => 
 check([930845, 930846, 930847, 930848, 279, 958].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十四批新增或复核的当前岗位未全部进入 live");
 check([930705, 397, 1274, 930849].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十五批纠正、恢复与新增的四条 Barcelona 机会未完整进入主表");
 check([930705, 397, 1274, 930849, 884, 238, 396].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十五批原始页核验的当前岗位未全部进入 live");
-check([930851, 930852, 1301].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十六批新增或恢复的三条 Barcelona 机会未完整进入主表");
+check([930852, 1301].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十六批仍然有效的两条 Barcelona 机会未完整进入主表");
 check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 930852)).key === "live", "Newlink 当前 Solicitar 岗位未进入 live");
-check([930851, 1301].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "verify"), "Luppa 或 The Colour Monster 的待确认入口被错误标成 live/closed");
+check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 1301)).key === "verify", "The Colour Monster 的待确认入口被错误标成 live/closed");
 check([930851, 930852, 1301].every((id) => test.locationBucket(test.allData.find((item) => Number(item.id) === id)) === "barcelona"), "第十六批本地岗位地点分类错误");
 check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 930850)).key === "verify" && !test.MY_OPPORTUNITY_SET.has(930850), "10x 非传统 AI Lab 项目池被误计为当前可投岗位");
 check([160, 930715].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "第十四批已关闭岗位仍被标为可投");
@@ -234,8 +234,8 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 19/i.test(test.latestRoundSection) &&
-    [9001, 835, 930856, 930857, 930858, 930859].every((id) =>
+  /Round 20/i.test(test.latestRoundSection) &&
+    [1245, 930851, 930859, 535, 930860, 930861].every((id) =>
       test.latestRoundItems.some((item) => Number(item.id) === id),
     ),
   "第十九轮关闭纠正与待复核线索没有完整进入“本轮变化”",
@@ -937,7 +937,7 @@ for (const id of [479, 1055]) {
   check(duplicateSlaps && test.applicationStatus(duplicateSlaps).key === "closed" && duplicateSlaps.tier === "X", `Round 709: SLAPS duplicate history row ${id} remained active`);
 }
 const r710Kilograph = test.allData.find((item) => item.id === 1245);
-check(r710Kilograph && test.locationBucket(r710Kilograph) === "barcelona" && test.applicationStatus(r710Kilograph).key === "live" && test.toLinks(r710Kilograph).some((url) => /4437390159/i.test(url)), "Round 715/2026-08-12: Kilograph new current employer detail was not reactivated");
+check(r710Kilograph && test.locationBucket(r710Kilograph) === "barcelona" && test.applicationStatus(r710Kilograph).key === "closed" && test.toLinks(r710Kilograph).some((url) => /4437390159/i.test(url)), "Round 20/2026-08-12: Kilograph closed original detail correction regressed");
 const r710VmlSenior = test.allData.find((item) => item.id === 981);
 check(r710VmlSenior && r710VmlSenior.score === 102 && test.locationBucket(r710VmlSenior) === "barcelona" && test.applicationStatus(r710VmlSenior).key === "live", "Round 710: VML Senior Art Director recalibration regressed");
 const r711KingNewGames = test.allData.find((item) => item.id === 224);
@@ -1027,8 +1027,19 @@ for (const id of [930856, 930857, 930858]) {
   check(closedLead && !test.MY_OPPORTUNITY_SET.has(id) && test.applicationStatus(closedLead).key === "closed" && test.locationBucket(closedLead) === "barcelona", `Round 19: closed Barcelona lead ${id} was restored or lost`);
 }
 const r19Europastry = test.allData.find((item) => item.id === 930859);
-check(r19Europastry && !test.MY_OPPORTUNITY_SET.has(930859) && test.applicationStatus(r19Europastry).key === "verify" && test.locationBucket(r19Europastry) === "barcelona" && test.toLinks(r19Europastry).length >= 1, "Round 19: Europastry verify-first lead was lost or falsely promoted");
-check(test.MY_OPPORTUNITY_IDS.length === 160, "Round 19: reviewed main opportunity count regressed");
+check(r19Europastry && !test.MY_OPPORTUNITY_SET.has(930859) && test.applicationStatus(r19Europastry).key === "closed" && test.locationBucket(r19Europastry) === "barcelona" && test.toLinks(r19Europastry).length >= 1, "Round 20: Europastry stale indexed listing was not moved from review to history");
+
+const r20Kilograph = test.allData.find((item) => item.id === 1245);
+check(r20Kilograph && !test.MY_OPPORTUNITY_SET.has(1245) && test.applicationStatus(r20Kilograph).key === "closed" && test.locationBucket(r20Kilograph) === "barcelona", "Round 20: closed Kilograph original detail remained in the main ranking");
+const r20Luppa = test.allData.find((item) => item.id === 930851);
+check(r20Luppa && !test.MY_OPPORTUNITY_SET.has(930851) && test.applicationStatus(r20Luppa).key === "closed" && test.locationBucket(r20Luppa) === "barcelona", "Round 20: closed Luppa original detail remained in the main ranking");
+const r20Supabase = test.allData.find((item) => item.id === 535);
+check(r20Supabase && test.MY_OPPORTUNITY_SET.has(535) && test.applicationStatus(r20Supabase).key === "live" && test.locationBucket(r20Supabase) === "remote" && test.toLinks(r20Supabase).some((url) => /jobs\.ashbyhq\.com\/supabase\/4a85c92b-1d0d-43ee-8dbc-0e45a58be208/i.test(url)), "Round 20: Supabase global-remote official opportunity is missing or misclassified");
+const r20Kraken = test.allData.find((item) => item.id === 930860);
+check(r20Kraken && test.MY_OPPORTUNITY_SET.has(930860) && test.applicationStatus(r20Kraken).key === "live" && test.locationBucket(r20Kraken) === "remote" && /Spain/i.test(`${r20Kraken.location} ${r20Kraken.locationTag}`) && test.toLinks(r20Kraken).some((url) => /jobs\.ashbyhq\.com\/kraken\.com\/8ed4c65b-aaac-40d0-9d41-423683b7a1bd/i.test(url)), "Round 20: Kraken Spain-eligible remote official opportunity is missing or misclassified");
+const r20Primer = test.allData.find((item) => item.id === 930861);
+check(r20Primer && !test.MY_OPPORTUNITY_SET.has(930861) && test.applicationStatus(r20Primer).key === "closed", "Round 20: Primer Job not found result was not preserved as closed history");
+check(test.MY_OPPORTUNITY_IDS.length === 160, "Round 20: reviewed main opportunity count regressed");
 
 test.state.preset = "chinese";
 const r588ScoreOrder = test.dedupedData.slice();
@@ -1059,6 +1070,8 @@ if (process.env.SITE_VALIDATE_DETAIL === "1") {
 }
 
 const summary = {
+  latestRoundSection: test.latestRoundSection,
+  latestRoundIds: test.latestRoundItems.map((item) => Number(item.id)),
   total: test.allData.length,
   deduped: test.dedupedData.length,
   mainTotal: auditedMain.length,

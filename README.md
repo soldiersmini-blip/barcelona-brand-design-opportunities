@@ -7,9 +7,9 @@
 ## 当前主表
 
 - 160 个去重后的当前机会。
-- 121 个 Barcelona / 周边机会。
-- 39 个明确允许 Spain / Europe / worldwide remote 且人在西班牙可申请或可先核验的机会。
-- 155 个原始详情页显示可投，5 个需要先确认。
+- 119 个 Barcelona / 周边机会。
+- 41 个明确允许 Spain / Europe / worldwide remote 且人在西班牙可申请或可先核验的机会。
+- 156 个原始详情页显示可投，4 个需要先确认。
 - 5 个中文、华人圈、中国公司或中文远程相关机会。
 
 主表只收录已逐条检查过地点、岗位方向、当前状态和真实入口的机会。默认按“我的匹配分”严格从高到低排列；分数同时考虑 Barcelona/Spain 可行性、品牌视觉相关度、资历、语言门槛、状态可信度和材料投入成本。
@@ -23,6 +23,7 @@
 
 ## 关键文件
 
+- `AUDIT-2026-08-12-ROUND20.md`：重新打开高分岗位原始页，关闭 Kilograph、Luppa 与 Europastry 的失效入口，新增 Kraken 的 Spain 远程高级品牌岗并恢复 Supabase 全球远程品牌岗；主表保持 160 条且按 100–1 唯一分数严格降序。
 - `AUDIT-2026-08-12-ROUND19.md`：逐条拆穿 MiiN、N26、Airtool、NSN 与 Revolut 的新鲜搜索缓存，把 Europastry 放入待找回原始入口队列；可信主表保持 160 条，不用失效链接虚增数量。
 - `AUDIT-2026-08-12-ROUND18.md`：新增 HP 官方 Workday 与 PS21Barna 原始详情两条 Barcelona 备选，确认 DDB、Lateral Thinking 仍可申请，并把 HAAN 的新鲜搜索缓存保留为已关闭历史；主表更新为 160 条。
 - `AUDIT-2026-08-12-ROUND17.md`：纠正 D&M 与 Codeway 搜索缓存状态，把新发现的 El Prat 印前生产岗隔离到主排名之外，并确认当轮主表保持 158 条可信机会。
