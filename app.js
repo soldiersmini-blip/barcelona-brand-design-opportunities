@@ -2644,6 +2644,96 @@ function applyRound31SourceUpdates() {
 
 applyRound31SourceUpdates();
 
+const ROUND32_SECTION = "2026-08-12 Round 32 ranks 26-60 direct audit and remote-brand recovery";
+const ROUND32_CLOSED_IDS = Object.freeze([203, 668, 190, 930871, 142, 444, 458, 258, 1278]);
+
+function applyRound32SourceUpdates() {
+  const updates = new Map([
+    [
+      1021,
+      {
+        section: ROUND32_SECTION,
+        source: "ZOE / official Ashby ATS",
+        opportunity: "Creative Performance Designer (Mid-Weight)",
+        status: "Live/current: ZOE's exact official Ashby requisition was requested directly on 2026-08-12 and returns the current title Creative Performance Designer (Mid-Weight). It remains a full-time UK/EU remote Creative Studio role covering paid-social creative, modular templates, localisation, shoots and a smaller motion component.",
+        analysis: "Keep as an English-first EU-remote performance-creative route, but describe it by the employer's current title rather than the superseded Brand Performance Designer label. Confirm Spain employment eligibility, compensation, product-shoot logistics and any practical test before applying.",
+      },
+    ],
+    [
+      920001,
+      {
+        section: ROUND32_SECTION,
+        source: "PepsiCo / official careers",
+        opportunity: "Senior Designer - Food Ventures",
+        status: "Live/current: PepsiCo official requisition 464555 was requested directly on 2026-08-12 and returns HTTP 200, the exact title Senior Designer - Food Ventures and Apply now. The role includes Alvalle brand strategy, product architecture, visual identity, packaging and innovation across multiple listed locations including Barcelona.",
+        analysis: "Keep as a strong Barcelona consumer-brand and packaging opportunity. Four-plus years, product/packaging depth and up to 15% travel are material gates; confirm the Barcelona work mode, salary, language and Spain work-authorisation policy before applying.",
+      },
+    ],
+    [
+      945,
+      {
+        section: ROUND32_SECTION,
+        source: "OFF+BRAND / official careers",
+        opportunity: "Senior Brand Designer",
+        fit: "EU remote brand-design ownership; identity systems, visual language, art direction, guidelines, Figma systems and web translation",
+        location: "Remote / UK / EU; contract or full-time; UK/EU working hours",
+        status: "Live/current: OFF+BRAND's employer-owned careers detail was opened on 2026-08-12 and visibly shows Senior Brand Designer, Contract or Full-time, Remote / UK / EU and Apply Now. The on-page form accepts a portfolio and CV, and the role owns identity systems, visual language, art direction, documented brand guidelines, Figma tokens/components and broader digital-brand collateral.",
+        contact: "Official detail/application: https://www.itsoffbrand.com/careers/senior-brand-designer ; fallback careers email: contact@itsoffbrand.com",
+        analysis: "One of the closest Europe-remote matches to the requested VI and brand-system direction. It requires 4+ years, strong identity work, client presentation and production-ready Figma systems. Confirm whether Spain is supported as an employee or contractor, the actual rate/salary and project allocation before accepting interviews.",
+        score: 96,
+        tier: "B",
+        locationTag: "Europe remote",
+        typeTag: "Brand identity / guidelines / digital brand systems",
+        sourceGroup: "official",
+        links: ["https://www.itsoffbrand.com/careers/senior-brand-designer", "mailto:contact@itsoffbrand.com"],
+      },
+    ],
+    [
+      1000,
+      {
+        section: ROUND32_SECTION,
+        source: "Designity / official careers",
+        opportunity: "Motion Designer (AI-Driven)",
+        fit: "EMEA remote motion and video role for branding, social and digital campaigns; English-first with US Eastern overlap",
+        location: "Fully remote across EMEA and LATAM; Spain eligible; full-time; at least five hours of US Eastern overlap",
+        status: "Live/current: Designity's employer-owned careers detail was opened on 2026-08-12 and visibly shows Motion Designer (AI-Driven), Full-time, Remote and Apply Now. The body explicitly says the role is based across EMEA and LATAM, offers a fixed base salary and paid PTO, and covers branded motion systems, campaign video, storyboards, After Effects, Premiere, Lottie and AI-assisted workflows.",
+        contact: "Official detail/application: https://www.designity.com/careers/motion-designer",
+        analysis: "A valid Spain-accessible remote opportunity, but secondary to static brand/VI roles because it requires 5+ years of motion depth and at least five hours of US Eastern overlap. Apply only with a motion-first reel and confirm the Spain employment/contract structure, salary and exact daily schedule.",
+        score: 82,
+        tier: "C",
+        locationTag: "Europe remote",
+        typeTag: "Brand motion / campaign video / AI workflow",
+        sourceGroup: "official",
+        links: ["https://www.designity.com/careers/motion-designer"],
+      },
+    ],
+    [203, { status: "Closed/history: Amazon job 3126194 was requested directly on 2026-08-12. The official URL now returns HTTP 404 and explicitly says the job is not available; an older cached Apply page is not current application evidence.", analysis: "Preserve the former Barcelona art-direction brief as a portfolio benchmark, but remove it from the current board until Amazon publishes a new exact requisition.", tier: "X" }],
+    [668, { status: "Closed/history: COROS's current official careers page was opened and searched on 2026-08-12. It lists current Canada, operations and support roles but no Brand Creative Producer; the generic careers email cannot prove that the former vacancy remains open.", analysis: "Preserve the brand-film and product-storytelling brief in history. Do not apply under the removed title unless COROS republishes a named role on its official careers page.", tier: "X" }],
+    [190, { status: "Closed/history: the exact Stark Future LinkedIn job 4424557342 now redirects to a generic search URL containing expired_jd_redirect instead of the employer detail. No current employer ATS requisition for this Graphic Designer role was recovered.", analysis: "Keep the former packaging, retail and premium-brand scope as history; restore only if Stark Future publishes a new exact application route.", tier: "X" }],
+    [930871, { status: "Closed/history: the exact Familia Torres LinkedIn job 4400269724 now redirects to a generic search URL containing expired_jd_redirect. The previous readable packaging and label brief is no longer a current application route.", analysis: "Preserve the role as a strong portfolio reference for wine labels and packaging, but remove it from the live ranking until a new employer-origin vacancy appears.", tier: "X" }],
+    [142, { status: "Closed/history: the exact IRiS Grupo Tecnológico LinkedIn job 4413436727 now redirects to a generic search URL containing expired_jd_redirect. The company website does not provide a replacement application for this design vacancy.", analysis: "Retain the former B2B graphic and digital-marketing scope in history; do not treat the company homepage as a job application.", tier: "X" }],
+    [444, { status: "Closed/history: the exact Locker in the City LinkedIn detail 4438835534 was opened directly on 2026-08-12 and explicitly states Ya no se aceptan solicitudes. The role description remains readable, but applications are closed.", analysis: "Preserve the four-day-week digital-brand brief in history and restore only if the employer publishes a new requisition.", tier: "X" }],
+    [458, { status: "Closed/history: the exact Product Madness / Aristocrat LinkedIn job 4372593918 now returns HTTP 404 and no matching current official vacancy was recovered.", analysis: "Preserve the gaming marketing-visual brief as history; do not count a company location page as an application route.", tier: "X" }],
+    [258, { status: "Closed/history: the exact Glovo LinkedIn job 4387384420 now redirects to a generic search URL containing expired_jd_redirect, and the former requisition no longer resolves to a current role-specific application.", analysis: "Keep the brand-guardian and PR/social production brief in history; restore only from a new exact Glovo requisition.", tier: "X" }],
+    [1278, { status: "Closed/history: the MYLVA InfoJobs detail remains readable, but the current page explicitly says No se aceptan más candidaturas para esta oferta. Readable responsibilities and a historical salary do not make it currently applyable.", analysis: "Preserve the unusually relevant identity, packaging, editorial, web and motion brief in history. Restore only if MYLVA republishes a new application-enabled vacancy.", tier: "X" }],
+    [843, { status: "Closed/history: the only tracked FIRMAMENT Sports job detail now returns HTTP 410 with Job unavailable. No employer-owned ATS vacancy was recovered.", analysis: "Keep the sports-brand and motion brief as historical research; the generic company contact is not a current job application.", tier: "X" }],
+    [1022, { status: "Closed/history: the exact Kota Ashby URL now returns only a generic Jobs shell with no Brand Designer title, role body or application form.", analysis: "Archive the former brand-system brief and restore only if Kota publishes a new exact requisition.", tier: "X" }],
+    [1261, { status: "Closed/history: the tracked By Publications syndicated detail now returns HTTP 410 and explicitly says the offer is unavailable. The employer's general email is not evidence of a current vacancy.", analysis: "Preserve the editorial-design research in history; use the company only for future source monitoring, not as an open job.", tier: "X" }],
+    [997, { status: "Closed/history: the exact Restate Ashby URL now returns only a generic Jobs shell with no Founding Brand Designer title, role body or application form.", analysis: "Archive the former AI-infrastructure brand brief and restore only from a new exact official requisition.", tier: "X" }],
+  ]);
+
+  for (const [id, update] of updates) {
+    const item = allData.find((record) => Number(record.id) === id);
+    if (!item) continue;
+    Object.assign(item, update, { section: ROUND32_SECTION });
+    item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+      .filter(Boolean)
+      .join(" ");
+  }
+}
+
+applyRound32SourceUpdates();
+
 for (const item of allData) {
   if (!item.searchText) {
     item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
@@ -2724,11 +2814,16 @@ const ROUND29_RANKED_INSERTIONS = new Map([
   [930875, [930876]],
   [930864, [930877]],
 ]);
-const ROUND31_EXCLUDED_IDS = new Set([930839]);
+const ROUND32_RANKED_INSERTIONS = new Map([
+  [305, [945]],
+  [5106, [1000]],
+]);
+const ROUND32_EXCLUDED_IDS = new Set([930839, ...ROUND32_CLOSED_IDS]);
 const MY_OPPORTUNITY_IDS = Object.freeze(
   ROUND28_AUDITED_OPPORTUNITY_IDS
     .flatMap((id) => [id, ...(ROUND29_RANKED_INSERTIONS.get(id) || [])])
-    .filter((id) => !ROUND31_EXCLUDED_IDS.has(id)),
+    .flatMap((id) => [id, ...(ROUND32_RANKED_INSERTIONS.get(id) || [])])
+    .filter((id) => !ROUND32_EXCLUDED_IDS.has(id)),
 );
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
 
@@ -10135,6 +10230,108 @@ Object.assign(CURATED, {
   },
 });
 
+// Round 32 is the authoritative verdict for ranks 26-60 and the remaining
+// review-library routes. Direct current URLs outrank cached search pages.
+Object.assign(CURATED, {
+  1021: {
+    ...CURATED[1021],
+    direction: "ecommerce",
+    company: "ZOE",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "UK / EU remote / Spain 合同待确认",
+    titleZh: "创意效果设计师（中级）",
+    titleEs: "Creative Performance Designer (Mid-Weight)",
+    reason: "ZOE 官方 Ashby 当前准确岗位名为 Creative Performance Designer (Mid-Weight)，并非旧卡上的 Brand Performance Designer。工作覆盖付费社媒素材、模块化模板、本地化、拍摄与少量 motion。",
+    next: "用英文 performance-creative 作品集申请；先确认 Spain 雇佣资格、薪资、产品拍摄安排和测试范围。",
+    languageKey: "english",
+    language: "英语工作；西班牙语未列为要求",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "中级 / performance creative",
+    changeType: "round-32-title-repair",
+  },
+  920001: {
+    ...CURATED[920001],
+    direction: "brand",
+    company: "PepsiCo / Alvalle",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 多地点岗位 / 办公节奏待确认",
+    titleZh: "高级设计师（食品品牌、包装与产品架构）",
+    titleEs: "Senior Designer - Food Ventures",
+    reason: "PepsiCo 官方 requisition 464555 当前返回准确岗位名 Senior Designer - Food Ventures，并有 Apply now；职责包含 Alvalle 品牌策略、产品架构、视觉识别、包装与创新。",
+    next: "用英文提交身份、包装与消费品牌全流程案例；确认 Barcelona 办公方式、薪资、语言和 15% 出差安排。",
+    languageKey: "english",
+    language: "国际品牌团队英语申请；本地工作语言待确认",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 4 年以上 / 包装与产品架构",
+    changeType: "round-32-title-repair",
+  },
+  945: {
+    ...CURATED[945],
+    direction: "brand",
+    company: "OFF+BRAND",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "EU remote / contract 或全职 / UK-EU 时区",
+    titleZh: "高级品牌设计师（VI、指南与数字品牌系统）",
+    titleEs: "Senior Brand Designer",
+    reason: "雇主官方页面当前明确显示 Remote / UK / EU、Contract or Full-time、Apply Now 和可提交的 CV/作品集表单。职责直接覆盖视觉识别、品牌指南、艺术指导、Figma tokens/components、Web 延展和多触点一致性。",
+    next: "这是高匹配欧洲远程 VI 机会；用英文完整品牌系统案例申请，并先确认 Spain 雇员或 contractor 形式、£ rate/年薪和项目分配。",
+    languageKey: "english",
+    language: "英语客户与团队沟通；UK/EU 工作时区",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 4 年以上品牌设计",
+    changeType: "round-32-promoted-official",
+  },
+  1000: {
+    ...CURATED[1000],
+    direction: "motion",
+    company: "Designity",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "EMEA / LATAM 全远程 / Spain 可投 / 全职",
+    titleZh: "动态设计师（AI 驱动的品牌与 Campaign）",
+    titleEs: "Motion Designer (AI-Driven)",
+    reason: "雇主官方页面当前显示 Full-time、Remote 和 Apply Now，并明确覆盖 EMEA/LATAM。工作包括品牌、社媒与数字 campaign 的 motion/video、storyboard、After Effects、Premiere、Lottie 和 AI 工作流；提供固定 base salary 与 paid PTO。",
+    next: "仅在具备 5 年以上 motion 深度并可与美国东部时间重叠至少 5 小时时申请；先确认 Spain 合同、薪资和每日排班。",
+    languageKey: "english",
+    language: "英语工作；至少 5 小时美国东部时区重叠",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上 motion",
+    changeType: "round-32-promoted-official",
+  },
+});
+
+const ROUND32_ARCHIVED_CURATED = new Map([
+  [203, ["Amazon 官方职位 3126194 当前返回 HTTP 404，并明确提示岗位不可用；三周前的缓存页不能覆盖当前直连状态。", "保留旧 JD 作 Art Direction 作品集参考，等待新的 Amazon requisition。"]],
+  [668, ["COROS 当前官方 careers 页已不再列出 Brand Creative Producer，只保留加拿大、运营与客服等岗位；通用邮箱不是当前 vacancy。", "保留品牌影像职责作历史参考，不再按该职位名投递。"]],
+  [190, ["Stark Future 原 LinkedIn 职位已跳转到带 expired_jd_redirect 的通用搜索页。", "等待雇主官网或新职位编号重新发布。"]],
+  [930871, ["Familia Torres 原 LinkedIn 职位已跳转到带 expired_jd_redirect 的通用搜索页。", "保留酒标与包装职责作参考，等待新职位。"]],
+  [142, ["IRiS 原 LinkedIn 职位已跳转到带 expired_jd_redirect 的通用搜索页，官网没有替代申请。", "不把公司主页当作招聘入口；等待新 requisition。"]],
+  [444, ["Locker in the City 原始详情明确写着 Ya no se aceptan solicitudes。", "保留四天工作制的数字品牌案例要求，等待重新发布。"]],
+  [458, ["Product Madness / Aristocrat 原 LinkedIn 职位当前返回 HTTP 404，未找到当前同岗官方申请。", "公司地点页只作雇主研究，不作投递入口。"]],
+  [258, ["Glovo 原 LinkedIn 职位已跳转到带 expired_jd_redirect 的通用搜索页，原 requisition 不再可申请。", "等待新的 Glovo 品牌设计编号。"]],
+  [1278, ["MYLVA InfoJobs 页面虽然仍可阅读，但明确写着 No se aceptan más candidaturas para esta oferta。", "保留高相关 JD 作作品集对照，等待重新发布。"]],
+  [843, ["FIRMAMENT Sports 唯一跟踪详情当前返回 HTTP 410 / Job unavailable。", "保留体育品牌与动效方向研究，不向通用邮箱冒充职位投递。"]],
+  [1022, ["Kota 精确 Ashby URL 当前只有通用 Jobs 空壳，没有岗位名、正文或申请表。", "等待新的官方 Brand Designer requisition。"]],
+  [1261, ["By Publications 跟踪详情当前返回 HTTP 410，并明确写招聘信息不可用。", "保留出版社研究；通用邮箱不算当前职位。"]],
+  [997, ["Restate 精确 Ashby URL 当前只有通用 Jobs 空壳，没有岗位名、正文或申请表。", "等待新的官方 Founding Brand Designer requisition。"]],
+]);
+for (const [id, [reason, next]] of ROUND32_ARCHIVED_CURATED) {
+  CURATED[id] = {
+    ...CURATED[id],
+    statusKey: "closed",
+    reason,
+    next,
+    changeType: "round-32-direct-route-closed",
+  };
+}
+
 // Reapply the latest source verdicts after every historical refresh block so
 // a stale generated record cannot turn an excluded role back into live.
 applyRound21SourceUpdates();
@@ -10148,6 +10345,7 @@ applyRound28SourceUpdates();
 applyRound29SourceUpdates();
 applyRound30SourceUpdates();
 applyRound31SourceUpdates();
+applyRound32SourceUpdates();
 
 const els = {
   totalCount: document.querySelector("#totalCount"),
