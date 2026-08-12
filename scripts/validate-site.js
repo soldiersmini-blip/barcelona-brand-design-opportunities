@@ -90,7 +90,7 @@ check(
 );
 test.state.preset = "mine";
 const auditedMain = test.dedupedData.filter((item) => test.matchesPreset(item));
-check(auditedMain.length === 65, "逐条核验后的默认机会总表数量不是 65");
+check(auditedMain.length === 70, "逐条核验后的默认机会总表数量不是 70");
 check(auditedMain.every((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id))), "默认机会总表混入未审核记录");
 check(auditedMain.every((item) => test.applicationStatus(item).key !== "closed"), "默认机会总表混入已关闭记录");
 check(auditedMain.every((item) => Boolean(test.CURATED[item.id])), "默认机会总表仍有未完成中文整理的卡片");
@@ -98,11 +98,13 @@ check(auditedMain.every((item) => test.toLinks(item).length > 0), "默认机会�
 check(auditedMain.every((item) => ["barcelona", "remote"].includes(test.locationBucket(item))), "默认机会总表混入 Madrid 或西班牙不可落地地点");
 test.sortRecords(auditedMain);
 check(auditedMain.every((item, index) => index === 0 || test.displayedScore(auditedMain[index - 1]) >= test.displayedScore(item)), "默认机会总表没有按我的匹配分降序排列");
-check(auditedMain.map(test.displayedScore).join(",") === Array.from({ length: 65 }, (_, index) => 97 - index).join(","), "默认机会总表的 97–33 严格降序评分序列不完整");
+check(auditedMain.map(test.displayedScore).join(",") === Array.from({ length: 70 }, (_, index) => 97 - index).join(","), "默认机会总表的 97–28 严格降序评分序列不完整");
 check(auditedMain.every((item) => !/鈥|帽|鏄|鍙|闇|椤|閫|绗/.test(`${test.companyLabel(item)} ${test.roleLabels(item).zh} ${test.locationLabel(item)}`)), "默认机会总表仍有可见乱码");
 check([446, 928, 483, 930815].every((id) => auditedMain.some((item) => Number(item.id) === id)), "本轮新增的四条真实机会未完整进入主表");
 check([296, 4, 1102, 601, 577, 1038, 1011, 1105, 1240, 351, 484, 278, 224].every((id) => auditedMain.some((item) => Number(item.id) === id)), "研究库追回的十三条真实机会未完整进入主表");
+check([94, 1828, 604, 981, 1101].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第二批研究库追回的五条真实机会未完整进入主表");
 check([120, 1079, 1217].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 Rocket Digital 或 Fhios 记录仍被标为可投");
+check([153, 220, 322, 894].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 UNIQLO、Desigual 或 Ogilvy 记录仍被标为可投");
 check(!auditedMain.some((item) => [120, 1079, 1217].includes(Number(item.id))), "本轮官方已关闭记录泄漏进默认主表");
 check(test.toLinks(test.allData.find((item) => Number(item.id) === 930815)).some((url) => /sidn\.factorialhr\.com\/job_posting\/graphic-designer-285667/i.test(url)), "SIDN 官方投递入口缺失");
 check(!test.MY_OPPORTUNITY_SET.has(1044) && !test.MY_OPPORTUNITY_SET.has(1083), "乌拉圭 ++hellohello 岗位被误列为 Spain / Europe remote 主表机会");
@@ -882,7 +884,7 @@ check(r712Pepsi && r712Pepsi.score === 112 && test.locationBucket(r712Pepsi) ===
 const r713Bav = test.allData.find((item) => item.id === 930712);
 check(r713Bav && r713Bav.score === 104 && test.locationBucket(r713Bav) === "barcelona" && test.applicationStatus(r713Bav).key === "live" && test.toLinks(r713Bav).some((url) => /4443713564/i.test(url)), "Round 713: Bav Group Art Director discovery missing or misclassified");
 const r714Desigual = test.allData.find((item) => item.id === 322);
-check(r714Desigual && r714Desigual.score === 104 && test.locationBucket(r714Desigual) === "barcelona" && test.applicationStatus(r714Desigual).key === "live" && test.toLinks(r714Desigual).some((url) => /4363154181/i.test(url)), "Round 714: Desigual Art Director live-detail refresh regressed");
+check(r714Desigual && r714Desigual.score === 104 && test.locationBucket(r714Desigual) === "barcelona" && test.applicationStatus(r714Desigual).key === "closed" && test.toLinks(r714Desigual).some((url) => /4363154181/i.test(url)), "Round 714/2026-08-12: Desigual no-longer-accepting state regressed");
 const r716LearnWise = test.allData.find((item) => item.id === 1234);
 check(r716LearnWise && test.applicationStatus(r716LearnWise).key === "closed", "Round 716/2026-08-12: LearnWise no-longer-accepting state regressed");
 const r718Sanofi = test.allData.find((item) => item.id === 930715);
@@ -900,7 +902,7 @@ check(r721Stark && r721Stark.score === 100 && test.locationBucket(r721Stark) ===
 check(r721Estudiferrer && r721Estudiferrer.score === 94 && test.locationBucket(r721Estudiferrer) === "barcelona" && test.applicationStatus(r721Estudiferrer).key === "verify" && test.toLinks(r721Estudiferrer).some((url) => /4377161837/i.test(url)), "Round 721: Estudiferrer current-detail recheck regressed");
 check(r721Establishment && r721Establishment.score === 72 && test.locationBucket(r721Establishment) === "barcelona" && test.applicationStatus(r721Establishment).key === "live" && test.toLinks(r721Establishment).some((url) => /4384477497/i.test(url)), "Round 721: Establishment Labs design-intern discovery missing or misclassified");
 const r722Uniqlo = test.allData.find((item) => test.toLinks(item).some((url) => /R00000004175039|4415503040/i.test(url)) && /UNIQLO/i.test(`${item.source} ${item.opportunity}`));
-check(r722Uniqlo && r722Uniqlo.score === 96 && test.locationBucket(r722Uniqlo) === "barcelona" && test.applicationStatus(r722Uniqlo).key === "live" && test.toLinks(r722Uniqlo).some((url) => /fastretailing\.wd3\.myworkdayjobs\.com\/sv-SE/i.test(url)), "Round 722: UNIQLO current Workday/LinkedIn recheck was not restored");
+check(r722Uniqlo && r722Uniqlo.score === 96 && test.locationBucket(r722Uniqlo) === "barcelona" && test.applicationStatus(r722Uniqlo).key === "closed" && test.toLinks(r722Uniqlo).some((url) => /fastretailing\.wd3\.myworkdayjobs\.com\/sv-SE/i.test(url)), "Round 722/2026-08-12: UNIQLO removed Workday state regressed");
 const r722Ogilvy = test.allData.find((item) => test.toLinks(item).some((url) => /4429417187/i.test(url)));
 check(r722Ogilvy && r722Ogilvy.score === 78 && test.locationBucket(r722Ogilvy) === "barcelona" && test.applicationStatus(r722Ogilvy).key === "live", "Round 722: Ogilvy graduate Art Director current-detail refresh regressed");
 const r723Mango = test.allData.find((item) => test.toLinks(item).some((url) => /4444421303/i.test(url)) && /MANGO/i.test(`${item.source} ${item.opportunity}`));

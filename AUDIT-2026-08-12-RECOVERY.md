@@ -1,13 +1,13 @@
-# 2026-08-12 研究库追回与状态纠错
+# 2026-08-12 研究库追回与状态纠错（70 条现行主表）
 
 本轮继续执行“逐条打开原始招聘详情或官方 ATS”的规则，不以搜索摘要、列表页存在或 HTTP 200 代替职位有效性判断。
 
 ## 现行主表
 
-- 65 个独立机会，严格按统一匹配分 97–33 从高到低排列。
-- 46 个 Barcelona / 周边，19 个 Spain / Europe / worldwide remote。
-- 58 个原始页显示可申请，7 个需先确认申请控制、地点或合同资格。
-- 42 个品牌 / VI / Art Direction，13 个 Digital，3 个 Motion，3 个 Social，2 个 E-commerce，2 个 Production。
+- 70 个独立机会，严格按统一匹配分 97–28 从高到低排列。
+- 49 个 Barcelona / 周边，21 个 Spain / Europe / worldwide remote。
+- 63 个原始页显示可申请，7 个需先确认申请控制、地点或合同资格。
+- 47 个品牌 / VI / Art Direction，13 个 Digital，3 个 Motion，3 个 Social，2 个 E-commerce，2 个 Production。
 - 3 个中文、华人圈或中国公司相关机会。
 
 ## 从研究库追回的 13 个有效机会
@@ -28,10 +28,23 @@
 | 36 | Avidalia — Digital Content Designer | Barcelona / 20h | Indeed 当前可申请；€10.5–13k、兼职、西语、品牌数字延展与基础动效。 |
 | 34 | King — Art Director, New Games | Barcelona 可选地点 | 官方 Workday R027791；游戏艺术指导、已上线游戏与团队领导门槛。 |
 
+## 第二批追回的 5 个有效机会
+
+| 分数 | 公司 / 岗位 | 地点 | 当前证据与主要门槛 |
+|---:|---|---|---|
+| 90 | Savills Spain — Brand Designer | Barcelona hybrid | Teamtailor 当前有申请表；企业视觉、编辑、导视、广告与演示设计。 |
+| 84 | Hostinger — Senior Graphic Designer, Brand & Creative | Spain remote | Ashby 当前可申请；流利英语、品牌演进、多渠道 campaign 与 AI 工作流。 |
+| 65 | Canonical — Visual Designer, Brand and Design Systems | EMEA remote | Greenhouse 当前可申请；品牌指南、UI 系统、数字产品、教育与技术背景门槛。 |
+| 37 | VML — Senior Art Director | Barcelona | 官方 requisition 13798；5–6 年、高英语、360 campaign、平均每周约 4 天办公室。 |
+| 36 | Remedy Edge — Freelance Senior Graphic Designer | Barcelona | Greenhouse 当前可申请；Spain 自由职业、5+ 年、每周 3 天到岗、无需签证担保。 |
+
 ## 官方状态纠错
 
 - Rocket Digital `Graphic Designer Social Media`（记录 120 / 1079）：官方 Factorial 306705 明确显示职位不存在，移入历史。它与仍开放的 `Art Director Paid Media` 不是同一岗位。
 - Fhios `Diseñador UX/UI`（记录 1217）：官方 Factorial 309175 明确显示职位不存在，撤销旧的强制 live 标记并移入历史。
+- UNIQLO `In-Store Graphic Designer`（记录 153）：两个官方 Workday locale 路由均显示页面不存在，移入历史。
+- Desigual 旧 `Art Director` 记录（220 / 322）：当前原始详情显示标题为 Creative Copywriting & Storytelling、发布约 5 个月且不再接受申请，移入历史。
+- Ogilvy `Liquid Designer (Video Editor)`（记录 894 / 184）：原始详情明确显示不再接受申请，移入历史。
 - Lodgify、Fail Fast、reboot、Trivelta 的重复或旧标题镜像已合并到各自主记录；历史行保留但不再膨胀主表和页面计数。
 
 ## 排序规则
