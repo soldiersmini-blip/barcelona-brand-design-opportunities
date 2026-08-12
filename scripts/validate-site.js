@@ -235,11 +235,11 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 29/i.test(test.latestRoundSection) &&
-    [407, 930876, 930877].every((id) =>
+  /Round 30/i.test(test.latestRoundSection) &&
+    [984, 1241, 905, 629].every((id) =>
       test.latestRoundItems.some((item) => Number(item.id) === id),
     ),
-  "Round 29 的重开、新增和待确认裁决没有完整进入‘本轮变化’",
+  "Round 30 的直连复核与地点纠正没有完整进入‘本轮变化’",
 );
 check(!/id="excludeLowPay"[^>]*checked/.test(indexHtml), "默认主表仍会暗中排除低薪风险卡片，导致总数与可见卡片不一致");
 check(!appSource.includes("item.postingDate"), "页面仍引用不存在的 postingDate 字段");
@@ -1104,6 +1104,15 @@ check(test.applicationStatus(r23ById(930876)).key === "live" && test.toLinks(r23
 check(test.applicationStatus(r23ById(930877)).key === "verify" && test.toLinks(r23ById(930877)).some((url) => /bravurabarcelona\.com\/pages\/trabaja-con-nosotros/i.test(url)), "Round 29: Bravura verify-first employer route is missing or over-promoted");
 check(test.MY_OPPORTUNITY_IDS.indexOf(930870) < test.MY_OPPORTUNITY_IDS.indexOf(407) && test.MY_OPPORTUNITY_IDS.indexOf(407) < test.MY_OPPORTUNITY_IDS.indexOf(352), "Round 29: papernest English brand internship rank is incoherent");
 check(test.MY_OPPORTUNITY_IDS.indexOf(930875) < test.MY_OPPORTUNITY_IDS.indexOf(930876) && test.MY_OPPORTUNITY_IDS.indexOf(930876) < test.MY_OPPORTUNITY_IDS.indexOf(382), "Round 29: IEBS internship rank is incoherent");
+
+check(test.applicationStatus(r23ById(984)).key === "live" && test.locationBucket(r23ById(984)) === "other" && !test.MY_OPPORTUNITY_SET.has(984), "Round 30: current Waiis Manresa role is not isolated from the Barcelona default board");
+check(test.toLinks(r23ById(984)).some((url) => /4441945681/i.test(url)) && test.toLinks(r23ById(984)).some((url) => /^mailto:andrea@waiis\.com$/i.test(url)), "Round 30: Waiis exact detail or direct application email is missing");
+for (const id of [1241, 905, 629]) {
+  const item = r23ById(id);
+  check(item && !test.MY_OPPORTUNITY_SET.has(id) && test.applicationStatus(item).key === "closed" && item.tier === "X", `Round 30: expired or missing original route ${id} leaked into the current board`);
+}
+check(/expired_jd_redirect/i.test(r23ById(1241).status) && /60 jobs/i.test(r23ById(629).status), "Round 30: Cal Fruitós or NEORIS direct-route evidence is missing");
+check(/HTTP 404/i.test(r23ById(905).status) && test.hasOpaqueEmployerRisk(r23ById(905)), "Round 30: Steneg 404 or anonymous-employer risk is missing");
 
 const r27Promoted = [382, 1287, 142, 454, 996, 1021, 1243, 1026, 1257, 1310, 930871, 214, 649, 979, 1024, 1002, 537];
 check(r27Promoted.every((id) => test.MY_OPPORTUNITY_SET.has(id) && test.toLinks(r23ById(id)).length > 0), "Round 27: a recovered relevant opportunity is missing from the ranked board or lost its source route");

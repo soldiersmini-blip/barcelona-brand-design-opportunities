@@ -2536,6 +2536,67 @@ function applyRound29SourceUpdates() {
 
 applyRound29SourceUpdates();
 
+const ROUND30_SECTION = "2026-08-12 Round 30 direct-route reconciliation and Chinese-source rescan";
+
+function applyRound30SourceUpdates() {
+  const updates = new Map([
+    [
+      1241,
+      {
+        section: ROUND30_SECTION,
+        status: "Closed/history: both known Cal Fruitós LinkedIn requisitions (4404037331 and 4419152038) were requested directly on 2026-08-12 and redirect to a generic LinkedIn search with trk=expired_jd_redirect. The employer-owned Bizneo board is reachable but lists only franchise and shop-assistant vacancies, not the graphic-and-packaging role.",
+        analysis: "Keep the excellent brand, packaging, POS and production brief as a portfolio benchmark, but do not count or apply to it. Restore only if Cal Fruitós republishes a named design requisition on its own jobs board or a fresh LinkedIn ID reaches an exact application page.",
+        tier: "X",
+      },
+    ],
+    [
+      905,
+      {
+        section: ROUND30_SECTION,
+        status: "Closed/history: a cached LinkedIn rendering still shows the former Steneg Graphic Designer description, but a direct request to requisition 4357596568 on 2026-08-12 returns HTTP 404 and no longer contains the job ID or application control. The industrial end-client also remains undisclosed.",
+        analysis: "Preserve the detailed brand-governance, packaging and workflow brief in history. Do not send sensitive documents to the anonymous client or recruiter unless a new exact requisition opens and the legal employer, office, contract and salary are disclosed.",
+        tier: "X",
+      },
+    ],
+    [
+      984,
+      {
+        section: ROUND30_SECTION,
+        status: "Live outside Barcelona priority: the exact Waiis LinkedIn detail 4441945681 was requested directly on 2026-08-12 and remains on the job page with Solicitar. Its body specifies Manresa, four office days plus one remote day, EUR35,000-40,000 and a direct application email.",
+        analysis: "This is a legitimate brand/digital design opportunity, but its real commute and onsite requirement make it a manual Manresa fallback rather than a Barcelona default card. Keep one canonical record only and confirm the legal contract, office address and daily language before applying.",
+        postedAt: "2026-07-22",
+        freshnessTag: "month",
+        freshnessAgeDays: 21,
+        contact: "Current original detail: https://es.linkedin.com/jobs/view/graphic-designer-and-copywriter-at-waiis-4441945681 ; direct application email: andrea@waiis.com",
+        links: [
+          "https://es.linkedin.com/jobs/view/graphic-designer-and-copywriter-at-waiis-4441945681",
+          "mailto:andrea@waiis.com",
+        ],
+      },
+    ],
+    [
+      629,
+      {
+        section: ROUND30_SECTION,
+        status: "Closed/history: NEORIS' employer-owned Greenhouse board was opened on 2026-08-12 and currently lists 60 jobs, with no Visual Designer - Internal Communications & Learning vacancy. The former exact route redirects to the board with error=true.",
+        analysis: "Do not revive this strong visual-systems and brand-book brief from indexed copies. Restore only when the current NEORIS board exposes a new named Barcelona or Spain-remote design requisition with an application form.",
+        tier: "X",
+      },
+    ],
+  ]);
+
+  for (const [id, update] of updates) {
+    const item = allData.find((record) => Number(record.id) === id);
+    if (!item) continue;
+    Object.assign(item, update);
+    item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+      .filter(Boolean)
+      .join(" ");
+  }
+}
+
+applyRound30SourceUpdates();
+
 for (const item of allData) {
   if (!item.searchText) {
     item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
@@ -9920,6 +9981,42 @@ Object.assign(CURATED, {
   },
 });
 
+// Round 30 resolves cached-search contradictions against direct current routes.
+// These verdicts are intentionally late so older generated snapshots cannot
+// promote expired jobs or demote the current Manresa fallback again.
+Object.assign(CURATED, {
+  35: {
+    ...CURATED[35],
+    statusKey: "closed",
+    reason: "Steneg 的缓存详情仍能显示完整职责，但原始职位编号 4357596568 在 2026-08-12 直连返回 404，且页面已不含该职位编号或申请按钮。",
+    next: "保留为历史岗位样本；只有新职位编号可直达、并确认真实雇主、合同、薪资与办公地址后才恢复。",
+    changeType: "round-30-direct-route-closed",
+  },
+  905: {
+    ...CURATED[905],
+    statusKey: "closed",
+    reason: "Steneg 的缓存详情仍能显示完整职责，但原始职位编号 4357596568 在 2026-08-12 直连返回 404，且页面已不含该职位编号或申请按钮；工业客户身份仍未公开。",
+    next: "不再投递，也不向匿名客户发送敏感资料；等新编号开放并书面确认雇主、地址、合同和薪资后再恢复。",
+    changeType: "round-30-direct-route-closed",
+  },
+  984: {
+    ...CURATED[984],
+    statusKey: "live",
+    locationKey: "other",
+    locationLabel: "Manresa / 每周 4 天办公室 + 1 天远程 / €35,000–40,000",
+    reason: "原始 LinkedIn 职位 4441945681 在 2026-08-12 直连仍停留在准确详情页并显示 Solicitar；正文明确是 Manresa、每周四天到岗、一天远程，薪资 €35,000–40,000。",
+    next: "作为 Manresa 通勤备选单独保留，不进入 Barcelona 默认结果。先确认实际地址、合同主体、每日工作语言和是否能提高远程比例，再用品牌、数字、社媒与 motion 案例申请。",
+    changeType: "round-30-current-other-location",
+  },
+  1241: {
+    ...CURATED[1241],
+    statusKey: "closed",
+    reason: "Cal Fruitós 已知的两个 LinkedIn 职位编号在 2026-08-12 直连都会跳到带 expired_jd_redirect 的通用搜索页；雇主官网当前招聘列表也没有平面与包装设计岗。",
+    next: "保留为品牌、包装、POS 与完稿方向的历史参考，不再投递；只有雇主官网或新职位编号重新出现准确申请页时才恢复。",
+    changeType: "round-30-direct-route-closed",
+  },
+});
+
 // Reapply the latest source verdicts after every historical refresh block so
 // a stale generated record cannot turn an excluded role back into live.
 applyRound21SourceUpdates();
@@ -9931,6 +10028,7 @@ applyRound26SourceUpdates();
 applyRound27SourceUpdates();
 applyRound28SourceUpdates();
 applyRound29SourceUpdates();
+applyRound30SourceUpdates();
 
 const els = {
   totalCount: document.querySelector("#totalCount"),
