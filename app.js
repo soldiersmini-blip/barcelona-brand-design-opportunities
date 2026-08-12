@@ -692,6 +692,86 @@ const allData = Array.isArray(window.JOB_OPPORTUNITIES) ? window.JOB_OPPORTUNITI
       "https://jobs.ashbyhq.com/synthesia/75c90455-75c8-44e0-ab38-887120dbb1d0/application",
     ],
   },
+  {
+    id: 930845,
+    section: "2026-08-12 Round 14 original-detail audit",
+    source: "Omnicom Health / Remedy Edge official Greenhouse ATS",
+    opportunity: "Freelance PowerPoint Specialist",
+    fit: "Barcelona hybrid freelance presentation-design role; visual storytelling, information hierarchy, templates and visual standards",
+    location: "Barcelona, Spain; hybrid three days per week in the office; freelance; Spain work authorisation required without sponsorship",
+    status: "Official Greenhouse requisition 5233982008 was opened and read in full on 2026-08-12. It shows Apply for this job, a complete application form and Submit application. The role asks for at least two years of advanced PowerPoint work, a portfolio plus a PowerPoint sample, working English and three office days per week. The page does not expose a publication date.",
+    contact: "Official detail/application: https://job-boards.greenhouse.io/omnicomhealth/jobs/5233982008",
+    analysis: "A genuine local visual-production route, especially for presentation systems and complex information design, but not a core VI role. Apply only with polished deck systems, visual storytelling and reusable templates; confirm day rate, project duration, payment terms and expected Spanish usage.",
+    score: 70,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Presentation design / visual storytelling / freelance",
+    sourceGroup: "official",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: ["https://job-boards.greenhouse.io/omnicomhealth/jobs/5233982008"],
+  },
+  {
+    id: 930846,
+    section: "2026-08-12 Round 14 original-detail audit",
+    source: "Kraken / Breakout Prop official Ashby ATS",
+    opportunity: "Web and Brand Designer",
+    fit: "Spain remote full-time; web, landing pages, campaigns, social and scalable brand guidelines, components and AI design systems",
+    location: "Remote; Spain is explicitly included in the official eligible-country list; full-time",
+    status: "Kraken's official Europe requisition 3096a5c6-a4fc-4b09-9953-aefd72d423f3 was opened on 2026-08-12. Spain is explicitly listed among the eligible locations and the role is full-time remote. It owns the website, landing pages, conversion flows, campaign and social assets, brand guidelines, component libraries and AI-enabled templates and guardrails. Five or more years are required; the page does not expose a publication date.",
+    contact: "Official detail/application: https://jobs.ashbyhq.com/kraken.com/3096a5c6-a4fc-4b09-9953-aefd72d423f3/",
+    analysis: "An exact digital-brand-system match with explicit Spain eligibility, but a senior stretch and crypto/AI context. Apply in English with website systems, landing-page conversion work, campaign extension, guidelines, reusable components and responsible AI workflow examples.",
+    score: 84,
+    tier: "B",
+    locationTag: "Spain remote",
+    typeTag: "Web / brand systems / campaigns / AI workflow",
+    sourceGroup: "official",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: ["https://jobs.ashbyhq.com/kraken.com/3096a5c6-a4fc-4b09-9953-aefd72d423f3/"],
+  },
+  {
+    id: 930847,
+    section: "2026-08-12 Round 14 original-detail audit",
+    source: "Xapo Bank official Greenhouse ATS",
+    opportunity: "Visual Designer Graduate",
+    fit: "Work-from-anywhere graduate route; brand and marketing assets, campaign visuals, motion, product walkthroughs and visual-identity evolution",
+    location: "Gibraltar - Remote; official page says 100% remote and Work from anywhere; Spain contract and tax treatment must be confirmed",
+    status: "Official Greenhouse requisition 7800947003 was opened and read in full on 2026-08-12. It shows Apply, a complete application form, full-time remote work and a 12-month graduate programme with a possible full-time conversion. It targets zero to one year of experience and accepts personal, university or freelance portfolios. The page does not expose a publication date.",
+    contact: "Official detail/application: https://job-boards.greenhouse.io/xapo61/jobs/7800947003",
+    analysis: "An unusually accessible visual-brand and motion opportunity. It covers marketing assets, campaigns, ads, promotional material, animations, product walkthroughs and visual-identity evolution using Figma and tools such as After Effects, Rive or Lottie. Confirm that a Barcelona resident can be contracted and paid compliantly before investing in the application.",
+    score: 90,
+    tier: "A",
+    locationTag: "Global remote; Spain eligibility to confirm",
+    typeTag: "Graduate visual / brand / motion",
+    sourceGroup: "official",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: ["https://job-boards.greenhouse.io/xapo61/jobs/7800947003"],
+  },
+  {
+    id: 930848,
+    section: "2026-08-12 Round 14 original-detail audit",
+    source: "Finary official Ashby ATS",
+    opportunity: "Freelance Senior Brand Designer",
+    fit: "EU/UK remote within CET ±2 hours; growth, content and product-adjacent brand work across ads, social, email, landing pages, illustration and motion",
+    location: "Remote in EU or UK within CET ±2 hours; freelance about two to three days per week; day rate EUR350-550",
+    status: "Finary's official Ashby requisition 7e1f0ca0-b0ee-4a77-a825-62807a8e9645 was opened on 2026-08-12 and exposes an active application route. English is mandatory, Europe eligibility is explicit and the published day rate is EUR350-550. It is a senior part-time freelance role; the page does not expose a publication date.",
+    contact: "Official detail/application: https://jobs.ashbyhq.com/finary/7e1f0ca0-b0ee-4a77-a825-62807a8e9645",
+    analysis: "A strong brand-system and growth-design brief with unusually transparent compensation, but it is senior, freelance and only two to three days per week. Apply with scalable identity systems, paid/social/email/landing work, iconography or illustration, motion and carefully governed AI production examples.",
+    score: 72,
+    tier: "B",
+    locationTag: "Europe remote",
+    typeTag: "Senior brand / growth / motion / freelance",
+    sourceGroup: "official",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: ["https://jobs.ashbyhq.com/finary/7e1f0ca0-b0ee-4a77-a825-62807a8e9645"],
+  },
 ].forEach((record) => {
   if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
 });
@@ -798,6 +878,56 @@ if (circleCurrent) {
   });
 }
 
+const round14DirectEvidenceUpdates = [
+  {
+    id: 279,
+    section: "2026-08-12 Round 14 original-detail audit",
+    status: "A new LinkedIn employer requisition 4448026093 was opened on 2026-08-12 and shows Diseñador/a gráfico/a - web, Barcelona, posted one week ago, onsite, full-time and Solicitar en el sitio web de la empresa. DORTOKA's official role detail, official CV form and direct email remain available.",
+    contact: "Current employer detail: https://www.linkedin.com/jobs/view/4448026093 ; official role: https://www.dortoka.com/es/disenador-grafico-web/ ; official board/form: https://www.dortoka.com/es/trabaja-con-nosotros/ ; email: dortoka@dortoka.com",
+    analysis: "Current and local, with two or more years requested. The scope covers logos, campaigns, stationery, brochures, posters, websites, catalogues, branding, web, UX/UI, WordPress, ecommerce, HTML/CSS and motion tools. Apply in Spanish or bilingual form and confirm salary, office location and the design-versus-front-end split.",
+    postedAt: "2026-08-05",
+    freshnessTag: "week",
+    freshnessAgeDays: 7,
+    links: [
+      "https://www.linkedin.com/jobs/view/4448026093",
+      "https://www.dortoka.com/es/disenador-grafico-web/",
+      "https://www.dortoka.com/es/trabaja-con-nosotros/",
+      "mailto:dortoka@dortoka.com",
+    ],
+  },
+  {
+    id: 160,
+    section: "2026-08-12 Round 14 original-detail audit",
+    status: "The current LinkedIn employer detail 4443321807 was opened on 2026-08-12 and explicitly says Ya no se aceptan solicitudes. The role is no longer actionable.",
+    contact: "Closed employer detail: https://www.linkedin.com/jobs/view/4443321807",
+    analysis: "Move to closed history. Do not apply through stale mirrors; only restore if Stanley Black & Decker publishes a new requisition.",
+    links: ["https://www.linkedin.com/jobs/view/4443321807"],
+  },
+  {
+    id: 930715,
+    section: "2026-08-12 Round 14 original-detail audit",
+    status: "Sanofi's official Workday requisition R2834888 was opened on 2026-08-12 and says The page you are looking for doesn't exist. The previous LinkedIn vacancy is not a current application route.",
+    contact: "Removed official requisition: https://sanofi.wd3.myworkdayjobs.com/SanofiCareers/job/Barcelona/Graphic-Designer_R2834888 ; historical employer detail: https://www.linkedin.com/jobs/view/4395295373",
+    analysis: "Move to closed history. Do not count the readable LinkedIn cache as a live vacancy; restore only after a new official Sanofi requisition is verified.",
+    links: [
+      "https://sanofi.wd3.myworkdayjobs.com/SanofiCareers/job/Barcelona/Graphic-Designer_R2834888",
+      "https://www.linkedin.com/jobs/view/4395295373",
+    ],
+  },
+  {
+    id: 958,
+    section: "2026-08-12 Round 14 original-detail audit",
+    status: "Omnicom Health's official Greenhouse requisition 5207339008 was opened on 2026-08-12 and shows Apply, a complete form and Submit application. It is a paid six-month full-time Barcelona internship covering editorial, landing pages, banners, web, social, logos and brand guidelines. Advanced Adobe and English are required, as is a school or university agreement.",
+    contact: "Official detail/application: https://job-boards.greenhouse.io/omnicomhealth/jobs/5207339008",
+    links: ["https://job-boards.greenhouse.io/omnicomhealth/jobs/5207339008"],
+  },
+];
+
+for (const update of round14DirectEvidenceUpdates) {
+  const item = allData.find((record) => Number(record.id) === update.id);
+  if (item) Object.assign(item, update);
+}
+
 for (const item of allData) {
   if (!item.searchText) {
     item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
@@ -813,22 +943,22 @@ const meta = window.JOB_META || {};
 // Homepage priority is location-first: Barcelona local roles come before
 // Madrid/unclear remote or stale Chinese-channel leads. Language and contract
 // gates remain explicit on each card instead of being hidden by the homepage.
-const PRIORITY_IDS = [930813, 910, 914, 1300, 160, 1107, 866, 94];
+const PRIORITY_IDS = [930813, 910, 914, 1300, 1107, 866, 94, 1245];
 
 // Canonical, evidence-backed opportunities for the user. The generated corpus
 // remains searchable, but only these independently reviewed identities enter
 // the default board. This prevents old source indexes, Madrid posts, mirrors
 // and research notes from inflating the usable count.
 const MY_OPPORTUNITY_IDS = Object.freeze([
-  930813, 910, 914, 1300, 160, 1107, 866, 94, 930816, 930839, 1245, 296, 175, 930838, 930832, 930836, 930837, 446, 930834, 425, 4, 1828, 930844,
-  668, 1102, 884, 203, 601, 284, 920001, 930812, 190, 930715, 577, 55,
+  930813, 910, 914, 1300, 1107, 866, 94, 930847, 930816, 930839, 1245, 296, 175, 930838, 930832, 930836, 930837, 446, 930834, 425, 4, 1828, 930844, 930846,
+  668, 1102, 884, 203, 601, 284, 920001, 930812, 190, 577, 55,
   1278, 1314, 314, 207, 78, 444, 458, 258, 5106, 960, 238, 156, 928, 147, 604,
-  930822, 304, 170, 1038, 84, 930815, 930824, 930831, 12, 859, 305, 1011, 445, 1029, 188, 922, 483, 958,
+  930822, 304, 170, 1038, 84, 930815, 930824, 930831, 279, 12, 859, 305, 1011, 445, 1029, 188, 922, 483, 958, 930845,
   930823, 930825, 930818, 930820, 930821, 930828, 930840, 930827, 930829, 921, 228, 178, 2942, 1105, 890, 891, 930841, 930637, 930833, 930819, 930826, 930707, 930708, 134, 277, 109,
-  117, 93, 1296, 375, 210, 930842, 930719, 89, 1023, 385, 930817, 841, 903, 1108, 855, 874, 875, 876,
+  117, 93, 1296, 375, 210, 930842, 930848, 930719, 89, 1023, 385, 930817, 841, 903, 1108, 855, 874, 875, 876,
   1227, 396, 1240, 217, 985, 977, 989, 870, 990001, 27, 1303, 308, 1020, 351, 1081, 930843,
   1080, 1099, 981, 1097, 1101, 24, 25, 930835, 484, 278, 1293, 1255, 37, 889,
-  172, 86, 930717, 224, 279, 930814, 920,
+  172, 86, 930717, 224, 930814, 920,
 ]);
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
 
@@ -5949,6 +6079,14 @@ for (const update of round12DirectEvidenceUpdates) {
   if (item) Object.assign(item, update);
 }
 
+// Round 12's direct-evidence bundle still contains the pre-refresh
+// DORTOKA/Remedy links. Reapply the newer Round 14 evidence after it so the
+// final card buttons always point to the current requisitions.
+for (const update of round14DirectEvidenceUpdates) {
+  const item = allData.find((record) => Number(record.id) === update.id);
+  if (item) Object.assign(item, update);
+}
+
 Object.assign(CURATED, {
   930834: {
     direction: "brand",
@@ -6262,6 +6400,114 @@ Object.assign(CURATED, {
     reason: "Cal Fruitós 原始 LinkedIn 职位当前明确显示 Ya no se aceptan solicitudes，且约 4 个月前发布。",
     next: "移入关闭/历史区，不再投递。",
     changeType: "round-12-closed",
+  },
+});
+
+Object.assign(CURATED, {
+  930845: {
+    direction: "digital",
+    company: "Omnicom Health / Remedy Edge",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid 每周到岗 3 天 / freelance",
+    titleZh: "自由职业 PowerPoint 视觉设计师",
+    titleEs: "Freelance PowerPoint Specialist",
+    reason: "官方 Greenhouse 5233982008 当前有 Apply、完整申请表和 Submit。岗位负责复杂医学、科学与商业内容的视觉叙事、信息层级、模板和视觉标准，要求 2 年以上、PowerPoint 高阶样稿、作品集与工作英语。",
+    next: "用英文提交演示系统、复杂信息可视化和模板案例；先确认日薪、项目时长、付款周期、每周三天到岗的具体日期以及西语使用比例。",
+    language: "工作英语为明确要求；西班牙语要求未公开",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 2 年以上 / freelance",
+    changeType: "round-14-new",
+  },
+  930846: {
+    direction: "brand",
+    company: "Kraken / Breakout Prop",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "Spain 明确可申请 / remote / 全职",
+    titleZh: "网页与品牌设计师",
+    titleEs: "Web and Brand Designer",
+    reason: "Kraken 官方欧洲 Ashby 职位 3096… 的 eligible locations 明确包含 Spain。职责覆盖官网、landing、转化流程、campaign、社媒、品牌指南、组件库、资产工具包及 AI 模板/提示/guardrails，匹配度很高；要求 5 年以上。",
+    next: "用英文提交网站系统、landing 转化、campaign 延展、品牌 guidelines、组件库和 AI 辅助生产案例；确认 Spain 雇佣主体、薪资、加密行业合规要求与工作时区。",
+    language: "英文国际远程岗位；未列西班牙语要求",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上",
+    changeType: "round-14-new",
+  },
+  930847: {
+    direction: "brand",
+    company: "Xapo Bank",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "100% remote / Work from anywhere / Spain 合同需确认",
+    titleZh: "毕业生视觉设计师（品牌与 Motion）",
+    titleEs: "Visual Designer Graduate",
+    reason: "Xapo 官方 Greenhouse 7800947003 当前可提交，12 个月毕业生项目面向 0-1 年经验，个人、学校或自由职业作品集都接受。工作包括品牌/营销资产、campaign、广告、宣传物、motion、产品 walkthrough 与视觉识别维护。",
+    next: "这是本轮最值得尝试的初级远程岗之一。英文作品集放品牌延展、campaign、短动效和产品演示；投递前先确认 Barcelona 常住者能否合规签约、付款、报税和享受福利。",
+    language: "英文远程团队；未列西班牙语要求",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "junior",
+    experienceLabel: "毕业生 / 0-1 年 / 12 个月项目",
+    changeType: "round-14-new",
+  },
+  930848: {
+    direction: "brand",
+    company: "Finary",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "EU/UK remote / CET ±2h / 每周约 2-3 天 freelance",
+    titleZh: "自由职业高级品牌设计师",
+    titleEs: "Freelance Senior Brand Designer",
+    reason: "Finary 官方 Ashby 当前可申请，明确接受 EU/UK、要求英语，公开日薪 EUR350-550。工作覆盖 paid ads、社媒、YouTube、email、landing、图标/插画、motion、品牌系统和 AI 工具，但属于高级兼职自由职业。",
+    next: "用英文提交可扩展身份系统、增长素材、社媒/email/landing、插画或 motion 与 AI workflow；确认项目周期、每周排期、Spain 税务/发票、付款周期和知识产权条款。",
+    language: "英语为明确要求；未列西班牙语要求",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / freelance / 每周 2-3 天",
+    changeType: "round-14-new",
+  },
+  279: {
+    ...CURATED[279],
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / Badalona / 现场全职",
+    titleZh: "平面与 Web 设计师",
+    titleEs: "Diseñador/a gráfico/a - diseño web",
+    reason: "新 LinkedIn 雇主招聘编号 4448026093 当前显示 Barcelona、1 周前发布、现场全职，并可跳转公司网站申请；DORTOKA 官方详情、招聘板/CV 表单和邮箱也都可用。职责含 logo、branding、campaign、网站、目录、UX/UI、WordPress、电商及基础前端。",
+    next: "用西语或双语提交平面、品牌、Web、插画与 motion 案例；确认具体办公点、薪资、合同、工作语言，以及设计与 HTML/CSS/WordPress 的实际占比。",
+    language: "西语招聘页；未公开语言等级，现场沟通能力需确认",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 2 年以上",
+    changeType: "round-14-promoted",
+  },
+  160: {
+    ...CURATED[160],
+    statusKey: "closed",
+    reason: "当前 LinkedIn 雇主职位 4443321807 已明确显示 Ya no se aceptan solicitudes。",
+    next: "移入关闭/历史区；不要再通过旧镜像投递，只有出现新招聘编号时重新建卡。",
+    changeType: "round-14-closed",
+  },
+  930715: {
+    ...CURATED[930715],
+    statusKey: "closed",
+    reason: "Sanofi 官方 Workday 招聘编号 R2834888 当前明确显示 The page you are looking for doesn't exist；旧 LinkedIn 页面不再构成有效投递入口。",
+    next: "移入关闭/历史区；只有 Sanofi 官方 ATS 出现新招聘编号时重新建卡。",
+    changeType: "round-14-closed",
+  },
+  958: {
+    ...CURATED[958],
+    statusKey: "live",
+    reason: "Omnicom Health 官方 Greenhouse 5207339008 当前有 Apply、完整申请表和 Submit。Barcelona 带薪 6 个月全职实习覆盖编辑、landing/banner、Web、社媒、logo 与品牌指南；必须能签学校/大学实习协议，并要求 Adobe 与英语。",
+    next: "只有能签实习协议时投递；英文作品集放品牌指南、logo、编辑、Web 和社媒延展，并确认补贴、到岗节奏与转正可能。",
+    changeType: "round-14-reverified",
   },
 });
 

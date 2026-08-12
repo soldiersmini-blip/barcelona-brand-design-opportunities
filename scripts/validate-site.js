@@ -79,7 +79,7 @@ check(test.allData.find((item) => item.id === 872).tier === "X", "AQIPA named va
 check(test.allData.length > 700, "机会数据没有完整载入");
 check(test.priorityItems.length === 8, "首页重点机会数量不是 8");
 check(
-  [930813, 910, 914, 1300, 160, 1107, 866, 94].every((id) =>
+  [930813, 910, 914, 1300, 1107, 866, 94, 1245].every((id) =>
     test.priorityItems.some((item) => item.id === id),
   ),
   "巴塞罗那优先岗位未完整进入首页",
@@ -125,6 +125,12 @@ check([930831, 930832, 930833].every((id) => auditedMain.some((item) => Number(i
 check([930834, 930835, 930836, 930837].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十二批新增的四条机会未完整进入主表");
 check([930838, 930839, 930840, 930841, 930842, 930843, 930844].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十三批新增的七条机会未完整进入主表");
 check([930838, 930839, 930840, 930841, 930842, 930843, 930844].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十三批官方或当前雇主可投岗位未全部进入 live");
+check([930845, 930846, 930847, 930848].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十四批新增的四条真实机会未完整进入主表");
+check([930845, 930846, 930847, 930848, 279, 958].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十四批新增或复核的当前岗位未全部进入 live");
+check([160, 930715].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "第十四批已关闭岗位仍被标为可投");
+check(!auditedMain.some((item) => [160, 930715].includes(Number(item.id))), "第十四批已关闭岗位泄漏进默认主表");
+check(test.toLinks(test.allData.find((item) => Number(item.id) === 279)).some((url) => /4448026093/i.test(url)), "DORTOKA 新的当前招聘编号未写入卡片");
+check(test.toLinks(test.allData.find((item) => Number(item.id) === 958)).some((url) => /omnicomhealth\/jobs\/5207339008/i.test(url)), "Remedy Edge 当前官方实习入口未写入卡片");
 check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 930835)).key === "verify", "匿名华人广告店线索不得在未确认雇主前提升为 live");
 check([914, 1107, 2942, 134, 977, 1255, 279].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十二批官方可投岗位未全部提升为 live");
 check([1239, 216, 930720, 206, 183, 239, 1301, 1294, 1241].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "第十二批已关闭或无具体 vacancy 的旧卡未全部移入历史区");
@@ -221,10 +227,10 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  [930835, 930838, 930839, 930840, 930841, 930842, 930843, 930844].every((id) =>
+  [279, 160, 958, 930715, 930845, 930846, 930847, 930848].every((id) =>
     test.latestRoundItems.some((item) => Number(item.id) === id),
   ),
-  "第十三轮新增与中文线索刷新没有完整进入“本轮变化”",
+  "第十四轮新增、恢复与关闭状态没有完整进入“本轮变化”",
 );
 check(!/id="excludeLowPay"[^>]*checked/.test(indexHtml), "默认主表仍会暗中排除低薪风险卡片，导致总数与可见卡片不一致");
 check(!appSource.includes("item.postingDate"), "页面仍引用不存在的 postingDate 字段");
@@ -932,9 +938,9 @@ const r714Desigual = test.allData.find((item) => item.id === 322);
 check(r714Desigual && r714Desigual.score === 104 && test.locationBucket(r714Desigual) === "barcelona" && test.applicationStatus(r714Desigual).key === "closed" && test.toLinks(r714Desigual).some((url) => /4363154181/i.test(url)), "Round 714/2026-08-12: Desigual no-longer-accepting state regressed");
 const r716LearnWise = test.allData.find((item) => item.id === 1234);
 check(r716LearnWise && test.applicationStatus(r716LearnWise).key === "closed", "Round 716/2026-08-12: LearnWise no-longer-accepting state regressed");
-const r718Sanofi = test.allData.find((item) => item.id === 930715);
 const r718Canonical = test.allData.find((item) => item.id === 604);
-check(r718Sanofi && r718Sanofi.score === 100 && test.locationBucket(r718Sanofi) === "barcelona" && test.applicationStatus(r718Sanofi).key === "live" && test.toLinks(r718Sanofi).some((url) => /4395295373/i.test(url)), "Round 718: Sanofi Graphic Designer discovery missing or misclassified");
+const r718Sanofi = test.allData.find((item) => item.id === 930715);
+check(r718Sanofi && test.locationBucket(r718Sanofi) === "barcelona" && test.applicationStatus(r718Sanofi).key === "closed" && test.toLinks(r718Sanofi).some((url) => /R2834888/i.test(url)), "Round 718/2026-08-12: Sanofi removed Workday state regressed");
 check(r718Canonical && r718Canonical.score === 98 && test.locationBucket(r718Canonical) === "remote" && test.applicationStatus(r718Canonical).key === "live" && test.toLinks(r718Canonical).some((url) => /5326986/i.test(url)), "Round 718/2026-08-12: Canonical official ATS canonical record missing or misclassified");
 const r719TeaLab = test.allData.find((item) => item.id === 25);
 check(r719TeaLab && r719TeaLab.score === 86 && test.locationBucket(r719TeaLab) === "barcelona" && test.applicationStatus(r719TeaLab).key === "verify" && test.toLinks(r719TeaLab).some((url) => /Social-Media-Content-Creator-Chino-Espanol-Tea-Lab-Barcelona\.pdf/i.test(url)), "Round 719: Tea Lab Chinese-Spanish current-index recheck regressed");
@@ -964,7 +970,7 @@ check(r725Ondeuev && r725Ondeuev.score === 90 && test.locationBucket(r725Ondeuev
 check(r725Semrush && r725Semrush.score === 108 && test.locationBucket(r725Semrush) === "barcelona" && test.applicationStatus(r725Semrush).key === "closed" && test.toLinks(r725Semrush).some((url) => /JR100590/i.test(url)), "Round 725: Semrush missing Workday route closure regressed");
 const r669Remedy = test.allData.find((item) => item.id === 958);
 check(r669Remedy && test.applicationStatus(r669Remedy).key === "live" && r669Remedy.score === 70 && test.isInternshipRole(r669Remedy), "Round 669: Remedy Edge internship status or score was not recalibrated");
-check(r669Remedy && test.toLinks(r669Remedy).some((url) => /job-boards\.greenhouse\.io\/remedyedgespain\/jobs\/5207341008/i.test(url)), "Round 669: Remedy Edge official application route was lost");
+check(r669Remedy && test.toLinks(r669Remedy).some((url) => /job-boards\.greenhouse\.io\/omnicomhealth\/jobs\/5207339008/i.test(url)), "Round 669/2026-08-12: Remedy Edge current official application route was lost");
 const r670Ddb = test.allData.find((item) => item.id === 1095);
 check(r670Ddb && ["live", "verify"].includes(test.applicationStatus(r670Ddb).key) && r670Ddb.score === 80 && r670Ddb.tier === "C", "Round 670: DDB Creative Director current status or seniority score was not recalibrated");
 check(r670Ddb && test.toLinks(r670Ddb).some((url) => /job-boards\.greenhouse\.io\/uneteaddbspain\/jobs\/5229086008/i.test(url)), "Round 670: DDB official application route was lost");
