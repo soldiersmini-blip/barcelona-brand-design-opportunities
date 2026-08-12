@@ -235,8 +235,8 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 22/i.test(test.latestRoundSection) &&
-    [24, 930863, 930864, 930865].every((id) =>
+  /Round 23/i.test(test.latestRoundSection) &&
+    [1702, 3518, 483, 2333, 100, 284, 78, 443, 1031, 1040, 2269, 2273, 2334, 1311, 1131].every((id) =>
       test.latestRoundItems.some((item) => Number(item.id) === id),
     ),
   "Round 22 新增机会与中文渠道复核没有完整进入‘本轮变化’",
@@ -290,7 +290,7 @@ check(
 const sortModes = ["smart", "latest", "match", "confidence", "weight"];
 for (const mode of sortModes) {
   context.document.querySelector("#sortFilter").value = mode;
-  const sample = [{ id: "82", score: 82 }, { id: "96", score: 96 }, { id: "78", score: 78 }];
+  const sample = [{ id: "test-82", score: 82 }, { id: "test-96", score: 96 }, { id: "test-78", score: 78 }];
   test.sortRecords(sample);
   check(
     sample.map((item) => item.score).join(",") === "96,82,78",
@@ -1070,10 +1070,47 @@ check(test.MY_OPPORTUNITY_IDS.indexOf(930847) < test.MY_OPPORTUNITY_IDS.indexOf(
 check(test.MY_OPPORTUNITY_IDS.indexOf(930826) < test.MY_OPPORTUNITY_IDS.indexOf(930864) && test.MY_OPPORTUNITY_IDS.indexOf(930864) < test.MY_OPPORTUNITY_IDS.indexOf(930707), "Round 22: Prime Insights was not placed below stronger formal roles");
 check(test.MY_OPPORTUNITY_IDS.at(-1) === 930865, "Round 22: anonymous Jobgether listing must remain the lowest-ranked verify-first card");
 const r22Main = test.MY_OPPORTUNITY_IDS.map((id) => test.allData.find((item) => Number(item.id) === id)).filter(Boolean);
-check(r22Main.length === 163, "Round 22: reviewed main opportunity count must be exactly 163");
-check(r22Main.filter((item) => test.locationBucket(item) === "barcelona").length === 120 && r22Main.filter((item) => test.locationBucket(item) === "remote").length === 43, "Round 22: Barcelona/remote main-board split must be 120/43");
-check(r22Main.filter((item) => test.applicationStatus(item).key === "live").length === 158 && r22Main.filter((item) => test.applicationStatus(item).key === "verify").length === 5, "Round 22: live/verify status counts must be 158/5");
+check(r22Main.length >= 163, "Round 22: reviewed main opportunity baseline regressed below 163");
+check(r22Main.filter((item) => test.locationBucket(item) === "barcelona").length >= 120 && r22Main.filter((item) => test.locationBucket(item) === "remote").length >= 43, "Round 22: Barcelona/remote baseline regressed below 120/43");
+check(r22Main.filter((item) => test.applicationStatus(item).key === "live").length >= 158 && r22Main.filter((item) => test.applicationStatus(item).key === "verify").length >= 5, "Round 22: live/verify baseline regressed below 158/5");
 check(r22Main.filter((item) => test.isChineseRelevant(item)).length === 5, "Round 22: Chinese-relevant current opportunity count must remain evidence-backed at 5");
+
+const r23ById = (id) => test.allData.find((item) => Number(item.id) === id);
+const r23Main = test.MY_OPPORTUNITY_IDS.map(r23ById).filter(Boolean);
+const r23VisibleMain = test.dedupedData.filter((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id)));
+check(test.MY_OPPORTUNITY_IDS.length === 168 && new Set(test.MY_OPPORTUNITY_IDS).size === 168, "Round 23: audited ID ledger must contain exactly 168 unique opportunities");
+check(r23Main.length === 168 && r23VisibleMain.length === 168, "Round 23: main ledger and visible deduplicated cards must both equal 168");
+check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 122 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 46, "Round 23: Barcelona/remote split must be exactly 122/46");
+check(r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 163 && r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 5, "Round 23: live/verify split must be exactly 163/5");
+check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 5, "Round 23: Chinese-relevant current opportunity count must remain evidence-backed at 5");
+
+for (const id of [1702, 3518, 2333, 100, 443, 78, 284, 483]) {
+  const item = r23ById(id);
+  check(item && test.MY_OPPORTUNITY_SET.has(id) && test.applicationStatus(item).key === "live" && test.toLinks(item).length > 0, `Round 23: recovered/refreshed canonical opportunity ${id} is missing, closed or lacks an application route`);
+}
+check(test.locationBucket(r23ById(1702)) === "remote" && /lever\.co\/lodgify/i.test(test.toLinks(r23ById(1702)).join(" ")), "Round 23: Lodgify official Europe-remote route regressed");
+check(test.locationBucket(r23ById(3518)) === "barcelona" && /seidor\.com\/es-es\/talento\/empleos\/9272/i.test(test.toLinks(r23ById(3518)).join(" ")), "Round 23: Fail Fast / SEIDOR Barcelona application route regressed");
+check(test.locationBucket(r23ById(2333)) === "remote" && /reboot\.studio\/apply/i.test(test.toLinks(r23ById(2333)).join(" ")) && /Web Designer/i.test(r23ById(2333).opportunity), "Round 23: reboot canonical current Web Designer regressed");
+check(test.locationBucket(r23ById(100)) === "barcelona" && /2686782/i.test(test.toLinks(r23ById(100)).join(" ")) && test.applicationLanguagePath(r23ById(100)).key === "spanish", "Round 23: TWOJEYS current design role or Spanish gate regressed");
+check(test.locationBucket(r23ById(443)) === "remote" && /duck-duck-go\/2b76bbee/i.test(test.toLinks(r23ById(443)).join(" ")) && test.experienceInfo(r23ById(443)).key === "senior", "Round 23: DuckDuckGo Spain-remote lead route regressed");
+check(/textura-interiors\.com/i.test(test.toLinks(r23ById(78)).join(" ")) && /2713006/i.test(test.toLinks(r23ById(284)).join(" ")) && /workable\.com/i.test(test.toLinks(r23ById(483)).join(" ")), "Round 23: Textura, EuroLeague or Act Second canonical source refresh regressed");
+
+for (const id of [264, 1655, 993020, 2269, 2273, 2334, 1031, 1040, 1311, 1131]) {
+  const item = r23ById(id);
+  check(item && !test.MY_OPPORTUNITY_SET.has(id) && test.applicationStatus(item).key === "closed", `Round 23: duplicate, stale or non-design correction ${id} leaked into the current board`);
+}
+check([2269, 2273, 2334].every((id) => test.toLinks(r23ById(id)).some((url) => /reboot\.studio\/apply/i.test(url))), "Round 23: reboot duplicate history lost its preserved source route");
+check(/Job not found|Closed\/history/i.test(r23ById(1031).status), "Round 23: Voodoo Job-not-found correction regressed");
+check(/no Junior Graphic Designer|no longer exists/i.test(r23ById(1040).status), "Round 23: Roman/LCDC stale-search correction regressed");
+check(/hands-on graphic\/VI design vacancy|non-design|非设计/i.test(`${r23ById(1311).status} ${test.CURATED[1311].reason}`), "Round 23: live TWOJEYS Head of Brand was not kept out as a non-design role");
+check(/200 per month|200\/month|USD 200/i.test(`${r23ById(1131).status} ${r23ById(1131).analysis}`), "Round 23: Spreadit low-pay exclusion evidence regressed");
+
+check(test.MY_OPPORTUNITY_IDS.indexOf(930816) < test.MY_OPPORTUNITY_IDS.indexOf(78) && test.MY_OPPORTUNITY_IDS.indexOf(78) < test.MY_OPPORTUNITY_IDS.indexOf(930839), "Round 23: Textura was not raised into the high-fit Barcelona group");
+check(test.MY_OPPORTUNITY_IDS.indexOf(930860) < test.MY_OPPORTUNITY_IDS.indexOf(1702) && test.MY_OPPORTUNITY_IDS.indexOf(1702) < test.MY_OPPORTUNITY_IDS.indexOf(296), "Round 23: Lodgify recovered rank is incoherent");
+check(test.MY_OPPORTUNITY_IDS.indexOf(535) < test.MY_OPPORTUNITY_IDS.indexOf(2333) && test.MY_OPPORTUNITY_IDS.indexOf(2333) < test.MY_OPPORTUNITY_IDS.indexOf(175), "Round 23: reboot canonical rank is incoherent");
+check(test.MY_OPPORTUNITY_IDS.indexOf(930844) < test.MY_OPPORTUNITY_IDS.indexOf(443) && test.MY_OPPORTUNITY_IDS.indexOf(443) < test.MY_OPPORTUNITY_IDS.indexOf(930705), "Round 23: DuckDuckGo senior-stretch rank is incoherent");
+check(test.MY_OPPORTUNITY_IDS.indexOf(930822) < test.MY_OPPORTUNITY_IDS.indexOf(3518) && test.MY_OPPORTUNITY_IDS.indexOf(3518) < test.MY_OPPORTUNITY_IDS.indexOf(304), "Round 23: Fail Fast motion-stretch rank is incoherent");
+check(test.MY_OPPORTUNITY_IDS.indexOf(37) < test.MY_OPPORTUNITY_IDS.indexOf(100) && test.MY_OPPORTUNITY_IDS.indexOf(100) < test.MY_OPPORTUNITY_IDS.indexOf(172), "Round 23: TWOJEYS Spanish-hard-gate role is ranked too high or too low");
 
 test.state.preset = "chinese";
 const r588ScoreOrder = test.dedupedData.slice();
