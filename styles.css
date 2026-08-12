@@ -756,6 +756,18 @@ main {
   background: var(--surface-soft);
 }
 
+.ledger-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: -0.2rem 0 1.25rem;
+}
+
+.ledger-downloads .button {
+  min-height: 2.6rem;
+  padding-inline: 1rem;
+}
+
 .personal-filter {
   margin-top: 30px;
   border: 1px solid var(--line);

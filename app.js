@@ -2597,6 +2597,53 @@ function applyRound30SourceUpdates() {
 
 applyRound30SourceUpdates();
 
+const ROUND31_SECTION = "2026-08-12 Round 31 top-rank direct audit and ledger reconciliation";
+
+function applyRound31SourceUpdates() {
+  const updates = new Map([
+    [
+      930839,
+      {
+        section: ROUND31_SECTION,
+        status: "Closed/history: a direct request to CATORCE Greenhouse requisition 4797510008 on 2026-08-12 redirects to the current openings board with error=true. The current board no longer lists Visual Designer; its remaining design opening is the separately tracked Studio Designer & HTML Programmer requisition 5034293008.",
+        analysis: "Preserve the former Visual Designer brief as a strong Barcelona portfolio benchmark, but remove it from the current ranked board. Do not revive it from search-engine caches; restore only if CATORCE publishes a new exact Visual Designer requisition with a working application form.",
+        tier: "X",
+      },
+    ],
+    [
+      1107,
+      {
+        section: ROUND31_SECTION,
+        status: "Verify before investing in the application: THRU's current jobs page still contains the full Graphic Designer with Motion Skills brief, Barcelona onsite/Friday-remote terms, a 2026-09-15 closing date, the motion exercise and jobs@thrumotion.com application instructions. However, the same page footer also says NO JOB OPENINGS, so the studio should confirm by email that applications are still being accepted before the candidate completes the unpaid recreation exercise.",
+        analysis: "Keep this high-fit Barcelona motion-brand role in the review queue, not as fully confirmed live. First send a short email asking whether the vacancy and exercise are current; only complete the After Effects task after written confirmation, and ask whether the exercise is used solely for hiring evaluation.",
+      },
+    ],
+    [
+      1310,
+      {
+        section: ROUND31_SECTION,
+        source: "Hungry Minds / current LinkedIn employer detail",
+        opportunity: "Art Director - Creative Department (eCommerce)",
+        fit: "Spain remote art-direction and e-commerce creative lead; exact seniority, language, contract and salary require confirmation",
+        location: "Spain / remote; LinkedIn result context also surfaces Barcelona",
+        status: "Current but verify-first: the exact LinkedIn employer detail 4429897831 was requested directly on 2026-08-12 and returns the title Art Director - Creative Department (eCommerce), Spain, with an Apply route. The public page does not expose the complete job description, salary, daily language, seniority, employer ATS destination, Spain contract entity or work-authorisation policy.",
+        analysis: "Keep as a lower-confidence Spain-remote art-direction lead rather than a top brand-design recommendation. Before tailoring a portfolio or doing any test, obtain the full brief, contract entity, compensation, working hours, language and exact Barcelona/Spain eligibility from the employer application route.",
+      },
+    ],
+  ]);
+
+  for (const [id, update] of updates) {
+    const item = allData.find((record) => Number(record.id) === id);
+    if (!item) continue;
+    Object.assign(item, update);
+    item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+      .filter(Boolean)
+      .join(" ");
+  }
+}
+
+applyRound31SourceUpdates();
+
 for (const item of allData) {
   if (!item.searchText) {
     item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
@@ -2677,8 +2724,11 @@ const ROUND29_RANKED_INSERTIONS = new Map([
   [930875, [930876]],
   [930864, [930877]],
 ]);
+const ROUND31_EXCLUDED_IDS = new Set([930839]);
 const MY_OPPORTUNITY_IDS = Object.freeze(
-  ROUND28_AUDITED_OPPORTUNITY_IDS.flatMap((id) => [id, ...(ROUND29_RANKED_INSERTIONS.get(id) || [])]),
+  ROUND28_AUDITED_OPPORTUNITY_IDS
+    .flatMap((id) => [id, ...(ROUND29_RANKED_INSERTIONS.get(id) || [])])
+    .filter((id) => !ROUND31_EXCLUDED_IDS.has(id)),
 );
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
 
@@ -3287,6 +3337,40 @@ Object.assign(CURATED, {
     reason: "方向很贴美容电商、Amazon、CRM 邮件、社媒和包装，但原 Domestika 职位已跳回列表，不能按当前空缺展示。",
     next: "仅作冷询问：从品牌官方联系页礼貌询问未来是否还需要长期自由职业设计师；不要把客服邮箱写成招聘邮箱，也不要声称职位仍开放。",
     language: "原职位未写语言要求；当前已下线",
+  },
+});
+
+// Round 31 rechecks the highest-ranked cards against the exact current route.
+// Search-engine snapshots may still render a former Apply form, but direct
+// redirects and contradictory employer-page controls take precedence.
+Object.assign(CURATED, {
+  930839: {
+    ...CURATED[930839],
+    statusKey: "closed",
+    reason: "CATORCE 的旧 Visual Designer 编号 4797510008 当前直连会跳到带 error=true 的职位总表；当前职位板已不再列出该岗位。另一个仍开放的 Studio Designer & HTML Programmer 已作为独立卡片保留，不能拿它替代旧岗位状态。",
+    next: "保留旧岗位职责用于作品集对照，但不要继续投递搜索缓存中的表单；只有新的具体职位编号重新出现并能直达申请页时才恢复。",
+    changeType: "round-31-direct-route-closed",
+  },
+  1107: {
+    ...CURATED[1107],
+    statusKey: "verify",
+    reason: "THRU 页面正文仍完整列出 Graphic Designer with Motion Skills、Barcelona 办公方式、2026-09-15 截止日、动效测试和 jobs@thrumotion.com；但同页页脚同时写着 NO JOB OPENINGS，状态存在雇主页面内部冲突。",
+    next: "先给 jobs@thrumotion.com 发一封简短确认邮件，得到书面确认后再投入时间完成 After Effects 复刻测试；确认前不把它算作完全开放。",
+    changeType: "round-31-employer-page-conflict",
+  },
+  1310: {
+    ...CURATED[1310],
+    direction: "ecommerce",
+    titleZh: "艺术指导（电商创意部门）",
+    titleEs: "Art Director - Creative Department (eCommerce)",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "Spain remote / Barcelona 可居住 / 细节待确认",
+    languageKey: "unknown",
+    language: "公开详情未说明日常工作语言",
+    reason: "LinkedIn 原职位 4429897831 当前能返回准确岗位名 Art Director - Creative Department (eCommerce)、Spain 和申请入口；但完整职责、资历、薪资、合同主体与工作语言尚未公开。",
+    next: "先从申请入口索取完整 JD，并确认 Spain 合同、薪资、时区、语言与 Barcelona 居住资格；确认前保持低置信度，不做无薪测试。",
+    changeType: "round-31-title-and-route-repair",
   },
 });
 
@@ -10017,6 +10101,40 @@ Object.assign(CURATED, {
   },
 });
 
+// Reapply the Round 31 card-level verdicts here, after all older CURATED
+// snapshots have been declared. This late assignment is the authoritative
+// display state for the three directly rechecked records.
+Object.assign(CURATED, {
+  930839: {
+    ...CURATED[930839],
+    statusKey: "closed",
+    reason: "CATORCE 旧 Visual Designer 编号 4797510008 当前直连跳到带 error=true 的职位总表，当前职位板已不再列出该岗位。另一个仍开放的 Studio Designer & HTML Programmer 已作为独立卡片保留，不能替代旧岗位的状态。",
+    next: "保留旧岗位职责用于作品集对照，但不要继续投递搜索缓存中的表单；只有新的具体职位编号重新出现并能直达申请页时才恢复。",
+    changeType: "round-31-direct-route-closed",
+  },
+  1107: {
+    ...CURATED[1107],
+    statusKey: "verify",
+    reason: "THRU 页面正文仍完整列出 Graphic Designer with Motion Skills、Barcelona 办公方式、2026-09-15 截止日、动效测试和 jobs@thrumotion.com；但同页页脚同时写着 NO JOB OPENINGS，状态存在雇主页面内部冲突。",
+    next: "先给 jobs@thrumotion.com 发一封简短确认邮件，得到书面确认后再投入时间完成 After Effects 复刻测试；确认前不把它算作完全开放。",
+    changeType: "round-31-employer-page-conflict",
+  },
+  1310: {
+    ...CURATED[1310],
+    direction: "ecommerce",
+    titleZh: "艺术指导（电商创意部门）",
+    titleEs: "Art Director - Creative Department (eCommerce)",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "Spain remote / Barcelona 可居住 / 细节待确认",
+    languageKey: "unknown",
+    language: "公开详情未说明日常工作语言",
+    reason: "LinkedIn 原职位 4429897831 当前返回准确岗位名 Art Director - Creative Department (eCommerce)、Spain 和申请入口；但完整职责、资历、薪资、合同主体与工作语言尚未公开。",
+    next: "先从申请入口索取完整 JD，并确认 Spain 合同、薪资、时区、语言与 Barcelona 居住资格；确认前保持低置信度，不做无薪测试。",
+    changeType: "round-31-title-and-route-repair",
+  },
+});
+
 // Reapply the latest source verdicts after every historical refresh block so
 // a stale generated record cannot turn an excluded role back into live.
 applyRound21SourceUpdates();
@@ -10029,6 +10147,7 @@ applyRound27SourceUpdates();
 applyRound28SourceUpdates();
 applyRound29SourceUpdates();
 applyRound30SourceUpdates();
+applyRound31SourceUpdates();
 
 const els = {
   totalCount: document.querySelector("#totalCount"),

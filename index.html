@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <link rel="manifest" href="./site.webmanifest" />
     <meta name="theme-color" content="#d94b34" />
-    <link rel="stylesheet" href="./styles.css?v=dc3d444" />
+    <link rel="stylesheet" href="./styles.css?v=round31-20260812" />
   </head>
   <body>
     <header class="site-header">
@@ -150,6 +150,12 @@
             <span>条当前结果</span>
             <small>默认仅显示逐条核验后的独立机会</small>
           </div>
+        </div>
+
+        <div class="ledger-downloads" aria-label="机会总账下载">
+          <a class="button button--quiet" href="./current-opportunity-ledger.csv" download>下载当前主表 CSV</a>
+          <a class="button button--quiet" href="./current-opportunity-ledger.json" download>下载当前主表 JSON</a>
+          <a class="button button--quiet" href="./all-opportunity-ledger.csv" download>下载完整历史总账 CSV</a>
         </div>
 
         <div class="personal-filter" aria-labelledby="personalFilterTitle" hidden>
@@ -506,6 +512,6 @@
     </template>
 
     <script src="./data.js?v=round316-20260802"></script>
-    <script src="./app.js?v=round12-142-20260812"></script>
+    <script src="./app.js?v=round31-20260812"></script>
   </body>
 </html>
