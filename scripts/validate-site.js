@@ -90,7 +90,7 @@ check(
 );
 test.state.preset = "mine";
 const auditedMain = test.dedupedData.filter((item) => test.matchesPreset(item));
-check(auditedMain.length === 108, "逐条核验后的默认机会总表数量不是 108");
+check(auditedMain.length === 120, "逐条核验后的默认机会总表数量不是 120");
 check(auditedMain.every((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id))), "默认机会总表混入未审核记录");
 check(auditedMain.every((item) => test.applicationStatus(item).key !== "closed"), "默认机会总表混入已关闭记录");
 check(auditedMain.every((item) => Boolean(test.CURATED[item.id])), "默认机会总表仍有未完成中文整理的卡片");
@@ -102,7 +102,7 @@ const auditedScores = auditedMain.map(test.displayedScore);
 check(
   auditedScores[0] === 100 &&
     auditedScores.at(-1) === 1 &&
-    new Set(auditedScores).size === 108 &&
+    new Set(auditedScores).size === 120 &&
     auditedScores.every((score, index) => index === 0 || auditedScores[index - 1] > score),
   "默认机会总表的 100–1 唯一严格降序评分序列不完整",
 );
@@ -114,11 +114,14 @@ check([170, 445, 1108, 1081].every((id) => auditedMain.some((item) => Number(ite
 check([1314, 1239, 958, 277, 109, 385, 217, 1080, 1099].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第四批研究库追回的九条真实机会未完整进入主表");
 check([314, 78, 458, 258, 921, 117, 210, 308, 1097, 870, 841, 875, 985, 989].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第五批研究库追回的十四条真实机会未完整进入主表");
 check([668, 5106, 134, 2942, 930720, 183, 239, 977, 1255, 1241, 876, 920].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第六批研究库追回的十二条真实机会未完整进入主表");
+check([447, 207, 444, 304, 89, 855, 874, 1227, 396, 172, 86, 1294].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第七批研究库追回的十二条真实机会未完整进入主表");
 check([120, 1079, 1217].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 Rocket Digital 或 Fhios 记录仍被标为可投");
 check([153, 220, 322, 894].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 UNIQLO、Desigual 或 Ogilvy 记录仍被标为可投");
 check([359, 101].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 SD Worx 或重复 TWOJEYS 记录仍被标为可投");
 check([930716, 993018, 881].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "Canonical、BCome 或 Avidalia 重复来源仍被计为独立机会");
 check([10, 986, 2968].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "Binance 旧检索结果或本轮重复来源仍未移入历史");
+check([349, 254].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "Visma 或 Kilo 已过期原始职位仍被标为可投");
+check([3402, 481, 403, 1647, 1670, 993066, 5261, 2248, 2190, 2249, 2194, 2005, 937, 1503, 1352, 28, 948, 3048, 491, 3076, 1603].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "第七批已识别的同岗镜像仍在膨胀当前机会计数");
 check(!auditedMain.some((item) => [120, 1079, 1217].includes(Number(item.id))), "本轮官方已关闭记录泄漏进默认主表");
 check(test.toLinks(test.allData.find((item) => Number(item.id) === 930815)).some((url) => /sidn\.factorialhr\.com\/job_posting\/graphic-designer-285667/i.test(url)), "SIDN 官方投递入口缺失");
 check(!test.MY_OPPORTUNITY_SET.has(1044) && !test.MY_OPPORTUNITY_SET.has(1083), "乌拉圭 ++hellohello 岗位被误列为 Spain / Europe remote 主表机会");
@@ -496,7 +499,7 @@ check(test.allData.find((item) => item.id === 408).tier === "X", "Stripe 同一 
 check(test.allData.find((item) => item.id === 599).tier === "X" && test.locationBucket(test.allData.find((item) => item.id === 599)) === "other", "小红书上海校园实习混入 Barcelona/Europe 队列");
 check(test.allData.find((item) => item.id === 606).tier === "D" && test.locationBucket(test.allData.find((item) => item.id === 606)) === "other", "DualEntry NYC on-site 岗位混入默认队列");
 check(test.applicationStatus(test.allData.find((item) => item.id === 1099)).key === "live" && test.locationBucket(test.allData.find((item) => item.id === 1099)) === "remote", "LABHOUSE 当前 Spain remote 岗位状态或地点丢失");
-check(test.applicationStatus(test.allData.find((item) => item.id === 1352)).key === "live" && test.locationBucket(test.allData.find((item) => item.id === 1352)) === "barcelona", "IKIGAI 当前 Barcelona 动效岗位状态或地点丢失");
+check(test.applicationStatus(test.allData.find((item) => item.id === 1352)).key === "closed", "IKIGAI 重复镜像 1352 未移入历史");
 check(test.allData.find((item) => item.id === 200).tier === "X", "Domestika 明确关闭的 Feedback 视频岗位仍被列为开放机会");
 check([305, 936].every((id) => test.applicationStatus(test.allData.find((item) => item.id === id)).key === "live" && test.locationBucket(test.allData.find((item) => item.id === id)) === "remote"), "Hostinger 当前 Spain remote 官方岗位状态或地点丢失");
 check(test.applicationStatus(test.allData.find((item) => item.id === 841)).key === "live" && test.allData.find((item) => item.id === 841).tier === "C", "European Blockchain 当前兼职自由职业岗位状态或层级错误");

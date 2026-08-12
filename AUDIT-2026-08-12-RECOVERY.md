@@ -1,13 +1,13 @@
-# 2026-08-12 研究库追回与状态纠错（108 条现行主表）
+# 2026-08-12 研究库追回与状态纠错（120 条现行主表）
 
 本轮继续执行“逐条打开原始招聘详情或官方 ATS”的规则，不以搜索摘要、列表页存在或 HTTP 200 代替职位有效性判断。
 
 ## 现行主表
 
-- 108 个独立机会，严格按统一匹配分 100–1 从高到低排列；108 个分数全部唯一。
-- 78 个 Barcelona / 周边，30 个 Spain / Europe / worldwide remote。
-- 91 个原始页显示可申请，17 个需先确认申请控制、地点或合同资格。
-- 61 个品牌 / VI / Art Direction，32 个 Digital，4 个 Motion，4 个 Social，3 个 E-commerce，4 个 Production。
+- 120 个独立机会，严格按统一匹配分 100–1 从高到低排列；120 个分数全部唯一。
+- 87 个 Barcelona / 周边，33 个 Spain / Europe / worldwide remote。
+- 102 个原始页显示可申请，18 个需先确认申请控制、地点或合同资格。
+- 63 个品牌 / VI / Art Direction，36 个 Digital，6 个 Motion，6 个 Social，4 个 E-commerce，5 个 Production。
 - 4 个中文、华人圈、中国公司或中文远程相关机会。
 
 ## 从研究库追回的 13 个有效机会
@@ -97,6 +97,23 @@
 | Buzz — Motion Designer & Video Editor, AI | Barcelona hybrid | 当前原始详情；4–5 年、西语环境、每周 2 天办公室。 |
 | 言灵无界 — Brand Visual Designer | 中文远程兼职 | 品牌视觉内容真实且公开 RMB10–15k/月，但 Spain 居住资格、工时和智联申请有效性均需确认。 |
 
+## 第七批追回的 12 个有效机会
+
+| 公司 / 岗位 | 地点 | 当前证据与主要门槛 |
+|---|---|---|
+| Velvet Caviar — Graphic Designer, eCommerce Fashion Brand | Spain remote | 2026-08-12 原始详情显示约 1 天前重发并可申请；€30–40k、2+ 年、英语，需确认 Spain 雇佣实体。 |
+| Publicis Production — Designer | Barcelona | 原始雇主详情仍可申请；高级英语、3–4 年，偏全球品牌 Campaign、数字制作与完稿。 |
+| Locker in the City — Digital Designer | Spain remote | 当前职位有完整 JD；每周 4 天 36 小时，网页、设计系统、CRM 与门店视觉，工作语言和薪资待确认。 |
+| Vista — Lead UX Designer, AI LogoMaker | Spain remote | 官方职位 2026-07-22，Apply now；Logo/品牌创建流程与设计系统，5+ 年数字产品设计。 |
+| Dragons Group — Mid/Senior Graphic Designer | Barcelona hybrid | 官方 ATS 可申请；4–8 年、美妆健康 Campaign 与社媒，西语和英语均为硬门槛。 |
+| Yellowcat — Art Director, On-Set | Barcelona onsite | 原始详情仍可申请；自由职业、€320/天，资深广告片与现场导演副线。 |
+| IKIGAI Talent Group — Video Editor & Motion Designer | Barcelona hybrid | 官方申请表开放；英语、移动应用品牌与获客视频，最终客户、合同和薪资需先确认。 |
+| Natulim — Video Editor / Motion Graphics | Barcelona hybrid | Factorial 当前 Apply；永久全职、2+ 年，偏品牌社媒、拍摄与 performance 视频。 |
+| RV Group — Junior Motion Graphics & Visual Designer | Barcelona onsite | JobToday 当前 Apply；初级、全现场，流利西语和英语、Spain 工作许可。 |
+| Ogilvy — Junior Art Director Graduate Program | Barcelona | 原始详情仍显示 Solicitar；西语必需、须在西班牙完成相关大学学位，属于实习。 |
+| JIRADA — Beca Graphic Designer | Barcelona | 原始详情约 2 天前重发并给出邮箱；必须能签 convenio，偏社媒、Campaign 与基础 Web。 |
+| IMAGINA — Diseñador Gráfico Digital | Barcelona | 官方 careers 仍列岗位；品牌与应用指南相关，但只有通用投递且高水平书面加泰语、西语为硬门槛。 |
+
 ## 官方状态纠错
 
 - Rocket Digital `Graphic Designer Social Media`（记录 120 / 1079）：官方 Factorial 306705 明确显示职位不存在，移入历史。它与仍开放的 `Art Director Paid Media` 不是同一岗位。
@@ -112,6 +129,9 @@
 - Binance 旧 Southern Europe 设计结果（记录 10）：官方 Lever 当前明确显示无匹配职位，移入历史。
 - COROS Brand Creative Producer（668 / 986）：同一官方 careers 岗位只保留主记录 668。
 - SLAPS 合并摘要（2968）：拆成 Senior Art Director（134）和 Junior Graphic Designer（2942）两张独立卡，合并镜像移入历史。
+- Visma `Junior Brand Designer`（349）：官方 Teamtailor 在 2026-08-12 明确显示职位不再活跃，移入历史。
+- Kilo `Graphic Designer / Video Editor`（254）：原始 LinkedIn 职位已跳转 expired jobs，搜索缓存不再作为当前投递证据。
+- Fail Fast、TWOJEYS、Avidalia、Lodgify、Canonical、COROS、CrowdStrike、reboot、LABHOUSE、Textura、devicenow、SLAPS 和 EuroLeague 的 20 个同岗镜像已进一步合并；原始行只保留审计历史。
 
 ## 排序规则
 
