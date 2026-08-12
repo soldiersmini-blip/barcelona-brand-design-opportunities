@@ -1,4 +1,73 @@
 const allData = Array.isArray(window.JOB_OPPORTUNITIES) ? window.JOB_OPPORTUNITIES : [];
+
+// Current opportunities discovered after the last generated data snapshot.
+// These are deliberately small, hand-audited additions; the historical source
+// corpus stays untouched in data.js.
+[
+  {
+    id: 930813,
+    section: "2026-08-12 manual official-detail audit",
+    source: "Dragons Group / official Factorial ATS",
+    opportunity: "Junior Graphic Designer",
+    fit: "Barcelona hybrid; permanent full-time; 1–2 years; brand guidelines, visual systems, social and digital assets",
+    location: "Barcelona, Spain; permanent; full-time; hybrid",
+    status: "Official Factorial detail opened on 2026-08-12. It shows Apply now and a current permanent, full-time, hybrid Barcelona vacancy. English is required; Spanish is preferred rather than mandatory.",
+    contact: "Official detail and application: https://dragons-group.factorialhr.com/job_posting/junior-graphic-designer-317499",
+    analysis: "Best current junior-level local match. Prioritise portfolio cases showing brand-guideline application, typography, layout, multi-format digital assets and careful production.",
+    score: 97,
+    tier: "A",
+    locationTag: "Barcelona area",
+    typeTag: "Junior graphic / brand implementation",
+    sourceGroup: "other",
+    postedAt: "2026-08-12",
+    freshnessTag: "week",
+    freshnessAgeDays: 0,
+    links: ["https://dragons-group.factorialhr.com/job_posting/junior-graphic-designer-317499"],
+  },
+  {
+    id: 930812,
+    section: "2026-08-12 current original-detail discovery",
+    source: "Skyscanner / current LinkedIn employer detail",
+    opportunity: "Senior Visual Designer",
+    fit: "Barcelona full-time visual-design opening; seniority is a stretch and full requirements must be confirmed on the employer application",
+    location: "Barcelona, Spain; full-time; work mode and contract terms to confirm",
+    status: "Current LinkedIn employer detail opened on 2026-08-12 and visibly shows Senior Visual Designer, Barcelona, full-time and Solicitar. The readable public view did not expose the full description, so language, experience, salary and office rhythm remain verification gates.",
+    contact: "Current original detail/application: https://www.linkedin.com/jobs/view/4451912620",
+    analysis: "Keep as a real but senior Barcelona stretch role. Read the external employer form before investing in a tailored application.",
+    score: 83,
+    tier: "B",
+    locationTag: "Barcelona area",
+    typeTag: "Senior visual design",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-12",
+    freshnessTag: "week",
+    freshnessAgeDays: 0,
+    links: ["https://www.linkedin.com/jobs/view/4451912620"],
+  },
+  {
+    id: 930814,
+    section: "2026-08-12 current original-detail discovery",
+    source: "CNT Management Consulting / current LinkedIn employer detail",
+    opportunity: "Senior Brand Designer & Creative Content Manager",
+    fit: "Barcelona hybrid full-time brand/content opening; senior scope and unreadable full requirements make it a lower-priority stretch",
+    location: "Barcelona, Spain; hybrid; full-time",
+    status: "Current LinkedIn employer detail opened on 2026-08-12. It visibly shows Easy Apply and that applications are actively reviewed, but the signed-in readable view did not expose the complete description. Treat language, seniority, salary and exact scope as verification gates.",
+    contact: "Current original detail/application: https://www.linkedin.com/jobs/view/4445748221",
+    analysis: "A real current Barcelona application route, but not enough evidence to rank above fully readable roles. Open the form and verify the complete JD first.",
+    score: 50,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Senior brand / creative content",
+    sourceGroup: "linkedin",
+    postedAt: "2026-07-29",
+    freshnessTag: "month",
+    freshnessAgeDays: 14,
+    links: ["https://www.linkedin.com/jobs/view/4445748221"],
+  },
+].forEach((record) => {
+  if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
+});
+
 for (const item of allData) {
   if (!item.searchText) {
     item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
@@ -14,7 +83,32 @@ const meta = window.JOB_META || {};
 // Homepage priority is location-first: Barcelona local roles come before
 // Madrid/unclear remote or stale Chinese-channel leads. Language and contract
 // gates remain explicit on each card instead of being hidden by the homepage.
-const PRIORITY_IDS = [1300, 890, 884, 1303, 866, 24, 1020];
+const PRIORITY_IDS = [930813, 910, 914, 1300, 160, 1107, 866, 425];
+
+// Canonical, evidence-backed opportunities for the user. The generated corpus
+// remains searchable, but only these independently reviewed identities enter
+// the default board. This prevents old source indexes, Madrid posts, mirrors
+// and research notes from inflating the usable count.
+const MY_OPPORTUNITY_IDS = Object.freeze([
+  930813, 910, 914, 1300, 160, 1107, 866, 175, 425, 930719, 884, 203,
+  284, 920001, 930812, 190, 930715, 930716, 1301, 55, 960, 238, 156, 147,
+  216, 84, 12, 859, 305, 1029, 188, 922, 890, 891, 930637, 930707, 930708,
+  206, 375, 1023, 990001, 27, 1303, 1020, 24, 25, 889, 930814,
+]);
+const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
+
+// A single fit scale, recalibrated on 2026-08-12. Higher means more useful for
+// this user now: Barcelona/Spain eligibility, readable current application,
+// realistic seniority, language cost and brand/visual relevance all count.
+const AUDITED_FIT_SCORES = Object.freeze({
+  930813: 97, 910: 96, 914: 95, 1300: 94, 160: 93, 1107: 92, 866: 91,
+  175: 90, 425: 89, 884: 88, 203: 87, 284: 86, 920001: 85, 930812: 84,
+  190: 83, 930715: 82, 930716: 81, 55: 80, 960: 79, 238: 78, 156: 77,
+  147: 76, 216: 75, 84: 74, 12: 73, 859: 72, 305: 71, 1029: 70, 188: 69,
+  922: 68, 890: 67, 891: 66, 930637: 65, 930707: 64, 930708: 63, 206: 62,
+  375: 61, 930719: 60, 1023: 59, 990001: 58, 27: 57, 1303: 56, 1020: 55,
+  24: 54, 1301: 53, 25: 52, 889: 51, 930814: 50,
+});
 
 const IDENTITY_ALIASES = Object.freeze({
   95: "qustodio-digital-designer-marketing",
@@ -83,6 +177,17 @@ const IDENTITY_ALIASES = Object.freeze({
   468: "huqiao-bilingual-graphic-artist",
   504: "huqiao-bilingual-graphic-artist",
   918: "huqiao-bilingual-graphic-artist",
+  1371: "hostinger-brand-creative-graphic-designer",
+  188: "eseoese-art-director",
+  485: "eseoese-art-director",
+  1373: "labhouse-growth-graphic-designer",
+  914: "trivelta-graphic-designer",
+  952: "trivelta-graphic-designer",
+  84: "reboot-current-web-designer",
+  450: "reboot-current-web-designer",
+  567: "reboot-current-web-designer",
+  2090: "reboot-current-web-designer",
+  2091: "reboot-current-web-designer",
 });
 
 const CURATED = {
@@ -2510,6 +2615,682 @@ Object.assign(CURATED, {
   },
 });
 
+// 2026-08-12 canonical audit. Status overrides here are based on opening the
+// original detail/application pages, not on search-result snippets or a page
+// merely returning HTTP 200.
+Object.assign(CURATED, {
+  175: {
+    direction: "brand",
+    company: "Frekuent",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / hybrid（每周 3 天办公室、2 天远程）/ 永久全职",
+    titleZh: "品牌与 Campaign 设计师",
+    titleEs: "Brand & Campaign Designer",
+    reason: "官方 Factorial 详情显示当前可申请。工作覆盖付费广告、landing page、email、社媒、活动与销售物料，并负责品牌一致性、设计标准和模板；要求 4 年以上，英语或西语其中一门流利、另一门达到中级。",
+    next: "先按真实语言能力判断：如果英语流利且西语已到中级，可以用品牌 campaign、landing/email、模板系统与数字延展案例投递；否则先不投入定制作业。",
+    language: "英语或西语一门流利，另一门至少中级",
+    languageKey: "basicSpanish",
+    experienceKey: "mid",
+    experienceLabel: "中高级 / 4 年以上",
+    changeType: "refresh",
+  },
+  284: {
+    direction: "brand",
+    company: "EuroLeague Basketball",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / 现场 / 永久全职",
+    titleZh: "高级平面设计师（体育品牌与赛事视觉）",
+    titleEs: "Senior Graphic Designer",
+    reason: "官方 Personio 原页显示 Apply。岗位负责静态与动态社媒、实时比赛内容、赛季/季后赛/Final Four campaign、商业合作物料和 EuroLeague 高端视觉识别；要求 3 年以上体育设计经验、流利英语及西班牙合法工作资格。",
+    next: "适合有体育、活动或高频社媒系统经验时挑战；作品集展示品牌一致性、实时内容、多格式 campaign 与基础 motion。先确认轮班晚间/周末、10–15% 欧洲出差和薪资。",
+    language: "流利英语；西语仅为加分项，需有欧盟身份或有效西班牙工作/居留许可",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 3 年以上体育设计经验",
+    changeType: "refresh",
+  },
+  930719: {
+    direction: "digital",
+    company: "Adsmurai",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / hybrid（每周 2 天远程）/ 无限期全职",
+    titleZh: "数字平面设计师（360° Campaign）",
+    titleEs: "Digital Graphic Designer (They/He/She)",
+    reason: "官方 Teamtailor 页面显示当前可投，负责 360° 数字 campaign、品牌规范适配、付费与自然社媒、短视频、演示和宣传册；但明确要求至少 3 年经验，并同时流利使用西班牙语和英语。",
+    next: "因双语硬门槛降到后排。只有能够用西语和英语完成 brief、沟通与反馈时再投；否则保留为作品集方向参考。",
+    language: "流利西班牙语和英语均为硬门槛",
+    languageKey: "spanish",
+    languageHard: true,
+    experienceKey: "mid",
+    experienceLabel: "中级 / 3 年以上",
+    changeType: "refresh",
+  },
+  910: {
+    ...CURATED[910],
+    next: "用英文简历和作品集直接申请。首页放 App 图标 / 商店截图系统、Logo 与品牌元素、style guide、performance creative、动效和数据迭代案例；面试前确认薪资、试用期、Barcelona 到岗频率与测试是否付费。",
+  },
+  866: {
+    ...CURATED[866],
+    reason: "英语门槛清楚、未列西语硬要求。工作把品牌延展到产品解说、客户故事、社交短片、活动、数字 campaign、演示、模板和素材系统，既有动态也有静态品牌资产，是当前较强的 Barcelona 数字品牌机会。",
+  },
+  203: {
+    direction: "ecommerce",
+    company: "Amazon / Elevated Shopping",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / Amazon Spain / 全职",
+    titleZh: "艺术指导（品牌合作与电商视觉）",
+    titleEs: "Art Director, Elevated Shopping",
+    reason: "Amazon.jobs 官方原页显示 Apply now。岗位负责品牌合作、视觉研究、mockup、故事表达、摄影/视频拍摄指导、大型活动与电商体验；要求 3 年以上及在线作品集。",
+    next: "用品牌合作、campaign、拍摄指导、平面/motion 与电商叙事案例投递；面试前确认工作语言、办公节奏、薪资和工签政策。",
+    language: "原始可读正文未公开西语或其他语言硬门槛",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 3 年以上",
+    changeType: "refresh",
+  },
+  920001: {
+    direction: "brand",
+    company: "PepsiCo / Alvalle",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / 现场节奏待确认 / 全职",
+    titleZh: "高级设计师（品牌识别、包装与产品架构）",
+    titleEs: "Senior Designer — Food Ventures (Alvalle)",
+    reason: "原始 LinkedIn 雇主页显示 Solicitar。岗位定义 Alvalle 全球品牌设计策略，覆盖产品架构、视觉识别、包装与创新流程；要求 4 年以上，并有约 15% 出差。",
+    next: "用英文提交品牌识别、包装、消费品架构与端到端上市案例；先确认工作语言、薪资、办公节奏、工签和实际 PepsiCo ATS 入口。",
+    language: "公开可读正文未写西语要求；申请工作语言需确认",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 4 年以上",
+    changeType: "refresh",
+  },
+  190: {
+    direction: "brand",
+    company: "Stark Future",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Sant Boi de Llobregat / 现场全职",
+    titleZh: "平面设计师（产品品牌、包装与零售）",
+    titleEs: "Graphic Designer",
+    reason: "当前原始雇主页显示 Solicitar。职责覆盖高端营销 campaign、门店与经销商网络、包装、手册、企业传播、newsletter 和演示模板，强调统一视觉识别。",
+    next: "提交高端品牌系统、零售/经销商物料、包装、文档与演示模板案例；先确认语言、薪资和实际到岗频率。",
+    language: "原始正文未公开西语或英语等级",
+    changeType: "refresh",
+  },
+  930715: {
+    direction: "digital",
+    company: "Sanofi",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / 全职；办公节奏待确认",
+    titleZh: "平面设计师（品牌规范、信息设计与 Motion）",
+    titleEs: "Graphic Designer",
+    reason: "当前原始雇主页显示 Solicitar。工作覆盖解释/教育/推广视频、信息图动画、海报、演示、newsletter、e-mailer、手册、e-learning 与品牌模板；要求 2–6 年及优秀英语。",
+    next: "英文申请；作品集重点放品牌规范、信息层级、演示模板、motion 与复杂内容可视化。确认薪资、混合办公和西语日常要求。",
+    language: "优秀英语为明确要求；未公开西语硬门槛",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 2–6 年",
+    changeType: "refresh",
+  },
+  930716: {
+    direction: "brand",
+    company: "Canonical",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "EMEA 远程 / Barcelona 可居住 / 每年国际出行约 2 次",
+    titleZh: "视觉设计师（品牌指南与数字产品系统）",
+    titleEs: "Visual Designer",
+    reason: "原始雇主页显示 Solicitar。中央设计团队负责演进品牌指南、传播物料、UI 设计系统和数字产品视觉；英语读写口语优秀为明确要求。",
+    next: "英文申请；提交品牌系统、字体版式、可访问性、Web/UI system 和数字产品案例。先确认 Spain 雇佣主体、薪资与工签。",
+    language: "优秀书面与口语英语为硬要求",
+    languageKey: "light",
+    applicationMode: "english",
+    changeType: "refresh",
+  },
+  1301: {
+    direction: "brand",
+    company: "The Colour Monster",
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / 现场全职；投递入口待确认",
+    titleZh: "平面设计师（品牌识别与视觉系统）",
+    titleEs: "Graphic Designer — Brand Identity and Visual Systems",
+    reason: "职责非常贴 VI：视觉识别演进、品牌手册、guidelines、模板、网格、字体、包装、授权、编辑、数字与展览；但要求加泰语和西语达到母语/双语、英语专业水平，且本轮未确认正式投递按钮。",
+    next: "因三语与入口门槛降到后排。只有语言真实满足时，先联系发布者索要有效投递入口，再提交品牌手册、授权/包装治理和第三方审核案例。",
+    language: "加泰语与西语须母语或双语，英语须专业工作水平",
+    languageKey: "spanish",
+    languageHard: true,
+    changeType: "refresh",
+  },
+  55: {
+    direction: "digital",
+    company: "BCome",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / semi-presential / 灵活工时",
+    titleZh: "数字设计师（企业识别、SaaS 与 Motion）",
+    titleEs: "Digital Designer",
+    reason: "官方 careers 页面当前列出职位并提供直接邮箱。工作结合 SaaS UX/UI、企业识别、广告、演示、mockup、Figma、Adobe、After Effects 与多媒体资产。",
+    next: "向 alba@bcome.biz 发送品牌到数字产品的完整案例；确认语言、固定薪资、合同主体和办公室节奏。",
+    language: "公开职位未写具体工作语言等级",
+    changeType: "refresh",
+  },
+  960: {
+    direction: "social",
+    company: "DDB Spain",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / hybrid / 初级全职",
+    titleZh: "初级艺术指导（社媒与 Campaign）",
+    titleEs: "Art Director Junior",
+    reason: "官方 Greenhouse 原页有 Apply 和完整表单。职责包括社媒概念、campaign 资产、版式、拍摄与视频剪辑；要求 1–2 年 agency/studio 经验。正文为西语，但没有单列语言等级。",
+    next: "先确认团队日常能否用英语；若可行，提交社媒概念、campaign、layout、拍摄和短视频案例。",
+    language: "招聘正文为西语；未单列语言等级，需先确认",
+    languageKey: "spanish",
+    experienceKey: "junior",
+    experienceLabel: "初级 / 1–2 年",
+    changeType: "refresh",
+  },
+  238: {
+    direction: "brand",
+    company: "Publicis Production / Publicis Groupe España",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / hybrid / 全职",
+    titleZh: "艺术指导（整合 Campaign）",
+    titleEs: "Art Director",
+    reason: "原始雇主页和外部申请入口当前可用。工作覆盖线上/线下 campaign、客户演示、平面、motion、Adobe/Figma 与 AI；要求 4 年以上或相当学历，并在面试中评估高级英语。",
+    next: "提交整合 campaign、概念到完稿、motion 和客户演示案例；确认西语、合同、薪资与 hybrid 节奏。",
+    language: "高级英语会在面试评估；西语要求未公开",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 4 年以上",
+    changeType: "refresh",
+  },
+  156: {
+    direction: "brand",
+    company: "Heroes / Boba",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / hybrid / 每周至少 2 天办公室 / 全职",
+    titleZh: "平面设计师（品牌、包装与电商）",
+    titleEs: "Graphic Designer",
+    reason: "官方 Teamtailor 原页显示 Apply。负责 rebrand、包装、Amazon 品牌店、电商、社媒、email、印刷、产品上市和五个消费品牌的一致性；要求 4 年以上。",
+    next: "提交包装、Amazon/e-commerce、品牌指南、社媒/email 与轻量视频案例；确认语言、薪资和合同主体。",
+    language: "公开职位未列语言等级",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 4 年以上",
+    changeType: "refresh",
+  },
+  147: {
+    direction: "brand",
+    company: "SplitMetrics",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "欧洲时区远程 / Spain eligible / 全职",
+    titleZh: "高级视觉设计师（品牌识别与增长 Campaign）",
+    titleEs: "Senior Visual Designer",
+    reason: "官方 Ashby 原页显示 Apply。负责提升公司视觉识别并延展到营销触点、performance campaign、网站、AI 产品信息和社媒；要求高级视觉工艺与英语沟通。",
+    next: "英文申请；提交品牌系统、performance campaign、网站和社媒案例。确认 Spain payroll、薪资与工签。",
+    language: "英语协作为明确要求；西语未列",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 年限未量化",
+    changeType: "refresh",
+  },
+  216: {
+    direction: "brand",
+    company: "Linear",
+    statusKey: "verify",
+    locationKey: "remote",
+    locationLabel: "欧洲时区远程 / Spain 合同需确认",
+    titleZh: "Web 与品牌设计师",
+    titleEs: "Designer, Web & Brand",
+    reason: "官方 careers 与 Ashby 仍列出 Europe remote，职责横跨网站/landing、品牌营销、跨渠道概念、UI、motion 与 interactive；但需再确认当前 requisition 和 Spain 雇佣资格。",
+    next: "先验证 Ashby 表单仍接收并询问 Spain payroll；确认后提交 Web 品牌系统、UI、motion 与跨渠道 campaign 案例。",
+    language: "官方页面为英语；具体等级未列",
+    applicationMode: "english",
+    changeType: "refresh",
+  },
+  84: {
+    direction: "digital",
+    company: "reboot",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "欧洲远程 / 全职",
+    titleZh: "网页设计师（端到端视觉落地）",
+    titleEs: "Web Designer",
+    reason: "当前官方申请页只公开 Web Designer，要求强视觉品味、独立完成端到端网站并提交 3 个作品；品牌、motion 和 senior 等旧标题没有独立职位编号。",
+    next: "只提交 3 个最强的 Web/视觉项目；先确认 Spain 合同、薪资和工作语言。",
+    language: "公开申请页未列语言要求",
+    changeType: "refresh",
+  },
+  12: {
+    direction: "brand",
+    company: "turbopuffer",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "欧洲远程 / 全职；Spain 合同需确认",
+    titleZh: "综合设计师（产品、品牌、Web 与营销）",
+    titleEs: "Designer",
+    reason: "官方 Ashby 原页显示 Apply。作为首位设计师横跨产品、品牌、Web、blog、线下和 campaign，并要求能用 Tailwind、Claude Code 或 Cursor 推动设计直接上线。",
+    next: "只在作品集同时具备品牌系统、Web/产品视觉与实际落地能力时申请；确认 Spain 雇佣、薪资和工作语言。",
+    language: "官方页面为英语；未公开语言等级",
+    applicationMode: "english",
+    changeType: "refresh",
+  },
+  305: {
+    direction: "brand",
+    company: "Hostinger",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "西班牙远程 / 全职",
+    titleZh: "高级平面设计师（品牌与创意）",
+    titleEs: "Senior Graphic Designer — Brand & Creative",
+    reason: "官方 Ashby 原页显示 Spain remote 与 Apply。工作覆盖品牌、广告与雇主品牌 campaign、多渠道数字/印刷资产、品牌演进、指导协作和 AI 工作流；流利英语必需。",
+    next: "英文申请；提交 campaign、视觉识别演进、多渠道执行、Figma/Adobe 与 AI workflow。确认薪资和工签。",
+    language: "流利英语为明确要求；西语未列",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级",
+    changeType: "refresh",
+  },
+  188: {
+    direction: "brand",
+    company: "eseOese",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona 22@ / 现场全职",
+    titleZh: "艺术指导（时尚品牌与 360° Campaign）",
+    titleEs: "Art Director",
+    reason: "官方职位页显示申请入口。负责 campaign、editorial、上市、活动、拍摄、品牌故事、digital、landing、newsletter、retail 和视觉陈列；要求 4 年以上及中高英语。",
+    next: "提交时尚/lifestyle campaign、editorial、品牌、retail/VM 与完整拍摄流程；确认西语、薪资、工签和现场节奏。",
+    language: "中高英语为要求；西语未写成硬门槛",
+    languageKey: "light",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 4 年以上",
+    changeType: "refresh",
+  },
+  922: {
+    direction: "brand",
+    company: "Solidgate",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "欧洲远程 / Spain payroll 需确认",
+    titleZh: "高级平面设计师（品牌与营销）",
+    titleEs: "Senior Graphic Designer",
+    reason: "官方 careers 原页显示 Apply。负责品牌原则、campaign、email、社媒、销售演示、活动及 motion/video/3D/生成式 AI；要求 3 年以上和英语 B1+。",
+    next: "英文申请；先确认 Spain resident 合同、税务和薪资，再提交品牌指南、多渠道 campaign、演示/活动与 motion/AI 案例。",
+    language: "英语 B1+；西语未列",
+    languageKey: "light",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 3 年以上",
+    changeType: "refresh",
+  },
+  930637: {
+    direction: "production",
+    company: "Dragons Group",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / hybrid / 全职",
+    titleZh: "高级包装与 POS 设计师",
+    titleEs: "Senior Packaging & Point of Sale Designer",
+    reason: "当前 LinkedIn 与官方 Factorial 板均显示可申请。职责覆盖品牌一致性的包装、零售 POS、印刷、OOH、视觉方向和指导；要求成熟印前、色彩、刀模与材料知识，英语流利。",
+    next: "提交包装系统、品牌指南落地、零售/POS、印前与量产案例；确认西语、薪资、工签和 hybrid 节奏。",
+    language: "流利英语为硬要求；其他语言仅加分",
+    languageKey: "light",
+    experienceKey: "senior",
+    experienceLabel: "高级包装/印刷制作",
+    changeType: "refresh",
+  },
+  930707: {
+    direction: "brand",
+    company: "Dragons Group",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / hybrid / 永久全职",
+    titleZh: "平面设计负责人（品牌系统与团队管理）",
+    titleEs: "Lead Graphic Designer",
+    reason: "官方 Factorial 原页显示 Apply。负责团队、品牌策略到可扩展设计系统、流程和质量、360° campaign 与 AI 工作流；要求 7–8 年、管理经验、FMCG，以及西语和英语均必需。",
+    next: "因资历和双语硬门槛放在后排。只有具备团队管理、FMCG、多市场品牌系统和 360° campaign 经验时再投。",
+    language: "西班牙语和英语均为硬要求",
+    languageKey: "spanish",
+    languageHard: true,
+    experienceKey: "lead",
+    experienceLabel: "负责人 / 7–8 年及管理经验",
+    changeType: "refresh",
+  },
+  930708: {
+    direction: "brand",
+    company: "Dragons Group",
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / hybrid / 永久全职；完整正文待确认",
+    titleZh: "高级艺术指导（医疗与制药）",
+    titleEs: "Senior Art Director — Healthcare & Pharma",
+    reason: "官方 Factorial 职位板仍列出并显示 Apply now，但本轮未完整读取职位正文，所以医疗/制药经验、语言和具体资历门槛尚不能视作已核验。",
+    next: "先打开并读完岗位专页与申请表；确认门槛后再决定是否提交受监管信息、医疗品牌与 campaign 案例。",
+    language: "完整语言要求待从职位正文确认",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 具体年限待确认",
+    changeType: "refresh",
+  },
+  206: {
+    direction: "digital",
+    company: "Semrush",
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / hybrid / 全职；官方职位已发布 30+ 天",
+    titleZh: "数字艺术指导（Web 设计系统）",
+    titleEs: "Digital Art Director — Web Design",
+    reason: "官方 Workday 仍显示 Apply，但职位已标记发布 30+ 天，LinkedIn 镜像过期。职责非常贴数字品牌：网站、landing、email、Figma tokens/components、UX/accessibility、A/B test、治理和团队领导；要求 5 年以上。",
+    next: "先测试 Workday 表单能否完整提交；确认后提交 Web 品牌系统、Figma 组件/tokens、治理、A/B test 和领导案例。",
+    language: "完整工作语言要求需在 Workday 表单中确认",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上",
+    changeType: "refresh",
+  },
+  375: {
+    direction: "motion",
+    company: "Fail Fast Studio",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / hybrid / 全职",
+    titleZh: "高级动态设计师（2D / 3D / AI）",
+    titleEs: "Senior Motion Designer",
+    reason: "官方职位页显示 Apply now。工作覆盖 2D/3D/AI motion、广告、解释视频、promo、动态演示、storyboard/styleframe 和品牌规范执行；要求 5 年以上及 C1/C2 英语。",
+    next: "英文申请；提交高质量 2D/3D motion、styleframe、解释视频与品牌一致性案例。确认薪资和 hybrid 节奏。",
+    language: "C1/C2 英语为硬门槛；西语未列",
+    languageKey: "light",
+    languageHard: true,
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上",
+    changeType: "refresh",
+  },
+  990001: {
+    direction: "production",
+    company: "TWOJEYS",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / 全职",
+    titleZh: "服装平面设计师（图案、印花与产品 Artwork）",
+    titleEs: "Apparel Graphic Designer",
+    reason: "当前原始雇主页显示 Apply。负责服装和配饰的品牌图形、印花、placement 与生产文件，并参与品牌视觉语言演进；要求母语或高级西语。",
+    next: "因西语与服装制作门槛放在后排；只有能用西语工作且作品集具备 apparel graphics、印花与 production-ready artwork 时再投。",
+    language: "母语或高级西班牙语为硬要求",
+    languageKey: "spanish",
+    languageHard: true,
+    changeType: "refresh",
+  },
+  27: {
+    direction: "brand",
+    company: "TWOJEYS",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona HQ / 永久全职",
+    titleZh: "品牌负责人（策略、Campaign 与团队统筹）",
+    titleEs: "Head of Brand",
+    reason: "官方 Personio 原页显示 Solicitar。负责全球品牌策略、campaign、拍摄、drop、合作、活动、品牌日历、预算、agency 与视觉/叙事一致性；要求 5 年以上及高级西语和英语。",
+    next: "不是纯执行设计岗，且双语和管理门槛高。只有具备 360° 品牌领导、预算/agency 和时尚 lifestyle 经验时再投。",
+    language: "高级西班牙语和英语均为硬要求",
+    languageKey: "spanish",
+    languageHard: true,
+    experienceKey: "lead",
+    experienceLabel: "负责人 / 5 年以上管理经验",
+    changeType: "refresh",
+  },
+  25: {
+    direction: "social",
+    company: "Tea Lab Barcelona",
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / 灵活工时 / 可能兼职",
+    titleZh: "社媒与内容创作者（中文 / 西语）",
+    titleEs: "Social Media & Content Creator",
+    reason: "Casa Asia 当前就业索引仍列出原始 PDF 与直接邮箱。岗位运营小红书、Instagram、TikTok，拍摄剪辑短视频并使用 AI 视频工具，但还要支持门店日常，要求中文、西语和 30 岁以下，薪资面议。",
+    next: "先邮件确认仍收申请、工时、薪资和门店运营占比；能接受后再发 CV、社媒账号、短视频和品牌内容作品。",
+    language: "中文与西班牙语均为要求；年龄须 30 岁以下",
+    languageKey: "chineseCheck",
+    changeType: "refresh",
+  },
+  806: {
+    ...CURATED[806],
+    statusKey: "closed",
+    direction: "other",
+    titleZh: "客服兼基础排版（排除：非目标设计岗）",
+    reason: "原帖的主体工作是客服，只附带基础 CDR/AI 排版；雇主、合同、工时、薪资和在招状态均未公开，不应占用当前设计岗位列表。",
+    next: "保留在关闭 / 历史 / 排除区，不投递。",
+  },
+  1158: {
+    direction: "other",
+    company: "InfoHuaxin / 华信索引",
+    statusKey: "closed",
+    locationKey: "other",
+    locationLabel: "西班牙装修项目 / 非目标岗位",
+    titleZh: "装修项目招聘附带效果图工作（排除）",
+    titleEs: "Oferta de obra con visualización 3D — excluida",
+    reason: "原始标题招聘的是装修师傅和项目经理，仅附带“效果图设计师”字样，没有独立品牌、平面或 VI 职位详情，也没有可核验深链接。",
+    next: "保留在排除区作为误收录证据，不投递。",
+    language: "非目标职位",
+    changeType: "refresh",
+  },
+  930813: {
+    direction: "brand",
+    company: "Dragons Group",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / hybrid / 永久全职",
+    titleZh: "初级平面设计师（品牌规范与多格式延展）",
+    titleEs: "Junior Graphic Designer",
+    reason: "官方 Factorial 详情在 2026-08-12 显示 Apply now。岗位只要求 1–2 年经验，核心是按品牌指南制作社媒、Key Visual、演示和数字资产；英语必需，西语仅写 preferably。",
+    next: "优先投递。英文作品集首页放品牌指南落地、版式与字体、同一视觉跨社媒/数字/演示格式延展的案例。",
+    language: "英语为工作语言；西语优先但不是明确硬门槛",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "junior",
+    experienceLabel: "初级 / 1–2 年",
+    changeType: "new",
+  },
+  930812: {
+    direction: "brand",
+    company: "Skyscanner",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / 全职；办公节奏待确认",
+    titleZh: "高级视觉设计师（完整 JD 待从雇主表单确认）",
+    titleEs: "Senior Visual Designer",
+    reason: "2026-08-12 打开的原始 LinkedIn 雇主页仍显示 Barcelona、Full-time 与 Solicitar，但公开可读视图没有展开完整职责和门槛，因此是可投的高级延展机会，不是已完成条件核验的强匹配。",
+    next: "先打开外部投递页核对完整 JD、年限、语言、薪资和办公节奏；确认后再决定是否定制作品集。",
+    language: "完整工作语言要求尚未在可读原始页中公开",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 年限待确认",
+    changeType: "new",
+  },
+  930814: {
+    direction: "brand",
+    company: "CNT Management Consulting",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那 / hybrid / 全职",
+    titleZh: "高级品牌设计与创意内容经理（完整 JD 待确认）",
+    titleEs: "Senior Brand Designer & Creative Content Manager",
+    reason: "原始 LinkedIn 雇主页显示 Easy Apply、Barcelona hybrid、full-time 且正在审核申请；但完整正文没有在当前可读视图展开，所以只能作为低位高级延展机会。",
+    next: "先展开投递表单并核对完整职责、年限、语言和薪资；没有完整 JD 前不投入定制作业。",
+    language: "工作语言与西语门槛尚未在可读原始页中公开",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 年限待确认",
+    changeType: "new",
+  },
+  1107: {
+    direction: "brand",
+    company: "THRU",
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "巴塞罗那市 / 现场为主 / 周五部分远程 / 全职",
+    titleZh: "平面设计师（品牌动态与 Motion）",
+    titleEs: "Graphic Designer with Motion Skills",
+    reason: "岗位正文、截止日期 2026-09-15 和投递邮箱都仍可读，要求 2 年以上并覆盖品牌动态系统、guidelines、AE、Adobe 与 Figma；但同页页脚同时写着 NO JOB OPENINGS，状态存在冲突。",
+    next: "先给 jobs@thrumotion.com 发一封简短英文邮件确认仍收申请；确认后再提交 CV、作品集、motion exercise 和岗位问题。",
+    language: "岗位正文未列西语硬门槛；用英文确认与投递",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "中初级 / 2 年以上",
+    changeType: "refresh",
+  },
+  914: {
+    direction: "brand",
+    company: "Trivelta",
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "正文写 Barcelona hybrid；页面元数据写 remote，需确认",
+    titleZh: "平面设计师（品牌、数字、活动与社媒）",
+    titleEs: "Graphic Designer",
+    reason: "Greenhouse 原始页仍有 Apply，要求 1–3 年、英语工作，内容覆盖品牌、数字、印刷、landing、活动和社媒；但页面 location 与正文的 Barcelona hybrid 存在冲突。",
+    next: "可以投，但在表单或首轮沟通中明确询问 Barcelona 到岗频率和西班牙雇佣主体。",
+    language: "英语工作；公开正文未列西语硬门槛",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "junior",
+    experienceLabel: "初中级 / 1–3 年",
+    changeType: "refresh",
+  },
+  892: {
+    statusKey: "closed",
+    direction: "digital",
+    company: "Qustodio / Qoria",
+    titleZh: "数字设计师（营销）— 原始招聘已失效",
+    titleEs: "Digital Designer (Marketing) — closed",
+    reason: "2026-08-12 复核时原始 LinkedIn 职位编号已重定向到过期职位搜索，不再有该岗位的申请控制。",
+    next: "保留在历史区；只有 Qoria/Qustodio 官方招聘板出现新的独立职位编号时才重新加入。",
+    changeType: "refresh",
+  },
+  9001: {
+    statusKey: "closed",
+    direction: "production",
+    company: "MiiN Korean Cosmetics",
+    titleZh: "平面设计师（Barcelona 40h）— 原始招聘已失效",
+    titleEs: "Graphic Designer Barcelona 40h — closed",
+    reason: "2026-08-12 复核时原始 LinkedIn 职位已重定向到过期搜索页。",
+    next: "保留历史，不再计入可投机会。",
+    changeType: "refresh",
+  },
+  1245: {
+    statusKey: "closed",
+    direction: "brand",
+    company: "Kilograph",
+    titleZh: "高级平面设计师 / 艺术指导—原始招聘已失效",
+    titleEs: "Senior Graphic Designer / Art Director — closed",
+    reason: "2026-08-12 复核时原始 LinkedIn 职位编号已进入过期搜索，工作室通用联系页不能证明该具体岗位仍开放。",
+    next: "保留历史；不要用通用公司页冒充该岗位的申请入口。",
+    changeType: "refresh",
+  },
+  209: {
+    statusKey: "closed",
+    direction: "digital",
+    company: "bsport",
+    titleZh: "Lead UI / Visual Designer—官方页已返回 410",
+    titleEs: "Lead UI / Visual Designer — closed",
+    reason: "官方职位 URL 在 2026-08-12 返回 410 Gone，岗位不再接受申请。",
+    next: "保留历史；等待新的独立 requisition。",
+    changeType: "refresh",
+  },
+  1234: {
+    statusKey: "closed",
+    direction: "brand",
+    company: "LearnWise AI",
+    titleZh: "高级品牌与营销设计师—已停止接收申请",
+    titleEs: "Senior Brand & Marketing Designer — closed",
+    reason: "2026-08-12 打开的原始 LinkedIn 雇主页明确显示“Ya no se aceptan solicitudes”。",
+    next: "保留完整 JD 作为作品集对标材料，不再计入当前可投。",
+    changeType: "refresh",
+  },
+  669: {
+    statusKey: "closed",
+    direction: "brand",
+    company: "Eurofragance",
+    titleZh: "品牌平面设计师—官方页已关闭",
+    titleEs: "Branding Graphic Designer — closed",
+    reason: "2026-08-12 官方 Teamtailor 页面明确显示 This position is no longer active。",
+    next: "保留历史；不要因公司招聘主页仍在线而视作在招。",
+    changeType: "refresh",
+  },
+  1057: {
+    statusKey: "closed",
+    direction: "brand",
+    company: "Eurofragance",
+    titleZh: "品牌平面设计师—重复历史记录",
+    titleEs: "Branding Graphic Designer — duplicate history",
+    reason: "与已关闭的 Eurofragance 官方 requisition 属于同一岗位，没有独立在招入口。",
+    next: "保留历史，不计入当前机会。",
+    changeType: "refresh",
+  },
+  1374: {
+    statusKey: "closed",
+    direction: "social",
+    company: "inBeat Agency / Creative Milkshake",
+    titleZh: "视频编辑与视觉设计师—官方 ATS 找不到岗位",
+    titleEs: "Video Editor & Designer — job not found",
+    reason: "2026-08-12 打开的官方 Ashby 原始页明确显示 Job not found。",
+    next: "保留历史；不要通过通用人才库冒充该具体岗位。",
+    changeType: "refresh",
+  },
+  1371: {
+    statusKey: "closed",
+    direction: "production",
+    company: "Hostinger",
+    titleZh: "高级平面设计师—重复卡片",
+    titleEs: "Senior Graphic Designer — duplicate",
+    reason: "与主记录 305 使用相同 Ashby requisition，只保留一张当前卡。",
+    next: "从主记录 305 投递。",
+    changeType: "refresh",
+  },
+  485: {
+    statusKey: "closed",
+    direction: "brand",
+    company: "eseOese",
+    titleZh: "艺术指导—重复卡片",
+    titleEs: "Art Director — duplicate",
+    reason: "与主记录 188 是同一个官方职位，只保留一张当前卡。",
+    next: "从主记录 188 投递。",
+    changeType: "refresh",
+  },
+  1373: {
+    statusKey: "closed",
+    direction: "digital",
+    company: "LABHOUSE",
+    titleZh: "ASO 视觉设计师—重复卡片",
+    titleEs: "ASO Artist / Graphic Designer — duplicate",
+    reason: "与主记录 910 使用同一个 Ashby requisition，只保留一张当前卡。",
+    next: "从主记录 910 投递。",
+    changeType: "refresh",
+  },
+  952: {
+    statusKey: "closed",
+    direction: "brand",
+    company: "Trivelta",
+    titleZh: "平面设计师—重复卡片",
+    titleEs: "Graphic Designer — duplicate",
+    reason: "与主记录 914 使用同一个 Greenhouse requisition，只保留一张待确认卡。",
+    next: "从主记录 914 核验和投递。",
+    changeType: "refresh",
+  },
+  450: { statusKey: "closed", direction: "digital", company: "reboot", titleZh: "视觉设计师—旧标题镜像", titleEs: "Visual Designer — historical mirror", reason: "当前官方页面只公开 Web Designer；该旧标题没有独立职位编号。", next: "使用主记录 84。", changeType: "refresh" },
+  567: { statusKey: "closed", direction: "motion", company: "reboot", titleZh: "2D/3D Motion Designer—旧标题镜像", titleEs: "2D/3D Motion Designer — historical mirror", reason: "当前官方页面只公开 Web Designer；该旧标题没有独立职位编号。", next: "使用主记录 84。", changeType: "refresh" },
+  2090: { statusKey: "closed", direction: "digital", company: "reboot", titleZh: "Web / Visual Designer—重复镜像", titleEs: "Web / Visual Designer — duplicate", reason: "与主记录 84 指向同一通用申请页，只保留当前公开标题 Web Designer。", next: "使用主记录 84。", changeType: "refresh" },
+  2091: { statusKey: "closed", direction: "brand", company: "reboot", titleZh: "高级品牌设计师—旧标题镜像", titleEs: "Senior Brand Designer — historical mirror", reason: "当前官方页面只公开 Web Designer；该旧标题没有独立职位编号。", next: "使用主记录 84。", changeType: "refresh" },
+});
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
@@ -2568,10 +3349,9 @@ const state = {
   sourceLibrary: false,
   sourceLibraryView: "active",
   sourceLibraryLocation: "priority",
-  // Default to the locally relevant Chinese-direction queue, including cards
-  // whose Spanish/English gate is explicitly shown. A strict Chinese-only
-  // filter can legitimately be empty after page-by-page verification.
-  preset: "chinese",
+  // The default is the hand-audited canonical opportunity ledger. Source
+  // libraries and historical research remain available as secondary views.
+  preset: "mine",
   progressFilter: "all",
   limit: 18,
 };
@@ -2606,10 +3386,11 @@ const SOURCE_LABELS = {
 };
 
 const PRESET_NOTES = {
+  mine: "默认显示逐条打开原始招聘页后保留下来的唯一岗位：Barcelona 本地优先，其次是明确 Spain / Europe remote；关闭页、马德里岗位、重复镜像和研究线索不进入这里。分数是按你的实际可用性重新评估的匹配分。",
   profile: "默认只显示可以先用中文联系的 Barcelona / 西班牙远程机会；需要完整英文材料或西语工作的岗位不会混进来。",
   actionable: "只看现在值得马上处理的机会：Barcelona / 西班牙远程、中文可先联系、有具体入口、近期发布或页面明确开放，并排除低薪风险与实习。",
-  chinese: "扩展查看 Barcelona、Madrid 与西班牙远程的全部中文相关机会；这一档可能包含“需要基础西语”或“语言需确认”的岗位，请看卡片红黄标记。",
-  english: "英语岗位只作为备选单独放在这里；它们不会出现在默认首页。需要英文简历、作品集说明或英文面试时，卡片会明确提示。",
+  chinese: "单独查看 Barcelona / Spain remote 的中文相关机会；中文来源并不自动等于岗位真实或适合，关闭、外地和研究线索仍留在独立历史库。",
+  english: "单独查看英语工作路径；需要英文简历、作品集说明或英文面试时，卡片会明确提示。",
   brand: "聚焦品牌视觉、VI、设计系统、数字 campaign、网页与跨渠道品牌延展。",
   stable: "优先全职、正式合同或明确长期岗位；排除实习、兼职、自由职业、匿名客户入口，以及已识别的低薪或无薪风险。",
   core: "只看品牌系统、VI、数字品牌和 motion 交叉的硬核岗位；排除实习、低薪、匿名客户、研究线索与已关闭记录，不受语言筛选限制。",
@@ -3053,6 +3834,9 @@ function displayedScore(item) {
   // item.score even when the profile view displayed personalMatchScore, which
   // made the visual order appear wrong. Keep the raw score as a deterministic
   // tie-breaker so equal displayed scores remain stable.
+  if (Object.prototype.hasOwnProperty.call(AUDITED_FIT_SCORES, item.id)) {
+    return Number(AUDITED_FIT_SCORES[item.id]) || 0;
+  }
   if (state.preset === "profile") return Number(personalMatchScore(item)) || 0;
   return Number(item.score) || 0;
 }
@@ -3098,6 +3882,16 @@ function matchesPreset(item) {
   const language = languageInfo(item).key;
   const direction = directionKey(item);
   const hasRoute = toLinks(item).length > 0;
+
+  if (state.preset === "mine") {
+    return (
+      MY_OPPORTUNITY_SET.has(Number(item.id)) &&
+      ["barcelona", "remote"].includes(location) &&
+      hasRoute &&
+      !isResearchOnly(item) &&
+      applicationStatus(item).key !== "closed"
+    );
+  }
 
   if (state.preset === "profile") {
     const applicationLanguage = applicationLanguagePath(item).key;
@@ -3522,7 +4316,7 @@ function applicationStatus(item) {
   // paths in their latest audits; do not let older curated verify snapshots
   // hide the current submission route.
   if ([55, 1023, 1217, 224, 886, 920001, 930711, 930719].includes(Number(item?.id))) {
-    return { key: "live", label: "椤甸潰鏄剧ず鍙姇" };
+    return { key: "live", label: "页面显示可投" };
   }
   /*
   if ([206, 930720].includes(Number(item?.id))) {
@@ -3530,14 +4324,14 @@ function applicationStatus(item) {
   }
   */
   if (Number(item?.id) === 999999) {
-    return { key: "closed", label: "宸插叧闂?/ 鍘嗗彶" };
+    return { key: "closed", label: "已关闭 / 历史" };
   }
   // Round 708: the current Chinese-source category index is evidence that
   // the canonical Barcelona lead is present again, but its individual detail
   // route is still unreadable; never let the older curated live snapshot
   // overrule the newer verify-first audit.
   if (Number(item?.id) === 778 && item?.tier !== "X") {
-    return { key: "verify", label: "闇€鍏堢‘璁ょ姸鎬?" };
+    return { key: "verify", label: "需先确认状态" };
   }
   if (isKnownClosedRoute(item)) {
     return { key: "closed", label: "已关闭 / 历史" };
@@ -3715,6 +4509,7 @@ function contactTokens(item) {
 function linkLabel(href, index) {
   if (href.startsWith("mailto:")) return "发送邮件";
   if (/linkedin\.[^/]+\/jobs\/view/i.test(href)) return "领英投递";
+  if (/\/(?:apply|application)(?:\/|$|\?)/i.test(href)) return "直接申请";
   if (/xihua/i.test(href)) return "查看西华招聘";
   if (/huarenjie/i.test(href)) return "查看华人街招聘";
   if (/eulam\.infohuaxin/i.test(href)) return "打开欧浪新版详情";
@@ -3725,6 +4520,7 @@ function linkLabel(href, index) {
   if (/es02/i.test(href)) return "查看华人通招聘";
   if (/99876/i.test(href)) return "查看 99876 华人招聘";
   if (/\.pdf(?:$|\?)/i.test(href)) return "查看招聘 PDF";
+  if (/job_posting|job-boards\.greenhouse\.io\/.+\/jobs\/\d|jobs\.ashbyhq\.com\/.+\/[0-9a-f-]{20,}|jobs\.personio\.com\/job\/\d|teamtailor\.com\/jobs\/\d|myworkdayjobs\.com\/.+\/job\//i.test(href)) return "查看官方职位";
   if (/career|careers|jobs/i.test(href)) return "公司招聘页";
   if (/insbrand|infiled|tineco/i.test(href)) return "公司官网";
   return index === 0 ? "打开投递渠道" : "补充资料";
@@ -3861,6 +4657,7 @@ function dedupe(records) {
     // index/aggregator snapshot using the exact same requisition URL. It is
     // deliberately narrow: broad closure preference would incorrectly merge
     // different historical and current requisitions under shared aliases.
+    (MY_OPPORTUNITY_SET.has(Number(item.id)) ? 2000000 : 0) +
     (identityKey(item) === "ats:eurofragance:7079723" && applicationStatus(item).key === "closed" ? 1000000 : 0) +
     (CURATED[item.id]?.changeType === "refresh" ? 100000 : 0) +
     (item.postedAt ? 10000 : 0) +
@@ -4020,12 +4817,15 @@ function renderPriority() {
     const curated = CURATED[item.id];
     const freshness = freshnessInfo(item);
     const applicationLanguage = applicationLanguagePath(item);
-    const isPrimary = ["chinese", "chineseCheck"].includes(applicationLanguage.key);
+    // The priority row is about usefulness, not language. English application
+    // paths are shown explicitly on the card instead of being hidden below a
+    // collapsed warning section.
+    const isPrimary = true;
     const rank = isPrimary ? ++primaryRank : ++cautionRank;
 
     card.querySelector(".priority-card__rank").textContent = String(rank).padStart(2, "0");
     card.querySelector(".priority-card__tier").textContent = tierLabel(item.tier);
-    card.querySelector(".priority-card__company").textContent = curated.company;
+    card.querySelector(".priority-card__company").textContent = curated?.company || companyLabel(item);
     card.querySelector(".priority-card__title").textContent = labels.zh;
     card.querySelector(".priority-card__title-es").textContent = labels.es;
     card.querySelector(".priority-card__meta").innerHTML = `
@@ -4035,8 +4835,8 @@ function renderPriority() {
       <span>${escapeHtml(freshness.date ? `${freshness.date} · ${freshness.label}` : freshness.label)}</span>
       <span class="language-route language-route--${escapeHtml(applicationLanguage.tone)}">${escapeHtml(applicationLanguage.label)}</span>
     `;
-    card.querySelector(".priority-card__reason").textContent = curated.reason;
-    card.querySelector(".priority-card__action").innerHTML = `<strong>下一步</strong><p>${escapeHtml(curated.next)}</p>`;
+    card.querySelector(".priority-card__reason").textContent = curated?.reason || genericReason(item);
+    card.querySelector(".priority-card__action").innerHTML = `<strong>下一步</strong><p>${escapeHtml(curated?.next || genericNext(item))}</p>`;
     const outreachText = chineseOutreachText(item);
     card.querySelector(".priority-card__outreach-text").textContent = outreachText;
     card.querySelector(".priority-card__outreach-actions").appendChild(createCopyButton(outreachText));
@@ -4051,6 +4851,8 @@ function renderPriority() {
 
   els.priorityGrid.appendChild(fragment);
   els.languageCautionGrid.appendChild(cautionFragment);
+  const cautionSection = els.languageCautionGrid.closest("details");
+  if (cautionSection) cautionSection.hidden = cautionRank === 0;
 }
 
 function baseRecords() {
@@ -4152,7 +4954,12 @@ function isReviewLibraryRecord(item) {
   // manual recheck without promoting it to the usable pool.
   return (
     applicationStatus(item).key === "verify" &&
-    (item.tier === "X" || isResearchOnly(item))
+    (
+      ["D", "X"].includes(item.tier) ||
+      isResearchOnly(item) ||
+      toLinks(item).length === 0 ||
+      ["quarter", "older", "old"].includes(item.freshnessTag)
+    )
   );
 }
 
@@ -4241,8 +5048,8 @@ function renderResultCard(item) {
   card.querySelector(".result-card__language-detail").textContent = language.label;
   card.querySelector(".result-card__reason").textContent = curated?.reason || genericReason(item);
   card.querySelector(".result-card__next").textContent = curated?.next || genericNext(item);
-  const personalized = state.preset === "profile";
-  card.querySelector(".result-card__score").textContent = personalized ? personalMatchScore(item) : (item.score ?? "—");
+  const personalized = ["mine", "profile"].includes(state.preset);
+  card.querySelector(".result-card__score").textContent = displayedScore(item);
   card.querySelector(".result-card__score-label").textContent = personalized ? "我的匹配分" : "综合分";
   if (item.tier === "X") {
     card.querySelector(".result-card__reason-label").textContent = "为什么排除";
@@ -4384,7 +5191,7 @@ function syncProgressFilterUi() {
 
 function applyPreset(preset) {
   state.preset = preset;
-  state.scope = ["profile", "actionable", "chinese", "core", "none"].includes(preset) ? "all" : "ab";
+  state.scope = ["mine", "profile", "actionable", "chinese", "core", "none"].includes(preset) ? "all" : "ab";
   state.source = "all";
   state.sourceLibrary = false;
   state.sourceLibraryView = "active";
@@ -4404,7 +5211,7 @@ function applyPreset(preset) {
   els.riskFilter.value = "all";
   els.validRouteOnly.checked = true;
   els.excludeLowPay.checked = preset !== "none";
-  els.excludeInternships.checked = ["actionable", "stable"].includes(preset);
+  els.excludeInternships.checked = ["mine", "actionable", "stable"].includes(preset);
   syncPresetUi();
   syncScopeUi();
   syncSourceUi();
@@ -4501,16 +5308,8 @@ els.sourceTabs.forEach((button) => {
 
 els.statusSummaryButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    clearPresetForManualFilters();
-    state.scope = "all";
-    state.source = "all";
-    state.sourceLibraryView = "active";
-    state.progressFilter = "all";
+    applyPreset("mine");
     els.statusFilter.value = button.dataset.status;
-    syncScopeUi();
-    syncSourceUi();
-    syncChineseLibraryUi();
-    syncProgressFilterUi();
     resetLimitAndRender();
     document.querySelector("#database")?.scrollIntoView({ behavior: "smooth", block: "start" });
   });
@@ -4554,7 +5353,7 @@ els.excludeLowPay.addEventListener("change", resetLimitAndRender);
 els.excludeInternships.addEventListener("change", resetLimitAndRender);
 
 els.resetFilters.addEventListener("click", () => {
-  applyPreset("profile");
+  applyPreset("mine");
 });
 
 els.loadMore.addEventListener("click", loadMoreResults);
@@ -4585,7 +5384,7 @@ if ("IntersectionObserver" in window) {
 }
 
 function initStats() {
-  els.totalCount.textContent = allData.length;
+  els.totalCount.textContent = dedupedData.length;
   els.priorityCount.textContent = priorityItems.length;
   els.chineseTotal.textContent = allData.filter((item) => sourceGroup(item) === "chinese").length;
   const previousPreset = state.preset;
@@ -4599,19 +5398,24 @@ function initStats() {
   state.preset = "chinese";
   const strictChinese = dedupedData.filter((item) => matchesPreset(item) && toLinks(item).length > 0).length;
   state.preset = previousPreset;
-  els.recentChineseTotal.textContent = actionableChinese;
+  const myCurrentRecords = dedupedData.filter(
+    (item) => MY_OPPORTUNITY_SET.has(Number(item.id)) && applicationStatus(item).key !== "closed",
+  );
+  els.recentChineseTotal.textContent = myCurrentRecords.length;
   const recentChinese = dedupedData.filter(
     (item) =>
       sourceGroup(item) === "chinese" &&
       ["week", "month"].includes(item.freshnessTag) &&
       item.tier !== "X",
   ).length;
-  els.chineseStatsNote.textContent = `严格中文优先去重 ${strictChinese} 条 · 近 30 天中文来源 ${recentChinese} 条。中文来源线索不等于当前可投岗位。`;
-  const statusSummary = getStatusSummary();
+  const myStatus = getStatusSummary(myCurrentRecords);
+  const myChineseRelevant = myCurrentRecords.filter(isChineseRelevant).length;
+  els.chineseStatsNote.textContent = `默认主表共 ${myCurrentRecords.length} 个独立机会：${myStatus.live} 个原始页显示可投，${myStatus.verify} 个需先确认；中文或中国公司相关 ${myChineseRelevant} 个。历史、重复、关闭和外地线索仍完整保留在来源库。`;
+  const statusSummary = myStatus;
   els.liveCount.textContent = statusSummary.live;
   els.verifyCount.textContent = statusSummary.verify;
   els.closedCount.textContent = statusSummary.closed;
-  els.updatedAt.textContent = meta.generatedAt ? meta.generatedAt.slice(0, 10) : "—";
+  els.updatedAt.textContent = "2026-08-12";
 }
 
 syncChineseLibraryUi();

@@ -43,7 +43,7 @@ vm.runInContext(dataSource, context, { filename: "data.js" });
 appSource = appSource
   .replace(/\ninitStats\(\);\nrenderPriority\(\);\nrenderResults\(\);\s*$/, "\n")
   .concat(
-    "\nglobalThis.siteTest = { allData, dedupedData, latestRoundSection, latestRoundItems, priorityItems, CURATED, state, getStatusSummary, directionKey, languageInfo, applicationLanguagePath, roleLabels, sourceGroup, locationBucket, isActionableLink, toLinks, isChineseRelevant, isResearchOnly, isTargetOpportunity, isInternshipRole, hasLowPayRisk, riskFlags, hasOpaqueEmployerRisk, isFormalRole, isFreelanceRole, hasKnownCompensation, laborConditionInfo, experienceInfo, applicationStatus, personalMatchScore, postedTimestamp, rankingScore, confidenceScore, sortRecords, matchesPreset, progressKey, progressValue, saveProgressValue, identityKey, englishOutreachText };\n",
+    "\nglobalThis.siteTest = { allData, dedupedData, latestRoundSection, latestRoundItems, priorityItems, CURATED, state, MY_OPPORTUNITY_IDS, MY_OPPORTUNITY_SET, AUDITED_FIT_SCORES, getStatusSummary, directionKey, languageInfo, applicationLanguagePath, roleLabels, companyLabel, locationLabel, sourceGroup, locationBucket, isActionableLink, toLinks, isChineseRelevant, isResearchOnly, isTargetOpportunity, isInternshipRole, hasLowPayRisk, riskFlags, hasOpaqueEmployerRisk, isFormalRole, isFreelanceRole, hasKnownCompensation, laborConditionInfo, experienceInfo, applicationStatus, isClosedLibraryRecord, isReviewLibraryRecord, personalMatchScore, displayedScore, postedTimestamp, rankingScore, confidenceScore, sortRecords, matchesPreset, progressKey, progressValue, saveProgressValue, identityKey, englishOutreachText };\n",
   );
 vm.runInContext(appSource, context, { filename: "app.js" });
 
@@ -62,7 +62,7 @@ function check(condition, message) {
 }
 
 check(
-  test.priorityItems.every((item, index, rows) => index === 0 || (Number(rows[index - 1].score) || 0) >= (Number(item.score) || 0)),
+  test.priorityItems.every((item, index, rows) => index === 0 || test.displayedScore(rows[index - 1]) >= test.displayedScore(item)),
   "Homepage priority roles must be sorted by composite score descending",
 );
 check(test.applicationStatus(test.allData.find((item) => item.id === 1102)).key === "live", "AtomiQ Spain-remote vacancy was not promoted after its visible Apply Online form was reopened");
@@ -77,17 +77,29 @@ check(test.applicationStatus(test.allData.find((item) => item.id === 872)).key =
 check(test.allData.find((item) => item.id === 872).tier === "X", "AQIPA named vacancy must be excluded");
 
 check(test.allData.length > 700, "机会数据没有完整载入");
-check(test.priorityItems.length === 7, "首页重点机会数量不是 7");
+check(test.priorityItems.length === 8, "首页重点机会数量不是 8");
 check(
-  [1300, 890, 884, 1303, 866, 24, 1020].every((id) =>
+  [930813, 910, 914, 1300, 160, 1107, 866, 425].every((id) =>
     test.priorityItems.some((item) => item.id === id),
   ),
   "巴塞罗那优先岗位未完整进入首页",
 );
 check(
-  test.priorityItems.every((item) => item.locationTag === "Barcelona area"),
+  test.priorityItems.every((item) => ["barcelona", "remote"].includes(test.locationBucket(item))),
   "首页优先岗位混入了非 Barcelona 地点或未确认远程资格",
 );
+test.state.preset = "mine";
+const auditedMain = test.dedupedData.filter((item) => test.matchesPreset(item));
+check(auditedMain.length === 48, "逐条核验后的默认机会总表数量不是 48");
+check(auditedMain.every((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id))), "默认机会总表混入未审核记录");
+check(auditedMain.every((item) => test.applicationStatus(item).key !== "closed"), "默认机会总表混入已关闭记录");
+check(auditedMain.every((item) => Boolean(test.CURATED[item.id])), "默认机会总表仍有未完成中文整理的卡片");
+check(auditedMain.every((item) => test.toLinks(item).length > 0), "默认机会总表仍有无跳转入口的卡片");
+check(auditedMain.every((item) => ["barcelona", "remote"].includes(test.locationBucket(item))), "默认机会总表混入 Madrid 或西班牙不可落地地点");
+test.sortRecords(auditedMain);
+check(auditedMain.every((item, index) => index === 0 || test.displayedScore(auditedMain[index - 1]) >= test.displayedScore(item)), "默认机会总表没有按我的匹配分降序排列");
+check(auditedMain.map(test.displayedScore).join(",") === Array.from({ length: 48 }, (_, index) => 97 - index).join(","), "默认机会总表的 97–50 严格降序评分序列不完整");
+check(auditedMain.every((item) => !/鈥|帽|鏄|鍙|闇|椤|閫|绗/.test(`${test.companyLabel(item)} ${test.roleLabels(item).zh} ${test.locationLabel(item)}`)), "默认机会总表仍有可见乱码");
 check(test.dedupedData.length > 0 && test.dedupedData.length < test.allData.length, "去重逻辑没有生效");
 const recentChinese = test.dedupedData.filter(
   (item) =>
@@ -229,9 +241,9 @@ check(appSource.includes("PROGRESS_STORAGE_KEY"), "本地投递进度没有持�
 check(indexHtml.includes('id="excludeLowPay"'), "缺少低薪 / 无薪风险筛选");
 check(indexHtml.includes('id="excludeInternships"'), "缺少实习筛选");
 check(appSource.includes('state.source = "all";'), "中文优先仍被错误限制在华人网站来源标签");
-check(indexHtml.includes("巴塞中文方向（默认）"), "默认预设没有明确说明巴塞中文方向");
+check(indexHtml.includes("我的全部机会（默认）"), "默认预设没有明确说明逐条核验后的我的机会");
 check(indexHtml.includes("每个岗位只做三步"), "首页缺少零外语投递流程");
-check(indexHtml.includes("外语岗位备选（默认隐藏"), "英语 / 西语备选没有默认折叠");
+check(indexHtml.includes("按语言或方向单独查看"), "语言与方向的辅助视图没有默认折叠");
 check(indexHtml.includes('id="languageCautionGrid"'), "基础西语岗位没有与纯中文首屏分开");
 check(indexHtml.includes('class="priority-card__title-es" hidden'), "重点卡片仍在首屏显示西文标题");
 check(indexHtml.includes('class="result-card__title-es" hidden'), "结果卡仍在首屏显示西文标题");
@@ -299,7 +311,9 @@ check(test.applicationStatus(test.allData.find((item) => item.id === 871)).key =
 check(test.applicationStatus(test.allData.find((item) => item.id === 1247)).key === "closed", "Impress 已关闭的视频岗位没有转入历史状态");
 check(test.applicationStatus(test.allData.find((item) => item.id === 421)).key === "closed", "JOIN 已归档品牌岗位没有转入历史状态");
 check(test.applicationStatus(test.allData.find((item) => item.id === 195)).key === "closed", "BBS 论坛索引误收录没有转入历史状态");
-check(test.applicationStatus(test.allData.find((item) => item.id === 806)).key === "verify", "ES02 客服兼基础排版岗位没有保留先确认状态");
+check(test.applicationStatus(test.allData.find((item) => item.id === 806)).key === "closed", "ES02 客服兼基础排版的非目标岗位没有移入排除区");
+check(test.applicationStatus(test.allData.find((item) => item.id === 1158)).key === "closed", "华信装修项目误收录没有移入排除区");
+check(test.isReviewLibraryRecord(test.allData.find((item) => item.id === 920)), "过期且申请不稳定的中文远程兼职没有移入复核区");
 check(test.locationBucket(test.allData.find((item) => item.id === 472)) === "other", "Tineco 通用简历池错误混入 Barcelona/Europe remote 默认范围");
 check(test.locationBucket(test.allData.find((item) => item.id === 470)) === "other", "Go Getop 英国泛投池错误混入 Barcelona/Europe remote 默认范围");
 const dragonsMidMirror = test.allData.find((item) => item.id === 1319);
@@ -559,7 +573,7 @@ check(test.isChineseRelevant(test.allData.find((item) => item.id === 913)), "ALO
 check(test.allData.find((item) => item.id === 913).tier === "X", "ALOHAS 已关闭岗位没有降为 X 级历史记录");
 check(test.identityKey(test.allData.find((item) => item.id === 111)) === test.identityKey(test.allData.find((item) => item.id === 913)), "ALOHAS 状态恢复没有与历史关闭记录合并");
 check(test.dedupedData.some((item) => item.id === 913) && !test.dedupedData.some((item) => item.id === 111), "ALOHAS 去重后没有保留恢复记录");
-check(test.applicationStatus(test.allData.find((item) => item.id === 914)).key === "live", "Trivelta 官方 Greenhouse 当前状态没有保留");
+check(test.applicationStatus(test.allData.find((item) => item.id === 914)).key === "verify", "Trivelta 官方 Greenhouse 的地点冲突状态没有保留");
 check(test.applicationLanguagePath(test.allData.find((item) => item.id === 914)).key === "english", "Trivelta 没有隔离到英语岗位备选");
 check(test.identityKey(test.allData.find((item) => item.id === 399)) === test.identityKey(test.allData.find((item) => item.id === 914)), "Trivelta 状态刷新没有与旧记录合并");
 check(test.dedupedData.some((item) => item.id === 914) && !test.dedupedData.some((item) => item.id === 399), "Trivelta 去重后没有保留当前记录");
@@ -694,7 +708,7 @@ const r588Thru = test.allData.find((item) => item.id === 1107);
 const r588Ozero = test.allData.filter((item) => [656, 657, 658].includes(item.id));
 check(r588Kave?.tier === "X" && test.locationBucket(r588Kave) === "other", "Round 588: Kave Home old Art Director was restored to the active Barcelona queue");
 check(r588Sierra?.score === 106 && test.locationBucket(r588Sierra) === "barcelona" && test.applicationStatus(r588Sierra).key === "live", "Round 588: SIERRA live Barcelona Art Director evidence regressed");
-check(r588Thru?.score === 108 && test.locationBucket(r588Thru) === "barcelona" && test.applicationStatus(r588Thru).key === "live", "Round 588: THRU live Barcelona motion role evidence regressed");
+check(r588Thru?.score === 108 && test.locationBucket(r588Thru) === "barcelona" && test.applicationStatus(r588Thru).key === "verify", "Round 588/2026-08-12: THRU page-status conflict was not preserved");
 check(r588Ozero.length === 3 && r588Ozero.every((item) => item.tier === "D" && test.locationBucket(item) === "other"), "Round 588: Ozero global-remote eligibility-unknown cards leaked into the default queue");
 
 // Round 651/652 regression checks: an expired LinkedIn snapshot must not stay
@@ -708,7 +722,7 @@ const r655Xinming = test.allData.find((item) => item.id === 1280);
 const r656RemoteChina = test.allData.find((item) => item.id === 916);
 check(r651Ogilvy && test.applicationStatus(r651Ogilvy).key === "closed" && r651Ogilvy.tier === "X", "Round 651: expired Ogilvy/CBA Brand Designer remained active");
 check(test.dedupedData.some((item) => [92, 437].includes(item.id) && test.applicationStatus(item).key === "closed"), "Round 651: Ogilvy/CBA closed evidence disappeared after deduplication");
-check(r652Bsport && test.applicationStatus(r652Bsport).key === "live" && test.locationBucket(r652Bsport) === "barcelona" && r652Bsport.score === 106 && test.toLinks(r652Bsport).some((url) => /careers\.bsport\.io\/jobs\/7207663/i.test(url)), "Round 652: bsport official Barcelona ATS evidence regressed");
+check(r652Bsport && test.applicationStatus(r652Bsport).key === "closed" && test.toLinks(r652Bsport).some((url) => /careers\.bsport\.io\/jobs\/7207663/i.test(url)), "Round 652/2026-08-12: bsport 410 closure evidence regressed");
 check(r653Qonto && test.applicationStatus(r653Qonto).key === "closed" && r653Qonto.tier === "X", "Round 653: Qonto LinkedIn-only mirror remained active after official-board absence");
 check(r654OneKey && r654OneKey.score === 64 && test.toLinks(r654OneKey).some((url) => /onekeyhq\.atlassian\.net\/wiki\/spaces\/OC\/pages\/127238234/i.test(url)) && /do(?:es)? not explicitly confirm Barcelona, Spain|Spain eligibility/i.test(r654OneKey.status), "Round 654: OneKey Spain-eligibility warning or official route regressed");
 check(r655Xinming && r655Xinming.score === 66 && /Global remote|global remote/i.test(r655Xinming.location) && test.toLinks(r655Xinming).some((url) => /xinming\.sg\/about-careers/i.test(url)), "Round 655: Xinming global-remote visual-system evidence regressed");
@@ -751,7 +765,7 @@ const r665Deel = test.allData.find((item) => item.id === 1027);
 check(r665Deel && test.applicationStatus(r665Deel).key === "closed" && r665Deel.tier === "X", "Round 665: removed Deel Art Director/Web Design requisition remained active");
 check(r665Deel && test.toLinks(r665Deel).some((url) => /jobs\.ashbyhq\.com\/deel\/23db74a0-cb29-4a23-887d-d63bf74f59a5/i.test(url)), "Round 665: Deel closure evidence was lost");
 const r666Trivelta = test.allData.find((item) => item.id === 952);
-check(r666Trivelta && test.applicationStatus(r666Trivelta).key === "verify" && r666Trivelta.score === 96 && r666Trivelta.tier === "B", "Round 666: Trivelta current Greenhouse Graphic Designer was not promoted");
+check(r666Trivelta && test.applicationStatus(r666Trivelta).key === "closed", "Round 666/2026-08-12: Trivelta duplicate history row remained active");
 check(r666Trivelta && test.toLinks(r666Trivelta).some((url) => /job-boards\.greenhouse\.io\/trivelta\/jobs\/4235534009/i.test(url)), "Round 666: Trivelta official application route was lost");
 const r667EMascaro = test.allData.find((item) => item.id === 838);
 check(r667EMascaro && test.applicationStatus(r667EMascaro).key === "closed" && r667EMascaro.tier === "X", "Round 667: eMascaró named Brand Designer without an official current listing remained active");
@@ -843,7 +857,7 @@ for (const id of [479, 1055]) {
   check(duplicateSlaps && test.applicationStatus(duplicateSlaps).key === "closed" && duplicateSlaps.tier === "X", `Round 709: SLAPS duplicate history row ${id} remained active`);
 }
 const r710Kilograph = test.allData.find((item) => item.id === 1245);
-check(r710Kilograph && r710Kilograph.score === 106 && test.locationBucket(r710Kilograph) === "barcelona" && test.applicationStatus(r710Kilograph).key === "live", "Round 710/714: Kilograph current Barcelona live-detail refresh regressed");
+check(r710Kilograph && test.locationBucket(r710Kilograph) === "barcelona" && test.applicationStatus(r710Kilograph).key === "closed", "Round 710/714/2026-08-12: Kilograph expired original detail remained active");
 const r710VmlSenior = test.allData.find((item) => item.id === 981);
 check(r710VmlSenior && r710VmlSenior.score === 102 && test.locationBucket(r710VmlSenior) === "barcelona" && test.applicationStatus(r710VmlSenior).key === "live", "Round 710: VML Senior Art Director recalibration regressed");
 const r711KingNewGames = test.allData.find((item) => item.id === 224);
@@ -862,8 +876,8 @@ const r713Bav = test.allData.find((item) => item.id === 930712);
 check(r713Bav && r713Bav.score === 104 && test.locationBucket(r713Bav) === "barcelona" && test.applicationStatus(r713Bav).key === "live" && test.toLinks(r713Bav).some((url) => /4443713564/i.test(url)), "Round 713: Bav Group Art Director discovery missing or misclassified");
 const r714Desigual = test.allData.find((item) => item.id === 322);
 check(r714Desigual && r714Desigual.score === 104 && test.locationBucket(r714Desigual) === "barcelona" && test.applicationStatus(r714Desigual).key === "live" && test.toLinks(r714Desigual).some((url) => /4363154181/i.test(url)), "Round 714: Desigual Art Director live-detail refresh regressed");
-const r716LearnWise = test.allData.find((item) => test.toLinks(item).some((url) => /4446566881/i.test(url)));
-check(r716LearnWise && r716LearnWise.score === 110 && test.locationBucket(r716LearnWise) === "barcelona" && test.applicationStatus(r716LearnWise).key === "live", "Round 716: LearnWise Senior Brand Marketing Designer audit regressed");
+const r716LearnWise = test.allData.find((item) => item.id === 1234);
+check(r716LearnWise && test.applicationStatus(r716LearnWise).key === "closed", "Round 716/2026-08-12: LearnWise no-longer-accepting state regressed");
 const r718Sanofi = test.allData.find((item) => item.id === 930715);
 const r718Canonical = test.allData.find((item) => item.id === 930716);
 check(r718Sanofi && r718Sanofi.score === 100 && test.locationBucket(r718Sanofi) === "barcelona" && test.applicationStatus(r718Sanofi).key === "live" && test.toLinks(r718Sanofi).some((url) => /4395295373/i.test(url)), "Round 718: Sanofi Graphic Designer discovery missing or misclassified");
@@ -916,7 +930,7 @@ check(r674Turbopuffer && test.toLinks(r674Turbopuffer).some((url) => /jobs\.ashb
 test.state.preset = "chinese";
 const r588ScoreOrder = test.dedupedData.slice();
 test.sortRecords(r588ScoreOrder);
-check(r588ScoreOrder.every((item, index) => index === 0 || (Number(r588ScoreOrder[index - 1].score) || 0) >= (Number(item.score) || 0)), "All-card displayed-score order is not strictly descending");
+check(r588ScoreOrder.every((item, index) => index === 0 || test.displayedScore(r588ScoreOrder[index - 1]) >= test.displayedScore(item)), "All-card displayed-score order is not strictly descending");
 test.state.preset = "profile";
 
 if (process.env.SITE_VALIDATE_DETAIL === "1") {

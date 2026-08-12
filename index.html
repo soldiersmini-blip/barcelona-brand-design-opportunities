@@ -22,7 +22,7 @@
           <span class="brand__mark">B</span>
           <span>
             <strong>BCN 设计机会雷达</strong>
-            <small>中文岗位求职工作台</small>
+            <small>巴塞罗那品牌视觉求职工作台</small>
           </span>
         </a>
         <div class="update-pill">
@@ -55,11 +55,11 @@
           </div>
           <div>
             <dt id="recentChineseTotal">0</dt>
-            <dd>中文当前可行动</dd>
+            <dd>我的当前机会</dd>
           </div>
           <div>
             <dt id="totalCount">0</dt>
-            <dd>全部追踪记录</dd>
+            <dd>去重后来源记录</dd>
           </div>
         </dl>
         <p class="stats__note" id="chineseStatsNote" role="note"></p>
@@ -69,7 +69,7 @@
         <div class="status-summary__intro">
           <span class="section-kicker">核验状态</span>
           <strong>先看可投，再处理需核验</strong>
-          <small>以下数字基于去重后的全部追踪记录；点击即可应用状态筛选。</small>
+          <small>以下数字只统计“我的机会”主表；历史总库在下方来源栏目保留。</small>
         </div>
         <button class="status-summary__item status-summary__item--live" type="button" data-status="live">
           <strong id="liveCount">0</strong>
@@ -106,7 +106,7 @@
             <span>02</span>
             <div>
               <strong>按语言路径准备材料</strong>
-              <p>中文渠道先发中文询问；英文岗位用英文 CV / portfolio；西语硬门槛岗位不假装低成本。</p>
+              <p>中文渠道先发中文询问；英文岗位用英文 CV / portfolio；西语硬门槛会直接写明并降低优先级。</p>
             </div>
           </li>
           <li>
@@ -126,7 +126,7 @@
             <h2>先处理这些本地 / 西班牙可落地机会</h2>
           </div>
           <p>
-            这里按地点优先，不按语言伪装排序。中文、英语和西语门槛都在卡片上明示；地点不清或只有全球远程证据的岗位不会进入这里。
+            这里先看地点与西班牙可落地性，再看岗位匹配和语言成本。中文、英语和西语门槛都会在卡片上写明；地点不清或只有全球远程证据的岗位不会进入这里。
           </p>
         </div>
         <div id="priorityGrid" class="priority-grid"></div>
@@ -148,7 +148,7 @@
           <div class="result-count">
             <strong id="visibleCount">0</strong>
             <span>条当前结果</span>
-            <small>默认不含英语 / 西语硬门槛</small>
+            <small>默认仅显示逐条核验后的独立机会</small>
           </div>
         </div>
 
@@ -158,19 +158,20 @@
               <p class="section-kicker">按你的条件定制</p>
               <h3 id="personalFilterTitle">一键切换求职策略</h3>
             </div>
-            <p id="presetNote">默认显示 Barcelona / 明确 Spain 或 Europe remote 的中文方向机会；基础西语、英文或合同门槛会在卡片上明示。全球远程但未确认西班牙资格的岗位不会混进默认列表。</p>
+            <p id="presetNote">默认显示逐条打开原始招聘页后保留下来的唯一岗位：Barcelona 本地优先，其次是明确 Spain / Europe remote；关闭页、马德里岗位、重复镜像和研究线索不进入这里。</p>
           </div>
           <div class="preset-buttons" role="group" aria-label="个性化筛选">
+            <button class="preset-button is-active" type="button" data-preset="mine">我的全部机会（默认）</button>
             <button class="preset-button" type="button" data-preset="profile">仅中文可直接联系</button>
             <button class="preset-button" type="button" data-preset="actionable">现在可联系</button>
-            <button class="preset-button is-active" type="button" data-preset="chinese">巴塞中文方向（默认）</button>
+            <button class="preset-button" type="button" data-preset="chinese">巴塞中文方向</button>
             <button class="preset-button" type="button" data-preset="stable">偏正式 / 避开低薪实习</button>
             <button class="preset-button" type="button" data-preset="core">品牌系统 / motion 核心</button>
           </div>
           <details class="foreign-backup">
-            <summary>外语岗位备选（默认隐藏，不建议你现在优先投）</summary>
+            <summary>按语言或方向单独查看</summary>
             <p>
-              下面这些入口会出现需要英文材料、英文面试或西语工作的机会。只有你想找人协助翻译时再打开。
+              这里用于单独查看英语路径、品牌核心方向或完整历史条件；语言门槛仍以卡片证据为准。
             </p>
             <div class="preset-buttons" role="group" aria-label="外语备选筛选">
               <button class="preset-button preset-button--warning" type="button" data-preset="english">只看英语岗位备选</button>
@@ -209,7 +210,7 @@
           </button>
           <button class="scope-button is-active" type="button" data-scope="all">
             可投 + 冷联系
-            <small>默认 · 中文机会不漏掉</small>
+            <small>默认 · 只看已核验主表</small>
           </button>
           <button class="scope-button" type="button" data-scope="excluded">
             排除 / 已过期
@@ -400,11 +401,11 @@
         <summary>这份看板如何排序，以及 A / B / C / D / X 代表什么？</summary>
         <div class="methodology__content">
           <p>
-            首页按 Barcelona 本地优先、明确 Spain remote 次之排序；语言和合同资格单独标注。完整机会库默认使用“中文能投”预设，并保留 A / B / C 中与你实际语言条件相符的结果。A 是立即优先；B 是值得投递或先询问；C 是备选；D 是冷投、公司观察或服务线索；
+            首页按“我的匹配分”从高到低排序：Barcelona 本地和可在西班牙落地优先，语言、资历和合同资格单独标注。默认主表只收逐条核验后的独立岗位；A 是立即优先，B 是值得投递或先询问，C 是备选；D、X、研究线索和历史记录不进入默认主表。
             X 是已过期、明显不匹配或存在风险的记录。
           </p>
           <p>
-            个性化匹配把“中文可联系”“需要英文材料”和“西语硬门槛”分开计算；默认不再把英语岗当作低语言门槛。你仍可单独查看英语备选、全语种品牌 VI、发布日期、实习与低薪风险。英文或西文原始资料只在卡片最底部折叠保留，便于核对。
+            “我的匹配分”同时考虑地点、原始页状态、岗位方向、资历和语言成本；中文相关会加分，但不会压过岗位真实性。你仍可单独查看中文来源全库、英语路径、全部历史和原始资料。
           </p>
         </div>
       </details>
