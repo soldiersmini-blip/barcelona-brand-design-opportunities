@@ -1,13 +1,13 @@
-# 2026-08-12 研究库追回与状态纠错（120 条现行主表）
+# 2026-08-12 研究库追回与状态纠错（131 条现行主表）
 
 本轮继续执行“逐条打开原始招聘详情或官方 ATS”的规则，不以搜索摘要、列表页存在或 HTTP 200 代替职位有效性判断。
 
 ## 现行主表
 
-- 120 个独立机会，严格按统一匹配分 100–1 从高到低排列；120 个分数全部唯一。
-- 87 个 Barcelona / 周边，33 个 Spain / Europe / worldwide remote。
-- 102 个原始页显示可申请，18 个需先确认申请控制、地点或合同资格。
-- 63 个品牌 / VI / Art Direction，36 个 Digital，6 个 Motion，6 个 Social，4 个 E-commerce，5 个 Production。
+- 131 个独立机会，严格按统一匹配分 100–1 从高到低排列；131 个分数全部唯一。
+- 98 个 Barcelona / 周边，33 个 Spain / Europe / worldwide remote。
+- 112 个原始页显示可申请，19 个需先确认申请控制、地点或合同资格。
+- 68 个品牌 / VI / Art Direction，38 个 Digital，6 个 Motion，7 个 Social，4 个 E-commerce，8 个 Production。
 - 4 个中文、华人圈、中国公司或中文远程相关机会。
 
 ## 从研究库追回的 13 个有效机会
@@ -114,6 +114,24 @@
 | JIRADA — Beca Graphic Designer | Barcelona | 原始详情约 2 天前重发并给出邮箱；必须能签 convenio，偏社媒、Campaign 与基础 Web。 |
 | IMAGINA — Diseñador Gráfico Digital | Barcelona | 官方 careers 仍列岗位；品牌与应用指南相关，但只有通用投递且高水平书面加泰语、西语为硬门槛。 |
 
+## 第八批逐条复核新增的 11 个独立机会
+
+| 公司 / 岗位 | 地点 | 当前证据与主要门槛 |
+|---|---|---|
+| Brownie — Junior Graphic Designer | Barcelona onsite | 新 LinkedIn 招聘编号 4445887935 显示已验证、Easy Apply 且正在积极审核；覆盖 360° Campaign、门店品牌、包装、Web、邮件、社媒和电商，要求至少 2 年时尚/零售经验与高级英语。 |
+| MYLVA — Diseñador/a Gráfico & Web | Barcelona hybrid | InfoJobs 当前详情：永久全职、€26,000；品牌识别、编辑、包装、数字 Campaign、Web/电商与 Motion，要求 4 年以上，西语环境。 |
+| Infor — Multi-Channel Brand Design Intern | Barcelona hybrid | 官方 Careers requisition 49130 显示 Apply Now；英语友好，按品牌指南制作提案、PDF/PPT、Web、信息图、基础视频与 AI 模板。实习资格和薪资需确认。 |
+| AC Marca — Diseñador/a Gráfico | Hospitalet onsite | 新 LinkedIn 招聘编号 4448018251 已验证并可 Easy Apply；一年临时项目，把 brandbook 落地至国际包装、完稿、供应商、色样与 mockup。 |
+| McCann — Designer (Temporary) | Barcelona hybrid | 当前原始详情仍可申请；品牌视觉体系、Campaign/KV、Landing、Microsite、Newsletter 与印刷，5 年以上并明确要求高英语和加泰语。 |
+| Fuego Camina Conmigo — Director/a de Arte | Barcelona hybrid | 官方 Factorial 显示可申请、永久全职；数字优先 Campaign、摄影与编辑，要求至少 5 年。 |
+| Eat Nudes — Diseñador gráfico | Barcelona / 附近 | 原始详情给出作品集邮箱；急聘项目制，明确是包装、菜单、标识、标签、贴纸与矢量印刷，不是社媒运营。费用、工时和 autónomo 条件需先确认。 |
+| fhios — Diseñador/a multicanal e IA | Barcelona / 项目制 | 当前原始详情有申请入口，覆盖多渠道视觉、演示、视频和 AI；最终客户、薪资、期限和办公方式未公开，低位保留并加风险提示。 |
+| Bonita Digital — Diseñador gráfico freelance | Barcelona semipresencial | Join 页面显示可申请；每周约 15 小时、autónomo，包含品牌重塑、社媒 Campaign、广告、Reels、包装和轻动画。 |
+| ALEA — Graphic Designer Internship | Barcelona hybrid | 官方 Teamtailor 当前职位板仍列出并可申请；按模板与风格指南制作游戏视觉资产。实习薪资、期限和学校协议需确认。 |
+| DORTOKA — Diseñador/a gráfico/a / web | Badalona / Barcelona | 官方招聘页仍列岗位并有 CV 表单，但无日期、合同、薪资和明确 requisition；仅作为低位待确认入口，不把通用表单冒充确定空缺。 |
+
+本批同时复查 Casa Asia 与西华论坛当前设计相关列表；没有发现新的、能够同时证实 Barcelona/欧洲可行、中文路径和品牌视觉相关性的招聘，因此中文相关当前主表仍为 4 条，不用非设计岗或过期帖子凑数。
+
 ## 官方状态纠错
 
 - Rocket Digital `Graphic Designer Social Media`（记录 120 / 1079）：官方 Factorial 306705 明确显示职位不存在，移入历史。它与仍开放的 `Art Director Paid Media` 不是同一岗位。
@@ -132,6 +150,11 @@
 - Visma `Junior Brand Designer`（349）：官方 Teamtailor 在 2026-08-12 明确显示职位不再活跃，移入历史。
 - Kilo `Graphic Designer / Video Editor`（254）：原始 LinkedIn 职位已跳转 expired jobs，搜索缓存不再作为当前投递证据。
 - Fail Fast、TWOJEYS、Avidalia、Lodgify、Canonical、COROS、CrowdStrike、reboot、LABHOUSE、Textura、devicenow、SLAPS 和 EuroLeague 的 20 个同岗镜像已进一步合并；原始行只保留审计历史。
+- LONBALI `Diseñador/a gráfica`（记录 173）：原始 LinkedIn 招聘编号 4438899857 已跳转过期职位列表，移入历史；只有新招聘编号出现时才重新建卡。
+- Hasbro `Graphic Designer`（记录 611）：官方职位明确在香港并要求当地工作资格，不是 Spain / Europe remote，移入地区排除历史。
+- Grupo Planeta `Diseñador/a Gráfico/a`（记录 438 / 185）：官方 TalentClue 显示 `Posición cerrada`，两条同岗记录合并后移入历史。
+- GRUP MEDIAPRO / 3Cat（记录 902）与 Bassols 1790（记录 842）：原始 LinkedIn 均明确不再接受申请，移入历史。
+- AC Marca 旧招聘编号（记录 129）由当前独立编号 4448018251 替代；Infor 旧 Indeed 镜像（记录 82）由官方 requisition 49130 替代。旧记录保留但不重复计数。
 
 ## 排序规则
 

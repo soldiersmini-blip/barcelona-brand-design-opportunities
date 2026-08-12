@@ -90,7 +90,7 @@ check(
 );
 test.state.preset = "mine";
 const auditedMain = test.dedupedData.filter((item) => test.matchesPreset(item));
-check(auditedMain.length === 120, "逐条核验后的默认机会总表数量不是 120");
+check(auditedMain.length === 131, "逐条核验后的默认机会总表数量不是 131");
 check(auditedMain.every((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id))), "默认机会总表混入未审核记录");
 check(auditedMain.every((item) => test.applicationStatus(item).key !== "closed"), "默认机会总表混入已关闭记录");
 check(auditedMain.every((item) => Boolean(test.CURATED[item.id])), "默认机会总表仍有未完成中文整理的卡片");
@@ -102,7 +102,7 @@ const auditedScores = auditedMain.map(test.displayedScore);
 check(
   auditedScores[0] === 100 &&
     auditedScores.at(-1) === 1 &&
-    new Set(auditedScores).size === 120 &&
+    new Set(auditedScores).size === 131 &&
     auditedScores.every((score, index) => index === 0 || auditedScores[index - 1] > score),
   "默认机会总表的 100–1 唯一严格降序评分序列不完整",
 );
@@ -115,6 +115,7 @@ check([1314, 1239, 958, 277, 109, 385, 217, 1080, 1099].every((id) => auditedMai
 check([314, 78, 458, 258, 921, 117, 210, 308, 1097, 870, 841, 875, 985, 989].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第五批研究库追回的十四条真实机会未完整进入主表");
 check([668, 5106, 134, 2942, 930720, 183, 239, 977, 1255, 1241, 876, 920].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第六批研究库追回的十二条真实机会未完整进入主表");
 check([447, 207, 444, 304, 89, 855, 874, 1227, 396, 172, 86, 1294].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第七批研究库追回的十二条真实机会未完整进入主表");
+check([930816, 1278, 930818, 930819, 93, 1296, 930817, 903, 1293, 37, 279].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第八批逐条核验的十一条真实机会未完整进入主表");
 check([120, 1079, 1217].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 Rocket Digital 或 Fhios 记录仍被标为可投");
 check([153, 220, 322, 894].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 UNIQLO、Desigual 或 Ogilvy 记录仍被标为可投");
 check([359, 101].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 SD Worx 或重复 TWOJEYS 记录仍被标为可投");
@@ -122,7 +123,9 @@ check([930716, 993018, 881].every((id) => test.applicationStatus(test.allData.fi
 check([10, 986, 2968].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "Binance 旧检索结果或本轮重复来源仍未移入历史");
 check([349, 254].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "Visma 或 Kilo 已过期原始职位仍被标为可投");
 check([3402, 481, 403, 1647, 1670, 993066, 5261, 2248, 2190, 2249, 2194, 2005, 937, 1503, 1352, 28, 948, 3048, 491, 3076, 1603].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "第七批已识别的同岗镜像仍在膨胀当前机会计数");
+check([173, 611, 438, 185, 902, 842, 129, 82].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "第八批已关闭、错区或被新招聘编号替代的记录仍被标为当前机会");
 check(!auditedMain.some((item) => [120, 1079, 1217].includes(Number(item.id))), "本轮官方已关闭记录泄漏进默认主表");
+check(!auditedMain.some((item) => [173, 611, 438, 185, 902, 842, 129, 82].includes(Number(item.id))), "第八批历史记录泄漏进默认主表");
 check(test.toLinks(test.allData.find((item) => Number(item.id) === 930815)).some((url) => /sidn\.factorialhr\.com\/job_posting\/graphic-designer-285667/i.test(url)), "SIDN 官方投递入口缺失");
 check(!test.MY_OPPORTUNITY_SET.has(1044) && !test.MY_OPPORTUNITY_SET.has(1083), "乌拉圭 ++hellohello 岗位被误列为 Spain / Europe remote 主表机会");
 check(!test.MY_OPPORTUNITY_SET.has(1116), "已关闭的 Factorial Paid Motion Designer 被搜索缓存误放回主表");
@@ -570,8 +573,8 @@ check(test.dedupedData.some((item) => item.id === 898) && !test.dedupedData.some
 check(test.applicationStatus({ id: -1, opportunity: "", status: "Salary not disclosed", analysis: "", contact: "" }).key !== "closed", "“薪资未公开”仍被误判为职位关闭");
 check(generatorSource.includes("'exclude|risk|scam|\\bclosed\\b|expired"), "数据生成器未使用完整单词匹配 closed");
 check(!generatorSource.includes("'exclude|risk|scam|closed|expired"), "数据生成器仍可能把 disclosed 误判为 closed");
-check(test.applicationStatus(test.allData.find((item) => item.id === 902)).key === "live", "MEDIAPRO 当前申请状态没有保留");
-check(test.riskFlags(test.allData.find((item) => item.id === 902)).includes("spanish"), "MEDIAPRO 加泰语硬门槛没有进入本地语言筛选");
+check(test.applicationStatus(test.allData.find((item) => item.id === 902)).key === "closed", "MEDIAPRO 原始页已停止接受申请但没有移入历史");
+check(!test.MY_OPPORTUNITY_SET.has(902), "MEDIAPRO 已关闭记录仍被保留在当前机会 ID 中");
 check(test.applicationStatus(test.allData.find((item) => item.id === 903)).key === "live", "fhios 当前申请状态没有保留");
 check(test.hasOpaqueEmployerRisk(test.allData.find((item) => item.id === 903)), "fhios 未公开最终客户没有进入真实性风险筛选");
 check(test.applicationStatus(test.allData.find((item) => item.id === 904)).key === "live", "Wall Street English 当前申请状态没有保留");
@@ -579,7 +582,7 @@ check(test.languageInfo(test.allData.find((item) => item.id === 904)).key === "l
 check(test.hasOpaqueEmployerRisk(test.allData.find((item) => item.id === 905)), "Steneg 未公开客户没有进入真实性风险筛选");
 check(test.isChineseRelevant(test.allData.find((item) => item.id === 906)), "INFiLED 当前记录没有保留中文相关标记");
 check(test.riskFlags(test.allData.find((item) => item.id === 909)).includes("spanish"), "Revolt 英西双语硬门槛没有识别");
-check(test.CURATED[902].changeType === "new" && test.CURATED[906].changeType === "refresh", "第十九轮新增与状态刷新没有区分");
+check(test.CURATED[902].changeType === "recovered-audit-8" && test.CURATED[906].changeType === "refresh", "MEDIAPRO 最新关闭证据没有覆盖第十九轮旧状态");
 check(test.identityKey(test.allData.find((item) => item.id === 559)) === test.identityKey(test.allData.find((item) => item.id === 1300)), "INFiLED 当前刷新没有与旧记录合并");
 check(test.identityKey(test.allData.find((item) => item.id === 35)) === test.identityKey(test.allData.find((item) => item.id === 905)), "Steneg 当前刷新没有与旧记录合并");
 check(test.dedupedData.some((item) => item.id === 1300) && !test.dedupedData.some((item) => item.id === 559), "INFiLED 当前刷新没有保留最新记录");
