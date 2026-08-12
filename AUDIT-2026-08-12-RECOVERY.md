@@ -1,18 +1,18 @@
-# 2026-08-12 研究库追回与状态纠错（73 条现行主表）
+# 2026-08-12 研究库追回与状态纠错（108 条现行主表）
 
 本轮继续执行“逐条打开原始招聘详情或官方 ATS”的规则，不以搜索摘要、列表页存在或 HTTP 200 代替职位有效性判断。
 
 ## 现行主表
 
-- 73 个独立机会，严格按统一匹配分 97–25 从高到低排列。
-- 52 个 Barcelona / 周边，21 个 Spain / Europe / worldwide remote。
-- 66 个原始页显示可申请，7 个需先确认申请控制、地点或合同资格。
-- 46 个品牌 / VI / Art Direction，16 个 Digital，4 个 Motion，3 个 Social，2 个 E-commerce，2 个 Production。
-- 3 个中文、华人圈或中国公司相关机会。
+- 108 个独立机会，严格按统一匹配分 100–1 从高到低排列；108 个分数全部唯一。
+- 78 个 Barcelona / 周边，30 个 Spain / Europe / worldwide remote。
+- 91 个原始页显示可申请，17 个需先确认申请控制、地点或合同资格。
+- 61 个品牌 / VI / Art Direction，32 个 Digital，4 个 Motion，4 个 Social，3 个 E-commerce，4 个 Production。
+- 4 个中文、华人圈、中国公司或中文远程相关机会。
 
 ## 从研究库追回的 13 个有效机会
 
-| 分数 | 公司 / 岗位 | 地点 | 当前证据与主要门槛 |
+| 追回时旧分 | 公司 / 岗位 | 地点 | 当前证据与主要门槛 |
 |---:|---|---|---|
 | 89 | Bakken & Bæck — Senior Brand Designer | Barcelona | 官方职位与 Teamtailor 表单开放；5+ 年、需到办公室；支持搬迁与签证协助。 |
 | 85 | Lodgify — Creative Designer | Europe remote | Lever 开放；3+ 年、英语、自由职业合同；需确认 Spain 签约与费率。 |
@@ -30,7 +30,7 @@
 
 ## 第二批追回的 5 个有效机会
 
-| 分数 | 公司 / 岗位 | 地点 | 当前证据与主要门槛 |
+| 追回时旧分 | 公司 / 岗位 | 地点 | 当前证据与主要门槛 |
 |---:|---|---|---|
 | 90 | Savills Spain — Brand Designer | Barcelona hybrid | Teamtailor 当前有申请表；企业视觉、编辑、导视、广告与演示设计。 |
 | 84 | Hostinger — Senior Graphic Designer, Brand & Creative | Spain remote | Ashby 当前可申请；流利英语、品牌演进、多渠道 campaign 与 AI 工作流。 |
@@ -40,12 +40,62 @@
 
 ## 第三批追回的 4 个有效机会
 
-| 分数 | 公司 / 岗位 | 地点 | 当前证据与主要门槛 |
+| 追回时旧分 | 公司 / 岗位 | 地点 | 当前证据与主要门槛 |
 |---:|---|---|---|
 | 65 | Dragons Group — Senior UX/UI and Web Designer | Barcelona hybrid | 官方可申请；5+ 年、英语、品牌识别到网站与数字系统的延展。 |
 | 57 | Playson — Marketing Designer | EU remote | Ashby 当前可申请；5+ 年、品牌书、campaign、landing、展会、motion 与 AI。 |
 | 42 | Glovo — Motion Designer | Barcelona | 官方可申请；3+ 年、英语，约 80% 为高产量 Performance 适配与优化。 |
 | 35 | Eximia Studio — Performance Creative Designer | Barcelona metro | 官方申请表开放；55% Ads、30% 数字内容、10% branding，西语环境。 |
+
+## 第四批追回的 9 个有效机会
+
+| 公司 / 岗位 | 地点 | 当前证据与主要门槛 |
+|---|---|---|
+| CM Creative — Graphic Designer & Event Producer | Barcelona | 2026-08-12 官方页仍在，邮箱直投；英语、品牌延展、印刷与活动制作，薪酬模式需确认。 |
+| ESTUDIFERRER — Graphic Designer | Terrassa | 原始雇主详情含 Logo、品牌识别、包装与英语；申请控制、到岗和本地语言先确认。 |
+| Remedy Edge — Graphic Designer Trainee | Barcelona onsite | Greenhouse 当前 Apply；带薪，但必须有学校/大学协议并可连续 6 个月全职到岗。 |
+| Hamlet — Mid/Senior Art Director | Barcelona hybrid | 品牌系统、指南与 campaign；5+ 年、高英语与 Catalan。 |
+| MiiN — Head of Creative and Content | Barcelona hybrid | 永久全职；VI、包装、零售与 campaign 相关性高，但属于 Head 岗且英语/西语均为硬门槛。 |
+| Nacar — Product Designer | Barcelona | 官方申请；流利英语、3+ 年、数字设计系统，产品 UX 主导。 |
+| Feels Like — Product Designer | Barcelona hybrid | 官方申请；4+ 年、英语、视觉系统与高端品牌项目，产品 UX 主导。 |
+| GameHouse — Senior UX/UI Designer | Spain / Europe remote | Factorial 申请；跨触点设计系统与品牌指南，移动产品 UX 主导。 |
+| LABHOUSE — Lead UI/UX Artist | Spain remote | Ashby 当前 Apply；永久全职、英语、移动 UI 系统与商店素材，非纯 VI。 |
+
+## 第五批追回的 14 个有效机会
+
+| 公司 / 岗位 | 地点 | 当前证据与主要门槛 |
+|---|---|---|
+| Qoria / Qustodio — Digital Designer | Barcelona | 官方 Rippling Apply；€30–40k、英语、5+ 年，西语仅加分。 |
+| Textura Interiors — Digital Designer | Barcelona | 官方详情与邮箱直投；视觉识别向 web、email、POS 与 360 campaign 延展。 |
+| Product Madness — Visual Designer | Barcelona hybrid | 原始雇主详情可申请；每周 3 天办公室，偏游戏品牌营销与社媒视觉。 |
+| Glovo — Senior Graphic Designer | Barcelona | 官方申请；品牌守护、社媒、PR 与 Global Affairs 视觉。 |
+| Oh / OhChat — Graphic Designer | Europe remote | Ashby 当前 Apply；全职或自由职业，需接受成人内容/创作者品牌环境并确认 Spain 合同。 |
+| Lateral Thinking — Art Director | Barcelona | 原始详情可申请；品牌体验、VI、导视与制作落地，流利西语与 5+ 年。 |
+| Fail Fast — Visual Designer | Barcelona hybrid | 官方 Apply；视觉系统与品牌概念匹配，但 8+ 年、流利西语。 |
+| European Blockchain Convention — Freelance Graphic Designer | Barcelona hybrid | 原始详情与作品集邮箱；兼职自由职业、费率未知。 |
+| CoverManager — Motion Designer | Barcelona | 双品牌视频与社媒广告；英语 + 西语或法语至少一种流利。 |
+| The Builder Studios — Visual Designer | EU remote | 官方申请表；品牌标准、deck、motion/Lottie，自由职业且 Spain 资格需确认。 |
+| Storisell — Motion Designer | Spain remote / Barcelona | 官方 careers 列出岗位与 HR 邮箱；合同、薪资和具体语言待确认。 |
+| Flummox — E-commerce Graphic Designer | Spain remote | 远程兼职、流利英语；合同主体、最低工时和薪酬需先确认。 |
+| DDB Spain — Digital Art Director | Barcelona | Greenhouse 申请；CRM/email、web、组件与指南，4+ 年、西语流程。 |
+| Olixir / Omnicom Health — Freelance Brand Lead | Barcelona | Greenhouse 申请；每周 3 天到岗、品牌审核与跨团队协调，非纯手作设计岗。 |
+
+## 第六批追回的 12 个有效机会
+
+| 公司 / 岗位 | 地点 | 当前证据与主要门槛 |
+|---|---|---|
+| COROS — Brand Creative Producer | UK / EU remote | 官方职位专属正文与邮箱；英语、3+ 年、永久全职，Spain EOR 与出差需确认。 |
+| CrowdStrike — Creative Content Designer | Spain remote / Barcelona | Workday R29235 当前 Apply；2+ 年、英语，偏信息设计、模板与视频。 |
+| SLAPS — Senior Art Director | Barcelona | 官方 careers 仍列出；5+ 年、大型 campaign 与品牌视觉，申请表状态先确认。 |
+| SLAPS — Junior Graphic Designer | Barcelona | 官方 careers 单独列出；正式 junior 或 internship、convenio 与薪资需先确认。 |
+| Ondeuev — Senior Digital and Graphic Designer | Barcelona hybrid | 当前正文已捕获；Catalan/西语/英语、5+ 年、前三个月 40h 自雇，直接页需重确认。 |
+| Ogilvy — Art Director (Social Media) | Barcelona hybrid | 原始详情仍在；2+ 年、社媒与基础 motion，普通投递入口待定位。 |
+| Havas Play — Senior Art Director, Maternity Leave | Barcelona | 原始详情可见；3–4 年、临时产假替代、立即到岗。 |
+| Injective — Digital Designer | CET/EET remote | 官方 Ashby 路由；3–5 年、英语、品牌 campaign，Spain 雇佣资格待确认。 |
+| Gameloft — Graphic Design Intern | Barcelona hybrid | 官方 Apply，但 Internship 与 Permanent contract 同页冲突，必须先核合同。 |
+| Cal Fruitós — Graphic & Packaging Designer | Barcelona onsite | 包装、POS、标识与完稿；5+ 年，当前申请与本地语言需再次确认。 |
+| Buzz — Motion Designer & Video Editor, AI | Barcelona hybrid | 当前原始详情；4–5 年、西语环境、每周 2 天办公室。 |
+| 言灵无界 — Brand Visual Designer | 中文远程兼职 | 品牌视觉内容真实且公开 RMB10–15k/月，但 Spain 居住资格、工时和智联申请有效性均需确认。 |
 
 ## 官方状态纠错
 
@@ -59,10 +109,13 @@
 - Canonical `Visual Designer`（记录 930716）：与主记录 604 的 Greenhouse 5326986 是同一职位，只保留官方 ATS 卡。
 - BCome（55 / 993018）与 Avidalia（278 / 881）的同岗多来源记录已分别合并为一张卡。
 - Lodgify、Fail Fast、reboot、Trivelta 的重复或旧标题镜像已合并到各自主记录；历史行保留但不再膨胀主表和页面计数。
+- Binance 旧 Southern Europe 设计结果（记录 10）：官方 Lever 当前明确显示无匹配职位，移入历史。
+- COROS Brand Creative Producer（668 / 986）：同一官方 careers 岗位只保留主记录 668。
+- SLAPS 合并摘要（2968）：拆成 Senior Art Director（134）和 Junior Graphic Designer（2942）两张独立卡，合并镜像移入历史。
 
 ## 排序规则
 
-所有主表卡片使用唯一分数，先比较匹配分，再执行次级排序；因此页面任意一行都不会出现低分卡排在高分卡之前。分数综合考虑：
+所有主表卡片按人工复核顺序自动映射到 100–1 的唯一分数；新增卡片不会再因为旧分数未同步而掉到错误位置。排序先比较匹配分，再执行次级排序，因此页面任意一行都不会出现低分卡排在高分卡之前。分数综合考虑：
 
 1. Barcelona / Spain 实际可行性和真实申请入口。
 2. 品牌识别、VI、指南、视觉系统和数字品牌延展相关性。

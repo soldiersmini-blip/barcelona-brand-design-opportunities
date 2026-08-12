@@ -90,7 +90,7 @@ check(
 );
 test.state.preset = "mine";
 const auditedMain = test.dedupedData.filter((item) => test.matchesPreset(item));
-check(auditedMain.length === 73, "逐条核验后的默认机会总表数量不是 73");
+check(auditedMain.length === 108, "逐条核验后的默认机会总表数量不是 108");
 check(auditedMain.every((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id))), "默认机会总表混入未审核记录");
 check(auditedMain.every((item) => test.applicationStatus(item).key !== "closed"), "默认机会总表混入已关闭记录");
 check(auditedMain.every((item) => Boolean(test.CURATED[item.id])), "默认机会总表仍有未完成中文整理的卡片");
@@ -98,16 +98,27 @@ check(auditedMain.every((item) => test.toLinks(item).length > 0), "默认机会�
 check(auditedMain.every((item) => ["barcelona", "remote"].includes(test.locationBucket(item))), "默认机会总表混入 Madrid 或西班牙不可落地地点");
 test.sortRecords(auditedMain);
 check(auditedMain.every((item, index) => index === 0 || test.displayedScore(auditedMain[index - 1]) >= test.displayedScore(item)), "默认机会总表没有按我的匹配分降序排列");
-check(auditedMain.map(test.displayedScore).join(",") === Array.from({ length: 73 }, (_, index) => 97 - index).join(","), "默认机会总表的 97–25 严格降序评分序列不完整");
+const auditedScores = auditedMain.map(test.displayedScore);
+check(
+  auditedScores[0] === 100 &&
+    auditedScores.at(-1) === 1 &&
+    new Set(auditedScores).size === 108 &&
+    auditedScores.every((score, index) => index === 0 || auditedScores[index - 1] > score),
+  "默认机会总表的 100–1 唯一严格降序评分序列不完整",
+);
 check(auditedMain.every((item) => !/鈥|帽|鏄|鍙|闇|椤|閫|绗/.test(`${test.companyLabel(item)} ${test.roleLabels(item).zh} ${test.locationLabel(item)}`)), "默认机会总表仍有可见乱码");
 check([446, 928, 483, 930815].every((id) => auditedMain.some((item) => Number(item.id) === id)), "本轮新增的四条真实机会未完整进入主表");
 check([296, 4, 1102, 601, 577, 1038, 1011, 1105, 1240, 351, 484, 278, 224].every((id) => auditedMain.some((item) => Number(item.id) === id)), "研究库追回的十三条真实机会未完整进入主表");
 check([94, 1828, 604, 981, 1101].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第二批研究库追回的五条真实机会未完整进入主表");
 check([170, 445, 1108, 1081].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第三批研究库追回的四条真实机会未完整进入主表");
+check([1314, 1239, 958, 277, 109, 385, 217, 1080, 1099].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第四批研究库追回的九条真实机会未完整进入主表");
+check([314, 78, 458, 258, 921, 117, 210, 308, 1097, 870, 841, 875, 985, 989].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第五批研究库追回的十四条真实机会未完整进入主表");
+check([668, 5106, 134, 2942, 930720, 183, 239, 977, 1255, 1241, 876, 920].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第六批研究库追回的十二条真实机会未完整进入主表");
 check([120, 1079, 1217].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 Rocket Digital 或 Fhios 记录仍被标为可投");
 check([153, 220, 322, 894].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 UNIQLO、Desigual 或 Ogilvy 记录仍被标为可投");
 check([359, 101].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 SD Worx 或重复 TWOJEYS 记录仍被标为可投");
 check([930716, 993018, 881].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "Canonical、BCome 或 Avidalia 重复来源仍被计为独立机会");
+check([10, 986, 2968].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "Binance 旧检索结果或本轮重复来源仍未移入历史");
 check(!auditedMain.some((item) => [120, 1079, 1217].includes(Number(item.id))), "本轮官方已关闭记录泄漏进默认主表");
 check(test.toLinks(test.allData.find((item) => Number(item.id) === 930815)).some((url) => /sidn\.factorialhr\.com\/job_posting\/graphic-designer-285667/i.test(url)), "SIDN 官方投递入口缺失");
 check(!test.MY_OPPORTUNITY_SET.has(1044) && !test.MY_OPPORTUNITY_SET.has(1083), "乌拉圭 ++hellohello 岗位被误列为 Spain / Europe remote 主表机会");
@@ -818,8 +829,8 @@ const r698Circle = test.allData.find((item) => item.id === 928);
 check(r698Circle && test.applicationStatus(r698Circle).key !== "closed" && r698Circle.score === 106 && test.locationBucket(r698Circle) === "remote", "Round 698: Circle official Greenhouse refresh regressed");
 const r698Linear = test.allData.find((item) => item.id === 216);
 check(r698Linear && test.applicationStatus(r698Linear).key !== "closed" && r698Linear.score === 98 && test.locationBucket(r698Linear) === "remote", "Round 698: Linear official careers/Ashby refresh regressed");
-const r699Coros = test.allData.find((item) => item.id === 986);
-check(r699Coros && test.applicationStatus(r699Coros).key !== "closed" && r699Coros.score === 96 && test.locationBucket(r699Coros) === "remote", "Round 699: COROS official careers refresh regressed");
+const r699Coros = test.allData.find((item) => item.id === 668);
+check(r699Coros && test.applicationStatus(r699Coros).key === "live" && r699Coros.score === 96 && test.locationBucket(r699Coros) === "remote", "Round 699/2026-08-12: COROS canonical official careers record regressed");
 const r699AdsmuraiArt = test.allData.find((item) => item.id === 1023);
 check(r699AdsmuraiArt && test.applicationStatus(r699AdsmuraiArt).key !== "closed" && r699AdsmuraiArt.score === 104 && test.locationBucket(r699AdsmuraiArt) === "barcelona", "Round 699: Adsmurai Digital Art Director refresh regressed");
 const r700Iris = test.allData.find((item) => item.id === 142);
