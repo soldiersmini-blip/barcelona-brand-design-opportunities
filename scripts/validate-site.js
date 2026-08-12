@@ -129,6 +129,10 @@ check([930845, 930846, 930847, 930848].every((id) => auditedMain.some((item) => 
 check([930845, 930846, 930847, 930848, 279, 958].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十四批新增或复核的当前岗位未全部进入 live");
 check([930705, 397, 1274, 930849].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十五批纠正、恢复与新增的四条 Barcelona 机会未完整进入主表");
 check([930705, 397, 1274, 930849, 884, 238, 396].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十五批原始页核验的当前岗位未全部进入 live");
+check([930851, 930852, 1301].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十六批新增或恢复的三条 Barcelona 机会未完整进入主表");
+check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 930852)).key === "live", "Newlink 当前 Solicitar 岗位未进入 live");
+check([930851, 1301].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "verify"), "Luppa 或 The Colour Monster 的待确认入口被错误标成 live/closed");
+check([930851, 930852, 1301].every((id) => test.locationBucket(test.allData.find((item) => Number(item.id) === id)) === "barcelona"), "第十六批本地岗位地点分类错误");
 check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 930850)).key === "verify" && !test.MY_OPPORTUNITY_SET.has(930850), "10x 非传统 AI Lab 项目池被误计为当前可投岗位");
 check([160, 930715].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "第十四批已关闭岗位仍被标为可投");
 check(!auditedMain.some((item) => [160, 930715].includes(Number(item.id))), "第十四批已关闭岗位泄漏进默认主表");
@@ -136,7 +140,7 @@ check(test.toLinks(test.allData.find((item) => Number(item.id) === 279)).some((u
 check(test.toLinks(test.allData.find((item) => Number(item.id) === 958)).some((url) => /omnicomhealth\/jobs\/5207339008/i.test(url)), "Remedy Edge 当前官方实习入口未写入卡片");
 check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 930835)).key === "verify", "匿名华人广告店线索不得在未确认雇主前提升为 live");
 check([914, 1107, 2942, 134, 977, 1255, 279].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十二批官方可投岗位未全部提升为 live");
-check([1239, 216, 930720, 206, 183, 239, 1301, 1294, 1241].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "第十二批已关闭或无具体 vacancy 的旧卡未全部移入历史区");
+check([1239, 216, 930720, 206, 183, 239, 1294, 1241].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "第十二批已关闭或无具体 vacancy 的旧卡未全部移入历史区");
 check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 930708)).key === "live", "Dragons 医疗艺术指导的官方可投状态未恢复");
 check([120, 1079, 1217].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 Rocket Digital 或 Fhios 记录仍被标为可投");
 check([153, 220, 322, 894].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 UNIQLO、Desigual 或 Ogilvy 记录仍被标为可投");
@@ -230,10 +234,10 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  [1274, 397, 396, 930705, 884, 238, 930849, 930850].every((id) =>
+  [930851, 930852, 1301].every((id) =>
     test.latestRoundItems.some((item) => Number(item.id) === id),
   ),
-  "第十五轮新增、纠正与状态复核没有完整进入“本轮变化”",
+  "第十六轮新增与状态复核没有完整进入“本轮变化”",
 );
 check(!/id="excludeLowPay"[^>]*checked/.test(indexHtml), "默认主表仍会暗中排除低薪风险卡片，导致总数与可见卡片不一致");
 check(!appSource.includes("item.postingDate"), "页面仍引用不存在的 postingDate 字段");
@@ -932,7 +936,7 @@ check(r711Patterson && r711Patterson.score === 10 && r711Patterson.tier === "X" 
 const r711MemeSocial = test.allData.find((item) => item.id === 930711);
 check(r711MemeSocial && r711MemeSocial.score === 86 && test.locationBucket(r711MemeSocial) === "barcelona" && test.applicationStatus(r711MemeSocial).key === "live" && test.toLinks(r711MemeSocial).some((url) => /4441035715/i.test(url)), "Round 711: MeMe Social Creative discovery missing or misclassified");
 const r712ColourMonster = test.allData.find((item) => item.id === 1301);
-check(r712ColourMonster && r712ColourMonster.score === 100 && test.locationBucket(r712ColourMonster) === "barcelona" && test.applicationStatus(r712ColourMonster).key === "closed" && test.toLinks(r712ColourMonster).some((url) => /4446592473/i.test(url)), "Round 712: The Colour Monster direct closed status regressed");
+check(r712ColourMonster && r712ColourMonster.score === 100 && test.locationBucket(r712ColourMonster) === "barcelona" && test.applicationStatus(r712ColourMonster).key === "verify" && test.toLinks(r712ColourMonster).some((url) => /4446592473/i.test(url)), "Round 16: The Colour Monster current readable/verify status regressed");
 const r712Pepsi = test.allData.find((item) => item.id === 920001);
 check(r712Pepsi && r712Pepsi.score === 112 && test.locationBucket(r712Pepsi) === "barcelona" && test.applicationStatus(r712Pepsi).key === "live" && test.toLinks(r712Pepsi).some((url) => /4440194840/i.test(url)), "Round 712: PepsiCo Senior Designer live-status audit regressed");
 const r713Bav = test.allData.find((item) => item.id === 930712);

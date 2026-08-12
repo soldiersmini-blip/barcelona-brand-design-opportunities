@@ -812,6 +812,46 @@ const allData = Array.isArray(window.JOB_OPPORTUNITIES) ? window.JOB_OPPORTUNITI
     freshnessAgeDays: 36,
     links: ["https://jobs.ashbyhq.com/10xteam/f855de79-8005-40cb-b954-adaf438b6f7e/"],
   },
+  {
+    id: 930851,
+    section: "2026-08-12 Round 16 original-detail audit",
+    source: "Luppa / current LinkedIn employer detail",
+    opportunity: "Diseñador/a Gráfico/a Senior",
+    fit: "Barcelona-city senior brand-system role owning visual expression across social, web, email, marketplaces and licensed collections",
+    location: "Barcelona city; full-time; office-based with one home-office day per week",
+    status: "The current LinkedIn employer detail 4440135299 was opened and read in full on 2026-08-12. It does not show a closed notice and the employer asks candidates to send a CV and portfolio, but the public page does not expose a separate ATS form or email. Treat the publisher-message route as verify-first rather than claiming a confirmed one-click application.",
+    contact: "Current original detail and publisher-message route: https://es.linkedin.com/jobs/view/dise%C3%B1ador-a-gr%C3%A1fico-a-senior-at-luppa-4440135299",
+    analysis: "A strong local brand-system match: the role leads Luppa's visual evolution and consistency across B2B/B2C touchpoints, translates brand storytelling into a solid visual system, uses Adobe/Figma and AI, and values video or animation. The material gates are 5+ years and high English; salary, Spanish requirements, contract entity and the exact CV destination remain unconfirmed.",
+    score: 96,
+    tier: "B",
+    locationTag: "Barcelona area",
+    typeTag: "Senior brand / visual system / digital rollout",
+    sourceGroup: "linkedin",
+    postedAt: "",
+    freshnessTag: "month",
+    freshnessAgeDays: null,
+    links: ["https://es.linkedin.com/jobs/view/dise%C3%B1ador-a-gr%C3%A1fico-a-senior-at-luppa-4440135299"],
+  },
+  {
+    id: 930852,
+    section: "2026-08-12 Round 16 original-detail audit",
+    source: "Newlink Spain / current LinkedIn employer detail",
+    opportunity: "Diseñador gráfico",
+    fit: "Barcelona hybrid permanent role covering brand communication, identity adaptation, campaigns, events, presentations, social, motion and video",
+    location: "Barcelona office; full-time; permanent; hybrid with three onsite and two remote days",
+    status: "The current LinkedIn employer detail 4401651451 was opened and read in full on 2026-08-12. It visibly shows Solicitar and a complete role description. The hard gates are Catalan C1, English B2, two to four years of agency or consultancy experience and a portfolio with social-content work.",
+    contact: "Current original detail/application: https://es.linkedin.com/jobs/view/dise%C3%B1ador-gr%C3%A1fico-at-newlink-spain-4401651451",
+    analysis: "A real Barcelona brand-production route with an indefinite contract and useful identity, campaign, event, presentation, print, digital and motion scope. Keep below English-first roles because Catalan C1 is explicit and the environment is locally client-facing; salary and work-authorisation terms are not published.",
+    score: 82,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Brand communication / graphic / motion / campaigns",
+    sourceGroup: "linkedin",
+    postedAt: "",
+    freshnessTag: "month",
+    freshnessAgeDays: null,
+    links: ["https://es.linkedin.com/jobs/view/dise%C3%B1ador-gr%C3%A1fico-at-newlink-spain-4401651451"],
+  },
 ].forEach((record) => {
   if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
 });
@@ -1084,7 +1124,7 @@ const PRIORITY_IDS = [930813, 910, 914, 1300, 1107, 866, 94, 1245];
 // the default board. This prevents old source indexes, Madrid posts, mirrors
 // and research notes from inflating the usable count.
 const MY_OPPORTUNITY_IDS = Object.freeze([
-  930813, 910, 914, 1300, 1107, 866, 94, 930847, 930816, 930839, 1245, 296, 175, 930838, 930832, 930836, 930837, 446, 930834, 425, 4, 1828, 930844, 930846,
+  930813, 910, 914, 1300, 1107, 866, 94, 930847, 930816, 930839, 1245, 930851, 296, 175, 930838, 930832, 930836, 930837, 446, 930834, 425, 4, 1828, 930844, 930846,
   930705, 668, 1102, 884, 203, 601, 284, 920001, 930812, 190, 577, 55,
   1278, 1314, 314, 207, 78, 444, 458, 258, 5106, 960, 238, 156, 928, 147, 604,
   930822, 304, 170, 1038, 84, 930815, 930824, 930831, 279, 12, 859, 305, 1011, 445, 1029, 188, 922, 483, 958, 930845,
@@ -1092,7 +1132,7 @@ const MY_OPPORTUNITY_IDS = Object.freeze([
   117, 93, 1296, 375, 210, 930842, 930848, 930719, 89, 1023, 385, 930817, 841, 903, 1108, 855, 874, 875, 876,
   1227, 397, 1274, 396, 1240, 217, 985, 977, 989, 870, 990001, 27, 1303, 308, 1020, 351, 1081, 930843,
   1080, 1099, 981, 1097, 1101, 24, 25, 930835, 484, 278, 1293, 1255, 37, 889,
-  172, 86, 930717, 224, 930849, 930814, 920,
+  172, 86, 930717, 224, 930852, 1301, 930849, 930814, 920,
 ]);
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
 
@@ -6747,6 +6787,81 @@ Object.assign(CURATED, {
     experienceKey: "senior",
     experienceLabel: "高级专家 / freelance pool / 非固定开工",
     changeType: "round-15-review-only",
+  },
+});
+
+// Round 16: preserve the exact current employer pages and distinguish a
+// readable opportunity from a confirmed application route. This supersedes
+// the older Colour Monster closure snapshot without promoting it to live.
+const colourMonsterCurrent = allData.find((item) => Number(item.id) === 1301);
+if (colourMonsterCurrent) {
+  Object.assign(colourMonsterCurrent, {
+    section: "2026-08-12 Round 16 original-detail audit",
+    source: "The Colour Monster / current LinkedIn employer detail",
+    opportunity: "Diseñador/a gráfico/a de marca y sistemas visuales",
+    fit: "Exact Barcelona identity-system role covering brand manuals, guidelines, templates, grids, typography, packaging, licensing, editorial, digital and exhibitions",
+    location: "Barcelona city; onsite; full-time; Spain work authorisation required and no visa support",
+    status: "Current LinkedIn employer detail 4446592473 was opened again on 2026-08-12. The complete role text is readable and the current page no longer contains the prior 'Ya no se aceptan solicitudes' marker. It provides a direct-message route to the publisher and asks for a CV plus portfolio, but the public page does not expose a separate application form, so the role remains verify-first.",
+    contact: "Current original detail and publisher-message route: https://es.linkedin.com/jobs/view/dise%C3%B1ador-a-gr%C3%A1fico-a-de-marca-y-sistemas-visuales-at-the-colour-monster-4446592473",
+    analysis: "The work itself is one of the closest VI matches in the library, but native or bilingual Catalan and Spanish, professional English, at least three years of identity-system experience and existing Spain work authorisation are explicit hard gates. Confirm that applications are still being accepted before tailoring a portfolio.",
+    links: ["https://es.linkedin.com/jobs/view/dise%C3%B1ador-a-gr%C3%A1fico-a-de-marca-y-sistemas-visuales-at-the-colour-monster-4446592473"],
+  });
+}
+
+Object.assign(CURATED, {
+  930851: {
+    direction: "brand",
+    company: "Luppa",
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona 市区 / 全职 / 每周 1 天居家",
+    titleZh: "高级平面与品牌视觉设计师",
+    titleEs: "Diseñador/a Gráfico/a Senior",
+    reason: "当前 LinkedIn 雇主原页完整可读且没有关闭提示。岗位直接负责 Luppa 视觉表达的演进与一致性，把品牌叙事转成可扩展的视觉系统，并覆盖社媒、官网、邮件、marketplace、B2B/B2C 和授权系列；要求 5 年以上、高水平英语、Adobe/Figma 与 AI 工作流。公开页只提供联系发布者及“发送 CV 和作品集”的说明，未暴露独立 ATS 或邮箱，因此先标待确认。",
+    next: "先通过原页联系发布者 Angie Besoain，确认仍收件及 CV/作品集的准确入口；再用英文提交品牌系统、数字触点统一、授权/零售、数据迭代和 motion 案例。确认薪资、合同、办公节奏、西语要求与工作许可。",
+    language: "高水平英语为明确要求；西班牙语或加泰语要求未公开",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上",
+    changeType: "round-16-new-verify",
+  },
+  930852: {
+    direction: "brand",
+    company: "Newlink Spain",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 永久全职 / 每周 3 天现场 + 2 天远程",
+    titleZh: "品牌传播与平面设计师",
+    titleEs: "Diseñador gráfico",
+    reason: "当前 LinkedIn 雇主原页显示 Solicitar，并完整公开永久合同和 3+2 hybrid。职责含品牌传播、identity adaptation、campaign、活动、海报与横幅、演示、newsletter、社媒、motion 和视频；要求 2–4 年、加泰语 C1、英语 B2 及社媒作品集。",
+    next: "只有加泰语 C1 真实满足时再投。作品集突出品牌识别延展、活动与多格式 campaign、PowerPoint 信息层级、社媒动静态和完稿；提交前确认薪资、西语日常比例、工作许可与试用期。",
+    language: "加泰语 C1 和英语 B2 为明确硬门槛；本地沟通环境",
+    languageKey: "spanish",
+    languageHard: true,
+    applicationMode: "spanish",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 2–4 年",
+    changeType: "round-16-new-live",
+  },
+  1301: {
+    ...CURATED[1301],
+    direction: "brand",
+    company: "The Colour Monster",
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 现场全职 / 当前投递入口待确认",
+    titleZh: "品牌识别与视觉系统设计师",
+    titleEs: "Diseñador/a gráfico/a de marca y sistemas visuales",
+    reason: "2026-08-12 再次打开当前招聘编号 4446592473：完整 JD 可读，且页面已不再出现此前的停止接收申请提示。工作内容高度匹配 VI，包括视觉识别、brand manual、guidelines、模板、网格、字体、包装、授权、编辑、数字和展览；但公开页只给发布者私信与 CV/portfolio 说明，没有独立申请表，故恢复为待确认而不是直接可投。",
+    next: "先私信发布者 Anna Llenas 确认仍接收申请和准确入口。只有加泰语/西语达到母语或双语、英语达到专业水平且已有西班牙工作许可时再投入定制作业；作品集必须有真实视觉系统和品牌手册。",
+    language: "加泰语与西语须母语或双语；英语须专业工作水平",
+    languageKey: "spanish",
+    languageHard: true,
+    applicationMode: "spanish",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 3 年以上 / 三语硬门槛",
+    changeType: "round-16-reactivated-verify",
   },
 });
 
