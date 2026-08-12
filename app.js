@@ -852,6 +852,26 @@ const allData = Array.isArray(window.JOB_OPPORTUNITIES) ? window.JOB_OPPORTUNITI
     freshnessAgeDays: null,
     links: ["https://es.linkedin.com/jobs/view/dise%C3%B1ador-gr%C3%A1fico-at-newlink-spain-4401651451"],
   },
+  {
+    id: 930853,
+    section: "2026-08-12 Round 17 original-detail audit",
+    source: "Estudi Gràfic El Prat / current JOIN employer detail",
+    opportunity: "Diseñador-preimpresor",
+    fit: "El Prat permanent full-time print-production route; digital and large-format printing, prepress, quality control and production supervision rather than brand identity",
+    location: "El Prat de Llobregat, Barcelona province; onsite; permanent; full-time",
+    status: "The current JOIN employer detail 15718560 was opened directly on 2026-08-12 and returned HTTP 200 with Aplicar ahora, an active application form, an indefinite contract and El Prat de Llobregat. The same page contradicts itself on compensation: the header metadata says EUR14,000-16,000/year while the benefits text says EUR21,000-26,000/year.",
+    contact: "Current original detail/application: https://join.com/companies/egp/15718560-disenador-preimpresor",
+    analysis: "Keep in the full reviewed library but outside the 158-role brand-visual main ranking. This is print-shop production and machinery/process supervision, not VI ownership. Consider it only as a local fallback after confirming the real salary, hours, Spanish/Catalan workflow, design-versus-production split and whether staff supervision is required.",
+    score: 42,
+    tier: "D",
+    locationTag: "Barcelona area",
+    typeTag: "Prepress / digital print / large-format production",
+    sourceGroup: "official",
+    postedAt: "2026-08-12",
+    freshnessTag: "week",
+    freshnessAgeDays: 0,
+    links: ["https://join.com/companies/egp/15718560-disenador-preimpresor"],
+  },
 ].forEach((record) => {
   if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
 });
@@ -6865,6 +6885,57 @@ Object.assign(CURATED, {
   },
 });
 
+// Round 17: current search indexes were checked against the actual employer
+// detail or ATS state. Preserve stale search results as history, and keep the
+// newly found print-production role outside the brand-visual main ledger.
+const round17Dm = allData.find((item) => Number(item.id) === 897);
+if (round17Dm) {
+  Object.assign(round17Dm, {
+    section: "2026-08-12 Round 17 original-detail audit",
+    status: "Closed/history: the original LinkedIn detail 4439785435 was opened again on 2026-08-12 and redirects to LinkedIn's expired-job search. A fresh-looking search snippet is not a current application route.",
+    analysis: "Keep the former Barcelona toy and children's-promotion packaging brief as history. Do not apply through the expired URL or count its September start date as current; restore only after D&M publishes a new named employer detail with a working application control.",
+  });
+}
+
+const round17Codeway = allData.find((item) => Number(item.id) === 871);
+if (round17Codeway) {
+  Object.assign(round17Codeway, {
+    section: "2026-08-12 Round 17 original-detail audit",
+    status: "Closed/history: the Codeway Brand Graphic Designer search result still exposes the old description, but the official Ashby posting API was queried on 2026-08-12 and no longer lists requisition bed207b4-0e8a-4bc2-a179-b3a6b9a89afe. The original LinkedIn detail also no longer accepts applications.",
+    analysis: "Retain the exact English-friendly Barcelona brand-role brief as a high-value history benchmark, but do not reactivate it from search cache. Reconsider only when Codeway publishes a new listed Ashby requisition and application URL.",
+  });
+}
+
+Object.assign(CURATED, {
+  897: {
+    ...CURATED[897],
+    statusKey: "closed",
+    changeType: "round-17-closed-recheck",
+  },
+  871: {
+    ...CURATED[871],
+    statusKey: "closed",
+    changeType: "round-17-official-api-closed",
+  },
+  930853: {
+    direction: "production",
+    company: "Estudi Gràfic El Prat",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "El Prat de Llobregat / onsite / permanent full-time",
+    titleZh: "印前与数码印刷生产设计",
+    titleEs: "Diseñador-preimpresor",
+    reason: "当前 JOIN 雇主详情有 Aplicar ahora、正式申请表、无限期全职合同和 El Prat 地点；职责以印前、数码/大幅面印刷、材料参数、质量控制和生产监督为主，不是品牌 VI。页面同时写出 EUR14,000–16,000 与 EUR21,000–26,000 两组冲突年薪。",
+    next: "仅作为本地制作线备选；先书面确认真实薪资、工时、工作语言、设计与机器/生产占比、是否需要带人，再决定是否投递。它不进入品牌视觉 158 条主排名。",
+    language: "未公开；本地印刷生产环境预计需要可工作的西语或加泰语，必须先确认",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    experienceKey: "mid",
+    experienceLabel: "要求既有印前或数码印刷生产经验",
+    changeType: "round-17-review-library-only",
+  },
+});
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
@@ -7908,7 +7979,7 @@ function applicationStatus(item) {
   // close, so explicit closure wording is the stronger evidence.
   const explicitClosureText = String(item.status || "");
   if (
-    /^closed\/history:/i.test(explicitClosureText) &&
+    /^closed\/(?:history|historical):/i.test(explicitClosureText) &&
     /no longer accept|no longer active|no longer available|ya no se aceptan|archived|expired|\bclosed\b|couldn['’]t find this job|this job doesn['’]t exist|this job was removed|page you are looking for doesn['’]t exist/i.test(
       explicitClosureText,
     )

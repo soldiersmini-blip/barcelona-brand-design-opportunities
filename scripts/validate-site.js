@@ -234,10 +234,11 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  [930851, 930852, 1301].every((id) =>
-    test.latestRoundItems.some((item) => Number(item.id) === id),
-  ),
-  "第十六轮新增与状态复核没有完整进入“本轮变化”",
+  /Round 17/i.test(test.latestRoundSection) &&
+    [897, 871, 930853].every((id) =>
+      test.latestRoundItems.some((item) => Number(item.id) === id),
+    ),
+  "第十七轮新增与关闭复核没有完整进入“本轮变化”",
 );
 check(!/id="excludeLowPay"[^>]*checked/.test(indexHtml), "默认主表仍会暗中排除低薪风险卡片，导致总数与可见卡片不一致");
 check(!appSource.includes("item.postingDate"), "页面仍引用不存在的 postingDate 字段");
@@ -598,7 +599,19 @@ check(test.applicationStatus(test.allData.find((item) => item.id === 841)).key =
 check(test.languageInfo(test.allData.find((item) => item.id === 893)).key === "light", "CrowdStrike 英语岗位被误判为高西语");
 check(test.locationBucket(test.allData.find((item) => item.id === 893)) === "remote", "CrowdStrike Spain remote 地点没有正确分级");
 check(test.toLinks(test.allData.find((item) => item.id === 893)).some((url) => /crowdstrike\.wd5\.myworkdayjobs\.com/i.test(url)), "CrowdStrike 官方申请入口缺失");
-check(test.applicationStatus(test.allData.find((item) => item.id === 897)).key === "live", "D&M 当前可投状态没有恢复");
+check(test.applicationStatus(test.allData.find((item) => item.id === 897)).key === "closed", "D&M 过期原始页被搜索缓存错误恢复");
+const r17CodewayBrand = test.allData.find((item) => item.id === 871);
+check(r17CodewayBrand && test.applicationStatus(r17CodewayBrand).key === "closed" && r17CodewayBrand.tier === "X", "Codeway 官方 Ashby 已移除岗位被搜索缓存错误恢复");
+const r17EstudiPrepress = test.allData.find((item) => item.id === 930853);
+check(
+  r17EstudiPrepress &&
+    test.applicationStatus(r17EstudiPrepress).key === "live" &&
+    test.locationBucket(r17EstudiPrepress) === "barcelona" &&
+    r17EstudiPrepress.tier === "D" &&
+    !test.MY_OPPORTUNITY_SET.has(930853) &&
+    test.toLinks(r17EstudiPrepress).some((url) => /join\.com\/companies\/egp\/15718560-disenador-preimpresor/i.test(url)),
+  "Estudi Gràfic El Prat 当前印前生产岗没有正确隔离到主排名之外",
+);
 check(test.applicationStatus(test.allData.find((item) => item.id === 898)).key === "closed", "Intracon / HP 已关闭原页仍被识别为可投");
 check(test.riskFlags(test.allData.find((item) => item.id === 901)).includes("spanish"), "DENZA 德语硬门槛没有进入本地语言阻力筛选");
 check(test.locationBucket(test.allData.find((item) => item.id === 901)) === "other", "DENZA Madrid 地点被误判为远程");

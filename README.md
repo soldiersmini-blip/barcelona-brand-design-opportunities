@@ -23,6 +23,7 @@
 
 ## 关键文件
 
+- `AUDIT-2026-08-12-ROUND17.md`：纠正 D&M 与 Codeway 搜索缓存状态，把新发现的 El Prat 印前生产岗隔离到主排名之外，并确认主表保持 158 条可信机会。
 - `AUDIT-2026-08-12-ROUND16.md`：新增 Luppa 与 Newlink、恢复 The Colour Monster 为待确认，并逐条记录本轮关闭/无新增结论后的 158 条现行总账。
 - `AUDIT-2026-08-12-ROUND15.md`：纠正 MANGO 与 BRUTALIA 地点、恢复 Grupo RV、新增 Andilana，并隔离非传统 AI 项目池后的 155 条历史总账。
 - `AUDIT-2026-08-12-ROUND14.md`：新增 Xapo、Kraken、Omnicom PowerPoint、Finary，恢复 DORTOKA，并关闭 Sanofi 与 Stanley 后的 151 条历史总账。
