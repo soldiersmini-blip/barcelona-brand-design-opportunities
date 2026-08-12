@@ -24,6 +24,7 @@
 ## 关键文件
 
 - `AUDIT-2026-08-12-ROUND28.md`：新增 Grupo Planeta、Ogilvy 与 Grupo Bimbo 三个 Barcelona 原始详情岗位，关闭 Jobgether 已返回 404 的匿名高级品牌岗；主表更新为 240 条、182 条 Barcelona 与 58 条远程。
+- `AUDIT-2026-08-12-ROUND29.md`：恢复重新开放的 papernest 英文品牌设计实习，新增 IEBS 官方平面实习，并把 Bravura Barcelona 保持为条款待确认；主表更新为 243 条、185 条 Barcelona 与 58 条远程。
 - `AUDIT-2026-08-12-ROUND27.md`：把此前遗留的 97 条候选逐条裁决为 49 条补回主表、12 条待复核和 36 条历史归档；拆分 Familia Torres / Hungry Minds 的重复 ID；主表为 237 条、179 条 Barcelona 与 58 条远程。
 - `AUDIT-2026-08-12-ROUND26.md`：补回当前 Barcelona 设计岗位、修正重复身份并清除地点、岗位方向和官方职位板状态冲突；主表阶段性达到 188 条。
 - `AUDIT-2026-08-12-ROUND24.md`：用雇主官方职位板 API 覆盖搜索缓存；关闭 SplitMetrics、Appspace 与 10x Team 的已移除 requisition，确认 LONBALI 已停止接收申请，保留 Adsmurai Barcelona 8109023 并隔离 Madrid 7993316，同时把 Canonical 官方 EMEA 品牌系统岗提升到高匹配区。主表为 167 条、122 条 Barcelona 与 45 条远程。

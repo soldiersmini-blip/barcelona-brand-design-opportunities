@@ -1209,6 +1209,53 @@ if (familiaTorresIdCollision) familiaTorresIdCollision.id = 930871;
       "https://www.grupobimbo.com/en/join-our-team",
     ],
   },
+  {
+    id: 930876,
+    section: "2026-08-12 Round 29 reopened official roles and Barcelona source-board audit",
+    source: "IEBS Business School / official Factorial ATS + current employer-origin LinkedIn detail",
+    opportunity: "Prácticas Diseño Gráfico",
+    fit: "Viladecans hybrid 20-hour internship; event graphics, social assets, video support and consistent brand adaptation",
+    location: "Viladecans, Barcelona province; hybrid with two remote days weekly; 20 hours per week; internship",
+    status: "Live/current: IEBS Business School's official Factorial careers board was opened on 2026-08-12 and explicitly lists Prácticas Diseño Gráfico in Viladecans, Diseño, Híbrido and Inscríbete ahora. The current employer-origin LinkedIn detail 4417493275 also shows Solicitar and a complete brief covering event graphics, carousels, posts, stories, multi-format social adaptation and brand-identity consistency.",
+    contact: "Official ATS detail/application: https://iebschool.factorialhr.com/job_posting/practicas-diseno-grafico-303264 ; official jobs board: https://iebschool.factorialhr.com/ ; employer-origin detail: https://es.linkedin.com/jobs/view/pr%C3%A1cticas-dise%C3%B1o-gr%C3%A1fico-at-iebs-business-school-4417493275",
+    analysis: "A real Barcelona-province entry route, but it is social-first production rather than core VI and the ability to sign an internship agreement is mandatory. The public brief is Spanish and does not publish compensation. Confirm pay, duration, exact office days, daily working language and conversion prospects before applying.",
+    score: 58,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Graphic-design internship / social assets / brand adaptation",
+    sourceGroup: "official",
+    postedAt: "2026-08-07",
+    freshnessTag: "week",
+    freshnessAgeDays: 5,
+    links: [
+      "https://iebschool.factorialhr.com/job_posting/practicas-diseno-grafico-303264",
+      "https://iebschool.factorialhr.com/",
+      "https://es.linkedin.com/jobs/view/pr%C3%A1cticas-dise%C3%B1o-gr%C3%A1fico-at-iebs-business-school-4417493275",
+    ],
+  },
+  {
+    id: 930877,
+    section: "2026-08-12 Round 29 reopened official roles and Barcelona source-board audit",
+    source: "Bravura Barcelona / official employer careers page",
+    opportunity: "Diseñador/a Gráfico/a",
+    fit: "Barcelona fashion brand; web, social, advertising campaigns and cross-channel visual consistency; remote possibility",
+    location: "Barcelona-branded employer; remote possibility and flexible schedule stated; exact office, contract and payroll location not published",
+    status: "Verify before applying: Bravura Barcelona's official employer careers page was opened on 2026-08-12 and directly lists a Diseñador/a Gráfico/a vacancy plus the portfolio email info@bravurabarcelona.com. It covers web, social media, advertising campaigns and brand consistency and states remote-work possibility, flexible hours and competitive pay, but exposes no publication date, employment type, salary range, legal entity or precise work location.",
+    contact: "Official employer vacancy/contact: https://bravurabarcelona.com/pages/trabaja-con-nosotros ; portfolio email: mailto:info@bravurabarcelona.com",
+    analysis: "Directionally relevant and actionable through an employer-owned route, but it must remain verify-first rather than being presented as a confirmed formal job. Ask for the company entity/CIF, contract type, salary range, working location, weekly hours, language, selection process and whether any design test is paid before sending tailored work.",
+    score: 56,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Fashion brand / digital graphic design / verify terms",
+    sourceGroup: "official",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: [
+      "https://bravurabarcelona.com/pages/trabaja-con-nosotros",
+      "mailto:info@bravurabarcelona.com",
+    ],
+  },
 ].forEach((record) => {
   if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
 });
@@ -2448,6 +2495,47 @@ function applyRound28SourceUpdates() {
 
 applyRound28SourceUpdates();
 
+const ROUND29_SECTION = "2026-08-12 Round 29 reopened official roles and Barcelona source-board audit";
+
+function applyRound29SourceUpdates() {
+  const reopenedPapernest = allData.find((item) => Number(item.id) === 407);
+  if (reopenedPapernest) {
+    Object.assign(reopenedPapernest, {
+      section: ROUND29_SECTION,
+      source: "papernest / current official Teamtailor ATS",
+      opportunity: "Graphic Designer Internship / Brand Design Intern",
+      fit: "Barcelona hybrid six-month internship; visual-identity redesign, guidelines, illustration, iconography and multi-channel brand assets",
+      location: "Barcelona city; hybrid with one remote day weekly; six-month internship beginning in October",
+      status: "Live/reopened: papernest's official Teamtailor detail 7535382 was reopened on 2026-08-12. It now shows Join us, Barcelona, Hybrid, Internship and a loading application form. This same requisition had explicitly shown filled/expired on 2026-08-09, so the history is preserved as a genuine closed-to-reopened state change rather than silently overwritten.",
+      contact: "Current official detail/application: https://careers.papernest.com/jobs/7535382-graphic-designer-internship-barcelona ; official jobs board: https://careers.papernest.com/jobs",
+      analysis: "One of the clearest English-friendly junior brand-design routes in Barcelona: the work includes visual-identity evolution, guideline/icon/illustration updates, presentations, brochures, social, print, acquisition, email and corporate assets. It requires current student status and a six-month internship; pay is EUR800/month and the hiring process includes a practical case. Confirm internship-agreement eligibility and test scope before applying.",
+      score: 72,
+      tier: "B",
+      locationTag: "Barcelona area",
+      typeTag: "Brand identity / guidelines / visual assets internship",
+      sourceGroup: "official",
+      postedAt: "",
+      freshnessTag: "week",
+      freshnessAgeDays: null,
+      links: [
+        "https://careers.papernest.com/jobs/7535382-graphic-designer-internship-barcelona",
+        "https://careers.papernest.com/jobs",
+      ],
+    });
+  }
+
+  for (const id of [407, 930876, 930877]) {
+    const item = allData.find((record) => Number(record.id) === id);
+    if (!item) continue;
+    item.section = ROUND29_SECTION;
+    item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+      .filter(Boolean)
+      .join(" ");
+  }
+}
+
+applyRound29SourceUpdates();
+
 for (const item of allData) {
   if (!item.searchText) {
     item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
@@ -2520,8 +2608,16 @@ const ROUND28_RANKED_INSERTIONS = new Map([
   [1024, [930874]],
   [930829, [930875]],
 ]);
-const MY_OPPORTUNITY_IDS = Object.freeze(
+const ROUND28_AUDITED_OPPORTUNITY_IDS = Object.freeze(
   ROUND27_AUDITED_OPPORTUNITY_IDS.flatMap((id) => [id, ...(ROUND28_RANKED_INSERTIONS.get(id) || [])]),
+);
+const ROUND29_RANKED_INSERTIONS = new Map([
+  [930870, [407]],
+  [930875, [930876]],
+  [930864, [930877]],
+]);
+const MY_OPPORTUNITY_IDS = Object.freeze(
+  ROUND28_AUDITED_OPPORTUNITY_IDS.flatMap((id) => [id, ...(ROUND29_RANKED_INSERTIONS.get(id) || [])]),
 );
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
 
@@ -9769,6 +9865,61 @@ Object.assign(CURATED, {
   },
 });
 
+Object.assign(CURATED, {
+  407: {
+    ...CURATED[407],
+    direction: "brand",
+    company: "papernest",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / 6 个月实习 / €800 月薪",
+    titleZh: "品牌设计实习生（视觉识别重塑与品牌指南）",
+    titleEs: "Graphic Designer Internship / Brand Design Intern",
+    reason: "官方 Teamtailor 同一 requisition 曾在 8 月 9 日明确关闭，但 8 月 12 日已经重新显示 Join us、Barcelona、Hybrid、Internship 和申请表。职责直接涉及视觉识别演进、品牌指南、插画、图标、模板及数字/印刷资产。",
+    next: "英语是明确工作语言；必须是设计相关在读学生并能完成 6 个月实习。先确认 convenio 条件和 practical case 是否限定范围，再用英文品牌系统与多渠道延展案例申请。",
+    languageKey: "english",
+    language: "流利英语为明确要求；未列西班牙语硬门槛",
+    applicationMode: "english",
+    experienceKey: "junior",
+    experienceLabel: "在读设计学生 / 6 个月实习",
+    changeType: "round-29-official-reopened",
+  },
+  930876: {
+    direction: "social",
+    company: "IEBS Business School",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Viladecans / hybrid / 每周 20 小时实习",
+    titleZh: "平面设计实习生（活动与社媒品牌适配）",
+    titleEs: "Prácticas Diseño Gráfico",
+    reason: "官方 Factorial 当前明确列出 Viladecans、Diseño、Híbrido 和 Inscríbete ahora；职责为活动创意、carousel/post/story、多平台适配及品牌识别一致性，另有基础视频加分。",
+    next: "必须能签学校实习协议，且公开说明为西语；薪资未公布。先确认补贴、期限、办公室天数、日常语言和转正可能，再决定是否投递。",
+    languageKey: "spanish",
+    language: "公开职位说明与本地团队流程为西班牙语",
+    applicationMode: "spanish",
+    experienceKey: "junior",
+    experienceLabel: "在读 / 必须可签 convenio / 20 小时每周",
+    changeType: "round-29-new-official-ats",
+  },
+  930877: {
+    direction: "brand",
+    company: "Bravura Barcelona",
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona 品牌 / 可远程 / 合同与地点待确认",
+    titleZh: "平面设计师（时尚品牌数字视觉）",
+    titleEs: "Diseñador/a Gráfico/a",
+    reason: "雇主官网直接列出岗位和作品集邮箱，职责包含 web、社媒、广告 campaign 与品牌一致性；但没有发布日期、合同类型、法律雇主、薪资区间或精确办公地点，因此不能当作完全确认的正式职位。",
+    next: "先邮件询问公司实体/CIF、合同、薪资、工时、工作地点、语言和测试是否付费；得到书面答复后再升级状态并发送定制作品集。",
+    languageKey: "unknown",
+    language: "官网西语说明；实际团队语言未公开",
+    applicationMode: "spanish",
+    experienceKey: "open",
+    experienceLabel: "经验年限未量化 / 条件待确认",
+    changeType: "round-29-new-official-verify",
+  },
+});
+
 // Reapply the latest source verdicts after every historical refresh block so
 // a stale generated record cannot turn an excluded role back into live.
 applyRound21SourceUpdates();
@@ -9779,6 +9930,7 @@ applyRound25SourceUpdates();
 applyRound26SourceUpdates();
 applyRound27SourceUpdates();
 applyRound28SourceUpdates();
+applyRound29SourceUpdates();
 
 const els = {
   totalCount: document.querySelector("#totalCount"),

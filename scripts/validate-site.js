@@ -235,11 +235,11 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 28/i.test(test.latestRoundSection) &&
-    [930873, 930874, 930875, 955].every((id) =>
+  /Round 29/i.test(test.latestRoundSection) &&
+    [407, 930876, 930877].every((id) =>
       test.latestRoundItems.some((item) => Number(item.id) === id),
     ),
-  "Round 28 的新增和关闭裁决没有完整进入‘本轮变化’",
+  "Round 29 的重开、新增和待确认裁决没有完整进入‘本轮变化’",
 );
 check(!/id="excludeLowPay"[^>]*checked/.test(indexHtml), "默认主表仍会暗中排除低薪风险卡片，导致总数与可见卡片不一致");
 check(!appSource.includes("item.postingDate"), "页面仍引用不存在的 postingDate 字段");
@@ -521,7 +521,7 @@ check(test.allData.find((item) => item.id === 402).tier === "X", "Scopely 已回
 check(test.allData.find((item) => item.id === 603).tier === "X", "Plutus 已失效的 Personio 路线仍被列为开放岗位");
 check(test.allData.find((item) => item.id === 352).tier === "C" && test.allData.find((item) => item.id === 352).score === 88, "Blank Studio 当前 3D 岗位没有按实际方向降级");
 check(test.allData.find((item) => item.id === 1348).tier === "X", "Revolut Social Media 的官方 404 岗位仍被列为开放机会");
-check(test.allData.find((item) => item.id === 407).tier === "X", "papernest 明确失效的官方实习仍被列为开放机会");
+check(test.applicationStatus(test.allData.find((item) => item.id === 407)).key === "live" && test.allData.find((item) => item.id === 407).tier === "B", "papernest 官方重开实习没有恢复为当前机会");
 check(test.allData.find((item) => item.id === 108).tier === "X", "INFiLED 已停止申请的旧 requisition 仍被列为开放机会");
 check(test.toLinks(test.allData.find((item) => item.id === 866)).some((url) => /devicenow\.com\/career\/job-19847/i.test(url)), "devicenow 当前官方申请详情没有写回");
 check(test.allData.find((item) => item.id === 1383).tier === "X", "Tea Lab 已不在 Casa Asia 当前列表却仍显示为开放岗位");
@@ -1078,11 +1078,11 @@ check(r22Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Roun
 const r23ById = (id) => test.allData.find((item) => Number(item.id) === id);
 const r23Main = test.MY_OPPORTUNITY_IDS.map(r23ById).filter(Boolean);
 const r23VisibleMain = test.dedupedData.filter((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id)));
-check(test.MY_OPPORTUNITY_IDS.length === 240 && new Set(test.MY_OPPORTUNITY_IDS).size === 240, "Round 28: audited ID ledger must contain exactly 240 unique opportunities");
-check(r23Main.length === 240 && r23VisibleMain.length === 240, "Round 28: main ledger and visible deduplicated cards must both equal 240");
-check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 182 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 58, "Round 28: Barcelona/remote split must be exactly 182/58");
-check(r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 219 && r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 21, "Round 28: live/verify split must be exactly 219/21");
-check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 28: Chinese-relevant current opportunity count must remain evidence-backed at 6");
+check(test.MY_OPPORTUNITY_IDS.length === 243 && new Set(test.MY_OPPORTUNITY_IDS).size === 243, "Round 29: audited ID ledger must contain exactly 243 unique opportunities");
+check(r23Main.length === 243 && r23VisibleMain.length === 243, "Round 29: main ledger and visible deduplicated cards must both equal 243");
+check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 185 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 58, "Round 29: Barcelona/remote split must be exactly 185/58");
+check(r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 221 && r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 22, "Round 29: live/verify split must be exactly 221/22");
+check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 29: Chinese-relevant current opportunity count must remain evidence-backed at 6");
 
 for (const id of [930873, 930874, 930875]) {
   const item = r23ById(id);
@@ -1095,6 +1095,15 @@ check(!test.MY_OPPORTUNITY_SET.has(955) && test.applicationStatus(r23ById(955)).
 check(test.MY_OPPORTUNITY_IDS.indexOf(930871) < test.MY_OPPORTUNITY_IDS.indexOf(930873) && test.MY_OPPORTUNITY_IDS.indexOf(930873) < test.MY_OPPORTUNITY_IDS.indexOf(930868), "Round 28: Grupo Planeta rank is incoherent");
 check(test.MY_OPPORTUNITY_IDS.indexOf(1024) < test.MY_OPPORTUNITY_IDS.indexOf(930874) && test.MY_OPPORTUNITY_IDS.indexOf(930874) < test.MY_OPPORTUNITY_IDS.indexOf(990), "Round 28: Ogilvy Liquid Designer rank is incoherent");
 check(test.MY_OPPORTUNITY_IDS.indexOf(930829) < test.MY_OPPORTUNITY_IDS.indexOf(930875) && test.MY_OPPORTUNITY_IDS.indexOf(930875) < test.MY_OPPORTUNITY_IDS.indexOf(382), "Round 28: Grupo Bimbo internship rank is incoherent");
+for (const id of [407, 930876, 930877]) {
+  const item = r23ById(id);
+  check(item && test.MY_OPPORTUNITY_SET.has(id) && test.locationBucket(item) === "barcelona" && test.toLinks(item).length > 0, `Round 29: Barcelona opportunity ${id} is missing, outside scope or lacks an evidence route`);
+}
+check(test.applicationStatus(r23ById(407)).key === "live" && test.toLinks(r23ById(407)).some((url) => /careers\.papernest\.com\/jobs\/7535382/i.test(url)), "Round 29: papernest reopened official route is missing or not live");
+check(test.applicationStatus(r23ById(930876)).key === "live" && test.toLinks(r23ById(930876)).some((url) => /iebschool\.factorialhr\.com\/job_posting\/practicas-diseno-grafico-303264/i.test(url)), "Round 29: IEBS current official Factorial route is missing");
+check(test.applicationStatus(r23ById(930877)).key === "verify" && test.toLinks(r23ById(930877)).some((url) => /bravurabarcelona\.com\/pages\/trabaja-con-nosotros/i.test(url)), "Round 29: Bravura verify-first employer route is missing or over-promoted");
+check(test.MY_OPPORTUNITY_IDS.indexOf(930870) < test.MY_OPPORTUNITY_IDS.indexOf(407) && test.MY_OPPORTUNITY_IDS.indexOf(407) < test.MY_OPPORTUNITY_IDS.indexOf(352), "Round 29: papernest English brand internship rank is incoherent");
+check(test.MY_OPPORTUNITY_IDS.indexOf(930875) < test.MY_OPPORTUNITY_IDS.indexOf(930876) && test.MY_OPPORTUNITY_IDS.indexOf(930876) < test.MY_OPPORTUNITY_IDS.indexOf(382), "Round 29: IEBS internship rank is incoherent");
 
 const r27Promoted = [382, 1287, 142, 454, 996, 1021, 1243, 1026, 1257, 1310, 930871, 214, 649, 979, 1024, 1002, 537];
 check(r27Promoted.every((id) => test.MY_OPPORTUNITY_SET.has(id) && test.toLinks(r23ById(id)).length > 0), "Round 27: a recovered relevant opportunity is missing from the ranked board or lost its source route");
