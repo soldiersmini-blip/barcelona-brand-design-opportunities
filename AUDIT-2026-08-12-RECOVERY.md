@@ -1,13 +1,13 @@
-# 2026-08-12 研究库追回与状态纠错（138 条现行主表）
+# 2026-08-12 研究库追回与状态纠错（145 条现行主表）
 
 本轮继续执行“逐条打开原始招聘详情或官方 ATS”的规则，不以搜索摘要、列表页存在或 HTTP 200 代替职位有效性判断。
 
 ## 现行主表
 
-- 138 个独立机会，严格按统一匹配分 100–1 从高到低排列；138 个分数全部唯一。
-- 103 个 Barcelona / 周边，35 个 Spain / Europe / worldwide remote。
-- 119 个原始页显示可申请，19 个需先确认申请控制、地点或合同资格。
-- 70 个品牌 / VI / Art Direction，41 个 Digital，7 个 Motion，7 个 Social，4 个 E-commerce，9 个 Production。
+- 145 个独立机会，严格按统一匹配分 100–1 从高到低排列；145 个分数全部唯一。
+- 110 个 Barcelona / 周边，35 个 Spain / Europe / worldwide remote。
+- 126 个原始页显示可申请，19 个需先确认申请控制、地点或合同资格。
+- 73 个品牌 / VI / Art Direction，41 个 Digital，8 个 Motion，8 个 Social，4 个 E-commerce，11 个 Production。
 - 4 个中文、华人圈、中国公司或中文远程相关机会。
 
 ## 第九批逐条核验新增与修正
@@ -23,6 +23,21 @@
 | Establishment Labs — Junior Project Coordinator & Graphic Designer | Barcelona hybrid | 当前详情仍可申请；70% 项目协调、30% 设计，必须可签正式实习协议，因此保留在低位并明确门槛。 |
 
 同时补全 Skyscanner 官方 requisition 8121646 的完整品牌工作室 JD，以及 PepsiCo 官方 requisition 464555 的品牌识别、包装与产品架构职责；两张旧卡不再标注为“完整 JD 待确认”。
+
+## 第十批逐条核验新增与修正
+
+| 公司 / 岗位 | 地点 | 原始证据与处理 |
+|---|---|---|
+| Kilograph — Senior Graphic Designer / Art Director | Barcelona onsite | 新 LinkedIn 招聘编号 4437390159 与 careers@kilograph.com 直投邮箱均有效；3–5+ 年、流利英语，品牌系统与视觉叙事高度匹配。 |
+| Dragons Group — Mid Graphic Designer | Barcelona hybrid | 官方 Factorial 301879 显示 Apply now、永久全职；高端护肤/生活方式品牌延展，4–8+ 年，西语和英语均为硬门槛。 |
+| Dragons Group — Video Editor & Motion Creative | Barcelona hybrid | 官方 Factorial 308034 显示 Apply now、永久全职；品牌视频为主、Motion 为辅，3–5 年并明确要求英语。 |
+| Carati Studio — Freelance Graphic / Print Designer | Barcelona / partly remote | 当前 LinkedIn 4449873353 与 nita@caratistudio.com 直投邮箱有效；时尚印花与生产文件方向，必须常住 Barcelona。 |
+| Zurich Insurance — Creative Specialist | Barcelona | 官方 Zurich requisition 136070 显示 Apply now；高英语、平台原生社媒与短视频，列为品牌内容次级路线。 |
+| VOK DAMS — Senior Graphic Designer | Barcelona | 当前 LinkedIn 4440968410 公开完整 JD；活动视觉识别、环境品牌、标识与导视相关，但 5+ 年和西英双语为硬门槛。 |
+| Raventós Codorníu — Graphic Packaging Design Trainee | Sant Sadurní d'Anoia | 当前 LinkedIn 4440107992 可申请；包装、新品牌、完稿和印前匹配，但属于省内通勤、西语工作环境和实习路线。 |
+| Circle.so — Senior Brand Designer | Worldwide remote | 已有主卡 928 今日再次核验：官方 Greenhouse 5368490008 仍有完整申请表；5+ 年、英语 C2，需确认 Spain 合同资格，不重复计数。 |
+
+本批同时逐行复核 Casa Asia 2026 年最新列表：7 月 31 日至 7 月 27 日新增为礼仪、导览、助理、教师等岗位，没有新的品牌视觉或平面设计职位。HKU Europe 仍是当前最相关中文/亚洲机构路线；不会用无关岗位增加中文机会数量。
 
 ## 从研究库追回的 13 个有效机会
 

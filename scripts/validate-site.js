@@ -90,7 +90,7 @@ check(
 );
 test.state.preset = "mine";
 const auditedMain = test.dedupedData.filter((item) => test.matchesPreset(item));
-check(auditedMain.length === 138, "逐条核验后的默认机会总表数量不是 138");
+check(auditedMain.length === 145, "逐条核验后的默认机会总表数量不是 145");
 check(auditedMain.every((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id))), "默认机会总表混入未审核记录");
 check(auditedMain.every((item) => test.applicationStatus(item).key !== "closed"), "默认机会总表混入已关闭记录");
 check(auditedMain.every((item) => Boolean(test.CURATED[item.id])), "默认机会总表仍有未完成中文整理的卡片");
@@ -102,7 +102,7 @@ const auditedScores = auditedMain.map(test.displayedScore);
 check(
   auditedScores[0] === 100 &&
     auditedScores.at(-1) === 1 &&
-    new Set(auditedScores).size === 138 &&
+    new Set(auditedScores).size === 145 &&
     auditedScores.every((score, index) => index === 0 || auditedScores[index - 1] > score),
   "默认机会总表的 100–1 唯一严格降序评分序列不完整",
 );
@@ -117,6 +117,7 @@ check([668, 5106, 134, 2942, 930720, 183, 239, 977, 1255, 1241, 876, 920].every(
 check([447, 207, 444, 304, 89, 855, 874, 1227, 396, 172, 86, 1294].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第七批研究库追回的十二条真实机会未完整进入主表");
 check([930816, 1278, 930818, 930819, 93, 1296, 930817, 903, 1293, 37, 279].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第八批逐条核验的十一条真实机会未完整进入主表");
 check([930820, 930821, 930822, 930823, 178, 228, 930717].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第九批逐条核验的七条真实机会未完整进入主表");
+check([1245, 930824, 930825, 930826, 930827, 930828, 930829].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十批逐条核验的七条真实机会未完整进入主表");
 check([120, 1079, 1217].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 Rocket Digital 或 Fhios 记录仍被标为可投");
 check([153, 220, 322, 894].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 UNIQLO、Desigual 或 Ogilvy 记录仍被标为可投");
 check([359, 101].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 SD Worx 或重复 TWOJEYS 记录仍被标为可投");
@@ -891,7 +892,7 @@ for (const id of [479, 1055]) {
   check(duplicateSlaps && test.applicationStatus(duplicateSlaps).key === "closed" && duplicateSlaps.tier === "X", `Round 709: SLAPS duplicate history row ${id} remained active`);
 }
 const r710Kilograph = test.allData.find((item) => item.id === 1245);
-check(r710Kilograph && test.locationBucket(r710Kilograph) === "barcelona" && test.applicationStatus(r710Kilograph).key === "closed", "Round 710/714/2026-08-12: Kilograph expired original detail remained active");
+check(r710Kilograph && test.locationBucket(r710Kilograph) === "barcelona" && test.applicationStatus(r710Kilograph).key === "live" && test.toLinks(r710Kilograph).some((url) => /4437390159/i.test(url)), "Round 715/2026-08-12: Kilograph new current employer detail was not reactivated");
 const r710VmlSenior = test.allData.find((item) => item.id === 981);
 check(r710VmlSenior && r710VmlSenior.score === 102 && test.locationBucket(r710VmlSenior) === "barcelona" && test.applicationStatus(r710VmlSenior).key === "live", "Round 710: VML Senior Art Director recalibration regressed");
 const r711KingNewGames = test.allData.find((item) => item.id === 224);
