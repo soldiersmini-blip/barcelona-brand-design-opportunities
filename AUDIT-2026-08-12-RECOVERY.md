@@ -1,14 +1,28 @@
-# 2026-08-12 研究库追回与状态纠错（131 条现行主表）
+# 2026-08-12 研究库追回与状态纠错（138 条现行主表）
 
 本轮继续执行“逐条打开原始招聘详情或官方 ATS”的规则，不以搜索摘要、列表页存在或 HTTP 200 代替职位有效性判断。
 
 ## 现行主表
 
-- 131 个独立机会，严格按统一匹配分 100–1 从高到低排列；131 个分数全部唯一。
-- 98 个 Barcelona / 周边，33 个 Spain / Europe / worldwide remote。
-- 112 个原始页显示可申请，19 个需先确认申请控制、地点或合同资格。
-- 68 个品牌 / VI / Art Direction，38 个 Digital，6 个 Motion，7 个 Social，4 个 E-commerce，8 个 Production。
+- 138 个独立机会，严格按统一匹配分 100–1 从高到低排列；138 个分数全部唯一。
+- 103 个 Barcelona / 周边，35 个 Spain / Europe / worldwide remote。
+- 119 个原始页显示可申请，19 个需先确认申请控制、地点或合同资格。
+- 70 个品牌 / VI / Art Direction，41 个 Digital，7 个 Motion，7 个 Social，4 个 E-commerce，9 个 Production。
 - 4 个中文、华人圈、中国公司或中文远程相关机会。
+
+## 第九批逐条核验新增与修正
+
+| 公司 / 岗位 | 地点 | 原始证据与处理 |
+|---|---|---|
+| Dragons Group — Junior Art Director | Barcelona hybrid | 官方 Factorial 317709 显示 Apply now、永久全职；1–3 年、流利英语，社媒优先并支持整合 Campaign。 |
+| Factorial — Marketing Paid Motion Designer, Global Markets | Barcelona | 官方 Factorial 316734 显示 Apply now、永久全职、€30–35k；这是新编号，不与已关闭的 Spanish Market 旧岗混淆。 |
+| Siemens Digital Industries Software — UI / Visual Designer | Barcelona hybrid | 官方职位 516087 可申请；高级英语、2D/3D 图标与 UI 视觉系统，Spain 薪资 €42.1–67.1k。 |
+| Eurostars / Hospitaliti — Técnico/a Junior de Señalética y Producción Gráfica | Barcelona onsite | 当前雇主详情公开完整 JD 与外部入口；空间标识、企业形象标准与完稿相关，但需先核验聚合申请端点。 |
+| Bending Spoons — Graduate Media Designer | Europe remote candidate | 官方职位列表与申请表开放；不是 Barcelona 本地岗，Spain 远程资格和前数月 Milan 到岗安排必须先确认。 |
+| Bending Spoons — Media Designer | Europe remote candidate | 官方职位与申请表开放；覆盖品牌资产、社媒、产品视觉和 AI，按远程候选而不是 Madrid 本地卡片展示。 |
+| Establishment Labs — Junior Project Coordinator & Graphic Designer | Barcelona hybrid | 当前详情仍可申请；70% 项目协调、30% 设计，必须可签正式实习协议，因此保留在低位并明确门槛。 |
+
+同时补全 Skyscanner 官方 requisition 8121646 的完整品牌工作室 JD，以及 PepsiCo 官方 requisition 464555 的品牌识别、包装与产品架构职责；两张旧卡不再标注为“完整 JD 待确认”。
 
 ## 从研究库追回的 13 个有效机会
 

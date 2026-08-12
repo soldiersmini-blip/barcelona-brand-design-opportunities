@@ -90,7 +90,7 @@ check(
 );
 test.state.preset = "mine";
 const auditedMain = test.dedupedData.filter((item) => test.matchesPreset(item));
-check(auditedMain.length === 131, "逐条核验后的默认机会总表数量不是 131");
+check(auditedMain.length === 138, "逐条核验后的默认机会总表数量不是 138");
 check(auditedMain.every((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id))), "默认机会总表混入未审核记录");
 check(auditedMain.every((item) => test.applicationStatus(item).key !== "closed"), "默认机会总表混入已关闭记录");
 check(auditedMain.every((item) => Boolean(test.CURATED[item.id])), "默认机会总表仍有未完成中文整理的卡片");
@@ -102,7 +102,7 @@ const auditedScores = auditedMain.map(test.displayedScore);
 check(
   auditedScores[0] === 100 &&
     auditedScores.at(-1) === 1 &&
-    new Set(auditedScores).size === 131 &&
+    new Set(auditedScores).size === 138 &&
     auditedScores.every((score, index) => index === 0 || auditedScores[index - 1] > score),
   "默认机会总表的 100–1 唯一严格降序评分序列不完整",
 );
@@ -116,6 +116,7 @@ check([314, 78, 458, 258, 921, 117, 210, 308, 1097, 870, 841, 875, 985, 989].eve
 check([668, 5106, 134, 2942, 930720, 183, 239, 977, 1255, 1241, 876, 920].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第六批研究库追回的十二条真实机会未完整进入主表");
 check([447, 207, 444, 304, 89, 855, 874, 1227, 396, 172, 86, 1294].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第七批研究库追回的十二条真实机会未完整进入主表");
 check([930816, 1278, 930818, 930819, 93, 1296, 930817, 903, 1293, 37, 279].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第八批逐条核验的十一条真实机会未完整进入主表");
+check([930820, 930821, 930822, 930823, 178, 228, 930717].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第九批逐条核验的七条真实机会未完整进入主表");
 check([120, 1079, 1217].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 Rocket Digital 或 Fhios 记录仍被标为可投");
 check([153, 220, 322, 894].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 UNIQLO、Desigual 或 Ogilvy 记录仍被标为可投");
 check([359, 101].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 SD Worx 或重复 TWOJEYS 记录仍被标为可投");
@@ -129,6 +130,10 @@ check(!auditedMain.some((item) => [173, 611, 438, 185, 902, 842, 129, 82].includ
 check(test.toLinks(test.allData.find((item) => Number(item.id) === 930815)).some((url) => /sidn\.factorialhr\.com\/job_posting\/graphic-designer-285667/i.test(url)), "SIDN 官方投递入口缺失");
 check(!test.MY_OPPORTUNITY_SET.has(1044) && !test.MY_OPPORTUNITY_SET.has(1083), "乌拉圭 ++hellohello 岗位被误列为 Spain / Europe remote 主表机会");
 check(!test.MY_OPPORTUNITY_SET.has(1116), "已关闭的 Factorial Paid Motion Designer 被搜索缓存误放回主表");
+check(test.MY_OPPORTUNITY_SET.has(930823) && test.applicationStatus(test.allData.find((item) => Number(item.id) === 930823)).key === "live", "Factorial 新 Global Markets 招聘编号没有与关闭的 Spanish Market 旧岗分开");
+check([178, 228].every((id) => test.locationBucket(test.allData.find((item) => Number(item.id) === id)) === "remote"), "Bending Spoons 远程机会仍被错误标成 Madrid 本地岗位");
+check(test.toLinks(test.allData.find((item) => Number(item.id) === 930812)).some((url) => /skyscanner\.net\/jobs\/job\/8121646/i.test(url)), "Skyscanner 官方招聘入口没有写入当前卡片");
+check(test.toLinks(test.allData.find((item) => Number(item.id) === 920001)).some((url) => /pepsicojobs\.com\/jobs\/464555/i.test(url)), "PepsiCo 官方招聘入口没有写入当前卡片");
 check(test.dedupedData.length > 0 && test.dedupedData.length < test.allData.length, "去重逻辑没有生效");
 const recentChinese = test.dedupedData.filter(
   (item) =>

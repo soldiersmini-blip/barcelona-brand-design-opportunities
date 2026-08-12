@@ -60,12 +60,15 @@ const core = api.dedupedData
     (item) =>
       (!requestedIds || requestedIds.has(Number(item.id))) &&
       (!searchNeedle || String(item.searchText || "").toLowerCase().includes(searchNeedle)) &&
-      (requestedAll || (mode === "stable" ? ["A", "B"] : ["A", "B", "C"]).includes(item.tier)) &&
+      (requestedAll || mode === "mine" || (mode === "stable" ? ["A", "B"] : ["A", "B", "C"]).includes(item.tier)) &&
       (requestedAll || ["barcelona", "remote"].includes(api.locationBucket(item))) &&
       (requestedAll || api.applicationStatus(item).key !== "closed") &&
-      (requestedAll || api.isTargetOpportunity(item)) &&
+      (requestedAll || mode === "mine" || api.isTargetOpportunity(item)) &&
       (requestedAll || !api.isResearchOnly(item)) &&
-      (requestedAll || !api.hasLowPayRisk(item)) &&
+      // `mine` is the hand-audited ledger itself. Do not silently hide a
+      // reviewed internship or low-pay-risk card from the audit output; the
+      // risk remains visible on the card and in the score/order.
+      (requestedAll || mode === "mine" || !api.hasLowPayRisk(item)) &&
       (requestedAll || api.toLinks(item).length > 0) &&
       (!presetByMode[mode] || api.matchesPreset(item)),
   )
