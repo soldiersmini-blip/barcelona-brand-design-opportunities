@@ -1,32 +1,32 @@
-# 2026-08-12 研究库追回与状态纠错（74 条现行主表）
+# 2026-08-12 研究库追回与状态纠错（73 条现行主表）
 
 本轮继续执行“逐条打开原始招聘详情或官方 ATS”的规则，不以搜索摘要、列表页存在或 HTTP 200 代替职位有效性判断。
 
 ## 现行主表
 
-- 74 个独立机会，严格按统一匹配分 97–24 从高到低排列。
-- 52 个 Barcelona / 周边，22 个 Spain / Europe / worldwide remote。
-- 67 个原始页显示可申请，7 个需先确认申请控制、地点或合同资格。
-- 47 个品牌 / VI / Art Direction，16 个 Digital，4 个 Motion，3 个 Social，2 个 E-commerce，2 个 Production。
+- 73 个独立机会，严格按统一匹配分 97–25 从高到低排列。
+- 52 个 Barcelona / 周边，21 个 Spain / Europe / worldwide remote。
+- 66 个原始页显示可申请，7 个需先确认申请控制、地点或合同资格。
+- 46 个品牌 / VI / Art Direction，16 个 Digital，4 个 Motion，3 个 Social，2 个 E-commerce，2 个 Production。
 - 3 个中文、华人圈或中国公司相关机会。
 
 ## 从研究库追回的 13 个有效机会
 
 | 分数 | 公司 / 岗位 | 地点 | 当前证据与主要门槛 |
 |---:|---|---|---|
-| 90 | Bakken & Bæck — Senior Brand Designer | Barcelona | 官方职位与 Teamtailor 表单开放；5+ 年、需到办公室；支持搬迁与签证协助。 |
-| 86 | Lodgify — Creative Designer | Europe remote | Lever 开放；3+ 年、英语、自由职业合同；需确认 Spain 签约与费率。 |
-| 85 | AtomiQ Tech — Lead Visual Designer | Spain remote | 官方申请表开放，€50–60k；Lead、3D/动效/沉浸式系统门槛。 |
-| 82 | SIERRA Production House — Art Director | Barcelona hybrid | 官方明确只有 1 个开放岗位；40h、每周 3 天办公室、邮件投递。 |
-| 75 | SALVI Lighting — Graphic Designer | Barcelona onsite | InfoJobs 可报名，永久全职，€27k+；5+ 年，西语环境。 |
-| 67 | Lodgify — Motion Designer | EMEA remote | Lever 开放；品牌动效与模板系统，自由职业合同。 |
-| 61 | JustMarkets — Head of Design | Europe remote | Greenhouse 表单开放；5+ 年跨学科领导与品牌/产品系统门槛。 |
-| 56 | Bakken & Bæck — Freelance Senior Art Director | Barcelona / 可先远程 | 官方开放；数月、50–100% 容量、可能转长期，5+ 年。 |
-| 46 | MANGO — Shop Window Creative Designer | Barcelona 省 | 当前雇主详情仍可申请；零售空间/3D、5+ 年、高西语与英语。 |
-| 41 | Rocket Digital — Art Director Paid Media | Barcelona hybrid | Factorial 明确 Apply now、永久全职；西语效果广告与 Key Visual 岗。 |
-| 37 | VML — Art Director | Barcelona | 官方 requisition 17276 可申请；5–6+ 年、中高英语与加泰语。 |
-| 36 | Avidalia — Digital Content Designer | Barcelona / 20h | Indeed 当前可申请；€10.5–13k、兼职、西语、品牌数字延展与基础动效。 |
-| 34 | King — Art Director, New Games | Barcelona 可选地点 | 官方 Workday R027791；游戏艺术指导、已上线游戏与团队领导门槛。 |
+| 89 | Bakken & Bæck — Senior Brand Designer | Barcelona | 官方职位与 Teamtailor 表单开放；5+ 年、需到办公室；支持搬迁与签证协助。 |
+| 85 | Lodgify — Creative Designer | Europe remote | Lever 开放；3+ 年、英语、自由职业合同；需确认 Spain 签约与费率。 |
+| 83 | AtomiQ Tech — Lead Visual Designer | Spain remote | 官方申请表开放，€50–60k；Lead、3D/动效/沉浸式系统门槛。 |
+| 80 | SIERRA Production House — Art Director | Barcelona hybrid | 官方明确只有 1 个开放岗位；40h、每周 3 天办公室、邮件投递。 |
+| 74 | SALVI Lighting — Graphic Designer | Barcelona onsite | InfoJobs 可报名，永久全职，€27k+；5+ 年，西语环境。 |
+| 64 | Lodgify — Motion Designer | EMEA remote | Lever 开放；品牌动效与模板系统，自由职业合同。 |
+| 58 | JustMarkets — Head of Design | Europe remote | Greenhouse 表单开放；5+ 年跨学科领导与品牌/产品系统门槛。 |
+| 52 | Bakken & Bæck — Freelance Senior Art Director | Barcelona / 可先远程 | 官方开放；数月、50–100% 容量、可能转长期，5+ 年。 |
+| 41 | MANGO — Shop Window Creative Designer | Barcelona 省 | 当前雇主详情仍可申请；零售空间/3D、5+ 年、高西语与英语。 |
+| 36 | Rocket Digital — Art Director Paid Media | Barcelona hybrid | Factorial 明确 Apply now、永久全职；西语效果广告与 Key Visual 岗。 |
+| 29 | VML — Art Director | Barcelona | 官方 requisition 17276 可申请；5–6+ 年、中高英语与加泰语。 |
+| 28 | Avidalia — Digital Content Designer | Barcelona / 20h | Indeed 当前可申请；€10.5–13k、兼职、西语、品牌数字延展与基础动效。 |
+| 26 | King — Art Director, New Games | Barcelona 可选地点 | 官方 Workday R027791；游戏艺术指导、已上线游戏与团队领导门槛。 |
 
 ## 第二批追回的 5 个有效机会
 
@@ -34,18 +34,18 @@
 |---:|---|---|---|
 | 90 | Savills Spain — Brand Designer | Barcelona hybrid | Teamtailor 当前有申请表；企业视觉、编辑、导视、广告与演示设计。 |
 | 84 | Hostinger — Senior Graphic Designer, Brand & Creative | Spain remote | Ashby 当前可申请；流利英语、品牌演进、多渠道 campaign 与 AI 工作流。 |
-| 65 | Canonical — Visual Designer, Brand and Design Systems | EMEA remote | Greenhouse 当前可申请；品牌指南、UI 系统、数字产品、教育与技术背景门槛。 |
-| 37 | VML — Senior Art Director | Barcelona | 官方 requisition 13798；5–6 年、高英语、360 campaign、平均每周约 4 天办公室。 |
-| 36 | Remedy Edge — Freelance Senior Graphic Designer | Barcelona | Greenhouse 当前可申请；Spain 自由职业、5+ 年、每周 3 天到岗、无需签证担保。 |
+| 66 | Canonical — Visual Designer, Brand and Design Systems | EMEA remote | Greenhouse 当前可申请；品牌指南、UI 系统、数字产品、教育与技术背景门槛。 |
+| 34 | VML — Senior Art Director | Barcelona | 官方 requisition 13798；5–6 年、高英语、360 campaign、平均每周约 4 天办公室。 |
+| 33 | Remedy Edge — Freelance Senior Graphic Designer | Barcelona | Greenhouse 当前可申请；Spain 自由职业、5+ 年、每周 3 天到岗、无需签证担保。 |
 
 ## 第三批追回的 4 个有效机会
 
 | 分数 | 公司 / 岗位 | 地点 | 当前证据与主要门槛 |
 |---:|---|---|---|
-| 64 | Dragons Group — Senior UX/UI and Web Designer | Barcelona hybrid | 官方可申请；5+ 年、英语、品牌识别到网站与数字系统的延展。 |
-| 56 | Playson — Marketing Designer | EU remote | Ashby 当前可申请；5+ 年、品牌书、campaign、landing、展会、motion 与 AI。 |
-| 41 | Glovo — Motion Designer | Barcelona | 官方可申请；3+ 年、英语，约 80% 为高产量 Performance 适配与优化。 |
-| 34 | Eximia Studio — Performance Creative Designer | Barcelona metro | 官方申请表开放；55% Ads、30% 数字内容、10% branding，西语环境。 |
+| 65 | Dragons Group — Senior UX/UI and Web Designer | Barcelona hybrid | 官方可申请；5+ 年、英语、品牌识别到网站与数字系统的延展。 |
+| 57 | Playson — Marketing Designer | EU remote | Ashby 当前可申请；5+ 年、品牌书、campaign、landing、展会、motion 与 AI。 |
+| 42 | Glovo — Motion Designer | Barcelona | 官方可申请；3+ 年、英语，约 80% 为高产量 Performance 适配与优化。 |
+| 35 | Eximia Studio — Performance Creative Designer | Barcelona metro | 官方申请表开放；55% Ads、30% 数字内容、10% branding，西语环境。 |
 
 ## 官方状态纠错
 
@@ -56,6 +56,8 @@
 - Ogilvy `Liquid Designer (Video Editor)`（记录 894 / 184）：原始详情明确显示不再接受申请，移入历史。
 - SD Worx `Senior Brand Designer`（记录 359）：官方 Teamtailor 明确显示职位不再活跃，移入历史。
 - TWOJEYS `Head of Brand`（记录 101）：与主记录 27 使用同一 Personio requisition，合并为一张卡。
+- Canonical `Visual Designer`（记录 930716）：与主记录 604 的 Greenhouse 5326986 是同一职位，只保留官方 ATS 卡。
+- BCome（55 / 993018）与 Avidalia（278 / 881）的同岗多来源记录已分别合并为一张卡。
 - Lodgify、Fail Fast、reboot、Trivelta 的重复或旧标题镜像已合并到各自主记录；历史行保留但不再膨胀主表和页面计数。
 
 ## 排序规则

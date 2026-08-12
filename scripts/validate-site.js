@@ -90,7 +90,7 @@ check(
 );
 test.state.preset = "mine";
 const auditedMain = test.dedupedData.filter((item) => test.matchesPreset(item));
-check(auditedMain.length === 74, "逐条核验后的默认机会总表数量不是 74");
+check(auditedMain.length === 73, "逐条核验后的默认机会总表数量不是 73");
 check(auditedMain.every((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id))), "默认机会总表混入未审核记录");
 check(auditedMain.every((item) => test.applicationStatus(item).key !== "closed"), "默认机会总表混入已关闭记录");
 check(auditedMain.every((item) => Boolean(test.CURATED[item.id])), "默认机会总表仍有未完成中文整理的卡片");
@@ -98,7 +98,7 @@ check(auditedMain.every((item) => test.toLinks(item).length > 0), "默认机会�
 check(auditedMain.every((item) => ["barcelona", "remote"].includes(test.locationBucket(item))), "默认机会总表混入 Madrid 或西班牙不可落地地点");
 test.sortRecords(auditedMain);
 check(auditedMain.every((item, index) => index === 0 || test.displayedScore(auditedMain[index - 1]) >= test.displayedScore(item)), "默认机会总表没有按我的匹配分降序排列");
-check(auditedMain.map(test.displayedScore).join(",") === Array.from({ length: 74 }, (_, index) => 97 - index).join(","), "默认机会总表的 97–24 严格降序评分序列不完整");
+check(auditedMain.map(test.displayedScore).join(",") === Array.from({ length: 73 }, (_, index) => 97 - index).join(","), "默认机会总表的 97–25 严格降序评分序列不完整");
 check(auditedMain.every((item) => !/鈥|帽|鏄|鍙|闇|椤|閫|绗/.test(`${test.companyLabel(item)} ${test.roleLabels(item).zh} ${test.locationLabel(item)}`)), "默认机会总表仍有可见乱码");
 check([446, 928, 483, 930815].every((id) => auditedMain.some((item) => Number(item.id) === id)), "本轮新增的四条真实机会未完整进入主表");
 check([296, 4, 1102, 601, 577, 1038, 1011, 1105, 1240, 351, 484, 278, 224].every((id) => auditedMain.some((item) => Number(item.id) === id)), "研究库追回的十三条真实机会未完整进入主表");
@@ -107,6 +107,7 @@ check([170, 445, 1108, 1081].every((id) => auditedMain.some((item) => Number(ite
 check([120, 1079, 1217].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 Rocket Digital 或 Fhios 记录仍被标为可投");
 check([153, 220, 322, 894].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 UNIQLO、Desigual 或 Ogilvy 记录仍被标为可投");
 check([359, 101].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 SD Worx 或重复 TWOJEYS 记录仍被标为可投");
+check([930716, 993018, 881].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "Canonical、BCome 或 Avidalia 重复来源仍被计为独立机会");
 check(!auditedMain.some((item) => [120, 1079, 1217].includes(Number(item.id))), "本轮官方已关闭记录泄漏进默认主表");
 check(test.toLinks(test.allData.find((item) => Number(item.id) === 930815)).some((url) => /sidn\.factorialhr\.com\/job_posting\/graphic-designer-285667/i.test(url)), "SIDN 官方投递入口缺失");
 check(!test.MY_OPPORTUNITY_SET.has(1044) && !test.MY_OPPORTUNITY_SET.has(1083), "乌拉圭 ++hellohello 岗位被误列为 Spain / Europe remote 主表机会");
@@ -353,8 +354,8 @@ check(test.isInternshipRole(test.allData.find((item) => item.id === 878)), "Hosc
 check(test.hasLowPayRisk(test.allData.find((item) => item.id === 879)), "Bisubi EUR10/小时低薪风险没有识别");
 check(!test.hasLowPayRisk(test.allData.find((item) => item.id === 855)), "Yellowcat EUR320 日薪被误判为低薪");
 check(test.riskFlags(test.allData.find((item) => item.id === 880)).includes("spanish"), "Axo 英西双语硬门槛没有标记");
-check(test.applicationStatus(test.allData.find((item) => item.id === 881)).key === "live", "Avidalia 官方申请状态没有保留");
-check(test.languageInfo(test.allData.find((item) => item.id === 881)).key === "unknown", "Avidalia 未说明语言被误判为低门槛");
+check(test.applicationStatus(test.allData.find((item) => item.id === 278)).key === "live", "Avidalia 当前主记录申请状态没有保留");
+check(test.applicationLanguagePath(test.allData.find((item) => item.id === 278)).key === "spanish", "Avidalia 西语工作环境没有进入当前主记录");
 check(test.locationBucket(test.allData.find((item) => item.id === 882)) === "remote", "Jobgether Spain remote 地点分级错误");
 check(test.applicationStatus(test.allData.find((item) => item.id === 883)).key === "closed", "Preply 已关闭状态没有识别");
 check(test.applicationStatus(test.allData.find((item) => item.id === 190)).key === "live", "Stark Future current-detail recheck was incorrectly treated as closed");
@@ -890,9 +891,9 @@ check(r714Desigual && r714Desigual.score === 104 && test.locationBucket(r714Desi
 const r716LearnWise = test.allData.find((item) => item.id === 1234);
 check(r716LearnWise && test.applicationStatus(r716LearnWise).key === "closed", "Round 716/2026-08-12: LearnWise no-longer-accepting state regressed");
 const r718Sanofi = test.allData.find((item) => item.id === 930715);
-const r718Canonical = test.allData.find((item) => item.id === 930716);
+const r718Canonical = test.allData.find((item) => item.id === 604);
 check(r718Sanofi && r718Sanofi.score === 100 && test.locationBucket(r718Sanofi) === "barcelona" && test.applicationStatus(r718Sanofi).key === "live" && test.toLinks(r718Sanofi).some((url) => /4395295373/i.test(url)), "Round 718: Sanofi Graphic Designer discovery missing or misclassified");
-check(r718Canonical && r718Canonical.score === 112 && ["barcelona", "remote"].includes(test.locationBucket(r718Canonical)) && test.applicationStatus(r718Canonical).key === "live" && test.toLinks(r718Canonical).some((url) => /4345780072/i.test(url)), "Round 718: Canonical Visual Designer discovery missing or misclassified");
+check(r718Canonical && r718Canonical.score === 98 && test.locationBucket(r718Canonical) === "remote" && test.applicationStatus(r718Canonical).key === "live" && test.toLinks(r718Canonical).some((url) => /5326986/i.test(url)), "Round 718/2026-08-12: Canonical official ATS canonical record missing or misclassified");
 const r719TeaLab = test.allData.find((item) => item.id === 25);
 check(r719TeaLab && r719TeaLab.score === 86 && test.locationBucket(r719TeaLab) === "barcelona" && test.applicationStatus(r719TeaLab).key === "verify" && test.toLinks(r719TeaLab).some((url) => /Social-Media-Content-Creator-Chino-Espanol-Tea-Lab-Barcelona\.pdf/i.test(url)), "Round 719: Tea Lab Chinese-Spanish current-index recheck regressed");
 const r720Amazon = test.allData.find((item) => item.id === 203);
