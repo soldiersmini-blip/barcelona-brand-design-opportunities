@@ -79,7 +79,7 @@ check(test.allData.find((item) => item.id === 872).tier === "X", "AQIPA named va
 check(test.allData.length > 700, "机会数据没有完整载入");
 check(test.priorityItems.length === 8, "首页重点机会数量不是 8");
 check(
-  [930813, 910, 914, 1300, 1107, 866, 94, 930847].every((id) =>
+  [930813, 910, 914, 1300, 866, 94, 930847, 930863].every((id) =>
     test.priorityItems.some((item) => item.id === id),
   ),
   "巴塞罗那优先岗位未完整进入首页",
@@ -235,8 +235,8 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 34/i.test(test.latestRoundSection) &&
-    [930878, 930879].every((id) =>
+  /Round 35/i.test(test.latestRoundSection) &&
+    [930880, 930881, 88, 778].every((id) =>
       test.latestRoundItems.some((item) => Number(item.id) === id),
     ),
   "Round 33 的全榜失效入口没有完整进入‘本轮变化’",
@@ -358,8 +358,8 @@ check(test.applicationStatus(test.allData.find((item) => item.id === 862)).key =
 check(test.applicationStatus(test.allData.find((item) => item.id === 1019)).key === "closed", "Kings League 已关闭岗位没有进入历史状态");
 check(test.allData.find((item) => item.id === 850).postedAt === "", "复核日期被错误当成 DashBook 发布日期");
 check(test.allData.find((item) => item.id === 859).postedAt === "", "复核日期被错误当成 Stripe Motion Designer 发布日期");
-check(test.allData.find((item) => item.id === 778).postedAt === "2026-07-22", "华人广告公司当前分类页日期没有被识别");
-check(test.allData.find((item) => item.id === 778).score === 10 && test.allData.find((item) => item.id === 778).tier === "X" && test.applicationStatus(test.allData.find((item) => item.id === 778)).key === "closed", "华信旧分类页设计帖没有保持在关闭/历史状态");
+check(test.allData.find((item) => item.id === 778).postedAt === "2026-08-06", "华人广告公司最新重发日期没有被识别");
+check(test.allData.find((item) => item.id === 778).score === 64 && test.allData.find((item) => item.id === 778).tier === "C" && test.applicationStatus(test.allData.find((item) => item.id === 778)).key === "verify", "华人广告公司当前重发没有恢复为待核验机会");
 check([194, 499, 1382].every((id) => test.allData.find((item) => item.id === id).tier === "X"), "同联系方式的西华/分类网旧帖仍作为第二个活跃岗位出现");
 check(test.isChineseRelevant(test.allData.find((item) => item.id === 559)), "INFiLED 没有被识别为中文相关中国品牌岗位");
 check(test.isFreelanceRole(test.allData.find((item) => item.id === 855)), "Yellowcat 日薪自由职业岗位没有被识别");
@@ -931,7 +931,7 @@ check(r707DragonsLead && r707DragonsLead.score === 102 && test.locationBucket(r7
 const r707DragonsHealthcare = test.allData.find((item) => item.id === 930708);
 check(r707DragonsHealthcare && r707DragonsHealthcare.score === 96 && test.locationBucket(r707DragonsHealthcare) === "barcelona" && test.applicationStatus(r707DragonsHealthcare).key !== "closed", "Round 707: Dragons Senior Art Director Healthcare discovery regressed");
 const r708ChineseAd = test.allData.find((item) => item.id === 778);
-check(r708ChineseAd && r708ChineseAd.score === 10 && r708ChineseAd.tier === "X" && test.applicationStatus(r708ChineseAd).key === "closed", "Round 708/726: withdrawn InfoHuaxin graphic-design lead was not moved to history");
+check(r708ChineseAd && r708ChineseAd.score === 64 && r708ChineseAd.tier === "C" && test.applicationStatus(r708ChineseAd).key === "verify" && test.toLinks(r708ChineseAd).some((url) => /i184673\.html/i.test(url)), "Round 35: current ES02 graphic-design repost was not restored correctly");
 const r709Adsmurai = test.allData.find((item) => item.id === 1023);
 check(r709Adsmurai && test.locationBucket(r709Adsmurai) === "barcelona" && test.applicationStatus(r709Adsmurai).key === "closed", "Round 33: Adsmurai Digital Art Director 410 state regressed");
 const r709Bcome = test.allData.find((item) => item.id === 55);
@@ -1082,20 +1082,31 @@ const r22Main = test.MY_OPPORTUNITY_IDS.map((id) => test.allData.find((item) => 
 check(r22Main.length >= 163, "Round 22: reviewed main opportunity baseline regressed below 163");
 check(r22Main.filter((item) => test.locationBucket(item) === "barcelona").length >= 120 && r22Main.filter((item) => test.locationBucket(item) === "remote").length >= 43, "Round 22: Barcelona/remote baseline regressed below 120/43");
 check(r22Main.filter((item) => test.applicationStatus(item).key === "live").length >= 158 && r22Main.filter((item) => test.applicationStatus(item).key === "verify").length >= 5, "Round 22: live/verify baseline regressed below 158/5");
-check(r22Main.filter((item) => test.isChineseRelevant(item)).length === 5, "Round 33: Chinese-relevant current opportunity count must remain evidence-backed at 5");
+check(r22Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 35: Chinese-relevant current opportunity count must remain evidence-backed at 6");
 
 const r23ById = (id) => test.allData.find((item) => Number(item.id) === id);
 const r23Main = test.MY_OPPORTUNITY_IDS.map(r23ById).filter(Boolean);
 const r23VisibleMain = test.dedupedData.filter((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id)));
-check(test.MY_OPPORTUNITY_IDS.length === 195 && new Set(test.MY_OPPORTUNITY_IDS).size === 195, "Round 34: audited ID ledger must contain exactly 195 unique opportunities");
-check(r23Main.length === 195 && r23VisibleMain.length === 195, "Round 34: main ledger and visible deduplicated cards must both equal 195");
-check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 147 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 48, "Round 34: Barcelona/remote split must be exactly 147/48");
-check(r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 179 && r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 16, "Round 34: live/verify split must be exactly 179/16");
-check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 5, "Round 34: Chinese-relevant current opportunity count must remain evidence-backed at 5");
+check(test.MY_OPPORTUNITY_IDS.length === 199 && new Set(test.MY_OPPORTUNITY_IDS).size === 199, "Round 35: audited ID ledger must contain exactly 199 unique opportunities");
+check(r23Main.length === 199 && r23VisibleMain.length === 199, "Round 35: main ledger and visible deduplicated cards must both equal 199");
+check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 151 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 48, "Round 35: Barcelona/remote split must be exactly 151/48");
+check(r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 182 && r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 17, "Round 35: live/verify split must be exactly 182/17");
+check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 35: Chinese-relevant current opportunity count must remain evidence-backed at 6");
 for (const id of [930878, 930879]) {
   const item = r23ById(id);
   check(item && test.MY_OPPORTUNITY_SET.has(id) && test.locationBucket(item) === "barcelona" && test.applicationStatus(item).key === "live" && test.toLinks(item).length === 1, `Round 34: new Barcelona vacancy ${id} is missing, misclassified or lacks its exact application route`);
 }
+
+for (const id of [930880, 930881, 88]) {
+  const item = r23ById(id);
+  check(item && test.MY_OPPORTUNITY_SET.has(id) && test.locationBucket(item) === "barcelona" && test.applicationStatus(item).key === "live" && test.toLinks(item).some((url) => /factorialhr\.com\/job_posting/i.test(url)), `Round 35: official Barcelona vacancy ${id} is missing, misclassified or lacks its official ATS route`);
+}
+const r35ChineseGraphic = r23ById(778);
+check(r35ChineseGraphic && test.MY_OPPORTUNITY_SET.has(778) && test.locationBucket(r35ChineseGraphic) === "barcelona" && test.applicationStatus(r35ChineseGraphic).key === "verify" && test.isChineseRelevant(r35ChineseGraphic) && test.toLinks(r35ChineseGraphic).some((url) => /es02\.com\/jobs\/Recruitment\/barcelona\/i184673\.html/i.test(url)), "Round 35: current Barcelona Chinese graphic-designer repost was not restored as one verify-first canonical card");
+check(test.MY_OPPORTUNITY_IDS.indexOf(284) < test.MY_OPPORTUNITY_IDS.indexOf(930880) && test.MY_OPPORTUNITY_IDS.indexOf(930880) < test.MY_OPPORTUNITY_IDS.indexOf(920001), "Round 35: English-first Dragons Senior Graphic Designer rank is incoherent");
+check(test.MY_OPPORTUNITY_IDS.indexOf(930824) < test.MY_OPPORTUNITY_IDS.indexOf(88) && test.MY_OPPORTUNITY_IDS.indexOf(88) < test.MY_OPPORTUNITY_IDS.indexOf(930831), "Round 35: Spanish-gated Dragons Lead Graphic Designer rank is incoherent");
+check(test.MY_OPPORTUNITY_IDS.indexOf(859) < test.MY_OPPORTUNITY_IDS.indexOf(778) && test.MY_OPPORTUNITY_IDS.indexOf(778) < test.MY_OPPORTUNITY_IDS.indexOf(1011), "Round 35: Chinese-contact Barcelona graphic-designer rank is incoherent");
+check(test.MY_OPPORTUNITY_IDS.indexOf(930825) < test.MY_OPPORTUNITY_IDS.indexOf(930881) && test.MY_OPPORTUNITY_IDS.indexOf(930881) < test.MY_OPPORTUNITY_IDS.indexOf(1092), "Round 35: senior editor-first Dragons motion role rank is incoherent");
 
 for (const id of [930873, 930874]) {
   const item = r23ById(id);
@@ -1130,6 +1141,12 @@ check(/HTTP 404/i.test(r23ById(905).status) && test.hasOpaqueEmployerRisk(r23ByI
 check(!test.MY_OPPORTUNITY_SET.has(930839) && test.applicationStatus(r23ById(930839)).key === "closed" && r23ById(930839).tier === "X", "Round 31: closed CATORCE Visual Designer route remained in the current board");
 check(/error=true/i.test(r23ById(930839).status) && test.toLinks(r23ById(930839)).some((url) => /4797510008/i.test(url)), "Round 31: CATORCE direct-route closure evidence is missing");
 check(test.MY_OPPORTUNITY_SET.has(1107) && test.applicationStatus(r23ById(1107)).key === "verify" && /NO JOB OPENINGS/i.test(r23ById(1107).status), "Round 31: THRU employer-page conflict was not kept verify-first");
+check(
+  test.MY_OPPORTUNITY_IDS.indexOf(1107) > test.MY_OPPORTUNITY_IDS.indexOf(778) &&
+    test.MY_OPPORTUNITY_IDS.indexOf(1107) < test.MY_OPPORTUNITY_IDS.indexOf(930881) &&
+    !test.priorityItems.some((item) => item.id === 1107),
+  "Round 35: THRU contradictory employer page was not demoted out of the top-priority ranking",
+);
 check(test.MY_OPPORTUNITY_SET.has(1310) && /Art Director - Creative Department \(eCommerce\)/i.test(r23ById(1310).opportunity) && test.locationBucket(r23ById(1310)) === "remote", "Round 31: Hungry Minds title or Spain-remote classification regressed");
 
 const r27Promoted = [382, 1287, 454, 996, 1021, 1243, 1026, 1257, 1310, 1024, 1002];

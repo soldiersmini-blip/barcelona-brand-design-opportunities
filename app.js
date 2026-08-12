@@ -1260,6 +1260,119 @@ if (familiaTorresIdCollision) familiaTorresIdCollision.id = 930871;
   if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
 });
 
+const ROUND35_SECTION = "2026-08-13 Round 35 Barcelona design and Chinese-channel refresh";
+[
+  {
+    id: 930880,
+    section: ROUND35_SECTION,
+    source: "Dragons Group / current official Factorial ATS",
+    opportunity: "Senior Graphic Designer",
+    fit: "Barcelona hybrid permanent full-time; premium beauty and skincare visual design, social-first campaigns and brand consistency; 5-7+ year seniority gate",
+    location: "Barcelona, Spain; permanent; full-time; hybrid",
+    status: "The current official Factorial requisition 302205 was opened and read in full on 2026-08-13. It shows Apply now, Permanent, Full time and Hybrid Barcelona. The role creates premium beauty, skincare, wellness and lifestyle visual assets for Instagram, TikTok, paid social, campaigns, presentations and digital ecosystems while protecting brand consistency. English is mandatory; Spanish is preferred, not required.",
+    contact: "Official detail and application: https://dragons-group.factorialhr.com/job_posting/senior-graphic-designer-302205 ; current LinkedIn employer mirror: https://www.linkedin.com/jobs/view/4436486942",
+    analysis: "A genuine new English-first Barcelona graphic-design route, distinct from the Spanish-mandatory Mid/Senior card. It is still a senior stretch: apply only with 5-7+ years, premium consumer-brand work, strong typography/composition, social campaign systems, retouching and AI-assisted visual development. Use the official ATS as the canonical application route.",
+    score: 85,
+    tier: "B",
+    locationTag: "Barcelona area",
+    typeTag: "Senior graphic design / premium brand campaigns",
+    sourceGroup: "other",
+    postedAt: "2026-08-13",
+    freshnessTag: "week",
+    freshnessAgeDays: 0,
+    links: [
+      "https://dragons-group.factorialhr.com/job_posting/senior-graphic-designer-302205",
+      "https://www.linkedin.com/jobs/view/4436486942",
+    ],
+    searchText: "Dragons Group current official Factorial 302205 Senior Graphic Designer Barcelona hybrid permanent full-time Apply English mandatory Spanish preferred beauty skincare wellness lifestyle social campaign brand consistency retouching AI 5-7 years",
+  },
+  {
+    id: 930881,
+    section: ROUND35_SECTION,
+    source: "Dragons Group / current official Factorial ATS",
+    opportunity: "Senior Video Editor & Motion Creative",
+    fit: "Barcelona hybrid permanent full-time; branded campaign films, social, digital, editing, motion and visual storytelling; 7+ year seniority gate",
+    location: "Barcelona, Spain; permanent; full-time; hybrid",
+    status: "The current Dragons official jobs board and exact Factorial requisition 308042 were checked on 2026-08-13 and show a current Apply now route for Senior Video Editor & Motion Creative in hybrid Barcelona. The full employer LinkedIn brief covers campaign films, TVCs, social, branded content, motion graphics, animation, moodboards, AI workflows and collaboration with 3D artists. Fluent English is required; other languages are only a plus.",
+    contact: "Official detail and application: https://dragons-group.factorialhr.com/job_posting/senior-video-editor-motion-creative-308042 ; current LinkedIn employer detail: https://www.linkedin.com/jobs/view/4436304499",
+    analysis: "Keep as a real but secondary motion opportunity: it is editor-first rather than VI-first and requires 7+ years. Apply only with senior campaign-film editing, premium consumer-brand storytelling, Premiere Pro, After Effects and motion-design depth; use the official ATS rather than third-party reposts.",
+    score: 68,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Senior video editing / motion / branded content",
+    sourceGroup: "other",
+    postedAt: "2026-08-13",
+    freshnessTag: "week",
+    freshnessAgeDays: 0,
+    links: [
+      "https://dragons-group.factorialhr.com/job_posting/senior-video-editor-motion-creative-308042",
+      "https://www.linkedin.com/jobs/view/4436304499",
+    ],
+    searchText: "Dragons Group current official Factorial 308042 Senior Video Editor Motion Creative Barcelona hybrid permanent full-time Apply fluent English campaign film TVC social branded content animation AI 3D 7 years",
+  },
+].forEach((record) => {
+  if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
+});
+
+function applyRound35SourceUpdates() {
+  const leadDesigner = allData.find((item) => Number(item.id) === 88);
+  if (leadDesigner) {
+    Object.assign(leadDesigner, {
+      section: ROUND35_SECTION,
+      source: "Dragons Group / current official Factorial ATS",
+      opportunity: "Lead Graphic Designer",
+      fit: "Barcelona hybrid permanent full-time; scalable brand systems, 360 campaigns and design-team leadership; Spanish and English mandatory; 7-8 years",
+      location: "Barcelona, Spain; permanent; full-time; hybrid",
+      status: "The exact official Factorial requisition 301871 was opened and read in full on 2026-08-13. It shows Apply now, Permanent, Full time and Hybrid Barcelona. The role translates brand strategy into scalable design systems, protects quality across touchpoints, leads designers and owns complex FMCG and 360-campaign delivery. Spanish and English are both mandatory.",
+      contact: "Official detail and application: https://dragons-group.factorialhr.com/job_posting/lead-graphic-designer-301871 ; LinkedIn employer mirror: https://www.linkedin.com/jobs/view/4436198704",
+      analysis: "Promote from an unverified LinkedIn card to a current official-ATS opportunity, but retain a strong gate penalty. Apply only with 7-8 years, professional Spanish and English, FMCG brand systems, team leadership, client presentations and complex multi-market campaign ownership.",
+      score: 76,
+      tier: "C",
+      locationTag: "Barcelona area",
+      typeTag: "Lead graphic design / brand systems / team leadership",
+      sourceGroup: "other",
+      postedAt: "2026-08-13",
+      freshnessTag: "week",
+      freshnessAgeDays: 0,
+      links: [
+        "https://dragons-group.factorialhr.com/job_posting/lead-graphic-designer-301871",
+        "https://www.linkedin.com/jobs/view/4436198704",
+      ],
+      searchText: "Dragons Group current official Factorial 301871 Lead Graphic Designer Barcelona hybrid permanent full-time Apply scalable brand systems 360 campaigns FMCG team leadership Spanish English mandatory 7-8 years",
+    });
+  }
+
+  const chineseGraphicDesigner = allData.find((item) => Number(item.id) === 778);
+  if (chineseGraphicDesigner) {
+    Object.assign(chineseGraphicDesigner, {
+      section: ROUND35_SECTION,
+      source: "Barcelona Chinese advertising company / current ES02 original repost",
+      opportunity: "Full-time Graphic Designer",
+      fit: "Barcelona local Chinese-contact graphic-design opening; Illustrator and prior experience; work residence and full social insurance stated; employer identity and terms still need verification",
+      location: "Barcelona, Spain; full-time; exact address and schedule to confirm",
+      status: "Restored after current repost evidence. The same publisher and contact posted the exact Barcelona full-time graphic-designer vacancy again on ES02 on 2026-08-03, 2026-08-05 and 2026-08-06. The latest original detail 184673 is readable and asks for design experience, AI/Illustrator, valid work residence and states full social insurance. It provides Chinese WeChat A644055418 and phone +34 644 055 418, but no employer name, CIF, address, salary, hours, contract type or working-language detail.",
+      contact: "Latest current original detail: https://www.es02.com/jobs/Recruitment/barcelona/i184673.html ; previous same-contact reposts: https://www.es02.com/jobs/Recruitment/barcelona/i183850.html and https://www.es02.com/jobs/Recruitment/barcelona/i182243.html ; WeChat A644055418 ; phone +34 644 055 418",
+      analysis: "Restore one canonical current card, not three duplicate seats. First ask in Chinese for the company legal name/CIF, exact address, current vacancy confirmation, duties, salary, hours, contract, probation, paid test policy and daily working language. Do not send passport, residence-card scans or editable source files before the employer identity and written terms are verified.",
+      score: 64,
+      tier: "C",
+      locationTag: "Barcelona area",
+      typeTag: "Graphic design / advertising print production / Chinese contact",
+      sourceGroup: "chinese",
+      postedAt: "2026-08-06",
+      freshnessTag: "week",
+      freshnessAgeDays: 7,
+      links: [
+        "https://www.es02.com/jobs/Recruitment/barcelona/i184673.html",
+        "https://www.es02.com/jobs/Recruitment/barcelona/i183850.html",
+        "https://www.es02.com/jobs/Recruitment/barcelona/i182243.html",
+      ],
+      searchText: "Barcelona Chinese advertising company current ES02 184673 183850 182243 full-time Graphic Designer Chinese contact Illustrator AI experience work residence full social insurance employer salary hours address verify A644055418 644055418",
+    });
+  }
+}
+
+applyRound35SourceUpdates();
+
 // Round 20: a visible email or a fresh search-card timestamp cannot override a
 // closed original detail. Conversely, employer-owned ATS pages with an active
 // form and explicit Spain/global eligibility may be promoted into the board.
@@ -2863,7 +2976,7 @@ const meta = window.JOB_META || {};
 // Homepage priority is location-first: Barcelona local roles come before
 // Madrid/unclear remote or stale Chinese-channel leads. Language and contract
 // gates remain explicit on each card instead of being hidden by the homepage.
-const PRIORITY_IDS = [930813, 910, 914, 1300, 1107, 866, 94, 930847];
+const PRIORITY_IDS = [930813, 910, 914, 1300, 866, 94, 930847, 930863];
 
 // Canonical, evidence-backed opportunities for the user. The generated corpus
 // remains searchable, but only these independently reviewed identities enter
@@ -2936,12 +3049,25 @@ const ROUND34_RANKED_INSERTIONS = new Map([
   [277, [930878]],
   [891, [930879]],
 ]);
+const ROUND35_RANKED_INSERTIONS = new Map([
+  [284, [930880]],
+  [930824, [88]],
+  [859, [778, 1107]],
+  [930825, [930881]],
+]);
+// THRU still exposes the complete role brief and a future closing date, but
+// the same official page ends with "NO JOB OPENINGS". Keep the lead visible as
+// verify-first evidence without allowing the contradictory page to occupy a
+// top-five score or homepage-priority slot.
+const ROUND35_DEMOTED_IDS = new Set([1107]);
 const ROUND32_EXCLUDED_IDS = new Set([930839, ...ROUND32_CLOSED_IDS, ...ROUND33_CLOSED_IDS]);
 const MY_OPPORTUNITY_IDS = Object.freeze(
   ROUND28_AUDITED_OPPORTUNITY_IDS
     .flatMap((id) => [id, ...(ROUND29_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND32_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND34_RANKED_INSERTIONS.get(id) || [])])
+    .filter((id) => !ROUND35_DEMOTED_IDS.has(id))
+    .flatMap((id) => [id, ...(ROUND35_RANKED_INSERTIONS.get(id) || [])])
     .filter((id) => !ROUND32_EXCLUDED_IDS.has(id)),
 );
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
@@ -3551,6 +3677,80 @@ Object.assign(CURATED, {
     reason: "方向很贴美容电商、Amazon、CRM 邮件、社媒和包装，但原 Domestika 职位已跳回列表，不能按当前空缺展示。",
     next: "仅作冷询问：从品牌官方联系页礼貌询问未来是否还需要长期自由职业设计师；不要把客服邮箱写成招聘邮箱，也不要声称职位仍开放。",
     language: "原职位未写语言要求；当前已下线",
+  },
+});
+
+Object.assign(CURATED, {
+  930880: {
+    direction: "brand",
+    company: "Dragons Group",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / permanent / 全职",
+    titleZh: "高级平面设计师（美妆护肤品牌视觉）",
+    titleEs: "Senior Graphic Designer",
+    reason: "2026-08-13 已逐字读取官方 Factorial 职位 302205：页面有 Apply now，明确 Barcelona、混合办公、永久全职；职责覆盖美妆、护肤、健康与生活方式品牌的社媒、付费广告、Campaign、演示和数字视觉，并要求维护品牌一致性。",
+    next: "这是 5–7 年以上的高级岗。只有在作品集具备高端消费品牌、社媒 Campaign 系统、修图合成、排版和 AI 辅助视觉开发时优先投；以官方 ATS 为唯一主入口，不重复投 LinkedIn 镜像。",
+    language: "英语必需；西班牙语仅为优先项，不是硬门槛",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5–7 年以上",
+    changeType: "round-35-new-official",
+  },
+  930881: {
+    direction: "motion",
+    company: "Dragons Group",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / permanent / 全职",
+    titleZh: "高级视频剪辑与动态创意（品牌内容）",
+    titleEs: "Senior Video Editor & Motion Creative",
+    reason: "2026-08-13 官方 Dragons 职位板和精确 Factorial 职位 308042 均显示当前可申请。岗位负责 Campaign 影片、TVC、社媒、品牌内容、Motion、动画、情绪板、AI 工作流以及与 3D 团队协作。",
+    next: "这是剪辑优先、Motion 为辅的 7 年以上高级岗，不是纯 VI。只有具备高级品牌影片剪辑、Premiere Pro、After Effects、视觉叙事和高端消费品牌案例时再投入申请时间。",
+    language: "流利英语必需；其他语言仅为加分项",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 7 年以上",
+    changeType: "round-35-new-official",
+  },
+  88: {
+    ...CURATED[88],
+    direction: "brand",
+    company: "Dragons Group",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / permanent / 全职",
+    titleZh: "平面设计负责人（品牌系统与团队管理）",
+    titleEs: "Lead Graphic Designer",
+    reason: "2026-08-13 已把旧 LinkedIn 待核验卡升级为官方 Factorial 职位 301871。页面有 Apply now，明确 Barcelona、混合办公、永久全职；工作包含可扩展品牌系统、360 Campaign、FMCG、多团队工作流、质量标准和设计团队管理。",
+    next: "西语和英语均为硬门槛，并要求 7–8 年经验及管理资历。资历或西语不足时不要让它挤占初中级本地岗位的申请时间。",
+    language: "西班牙语与英语均为必需",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    experienceKey: "senior",
+    experienceLabel: "负责人 / 7–8 年 / 团队管理",
+    changeType: "round-35-promoted-official",
+  },
+  778: {
+    ...CURATED[778],
+    direction: "production",
+    company: "巴塞罗那华人广告公司（主体待核实）",
+    chineseFit: true,
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 全职 / 地址与公司主体待核实",
+    titleZh: "华人广告公司全职平面设计师（8 月持续重发）",
+    titleEs: "Diseñador/a gráfico/a a jornada completa",
+    reason: "华人通原始详情显示同一联系人在 2026-08-03、08-05、08-06 连续重发同一 Barcelona 全职平面设计岗位。最新页面 184673 可读，明确要求有经验、会 AI/Illustrator、备工作居留并写明全保，提供中文微信和电话。",
+    next: "只恢复为一张当前卡，不把三次重发算成三个岗位。先用中文询问公司全称/CIF、地址、具体职责、薪资、工时、合同、试用期、付费试稿和日常工作语言；未核实主体前不要发送证件扫描件或可编辑源文件。",
+    language: "中文可直接联系；日常工作语言未公开；需工作居留",
+    languageKey: "chineseCheck",
+    applicationMode: "chineseCheck",
+    experienceKey: "unknown",
+    experienceLabel: "有经验 / 年限未公开",
+    changeType: "round-35-restored-current-reposts",
   },
 });
 
@@ -10514,6 +10714,7 @@ applyRound30SourceUpdates();
 applyRound31SourceUpdates();
 applyRound32SourceUpdates();
 applyRound33SourceUpdates();
+applyRound35SourceUpdates();
 
 const els = {
   totalCount: document.querySelector("#totalCount"),
