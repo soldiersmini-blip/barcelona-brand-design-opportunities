@@ -102,7 +102,7 @@ fs.writeFileSync(
   path.join(root, "current-opportunity-ledger.json"),
   `${JSON.stringify(
     {
-      exportedAt: "2026-08-12",
+      exportedAt: "2026-08-13",
       total: currentRows.length,
       rows: currentRows,
     },

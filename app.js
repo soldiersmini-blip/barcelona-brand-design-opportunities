@@ -2734,6 +2734,120 @@ function applyRound32SourceUpdates() {
 
 applyRound32SourceUpdates();
 
+const ROUND33_SECTION = "2026-08-13 Round 33 full-board direct-link reconciliation";
+const ROUND33_CLOSED_EVIDENCE = new Map([
+  [979, "the exact Storyblok employer page now returns HTTP 404 / Not found"],
+  [1025, "Siena's current official Ashby board no longer lists the tracked Motion Designer & Video Producer requisition"],
+  [1049, "Maneuver Marketing's current official Ashby board no longer lists the tracked Performance Designer requisition"],
+  [654, "Kraken's current official Ashby board no longer lists the tracked Breakout performance-creative requisition"],
+  [649, "The Mind Company's current official Ashby board no longer lists the tracked AI Video Marketing Designer requisition"],
+  [930848, "Finary's current official Ashby board no longer lists the tracked Freelance Senior Brand Designer requisition"],
+  [214, "the exact REDLINE MEDIA LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
+  [327, "the exact OMODA & JAECOO LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
+  [141, "the exact Minsk.Barcelona LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
+  [930828, "the exact VOK DAMS LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
+  [930875, "the exact Grupo Bimbo LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
+  [407, "the exact papernest Teamtailor detail now returns HTTP 410 Gone"],
+  [330, "the exact The Agency Barcelona LinkedIn detail explicitly says applications are no longer accepted"],
+  [336, "the exact Solventis LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
+  [130, "the exact mesoestetic LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
+  [1264, "the exact Next'media LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
+  [1288, "the exact Michael Page detail returns HTTP 410 and says no more applications are accepted"],
+  [1248, "the exact Alfa Dyser LinkedIn detail now returns HTTP 404"],
+  [930864, "the exact Prime Insights LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
+  [930877, "the exact Bravura Barcelona employer route now returns HTTP 402 / Tienda no disponible"],
+  [109, "the exact MiiN Korean Cosmetics LinkedIn detail explicitly says applications are no longer accepted"],
+  [117, "the exact Lateral Thinking LinkedIn detail explicitly says applications are no longer accepted"],
+  [1023, "the exact Adsmurai Digital Art Director detail now returns HTTP 410 Gone"],
+  [385, "the exact Nacar Recruitee detail returns HTTP 404 and says the job could not be found"],
+  [841, "the exact European Blockchain Convention LinkedIn detail explicitly says applications are no longer accepted"],
+  [903, "the exact fhios LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
+  [855, "the exact Yellowcat LinkedIn detail explicitly says applications are no longer accepted"],
+  [875, "the exact CoverManager LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
+  [397, "the exact RV Group JOB TODAY route now redirects to the employer profile instead of the vacancy"],
+  [1274, "the exact BRUTALIA JOB TODAY route now redirects to the employer profile instead of the vacancy"],
+  [217, "the exact Feels Like employer page now returns HTTP 404"],
+  [870, "the exact Flummox LinkedIn detail now returns HTTP 404"],
+  [308, "the exact DDB Spain Greenhouse requisition redirects to the board with error=true"],
+  [1238, "the exact BYPHASSE LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
+  [1262, "the exact Checkin Hotel Group LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
+  [848, "the exact Atomite LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
+  [213, "the exact De'Longhi employer page now returns HTTP 404 / Page not found"],
+  [930717, "the exact Establishment Labs LinkedIn detail now returns HTTP 404"],
+  [930852, "the exact Newlink Spain LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
+  [930849, "the exact Andilana JOB TODAY route now redirects to the employer profile instead of the vacancy"],
+  [537, "the exact Jobgether Lever requisition now returns HTTP 404 / Not found"],
+  [930860, "Kraken's current official Ashby requisition with this exact ID is listed for United Kingdom remote, while the current board exposes separate US/UK variants and no Spain/EU version"],
+]);
+const ROUND33_CLOSED_IDS = Object.freeze([...ROUND33_CLOSED_EVIDENCE.keys()]);
+
+function applyRound33SourceUpdates() {
+  for (const [id, evidence] of ROUND33_CLOSED_EVIDENCE) {
+    const item = allData.find((record) => Number(record.id) === id);
+    if (!item) continue;
+    const isOpenButOffScope = id === 930860;
+    Object.assign(item, {
+      section: ROUND33_SECTION,
+      status: `${isOpenButOffScope ? "Excluded/off-scope" : "Closed/history"}: checked again on 2026-08-13; ${evidence}. ${isOpenButOffScope ? "The vacancy is open, but it is not a verified application route from Barcelona/Spain." : "A readable old description, search cache or generic company page is not a current application route."}`,
+      analysis: `Preserve the former brief, location, requirements and source URL in history. Restore it to the ranked board only if the employer publishes ${isOpenButOffScope ? "a Spain/Europe-eligible version" : "a new exact vacancy with a role-specific application path"}.`,
+      tier: "X",
+    });
+    item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+      .filter(Boolean)
+      .join(" ");
+  }
+}
+
+applyRound33SourceUpdates();
+
+const ROUND34_SECTION = "2026-08-13 Round 34 current Barcelona replacement vacancies";
+[
+  {
+    id: 930878,
+    section: ROUND34_SECTION,
+    source: "Lateral Thinking / current original LinkedIn employer detail",
+    opportunity: "Art Director — brand experiences and visual identity",
+    fit: "Barcelona full-time; highly relevant visual identity, key visual, signage, print and digital brand-experience role; senior Spanish hard gate",
+    location: "Barcelona, Catalonia, Spain; full-time; on-site production and installation supervision",
+    status: "A new original LinkedIn employer detail with independent job ID 4449819011 was opened and read in full on 2026-08-13. It shows Barcelona, full-time and Apply. The vacancy was posted two days earlier and covers visual identity, brand-experience strategy, key visuals, signage, print, digital and offline assets, production and on-site installation. Five-plus years and fluent Spanish are explicit; English and Catalan are advantages.",
+    contact: "Current original detail/application: https://www.linkedin.com/jobs/view/4449819011",
+    analysis: "This is a genuine new requisition, not a reopening of the closed job ID 4436668875. Keep the old card in history and use only this new route. The subject fit is excellent, but apply only if five-plus years, professional Spanish and hands-on production/installation leadership are credible.",
+    score: 72,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Brand identity / art direction / experiential graphics",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-11",
+    freshnessTag: "week",
+    freshnessAgeDays: 2,
+    links: ["https://www.linkedin.com/jobs/view/4449819011"],
+    searchText: "Lateral Thinking current new LinkedIn 4449819011 Art Director Barcelona full-time Apply visual identity brand experiences key visual signage print digital offline production installation 5 years fluent Spanish English Catalan plus",
+  },
+  {
+    id: 930879,
+    section: ROUND34_SECTION,
+    source: "DashBook / current original LinkedIn employer detail",
+    opportunity: "Directeur Artistique Junior — editorial design",
+    fit: "Barcelona full-time junior art-direction role focused on book covers, editorial layout, typography and production coordination; French-language workflow likely",
+    location: "Barcelona, Catalonia, Spain; full-time; work mode and salary not stated",
+    status: "A new original LinkedIn employer detail with independent job ID 4450320977 was opened and read in full on 2026-08-13. It shows Barcelona, full-time and Apply. The French-language brief covers book-cover design, editorial layout, InDesign, Illustrator, Photoshop, typography, creative briefings, production schedules and coordination with authors and internal teams. The page does not publish salary, hybrid rhythm or an explicit language level.",
+    contact: "Current original detail/application: https://www.linkedin.com/jobs/view/4450320977",
+    analysis: "This is a real new requisition and must not be merged with the closed former DashBook route. It is useful for an editorial-design portfolio, but the entirely French brief and author-facing coordination make professional French a likely practical gate; confirm working language before tailoring an application.",
+    score: 58,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Editorial design / art direction / typography",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-08",
+    freshnessTag: "week",
+    freshnessAgeDays: 5,
+    links: ["https://www.linkedin.com/jobs/view/4450320977"],
+    searchText: "DashBook current new LinkedIn 4450320977 Directeur Artistique Junior Barcelona full-time Apply French editorial design book covers layout typography InDesign Illustrator Photoshop authors production coordination language confirm",
+  },
+].forEach((record) => {
+  if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
+});
+
 for (const item of allData) {
   if (!item.searchText) {
     item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
@@ -2818,11 +2932,16 @@ const ROUND32_RANKED_INSERTIONS = new Map([
   [305, [945]],
   [5106, [1000]],
 ]);
-const ROUND32_EXCLUDED_IDS = new Set([930839, ...ROUND32_CLOSED_IDS]);
+const ROUND34_RANKED_INSERTIONS = new Map([
+  [277, [930878]],
+  [891, [930879]],
+]);
+const ROUND32_EXCLUDED_IDS = new Set([930839, ...ROUND32_CLOSED_IDS, ...ROUND33_CLOSED_IDS]);
 const MY_OPPORTUNITY_IDS = Object.freeze(
   ROUND28_AUDITED_OPPORTUNITY_IDS
     .flatMap((id) => [id, ...(ROUND29_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND32_RANKED_INSERTIONS.get(id) || [])])
+    .flatMap((id) => [id, ...(ROUND34_RANKED_INSERTIONS.get(id) || [])])
     .filter((id) => !ROUND32_EXCLUDED_IDS.has(id)),
 );
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
@@ -10332,6 +10451,54 @@ for (const [id, [reason, next]] of ROUND32_ARCHIVED_CURATED) {
   };
 }
 
+for (const id of ROUND33_CLOSED_IDS) {
+  const item = allData.find((record) => Number(record.id) === id);
+  CURATED[id] = {
+    ...CURATED[id],
+    statusKey: "closed",
+    reason: item?.status || "本轮直连复核确认原始职位已经失效。",
+    next: item?.analysis || "保留历史证据；只有出现新的精确招聘详情和投递入口时才恢复。",
+    changeType: "round-33-full-board-closed",
+  };
+}
+
+Object.assign(CURATED, {
+  930878: {
+    direction: "brand",
+    company: "Lateral Thinking",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / full-time / 现场制作",
+    titleZh: "艺术指导（品牌体验、视觉识别与空间导视）",
+    titleEs: "Art Director — Brand Experiences",
+    reason: "2026-08-13 逐字读取了新的独立 LinkedIn 职位编号 4449819011：页面当前有 Apply，明确 Barcelona、全职，并负责 visual identity、key visual、signage、印刷、线上/线下品牌资产及现场制作监督。",
+    next: "不要再投已关闭的旧编号 4436668875。只有具备 5 年以上品牌视觉经验、流利西语和现场制作/安装管理案例时，再通过新编号投递，并确认薪资与到岗节奏。",
+    language: "流利西班牙语为明确硬门槛；英语和加泰罗尼亚语为加分项",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上",
+    changeType: "round-34-new-requisition",
+  },
+  930879: {
+    direction: "production",
+    company: "DashBook",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / full-time",
+    titleZh: "初级艺术指导（书籍封面、编辑设计与排版）",
+    titleEs: "Directeur Artistique Junior",
+    reason: "2026-08-13 逐字读取了新的独立 LinkedIn 职位编号 4450320977：页面当前有 Apply，明确 Barcelona、全职；职责包括书籍封面、编辑排版、字体规范、InDesign、Illustrator、Photoshop、制作排期与作者沟通。",
+    next: "不要与已经关闭的旧 DashBook 卡片合并。整份 JD 为法语且需要直接协调作者与多团队，先用简短邮件确认日常工作语言；法语不可工作时不投入定制作品集时间。",
+    language: "职位正文完全使用法语；未写明等级，但作者沟通和项目协调使法语很可能是实际工作门槛",
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    experienceKey: "junior",
+    experienceLabel: "初级 / 编辑设计经验",
+    changeType: "round-34-new-requisition",
+  },
+});
+
 // Reapply the latest source verdicts after every historical refresh block so
 // a stale generated record cannot turn an excluded role back into live.
 applyRound21SourceUpdates();
@@ -10346,6 +10513,7 @@ applyRound29SourceUpdates();
 applyRound30SourceUpdates();
 applyRound31SourceUpdates();
 applyRound32SourceUpdates();
+applyRound33SourceUpdates();
 
 const els = {
   totalCount: document.querySelector("#totalCount"),
@@ -11369,7 +11537,7 @@ function applicationStatus(item) {
   // Round 709: these three official current routes have readable application
   // paths in their latest audits; do not let older curated verify snapshots
   // hide the current submission route.
-  if ([55, 1023, 224, 886, 920001, 930711, 930719].includes(Number(item?.id))) {
+  if ([55, 224, 886, 920001, 930711, 930719].includes(Number(item?.id))) {
     return { key: "live", label: "页面显示可投" };
   }
   if (Number(item?.id) === 999999) {
