@@ -90,7 +90,7 @@ check(
 );
 test.state.preset = "mine";
 const auditedMain = test.dedupedData.filter((item) => test.matchesPreset(item));
-check(auditedMain.length === 48, "逐条核验后的默认机会总表数量不是 48");
+check(auditedMain.length === 52, "逐条核验后的默认机会总表数量不是 52");
 check(auditedMain.every((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id))), "默认机会总表混入未审核记录");
 check(auditedMain.every((item) => test.applicationStatus(item).key !== "closed"), "默认机会总表混入已关闭记录");
 check(auditedMain.every((item) => Boolean(test.CURATED[item.id])), "默认机会总表仍有未完成中文整理的卡片");
@@ -98,8 +98,12 @@ check(auditedMain.every((item) => test.toLinks(item).length > 0), "默认机会�
 check(auditedMain.every((item) => ["barcelona", "remote"].includes(test.locationBucket(item))), "默认机会总表混入 Madrid 或西班牙不可落地地点");
 test.sortRecords(auditedMain);
 check(auditedMain.every((item, index) => index === 0 || test.displayedScore(auditedMain[index - 1]) >= test.displayedScore(item)), "默认机会总表没有按我的匹配分降序排列");
-check(auditedMain.map(test.displayedScore).join(",") === Array.from({ length: 48 }, (_, index) => 97 - index).join(","), "默认机会总表的 97–50 严格降序评分序列不完整");
+check(auditedMain.map(test.displayedScore).join(",") === Array.from({ length: 52 }, (_, index) => 97 - index).join(","), "默认机会总表的 97–46 严格降序评分序列不完整");
 check(auditedMain.every((item) => !/鈥|帽|鏄|鍙|闇|椤|閫|绗/.test(`${test.companyLabel(item)} ${test.roleLabels(item).zh} ${test.locationLabel(item)}`)), "默认机会总表仍有可见乱码");
+check([446, 928, 483, 930815].every((id) => auditedMain.some((item) => Number(item.id) === id)), "本轮新增的四条真实机会未完整进入主表");
+check(test.toLinks(test.allData.find((item) => Number(item.id) === 930815)).some((url) => /sidn\.factorialhr\.com\/job_posting\/graphic-designer-285667/i.test(url)), "SIDN 官方投递入口缺失");
+check(!test.MY_OPPORTUNITY_SET.has(1044) && !test.MY_OPPORTUNITY_SET.has(1083), "乌拉圭 ++hellohello 岗位被误列为 Spain / Europe remote 主表机会");
+check(!test.MY_OPPORTUNITY_SET.has(1116), "已关闭的 Factorial Paid Motion Designer 被搜索缓存误放回主表");
 check(test.dedupedData.length > 0 && test.dedupedData.length < test.allData.length, "去重逻辑没有生效");
 const recentChinese = test.dedupedData.filter(
   (item) =>
