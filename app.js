@@ -1741,6 +1741,105 @@ function applyRound23SourceUpdates() {
 
 applyRound23SourceUpdates();
 
+const ROUND24_SECTION = "2026-08-12 Round 24 official-board reconciliation and requisition-level location audit";
+const round24SourceUpdates = [
+  {
+    id: 147,
+    source: "SplitMetrics / official Ashby job-board API and historical detail",
+    opportunity: "Senior Visual Designer — closed",
+    status: "Closed/history: SplitMetrics' official Ashby job-board API was checked on 2026-08-12. It currently returns four open roles and does not contain requisition 8e164fd9-aec6-4917-89a7-43cdd2e60116 or any Senior Visual Designer role. The direct detail now shows Job not found in the interactive official page; older search-engine text is cached history, not a current application route.",
+    contact: "Historical official detail: https://jobs.ashbyhq.com/splitmetrics/8e164fd9-aec6-4917-89a7-43cdd2e60116/ ; current official board data: https://api.ashbyhq.com/posting-api/job-board/splitmetrics",
+    analysis: "Remove this role from the current ranking while preserving its visual-identity, performance-campaign, website and design-system brief as portfolio reference. Restore only when SplitMetrics publishes a new official requisition.",
+    score: 18,
+    tier: "X",
+    links: [
+      "https://jobs.ashbyhq.com/splitmetrics/8e164fd9-aec6-4917-89a7-43cdd2e60116/",
+      "https://api.ashbyhq.com/posting-api/job-board/splitmetrics",
+    ],
+  },
+  {
+    id: 173,
+    source: "LONBALI / historical LinkedIn employer detail",
+    opportunity: "Diseñador/a gráfica — applications closed",
+    status: "Closed/history: the original LinkedIn employer detail 4438899857 was reopened on 2026-08-12 and explicitly says applications are no longer being accepted. Preserve the former Barcelona brand-book, ecommerce, retail, packaging and motion brief, but do not treat page availability as an open application.",
+    contact: "Historical original detail: https://es.linkedin.com/jobs/view/dise%C3%B1ador-a-gr%C3%A1fica-at-lonbali-4438899857",
+    analysis: "Keep only as portfolio and employer-monitoring history. Restore when LONBALI publishes a fresh requisition with a new application route.",
+    score: 18,
+    tier: "X",
+    links: ["https://es.linkedin.com/jobs/view/dise%C3%B1ador-a-gr%C3%A1fica-at-lonbali-4438899857"],
+  },
+  {
+    id: 957,
+    source: "10x Team / official Ashby job-board API and historical detail",
+    opportunity: "Lead Visual Designer — AI Trainer — closed",
+    status: "Closed/history: 10x Team's official Ashby job-board API was checked on 2026-08-12. The current board contains 133 roles but not requisition 2f9bd626-3df1-43eb-93c1-1899649b9fa5 or the former Lead Visual Designer title. Current visual/graphic AI-trainer listings are Poland-only pools and are not Spain vacancies.",
+    contact: "Historical official detail: https://jobs.ashbyhq.com/10xteam/2f9bd626-3df1-43eb-93c1-1899649b9fa5 ; current official board data: https://api.ashbyhq.com/posting-api/job-board/10xteam",
+    analysis: "Do not count this former AI-training pool as a current visual-design job. Preserve the old rate and contract notes only as history; restore only with a new Spain-eligible official requisition.",
+    score: 12,
+    tier: "X",
+    links: [
+      "https://jobs.ashbyhq.com/10xteam/2f9bd626-3df1-43eb-93c1-1899649b9fa5",
+      "https://api.ashbyhq.com/posting-api/job-board/10xteam",
+    ],
+  },
+  {
+    id: 992,
+    source: "Appspace / official Greenhouse job-board API and historical detail",
+    opportunity: "Visual Designer — closed",
+    status: "Closed/history: Appspace's official Greenhouse job-board API was checked on 2026-08-12. It currently returns 13 open jobs and contains neither requisition 5813989004 nor a Visual Designer role. The old detail redirects to the current board, so cached search snippets are not application evidence.",
+    contact: "Historical official detail: https://job-boards.greenhouse.io/appspace/jobs/5813989004?gh_src=Partners+for+Growth+job+board ; current official board: https://job-boards.greenhouse.io/appspace ; current official board data: https://boards-api.greenhouse.io/v1/boards/appspace/jobs?content=true",
+    analysis: "Keep the former product-marketing visual brief in history, but remove it from every current or watchlist count until Appspace publishes a new requisition.",
+    score: 12,
+    tier: "X",
+    links: [
+      "https://job-boards.greenhouse.io/appspace/jobs/5813989004?gh_src=Partners+for+Growth+job+board",
+      "https://job-boards.greenhouse.io/appspace",
+      "https://boards-api.greenhouse.io/v1/boards/appspace/jobs?content=true",
+    ],
+  },
+  {
+    id: 604,
+    source: "Canonical / current official Greenhouse ATS",
+    opportunity: "Visual Designer",
+    fit: "Strong EMEA-remote brand-guideline, UI design-system and digital-product visual role; English-first; Barcelona residence is compatible subject to Spain employment confirmation",
+    location: "Home based - EMEA; Spain eligibility and payroll terms to confirm; international travel twice yearly",
+    status: "Live/current: Canonical's official Greenhouse requisition 5326986 was reopened and read in full on 2026-08-12. It shows Apply for this job, Home based - EMEA and a complete application form. The role evolves brand guidelines and applies them to communications materials, a UI design system and graphics for digital products. Professional written and spoken English is required; the application also has unusually detailed academic questions and explicitly requires applicants to use their own words rather than AI-generated answers.",
+    contact: "Official detail/application: https://job-boards.greenhouse.io/canonical/jobs/5326986?source=LinkedIn",
+    analysis: "Keep as the single Canonical Visual Designer identity and raise it into the high-fit remote brand-system group. Apply in English with brand guidelines, typography, accessibility, web/UI systems and digital-product cases; write every application answer personally and confirm Spain payroll, compensation and work authorisation.",
+    tier: "B",
+    locationTag: "Europe remote",
+    typeTag: "Brand guidelines / UI design systems / digital-product visual",
+    links: ["https://job-boards.greenhouse.io/canonical/jobs/5326986?source=LinkedIn"],
+  },
+  {
+    id: 930719,
+    source: "Adsmurai / current official Teamtailor ATS — Barcelona requisition 8109023",
+    status: "Live/current: official Teamtailor requisition 8109023 was reopened on 2026-08-12 and explicitly shows CREATIV_, Barcelona, Hybrid and ENVÍA TU CV. It is a separate requisition from 7993316, which is the Madrid version and must never be merged into this card.",
+    contact: "Current Barcelona official detail/application: https://adsmurai.teamtailor.com/jobs/8109023-digital-graphic-designer-they-he-she ; separate Madrid requisition excluded from this card: https://adsmurai.teamtailor.com/jobs/7993316-digital-graphic-designer-they-he-she",
+    analysis: "Retain the Barcelona card only. The work covers 360-degree digital campaigns, brand-guideline adaptation, paid/organic social, video, presentations and brochures; fluent Spanish and English plus at least three years remain hard gates.",
+    links: ["https://adsmurai.teamtailor.com/jobs/8109023-digital-graphic-designer-they-he-she"],
+  },
+  {
+    id: 930829,
+    source: "Raventós Codorníu / current LinkedIn employer detail",
+    status: "Live/current: the original LinkedIn employer detail 4440107992 was reopened on 2026-08-12 and shows an active hybrid internship in Sant Sadurní d'Anoia, Barcelona province. It covers packaging, new-brand concepts, offline campaign pieces, multi-market adaptation, final artwork, prepress and renders.",
+    analysis: "Keep one card only. The design direction is relevant, but the internship format, Spanish-first brief and commute outside Barcelona city keep it in the lower-priority local group. Confirm school-agreement eligibility, pay, duration, transport and working language before applying.",
+  },
+];
+
+function applyRound24SourceUpdates() {
+  for (const update of round24SourceUpdates) {
+    const item = allData.find((record) => Number(record.id) === update.id);
+    if (!item) continue;
+    Object.assign(item, update, { section: ROUND24_SECTION });
+    item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+      .filter(Boolean)
+      .join(" ");
+  }
+}
+
+applyRound24SourceUpdates();
+
 for (const item of allData) {
   if (!item.searchText) {
     item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
@@ -1763,9 +1862,9 @@ const PRIORITY_IDS = [930813, 910, 914, 1300, 1107, 866, 94, 930847];
 // the default board. This prevents old source indexes, Madrid posts, mirrors
 // and research notes from inflating the usable count.
 const MY_OPPORTUNITY_IDS = Object.freeze([
-  930813, 910, 914, 1300, 1107, 866, 94, 930847, 930863, 930816, 78, 930839, 930860, 1702, 296, 535, 2333, 175, 930838, 930832, 930836, 930837, 446, 930820, 930834, 425, 4, 1828, 930844, 443,
+  930813, 910, 914, 1300, 1107, 866, 94, 930847, 930863, 930816, 78, 930839, 930860, 1702, 604, 296, 535, 2333, 175, 930838, 930832, 930836, 930837, 446, 930820, 930834, 425, 4, 1828, 930844, 443,
   930705, 668, 1102, 884, 203, 601, 284, 920001, 930812, 190, 577, 55,
-  1278, 1314, 314, 207, 444, 458, 258, 5106, 960, 238, 156, 928, 147, 604,
+  1278, 1314, 314, 207, 444, 458, 258, 5106, 960, 238, 156, 928,
   930822, 3518, 304, 170, 1038, 84, 930815, 930824, 930831, 279, 12, 859, 305, 1011, 445, 1029, 188, 922, 483, 958, 930845,
   930823, 162, 930825, 930818, 930821, 930828, 930840, 930827, 930829, 921, 228, 178, 2942, 1105, 890, 891, 930841, 930637, 930833, 930819, 930854, 930826, 930864, 930707, 930708, 930712, 134, 277, 109,
   117, 93, 1296, 375, 210, 930842, 930848, 930719, 89, 1023, 385, 930817, 841, 903, 1108, 855, 874, 875, 876,
@@ -8361,11 +8460,112 @@ Object.assign(CURATED, {
   },
 });
 
-// Reapply the Round 21 source verdicts after every historical refresh block so
-// a stale generated record cannot turn either excluded role back into live.
+// Round 24: an employer job-board API or the exact current requisition wins
+// over cached search snippets. Same-title Adsmurai vacancies are separated by
+// requisition so the Madrid role can never leak into the Barcelona card.
+Object.assign(CURATED, {
+  147: {
+    direction: "brand",
+    company: "SplitMetrics",
+    statusKey: "closed",
+    locationKey: "remote",
+    locationLabel: "欧洲远程 / 官方职位板已移除 / 历史",
+    titleZh: "高级视觉设计师（已关闭）",
+    titleEs: "Senior Visual Designer — closed",
+    reason: "SplitMetrics 官方 Ashby 职位板 API 当前只有 4 个岗位，已没有原 requisition 8e164fd9-aec6-4917-89a7-43cdd2e60116，也没有 Senior Visual Designer；搜索引擎仍显示的是旧缓存。",
+    next: "保留品牌识别、performance campaign、网站和设计系统职责作为作品集参考；只有出现新的官方 requisition 才恢复。",
+    language: "历史岗位曾为英语远程；当前已关闭",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "历史 / 5+ 年",
+    changeType: "round-24-official-board-closed",
+  },
+  173: {
+    ...CURATED[173],
+    statusKey: "closed",
+    titleZh: "平面设计师（已停止接收申请）",
+    titleEs: "Diseñador/a gráfica — applications closed",
+    reason: "原始 LinkedIn 雇主详情 4438899857 明确显示不再接收申请。页面还能打开不等于岗位仍可投。",
+    next: "保留旧 JD 和公司监测；只有 LONBALI 发布新的职位编号和投递入口时恢复。",
+    changeType: "round-24-original-page-closed",
+  },
+  957: {
+    direction: "brand",
+    company: "10x Team / AI Lab",
+    statusKey: "closed",
+    locationKey: "remote",
+    locationLabel: "旧 EU/UK AI 人才池 / 官方职位板已移除",
+    titleZh: "视觉设计负责人 AI 训练项目（已关闭）",
+    titleEs: "Lead Visual Designer — AI Trainer — closed",
+    reason: "10x Team 官方 Ashby 职位板 133 个当前岗位中没有旧 requisition 2f9bd626-3df1-43eb-93c1-1899649b9fa5；现有 Visual/Graphic Designer AI Trainer 只标 Poland，不是 Spain 机会。",
+    next: "不计入当前设计岗；只有新的 Spain-eligible 官方职位编号出现时重新评估。",
+    language: "历史英语 AI 项目池；当前已关闭",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "历史 AI 项目池",
+    changeType: "round-24-official-board-closed",
+  },
+  992: {
+    direction: "digital",
+    company: "Appspace",
+    statusKey: "closed",
+    locationKey: "remote",
+    locationLabel: "Barcelona / Spain remote 旧记录 / 官方职位板已移除",
+    titleZh: "视觉设计师（已关闭）",
+    titleEs: "Visual Designer — closed",
+    reason: "Appspace 官方 Greenhouse 职位板 API 当前有 13 个岗位，但没有 requisition 5813989004 或 Visual Designer；旧详情跳回职位总表，搜索摘要不能当作可投证据。",
+    next: "保留旧职责作为研究历史，不进入可投或待核验数量；出现新官方职位编号后再恢复。",
+    language: "历史英语岗位；当前已关闭",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "历史记录",
+    changeType: "round-24-official-board-closed",
+  },
+  604: {
+    ...CURATED[604],
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "EMEA 全远程 / Barcelona 可居住 / 每年两次国际团队活动",
+    titleZh: "视觉设计师（品牌指南、UI 系统与数字产品）",
+    titleEs: "Visual Designer — Brand and Design Systems",
+    reason: "Canonical 官方 Greenhouse 5326986 当前显示 Apply、Home based - EMEA 和完整申请表；职责直接覆盖品牌指南演进、传播物料、UI design system、数字产品视觉、可用性与无障碍。",
+    next: "用英文提交品牌指南、字体版式、无障碍、Web/UI 系统和数字产品案例；申请答案必须本人撰写，不得用生成式 AI 代写，并先确认 Spain 雇佣与薪资。",
+    language: "专业书面与口语英语为明确要求；未列西语门槛",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "中级以上 / 学术与技术背景门槛较高",
+    changeType: "round-24-official-current-rerank",
+  },
+  930719: {
+    ...CURATED[930719],
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / 永久全职 / requisition 8109023",
+    reason: "当前保留的是 Teamtailor 8109023：页面逐字写 Barcelona、Híbrido 和 ENVÍA TU CV。另一个同名 requisition 7993316 明确是 Madrid，两个职位编号不能合并。",
+    next: "只从 8109023 的 Barcelona 页面申请；至少 3 年、流利西语和英语仍是硬门槛。",
+    changeType: "round-24-requisition-location-lock",
+  },
+  930829: {
+    ...CURATED[930829],
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Sant Sadurní d'Anoia / Barcelona 省 / hybrid 3-2 / 实习",
+    reason: "原始招聘详情当前可投；包装、新品牌概念、线下 campaign、多市场适配、完稿、印前和渲染均与品牌实体延展相关。它已是唯一规范卡，不再重复新增。",
+    next: "因西语环境、实习合同和通勤负担保持后排；先确认学校协议、报酬、期限、交通和实际工作语言。",
+    changeType: "round-24-current-no-duplicate",
+  },
+});
+
+// Reapply the latest source verdicts after every historical refresh block so
+// a stale generated record cannot turn an excluded role back into live.
 applyRound21SourceUpdates();
 applyRound22SourceUpdates();
 applyRound23SourceUpdates();
+applyRound24SourceUpdates();
 
 const els = {
   totalCount: document.querySelector("#totalCount"),

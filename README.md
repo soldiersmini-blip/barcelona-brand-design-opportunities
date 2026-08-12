@@ -6,23 +6,24 @@
 
 ## 当前主表
 
-- 168 个去重后的当前机会。
+- 167 个去重后的当前机会。
 - 122 个 Barcelona / 周边机会。
-- 46 个明确允许 Spain / Europe / worldwide remote 且人在西班牙可申请或可先核验的机会。
-- 163 个原始详情页显示可投，5 个需要先确认。
+- 45 个明确允许 Spain / Europe / worldwide remote 且人在西班牙可申请或可先核验的机会。
+- 162 个原始详情页显示可投，5 个需要先确认。
 - 5 个中文、华人圈、中国公司或中文远程相关机会。
 
 主表只收录已逐条检查过地点、岗位方向、当前状态和真实入口的机会。默认按“我的匹配分”严格从高到低排列；分数同时考虑 Barcelona/Spain 可行性、品牌视觉相关度、资历、语言门槛、状态可信度和材料投入成本。
 
 ## 数据分区
 
-- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 168 条主表。
+- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 167 条主表。
 - `华人中文全库`：华人网、中文社区、Casa Asia 和中国公司相关来源的完整线索。
 - `页面仍可复核`：详情还在，但状态、地点或申请控制需要再次确认的记录。
 - `关闭 / 历史 / 排除`：已过期、错误地点、重复、非设计岗或无法证实的记录。历史不会删除。
 
 ## 关键文件
 
+- `AUDIT-2026-08-12-ROUND24.md`：用雇主官方职位板 API 覆盖搜索缓存；关闭 SplitMetrics、Appspace 与 10x Team 的已移除 requisition，确认 LONBALI 已停止接收申请，保留 Adsmurai Barcelona 8109023 并隔离 Madrid 7993316，同时把 Canonical 官方 EMEA 品牌系统岗提升到高匹配区。主表为 167 条、122 条 Barcelona 与 45 条远程。
 - `AUDIT-2026-08-12-ROUND23.md`：从完整研究库补回 5 个真正独立的当前机会，刷新 Textura、EuroLeague 与 Act Second 三个既有规范记录，并隔离 Voodoo 关闭页、Roman/LCDC 搜索缓存、reboot 错误标题、重复 ID、非设计 Head of Brand 与 Spreadit 低薪帖。主表为 168 条、122 条 Barcelona 与 46 条远程。
 - `AUDIT-2026-08-12-ROUND22.md`：新增 THE/STUDIO 全球远程品牌概念岗与 Prime Insights 远程品牌视觉岗，把 Jobgether 匿名合作公司岗位严格放在待核验末位；复查 Casa Asia、华新与西华后不以旧帖或非设计岗虚增中文数量。主表为 163 条、120 条 Barcelona 与 43 条远程。
 - `AUDIT-2026-08-12-ROUND21.md`：复核高分岗位与官方 ATS；关闭已从 Kraken 官方职位板移除的 Breakout 岗，隔离 Superside 的 Spain/LATAM 地区误标，用 VML 当前 Barcelona 官方岗位补位，并把 Siemens 本地英语视觉系统岗提升到合理排名；主表保持 160 条、120 条 Barcelona 与 40 条远程。
