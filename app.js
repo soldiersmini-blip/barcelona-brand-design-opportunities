@@ -1363,8 +1363,6 @@ function applyRound35SourceUpdates() {
       freshnessAgeDays: 7,
       links: [
         "https://www.es02.com/jobs/Recruitment/barcelona/i184673.html",
-        "https://www.es02.com/jobs/Recruitment/barcelona/i183850.html",
-        "https://www.es02.com/jobs/Recruitment/barcelona/i182243.html",
       ],
       searchText: "Barcelona Chinese advertising company current ES02 184673 183850 182243 full-time Graphic Designer Chinese contact Illustrator AI experience work residence full social insurance employer salary hours address verify A644055418 644055418",
     });
