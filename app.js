@@ -1,5 +1,13 @@
 const allData = Array.isArray(window.JOB_OPPORTUNITIES) ? window.JOB_OPPORTUNITIES : [];
 
+// The generated snapshot reused id 1310 for two unrelated vacancies. Give the
+// Familia Torres record a stable canonical id before any ranking or status
+// logic runs, otherwise selecting one vacancy would accidentally select both.
+const familiaTorresIdCollision = allData.find(
+  (item) => Number(item.id) === 1310 && /familia\s+torres/i.test(`${item.source || ""} ${item.opportunity || ""}`),
+);
+if (familiaTorresIdCollision) familiaTorresIdCollision.id = 930871;
+
 // Current opportunities discovered after the last generated data snapshot.
 // These are deliberately small, hand-audited additions; the historical source
 // corpus stays untouched in data.js.
@@ -1840,6 +1848,507 @@ function applyRound24SourceUpdates() {
 
 applyRound24SourceUpdates();
 
+const ROUND25_SECTION = "2026-08-12 Round 25 current-official discovery and search-cache rejection";
+
+[
+  {
+    id: 930866,
+    section: ROUND25_SECTION,
+    source: "Preply / current official Ashby ATS",
+    opportunity: "UGC Editor (Brand)",
+    fit: "Barcelona hybrid full-time; social-first brand video, paid UGC, organic content and AI-assisted editing",
+    location: "Barcelona, Spain; hybrid; full-time; relocation package mentioned",
+    status: "Live/current: Preply's official Ashby requisition 3b86049e-f2ac-4d98-ad59-e81e4e7b028c was opened and read in full on 2026-08-12. It is listed, shows a complete application route, and identifies Barcelona, Hybrid and FullTime. The role sits in Brand and asks for 2+ years of video-editing experience, CapCut and/or Premiere Pro, advanced English and social-platform fluency. Spanish, German, French, Italian or Polish is only a plus.",
+    contact: "Official detail/application: https://jobs.ashbyhq.com/preply/3b86049e-f2ac-4d98-ad59-e81e4e7b028c ; Preply careers route: https://preply.com/en/careers/apply?ashby_jid=3b86049e-f2ac-4d98-ad59-e81e4e7b028c&job_title=UGC%20Editor&job_team=Brand&job_location=Barcelona",
+    analysis: "A genuine accessible Barcelona brand-content option, but it is video editing and paid-social performance rather than VI or general graphic design. Apply in English with short-form editing, hooks, captions, creator footage, platform-native pacing and AI-assisted localization; confirm salary, office cadence, relocation eligibility and the proportion of organic versus paid content.",
+    score: 82,
+    tier: "B",
+    locationTag: "Barcelona area",
+    typeTag: "Brand UGC / social video / editing",
+    sourceGroup: "official",
+    postedAt: "2026-07-29",
+    freshnessTag: "month",
+    freshnessAgeDays: 14,
+    links: [
+      "https://jobs.ashbyhq.com/preply/3b86049e-f2ac-4d98-ad59-e81e4e7b028c",
+      "https://preply.com/en/careers/apply?ashby_jid=3b86049e-f2ac-4d98-ad59-e81e4e7b028c&job_title=UGC%20Editor&job_team=Brand&job_location=Barcelona",
+    ],
+  },
+  {
+    id: 930867,
+    section: ROUND25_SECTION,
+    source: "Fantasy / current official Lever ATS",
+    opportunity: "Senior Creative Designer - Marketing",
+    fit: "UK/EU remote; branded systems, case-study art direction, motion, campaigns and marketing collateral",
+    location: "UK or EU remote; Permalance; Spain is eligible as an EU location",
+    status: "Live/current: Fantasy's official Lever requisition e1833bc1-3366-4ab7-9be4-b55f5bd1c6d7 was opened and read in full on 2026-08-12. It shows apply for this job, Remote and an explicit requirement to be located in the UK or EU. The role requires 5+ years across motion, brand and digital, plus strong After Effects, expert Figma, art direction, typography, layout and familiarity with 3D and generative AI.",
+    contact: "Official detail/application: https://jobs.lever.co/fantasy/e1833bc1-3366-4ab7-9be4-b55f5bd1c6d7",
+    analysis: "A strong exact EU-remote brand-extension opportunity but a senior motion-heavy stretch. Apply in English only if the portfolio can show all three explicit pillars: polished motion, systematic static brand collateral, and editorial case-study presentation. Confirm rate, Permalance terms, weekly hours, Spain invoicing/payroll, leave and timezone overlap.",
+    score: 80,
+    tier: "B",
+    locationTag: "Europe remote",
+    typeTag: "Brand systems / motion / campaign / editorial case studies",
+    sourceGroup: "official",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: ["https://jobs.lever.co/fantasy/e1833bc1-3366-4ab7-9be4-b55f5bd1c6d7"],
+  },
+].forEach((record) => {
+  if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
+});
+
+const round25SourceUpdates = [
+  {
+    id: 942,
+    source: "Co-Star / current official Greenhouse ATS",
+    opportunity: "Brand Designer",
+    fit: "Worldwide remote freelance; brand systems, campaigns, editorial, web, social, launch assets and asynchronous collaboration",
+    location: "Fully remote anywhere; freelance/contract; part-time to start; no travel",
+    status: "Live/current: Co-Star's official Greenhouse requisition 6126693004 was reopened and read in full on 2026-08-12. It shows Apply and a complete application form, and explicitly says fully remote anywhere. The role is a senior individual-contributor freelance engagement requiring 5-8 years across brand identity, campaigns, digital and print; motion, illustration and generative tools are useful additions.",
+    contact: "Official detail/application: https://job-boards.greenhouse.io/costar/jobs/6126693004",
+    analysis: "Recover into the main board as a real global-remote brand-design route. The scope is exact, but 5-8 years, part-time freelance terms and undisclosed rate lower practical fit. Apply in English with identity systems, campaigns, editorial, web/social and launch work; confirm rate, guaranteed hours, duration, Spain invoicing/tax, IP terms, equipment and payment schedule.",
+    score: 72,
+    tier: "B",
+    locationTag: "Worldwide remote",
+    typeTag: "Brand identity / campaign / editorial / digital",
+    sourceGroup: "official",
+    links: ["https://job-boards.greenhouse.io/costar/jobs/6126693004"],
+  },
+  {
+    id: 421,
+    source: "JOIN / removed official detail",
+    status: "Closed/history: a fresh search-engine summary displayed Barcelona hybrid, salary and an apparently recent update, but the employer's original JOIN detail 16070787 was opened directly on 2026-08-12 and returned HTTP 410 Gone. Search freshness cannot override a removed official application page.",
+    contact: "Removed official detail: https://join.com/companies/join/16070787-senior-brand-designer",
+    analysis: "Keep the former brand-system brief and salary only as history. Do not apply through mirrors or restore it until JOIN publishes a new requisition with a working original application form.",
+    score: 10,
+    tier: "X",
+    links: ["https://join.com/companies/join/16070787-senior-brand-designer"],
+  },
+  {
+    id: 651,
+    source: "Remote / current official Greenhouse board and removed requisitions",
+    status: "Closed/history: search and mirror pages still surfaced Senior Brand Designer EMEA, but Remote's official Greenhouse board and API were rechecked on 2026-08-12. The current board no longer contains Brand Design or Senior Brand Designer, and the old requisition routes return to the board with error=true rather than an application form.",
+    contact: "Current official board: https://job-boards.greenhouse.io/remotecom ; removed detail routes: https://job-boards.greenhouse.io/remotecom/jobs/7631149003 and https://job-boards.greenhouse.io/remotecom/jobs/7729943003",
+    analysis: "Preserve the former EMEA brand-design brief as a watchlist benchmark, but do not count or apply. Restore only when Remote publishes a new official requisition whose detail page and application form both open.",
+    score: 10,
+    tier: "X",
+    links: [
+      "https://job-boards.greenhouse.io/remotecom",
+      "https://job-boards.greenhouse.io/remotecom/jobs/7631149003",
+      "https://job-boards.greenhouse.io/remotecom/jobs/7729943003",
+    ],
+  },
+  {
+    id: 930839,
+    status: "Live/current: CATORCE's official Greenhouse requisition 4797510008 was reopened on 2026-08-12 and still shows Apply plus a complete application form. It remains one canonical Barcelona card; no duplicate was added in Round 25.",
+  },
+  { id: 930866 },
+  { id: 930867 },
+];
+
+function applyRound25SourceUpdates() {
+  for (const update of round25SourceUpdates) {
+    const item = allData.find((record) => Number(record.id) === update.id);
+    if (!item) continue;
+    Object.assign(item, update, { section: ROUND25_SECTION });
+    item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+      .filter(Boolean)
+      .join(" ");
+  }
+}
+
+applyRound25SourceUpdates();
+
+const ROUND26_SECTION = "2026-08-12 Round 26 historical-corpus reconciliation and current Barcelona recovery";
+
+[
+  {
+    id: 930868,
+    section: ROUND26_SECTION,
+    source: "ZABRISKIE STUDIO / GRUPO NATURA / current InfoJobs detail",
+    opportunity: "Diseñador/a Gráfico/a Junior",
+    fit: "Barcelona packaging, branding, editorial, illustration, final artwork, mockups and AI-assisted concept development",
+    location: "Barcelona city; on-site; indefinite full-time",
+    status: "Live/current: the original InfoJobs detail i62ce6602174df08577dee1707bf0be was opened and read in full on 2026-08-12. It says published again two days ago, still shows Inscribirme en esta oferta and has an active application route. The role covers packaging, new collection graphics, branding, labels, catalogues, mockups, final artwork, printing and supplier review.",
+    contact: "Original detail/application: https://www.infojobs.net/barcelona/disenador-grafico-junior/of-i62ce6602174df08577dee1707bf0be",
+    analysis: "A strong junior Barcelona graphic-design recovery with real packaging and brand-production scope. The practical gates are 2+ years, native/bilingual Spanish, intermediate Catalan and English, full on-site work and a EUR20k-27k range. Apply only with packaging, dielines, print-ready files, branding, editorial and mockup cases.",
+    score: 79,
+    tier: "B",
+    locationTag: "Barcelona area",
+    typeTag: "Packaging / branding / editorial / illustration",
+    sourceGroup: "aggregator",
+    postedAt: "2026-08-10",
+    freshnessTag: "week",
+    freshnessAgeDays: 2,
+    links: ["https://www.infojobs.net/barcelona/disenador-grafico-junior/of-i62ce6602174df08577dee1707bf0be"],
+  },
+  {
+    id: 930869,
+    section: ROUND26_SECTION,
+    source: "NEWEYES TECH S.L. / current InfoJobs detail",
+    opportunity: "Diseñador/a multimedia y creador de contenido",
+    fit: "Barcelona digital graphics, social content, video, motion, campaign ideation and AI-assisted production",
+    location: "Barcelona city; on-site; indefinite full-time",
+    status: "Live/current: the original InfoJobs detail i804585b03e499db184a0d6f14716bf was opened and read in full on 2026-08-12. It says published again ten hours ago, still shows Inscribirme en esta oferta and has an active application route. The role covers social content, video editing, digital graphics, campaign planning, CapCut, Adobe and AI tools.",
+    contact: "Original detail/application: https://www.infojobs.net/barcelona/disenador-multimedia-creador-contenido/of-i804585b03e499db184a0d6f14716bf",
+    analysis: "A current Barcelona content-design backup rather than a core VI role. It requires 2+ years, advanced English, on-site work, social account experience, Adobe, CapCut and comfort appearing on camera; salary is EUR25k-28k. Apply with short-form video, motion, digital campaign and AI-production examples.",
+    score: 68,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Digital graphics / social video / motion / content",
+    sourceGroup: "aggregator",
+    postedAt: "2026-08-12",
+    freshnessTag: "week",
+    freshnessAgeDays: 0,
+    links: ["https://www.infojobs.net/barcelona/disenador-multimedia-creador-contenido/of-i804585b03e499db184a0d6f14716bf"],
+  },
+  {
+    id: 930870,
+    section: ROUND26_SECTION,
+    source: "FunPlus / current official Factorial detail",
+    opportunity: "Graphic Design Intern",
+    fit: "Barcelona paid brand and 2D graphic-design internship; English-first; key art, logos, icons, game/brand assets and optional motion",
+    location: "Barcelona 08010; hybrid; paid part-time internship; 20 hours/week",
+    status: "Live/current: the official FunPlus Factorial detail 293622 was opened and read in full on 2026-08-12. It shows Apply now and describes a paid 20-hour hybrid internship in the Barcelona office. The role creates FunPlus brand and game marketing content, key art, 2D assets, logos, screenshots and icons.",
+    contact: "Official detail/application: https://funplus.factorialhr.com/embed/job_posting/graphic-design-intern-293622",
+    analysis: "A strong English-accessible junior Barcelona visual-design route if the applicant can sign a university internship agreement. Rank below normal employment because current student status is a hard gate; apply with brand assets, key art, 2D systems, logos/icons and optional motion work.",
+    score: 67,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Brand / 2D graphic design / key art / motion",
+    sourceGroup: "other",
+    postedAt: "",
+    freshnessTag: "month",
+    freshnessAgeDays: null,
+    links: ["https://funplus.factorialhr.com/embed/job_posting/graphic-design-intern-293622"],
+  },
+].forEach((record) => {
+  if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
+});
+
+const round26SourceUpdates = [
+  {
+    id: 886,
+    source: "JUNGLE / MeMe / current official Factorial board and LinkedIn detail",
+    status: "Live/current: the employer's current Factorial board and specific LinkedIn detail 4441503440 were checked on 2026-08-12. The Barcelona role remains open with Solicitar/Inscríbete, an indefinite full-time contract, C/ Álava 111 and a published EUR23k-28k salary band. It combines art direction, graphic design, logos, supers, boards, presentations, short-form video, Adobe, CapCut/Premiere and generative AI.",
+    analysis: "Recover as a current secondary Barcelona visual-content role. It is social-first rather than VI ownership, and the Spanish-first workflow must be confirmed, but the hands-on design/video scope, salary and application route are concrete.",
+  },
+  {
+    id: 930711,
+    source: "JUNGLE / MeMe / current official Factorial board and LinkedIn detail",
+    status: "Live/current: the employer's current Factorial board and specific LinkedIn detail 4441035715 were checked on 2026-08-12. The Barcelona role remains open with Solicitar/Inscríbete, an indefinite full-time contract and C/ Álava 111. It creates trend-led ideas, social formats, presentations, memes, short-form video and brand content; real bilingual English is stated.",
+    analysis: "Recover only as a secondary social-creative route. The role is more ideas, copy, community and fast content than graphic/VI design, so it stays below hands-on brand and visual-production jobs.",
+  },
+  {
+    id: 456,
+    source: "CBA Design Spain / current official speculative-application form",
+    status: "Needs verification / proactive route: CBA Spain's official site currently exposes a working CV and portfolio application form and says it is always looking for new talent. Its office is at Calle Bolivia 68-70, 08018 Barcelona, but no specific open vacancy, salary, contract or language requirement is published.",
+    analysis: "Keep as a low-priority Barcelona brand/VI studio route, clearly labelled as a speculative application rather than an active vacancy. The portfolio fit is excellent—visual identity, packaging, digital, motion and brand guidelines—but send a concise availability inquiry before investing in a tailored application.",
+  },
+  {
+    id: 930870,
+  },
+  {
+    id: 313,
+    source: "Mapit IoT / current original LinkedIn employer detail",
+    status: "Live/current: the original LinkedIn employer detail 4437788118 was opened and read in full on 2026-08-12. It still shows a specific Barcelona full-time Marketing Designer vacancy and an application route. The role owns Mapit's visual identity, cross-market brand assets, email, landing pages, co-branding, campaigns, AI workflows, brand guides and prompts.",
+    analysis: "Recover into the main board as a strong Barcelona brand-system role, but keep it below language-accessible jobs: 5+ years, native Spanish and English B2 are hard gates.",
+  },
+  {
+    id: 908,
+    source: "Top Doctors Group / current official Teamtailor detail",
+    status: "Live/current: the official Teamtailor detail 8050312 was opened and read in full on 2026-08-12. It still shows Enviar solicitud, Barcelona hybrid, full-time and EUR22,000-24,000. The work owns multi-brand visual consistency across campaigns, social, email, landing pages, presentations, events, employer branding and light audiovisual production.",
+    analysis: "Recover as a real Barcelona brand/marketing-design route. The scope is exact, but 3+ years, Spanish-first workflow and low published salary reduce priority.",
+  },
+  {
+    id: 930718,
+    source: "Capitole / current original LinkedIn employer detail",
+    status: "Live/current: LinkedIn employer detail 4438065600 was opened and its JobPosting data read on 2026-08-12. It lists Email Designer, Barcelona area, full-time, posted 2026-07-15 and a current application route. The role builds responsive email assets, evolves an email design system, designs in Figma and maintains visual brand consistency.",
+    analysis: "Recover as a specialised digital-brand route. It is more HTML/CSS, AMPscript and Salesforce Marketing Cloud than general graphic design, so rank below broader brand/VI jobs.",
+  },
+  {
+    id: 867,
+    status: "Live/current: LinkedIn employer detail 4440457390 was opened and its JobPosting data read on 2026-08-12. It lists Creative Motion Grapher, Sant Cugat del Vallès, hybrid, posted 2026-07-29 and an active application route. The work covers 2D/3D motion, brand campaigns, identity-aligned animation, performance assets and AI workflows.",
+  },
+  {
+    id: 863,
+    status: "Live/current: LinkedIn employer detail 4436341060 was opened and its JobPosting data read on 2026-08-12. It lists TÈCNIC/A DISSENY GRÀFIC DIGITAL in Olèrdola, posted 2026-07-24, with an active application route. The role covers paid campaigns, social, newsletters, short video, motion and digital brand consistency; the office requires a car and the six-month contract may extend to one year.",
+  },
+  {
+    id: 856,
+    status: "Live/current: LinkedIn employer detail 4442614068 was opened and its JobPosting data read on 2026-08-12. It lists a full-time indefinite on-site Graphic Designer in Castellgalí, posted 2026-07-21, salary EUR23,000 and an active application route. Work covers retail, e-commerce, campaigns, newsletters, banners, landing pages, video and final artwork.",
+  },
+  {
+    id: 1092,
+    source: "Codeway / current official Ashby ATS",
+    status: "Live/current: Codeway's official Ashby board and requisition d62c23b7-34cc-494a-8d43-38ea8338f01d were read on 2026-08-12. It lists Marketing Artist - Dramapops, Barcelona hybrid, full-time, posted 2026-07-06 and a complete application route. The work is paid-social video, motion, AI video and performance creative for Meta, TikTok and YouTube.",
+    analysis: "Recover as a current Barcelona motion/performance-design route. It is social acquisition rather than VI, but needs only 2+ years and offers visa/relocation support.",
+  },
+  {
+    id: 1098,
+    source: "Codeway / current official Ashby ATS",
+    status: "Live/current: Codeway's official Ashby board and requisition c59cd8a0-9c94-420d-9c0e-7f8ea392d6b3 were read on 2026-08-12. It lists Senior Creative Marketing Manager, Barcelona hybrid, full-time, posted 2026-07-09 and a complete application route. The role owns creative strategy, paid-social concepts, testing systems, AI production and creative-team workflows.",
+    analysis: "Keep as a senior stretch only: it requires 4-5+ years and a performance-marketing track record, and is not a pure hands-on graphic/VI role.",
+  },
+  {
+    id: 275,
+    source: "Factorial / current original LinkedIn employer detail",
+    status: "Live/current: LinkedIn employer detail 4429234870 was opened and its JobPosting data read on 2026-08-12. It lists Creative Lead/Strategy - Paid Acquisition, Barcelona on-site, full-time, posted 2026-07-29 and an active application route. It leads designers, video editors and AI artists and requires 5+ years plus fluent English.",
+    analysis: "Recover as an English-accessible Barcelona creative-lead stretch, but rank below individual-contributor design roles because the job is performance strategy and team leadership.",
+  },
+  {
+    id: 352,
+    source: "Blank Studio Creative S.L. / current official careers",
+    status: "Live/current: the official Junior 3D Designer detail was opened and read in full on 2026-08-12. It still shows Barcelona, full-time, remote-friendly and an application email. The role creates 3D product and packaging visuals, brand worlds, campaign renders, mockups and production handoffs for beauty and lifestyle clients.",
+    analysis: "Recover as a junior 3D/brand-visual route. It is not general VI, but packaging, product visualization and brand-world work are relevant; confirm salary, remote cadence and whether the email subject typo affects routing.",
+  },
+  {
+    id: 877,
+    status: "Live/current: the original Job Today detail 6g3oVr was opened and read in full on 2026-08-12. It was posted 2026-08-06, still shows Inscríbete and covers packaging artwork, legal text, braille, barcodes, prepress, production coordination and sustainable packaging in Cerdanyola del Vallès.",
+    analysis: "Recover as a lower-priority packaging-production option. The EUR12.78/hour temporary contract and final-art focus are major tradeoffs, but the location and application route are real.",
+  },
+  {
+    id: 1253,
+    source: "TheBusinessLook BCN / specific LinkedIn detail and direct email",
+    status: "Needs verification: the specific LinkedIn detail 4409160871 still exposes the full Barcelona part-time Junior Graphic Designer brief and the direct application email juanca@businesslookbcn.com, but it is about three months old and no longer shows a platform apply button. Current headcount must be confirmed before applying.",
+    analysis: "Keep in the main board as a verify-first direct-contact lead, not as confirmed live. The junior scope is useful—catalogues, web banners, social, newsletters, presentations and product support—but send a short availability check before preparing a tailored application.",
+  },
+  {
+    id: 372,
+    source: "Molin AI / current original LinkedIn employer detail",
+    status: "Live/current: LinkedIn employer detail 4429533464 was opened and its JobPosting data read on 2026-08-12. It lists Social & Creative Content Creator, Barcelona, contractor, posted 2026-06-24 and an active application route. The work is in-person concepting, filming, editing and fast publishing across LinkedIn, X, YouTube, TikTok and Instagram.",
+    analysis: "Recover only as a secondary social/video option. It is a contractor creator role, requires frequent founder filming and event travel, and is not a core brand-identity job.",
+  },
+  {
+    id: 868,
+    status: "Needs verification: LinkedIn detail 4425688048 still exposes the full Video Maker vacancy, Barcelona, full-time, posted about three weeks ago, with 3+ years and fluent Spanish plus English. However, the public page does not expose a current apply button or employer ATS route, so the submission path must be confirmed before applying.",
+    analysis: "Retain as a verify-first healthcare-brand motion lead. The audiovisual scope is real and relevant, but language and application-route friction lower priority.",
+  },
+  {
+    id: 854,
+    source: "Netenders / Wordans / current original LinkedIn employer detail",
+    status: "Live/current: LinkedIn employer detail 4421389114 was opened and its JobPosting data read on 2026-08-12. It still lists T-shirt Designers for High-Volume E-commerce, Barcelona, posted 2026-05-31 and an application route. The brief asks for print-ready apparel graphics, typography, mockups and commercial iteration.",
+    analysis: "Recover as a narrow apparel/e-commerce graphic route. The metadata says full-time while the body says freelance designers, and pay is undisclosed; confirm contract, volume, rate and IP before doing any test.",
+  },
+  {
+    id: 633,
+    source: "Puig / Carolina Herrera Makeup / current official careers",
+    status: "Live/current: Puig's official requisition 1407487333 was opened and read in full on 2026-08-12. It still shows Apply now, Barcelona and a one-year Image & 360 Makeup Graduate programme. The role supports global image campaigns, visual research, moodboards, toolkits, production and 360 asset rollout across retail, e-commerce, social, CRM and PR.",
+    analysis: "Recover as a brand-image graduate opportunity, not a pure designer role. It requires recent graduate/Master status, fluent English and Spanish, and mixes creative support with project coordination.",
+  },
+  {
+    id: 1053,
+    source: "DDB Spain / current official Greenhouse ATS",
+    status: "Live/current: DDB Spain's official Greenhouse board was checked on 2026-08-12 and requisition 5096089008 remains listed in Barcelona with a direct application route. The role is Social Media Content Creator, so it belongs only in the secondary content group.",
+    analysis: "Recover at low priority as a current Barcelona social-content route, not a core graphic/VI opportunity.",
+  },
+  {
+    id: 1094,
+    source: "CATORCE / DDB Group / current official Greenhouse ATS",
+    status: "Live/current: CATORCE's official Greenhouse board and requisition 5215625008 were opened and read on 2026-08-12. It lists Creative Director - Spain Hub, Barcelona and a direct application route. The role adapts global CUPRA/SEAT campaigns and leads copywriters and art directors.",
+    analysis: "Keep only as a very high-bar stretch: it requires at least 10 years in agencies, 3-4 years as Creative Director, and perfect Spanish and English.",
+  },
+  { id: 930868 },
+  { id: 930869 },
+  {
+    id: 253,
+    status: "Closed/history: the specific LinkedIn text is still indexed, but the matching FashionUnited vacancy explicitly says it no longer accepts applications and no current employer ATS route can be validated on 2026-08-12.",
+    tier: "X",
+  },
+  {
+    id: 376,
+    status: "Excluded/current: the official eDreams ODIGEO role is live in Barcelona, but it is an SEO/editorial/copywriting position requiring native or fully bilingual French. Visual work is limited to simple Canva/CapCut adaptations, so it is outside the target design scope.",
+    tier: "X",
+  },
+  { id: 1088, status: "Excluded/current: Product Design Director is a senior product-leadership role, not brand, graphic or visual communication design.", tier: "X" },
+  { id: 613, status: "Excluded/current: the Oasis Roots role is primarily marketing and operations rather than a hands-on design vacancy.", tier: "X" },
+  { id: 644, status: "Excluded/current: the Oasis Roots role is primarily marketing and operations rather than a hands-on design vacancy.", tier: "X" },
+  { id: 1100, status: "Excluded/current: LABHOUSE UI/UX Artist is a game-interface/product-art role rather than brand or graphic communication design.", tier: "X" },
+  { id: 1266, status: "Excluded/current: Coty's internship is e-commerce SEO and product-content operations; graphic design is not the core responsibility.", tier: "X" },
+  { id: 6, status: "Excluded/current: the current Nacar vacancy is Senior UX Designer and falls outside the brand/graphic/VI target.", tier: "X" },
+  { id: 635, status: "Excluded/current: TOUS exposes only a generic join-us application, with no specific design vacancy to evaluate.", tier: "X" },
+  { id: 422, status: "Excluded/current: Construction & Design Manager concerns store construction/project delivery, not graphic or brand design.", tier: "X" },
+  { id: 900, status: "Closed/history: the LinkedIn job URL now resolves to generic search rather than the Experis Creative Designer detail, so no current application can be validated.", tier: "X" },
+  { id: 1034, status: "Excluded/current: SearchApi's role is frontend engineering plus UI and is limited to Lithuania, not Spain/Europe-wide remote.", tier: "X", location: "Lithuania only" },
+  { id: 1089, status: "Excluded/current: Perk Staff Product Designer is a senior product-design role, not brand, graphic or visual communication design.", tier: "X" },
+  {
+    id: 857,
+    status: "Closed/history: LinkedIn job 1215063575 is an old historical requisition and no current employer application route can be validated. Do not count the editorial graphic-designer brief as current.",
+    tier: "X",
+  },
+  {
+    id: 961,
+    status: "Closed/history: SplitMetrics' official Ashby board was checked through its current posting API on 2026-08-12 and no Senior Visual Designer role is listed. The old detail now opens only a generic Jobs shell rather than a current application.",
+    tier: "X",
+  },
+  { id: 423, status: "Closed/history: the original JOIN detail returned HTTP 410 Gone on 2026-08-12; no application remains.", tier: "X" },
+  { id: 930714, status: "Closed/history: the InfoJobs detail was read on 2026-08-12 and explicitly says No se aceptan más candidaturas para esta oferta.", tier: "X" },
+  { id: 930713, status: "Closed/history: the InfoJobs detail was read on 2026-08-12 and explicitly says No se aceptan más candidaturas para esta oferta.", tier: "X" },
+  { id: 69, status: "Closed/history: the employer careers detail returned HTTP 404 on 2026-08-12; no current application remains.", tier: "X" },
+  { id: 70, status: "Closed/history: the original Teamtailor detail returned HTTP 410 Gone on 2026-08-12; no current application remains.", tier: "X" },
+  { id: 453, status: "Closed/history: the dated Domestika detail still opens but exposes no application route and is no longer accepting applications.", tier: "X" },
+  { id: 834, status: "Closed/history: the Twine detail was read on 2026-08-12 and explicitly says No longer accepting applications.", tier: "X" },
+  { id: 995, status: "Closed/history: the original Greenhouse detail returned HTTP 404 on 2026-08-12; no current application remains.", tier: "X" },
+  { id: 350, status: "Closed/history: the original JOIN detail returned HTTP 410 Gone on 2026-08-12; no current application remains.", tier: "X" },
+  { id: 561, status: "Closed/history: the ACCIÓ vacancy detail returned HTTP 404 on 2026-08-12; no current application remains.", tier: "X" },
+  { id: 912, status: "Closed/history: the original Lever detail returned HTTP 404 on 2026-08-12; no current application remains.", tier: "X" },
+  { id: 5, status: "Closed/history: the original Recruitee detail returned HTTP 404 on 2026-08-12; no current application remains.", tier: "X" },
+  { id: 1095, status: "Closed/history: DDB Spain's current official Greenhouse board no longer lists requisition 5229086008 on 2026-08-12.", tier: "X" },
+  { id: 1033, status: "Excluded/current: Ashby's official posting API lists this EU Design Engineer role in Portugal, not Spain or Europe-wide remote. It is also a frontend engineering role rather than brand/visual design.", tier: "X", location: "Portugal only; remote within that location" },
+  { id: 907, status: "Closed/history: the LinkedIn URL now resolves to a generic Spanish job search rather than the ELADIET vacancy; no current application can be validated.", tier: "X" },
+  { id: 904, status: "Closed/history: the LinkedIn URL now resolves to a generic Spanish job search rather than the Wall Street English vacancy; no current application can be validated.", tier: "X" },
+  { id: 895, status: "Closed/history: the LinkedIn URL now resolves to a generic Spanish job search rather than the KOROSHI vacancy; no current application can be validated.", tier: "X" },
+  { id: 431, status: "Closed/history: the LinkedIn URL now resolves to a generic Spanish job search rather than the Enso vacancy; no current application can be validated.", tier: "X" },
+  { id: 262, status: "Closed/history: the LinkedIn URL now resolves to a generic Spanish job search rather than the COCUNAT vacancy; no current application can be validated.", tier: "X" },
+  { id: 373, status: "Closed/history: the LinkedIn URL now resolves to a generic Spanish job search rather than the YouPlanet vacancy; no current application can be validated.", tier: "X" },
+  { id: 899, status: "Closed/history: the LinkedIn URL now resolves to a generic Spanish job search rather than the Brand & Visual Designer vacancy; no current application can be validated.", tier: "X" },
+  { id: 888, status: "Closed/history: the LinkedIn URL now resolves to a generic Spanish job search rather than the Mindrift vacancy; no current application can be validated.", tier: "X" },
+  { id: 873, status: "Closed/history: the LinkedIn URL now resolves to a generic job search rather than the Talent-R vacancy; no current application can be validated.", tier: "X" },
+  { id: 232, status: "Closed/history: the LinkedIn URL now resolves to a generic Spanish job search rather than the Fluidra vacancy; no current application can be validated.", tier: "X" },
+  { id: 233, status: "Closed/history: the LinkedIn URL now resolves to a generic Spanish job search rather than the LONBALI vacancy; no current application can be validated.", tier: "X" },
+];
+
+function applyRound26SourceUpdates() {
+  for (const update of round26SourceUpdates) {
+    const item = allData.find((record) => Number(record.id) === update.id);
+    if (!item) continue;
+    Object.assign(item, update, { section: ROUND26_SECTION });
+    item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+      .filter(Boolean)
+      .join(" ");
+  }
+}
+
+applyRound26SourceUpdates();
+
+const ROUND27_SECTION = "2026-08-12 Round 27 complete historical-candidate disposition";
+
+// These records have a current employer/original detail or official ATS route
+// and are relevant enough to return to the ranked board. `verify` means the
+// role is useful but one decisive condition (application route, Spain
+// eligibility, contract or freshness) still needs confirmation.
+const ROUND27_LIVE_IDS = Object.freeze([
+  1287, 142, 454, 996, 1021, 1026, 1257, 1310, 930871, 327, 345, 1264, 105, 330,
+  1049, 1299, 141, 649, 654, 979, 1024, 1025, 1248, 579, 1258, 581, 860, 1036,
+  1061, 294, 317, 1002, 1093, 1262, 848, 537,
+]);
+const ROUND27_VERIFY_IDS = Object.freeze([
+  382, 1243, 213, 136, 1237, 1249, 1288, 864, 336, 990, 130, 214, 1238,
+]);
+const ROUND27_REVIEW_LIBRARY_IDS = Object.freeze([
+  1252, 843, 1022, 457, 849, 370, 945, 1000, 997, 197, 199, 1261,
+]);
+
+const ROUND27_ARCHIVE_REASONS = new Map([
+  [355, "Official studio page is only a general portfolio intake; it does not publish a current vacancy, pay, contract or language requirements."],
+  [1013, "Duplicate of the same current Finary freelance Senior Brand Designer already represented by canonical card 930848."],
+  [1047, "Current role, but it is a TikTok Shop creative-strategy and performance-marketing position rather than a hands-on brand/graphic design vacancy."],
+  [1316, "The old LinkedIn detail remains indexed, but the employer's current careers board does not list this Graphic Designer DTP vacancy."],
+  [1317, "Remote role requires professional fluency in both Italian and English; it is not an accessible Spain/Europe design route for this search."],
+  [574, "Generic chamber CV channel for internationalisation and business programmes; no specific brand, visual or graphic-design vacancy is published."],
+  [999, "Game-studio Art Director leadership role; the work is game art and team management, not brand/VI or communication design."],
+  [338, "The advertised mid-July 2026 internship start has passed and no fresh employer vacancy or application route was confirmed."],
+  [594, "Fashion/apparel product-design role for collection development; outside the target brand, graphic and visual-communication scope."],
+  [571, "Old January listing with no fresh employer application evidence; retained only as historical employer research."],
+  [44, "Old March Domestika listing with no verified current application route."],
+  [98, "Duplicate Hostinger identity; the current official role is already represented by canonical card 305."],
+  [121, "Duplicate/stale HAAN internship identity; the previously audited canonical vacancy is already preserved in history."],
+  [179, "Duplicate Alea internship identity; the same opportunity is already represented by canonical card 37."],
+  [222, "UI/product-design role rather than brand, graphic or visual-communication design."],
+  [250, "Older MiiN listing with no current employer application route; do not count it as open."],
+  [353, "Official page explicitly says the studio is not hiring full-time and accepts portfolios only for possible future collaborations."],
+  [530, "Official Morillas page currently shows zero positions; a generic talent email is not a current vacancy."],
+  [941, "Official route excludes this search's geography; preserve only as a US-remote exclusion record."],
+  [1052, "Community-management/content role rather than a hands-on design vacancy."],
+  [1282, "Senior visual product-design role; product UX is outside the core brand/graphic brief."],
+  [1284, "Senior product-design/design-system role; outside the core brand/graphic brief."],
+  [1313, "LinkedIn text remains visible, but Natulim's current official Factorial board does not list the Senior Packaging Designer requisition."],
+  [198, "Old Domestika senior listing with no fresh employer or ATS application evidence."],
+  [366, "Six-month-old Morillas hiring post and the current official site shows no open position."],
+  [392, "Brand Content Manager is a fashion content/editorial role, not a hands-on design vacancy."],
+  [570, "Old February Behance listing with no verified current application route."],
+  [998, "Product Designer role for app/browser-extension flows; outside the brand/graphic target."],
+  [17, "Official application requires native Russian, creating a hard language gate outside this search's usable routes."],
+  [219, "UI/product-design vacancy rather than brand, VI or graphic communication."],
+  [53, "Barcelona studio research route with no current vacancy or recruitment form."],
+  [282, "Mobile-game Product Artist role; outside the brand/graphic communication target."],
+  [285, "Brand marketing executive role rather than a hands-on designer vacancy; the separate EuroLeague design role is already represented."],
+  [1251, "Part-time printing and vinyl-installation assistant role; production labour rather than a graphic-design vacancy."],
+  [50, "Official page explicitly states there are no vacancies; portfolio email is retained only as historical outreach research."],
+  [967, "Senior marketplace Product Designer role; outside the brand/graphic target despite being current in Barcelona."],
+]);
+
+const round27SourceUpdates = [
+  {
+    id: 930871,
+    source: "Familia Torres / current employer-origin LinkedIn detail",
+    opportunity: "Diseñador/a gráfico/a / Graphic Designer",
+    fit: "Brand creation, logos, wine and spirits labels, illustration, packaging, campaigns and physical/digital brand activation",
+    location: "Vilafranca del Penedès, Barcelona province; stable full-time position",
+    status: "Live/current: the employer-origin LinkedIn detail 4400269724 was opened and read on 2026-08-12. It still shows Solicitar, a full-time stable position and a complete role brief. The vacancy covers new brands and products, logos, labels, illustration, packaging, campaigns and production coordination.",
+    contact: "Current original detail/application: https://es.linkedin.com/jobs/view/dise%C3%B1ador-a-gr%C3%A1fico-a-at-familia-torres-4400269724",
+    analysis: "One of the strongest recovered Barcelona-province brand/packaging roles. It asks for 2-3 years, advanced Photoshop/Illustrator/InDesign and high English; Spanish is not separately stated in the brief, but the working environment should be confirmed. The office is Vilafranca del Penedès, not Barcelona city.",
+    score: 83,
+    tier: "B",
+    locationTag: "Barcelona area",
+    typeTag: "Brand identity / packaging / labels / campaigns",
+    sourceGroup: "other",
+    links: ["https://es.linkedin.com/jobs/view/dise%C3%B1ador-a-gr%C3%A1fico-a-at-familia-torres-4400269724"],
+  },
+  {
+    id: 214,
+    source: "REDLINE MEDIA / current employer-origin LinkedIn detail",
+    status: "Needs verification: the original LinkedIn detail 4385876513 was opened and read on 2026-08-12 and still exposes the full Barcelona vacancy, posted about two weeks earlier. It explicitly requires standard Mandarin and Spanish B1+, but the public page does not expose a stable application button, salary, contract or internship agreement.",
+    analysis: "Recover as a Chinese-language secondary opportunity, not as a core VI role. The work is on-camera short-form content, social account support, food promotion and brand interviews near L2 Sant Roc. Confirm application contact, pay, contract, hours and whether on-camera work is mandatory before applying.",
+  },
+  {
+    id: 141,
+    source: "Minsk.Barcelona / current employer-origin LinkedIn detail",
+    status: "Live/current: the original LinkedIn detail 4436715010 was opened and read on 2026-08-12. It shows a current junior Barcelona vacancy covering branding, campaigns, graphic, web, digital and motion work, 38.5 hours/week, initially on-site with possible hybrid work later.",
+    analysis: "Strong junior scope but a hard local-language gate: both Catalan and Spanish are requested, while English is only useful for international clients. Salary is discussed only at interview. Keep it visible but low-ranked unless both local languages are workable.",
+  },
+  {
+    id: 454,
+    status: "Live/current professional opportunity: ADG-FAD's employer-origin announcement was read on 2026-08-12 and accepts proposals until 16 September 2026 for the paid Laus 2027 campaign commission. Professional ADG membership is a hard eligibility gate; this is a commission, not employment.",
+    analysis: "Keep as a separately labelled paid design opportunity. It is relevant to campaign identity and art direction, but should never be presented as a salaried vacancy.",
+  },
+];
+
+function applyRound27SourceUpdates() {
+  const reviewedIds = new Set([
+    ...ROUND27_LIVE_IDS,
+    ...ROUND27_VERIFY_IDS,
+    ...ROUND27_REVIEW_LIBRARY_IDS,
+    ...ROUND27_ARCHIVE_REASONS.keys(),
+  ]);
+  for (const item of allData) {
+    if (reviewedIds.has(Number(item.id))) item.section = ROUND27_SECTION;
+  }
+  for (const update of round27SourceUpdates) {
+    const item = allData.find((record) => Number(record.id) === update.id);
+    if (item) Object.assign(item, update, { section: ROUND27_SECTION });
+  }
+  for (const [id, reason] of ROUND27_ARCHIVE_REASONS) {
+    const item = allData.find((record) => Number(record.id) === id);
+    if (!item) continue;
+    Object.assign(item, {
+      status: `Closed/history: ${reason}`,
+      analysis: "Preserved in the historical library so the lead is not silently deleted or counted as currently usable.",
+      tier: "X",
+      section: ROUND27_SECTION,
+    });
+  }
+  for (const item of allData) {
+    if (!reviewedIds.has(Number(item.id))) continue;
+    item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+      .filter(Boolean)
+      .join(" ");
+  }
+}
+
+applyRound27SourceUpdates();
+
 for (const item of allData) {
   if (!item.searchText) {
     item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
@@ -1861,17 +2370,52 @@ const PRIORITY_IDS = [930813, 910, 914, 1300, 1107, 866, 94, 930847];
 // remains searchable, but only these independently reviewed identities enter
 // the default board. This prevents old source indexes, Madrid posts, mirrors
 // and research notes from inflating the usable count.
-const MY_OPPORTUNITY_IDS = Object.freeze([
-  930813, 910, 914, 1300, 1107, 866, 94, 930847, 930863, 930816, 78, 930839, 930860, 1702, 604, 296, 535, 2333, 175, 930838, 930832, 930836, 930837, 446, 930820, 930834, 425, 4, 1828, 930844, 443,
-  930705, 668, 1102, 884, 203, 601, 284, 920001, 930812, 190, 577, 55,
-  1278, 1314, 314, 207, 444, 458, 258, 5106, 960, 238, 156, 928,
-  930822, 3518, 304, 170, 1038, 84, 930815, 930824, 930831, 279, 12, 859, 305, 1011, 445, 1029, 188, 922, 483, 958, 930845,
-  930823, 162, 930825, 930818, 930821, 930828, 930840, 930827, 930829, 921, 228, 178, 2942, 1105, 890, 891, 930841, 930637, 930833, 930819, 930854, 930826, 930864, 930707, 930708, 930712, 134, 277, 109,
-  117, 93, 1296, 375, 210, 930842, 930848, 930719, 89, 1023, 385, 930817, 841, 903, 1108, 855, 874, 875, 876,
-  1227, 397, 1274, 396, 1240, 217, 985, 977, 989, 870, 990001, 27, 1303, 308, 1020, 351, 1081, 930843,
-  1080, 1099, 981, 1097, 1101, 24, 25, 930835, 484, 278, 1293, 1255, 37, 889, 100,
+const ROUND26_AUDITED_OPPORTUNITY_IDS = Object.freeze([
+  930813, 910, 914, 1300, 1107, 866, 94, 930847, 930863, 930816, 78, 930839, 930860, 4, 604, 930867, 296, 535, 84, 175, 930838, 930832, 930836, 930837, 930866, 446, 930820, 930834, 425, 305, 930844, 443,
+  930705, 668, 1102, 884, 203, 601, 284, 920001, 930812, 190, 577, 313, 930868, 55,
+  1278, 908, 1314, 314, 207, 444, 458, 258, 5106, 960, 238, 156, 928,
+  930822, 375, 867, 304, 170, 1038, 930815, 930718, 930824, 930831, 863, 856, 279, 12, 859, 1011, 445, 1029, 188, 922, 483, 958, 930845,
+  930823, 275, 162, 930825, 1092, 930869, 886, 930818, 930821, 930828, 930840, 930827, 930829, 921, 228, 178, 2942, 1105, 890, 891, 930841, 930637, 930833, 930819, 930870, 352, 877, 930854, 930826, 930864, 930707, 930708, 930712, 134, 277, 109,
+  117, 93, 1296, 210, 930842, 930848, 942, 930719, 89, 1023, 385, 930817, 841, 903, 1108, 855, 874, 875, 876,
+  1227, 397, 1274, 396, 1240, 633, 1253, 456, 868, 854, 372, 930711, 1053, 1098, 1094, 217, 985, 977, 989, 870, 990001, 27, 1303, 308, 1020, 351, 1081, 930843,
+  1080, 1099, 981, 1097, 1101, 24, 25, 930835, 278, 1293, 1255, 37, 889,
   172, 86, 930717, 224, 930852, 1301, 930849, 930814, 920, 930865,
 ]);
+
+// Round 27 additions are inserted beside comparable audited roles instead of
+// appended at the end. This keeps the ledger reviewable and makes the visible
+// score a strict consequence of one global, user-specific rank order.
+const ROUND27_RANKED_INSERTIONS = new Map([
+  [305, [1021]],
+  [930837, [1310]],
+  [313, [930871]],
+  [930868, [142, 345]],
+  [156, [996]],
+  [1038, [1026, 979, 1024, 990]],
+  [930815, [1036]],
+  [930831, [864]],
+  [930845, [1025]],
+  [930823, [1049, 654, 1002]],
+  [930825, [649]],
+  [886, [214, 327]],
+  [930818, [1287, 105]],
+  [930821, [141]],
+  [930829, [382]],
+  [930870, [330, 336, 1299]],
+  [877, [1264, 1237, 1249]],
+  [930854, [1257]],
+  [930826, [1288, 1248, 579]],
+  [930864, [860]],
+  [930711, [1061]],
+  [1094, [1093]],
+  [930819, [130]],
+  [456, [454]],
+  [930843, [294, 317, 1238, 1262, 581, 1258, 848, 136, 213]],
+  [930865, [1243, 537]],
+]);
+const MY_OPPORTUNITY_IDS = Object.freeze(
+  ROUND26_AUDITED_OPPORTUNITY_IDS.flatMap((id) => [id, ...(ROUND27_RANKED_INSERTIONS.get(id) || [])]),
+);
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
 
 // The reviewed order above is the single source of truth for ranking. Scores
@@ -1978,6 +2522,22 @@ const IDENTITY_ALIASES = Object.freeze({
   993018: "bcome-digital-designer",
   278: "avidalia-digital-content-designer",
   881: "avidalia-digital-content-designer",
+  1276: "avidalia-digital-content-designer",
+  100: "twojeys-apparel-graphic-designer",
+  433: "twojeys-apparel-graphic-designer",
+  990001: "twojeys-apparel-graphic-designer",
+  1702: "lodgify-creative-designer",
+  1757: "lodgify-creative-designer",
+  1828: "hostinger-brand-creative-graphic-designer",
+  2333: "reboot-current-web-designer",
+  3518: "fail-fast-senior-motion-designer",
+  3636: "fail-fast-senior-motion-designer",
+  484: "vml-art-director-8634604002",
+  930712: "vml-art-director-8634604002",
+  352: "blank-studio-junior-3d-designer",
+  930: "blank-studio-junior-3d-designer",
+  260: "catorce-studio-designer-html-programmer",
+  1303: "catorce-studio-designer-html-programmer",
   120: "rocket-digital-graphic-designer-social-media-closed",
   1079: "rocket-digital-graphic-designer-social-media-closed",
 });
@@ -8560,12 +9120,492 @@ Object.assign(CURATED, {
   },
 });
 
+Object.assign(CURATED, {
+  942: {
+    direction: "brand",
+    company: "Co-Star",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "全球远程 / freelance / 初期兼职 / 无需出差",
+    titleZh: "品牌设计师（全球远程自由职业）",
+    titleEs: "Brand Designer — Worldwide Remote Freelance",
+    reason: "Co-Star 官方 Greenhouse 6126693004 当前显示 Apply、完整表单和 fully remote anywhere。职责覆盖品牌系统、campaign、editorial、网站、社媒和发布物料；5–8 年与初期兼职自由职业是主要门槛。",
+    next: "用英文作品集突出身份系统、campaign、editorial、web/social 与 launch；投递前确认费率、保证工时、项目期限、西班牙开票纳税、付款周期和知识产权。",
+    language: "英语异步协作；未写西语门槛",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "5–8 年 / 高级 IC",
+    changeType: "round-25-official-recovery",
+  },
+  930866: {
+    direction: "social",
+    company: "Preply",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / 全职 / Brand 团队",
+    titleZh: "UGC 视频编辑（品牌团队）",
+    titleEs: "UGC Editor — Brand",
+    reason: "Preply 官方 Ashby 当前显示 listed、Barcelona、Hybrid、FullTime 和完整申请入口。岗位负责 TikTok、Instagram、YouTube Shorts 的付费 UGC 与自然内容，要求 2 年以上视频剪辑、CapCut 或 Premiere Pro 和高级英语。",
+    next: "用英文提交短视频剪辑、hook、字幕、达人素材和平台原生节奏案例；先确认薪资、每周到岗日、relocation 条件，以及付费投放和自然内容的比例。",
+    language: "高级英语必需；西语、德语、法语、意大利语或波兰语仅加分",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "2 年以上视频剪辑",
+    changeType: "round-25-official-discovery",
+  },
+  930867: {
+    direction: "brand",
+    company: "Fantasy",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "UK / EU 远程 / Permalance / 西班牙可居住",
+    titleZh: "高级创意设计师—市场品牌与动态",
+    titleEs: "Senior Creative Designer — Marketing",
+    reason: "Fantasy 官方 Lever 当前显示 Apply、UK/EU Remote，并明确要求候选人位于 UK 或 EU。工作覆盖案例包装、品牌系统、motion、campaign、社媒、演示和活动物料；5 年以上、After Effects 与高级 Figma 是硬门槛。",
+    next: "英文作品集必须同时证明动态、系统化静态品牌物料和案例叙事三部分；先确认 Permalance 费率、工时、西班牙雇佣或开票、休假和时区。",
+    language: "英语远程协作；未写西语门槛",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "5 年以上 / motion + brand + digital",
+    changeType: "round-25-official-discovery",
+  },
+});
+
+Object.assign(CURATED, {
+  863: {
+    ...CURATED[863],
+    languageKey: "spanish",
+    experienceKey: "mid",
+    experienceLabel: "2–4 年",
+    changeType: "round-26-current-recovery",
+  },
+  867: {
+    ...CURATED[867],
+    languageKey: "spanish",
+    experienceKey: "senior",
+    experienceLabel: "5 年以上",
+    changeType: "round-26-current-recovery",
+  },
+  930868: {
+    direction: "brand",
+    company: "ZABRISKIE STUDIO / GRUPO NATURA",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 现场办公 / 无固定期限全职",
+    titleZh: "初级平面设计师（包装、品牌与印刷落地）",
+    titleEs: "Diseñador/a Gráfico/a Junior",
+    reason: "InfoJobs 原始详情在 2026-08-12 仍显示可报名，且刚于两天前重新发布。职责包含包装、品牌、系列图形、标签、目录、插画、打样、完稿和供应商印刷复核，是本轮最扎实的本地平面设计新增之一。",
+    next: "用包装、刀模、印前完稿、品牌系统、编辑设计和 mockup 案例投递；先确认西语、加泰语和英语是否都达到岗位要求，并评估 EUR20k–27k 与全现场办公。",
+    languageKey: "spanish",
+    language: "西班牙语母语/双语、加泰语中级、英语中级",
+    applicationMode: "spanish",
+    experienceKey: "mid",
+    experienceLabel: "2 年以上",
+    changeType: "round-26-official-detail-recovery",
+  },
+  930869: {
+    direction: "social",
+    company: "NEWEYES TECH S.L.",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 现场办公 / 无固定期限全职",
+    titleZh: "多媒体设计与内容创作",
+    titleEs: "Diseñador/a multimedia y creador de contenido",
+    reason: "InfoJobs 原始详情在 2026-08-12 仍可报名，并显示十小时前重新发布。工作覆盖数字平面、社媒、视频、motion、campaign 构思、CapCut、Adobe 与 AI 内容生产；但还要求管理社媒并在需要时出镜。",
+    next: "作为视频/内容方向备选投递，作品集放短视频、动态、数字 campaign 和 AI 工作流；确认出镜比例、团队语言与现场办公安排。",
+    languageKey: "english",
+    language: "岗位列高级英语；正文与申请流程为西班牙语",
+    applicationMode: "spanish",
+    experienceKey: "mid",
+    experienceLabel: "2 年以上",
+    changeType: "round-26-official-detail-recovery",
+  },
+  930718: {
+    direction: "digital",
+    company: "Capitole",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona 及周边 / 全职",
+    titleZh: "邮件与数字设计系统设计师",
+    titleEs: "Email Designer",
+    reason: "当前原始职位页仍有申请入口；核心是响应式邮件、Figma 组件、模板库、品牌一致性和 landing page。它是数字品牌延展岗位，但 HTML/CSS、AMPscript 与 Salesforce Marketing Cloud 的技术比重很高。",
+    next: "只有能展示邮件设计系统、响应式模板、Figma handoff 与品牌一致性时优先投递；确认客户、混合办公、语言与薪资。",
+    languageKey: "unknown",
+    language: "公开正文未给出明确语言等级；职位说明和本地协作以西班牙语呈现",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 邮件开发技能门槛",
+    changeType: "round-26-current-recovery",
+  },
+  856: {
+    direction: "brand",
+    company: "SYNERGIE ESPAÑA / 未公开零售客户",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Castellgalí / 现场办公 / 无固定期限全职",
+    titleZh: "零售与电商品牌平面设计师",
+    titleEs: "Diseñador gráfico",
+    reason: "当前原始职位页仍可申请，职责覆盖品牌全渠道、门店、campaign、newsletter、banner、landing、视频与完稿；薪资 EUR23k。地点并非 Barcelona 市区，且要求良好西语、加泰语基础和英语沟通。",
+    next: "先评估 Castellgalí 通勤和现场办公，再以零售、电商、全渠道 campaign、视频与印刷完稿案例投递。",
+    languageKey: "spanish",
+    language: "良好西班牙语；加泰语基础；可用英语沟通",
+    applicationMode: "spanish",
+    experienceKey: "mid",
+    experienceLabel: "零售/电商设计经验",
+    changeType: "round-26-current-recovery",
+  },
+  1092: {
+    direction: "social",
+    company: "Codeway / Dramapops",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / 全职 / 可提供签证与搬迁支持",
+    titleZh: "营销动态设计师（短剧广告）",
+    titleEs: "Marketing Artist - Dramapops",
+    reason: "Codeway 官方 Ashby 当前列出该岗与完整申请表。职责是 Meta、TikTok、YouTube 的视频广告、motion、AI 视频与高频绩效创意；2 年以上即可，但方向偏获客而非 VI。",
+    next: "用付费社媒、前三秒 hook、AE motion、AI 视频和可量化迭代案例申请；确认 Barcelona 到岗节奏、薪资和 relocation 条件。",
+    languageKey: "english",
+    language: "官方正文为英语；未列西班牙语硬门槛",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "2 年以上",
+    changeType: "round-26-official-ats-recovery",
+  },
+  1098: {
+    direction: "social",
+    company: "Codeway / Learna",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / 全职",
+    titleZh: "高级创意营销经理（AI 与绩效创意）",
+    titleEs: "Senior Creative Marketing Manager",
+    reason: "Codeway 官方 Ashby 当前列出该岗与申请表。岗位负责创意策略、广告概念、测试框架、AI 生产与团队流程，要求 4–5 年以上绩效创意经验；更像策略负责人而非纯平面设计。",
+    next: "仅在有规模化广告、团队协作和数据结果案例时挑战；作品集必须说明概念如何影响 CTR、CPI 或 ROAS。",
+    languageKey: "english",
+    language: "官方正文为英语；未列西班牙语硬门槛",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "4–5 年以上",
+    changeType: "round-26-official-ats-recovery",
+  },
+  275: {
+    direction: "social",
+    company: "Factorial",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 现场 / 全职",
+    titleZh: "创意负责人（付费获客与 AI 生产）",
+    titleEs: "Creative Lead / Strategy - Paid Acquisition",
+    reason: "当前原始职位页仍可申请，要求流利英语和 5 年以上经验，负责带领视频剪辑、设计师与 AI Artist 建立高频广告测试系统。它是创意领导岗位，不是个人 VI 执行岗。",
+    next: "只在有团队管理、广告策略、生成式 AI 和转化数据案例时挑战；确认现场办公、薪资与管理范围。",
+    languageKey: "english",
+    language: "流利英语硬门槛；未列西班牙语硬门槛",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "5 年以上",
+    changeType: "round-26-current-recovery",
+  },
+  352: {
+    direction: "brand",
+    company: "Blank Studio Creative S.L.",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / remote-friendly / 全职",
+    titleZh: "初级 3D 设计师（产品、包装与品牌世界）",
+    titleEs: "Junior 3D Designer",
+    reason: "官方详情当前仍有投递邮箱，负责美妆、生活方式与包装产品的 3D 建模、材质、灯光、campaign render、mockup 和品牌世界视觉。它偏 3D，但和包装及品牌延展直接相关。",
+    next: "提交 3D 产品、包装、品牌场景、材质灯光与 campaign render；先问清薪资、远程比例和实际合同地点。",
+    languageKey: "unknown",
+    language: "公开页面未写语言门槛",
+    experienceKey: "junior",
+    experienceLabel: "初级",
+    changeType: "round-26-official-detail-recovery",
+  },
+  1253: {
+    direction: "digital",
+    company: "TheBusinessLook BCN / Museum Merchandising",
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 半天制 / 每周 1–2 天远程",
+    titleZh: "初级平面设计师（半职，先确认名额）",
+    titleEs: "Diseñador/a Gráfico Jr - media jornada",
+    reason: "LinkedIn 仍能读到完整职位和直投邮箱，但发布已约三个月且不再显示平台申请按钮。工作包含目录、数字物料、社媒、newsletter、商业演示与产品支持，适合初级作品集，但必须先确认仍招人。",
+    next: "先给 juanca@businesslookbcn.com 发一封简短询问信，确认职位、半职工时和薪资仍有效；得到肯定答复后再发定制作品集。",
+    languageKey: "spanish",
+    language: "岗位与直投说明为西班牙语；未公开等级",
+    applicationMode: "spanish",
+    experienceKey: "junior",
+    experienceLabel: "初级 / 经验非强制",
+    changeType: "round-26-verify-first-recovery",
+  },
+  372: {
+    direction: "social",
+    company: "Molin AI",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / contractor / 每周多次现场拍摄",
+    titleZh: "社媒与创意内容创作者",
+    titleEs: "Social & Creative Content Creator",
+    reason: "当前原始职位页仍可申请，负责概念、拍摄、剪辑与快速发布，并跟随创始人参加活动。它是现场内容创作和短视频岗位，不是品牌系统设计。",
+    next: "作为内容方向备选；先确认 contractor 费率、保证工时、拍摄设备、差旅与付款周期。",
+    languageKey: "english",
+    language: "公开正文为英语；未列西班牙语硬门槛",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "内容创作经验",
+    changeType: "round-26-current-recovery",
+  },
+  930711: {
+    direction: "social",
+    company: "JUNGLE / MeMe",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / Calle Álava 111 / 全职无固定期限",
+    titleZh: "社交创意（品牌内容与短视频）",
+    titleEs: "Social Creative MeMe Barcelona",
+    reason: "雇主当前职位板和原始职位页均可申请，工作包括品牌社交创意、趋势研究、presentation、短视频拍摄与剪辑、meme 和多平台内容。它偏社交创意与文案，不是纯平面或 VI 岗，因此只放在次级机会区。",
+    next: "先确认团队日常西语比例、薪资与混合办公安排；作品集使用社交创意、短视频、快速视觉表达和品牌语调案例，不要用纯 Logo 项目冒充匹配。",
+    languageKey: "english",
+    language: "明确要求真实双语英语；职位全文及本地团队语境为西班牙语，西语工作能力需确认",
+    applicationMode: "english",
+    experienceKey: "junior",
+    experienceLabel: "至少 1 年社交创意经验",
+    changeType: "round-26-current-recovery",
+  },
+  456: {
+    direction: "brand",
+    company: "CBA Design Spain",
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / Poblenou / 主动投递人才库",
+    titleZh: "品牌与视觉设计开放投递（非具体空缺）",
+    titleEs: "Open application — Brand / Visual Design",
+    reason: "CBA Spain 位于 Barcelona，业务高度匹配视觉识别、包装、数字设计、动效和品牌指南；官网当前可提交 CV 与作品集，但没有发布具体岗位、合同、薪资或语言要求，必须明确标成主动投递而不是现行招聘。",
+    next: "先发送一句简短询问，确认近期是否有 junior/mid Brand Designer 或 Visual Designer 名额；得到肯定答复后，再提交精简品牌系统与包装/数字延展作品集。",
+    languageKey: "unknown",
+    language: "官网未公开团队工作语言或岗位语言门槛",
+    applicationMode: "english",
+    experienceKey: "open",
+    experienceLabel: "开放投递 / 资历待确认",
+    changeType: "round-26-proactive-route",
+  },
+  930870: {
+    direction: "brand",
+    company: "FunPlus",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona 08010 / hybrid / 带薪 20 小时实习",
+    titleZh: "品牌与 2D 平面设计实习生",
+    titleEs: "Graphic Design Intern",
+    reason: "FunPlus 官方 Factorial 当前显示 Apply now；工作为全球传播团队制作品牌与游戏营销视觉、key art、2D assets、Logo、截图和图标，英语流利为明确要求，motion 是加分项。",
+    next: "只有能签学校或大学实习协议时再投；作品集优先放品牌营销视觉、key art、2D 系统、Logo/图标和可选动效，并在申请前确认薪资金额与每周到岗天数。",
+    languageKey: "english",
+    language: "英语流利为明确要求；未列西班牙语硬门槛",
+    applicationMode: "english",
+    experienceKey: "junior",
+    experienceLabel: "在读设计学生 / 实习协议",
+    changeType: "round-26-current-recovery",
+  },
+  376: { ...CURATED[376], statusKey: "closed", changeType: "round-26-off-scope" },
+  1088: { ...CURATED[1088], statusKey: "closed", changeType: "round-26-off-scope" },
+  613: { ...CURATED[613], statusKey: "closed", changeType: "round-26-off-scope" },
+  644: { ...CURATED[644], statusKey: "closed", changeType: "round-26-off-scope" },
+  1100: { ...CURATED[1100], statusKey: "closed", changeType: "round-26-off-scope" },
+  1266: { ...CURATED[1266], statusKey: "closed", changeType: "round-26-off-scope" },
+  6: { ...CURATED[6], statusKey: "closed", changeType: "round-26-off-scope" },
+  635: { ...CURATED[635], statusKey: "closed", changeType: "round-26-off-scope" },
+  422: { ...CURATED[422], statusKey: "closed", changeType: "round-26-off-scope" },
+  1034: { ...CURATED[1034], statusKey: "closed", changeType: "round-26-off-scope" },
+  1089: { ...CURATED[1089], statusKey: "closed", changeType: "round-26-off-scope" },
+  868: {
+    ...CURATED[868],
+    statusKey: "verify",
+    reason: "公开 LinkedIn 详情仍能完整读取近期 Barcelona Video Maker 职责，但页面没有可验证的申请按钮或雇主 ATS。岗位本身覆盖医疗品牌视频、motion、数字 campaign 与 AI，且要求流利西语和英语；先确认投递入口。",
+    next: "先通过 Omnicom Health 招聘团队确认 requisition 和申请入口；确认仍开放后再提交 CV、动机说明和最新 reel。",
+    changeType: "round-26-verify-first",
+  },
+  854: {
+    direction: "ecommerce",
+    company: "Netenders / Wordans",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 合同形态冲突：元数据全职、正文写 freelance",
+    titleZh: "高产量电商服装图形设计师",
+    titleEs: "T-shirt Designer for High-Volume E-commerce",
+    reason: "当前职位页仍有申请入口，工作是商业 T-shirt 图形、排版、print-ready 文件与 mockup；但职位元数据写全职，正文却招 freelance designers，薪资和知识产权条款也未公开。",
+    next: "先问清全职还是自由职业、每批数量、单价/薪资、修改次数、付款周期和版权，再决定是否做测试。",
+    languageKey: "english",
+    language: "公开正文为英语",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "POD / apparel 经验",
+    changeType: "round-26-current-recovery",
+  },
+  633: {
+    direction: "brand",
+    company: "Puig / Carolina Herrera Makeup",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 1 年 Graduate Program",
+    titleZh: "品牌形象与 360 Campaign 管培项目",
+    titleEs: "Image & 360 Makeup Graduate",
+    reason: "Puig 官方岗位当前仍可申请，涉及全球 image campaign、moodboard、creative toolkit、拍摄制作和零售、电商、社媒、CRM、PR 的 360 延展。它偏创意项目支持，但与奢侈美妆品牌视觉高度相关。",
+    next: "仅适合近期毕业或硕士背景；用品牌形象、moodboard、campaign rollout 和 Adobe 案例申请，并确认项目薪资。",
+    languageKey: "spanish",
+    language: "流利英语与西班牙语均为硬门槛",
+    applicationMode: "english",
+    experienceKey: "junior",
+    experienceLabel: "近期毕业 / 硕士 / 1 年项目",
+    changeType: "round-26-official-current-recovery",
+  },
+  1053: {
+    direction: "social",
+    company: "DDB Spain",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 官方 Greenhouse",
+    titleZh: "社交媒体内容创作者",
+    titleEs: "Social Media Content Creator",
+    reason: "DDB Spain 官方 Greenhouse 当前仍列出 Barcelona requisition 5096089008 与申请入口。它属于社媒内容方向，和核心 VI 的距离较远。",
+    next: "只在希望扩展到内容创作时投递；先读清视频、出镜、文案和语言比例。",
+    languageKey: "spanish",
+    language: "西班牙本地代理商语境；详细等级需在原页确认",
+    applicationMode: "spanish",
+    experienceKey: "mid",
+    experienceLabel: "社媒内容经验",
+    changeType: "round-26-official-ats-recovery",
+  },
+  1094: {
+    direction: "brand",
+    company: "CATORCE / DDB Group",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 官方 Greenhouse / Spain Hub",
+    titleZh: "创意总监（西班牙市场，超高门槛）",
+    titleEs: "Creative Director - Spain Hub",
+    reason: "CATORCE 官方 requisition 当前仍可申请，负责 CUPRA/SEAT 全球 campaign 的西班牙市场适配并管理文案和艺术指导团队；要求至少 10 年代理商经验、3–4 年创意总监经历以及完美西语和英语。",
+    next: "仅作高级职业路径和极限挑战，不应挤占当前实际投递时间。",
+    languageKey: "spanish",
+    language: "完美西班牙语与英语硬门槛",
+    applicationMode: "spanish",
+    experienceKey: "senior",
+    experienceLabel: "10 年以上 / 3–4 年创意总监",
+    changeType: "round-26-official-ats-recovery",
+  },
+});
+
+for (const id of ROUND27_LIVE_IDS) {
+  CURATED[id] = {
+    ...CURATED[id],
+    statusKey: "live",
+    changeType: "round-27-current-recovery",
+  };
+}
+for (const id of [...ROUND27_VERIFY_IDS, ...ROUND27_REVIEW_LIBRARY_IDS]) {
+  CURATED[id] = {
+    ...CURATED[id],
+    statusKey: "verify",
+    changeType: ROUND27_REVIEW_LIBRARY_IDS.includes(id)
+      ? "round-27-reviewed-library"
+      : "round-27-verify-recovery",
+  };
+}
+for (const [id, reason] of ROUND27_ARCHIVE_REASONS) {
+  CURATED[id] = {
+    ...CURATED[id],
+    statusKey: "closed",
+    reason,
+    next: "保留在历史库；只有出现新的雇主原始详情或官方 ATS 后才重新进入待核验。",
+    changeType: "round-27-audited-history",
+  };
+}
+
+Object.assign(CURATED, {
+  930871: {
+    ...CURATED[930871],
+    direction: "brand",
+    company: "Familia Torres",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Vilafranca del Penedès / Barcelona 省 / 稳定全职",
+    titleZh: "平面设计师（品牌、酒标与包装）",
+    titleEs: "Diseñador/a gráfico/a",
+    reason: "当前雇主原始职位页仍显示申请入口。工作覆盖新品牌与产品、Logo、酒标、插画、包装、线上线下 campaign 和最终生产协调，是本轮恢复中最贴近品牌视觉与 VI 的本地岗位之一。",
+    next: "先确认办公室到岗频率、固定薪资、日常西语要求和通勤安排；作品集优先放品牌系统、包装/标签、印刷交付与 campaign 延展。",
+    languageKey: "english",
+    language: "明确要求高水平英语；职位正文未单列西语等级，实际本地团队语言仍需确认",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "2–3 年相关经验",
+    changeType: "round-27-current-recovery",
+  },
+  214: {
+    ...CURATED[214],
+    direction: "social",
+    company: "REDLINE MEDIA",
+    statusKey: "verify",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / L2 Sant Roc / 联系入口待确认",
+    titleZh: "中文短视频内容创作者 / 视频制作实习",
+    titleEs: "Video Content Creator / Video Production Intern",
+    reason: "原始职位正文明确写标准普通话和西语 B1+，工作包括合作品牌代运营、美食宣传、品牌访谈、短视频拍摄与出镜。它是中文可用的本地内容机会，但不是平面或 VI 岗。",
+    next: "先确认联系人、薪资、合同、工时、实习协议以及是否必须出镜；没有这些信息前不提交证件或做长时间无薪测试。",
+    languageKey: "chinese",
+    language: "标准普通话 + 西班牙语 B1 以上",
+    applicationMode: "chinese",
+    experienceKey: "junior",
+    experienceLabel: "无需经验 / 出镜与网感为主要门槛",
+    changeType: "round-27-chinese-verify-recovery",
+  },
+  141: {
+    ...CURATED[141],
+    direction: "brand",
+    company: "Minsk.Barcelona",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 初期现场 / 后续可能混合办公",
+    titleZh: "初级综合设计师（品牌、平面、数字与动效）",
+    titleEs: "Diseñador/a júnior",
+    reason: "当前原始职位覆盖 branding、campaign、平面、web、Figma、数字物料和 motion，且不要求既往经验；但加泰语和西班牙语均为明确门槛，因此不应因职责匹配而获得过高排名。",
+    next: "只有能够用加泰语和西语完成面试及日常协作时再投；先问薪资，再提交 CV 和综合视觉作品集。",
+    languageKey: "spanish",
+    language: "加泰语和西班牙语为硬门槛；英语仅为加分项",
+    applicationMode: "spanish",
+    experienceKey: "junior",
+    experienceLabel: "应届 / 无经验可申请",
+    changeType: "round-27-current-hard-language-gate",
+  },
+  454: {
+    ...CURATED[454],
+    direction: "brand",
+    company: "ADG-FAD",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 付费委托 / 2026-09-16 截止",
+    titleZh: "Laus 2027 视觉活动付费委托（非雇佣）",
+    titleEs: "Paid campaign design commission — Laus 2027",
+    reason: "这是有明确截止日期的付费视觉活动委托，不是劳动合同职位。适合 campaign identity 与艺术指导，但必须是 ADG Professional 或 Club de Empresa 会员。",
+    next: "先核对会员资格和完整 brief，再决定是否投入提案时间；卡片必须保持“付费委托/非雇佣”标签。",
+    languageKey: "spanish",
+    language: "公开说明为西语/加泰语；会员资格是首要硬门槛",
+    applicationMode: "spanish",
+    experienceKey: "open",
+    experienceLabel: "专业会员限定",
+    changeType: "round-27-paid-commission",
+  },
+});
+
 // Reapply the latest source verdicts after every historical refresh block so
 // a stale generated record cannot turn an excluded role back into live.
 applyRound21SourceUpdates();
 applyRound22SourceUpdates();
 applyRound23SourceUpdates();
 applyRound24SourceUpdates();
+applyRound25SourceUpdates();
+applyRound26SourceUpdates();
+applyRound27SourceUpdates();
 
 const els = {
   totalCount: document.querySelector("#totalCount"),
