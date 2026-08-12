@@ -2556,6 +2556,7 @@ const els = {
   presetButtons: [...document.querySelectorAll(".preset-button")],
   sourceTabs: [...document.querySelectorAll(".source-tab")],
   chineseLibraryViewButtons: [...document.querySelectorAll(".source-library-view")],
+  chineseLibraryLocationButtons: [...document.querySelectorAll("[data-library-location]")],
   progressFilterButtons: [...document.querySelectorAll(".progress-filter-button")],
   statusSummaryButtons: [...document.querySelectorAll(".status-summary__item")],
 
@@ -2566,6 +2567,7 @@ const state = {
   source: "all",
   sourceLibrary: false,
   sourceLibraryView: "active",
+  sourceLibraryLocation: "priority",
   // Default to the locally relevant Chinese-direction queue, including cards
   // whose Spanish/English gate is explicitly shown. A strict Chinese-only
   // filter can legitimately be empty after page-by-page verification.
@@ -4369,6 +4371,9 @@ function syncChineseLibraryUi() {
   els.chineseLibraryViewButtons.forEach((button) =>
     button.classList.toggle("is-active", button.dataset.libraryView === state.sourceLibraryView),
   );
+  els.chineseLibraryLocationButtons.forEach((button) =>
+    button.classList.toggle("is-active", button.dataset.libraryLocation === state.sourceLibraryLocation),
+  );
 }
 
 function syncProgressFilterUi() {
@@ -4429,10 +4434,11 @@ function activateChineseLibrary(view = "active") {
   state.progressFilter = "all";
   els.searchInput.value = "";
   els.directionFilter.value = "all";
-  // The Chinese source library is the full deduped source library. The
-  // homepage remains Barcelona/Europe-remote only; other locations are shown
-  // here with their labels instead of disappearing from the source archive.
-  els.locationFilter.value = "all";
+  // The Chinese source library defaults to the user's actual target: Barcelona
+  // and Europe-remote. A small explicit “全部地点” toggle exposes the archive
+  // without mixing Madrid into the main browsing stream.
+  state.sourceLibraryLocation = "priority";
+  els.locationFilter.value = "priority";
   els.languageFilter.value = "all";
   els.statusFilter.value = "all";
   els.freshnessFilter.value = "all";
@@ -4554,7 +4560,18 @@ els.resetFilters.addEventListener("click", () => {
 els.loadMore.addEventListener("click", loadMoreResults);
 
 els.chineseLibraryViewButtons.forEach((button) => {
+  if (button.dataset.libraryLocation) return;
   button.addEventListener("click", () => activateChineseLibrary(button.dataset.libraryView));
+});
+
+els.chineseLibraryLocationButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (state.sourceLibrary !== "chinese") return;
+    state.sourceLibraryLocation = button.dataset.libraryLocation;
+    els.locationFilter.value = state.sourceLibraryLocation;
+    syncChineseLibraryUi();
+    resetLimitAndRender();
+  });
 });
 
 if ("IntersectionObserver" in window) {

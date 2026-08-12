@@ -203,8 +203,8 @@ check(
   "首页默认预设没有锁定 Barcelona + Europe remote",
 );
 check(
-  appSource.includes('state.sourceLibrary = "chinese"') && appSource.includes('els.locationFilter.value = "all";'),
-  "中文来源全库没有切换到全部地点以保留完整证据",
+  indexHtml.includes('data-library-location="all"') && appSource.includes('state.sourceLibraryLocation = "priority"'),
+  "中文来源库没有提供 Barcelona 默认与全部地点的明确切换",
 );
 
 const sortModes = ["smart", "latest", "match", "confidence", "weight"];
