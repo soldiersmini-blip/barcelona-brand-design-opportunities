@@ -772,6 +772,46 @@ const allData = Array.isArray(window.JOB_OPPORTUNITIES) ? window.JOB_OPPORTUNITI
     freshnessAgeDays: null,
     links: ["https://jobs.ashbyhq.com/finary/7e1f0ca0-b0ee-4a77-a825-62807a8e9645"],
   },
+  {
+    id: 930849,
+    section: "2026-08-12 Round 15 original-detail audit",
+    source: "Andilana / current JOB TODAY original detail",
+    opportunity: "Diseñador/a Gráfico/a Junior – Comunicación",
+    fit: "Barcelona-city junior graphic-design role covering visual identity, digital and print communication, photography retouching and final artwork",
+    location: "Plaça Reial, Ciutat Vella, Barcelona; full-time; 40 hours; 100% onsite",
+    status: "The original JOB TODAY detail was opened and read on 2026-08-12. It shows Apply now, an active employer profile and an immediate-start full-time role. The hard gates are native Catalan, good Spanish and English, formal graphic-design training with proof, Adobe Illustrator and up to about two years of experience.",
+    contact: "Original detail/application: https://jobtoday.com/es/trabajo/disenador-a-grafico-a-junior-comunicacion-sector-hosteleria--p3E2kl",
+    analysis: "A real Barcelona junior route with useful identity, print and digital scope, but native Catalan is a material gate and salary is not disclosed. Keep near the bottom of the live board unless the language and qualification requirements are met.",
+    score: 62,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Junior graphic / visual identity / print and digital",
+    sourceGroup: "official",
+    postedAt: "2026-04-14",
+    freshnessTag: "older",
+    freshnessAgeDays: 120,
+    links: ["https://jobtoday.com/es/trabajo/disenador-a-grafico-a-junior-comunicacion-sector-hosteleria--p3E2kl"],
+  },
+  {
+    id: 930850,
+    section: "2026-08-12 Round 15 original-detail audit",
+    source: "10x Team / official Ashby AI Lab pool",
+    opportunity: "Visual Designer - AI Trainer",
+    fit: "EU/UK remote freelance pool evaluating AI output for visual design, UI assets, branding concepts and professional design workflows",
+    location: "Remote within EU/UK; contract; 8–20 hours per week; EUR61–100 per hour",
+    status: "The official Ashby page and indexed application route were checked on 2026-08-12. It was updated on 2026-07-07 and accepts applications, but 10x explicitly states this is not a traditional job opening with a fixed start date. Approved profiles may wait months for a matching AI Lab project.",
+    contact: "Official detail/application: https://jobs.ashbyhq.com/10xteam/f855de79-8005-40cb-b954-adaf438b6f7e/",
+    analysis: "Retain in the review library only. The compensation and EU eligibility are explicit, but this is a senior expert pool rather than a current design vacancy and must not inflate the live opportunity count.",
+    score: 28,
+    tier: "D",
+    locationTag: "Europe remote",
+    typeTag: "AI training / visual-design evaluation / freelance pool",
+    sourceGroup: "official",
+    postedAt: "2026-07-07",
+    freshnessTag: "month",
+    freshnessAgeDays: 36,
+    links: ["https://jobs.ashbyhq.com/10xteam/f855de79-8005-40cb-b954-adaf438b6f7e/"],
+  },
 ].forEach((record) => {
   if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
 });
@@ -928,6 +968,100 @@ for (const update of round14DirectEvidenceUpdates) {
   if (item) Object.assign(item, update);
 }
 
+const round15DirectEvidenceUpdates = [
+  {
+    id: 1274,
+    section: "2026-08-12 Round 15 original-detail audit",
+    source: "BRUTALIA / current JOB TODAY original detail",
+    opportunity: "Diseñador/a Gráfico/a",
+    fit: "Barcelona-local brand and graphic-design route covering campaigns, content, visual coherence and support for the brand team",
+    location: "Passatge de Josep Llovera, Sarrià-Sant Gervasi, Barcelona; full-time listing with freelance collaboration wording",
+    status: "The original JOB TODAY detail was opened and read on 2026-08-12. It shows Apply now, Barcelona residence as a requirement, occasional Madrid travel, two or more years, mandatory portfolio, immediate start and EUR20,000–24,000 per year. The body describes freelance collaboration with possible continuity while the platform labels it full-time, so contract form must be confirmed.",
+    contact: "Original detail/application: https://jobtoday.com/es/trabajo/disenador-a-grafico-a-EG26MZ",
+    analysis: "Correct the old Madrid misclassification: the job is based in Barcelona. It is genuinely relevant to brand-world coherence, campaigns and content, but it is old, modestly paid and contract wording is contradictory. Apply only after confirming employment versus freelance terms, weekly hours, invoice/payment treatment and travel expenses.",
+    score: 74,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Brand / graphic / campaigns / content",
+    sourceGroup: "official",
+    postedAt: "2026-04-02",
+    freshnessTag: "older",
+    freshnessAgeDays: 132,
+    links: ["https://jobtoday.com/es/trabajo/disenador-a-grafico-a-EG26MZ"],
+    searchText: "BRUTALIA current original JOB TODAY EG26MZ Diseñador Gráfico Barcelona Sarrià Sant Gervasi Apply now brand campaigns content visual coherence two years portfolio EUR 20000 24000 freelance full-time contradiction occasional Madrid travel",
+  },
+  {
+    id: 397,
+    section: "2026-08-12 Round 15 original-detail audit",
+    source: "RESIDENCIAL TIBIDABO / Grupo RV / current JOB TODAY original detail",
+    opportunity: "Asistente de Diseño",
+    fit: "Fresh Barcelona junior-accessible graphic, branding, digital-content, video and motion production role",
+    location: "Gran Via de les Corts Catalanes, Barcelona; full-time; onsite near Metro",
+    status: "The current original JOB TODAY detail K12Now was opened and read on 2026-08-12. It shows Apply now, a verified employer active two hours ago and a posting age of about eleven hours. Work covers posters, promotional pieces, branding, digital content, video editing, motion graphics and multi-format adaptation. Fluent Spanish and English are both mandatory; salary and contract type are not disclosed.",
+    contact: "Original detail/application: https://jobtoday.com/es/trabajo/asistente-de-diseno-K12Now",
+    analysis: "Promote the refreshed current route instead of duplicating it. It is more accessible than a senior brand post and accepts study, freelance or internship project evidence, but Spanish is a hard gate and it remains production-heavy rather than VI ownership. Confirm salary, contract, exact hours and work authorisation before applying.",
+    score: 80,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Graphic / branding / motion / design assistant",
+    sourceGroup: "official",
+    postedAt: "2026-08-12",
+    freshnessTag: "week",
+    freshnessAgeDays: 0,
+    links: ["https://jobtoday.com/es/trabajo/asistente-de-diseno-K12Now"],
+    searchText: "Residencial Tibidabo Grupo RV current original JOB TODAY K12Now Asistente de Diseño Barcelona full-time onsite Apply now graphic materials branding digital content video motion Spanish English fluent salary contract confirm",
+  },
+  {
+    id: 396,
+    section: "2026-08-12 Round 15 original-detail audit",
+    status: "The current original JOB TODAY detail 9wP83M was opened again on 2026-08-12. It shows Apply now, Barcelona, full-time, 100% onsite, a verified employer and publication on 2026-08-06. The role covers social and digital campaigns, motion graphics, short video, screens, posters and brand consistency. Fluent Spanish and English plus valid Spain work permission are mandatory.",
+    postedAt: "2026-08-06",
+    freshnessTag: "week",
+    freshnessAgeDays: 6,
+    searchText: "RV Group Rodriguez Villar current original JOB TODAY 9wP83M Junior Motion Graphics Visual Designer Barcelona Apply now 2026-08-06 verified employer full-time onsite Spain work permission fluent Spanish English campaigns video screens brand consistency",
+  },
+  {
+    id: 930705,
+    section: "2026-08-12 Round 15 original-detail audit",
+    source: "MANGO / current official Workday ATS",
+    opportunity: "FASHION ART DIRECTOR",
+    fit: "Barcelona-province fashion art-direction route with visual identity, 360 campaigns, retail/VM, ecommerce, editorial and digital brand touchpoints",
+    location: "Palau-solità i Plegamans, Barcelona province; full-time; site rhythm to confirm",
+    status: "MANGO's official Workday requisition JR128235 was checked again on 2026-08-12. The official route resolves and the current employer result shows Apply, full-time and a complete brief. It requires four to five years in fashion art direction, Adobe tools and fluent English; fluent Spanish is preferred. Salary, contract details and onsite frequency are not disclosed.",
+    contact: "Official detail/application: https://mango.wd3.myworkdayjobs.com/en-US/Mango_Work_Your_Passion/job/SENIOR-ART-DIRECTOR_JR128235",
+    analysis: "Correct the old 'other region' classification: Palau-solità i Plegamans is in Barcelona province. This is an excellent identity and 360-brand match but a senior fashion stretch and a real commute. Confirm the application form, contract, salary and office rhythm before tailoring the portfolio.",
+    score: 100,
+    tier: "B",
+    locationTag: "Barcelona area",
+    typeTag: "Fashion art direction / identity / 360 campaigns / retail",
+    sourceGroup: "official",
+    links: ["https://mango.wd3.myworkdayjobs.com/en-US/Mango_Work_Your_Passion/job/SENIOR-ART-DIRECTOR_JR128235"],
+    searchText: "MANGO current official Workday JR128235 Fashion Art Director Palau-solità i Plegamans Barcelona province Apply full-time visual identity 360 campaign retail visual merchandising ecommerce editorial digital brand four five years fluent English Spanish preferred",
+  },
+  {
+    id: 884,
+    section: "2026-08-12 Round 15 original-detail audit",
+    searchText: "Dragons Group current official Factorial 308056 Mid Graphic Designer Wellness Healthcare Barcelona hybrid permanent full-time Apply now fluent English digital campaigns social websites presentations brand consistency regulated pharma",
+  },
+  {
+    id: 238,
+    section: "2026-08-12 Round 15 original-detail audit",
+    source: "Publicis Production / Prodigious / current official careers",
+    status: "Publicis Groupe's official requisition 165712 was checked on 2026-08-12. It remains indexed as Art Director, Barcelona, intermediate, hybrid, posted 2026-07-10 and offers an application route. The work covers integrated online/offline campaigns, graphic and motion design, Adobe, Figma and AI; a relevant degree or four-plus years and advanced English are required.",
+    contact: "Official detail/application: https://careers.publicisgroupe.com/jobs/165712?lang=en-us ; current employer detail: https://www.linkedin.com/jobs/view/4438326367",
+    postedAt: "2026-07-10",
+    freshnessTag: "month",
+    freshnessAgeDays: 33,
+    links: ["https://careers.publicisgroupe.com/jobs/165712?lang=en-us", "https://www.linkedin.com/jobs/view/4438326367"],
+    searchText: "Publicis Production Prodigious current official careers 165712 Art Director Barcelona intermediate hybrid 2026-07-10 integrated online offline campaigns graphic motion Adobe Figma AI advanced English four years",
+  },
+];
+
+for (const update of round15DirectEvidenceUpdates) {
+  const item = allData.find((record) => Number(record.id) === update.id);
+  if (item) Object.assign(item, update);
+}
+
 for (const item of allData) {
   if (!item.searchText) {
     item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
@@ -951,14 +1085,14 @@ const PRIORITY_IDS = [930813, 910, 914, 1300, 1107, 866, 94, 1245];
 // and research notes from inflating the usable count.
 const MY_OPPORTUNITY_IDS = Object.freeze([
   930813, 910, 914, 1300, 1107, 866, 94, 930847, 930816, 930839, 1245, 296, 175, 930838, 930832, 930836, 930837, 446, 930834, 425, 4, 1828, 930844, 930846,
-  668, 1102, 884, 203, 601, 284, 920001, 930812, 190, 577, 55,
+  930705, 668, 1102, 884, 203, 601, 284, 920001, 930812, 190, 577, 55,
   1278, 1314, 314, 207, 78, 444, 458, 258, 5106, 960, 238, 156, 928, 147, 604,
   930822, 304, 170, 1038, 84, 930815, 930824, 930831, 279, 12, 859, 305, 1011, 445, 1029, 188, 922, 483, 958, 930845,
   930823, 930825, 930818, 930820, 930821, 930828, 930840, 930827, 930829, 921, 228, 178, 2942, 1105, 890, 891, 930841, 930637, 930833, 930819, 930826, 930707, 930708, 134, 277, 109,
   117, 93, 1296, 375, 210, 930842, 930848, 930719, 89, 1023, 385, 930817, 841, 903, 1108, 855, 874, 875, 876,
-  1227, 396, 1240, 217, 985, 977, 989, 870, 990001, 27, 1303, 308, 1020, 351, 1081, 930843,
+  1227, 397, 1274, 396, 1240, 217, 985, 977, 989, 870, 990001, 27, 1303, 308, 1020, 351, 1081, 930843,
   1080, 1099, 981, 1097, 1101, 24, 25, 930835, 484, 278, 1293, 1255, 37, 889,
-  172, 86, 930717, 224, 930814, 920,
+  172, 86, 930717, 224, 930849, 930814, 920,
 ]);
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
 
@@ -6511,6 +6645,111 @@ Object.assign(CURATED, {
   },
 });
 
+Object.assign(CURATED, {
+  930705: {
+    direction: "brand",
+    company: "MANGO",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Palau-solità i Plegamans / Barcelona 省 / 全职",
+    titleZh: "时尚艺术指导（品牌识别与 360 Campaign）",
+    titleEs: "FASHION ART DIRECTOR",
+    reason: "MANGO 官方 Workday JR128235 当前仍有 Apply 路由。职责直接覆盖品牌视觉识别、360 概念、橱窗与 VM、电商、编辑 Campaign、数字与社媒触点；要求 4–5 年时尚 Art Direction、流利英语，西语流利为优先项。",
+    next: "作为中高位冲刺岗保留，不伪装成初级岗。先确认 Palau 到岗频率、合同、薪资和申请表状态；作品集突出时尚品牌系统、Campaign、零售空间/橱窗、电商和后期制作。",
+    language: "流利英语为明确要求；流利西语优先但未写成硬性要求",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 4–5 年时尚 Art Direction",
+    changeType: "round-15-promoted",
+  },
+  1327: {
+    direction: "brand",
+    company: "Dragons Group",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / 永久全职",
+    titleZh: "医药与健康品牌中级平面设计师",
+    titleEs: "Mid Graphic Designer – Wellness & Healthcare",
+    reason: "官方 Factorial 308056 当前有 Apply now。岗位负责数字 Campaign、社媒、网站、演示与医药营销物料，重点是信息清晰、品牌一致性和受监管内容的准确执行；英语流利是明确要求，其他语言只是加分。",
+    next: "补回此前漏掉的正式本地岗位。英文作品集突出排版、信息层级、品牌 guideline 执行、跨渠道适配和复杂信息可视化；投递前确认薪资、hybrid 节奏和工作许可。",
+    language: "流利英语必需；其他语言为加分项",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 健康医药方向",
+    changeType: "round-15-promoted",
+  },
+  397: {
+    direction: "motion",
+    company: "RESIDENCIAL TIBIDABO / Grupo RV",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / Gran Via / 现场全职",
+    titleZh: "设计助理（平面、Branding 与 Motion）",
+    titleEs: "Asistente de Diseño",
+    reason: "2026-08-12 当前 JOB TODAY 原始页 K12Now 显示 Apply now、雇主已验证且两小时前活跃。工作含海报、宣传物、branding、数字内容、视频、motion 和多格式适配；项目经验可来自学习、自由职业或实习。",
+    next: "这是新鲜且相对初级友好的本地路线，但西语和英语流利均为硬门槛。用平面、品牌延展、短视频和 motion 小案例申请，并先问清薪资、合同、工时和工作许可。",
+    language: "流利西班牙语和英语均为明确要求",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    experienceKey: "junior",
+    experienceLabel: "初级 / 学习、实习或 freelance 项目可证明",
+    changeType: "round-15-reactivated",
+  },
+  1274: {
+    direction: "brand",
+    company: "BRUTALIA",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / Sarrià-Sant Gervasi / 偶尔去 Madrid",
+    titleZh: "平面与品牌视觉设计师",
+    titleEs: "Diseñador/a Gráfico/a",
+    reason: "原始 JOB TODAY EG26MZ 当前显示 Apply，工作地明确在 Barcelona，并要求 Barcelona 居住。职责是提升品牌视觉世界、Campaign、内容和整体一致性；要求 2 年以上与作品集，公开年薪 EUR20,000–24,000。",
+    next: "已纠正旧数据把它错放 Madrid 的问题。正文写 freelance collaboration、平台却写 full-time，且岗位较旧；投递前必须确认合同/开票形式、工时、付款、差旅和 Madrid 出行费用。",
+    language: "西语招聘页与本地团队环境；未公开语言等级",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 2 年以上 / 合同形式待确认",
+    changeType: "round-15-corrected",
+  },
+  930849: {
+    direction: "brand",
+    company: "Andilana",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / Plaça Reial / 现场 40 小时全职",
+    titleZh: "初级平面与视觉传播设计师",
+    titleEs: "Diseñador/a Gráfico/a Junior – Comunicación",
+    reason: "JOB TODAY 原始页当前有 Apply now。岗位参与视觉识别、数字/印刷物料、修图和完稿，面向约 0–2 年初级设计师；但母语级加泰语、良好西语和英语、正规设计学历证明都是明确要求。",
+    next: "只有满足加泰语与学历硬门槛时才投。作品集放视觉识别、印刷/数字适配、修图和完稿；先确认薪资、合同与实际日常工作语言。",
+    language: "母语级加泰语；良好西语和英语均要求",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    experienceKey: "junior",
+    experienceLabel: "初级 / 约 0–2 年 / 正规学历硬门槛",
+    changeType: "round-15-new",
+  },
+  930850: {
+    direction: "brand",
+    company: "10x Team / AI Lab pool",
+    statusKey: "verify",
+    locationKey: "remote",
+    locationLabel: "EU/UK remote / 每周 8–20 小时 / 非传统 vacancy",
+    titleZh: "视觉设计 AI 训练专家池（非固定岗位）",
+    titleEs: "Visual Designer - AI Trainer",
+    reason: "官方 Ashby 页面可申请，EU/UK remote、EUR61–100/小时和 8–20 小时均公开；但官方明确说明 AI Lab roles 不是有固定开始日期的传统招聘，审核通过后可能等待数月才匹配项目。",
+    next: "只保留在待复核/项目池，不计入当前可投主列表。若申请，先确认 Spain 税务与付款、最低工时、身份核验、评估是否付费、数据保密和实际项目是否已存在。",
+    language: "英语远程评估流程",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级专家 / freelance pool / 非固定开工",
+    changeType: "round-15-review-only",
+  },
+});
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
@@ -7253,9 +7492,10 @@ function locationBucket(item) {
   // Round 657: a China-based remote card has no explicit Spain eligibility;
   // keep it manual-only even though the curated legacy row used `remote`.
   if (Number(item?.id) === 916) return "other";
-  // Round 705: MANGO's Fashion Art Director is in Palau-solità i Plegamans,
-  // Barcelona province, not Barcelona city; keep it out of the default local view.
-  if (Number(item?.id) === 930705) return "other";
+  // Round 15: Palau-solità i Plegamans is in Barcelona province. The card
+  // remains explicit about the commute, but it belongs to the local/nearby
+  // opportunity set instead of being mislabelled as another region.
+  if (Number(item?.id) === 930705) return "barcelona";
   if (/^Other\s*\//i.test(String(item.locationTag || "")) || item.locationTag === "Other / unclear") return "other";
   const curated = CURATED[item.id];
   if (curated?.locationKey) return curated.locationKey;

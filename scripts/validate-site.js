@@ -127,6 +127,9 @@ check([930838, 930839, 930840, 930841, 930842, 930843, 930844].every((id) => aud
 check([930838, 930839, 930840, 930841, 930842, 930843, 930844].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十三批官方或当前雇主可投岗位未全部进入 live");
 check([930845, 930846, 930847, 930848].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十四批新增的四条真实机会未完整进入主表");
 check([930845, 930846, 930847, 930848, 279, 958].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十四批新增或复核的当前岗位未全部进入 live");
+check([930705, 397, 1274, 930849].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十五批纠正、恢复与新增的四条 Barcelona 机会未完整进入主表");
+check([930705, 397, 1274, 930849, 884, 238, 396].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十五批原始页核验的当前岗位未全部进入 live");
+check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 930850)).key === "verify" && !test.MY_OPPORTUNITY_SET.has(930850), "10x 非传统 AI Lab 项目池被误计为当前可投岗位");
 check([160, 930715].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "第十四批已关闭岗位仍被标为可投");
 check(!auditedMain.some((item) => [160, 930715].includes(Number(item.id))), "第十四批已关闭岗位泄漏进默认主表");
 check(test.toLinks(test.allData.find((item) => Number(item.id) === 279)).some((url) => /4448026093/i.test(url)), "DORTOKA 新的当前招聘编号未写入卡片");
@@ -227,10 +230,10 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  [279, 160, 958, 930715, 930845, 930846, 930847, 930848].every((id) =>
+  [1274, 397, 396, 930705, 884, 238, 930849, 930850].every((id) =>
     test.latestRoundItems.some((item) => Number(item.id) === id),
   ),
-  "第十四轮新增、恢复与关闭状态没有完整进入“本轮变化”",
+  "第十五轮新增、纠正与状态复核没有完整进入“本轮变化”",
 );
 check(!/id="excludeLowPay"[^>]*checked/.test(indexHtml), "默认主表仍会暗中排除低薪风险卡片，导致总数与可见卡片不一致");
 check(!appSource.includes("item.postingDate"), "页面仍引用不存在的 postingDate 字段");
@@ -893,7 +896,7 @@ check(r703Euroleague && r703Euroleague.tier === "D" && test.applicationStatus(r7
 const r704Jirada = test.allData.find((item) => item.id === 86);
 check(r704Jirada && test.applicationStatus(r704Jirada).key !== "closed" && r704Jirada.score === 70 && test.locationBucket(r704Jirada) === "barcelona", "Round 704: JIRADA trainee scope or score regressed");
 const r705Mango = test.allData.find((item) => item.id === 930705);
-check(r705Mango && r705Mango.score === 100 && test.locationBucket(r705Mango) !== "barcelona" && test.applicationStatus(r705Mango).key !== "closed", "Round 705: MANGO manual Barcelona-province discovery regressed");
+check(r705Mango && r705Mango.score === 100 && test.locationBucket(r705Mango) === "barcelona" && test.applicationStatus(r705Mango).key === "live", "Round 15: MANGO Barcelona-province correction regressed");
 const r706Lateral = test.allData.find((item) => test.toLinks(item).some((url) => /4436668875|art-director-63779/i.test(url)));
 check(r706Lateral && r706Lateral.score === 100 && test.locationBucket(r706Lateral) === "barcelona" && test.applicationStatus(r706Lateral).key === "live", "Round 706/714: Lateral Thinking Barcelona Art Director live-detail refresh regressed");
 const r707DragonsLead = test.allData.find((item) => item.id === 930707);
