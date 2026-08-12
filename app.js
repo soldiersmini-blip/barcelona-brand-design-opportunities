@@ -1403,6 +1403,134 @@ const ROUND36_SECTION = "2026-08-13 Round 36 official remote visual-design audit
   if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
 });
 
+const ROUND37_SECTION = "2026-08-13 Round 37 Barcelona exact-detail consolidation";
+[
+  {
+    id: 930883,
+    section: ROUND37_SECTION,
+    source: "reboot / closed LinkedIn employer detail retained as history",
+    opportunity: "Senior Brand Designer",
+    fit: "Barcelona/Poblenou brand-identity role covering end-to-end visual identities, design systems, motion and web; remote with preference for several Barcelona office days",
+    location: "Barcelona / remote-hybrid preference / full-time",
+    status: "Closed/history after a same-day state change. The exact LinkedIn employer detail 4386330520 initially rendered the complete Barcelona Senior Brand Designer brief and Solicitar on 2026-08-13, but the final direct-route audit later that day redirected to expired_jd_redirect and no longer contained the role. Preserve the unusually relevant identity-system brief, but the cached search result must not override the current final redirect.",
+    contact: "Current original employer detail/application: https://es.linkedin.com/jobs/view/senior-brand-designer-at-reboot-4386330520",
+    analysis: "Archive only. This was one of the closest Barcelona VI briefs, but the exact route is now expired. Do not apply through the generic reboot Web Designer form and do not count it as current; use the brief for portfolio targeting and restore it only if reboot publishes a new independent requisition.",
+    score: 96,
+    tier: "X",
+    locationTag: "Barcelona area",
+    typeTag: "Brand identity / visual systems / motion / web",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-06",
+    freshnessTag: "week",
+    freshnessAgeDays: 7,
+    links: ["https://es.linkedin.com/jobs/view/senior-brand-designer-at-reboot-4386330520"],
+    searchText: "reboot current LinkedIn Senior Brand Designer Barcelona Poblenou remote hybrid full-time apply visual identity design systems moodboards brand direction motion web Figma Illustrator After Effects InDesign Photoshop 5+ years English bonus",
+  },
+  {
+    id: 930884,
+    section: ROUND37_SECTION,
+    source: "Ogilvy / current LinkedIn employer detail",
+    opportunity: "Art Director (Social Media)",
+    fit: "Barcelona hybrid art-direction role for social visual concepts, platform assets, brand consistency, video and motion; minimum two years in an agency",
+    location: "Barcelona / hybrid 2-3 office days alternating / full-time",
+    status: "Live/current. The exact LinkedIn employer detail 4434550264 was opened on 2026-08-13 and does not show a closed marker; the current search result exposes Solicitar. The full brief is readable and covers visual concepts and assets for Instagram, TikTok and YouTube, collaboration with copy and strategy, and visual consistency across brand communications. It requires at least two years in an agency, Adobe tools and basic video/motion knowledge. The public brief is in English but does not explicitly state the daily working-language requirement.",
+    contact: "Current original employer detail/application: https://es.linkedin.com/jobs/view/art-director-social-media-at-ogilvy-4434550264",
+    analysis: "A credible local social-first art-direction option, secondary to pure VI roles. Use campaign systems, social-native layouts, motion/video and brand-consistency examples; ask whether Spanish is required before spending time on a tailored test.",
+    score: 80,
+    tier: "B",
+    locationTag: "Barcelona area",
+    typeTag: "Art direction / social / video / motion",
+    sourceGroup: "linkedin",
+    freshnessTag: "month",
+    links: ["https://es.linkedin.com/jobs/view/art-director-social-media-at-ogilvy-4434550264"],
+    searchText: "Ogilvy current LinkedIn Art Director social media Barcelona hybrid full-time apply Instagram TikTok YouTube Adobe After Effects Premiere visual consistency brands minimum 2 years agency English brief Spanish not stated",
+  },
+  {
+    id: 930885,
+    section: ROUND37_SECTION,
+    source: "Buzz Marketing Networks / current LinkedIn employer detail",
+    opportunity: "Director/a de arte",
+    fit: "Barcelona hybrid art-direction role for brand campaigns, visual concepts, moodboards, style definition and occasional hands-on design",
+    location: "Barcelona / hybrid 2 office days and 3 remote days / full-time",
+    status: "Live/current. The exact LinkedIn employer detail 4442207926 and its current search result were opened on 2026-08-13. The role is not marked closed and the current result exposes a LinkedIn application route. The complete Spanish brief asks for five years of art-direction or similar experience and covers brand campaigns, moodboards, visual references, aesthetic universes, copy collaboration and design execution. Salary and an explicit language statement are absent.",
+    contact: "Current original employer detail/application: https://es.linkedin.com/jobs/view/director-a-de-arte-at-buzz-agencia-creativa-digital-4442207926",
+    analysis: "Keep as a Spanish-first senior local option rather than a top recommendation. Apply with campaign concept, moodboard, art-direction and final-execution examples; confirm salary and whether professional Spanish is mandatory.",
+    score: 74,
+    tier: "B",
+    locationTag: "Barcelona area",
+    typeTag: "Art direction / brand campaigns / visual concepts",
+    sourceGroup: "linkedin",
+    freshnessTag: "week",
+    links: ["https://es.linkedin.com/jobs/view/director-a-de-arte-at-buzz-agencia-creativa-digital-4442207926"],
+    searchText: "Buzz Marketing Networks current LinkedIn Director de arte Barcelona hybrid 2 office 3 remote full-time brand campaigns visual concepts moodboards styles design 5 years Spanish brief salary unknown",
+  },
+  {
+    id: 930886,
+    section: ROUND37_SECTION,
+    source: "Establishment Labs / current LinkedIn employer detail",
+    opportunity: "Junior Project Coordinator & Graphic Designer",
+    fit: "Barcelona hybrid English-first internship supporting brand assets and guideline consistency, but only about 30% of the role is graphic design",
+    location: "Barcelona / hybrid / internship-graduate programme",
+    status: "Live/current. The exact LinkedIn employer detail 4449830488 was opened on 2026-08-13. It visibly shows Barcelona, Solicitar, publication one day earlier and no closed marker. The role is approximately 70% project coordination and 30% basic graphic-design adjustment. Design work includes presentations, brochures, templates, social assets, brand-guideline consistency and print-ready files. Only students currently enrolled in a bachelor or postgraduate programme who can sign a formal internship agreement are eligible. Fluent/native English is required; Spanish and other languages are only a plus.",
+    contact: "Current original employer detail/application: https://es.linkedin.com/jobs/view/junior-project-coordinator-graphic-designer-at-establishment-labs-4449830488",
+    analysis: "Keep as a transparent lower-priority English-first foothold, not as a core graphic-design job. Apply only if the university convenio requirement is genuinely available and project coordination is acceptable; confirm pay, duration, hours and conversion prospects first.",
+    score: 48,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Internship / project coordination / brand production",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-12",
+    freshnessTag: "week",
+    freshnessAgeDays: 1,
+    links: ["https://es.linkedin.com/jobs/view/junior-project-coordinator-graphic-designer-at-establishment-labs-4449830488"],
+    searchText: "Establishment Labs current LinkedIn Junior Project Coordinator Graphic Designer Barcelona hybrid internship graduate programme apply 70% coordination 30% graphic design brand assets presentations brochures templates social print fluent English Spanish plus student enrolled formal internship agreement convenio",
+  },
+  {
+    id: 930887,
+    section: ROUND37_SECTION,
+    source: "Lateral Thinking / current LinkedIn employer detail",
+    opportunity: "Senior Spatial Designer",
+    fit: "Barcelona brand-experience and spatial-storytelling role spanning immersive environments, installations, 2D/3D production and brand consistency",
+    location: "Barcelona / full-time / office arrangement not stated",
+    status: "Live/current with a stale-template caveat. The exact LinkedIn employer detail 4452412973 was opened on 2026-08-13. It visibly shows Barcelona, Solicitar, publication one day earlier and no closed marker. The role creates brand-driven spatial stories, immersive environments and installations and requires 5+ years, 3D rendering, CAD/floorplans, Adobe and fluent Spanish. The brief still says an ideal January 2026 start, so the recruiter should confirm that this refreshed requisition is genuinely active and correct the start-date text.",
+    contact: "Current original employer detail/application: https://es.linkedin.com/jobs/view/we%E2%80%99re-hiring-%E2%80%93-senior-spatial-designer-at-lateral-thinking-4452412973",
+    analysis: "A real but off-core brand-experience extension. Keep low because fluent Spanish, five years and specialist spatial/CAD/3D experience are hard gates and the start date is stale. Confirm the opening before tailoring anything.",
+    score: 43,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Spatial brand experience / 3D / installations",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-12",
+    freshnessTag: "week",
+    freshnessAgeDays: 1,
+    links: ["https://es.linkedin.com/jobs/view/we%E2%80%99re-hiring-%E2%80%93-senior-spatial-designer-at-lateral-thinking-4452412973"],
+    searchText: "Lateral Thinking current LinkedIn Senior Spatial Designer Barcelona apply brand-driven spatial stories environments installations 5+ years SketchUp Rhino V-Ray AutoCAD Adobe fluent Spanish English Catalan plus stale January 2026 start verify",
+  },
+  {
+    id: 930888,
+    section: ROUND37_SECTION,
+    source: "VML / current LinkedIn employer detail",
+    opportunity: "Art Director",
+    fit: "Barcelona hybrid senior art-direction role covering visual identity, integrated campaigns, AI, social, motion and video",
+    location: "Barcelona / hybrid, normally about 4 office days weekly / full-time",
+    status: "Live/current. The exact LinkedIn employer detail 4441238571 was opened on 2026-08-13. It visibly shows Barcelona and Solicitar and is not marked closed. The role leads campaign visual direction and brand identity from concept through execution and asks for 5-6+ years in a creative agency, Adobe, AI tools, portfolio and client presentation skills. Medium-high English and Catalan are explicit requirements; Figma, motion and video are valued.",
+    contact: "Current original employer detail/application: https://es.linkedin.com/jobs/view/art-director-at-vml-4441238571",
+    analysis: "Relevant work, but Catalan plus 5-6 years of agency art direction are hard gates. Keep below accessible English-first and junior/mid roles; only apply if both requirements are genuinely met.",
+    score: 58,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Art direction / visual identity / integrated campaigns",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-06",
+    freshnessTag: "week",
+    freshnessAgeDays: 7,
+    links: ["https://es.linkedin.com/jobs/view/art-director-at-vml-4441238571"],
+    searchText: "VML current LinkedIn Art Director Barcelona hybrid full-time apply brand identity campaigns Adobe AI Figma motion video 5-6 years agency medium-high English Catalan mandatory",
+  },
+].forEach((record) => {
+  if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
+});
+
 // Round 20: a visible email or a fresh search-card timestamp cannot override a
 // closed original detail. Conversely, employer-owned ATS pages with an active
 // form and explicit Spain/global eligibility may be promoted into the board.
@@ -3088,11 +3216,22 @@ const ROUND35_RANKED_INSERTIONS = new Map([
 const ROUND36_RANKED_INSERTIONS = new Map([
   [1021, [930882]],
 ]);
+const ROUND37_RANKED_INSERTIONS = new Map([
+  [296, [930883]],
+  [1314, [930884]],
+  [238, [930885]],
+  [188, [930888]],
+  [930818, [930886]],
+  [930878, [930887]],
+]);
 // THRU still exposes the complete role brief and a future closing date, but
 // the same official page ends with "NO JOB OPENINGS". Keep the lead visible as
 // verify-first evidence without allowing the contradictory page to occupy a
 // top-five score or homepage-priority slot.
 const ROUND35_DEMOTED_IDS = new Set([1107]);
+// Keep the old records in the historical corpus, but do not let exact ATS
+// duplicates occupy two seats in the reviewed current board.
+const ROUND37_SUPERSEDED_MAIN_IDS = new Set([891, 930707, 930883]);
 const ROUND32_EXCLUDED_IDS = new Set([930839, ...ROUND32_CLOSED_IDS, ...ROUND33_CLOSED_IDS]);
 const MY_OPPORTUNITY_IDS = Object.freeze(
   ROUND28_AUDITED_OPPORTUNITY_IDS
@@ -3102,6 +3241,8 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
     .filter((id) => !ROUND35_DEMOTED_IDS.has(id))
     .flatMap((id) => [id, ...(ROUND35_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND36_RANKED_INSERTIONS.get(id) || [])])
+    .flatMap((id) => [id, ...(ROUND37_RANKED_INSERTIONS.get(id) || [])])
+    .filter((id) => !ROUND37_SUPERSEDED_MAIN_IDS.has(id))
     .filter((id) => !ROUND32_EXCLUDED_IDS.has(id)),
 );
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
@@ -3802,6 +3943,111 @@ Object.assign(CURATED, {
     experienceKey: "mid",
     experienceLabel: "中级至高级 / 3–6 年",
     changeType: "round-36-new-official",
+  },
+});
+
+Object.assign(CURATED, {
+  930883: {
+    direction: "brand",
+    company: "reboot",
+    statusKey: "closed",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / remote-hybrid preference / 全职",
+    titleZh: "高级品牌设计师（VI 系统、动态与网页延展）",
+    titleEs: "Senior Brand Designer",
+    reason: "同日首次打开时页面仍显示完整职位和申请入口，但最终直链复查已跳到 expired_jd_redirect。职责非常匹配，当前状态却必须以最终跳转为准。",
+    next: "只保留作 VI 作品集和岗位画像参考；不要借用 reboot 的 Web Designer 通用表单投递，等新的独立 requisition 出现再恢复。",
+    language: "职位全文为英语；流利英语写作 bonus，未列西语硬门槛",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上",
+    changeType: "round-37-same-day-expired",
+  },
+  930884: {
+    direction: "social",
+    company: "Ogilvy",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / 全职",
+    titleZh: "社交媒体艺术指导（品牌一致性与动效）",
+    titleEs: "Art Director (Social Media)",
+    reason: "当前原始详情完整列出 Instagram、TikTok、YouTube 视觉概念和素材、品牌一致性、Adobe、视频与基础 motion；要求至少 2 年 agency 经验。",
+    next: "优先放社媒 Campaign 系统、动态和品牌延展案例；公开 JD 没写日常语言，投递前先确认西语是否硬性。",
+    language: "公开 JD 为英语；未明确日常工作语言或西语门槛",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "中级 / agency 2 年以上",
+    changeType: "round-37-new-current",
+  },
+  930885: {
+    direction: "brand",
+    company: "Buzz Marketing Networks",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 每周 2 天办公室 + 3 天远程 / 全职",
+    titleZh: "艺术指导（品牌 Campaign 与视觉概念）",
+    titleEs: "Director/a de arte",
+    reason: "当前原始详情涵盖品牌 Campaign、视觉概念、moodboard、风格定义、与 copy 协作及必要时亲自设计；混合办公条件明确。",
+    next: "西语 JD 且要求 5 年经验，按本地西语高级岗处理；先确认语言硬门槛和薪资。",
+    language: "职位正文为西班牙语；未单列语言要求",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年",
+    changeType: "round-37-new-current",
+  },
+  930886: {
+    direction: "production",
+    company: "Establishment Labs",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / 学生实习",
+    titleZh: "项目协调与平面设计实习（30% 设计）",
+    titleEs: "Junior Project Coordinator & Graphic Designer",
+    reason: "职位当前开放，英语为硬门槛，设计工作包括品牌模板、演示、宣传册、社媒素材和印刷文件；但职责明确是约 70% 项目协调、30% 平面设计。",
+    next: "只在能签学校 convenio 且接受协调工作时申请；先问薪资、周期、工时和转正可能性。",
+    language: "英语流利或母语为必需；西语仅加分",
+    languageKey: "english",
+    applicationMode: "english",
+    experienceKey: "internship",
+    experienceLabel: "实习 / 必须在读并可签 convenio",
+    changeType: "round-37-new-current",
+  },
+  930887: {
+    direction: "other",
+    company: "Lateral Thinking",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 全职 / 开始日期文本待确认",
+    titleZh: "高级空间设计师（品牌体验与沉浸式环境）",
+    titleEs: "Senior Spatial Designer",
+    reason: "当前页面有申请入口并要求品牌驱动的空间叙事、沉浸式环境、装置、3D/CAD 和 Adobe；但模板仍写理想入职时间为 2026 年 1 月。",
+    next: "西语流利、5 年和空间/3D/CAD 是硬门槛；先确认岗位及入职日期确实有效，再准备作品。",
+    language: "流利西班牙语为必需；英语和加泰语加分",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上 / 空间设计",
+    changeType: "round-37-new-current-with-stale-date",
+  },
+  930888: {
+    direction: "brand",
+    company: "VML",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid（通常每周约 4 天办公室）/ 全职",
+    titleZh: "艺术指导（品牌识别、整合 Campaign 与 AI）",
+    titleEs: "Art Director",
+    reason: "当前原始详情有申请入口，工作包括品牌识别、整合 Campaign、Adobe、AI、社媒，Figma、motion 和视频为加分项。",
+    next: "加泰语与中高英语、5–6 年 agency 经验均为硬门槛，因此保留为低优先级高级备选。",
+    language: "中高英语与加泰语均为必需",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    experienceKey: "senior",
+    experienceLabel: "高级 / agency 5–6 年以上",
+    changeType: "round-37-new-current",
   },
 });
 

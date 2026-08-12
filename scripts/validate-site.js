@@ -235,9 +235,11 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 36/i.test(test.latestRoundSection) &&
-    test.latestRoundItems.some((item) => Number(item.id) === 930882),
-  "Round 36 的新增官方远程岗位没有完整进入‘本轮变化’",
+  /Round 37/i.test(test.latestRoundSection) &&
+    [930883, 930884, 930885, 930886, 930887, 930888].every((id) =>
+      test.latestRoundItems.some((item) => Number(item.id) === id),
+    ),
+  "Round 37 的 Barcelona 精确详情核验没有完整进入‘本轮变化’",
 );
 const round33AuditItems = test.allData.filter((item) => /Round 33 full-board direct-link reconciliation/i.test(String(item.section || "")));
 check(
@@ -1085,11 +1087,19 @@ check(r22Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Roun
 const r23ById = (id) => test.allData.find((item) => Number(item.id) === id);
 const r23Main = test.MY_OPPORTUNITY_IDS.map(r23ById).filter(Boolean);
 const r23VisibleMain = test.dedupedData.filter((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id)));
-check(test.MY_OPPORTUNITY_IDS.length === 200 && new Set(test.MY_OPPORTUNITY_IDS).size === 200, "Round 36: audited ID ledger must contain exactly 200 unique opportunities");
-check(r23Main.length === 200 && r23VisibleMain.length === 200, "Round 36: main ledger and visible deduplicated cards must both equal 200");
-check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 151 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 49, "Round 36: Barcelona/remote split must be exactly 151/49");
-check(r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 183 && r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 17, "Round 36: live/verify split must be exactly 183/17");
-check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 36: Chinese-relevant current opportunity count must remain evidence-backed at 6");
+check(test.MY_OPPORTUNITY_IDS.length === 203 && new Set(test.MY_OPPORTUNITY_IDS).size === 203, "Round 37: audited ID ledger must contain exactly 203 unique opportunities");
+check(r23Main.length === 203 && r23VisibleMain.length === 203, "Round 37: main ledger and visible deduplicated cards must both equal 203");
+check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 154 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 49, "Round 37: Barcelona/remote split must be exactly 154/49");
+check(r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 186 && r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 17, "Round 37: live/verify split must be exactly 186/17");
+check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 37: Chinese-relevant current opportunity count must remain evidence-backed at 6");
+for (const id of [930884, 930885, 930886, 930887, 930888]) {
+  const item = r23ById(id);
+  check(item && test.MY_OPPORTUNITY_SET.has(id) && test.locationBucket(item) === "barcelona" && test.applicationStatus(item).key === "live" && test.toLinks(item).length === 1, `Round 37: current Barcelona detail ${id} is missing, misclassified or lacks its exact route`);
+}
+check(!test.MY_OPPORTUNITY_SET.has(891) && !test.MY_OPPORTUNITY_SET.has(930707), "Round 37: superseded duplicate ATS cards still occupy main-board seats");
+const r37Reboot = r23ById(930883);
+check(r37Reboot && !test.MY_OPPORTUNITY_SET.has(930883) && test.applicationStatus(r37Reboot).key === "closed" && test.toLinks(r37Reboot).some((url) => /4386330520/i.test(url)), "Round 37: reboot same-day expired route was not archived correctly");
+check(test.MY_OPPORTUNITY_IDS.indexOf(1314) < test.MY_OPPORTUNITY_IDS.indexOf(930884) && test.MY_OPPORTUNITY_IDS.indexOf(930884) < test.MY_OPPORTUNITY_IDS.indexOf(314), "Round 37: Ogilvy social art-direction rank is incoherent");
 const r36Duna = r23ById(930882);
 check(r36Duna && test.MY_OPPORTUNITY_SET.has(930882) && test.locationBucket(r36Duna) === "remote" && test.applicationStatus(r36Duna).key === "live", "Round 36: Duna Visual Designer is missing or misclassified");
 check(test.toLinks(r36Duna).some((url) => /jobs\.ashbyhq\.com\/duna\/6af4c831-00ee-4d94-93cb-709de9f1ee27$/i.test(url)) && test.toLinks(r36Duna).some((url) => /6af4c831-00ee-4d94-93cb-709de9f1ee27\/application$/i.test(url)), "Round 36: Duna exact job or application route is missing");
