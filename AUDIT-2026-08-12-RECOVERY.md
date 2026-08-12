@@ -1,10 +1,10 @@
-# 2026-08-12 研究库追回与状态纠错（145 条现行主表）
+# 2026-08-12 研究库追回与状态纠错（148 条现行主表）
 
 本轮继续执行“逐条打开原始招聘详情或官方 ATS”的规则，不以搜索摘要、列表页存在或 HTTP 200 代替职位有效性判断。
 
 ## 现行主表
 
-- 145 个独立机会，严格按统一匹配分 100–1 从高到低排列；145 个分数全部唯一。
+- 148 个独立机会，严格按统一匹配分 100–1 从高到低排列；148 个分数全部唯一。
 - 110 个 Barcelona / 周边，35 个 Spain / Europe / worldwide remote。
 - 126 个原始页显示可申请，19 个需先确认申请控制、地点或合同资格。
 - 73 个品牌 / VI / Art Direction，41 个 Digital，8 个 Motion，8 个 Social，4 个 E-commerce，11 个 Production。
@@ -196,3 +196,15 @@
 5. 原始页面的当前可申请证据与信息完整度。
 
 关闭、外地、错误、重复和无法证实的线索不会删除，而是继续留在历史或待复核区。
+
+## 第十一批逐字核验：3 个 Barcelona / 周边当前机会
+
+| 公司 / 岗位 | 地点 | 原始详情核验结论与主要门槛 |
+|---|---|---|
+| Exoticca — Visual Designer (Trade Marketing) | Barcelona 市区 onsite / 永久全职 | LinkedIn 雇主原始详情 4448170319 当前可 Easy Apply。负责手册、目录、印刷、Roll-up、宣传视频、动态横幅、演示及合作伙伴联合品牌规范；流利英语明确，正文未列西语硬门槛。它是渠道营销品牌延展，不冒充纯 VI 岗。 |
+| INCAPTO — Graphic Designer (Packaging & Product) | Barcelona hybrid 3-2 / 全职 | LinkedIn 雇主原始详情 4448984689 显示正在积极审核和 Easy Apply。负责包装系统、标签、盒型、插页、刀模、法规图标、说明书及商品页视觉；2–4 年、作品集、流利西语与英语均为硬门槛。 |
+| Wecolors — Diseñador/a gráfico/a especializado/a en Producto | Vilassar de Dalt / 每周 1 天远程 | LinkedIn 雇主原始详情 4448188871 显示正在积极审核和 Easy Apply。负责美妆包装、展示、完稿、印厂交接和品牌视觉标准；3–5 年、中高英语、自备车辆、住在附近和设计测试均需考虑。 |
+
+Dragons Group `Senior Art Director — Healthcare & Pharma` 的官方 Factorial 315359 已完整读完并确认 Apply now、Barcelona hybrid、永久全职，因此从“待复核”恢复为“当前可投”。该岗要求 6–10 年，并把医疗、制药、OTC、健康或医美经验作为实质硬门槛，不能仅凭品牌视觉相关度排到不具备领域经验的人选前面。
+
+本轮还核对了容易造成误判的线索：La Casa de Carlota 的 Junior Graphic Designer 原始详情明确不再接受申请；Kraken 的官方 Ashby 实际只开放美国/加拿大远程；Waiis 招聘正文地点为 Manresa；旧 PuenteChina 设计助理材料来自 2021 年；Casa Asia 当前没有新增设计岗。以上均未被包装成新的 Barcelona 当前机会，历史证据继续保留。

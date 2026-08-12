@@ -90,7 +90,10 @@ check(
 );
 test.state.preset = "mine";
 const auditedMain = test.dedupedData.filter((item) => test.matchesPreset(item));
-check(auditedMain.length === 145, "逐条核验后的默认机会总表数量不是 145");
+check(
+  auditedMain.length === test.MY_OPPORTUNITY_IDS.length && auditedMain.length >= 148,
+  "逐条核验后的默认机会总表与人工审核 ID 清单数量不一致或发生倒退",
+);
 check(auditedMain.every((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id))), "默认机会总表混入未审核记录");
 check(auditedMain.every((item) => test.applicationStatus(item).key !== "closed"), "默认机会总表混入已关闭记录");
 check(auditedMain.every((item) => Boolean(test.CURATED[item.id])), "默认机会总表仍有未完成中文整理的卡片");
@@ -100,9 +103,9 @@ test.sortRecords(auditedMain);
 check(auditedMain.every((item, index) => index === 0 || test.displayedScore(auditedMain[index - 1]) >= test.displayedScore(item)), "默认机会总表没有按我的匹配分降序排列");
 const auditedScores = auditedMain.map(test.displayedScore);
 check(
-  auditedScores[0] === 100 &&
+    auditedScores[0] === 100 &&
     auditedScores.at(-1) === 1 &&
-    new Set(auditedScores).size === 145 &&
+    new Set(auditedScores).size === auditedMain.length &&
     auditedScores.every((score, index) => index === 0 || auditedScores[index - 1] > score),
   "默认机会总表的 100–1 唯一严格降序评分序列不完整",
 );
@@ -118,6 +121,8 @@ check([447, 207, 444, 304, 89, 855, 874, 1227, 396, 172, 86, 1294].every((id) =>
 check([930816, 1278, 930818, 930819, 93, 1296, 930817, 903, 1293, 37, 279].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第八批逐条核验的十一条真实机会未完整进入主表");
 check([930820, 930821, 930822, 930823, 178, 228, 930717].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第九批逐条核验的七条真实机会未完整进入主表");
 check([1245, 930824, 930825, 930826, 930827, 930828, 930829].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十批逐条核验的七条真实机会未完整进入主表");
+check([930831, 930832, 930833].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十一批逐条核验的三条真实机会未完整进入主表");
+check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 930708)).key === "live", "Dragons 医疗艺术指导的官方可投状态未恢复");
 check([120, 1079, 1217].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 Rocket Digital 或 Fhios 记录仍被标为可投");
 check([153, 220, 322, 894].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 UNIQLO、Desigual 或 Ogilvy 记录仍被标为可投");
 check([359, 101].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "本轮官方已关闭的 SD Worx 或重复 TWOJEYS 记录仍被标为可投");
