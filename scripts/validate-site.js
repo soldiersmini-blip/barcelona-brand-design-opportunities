@@ -235,11 +235,11 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 27/i.test(test.latestRoundSection) &&
-    [930871, 214, 141, 1287, 1021, 1026, 649, 979, 1024, 1252, 843, 1022, 355, 1013, 967].every((id) =>
+  /Round 28/i.test(test.latestRoundSection) &&
+    [930873, 930874, 930875, 955].every((id) =>
       test.latestRoundItems.some((item) => Number(item.id) === id),
     ),
-  "Round 27 的恢复、待复核和归档裁决没有完整进入‘本轮变化’",
+  "Round 28 的新增和关闭裁决没有完整进入‘本轮变化’",
 );
 check(!/id="excludeLowPay"[^>]*checked/.test(indexHtml), "默认主表仍会暗中排除低薪风险卡片，导致总数与可见卡片不一致");
 check(!appSource.includes("item.postingDate"), "页面仍引用不存在的 postingDate 字段");
@@ -1078,11 +1078,23 @@ check(r22Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Roun
 const r23ById = (id) => test.allData.find((item) => Number(item.id) === id);
 const r23Main = test.MY_OPPORTUNITY_IDS.map(r23ById).filter(Boolean);
 const r23VisibleMain = test.dedupedData.filter((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id)));
-check(test.MY_OPPORTUNITY_IDS.length === 237 && new Set(test.MY_OPPORTUNITY_IDS).size === 237, "Round 27: audited ID ledger must contain exactly 237 unique opportunities");
-check(r23Main.length === 237 && r23VisibleMain.length === 237, "Round 27: main ledger and visible deduplicated cards must both equal 237");
-check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 179 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 58, "Round 27: Barcelona/remote split must be exactly 179/58");
-check(r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 216 && r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 21, "Round 27: live/verify split must be exactly 216/21");
-check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 27: Chinese-relevant current opportunity count must remain evidence-backed at 6");
+check(test.MY_OPPORTUNITY_IDS.length === 240 && new Set(test.MY_OPPORTUNITY_IDS).size === 240, "Round 28: audited ID ledger must contain exactly 240 unique opportunities");
+check(r23Main.length === 240 && r23VisibleMain.length === 240, "Round 28: main ledger and visible deduplicated cards must both equal 240");
+check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 182 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 58, "Round 28: Barcelona/remote split must be exactly 182/58");
+check(r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 219 && r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 21, "Round 28: live/verify split must be exactly 219/21");
+check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 28: Chinese-relevant current opportunity count must remain evidence-backed at 6");
+
+for (const id of [930873, 930874, 930875]) {
+  const item = r23ById(id);
+  check(item && test.MY_OPPORTUNITY_SET.has(id) && test.locationBucket(item) === "barcelona" && test.applicationStatus(item).key === "live" && test.toLinks(item).length > 0, `Round 28: new Barcelona opportunity ${id} is missing, closed or lacks an original application route`);
+}
+check(test.toLinks(r23ById(930873)).some((url) => /grupoplaneta\.talentclue\.com\/es\/node\/127111935/i.test(url)), "Round 28: Grupo Planeta official TalentClue route is missing");
+check(test.toLinks(r23ById(930874)).some((url) => /4434548567/i.test(url)), "Round 28: Ogilvy employer-origin application route is missing");
+check(test.toLinks(r23ById(930875)).some((url) => /4405562504/i.test(url)) && test.applicationLanguagePath(r23ById(930875)).key === "spanish", "Round 28: Grupo Bimbo route or explicit Spanish gate is missing");
+check(!test.MY_OPPORTUNITY_SET.has(955) && test.applicationStatus(r23ById(955)).key === "closed" && r23ById(955).tier === "X", "Round 28: Jobgether 404 requisition remained current or leaked into the main board");
+check(test.MY_OPPORTUNITY_IDS.indexOf(930871) < test.MY_OPPORTUNITY_IDS.indexOf(930873) && test.MY_OPPORTUNITY_IDS.indexOf(930873) < test.MY_OPPORTUNITY_IDS.indexOf(930868), "Round 28: Grupo Planeta rank is incoherent");
+check(test.MY_OPPORTUNITY_IDS.indexOf(1024) < test.MY_OPPORTUNITY_IDS.indexOf(930874) && test.MY_OPPORTUNITY_IDS.indexOf(930874) < test.MY_OPPORTUNITY_IDS.indexOf(990), "Round 28: Ogilvy Liquid Designer rank is incoherent");
+check(test.MY_OPPORTUNITY_IDS.indexOf(930829) < test.MY_OPPORTUNITY_IDS.indexOf(930875) && test.MY_OPPORTUNITY_IDS.indexOf(930875) < test.MY_OPPORTUNITY_IDS.indexOf(382), "Round 28: Grupo Bimbo internship rank is incoherent");
 
 const r27Promoted = [382, 1287, 142, 454, 996, 1021, 1243, 1026, 1257, 1310, 930871, 214, 649, 979, 1024, 1002, 537];
 check(r27Promoted.every((id) => test.MY_OPPORTUNITY_SET.has(id) && test.toLinks(r23ById(id)).length > 0), "Round 27: a recovered relevant opportunity is missing from the ranked board or lost its source route");

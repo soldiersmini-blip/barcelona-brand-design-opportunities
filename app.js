@@ -1140,6 +1140,75 @@ if (familiaTorresIdCollision) familiaTorresIdCollision.id = 930871;
     freshnessAgeDays: null,
     links: ["https://jobs.ashbyhq.com/primer.io/5869d2db-b445-4676-9392-d95a3973500f"],
   },
+  {
+    id: 930873,
+    section: "2026-08-12 Round 28 Barcelona original-detail discovery and false-positive cleanup",
+    source: "Grupo Planeta / official TalentClue ATS",
+    opportunity: "Diseñador/a Gráfico/a Senior / Diseñador/a Editorial Senior",
+    fit: "Barcelona senior editorial graphic design; book-cover concepts, art direction, launch materials and production",
+    location: "Barcelona city; on-site; indefinite full-time; one vacancy",
+    status: "Live/current: Grupo Planeta's official TalentClue detail 127111935 was opened and read in full on 2026-08-12. It shows Inscríbete, one Barcelona vacancy, an indefinite full-time contract and on-site work. The Art & Design team creates non-fiction covers for Planeta, Ariel, Crítica and Península and carries concepts through production.",
+    contact: "Official detail/application: https://grupoplaneta.talentclue.com/es/node/127111935/4590/modal ; official careers hub: https://jobs.planeta.es/",
+    analysis: "A real, high-quality Barcelona graphic-design route, but not a junior VI role. The work is editorial art direction, cover design, typography and launch graphics; it requires at least five years, Adobe Creative Cloud, intermediate-or-higher English and a portfolio. Confirm salary and the daily Spanish working level before applying.",
+    score: 82,
+    tier: "B",
+    locationTag: "Barcelona area",
+    typeTag: "Editorial graphic design / art direction / launch graphics",
+    sourceGroup: "official",
+    postedAt: "",
+    freshnessTag: "week",
+    freshnessAgeDays: null,
+    links: [
+      "https://grupoplaneta.talentclue.com/es/node/127111935/4590/modal",
+      "https://jobs.planeta.es/",
+    ],
+  },
+  {
+    id: 930874,
+    section: "2026-08-12 Round 28 Barcelona original-detail discovery and false-positive cleanup",
+    source: "Ogilvy / current employer-origin LinkedIn detail",
+    opportunity: "Liquid Designer",
+    fit: "Barcelona hybrid full-time digital and motion designer; social video, international adaptation and brand consistency",
+    location: "Barcelona city; hybrid 2–3 office days and 2–3 remote days on alternating weeks; full-time",
+    status: "Live/current: Ogilvy's employer-origin LinkedIn detail 4434548567 was opened and read in full on 2026-08-12. It shows Solicitar and a complete Barcelona brief. The role creates and adapts digital assets, Reels, TikTok and YouTube Shorts, video, animation and motion graphics while localising work for international markets and protecting brand consistency.",
+    contact: "Current original detail/application: https://es.linkedin.com/jobs/view/liquid-designer-at-ogilvy-4434548567 ; employer careers: https://www.ogilvy.com/es/careers",
+    analysis: "A solid formal Barcelona role for digital-brand extension rather than core VI ownership. It asks for two to four years, at least two years in an agency, Adobe, After Effects and Figma. The public brief does not state a language requirement, salary or work-authorisation policy, so confirm those before a time-intensive application.",
+    score: 74,
+    tier: "B",
+    locationTag: "Barcelona area",
+    typeTag: "Digital / social video / motion / brand adaptation",
+    sourceGroup: "linkedin",
+    postedAt: "",
+    freshnessTag: "month",
+    freshnessAgeDays: null,
+    links: [
+      "https://es.linkedin.com/jobs/view/liquid-designer-at-ogilvy-4434548567",
+      "https://www.ogilvy.com/es/careers",
+    ],
+  },
+  {
+    id: 930875,
+    section: "2026-08-12 Round 28 Barcelona original-detail discovery and false-positive cleanup",
+    source: "Grupo Bimbo / current employer-origin LinkedIn detail + official careers route",
+    opportunity: "Branding & Design Intern",
+    fit: "Barcelona Diagonal Mar brand-identity and packaging internship; guidelines, final artwork, assets and visual presentations",
+    location: "Barcelona city / Diagonal Mar office; internship conditions, schedule and pay not published",
+    status: "Live/current: Grupo Bimbo's employer-origin LinkedIn detail 4405562504 was opened and read in full on 2026-08-12. It shows Solicitar and a complete Barcelona vacancy. The work supports visual identity and packaging, online and offline assets, final artwork, brand guidelines, asset libraries, visual presentations, agencies, suppliers and brand-coherence review.",
+    contact: "Current original detail/application: https://es.linkedin.com/jobs/view/branding-design-intern-at-grupo-bimbo-4405562504 ; official careers route: https://www.grupobimbo.com/en/join-our-team",
+    analysis: "The direction is exceptionally relevant for an entry-level brand/packaging portfolio, but this is an internship with high Spanish explicitly required. University/current-study status is requested; salary, schedule, duration and internship-agreement conditions are not published. Confirm every labour condition before investing in a tailored application.",
+    score: 63,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Brand identity / packaging / guidelines / final artwork internship",
+    sourceGroup: "linkedin",
+    postedAt: "",
+    freshnessTag: "month",
+    freshnessAgeDays: null,
+    links: [
+      "https://es.linkedin.com/jobs/view/branding-design-intern-at-grupo-bimbo-4405562504",
+      "https://www.grupobimbo.com/en/join-our-team",
+    ],
+  },
 ].forEach((record) => {
   if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
 });
@@ -2349,6 +2418,36 @@ function applyRound27SourceUpdates() {
 
 applyRound27SourceUpdates();
 
+const ROUND28_SECTION = "2026-08-12 Round 28 Barcelona original-detail discovery and false-positive cleanup";
+
+function applyRound28SourceUpdates() {
+  const staleJobgetherSeniorBrand = allData.find((item) => Number(item.id) === 955);
+  if (staleJobgetherSeniorBrand) {
+    Object.assign(staleJobgetherSeniorBrand, {
+      section: ROUND28_SECTION,
+      status: "Closed/history: the original Jobgether Lever requisition 300a0d90-f55c-464f-9e11-1ad42a44de29 was reopened on 2026-08-12 and returns HTTP 404. A search-result snapshot is not evidence of a current application route.",
+      analysis: "Preserve the anonymous-employer lead in history, but do not count or apply to it. Restore only if a new employer or intermediary original page opens with a working application and discloses the Spain contract conditions.",
+      tier: "X",
+    });
+    staleJobgetherSeniorBrand.searchText = [
+      staleJobgetherSeniorBrand.source,
+      staleJobgetherSeniorBrand.opportunity,
+      staleJobgetherSeniorBrand.fit,
+      staleJobgetherSeniorBrand.location,
+      staleJobgetherSeniorBrand.status,
+      staleJobgetherSeniorBrand.contact,
+      staleJobgetherSeniorBrand.analysis,
+    ].filter(Boolean).join(" ");
+  }
+
+  for (const id of [930873, 930874, 930875]) {
+    const item = allData.find((record) => Number(record.id) === id);
+    if (item) item.section = ROUND28_SECTION;
+  }
+}
+
+applyRound28SourceUpdates();
+
 for (const item of allData) {
   if (!item.searchText) {
     item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
@@ -2413,8 +2512,16 @@ const ROUND27_RANKED_INSERTIONS = new Map([
   [930843, [294, 317, 1238, 1262, 581, 1258, 848, 136, 213]],
   [930865, [1243, 537]],
 ]);
-const MY_OPPORTUNITY_IDS = Object.freeze(
+const ROUND27_AUDITED_OPPORTUNITY_IDS = Object.freeze(
   ROUND26_AUDITED_OPPORTUNITY_IDS.flatMap((id) => [id, ...(ROUND27_RANKED_INSERTIONS.get(id) || [])]),
+);
+const ROUND28_RANKED_INSERTIONS = new Map([
+  [930871, [930873]],
+  [1024, [930874]],
+  [930829, [930875]],
+]);
+const MY_OPPORTUNITY_IDS = Object.freeze(
+  ROUND27_AUDITED_OPPORTUNITY_IDS.flatMap((id) => [id, ...(ROUND28_RANKED_INSERTIONS.get(id) || [])]),
 );
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
 
@@ -9597,6 +9704,71 @@ Object.assign(CURATED, {
   },
 });
 
+Object.assign(CURATED, {
+  955: {
+    ...CURATED[955],
+    direction: "brand",
+    company: "Jobgether / 匿名合作公司",
+    statusKey: "closed",
+    titleZh: "高级品牌设计师（原始 Lever 已失效）",
+    titleEs: "Senior Brand Designer — closed Lever requisition",
+    reason: "原始 Lever requisition 当前返回 404；搜索结果缓存不能证明岗位仍可投。",
+    next: "保留在历史库；只有出现新的雇主或中介原始详情、有效申请入口和 Spain 合同条件后才恢复。",
+    changeType: "round-28-official-page-404",
+  },
+  930873: {
+    direction: "brand",
+    company: "Grupo Planeta",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 现场 / 无固定期限全职",
+    titleZh: "高级平面与编辑设计师（书籍封面 / 艺术指导）",
+    titleEs: "Diseñador/a Gráfico/a Senior / Editorial Senior",
+    reason: "官方 TalentClue 当前显示 Inscríbete。工作从封面概念、字体与视觉方案延伸到插画师/摄影师协作、艺术指导、上市物料和最终生产，属于真实而专业的本地平面设计岗位。",
+    next: "属于 5 年以上高级岗；先确认薪资和日常西语要求，作品集优先放编辑系统、封面、字体、艺术指导与印刷生产。",
+    languageKey: "spanish",
+    language: "明确要求中级以上英语；西语图书与本地团队的实际工作语言需确认",
+    applicationMode: "spanish",
+    experienceKey: "senior",
+    experienceLabel: "5 年以上 / 编辑或文化项目优先",
+    changeType: "round-28-new-official-ats",
+  },
+  930874: {
+    direction: "motion",
+    company: "Ogilvy",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 混合办公 / 全职",
+    titleZh: "数字与动态设计师（社媒视频 / 国际品牌延展）",
+    titleEs: "Liquid Designer",
+    reason: "当前雇主原始页显示 Solicitar。工作覆盖数字资产、Reels/TikTok/Shorts、视频、动画、motion、多市场本地化和品牌一致性；是数字品牌延展岗位，不是纯 VI 所有权岗位。",
+    next: "用数字 campaign、短视频、motion 和多市场品牌适配案例申请；先确认薪资、团队工作语言、合同主体和工作许可。",
+    languageKey: "unknown",
+    language: "公开正文未列语言要求；Barcelona 代理商团队的日常西语要求需确认",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "2–4 年 / 至少 2 年代理商经验",
+    changeType: "round-28-new-employer-detail",
+  },
+  930875: {
+    direction: "brand",
+    company: "Grupo Bimbo",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / Diagonal Mar / 实习条件待确认",
+    titleZh: "品牌与包装设计实习生",
+    titleEs: "Branding & Design Intern",
+    reason: "当前雇主原始页显示 Solicitar。职责直接涉及视觉识别、包装、品牌指南、线上线下物料、完稿、资产库、视觉演示和第三方品牌一致性审核，方向非常贴近目标。",
+    next: "高西语是硬门槛；申请前确认是否必须在读/可签 convenio、薪资、周工时、期限和转正可能，避免把方向匹配误当成劳动条件合适。",
+    languageKey: "spanish",
+    language: "高水平西班牙语为明确要求；英语仅为加分",
+    applicationMode: "spanish",
+    experienceKey: "junior",
+    experienceLabel: "在读或大学背景 / 实习或学术项目经验可加分",
+    changeType: "round-28-new-employer-detail",
+  },
+});
+
 // Reapply the latest source verdicts after every historical refresh block so
 // a stale generated record cannot turn an excluded role back into live.
 applyRound21SourceUpdates();
@@ -9606,6 +9778,7 @@ applyRound24SourceUpdates();
 applyRound25SourceUpdates();
 applyRound26SourceUpdates();
 applyRound27SourceUpdates();
+applyRound28SourceUpdates();
 
 const els = {
   totalCount: document.querySelector("#totalCount"),
