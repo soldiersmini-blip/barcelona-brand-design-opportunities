@@ -117,14 +117,17 @@ check(
   "默认机会总表没有按个人可投递分从高到低排列",
 );
 check(
-  auditedMain.every((item) => test.applicationLanguagePath(item).key !== "unknown"),
-  "默认机会总表仍有未核定工作语言的卡片",
+  auditedMain
+    .filter((item) => test.applicationLanguagePath(item).key === "unknown")
+    .every((item) => test.displayedScore(item) <= 40),
+  "工作语言未证实的卡片突破了 40 分风险上限",
 );
 check(
   auditedMain.every((item) => {
     const language = test.applicationLanguagePath(item).key;
     const score = test.displayedScore(item);
     if (language === "english") return score <= 45;
+    if (language === "unknown") return score <= 40;
     if (language === "spanish") return score <= 30;
     if (language === "spanishLikely") return score <= 35;
     if (language === "foreign") return score <= 30;
@@ -141,6 +144,12 @@ check(test.applicationLanguagePath(test.allData.find((item) => item.id === 188))
 check(test.applicationStatus(test.allData.find((item) => item.id === 5106)).key === "closed", "CrowdStrike 重复 Workday requisition 没有进入历史区");
 check(test.applicationStatus(test.allData.find((item) => item.id === 930836)).key === "live", "CrowdStrike 当前主卡被重复清理误伤");
 check(test.applicationStatus(test.allData.find((item) => item.id === 156)).key === "closed", "Heroes/Boba 已从当前官方职位板撤下的旧卡没有进入历史区");
+check(test.applicationLanguagePath(test.allData.find((item) => item.id === 78)).key === "unknown", "Textura 未公开的团队语言仍被误标成已确认英语路径");
+check(test.applicationLanguagePath(test.allData.find((item) => item.id === 55)).key === "unknown", "BCome 未公开的团队语言仍被误标成已确认英语路径");
+check(test.applicationStatus(test.allData.find((item) => item.id === 209)).key === "live", "bsport 重新开放的官方 requisition 没有恢复");
+check(test.toLinks(test.allData.find((item) => item.id === 209)).some((url) => /7207663-lead-ui-visual-designer/i.test(url)), "bsport 重新开放的官方申请入口缺失");
+check(test.toLinks(test.allData.find((item) => item.id === 209)).some((url) => /4435255506/i.test(url)) && !test.toLinks(test.allData.find((item) => item.id === 209)).some((url) => /4382873380/i.test(url)), "bsport 新旧 LinkedIn 入口没有正确切换");
+check(test.toLinks(test.allData.find((item) => item.id === 930823))[0]?.includes("paid-motion-designer-306539") && !test.toLinks(test.allData.find((item) => item.id === 930823)).some((url) => /316734/i.test(url)), "Factorial Paid Motion Designer 当前官方 requisition 没有成为第一投递入口");
 check(auditedMain.every((item) => !/鈥|帽|鏄|鍙|闇|椤|閫|绗/.test(`${test.companyLabel(item)} ${test.roleLabels(item).zh} ${test.locationLabel(item)}`)), "默认机会总表仍有可见乱码");
 check([446, 928, 483, 930815].every((id) => auditedMain.some((item) => Number(item.id) === id)), "本轮新增的四条真实机会未完整进入主表");
 check([296, 4, 1102, 601, 577, 1038, 1011, 1105, 1240, 351, 930712, 278, 224].every((id) => auditedMain.some((item) => Number(item.id) === id)), "研究库追回的十三条真实机会未完整进入主表");
@@ -267,11 +276,9 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 37/i.test(test.latestRoundSection) &&
-    [930883, 930884, 930885, 930886, 930887, 930888].every((id) =>
-      test.latestRoundItems.some((item) => Number(item.id) === id),
-    ),
-  "Round 37 的 Barcelona 精确详情核验没有完整进入‘本轮变化’",
+  /Round 38/i.test(test.latestRoundSection) &&
+    [209, 930823, 78, 55].every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)),
+  "Round 38 的重新开放与语言复核没有完整进入‘本轮变化’",
 );
 const round33AuditItems = test.allData.filter((item) => /Round 33 full-board direct-link reconciliation/i.test(String(item.section || "")));
 check(
@@ -843,7 +850,7 @@ const r655Xinming = test.allData.find((item) => item.id === 1280);
 const r656RemoteChina = test.allData.find((item) => item.id === 916);
 check(r651Ogilvy && test.applicationStatus(r651Ogilvy).key === "closed" && r651Ogilvy.tier === "X", "Round 651: expired Ogilvy/CBA Brand Designer remained active");
 check(test.dedupedData.some((item) => [92, 437].includes(item.id) && test.applicationStatus(item).key === "closed"), "Round 651: Ogilvy/CBA closed evidence disappeared after deduplication");
-check(r652Bsport && test.applicationStatus(r652Bsport).key === "closed" && test.toLinks(r652Bsport).some((url) => /careers\.bsport\.io\/jobs\/7207663/i.test(url)), "Round 652/2026-08-12: bsport 410 closure evidence regressed");
+check(r652Bsport && test.applicationStatus(r652Bsport).key === "live" && test.MY_OPPORTUNITY_SET.has(209) && test.toLinks(r652Bsport).some((url) => /careers\.bsport\.io\/jobs\/7207663/i.test(url)), "Round 38: bsport reopened official requisition was not restored to the main board");
 check(r653Qonto && test.applicationStatus(r653Qonto).key === "closed" && r653Qonto.tier === "X", "Round 653: Qonto LinkedIn-only mirror remained active after official-board absence");
 check(r654OneKey && r654OneKey.score === 64 && test.toLinks(r654OneKey).some((url) => /onekeyhq\.atlassian\.net\/wiki\/spaces\/OC\/pages\/127238234/i.test(url)) && /do(?:es)? not explicitly confirm Barcelona, Spain|Spain eligibility/i.test(r654OneKey.status), "Round 654: OneKey Spain-eligibility warning or official route regressed");
 check(r655Xinming && r655Xinming.score === 66 && /Global remote|global remote/i.test(r655Xinming.location) && test.toLinks(r655Xinming).some((url) => /xinming\.sg\/about-careers/i.test(url)), "Round 655: Xinming global-remote visual-system evidence regressed");
@@ -1119,14 +1126,14 @@ check(r22Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Roun
 const r23ById = (id) => test.allData.find((item) => Number(item.id) === id);
 const r23Main = test.MY_OPPORTUNITY_IDS.map(r23ById).filter(Boolean);
 const r23VisibleMain = test.dedupedData.filter((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id)));
-check(test.MY_OPPORTUNITY_IDS.length === 203 && new Set(test.MY_OPPORTUNITY_IDS).size === 203, "Round 37: audited ID ledger must contain exactly 203 unique opportunities");
-check(r23Main.length === 203 && r23VisibleMain.length === 203, "Round 37: complete audited history must preserve all 203 reviewed IDs");
-check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 154 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 49, "Round 37: Barcelona/remote split must be exactly 154/49");
+check(test.MY_OPPORTUNITY_IDS.length === 204 && new Set(test.MY_OPPORTUNITY_IDS).size === 204, "Round 38: audited ID ledger must contain exactly 204 unique opportunities");
+check(r23Main.length === 204 && r23VisibleMain.length === 204, "Round 38: complete audited history must preserve all 204 reviewed IDs");
+check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 155 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 49, "Round 38: Barcelona/remote split must be exactly 155/49");
 check(
-  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 184 &&
+  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 185 &&
     r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 16 &&
     r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 3,
-  "Profile audit: 203 reviewed IDs must resolve to 184 live, 16 verify and 3 preserved closed-history cards",
+  "Profile audit: 204 reviewed IDs must resolve to 185 live, 16 verify and 3 preserved closed-history cards",
 );
 check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 37: Chinese-relevant current opportunity count must remain evidence-backed at 6");
 for (const id of [930884, 930885, 930886, 930887, 930888]) {

@@ -1531,6 +1531,8 @@ const ROUND37_SECTION = "2026-08-13 Round 37 Barcelona exact-detail consolidatio
   if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
 });
 
+const ROUND38_SECTION = "2026-08-13 Round 38 profile-first reopening and language audit";
+
 // Round 20: a visible email or a fresh search-card timestamp cannot override a
 // closed original detail. Conversely, employer-owned ATS pages with an active
 // form and explicit Spain/global eligibility may be promoted into the board.
@@ -3228,6 +3230,9 @@ const ROUND37_RANKED_INSERTIONS = new Map([
   [930818, [930886]],
   [930878, [930887]],
 ]);
+const ROUND38_RANKED_INSERTIONS = new Map([
+  [930834, [209]],
+]);
 // THRU still exposes the complete role brief and a future closing date, but
 // the same official page ends with "NO JOB OPENINGS". Keep the lead visible as
 // verify-first evidence without allowing the contradictory page to occupy a
@@ -3246,6 +3251,7 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
     .flatMap((id) => [id, ...(ROUND35_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND36_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND37_RANKED_INSERTIONS.get(id) || [])])
+    .flatMap((id) => [id, ...(ROUND38_RANKED_INSERTIONS.get(id) || [])])
     .filter((id) => !ROUND37_SUPERSEDED_MAIN_IDS.has(id))
     .filter((id) => !ROUND32_EXCLUDED_IDS.has(id)),
 );
@@ -11215,6 +11221,66 @@ Object.assign(CURATED, {
     next: "先确认团队能否主要用英语协作；未得到书面确认前按西语工作环境处理，不投入定制作品集。",
     changeType: "profile-language-audit",
   },
+  78: {
+    ...CURATED[78],
+    languageKey: "unknown",
+    language: "官方详情提供英文版本，但没有公开日常工作语言或西语 / 加泰语要求；本地团队语言不可由网页语言替代",
+    applicationMode: "unknown",
+    reason: "Textura 官方详情与 cv@textura-interiors.com 入口仍然有效，工作精确覆盖视觉识别、brand toolkit、Campaign、社媒、Web、邮件和 POS；但英文网页只证明可阅读英文 JD，不证明岗位可以只用英语工作。",
+    next: "先用简短邮件确认工作语言、合同、薪资和办公室节奏；只有明确接受当前语言水平后再投入定制 VI→全渠道案例。",
+    auditSection: ROUND38_SECTION,
+    changeType: "profile-language-audit-unknown",
+  },
+  55: {
+    ...CURATED[55],
+    languageKey: "unknown",
+    language: "Digital Designer 正文为英文但没有列语言等级；同页其他岗位的英语 / 西语要求不能自动套用到本岗",
+    applicationMode: "unknown",
+    reason: "BCome 官方 careers 仍列出 Barcelona Digital Designer 和直投邮箱，职责包含企业识别、SaaS、广告、演示、Figma 与 Motion；本岗没有自己的明确语言条款，不能继续标成已确认英语路径。",
+    next: "先向 alba@bcome.biz 询问团队日常语言、是否需要西语、薪资、合同主体和办公室节奏；得到答复后再决定是否定制作品集。",
+    auditSection: ROUND38_SECTION,
+    changeType: "profile-language-audit-unknown",
+  },
+  930823: {
+    ...CURATED[930823],
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 永久全职 / €29,900–34,500",
+    titleZh: "付费广告动态设计师（全球市场）",
+    titleEs: "Paid Motion Designer",
+    reason: "Factorial 当前官方职位 306539 显示 Apply now、Barcelona、永久全职与 €29,900–34,500；职责覆盖付费渠道 Motion 变体、品牌一致性、CTR / ROAS 迭代和 AI 工作流，并明确要求书面及口语英语流利。",
+    next: "仅作为英语 Motion 备选。用 Paid Media Motion、短视频剪辑、品牌一致性和 AI 版本化案例申请；不要再使用无法确认的 316734 旧路径。",
+    languageKey: "english",
+    language: "书面及口语英语流利为明确硬门槛；其他语言仅加分",
+    applicationMode: "english",
+    links: ["https://careers.factorialhr.com/job_posting/paid-motion-designer-306539"],
+    preferCuratedLinks: true,
+    suppressLinkFragments: ["316734"],
+    auditSection: ROUND38_SECTION,
+    changeType: "profile-language-audit-current-route",
+  },
+  209: {
+    ...CURATED[209],
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona Tasso / hybrid / Senior IC4",
+    titleZh: "高级 UI / 视觉设计负责人（品牌语言与设计系统）",
+    titleEs: "Lead UI - Visual Designer",
+    reason: "同一官方 Teamtailor requisition 7207663 在 2026-08-12 曾返回 410，但 2026-08-13 已重新显示完整 JD、Join us 和申请表。岗位负责产品与营销的视觉品牌、视觉指南、设计系统、Campaign、UI、图标、插画和 Motion。",
+    next: "恢复原卡，不新建重复席位；仅作为英语高级备选。申请前确认薪资、办公室天数、Spain 工作许可和是否接受当前英语水平。",
+    languageKey: "english",
+    language: "强英语沟通为明确要求；西语未列为硬门槛",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / Senior IC4 / 视觉负责人",
+    links: [
+      "https://careers.bsport.io/jobs/7207663-lead-ui-visual-designer",
+      "https://es.linkedin.com/jobs/view/lead-ui-visual-designer-at-bsport-4435255506",
+    ],
+    suppressLinkFragments: ["4382873380"],
+    auditSection: ROUND38_SECTION,
+    changeType: "profile-language-audit-reopened",
+  },
   5106: {
     ...CURATED[5106],
     statusKey: "closed",
@@ -11498,7 +11564,15 @@ function toLinks(item) {
   const emails = [...contact.matchAll(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi)].map(
     (match) => `mailto:${match[0]}`,
   );
-  return [...new Set([...raw, ...curatedRaw, ...emails])].filter(isActionableLink);
+  const suppressedFragments = Array.isArray(CURATED[item.id]?.suppressLinkFragments)
+    ? CURATED[item.id].suppressLinkFragments
+    : [];
+  const orderedLinks = CURATED[item.id]?.preferCuratedLinks
+    ? [...curatedRaw, ...raw, ...emails]
+    : [...raw, ...curatedRaw, ...emails];
+  return [...new Set(orderedLinks)].filter(
+    (url) => isActionableLink(url) && !suppressedFragments.some((fragment) => String(url).includes(fragment)),
+  );
 }
 
 function isInternshipRole(item) {
@@ -11748,14 +11822,14 @@ function personalMatchScore(item) {
     chinese: 100,
     chineseCheck: 92,
     basicSpanish: 68,
-    unknown: 55,
+    unknown: 40,
     english: 45,
     spanishLikely: 35,
     foreign: 30,
     spanish: 30,
   };
   const languageScales = {
-    unknown: 0.55,
+    unknown: 0.4,
     english: 0.45,
     spanishLikely: 0.35,
     foreign: 0.3,
@@ -12672,8 +12746,12 @@ function dedupe(records) {
 }
 
 const dedupedData = dedupe(allData);
+function auditSection(item) {
+  return String(CURATED[item.id]?.auditSection || item.section || "");
+}
+
 function roundRank(item) {
-  const section = String(item.section || "");
+  const section = auditSection(item);
   if (!/(第.+轮|Round\s*\d+)/i.test(section)) return null;
   const dateMatch = section.match(/\b(20\d{2}-\d{2}-\d{2})\b/);
   const date = dateMatch ? Date.parse(`${dateMatch[1]}T00:00:00Z`) : 0;
@@ -12695,7 +12773,7 @@ const latestRoundSection = allData.reduce((latest, item) => {
 }, { date: 0, englishRound: 0, id: 0, section: "" }).section;
 // “本轮变化” is an audit log as well as a discovery queue. Keep cards moved
 // to history visible here, so a closure-only round never looks empty.
-const latestRoundItems = dedupe(allData.filter((item) => item.section === latestRoundSection));
+const latestRoundItems = dedupe(allData.filter((item) => auditSection(item) === latestRoundSection));
 const priorityItems = PRIORITY_IDS.map((id) => allData.find((item) => item.id === id))
   .filter(Boolean);
 sortRecords(priorityItems);

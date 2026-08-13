@@ -6,23 +6,24 @@
 
 ## 当前主表
 
-- 200 个去重后的当前已审计机会；另有 3 个已复核的关闭 / 重复席位保留在历史中。
-- 151 个 Barcelona / 周边当前机会。
+- 201 个去重后的当前已审计机会；另有 3 个已复核的关闭 / 重复席位保留在历史中。
+- 152 个 Barcelona / 周边当前机会。
 - 49 个明确允许 Spain / Europe / worldwide remote，或已单独标出 Spain 合同资格待确认的机会。
-- 184 个原始详情页显示可投，16 个需要先确认。
+- 185 个原始详情页显示可投，16 个需要先确认。
 - 6 个中文、华人圈、中国公司或中文远程相关机会。
 
 主表只收录已逐条检查过地点、岗位方向、当前状态和真实入口的机会。默认按“我的匹配分”严格从高到低排列；分数同时考虑 Barcelona/Spain 可行性、品牌视觉相关度、资历、语言门槛、状态可信度和材料投入成本。
 
 ## 数据分区
 
-- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 200 条主表。
+- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 201 条主表。
 - `华人中文全库`：华人网、中文社区、Casa Asia 和中国公司相关来源的完整线索。
 - `页面仍可复核`：详情还在，但状态、地点或申请控制需要再次确认的记录。
 - `关闭 / 历史 / 排除`：已过期、错误地点、重复、非设计岗或无法证实的记录。历史不会删除。
 
 ## 关键文件
 
+- `AUDIT-2026-08-13-ROUND38.md`：恢复重新开放的 bsport Lead UI / Visual Designer 原卡，切换 Factorial Paid Motion Designer 当前 requisition，并把 Textura、BCome 从“默认英语”改为“工作语言未证实”；当前主表为 201 条。
 - `AUDIT-2026-08-13-PROFILE-SCORING.md`：按用户真实语言、地点与职业方向重新核定全榜分数；外语岗位统一乘以语言可行性系数，归档 CrowdStrike 重复 requisition 与 Heroes/Boba 已撤下旧卡，当前主表为 200 条。
 - `AUDIT-2026-08-13-ROUND37.md`：新增并逐条直连复核 5 个 Barcelona 机会，归档同日过期的 reboot Senior Brand Designer，移除主榜 2 个重复 ATS 席位并复扫中文渠道。现行主表为 203 条、154 条 Barcelona 与 49 条远程。
 - `AUDIT-2026-08-13-ROUND36.md`：复扫 12 组本地与远程设计关键词及中文社区来源；拒绝已经从官方 ATS 移除的搜索缓存，并新增 Duna 全球远程 Visual Designer。现行主表为 200 条、151 条 Barcelona 与 49 条远程。
@@ -55,7 +56,7 @@
 - `data.js`：保留的完整公开机会语料。
 - `scripts/inspect-qualified-opportunities.js`：输出当前主表或指定机会的审计报告。
 - `scripts/export-opportunity-ledgers.js`：生成当前主表 CSV/JSON 与完整历史总账 CSV。
-- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 200 个机会的完整、严格降序导出。
+- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 201 个机会的完整、严格降序导出。
 - `all-opportunity-ledger.csv`：1,254 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
 - `scripts/validate-site.js`：验证数据、排序、状态、入口与页面结构。
 
