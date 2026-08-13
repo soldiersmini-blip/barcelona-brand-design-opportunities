@@ -25,6 +25,8 @@
 - Agilent、Domingo Studio 等 15 张当前或历史卡补齐中文 / 西语岗位标题；Hays 正式岗不再因为正文提到“相关实习经历”而误受实习扣分。
 - 第 26–60 名继续使用同一证据规则：LABHOUSE、Ogilvy Social、Revolut、Carati、CBA、Supabase、Xapo、Pocket Worlds、Storisell、Netenders、IKIGAI、Codeway、Molin、Refokus 与 reboot 改为“工作语言未证实”；明确写出英语要求的 Preply、Glovo、Dragons、Omnicom、JUNGLE、Zurich、Lodgify、MANGO、EuroLeague 与 Publicis 保持英语路径。
 - 第 61–100 名继续复核：Synthesia、SIERRA、Bakken、THRU、Revolut Motion、turbopuffer、SLAPS、COCUNAT 与 DuckDuckGo 改为“工作语言未证实”；FunPlus Graphic Design Intern 已从官方板移除，bsport `7207663` 再次返回 410 且无同名新编号，两张都转入历史。
+- 第 101–140 名继续复核：PriorityChef、The Builder Studios、Designity、DualEntry、ZOE、Codeway、Fantasy、Co-Star 与 Together 的原始正文没有明确英语条款，统一改为“工作语言未证实”；Bending Spoons、Injective、Circle、Hungry Minds 与 GameHouse 因正文或投递步骤明确要求英语，继续按英语路径降权。
+- Ametller 包装岗的旧 Workday `JR106376` 已失效，但官方 Workday API 在 2026-08-13 查到 2026-07-24 发布的新 `JR107430`。原卡恢复可投并改用新入口；由于完整 JD 为加泰语、本地供应商协作且要求 5 年以上，只按“西语高概率 + 高级”低分保留。
 
 ## 数量守恒
 
@@ -33,8 +35,8 @@
 - 当前可用 / 待核验主表：198 条。
 - 历史席位：6 条，包括一个精确重复 requisition，以及五个已从当前招聘面撤下或无法继续证实开放的旧岗位。
 - 当前地点：Barcelona / 周边 149 条，Spain / Europe / worldwide remote 49 条。
-- 当前状态：182 条 live，16 条 verify。
-- 当前语言：中文核验 2、基础西语 1、英语 77、工作语言未证实 41、西语高概率 10、西语硬门槛 66、其他外语 1。
+- 当前状态：183 条 live，15 条 verify。
+- 当前语言：中文核验 2、基础西语 1、英语 67、工作语言未证实 50、西语高概率 11、西语硬门槛 66、其他外语 1。
 
 ## 排序验证
 

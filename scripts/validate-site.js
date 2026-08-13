@@ -276,11 +276,11 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 41/i.test(test.latestRoundSection) &&
-    [930844, 601, 1105, 1107, 990, 930870, 12, 2942, 1020, 443, 209].every((id) =>
+  /Round 42/i.test(test.latestRoundSection) &&
+    [996, 985, 864, 1000, 1024, 1021, 1098, 930867, 942, 1029].every((id) =>
       test.latestRoundItems.some((item) => Number(item.id) === id),
     ),
-  "Round 41 ranks 61-100 status, language and experience audit is incomplete",
+  "Round 42 ranks 101-140 status, language and experience audit is incomplete",
 );
 const round33AuditItems = test.allData.filter((item) => /Round 33 full-board direct-link reconciliation/i.test(String(item.section || "")));
 check(
@@ -414,7 +414,7 @@ check(test.experienceInfo(test.allData.find((item) => item.id === 859)).key === 
 check(test.experienceInfo(test.allData.find((item) => item.id === 778)).key === "unknown", "华人广告公司未说明经验的岗位被误分级");
 check(test.applicationStatus(test.allData.find((item) => item.id === 863)).key === "live", "Ametller 数字设计岗没有保留当前可投状态");
 check(test.experienceInfo(test.allData.find((item) => item.id === 863)).key === "mid", "Ametller 2–4 年数字设计岗经验分级错误");
-check(test.applicationStatus(test.allData.find((item) => item.id === 864)).key === "verify", "Ametller 包装岗官方原始路由已失效却没有进入待核验状态");
+check(test.applicationStatus(test.allData.find((item) => item.id === 864)).key === "live", "Ametller 包装岗的新官方 requisition 没有恢复为可投状态");
 check(test.experienceInfo(test.allData.find((item) => item.id === 864)).key === "senior", "Ametller 5 年以上包装岗经验分级错误");
 check(test.applicationStatus(test.allData.find((item) => item.id === 865)).key === "closed", "FIRMAMENT 地点异常岗位没有进入排除层");
 check(test.applicationStatus(test.allData.find((item) => item.id === 866)).key === "live", "devicenow 当前英语品牌视频岗没有保留可投状态");
@@ -1132,10 +1132,10 @@ check(test.MY_OPPORTUNITY_IDS.length === 204 && new Set(test.MY_OPPORTUNITY_IDS)
 check(r23Main.length === 204 && r23VisibleMain.length === 204, "Round 39: complete audited history must preserve all 204 reviewed IDs");
 check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 155 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 49, "Round 39: Barcelona/remote split must be exactly 155/49");
 check(
-  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 182 &&
-    r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 16 &&
+  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 183 &&
+    r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 15 &&
     r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 6,
-  "Profile audit: 204 reviewed IDs must resolve to 182 live, 16 verify and 6 preserved closed-history cards",
+  "Profile audit: 204 reviewed IDs must resolve to 183 live, 15 verify and 6 preserved closed-history cards",
 );
 const r39Skyscanner = r23ById(930812);
 check(r39Skyscanner && test.applicationStatus(r39Skyscanner).key === "closed", "Round 39: Skyscanner Senior Visual Designer must remain in closed history, not the current board");
@@ -1189,12 +1189,30 @@ check(
     r41Current.filter((item) => test.locationBucket(item) === "remote").length === 49 &&
     r41LanguageCounts.chineseCheck === 2 &&
     r41LanguageCounts.basicSpanish === 1 &&
-    r41LanguageCounts.english === 77 &&
-    r41LanguageCounts.unknown === 41 &&
-    r41LanguageCounts.spanishLikely === 10 &&
+    r41LanguageCounts.english === 67 &&
+    r41LanguageCounts.unknown === 50 &&
+    r41LanguageCounts.spanishLikely === 11 &&
     r41LanguageCounts.spanish === 66 &&
     r41LanguageCounts.foreign === 1,
-  `Round 41: current ledger mismatch ${JSON.stringify({ total: r41Current.length, language: r41LanguageCounts })}`,
+  `Round 42: current ledger mismatch ${JSON.stringify({ total: r41Current.length, language: r41LanguageCounts })}`,
+);
+for (const id of [996, 985, 1000, 1024, 1021, 1098, 930867, 942, 1029]) {
+  const item = r23ById(id);
+  check(item && test.applicationLanguagePath(item).key === "unknown", `Round 42: ${id} still infers English without an explicit work-language clause`);
+}
+for (const id of [178, 977, 928, 1310, 1080]) {
+  const item = r23ById(id);
+  check(item && test.applicationLanguagePath(item).key === "english", `Round 42: ${id} lost an explicit English requirement or English application gate`);
+}
+const r42Ametller = r23ById(864);
+check(
+  r42Ametller &&
+    test.applicationStatus(r42Ametller).key === "live" &&
+    test.applicationLanguagePath(r42Ametller).key === "spanishLikely" &&
+    test.experienceInfo(r42Ametller).key === "senior" &&
+    test.toLinks(r42Ametller)[0] === "https://ametllerorigen.wd3.myworkdayjobs.com/es/CareerSite/job/OLERDOLA/LIDER-D-ART-EN-PACKAGING_JR107430" &&
+    !test.toLinks(r42Ametller).some((url) => /JR106376|3eb6ced14f3dc5cf/i.test(url)),
+  "Round 42: Ametller replacement requisition, language risk, experience gate or canonical link is wrong",
 );
 check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 37: Chinese-relevant current opportunity count must remain evidence-backed at 6");
 for (const id of [930884, 930885, 930886, 930887, 930888]) {

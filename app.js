@@ -1535,6 +1535,7 @@ const ROUND38_SECTION = "2026-08-13 Round 38 profile-first reopening and languag
 const ROUND39_SECTION = "2026-08-13 Round 39 high-rank language, seniority and status audit";
 const ROUND40_SECTION = "2026-08-13 Round 40 ranks 26-60 language and experience audit";
 const ROUND41_SECTION = "2026-08-13 Round 41 ranks 61-100 status language and experience audit";
+const ROUND42_SECTION = "2026-08-13 Round 42 ranks 101-140 language and official-requisition audit";
 
 // Round 20: a visible email or a fresh search-card timestamp cannot override a
 // closed original detail. Conversely, employer-owned ATS pages with an active
@@ -11914,6 +11915,132 @@ Object.assign(CURATED, {
     next: "保留在历史并监控 bsport 官方板；不要用现有 Senior Product Designer 代替品牌 / 视觉岗。",
     auditSection: ROUND41_SECTION,
     changeType: "profile-status-audit-closed",
+  },
+});
+
+// Round 42 audits ranks 101-140 and replaces Ametller's dead Workday number
+// with the employer's newly indexed requisition. International or English-page
+// roles remain available, but only explicit language requirements count as
+// confirmed English paths.
+Object.assign(CURATED, {
+  996: {
+    ...CURATED[996],
+    languageKey: "unknown",
+    language: "PriorityChef 官方 Workable 申请页未列工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "unknown",
+    experienceLabel: "Amazon / 电商视觉能力需要，固定年限未写",
+    statusEvidence: "2026-08-13 复核：PriorityChef 官方 Workable 666D4E893E 当前返回 200、Amazon Creative Designer 与完整申请表；未发现英语或西语要求，也没有固定年限。",
+    auditSection: ROUND42_SECTION,
+    changeType: "profile-language-experience-audit",
+  },
+  985: {
+    ...CURATED[985],
+    languageKey: "unknown",
+    language: "The Builder Studios 官方页面未公开工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 3 年以上 / freelance",
+    statusEvidence: "2026-08-13 复核：The Builder Studios 官方 Visual Designer 页面当前限制自动访问；最近完整官方页仍列 EU timezones remote、freelance、3+ 年与嵌入申请表，但没有语言条款。",
+    auditSection: ROUND42_SECTION,
+    changeType: "profile-language-audit-unknown",
+  },
+  864: {
+    ...CURATED[864],
+    statusKey: "live",
+    languageKey: "spanishLikely",
+    language: "完整官方 JD 为加泰语且在 Olèrdola 本地包装 / 供应商语境工作；未列语言等级，但加泰语 / 西语风险高",
+    applicationMode: "spanishLikely",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上包装与完稿经验",
+    links: [
+      "https://ametllerorigen.wd3.myworkdayjobs.com/es/CareerSite/job/OLERDOLA/LIDER-D-ART-EN-PACKAGING_JR107430",
+      "https://corp.ametllerorigen.com/es/trabaja-con-nosotros/",
+    ],
+    preferCuratedLinks: true,
+    suppressLinkFragments: ["JR106376", "3eb6ced14f3dc5cf"],
+    statusEvidence: "2026-08-13 复核：Ametller 官方 Workday API 当前以 packaging 搜到新 requisition JR107430，标题 LIDER D'ART EN PACKAGING，2026-07-24 发布且无结束日期；正文要求 5 年以上，旧 JR106376 已被新编号替代。",
+    reason: "当前是新的官方包装艺术负责人 requisition，不再使用失效旧编号；方向高度贴包装品牌治理，但地点、5 年资历及加泰语本地语境都是高门槛。",
+    next: "先确认团队是否接受主要用英语 / 基础西语协作、两处办公地点、混合节奏、薪资与驾车要求；语言不可行时不投入重型包装提案。",
+    auditSection: ROUND42_SECTION,
+    changeType: "profile-current-requisition-replacement",
+  },
+  1000: {
+    ...CURATED[1000],
+    languageKey: "unknown",
+    language: "Designity 当前官方职位正文未列工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上 Motion",
+    statusEvidence: "2026-08-13 复核：Designity 官方 Motion Designer (AI-Driven) 页面当前限制自动访问；最近完整官方页仍列 EMEA/LATAM remote、全职和申请入口，但没有明确语言条款。",
+    auditSection: ROUND42_SECTION,
+    changeType: "profile-language-audit-unknown",
+  },
+  1024: {
+    ...CURATED[1024],
+    languageKey: "unknown",
+    language: "DualEntry 官方 Ashby 正文未列工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 7 年以上",
+    statusEvidence: "2026-08-13 复核：DualEntry 官方 Ashby 564fa354 当前返回 200、Senior Motion Designer、Remote 与完整申请入口；7+ 年及纽约时区重叠是硬门槛，正文未列语言。",
+    auditSection: ROUND42_SECTION,
+    changeType: "profile-language-experience-audit",
+  },
+  1021: {
+    ...CURATED[1021],
+    languageKey: "unknown",
+    language: "ZOE 官方 Ashby 正文未列工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "mid",
+    experienceLabel: "中级 / Mid-Weight performance creative",
+    statusEvidence: "2026-08-13 复核：ZOE 官方 Ashby 0387dca9 当前返回 200、Creative Performance Designer (Mid-Weight)、UK/EU remote 与申请入口；正文未列语言等级。",
+    auditSection: ROUND42_SECTION,
+    changeType: "profile-language-audit-unknown",
+  },
+  1098: {
+    ...CURATED[1098],
+    languageKey: "unknown",
+    language: "Codeway 官方 Ashby 正文未列工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 4–5 年以上",
+    statusEvidence: "2026-08-13 复核：Codeway 官方 Ashby c59cd8a0 当前返回 200、Senior Creative Marketing Manager、Barcelona hybrid 与申请入口；正文没有明确语言条款。",
+    auditSection: ROUND42_SECTION,
+    changeType: "profile-language-audit-unknown",
+  },
+  930867: {
+    ...CURATED[930867],
+    languageKey: "unknown",
+    language: "Fantasy 官方 Lever 正文未列工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上 Motion、Brand 与 Digital",
+    statusEvidence: "2026-08-13 复核：Fantasy 官方 Lever e1833bc1 当前返回 200、Senior Creative Designer - Marketing、UK/EU remote 与申请入口；明确 5+ 年，但未列语言等级。",
+    auditSection: ROUND42_SECTION,
+    changeType: "profile-language-experience-audit",
+  },
+  942: {
+    ...CURATED[942],
+    languageKey: "unknown",
+    language: "Co-Star 官方 Greenhouse 正文未列工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级 IC / 5–8 年",
+    statusEvidence: "2026-08-13 复核：Co-Star 官方 Greenhouse 6126693004 当前返回 200、Brand Designer、Remote 与申请表；明确 5–8 年，正文中的 language 只描述占星与设计语言，不是英语要求。",
+    auditSection: ROUND42_SECTION,
+    changeType: "profile-language-experience-audit",
+  },
+  1029: {
+    ...CURATED[1029],
+    languageKey: "unknown",
+    language: "Together 官方职位页未列明确工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 8 年以上品牌系统经验",
+    statusEvidence: "2026-08-13 复核：Together 官方 Senior Brand Designer 页面当前返回 200、Remote UK & Europe、申请表和 £40k–65k；明确 8+ 年，但未出现英语等级要求。",
+    auditSection: ROUND42_SECTION,
+    changeType: "profile-language-experience-audit",
   },
 });
 
