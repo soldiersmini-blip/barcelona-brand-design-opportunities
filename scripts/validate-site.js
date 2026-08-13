@@ -43,7 +43,7 @@ vm.runInContext(dataSource, context, { filename: "data.js" });
 appSource = appSource
   .replace(/\ninitStats\(\);\nrenderPriority\(\);\nrenderResults\(\);\s*$/, "\n")
   .concat(
-    "\nglobalThis.siteTest = { allData, dedupedData, latestRoundSection, latestRoundItems, priorityItems, CURATED, state, MY_OPPORTUNITY_IDS, MY_OPPORTUNITY_SET, AUDITED_FIT_SCORES, getStatusSummary, directionKey, languageInfo, applicationLanguagePath, roleLabels, companyLabel, locationLabel, sourceGroup, locationBucket, isActionableLink, toLinks, isChineseRelevant, isResearchOnly, isTargetOpportunity, isInternshipRole, hasLowPayRisk, riskFlags, hasOpaqueEmployerRisk, isFormalRole, isFreelanceRole, hasKnownCompensation, laborConditionInfo, experienceInfo, applicationStatus, isClosedLibraryRecord, isReviewLibraryRecord, personalMatchScore, displayedScore, postedTimestamp, rankingScore, confidenceScore, sortRecords, matchesPreset, progressKey, progressValue, saveProgressValue, identityKey, englishOutreachText };\n",
+    "\nglobalThis.siteTest = { allData, dedupedData, latestRoundSection, latestRoundItems, priorityItems, CURATED, state, MY_OPPORTUNITY_IDS, MY_OPPORTUNITY_SET, AUDITED_ORDER_INDEX, getStatusSummary, directionKey, languageInfo, applicationLanguagePath, roleLabels, companyLabel, locationLabel, sourceGroup, locationBucket, isActionableLink, toLinks, isChineseRelevant, isResearchOnly, isTargetOpportunity, isInternshipRole, hasLowPayRisk, riskFlags, hasOpaqueEmployerRisk, isFormalRole, isFreelanceRole, hasKnownCompensation, laborConditionInfo, experienceInfo, applicationStatus, isClosedLibraryRecord, isReviewLibraryRecord, personalMatchScore, displayedScore, postedTimestamp, rankingScore, confidenceScore, sortRecords, matchesPreset, progressKey, progressValue, saveProgressValue, identityKey, englishOutreachText };\n",
   );
 vm.runInContext(appSource, context, { filename: "app.js" });
 
@@ -77,12 +77,12 @@ check(test.applicationStatus(test.allData.find((item) => item.id === 872)).key =
 check(test.allData.find((item) => item.id === 872).tier === "X", "AQIPA named vacancy must be excluded");
 
 check(test.allData.length > 700, "机会数据没有完整载入");
-check(test.priorityItems.length === 8, "首页重点机会数量不是 8");
+check(test.priorityItems.length === 6, "首页重点机会数量不是当前六条人工保留入口");
 check(
-  [930813, 910, 914, 1300, 866, 94, 930847, 930863].every((id) =>
+  [778, 920, 930835, 1300, 24, 25].every((id) =>
     test.priorityItems.some((item) => item.id === id),
   ),
-  "巴塞罗那优先岗位未完整进入首页",
+  "中文路径与此前认可岗位未完整进入首页",
 );
 check(
   test.priorityItems.every((item) => ["barcelona", "remote"].includes(test.locationBucket(item))),
@@ -90,8 +90,18 @@ check(
 );
 test.state.preset = "mine";
 const auditedMain = test.dedupedData.filter((item) => test.matchesPreset(item));
+const expectedAuditedMainIds = test.MY_OPPORTUNITY_IDS.filter((id) => {
+  const item = test.dedupedData.find((entry) => Number(entry.id) === Number(id));
+  return (
+    item &&
+    ["barcelona", "remote"].includes(test.locationBucket(item)) &&
+    test.toLinks(item).length > 0 &&
+    !test.isResearchOnly(item) &&
+    test.applicationStatus(item).key !== "closed"
+  );
+});
 check(
-  auditedMain.length === test.MY_OPPORTUNITY_IDS.length && auditedMain.length >= 140,
+  auditedMain.length === expectedAuditedMainIds.length && auditedMain.length >= 140,
   "逐条核验后的默认机会总表与人工审核 ID 清单数量不一致或发生倒退",
 );
 check(auditedMain.every((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id))), "默认机会总表混入未审核记录");
@@ -103,11 +113,28 @@ test.sortRecords(auditedMain);
 check(auditedMain.every((item, index) => index === 0 || test.displayedScore(auditedMain[index - 1]) >= test.displayedScore(item)), "默认机会总表没有按我的匹配分降序排列");
 const auditedScores = auditedMain.map(test.displayedScore);
 check(
-    auditedScores[0] === 100 &&
-    auditedScores.at(-1) === 1 &&
-    new Set(auditedScores).size === auditedMain.length &&
-    auditedScores.every((score, index) => index === 0 || auditedScores[index - 1] > score),
-  "默认机会总表的 100–1 唯一严格降序评分序列不完整",
+    auditedScores.every((score, index) => index === 0 || auditedScores[index - 1] >= score),
+  "默认机会总表没有按个人可投递分从高到低排列",
+);
+check(
+  auditedMain.every((item) => test.applicationLanguagePath(item).key !== "unknown"),
+  "默认机会总表仍有未核定工作语言的卡片",
+);
+check(
+  auditedMain.every((item) => {
+    const language = test.applicationLanguagePath(item).key;
+    const score = test.displayedScore(item);
+    if (language === "english") return score <= 45;
+    if (language === "spanish") return score <= 30;
+    if (language === "spanishLikely") return score <= 35;
+    if (language === "foreign") return score <= 30;
+    return true;
+  }),
+  "外语岗位突破了个人语言门槛分数上限",
+);
+check(
+  test.MY_OPPORTUNITY_SET.has(1249) && test.applicationStatus(test.allData.find((item) => item.id === 1249)).key === "closed",
+  "Henna Morena 已关闭岗位没有保留在完整历史中",
 );
 check(auditedMain.every((item) => !/鈥|帽|鏄|鍙|闇|椤|閫|绗/.test(`${test.companyLabel(item)} ${test.roleLabels(item).zh} ${test.locationLabel(item)}`)), "默认机会总表仍有可见乱码");
 check([446, 928, 483, 930815].every((id) => auditedMain.some((item) => Number(item.id) === id)), "本轮新增的四条真实机会未完整进入主表");
@@ -182,7 +209,7 @@ for (const item of test.priorityItems) {
   check(Boolean(test.directionKey(item)), `重点机会 ${item.id} 缺少招聘方向`);
   check(Boolean(test.languageInfo(item).label), `重点机会 ${item.id} 缺少语言说明`);
   check(
-    ["chinese", "chineseCheck", "basicSpanish", "english"].includes(test.applicationLanguagePath(item).key),
+    ["chinese", "chineseCheck", "basicSpanish", "english", "spanishLikely", "spanish", "foreign"].includes(test.applicationLanguagePath(item).key),
     `重点机会 ${item.id} 缺少可执行的语言路径`,
   );
 }
@@ -283,7 +310,7 @@ check(
   "结果网格没有锁定为从左到右、从上到下",
 );
 check(
-  appSource.includes("records.sort((a, b) => compareScore(a, b) || tieBreaker(a, b));"),
+  appSource.includes("records.sort((a, b) => compareScore(a, b) || tieBreaker(a, b) || compareAuditedOrder(a, b));"),
   "所有排序模式没有把综合分作为第一排序键",
 );
 check(indexHtml.includes('value="priority"'), "缺少 Barcelona + Europe remote 默认地点范围");
@@ -299,10 +326,10 @@ check(
 const sortModes = ["smart", "latest", "match", "confidence", "weight"];
 for (const mode of sortModes) {
   context.document.querySelector("#sortFilter").value = mode;
-  const sample = [{ id: "test-82", score: 82 }, { id: "test-96", score: 96 }, { id: "test-78", score: 78 }];
+  const sample = auditedMain.slice(0, 40).reverse();
   test.sortRecords(sample);
   check(
-    sample.map((item) => item.score).join(",") === "96,82,78",
+    sample.every((item, index) => index === 0 || test.displayedScore(sample[index - 1]) >= test.displayedScore(item)),
     `排序模式 ${mode} 没有保持综合分从高到低`,
   );
 }
@@ -319,7 +346,7 @@ check(indexHtml.includes('id="excludeLowPay"'), "缺少低薪 / 无薪风险筛�
 check(indexHtml.includes('id="excludeInternships"'), "缺少实习筛选");
 check(appSource.includes('state.source = "all";'), "中文优先仍被错误限制在华人网站来源标签");
 check(indexHtml.includes("我的全部机会（默认）"), "默认预设没有明确说明逐条核验后的我的机会");
-check(indexHtml.includes("每个岗位只做三步"), "首页缺少零外语投递流程");
+check(indexHtml.includes("个人匹配分按这三层计算"), "首页缺少个人评分规则说明");
 check(indexHtml.includes("按语言或方向单独查看"), "语言与方向的辅助视图没有默认折叠");
 check(indexHtml.includes('id="languageCautionGrid"'), "基础西语岗位没有与纯中文首屏分开");
 check(indexHtml.includes('class="priority-card__title-es" hidden'), "重点卡片仍在首屏显示西文标题");
@@ -1088,9 +1115,14 @@ const r23ById = (id) => test.allData.find((item) => Number(item.id) === id);
 const r23Main = test.MY_OPPORTUNITY_IDS.map(r23ById).filter(Boolean);
 const r23VisibleMain = test.dedupedData.filter((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id)));
 check(test.MY_OPPORTUNITY_IDS.length === 203 && new Set(test.MY_OPPORTUNITY_IDS).size === 203, "Round 37: audited ID ledger must contain exactly 203 unique opportunities");
-check(r23Main.length === 203 && r23VisibleMain.length === 203, "Round 37: main ledger and visible deduplicated cards must both equal 203");
+check(r23Main.length === 203 && r23VisibleMain.length === 203, "Round 37: complete audited history must preserve all 203 reviewed IDs");
 check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 154 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 49, "Round 37: Barcelona/remote split must be exactly 154/49");
-check(r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 186 && r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 17, "Round 37: live/verify split must be exactly 186/17");
+check(
+  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 186 &&
+    r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 16 &&
+    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 1,
+  "Profile audit: 203 reviewed IDs must resolve to 186 live, 16 verify and one preserved closed-history card",
+);
 check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 37: Chinese-relevant current opportunity count must remain evidence-backed at 6");
 for (const id of [930884, 930885, 930886, 930887, 930888]) {
   const item = r23ById(id);

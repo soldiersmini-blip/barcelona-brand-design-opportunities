@@ -3134,7 +3134,11 @@ const meta = window.JOB_META || {};
 // Homepage priority is location-first: Barcelona local roles come before
 // Madrid/unclear remote or stale Chinese-channel leads. Language and contract
 // gates remain explicit on each card instead of being hidden by the homepage.
-const PRIORITY_IDS = [930813, 910, 914, 1300, 866, 94, 930847, 930863];
+// Keep the homepage shortlist anchored to the user's real language path. These
+// are the current Chinese-linked opportunities that the user has already
+// reviewed, not a generic list of attractive English-language design jobs.
+// Roles with an English/Spanish gate remain visible in the caution column.
+const PRIORITY_IDS = [778, 920, 930835, 1300, 24, 25];
 
 // Canonical, evidence-backed opportunities for the user. The generated corpus
 // remains searchable, but only these independently reviewed identities enter
@@ -3247,15 +3251,10 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
 );
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
 
-// The reviewed order above is the single source of truth for ranking. Scores
-// are spread across a stable 100–1 scale, so the board remains strictly
-// descending even after more than one hundred verified records are recovered.
-const AUDITED_SCORE_STEP = MY_OPPORTUNITY_IDS.length > 1 ? 99 / (MY_OPPORTUNITY_IDS.length - 1) : 0;
-const AUDITED_FIT_SCORES = Object.freeze(
-  Object.fromEntries(
-    MY_OPPORTUNITY_IDS.map((id, index) => [id, Number((100 - index * AUDITED_SCORE_STEP).toFixed(1))]),
-  ),
-);
+// The audited order is only a deterministic tie-breaker. It must never replace
+// the user's personal-fit score: doing so previously made English/Spanish roles
+// look artificially strong merely because they had been reviewed earlier.
+const AUDITED_ORDER_INDEX = new Map(MY_OPPORTUNITY_IDS.map((id, index) => [id, index]));
 
 const IDENTITY_ALIASES = Object.freeze({
   95: "qustodio-digital-designer-marketing",
@@ -3472,7 +3471,7 @@ const CURATED = {
     reason: "品牌相邻岗位，不是纯平面/VI：负责品牌指南、官网/社媒/邮件、campaign、营销物料、供应商和视觉一致性。",
     next: "先确认西语工作能力、合同、薪资和实际视觉制作比例；卡片第一按钮直达官方 PDF，邮箱入口在后续按钮。",
     language: "中文、英文、西语均为 essential；西语是硬门槛",
-    applicationMode: "chineseCheck",
+    applicationMode: "spanish",
   },
   705: {
     direction: "social",
@@ -6230,7 +6229,7 @@ Object.assign(CURATED, {
     reason: "官方 Greenhouse 当前可投。将平面与数字品牌制作结合：印刷、OOH、零售、社媒、展示广告、banner、邮件和落地页组件，需严格按品牌规范交付。",
     next: "这是英语+西语双硬门槛的本地广告公司岗位。确认薪资、签证/居留、每周到岗天数后，再用印刷/OOH、零售、社媒、HTML banner/email 和品牌规范落地案例投递。",
     language: "英语与西语口笔头流利为硬门槛；3+ 年广告公司 Graphic + HTML 经验",
-    applicationMode: "basicSpanish",
+    applicationMode: "spanish",
     experienceKey: "mid",
     experienceLabel: "中级 / 3+ 年广告公司视觉与 HTML 制作",
     changeType: "new",
@@ -6792,6 +6791,7 @@ Object.assign(CURATED, {
     next: "先邮件确认仍收申请、工时、薪资和门店运营占比；能接受后再发 CV、社媒账号、短视频和品牌内容作品。",
     language: "中文与西班牙语均为要求；年龄须 30 岁以下",
     languageKey: "chineseCheck",
+    applicationMode: "spanish",
     changeType: "refresh",
   },
   806: {
@@ -8908,7 +8908,7 @@ Object.assign(CURATED, {
     next: "只先电话或微信核验店名、地址、当前是否仍招、合同、工时、薪资与材料接收人；未核验前不要发送证件或完整个人资料。",
     language: "中文联系人；要求基础西班牙语，并明确需要工作居留",
     languageKey: "chineseCheck",
-    applicationMode: "chinese",
+    applicationMode: "basicSpanish",
     experienceKey: "mid",
     experienceLabel: "有经验 / 年限未公开 / 需电话确认",
     changeType: "refresh",
@@ -11013,6 +11013,192 @@ applyRound32SourceUpdates();
 applyRound33SourceUpdates();
 applyRound35SourceUpdates();
 
+// Profile-language audit: these overrides are based on the full current job
+// text, not merely the language of a search result. They intentionally run
+// after the historical source refreshes so an older "unknown" snapshot cannot
+// promote a foreign-language role above Chinese-first opportunities.
+Object.assign(CURATED, {
+  105: {
+    ...CURATED[105],
+    direction: "digital",
+    company: "Runroom",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 100% remote、hybrid 或本地办公",
+    titleZh: "数字营销设计师（学生支持岗）",
+    titleEs: "Digital Marketing Designer (Runroom)",
+    reason: "当前原始详情仍可读，工作覆盖社媒、newsletter、landing page、案例网页、设计系统、动态 banner 和企业模板；但整份公开 JD 与本地团队说明均为西班牙语，且没有公开英语替代路径。",
+    next: "先用简短消息确认是否可以主要用英语或中文沟通，以及非在读申请人是否符合；未确认前按西语工作环境处理，不投入定制材料。",
+    languageKey: "spanishLikely",
+    language: "公开 JD 完全使用西班牙语；未明写等级，但本地西语工作环境很可能",
+    applicationMode: "spanishLikely",
+    experienceKey: "junior",
+    experienceLabel: "学生 / 无经验要求",
+    changeType: "profile-language-audit",
+  },
+  876: {
+    ...CURATED[876],
+    languageKey: "spanishLikely",
+    language: "职位全文与团队语境为西班牙语；未列等级，但日常西语很可能",
+    applicationMode: "spanishLikely",
+    changeType: "profile-language-audit",
+  },
+  877: {
+    ...CURATED[877],
+    languageKey: "spanishLikely",
+    language: "招聘与现场生产说明为西班牙语；未列等级，但现场西语很可能",
+    applicationMode: "spanishLikely",
+    changeType: "profile-language-audit",
+  },
+  930718: {
+    ...CURATED[930718],
+    reason: "当前原始职位仍可申请；核心是响应式邮件、Figma 组件、模板库、品牌一致性与 landing page。职位明确要求专业西班牙语和英语，不能再归为语言未知。",
+    next: "只有西语和英语都能用于工作，并能展示 HTML/CSS、AMPscript、Salesforce Marketing Cloud、邮件设计系统与 Figma handoff 时再投。",
+    languageKey: "spanish",
+    language: "专业西班牙语和英语均为明确要求",
+    applicationMode: "spanish",
+    changeType: "profile-language-audit",
+  },
+  352: {
+    ...CURATED[352],
+    languageKey: "english",
+    language: "官网职位、申请说明和跨国客户协作均为英语；未列西语要求",
+    applicationMode: "english",
+    changeType: "profile-language-audit",
+  },
+  1093: {
+    ...CURATED[1093],
+    direction: "brand",
+    company: "CATORCE / DDB Group",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 需按公司政策到岗",
+    titleZh: "创意总监（西班牙市场 Campaign）",
+    titleEs: "Creative Director",
+    reason: "官方 Greenhouse 当前显示 Apply 与完整申请表，但明确要求完美的西班牙语口头和书面沟通、至少 10 年广告公司经验及 3–4 年创意总监经验。",
+    next: "这是西语与资历双重硬门槛，不作为当前主攻；只在条件完全满足时再准备 360 Campaign、团队领导与汽车品牌案例。",
+    languageKey: "spanish",
+    language: "完美西班牙语为硬门槛；英语仅加分",
+    applicationMode: "spanish",
+    experienceKey: "lead",
+    experienceLabel: "创意总监 / 10 年以上",
+    changeType: "profile-language-audit",
+  },
+  1310: {
+    ...CURATED[1310],
+    reason: "当前职位全文已恢复：负责电商品牌 Campaign、产品发布、社媒、广告、网站与邮件的创意方向，并管理设计团队；要求 5 年以上。申请说明明确要求提交英文 CV。",
+    next: "仅作为英文高级备选。若具备 5 年以上电商艺术指导与团队管理经验，用英文 CV 和品牌 Campaign 案例申请，并确认 Spain 合同、薪资与办公安排。",
+    languageKey: "english",
+    language: "申请明确要求英文 CV；国际协作按英文路径处理",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上 / 团队管理",
+    changeType: "profile-language-audit",
+  },
+  930879: {
+    ...CURATED[930879],
+    languageKey: "foreign",
+    language: "整份 JD 为法语，且需直接协调作者与多团队；法语很可能是工作门槛",
+    applicationMode: "foreign",
+    changeType: "profile-language-audit",
+  },
+  930814: {
+    ...CURATED[930814],
+    direction: "brand",
+    company: "CNT Management Consulting",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / 全职 / 可安排 home office",
+    titleZh: "高级品牌设计与创意内容经理",
+    titleEs: "Senior Brand Designer & Creative Content Manager",
+    reason: "当前 LinkedIn 雇主详情仍显示 Easy Apply、Barcelona、hybrid 与全职。完整 JD 已复核：负责企业与品牌识别、品牌指南、设计系统、数字与印刷物料、motion、视频和销售演示；但明确要求优秀的书面及口语英语，德语为强加分项，并要求 5 年以上经验。",
+    next: "专业方向很匹配，但语言和资历门槛不匹配当前条件；仅放入英文高级备选，不再凭品牌匹配度进入主攻前列。",
+    languageKey: "english",
+    language: "优秀书面及口语英语为明确硬门槛；德语为强加分项",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上",
+    changeType: "profile-language-audit",
+  },
+  1061: {
+    ...CURATED[1061],
+    statusKey: "live",
+    languageKey: "spanish",
+    language: "英语与西班牙语均为明确必需条件",
+    applicationMode: "spanish",
+    reason: "原始职位要求已复核：Barcelona 创意制作岗位，要求 4–6 年经验，并明确把英语和西班牙语都列为 mandatory。专业内容不能抵消双语硬门槛。",
+    next: "不作为当前主攻；只有英语和西语都达到工作水平并满足 4–6 年制作经验时再投。",
+    changeType: "profile-language-audit",
+  },
+  345: {
+    ...CURATED[345],
+    statusKey: "live",
+    languageKey: "english",
+    language: "官方职位页、工作说明与申请邮箱均使用英语；未公开中文或低语言门槛路径",
+    applicationMode: "english",
+    reason: "Domingo 官网当前仍列出 Mid-Senior Graphic Design 与 Graphic Design Intern，并提供 talent@thisisdomingo.com；但公开招聘路径为英语。",
+    next: "仅作 Barcelona 英文备选；先确认具体级别、合同、薪资与日常语言，再决定是否发送作品集。",
+    changeType: "profile-language-audit",
+  },
+  886: {
+    ...CURATED[886],
+    languageKey: "spanishLikely",
+    language: "Barcelona 本地社媒团队与公开职位语境为西班牙语；未公开英语或中文替代路径",
+    applicationMode: "spanishLikely",
+    reason: "JUNGLE 当前职位板仍有 MeMe Barcelona 的社媒艺术指导/图像与视频编辑相关岗位，但旧卡片标题与现行岗位名称可能已变化，且本地团队工作语言很可能为西班牙语。",
+    next: "先核对旧 LinkedIn 职位是否仍对应当前岗位，并用简短消息确认能否主要用英语工作；未确认前只放西语备选层。",
+    changeType: "profile-language-audit",
+  },
+  581: {
+    ...CURATED[581],
+    statusKey: "verify",
+    languageKey: "spanish",
+    language: "西班牙语与加泰罗尼亚语母语级为明确要求；另需中级英语",
+    applicationMode: "spanish",
+    reason: "可读职位要求明确写出母语级西班牙语和加泰罗尼亚语，并要求中级英语；现有按钮仅到 Montgat 通用搜索结果，尚未恢复可直接申请的独立详情页。",
+    next: "语言门槛与投递入口均不适合当前主攻；保留复核记录，找到精确当前详情前不投。",
+    changeType: "profile-language-audit",
+  },
+  1249: {
+    ...CURATED[1249],
+    statusKey: "closed",
+    reason: "Henna Morena 的原始 LinkedIn 职位已跳转到带 expired_jd_redirect 的通用搜索页，不能再作为当前可投岗位。",
+    next: "保留在关闭/历史区，不再投递；等待雇主官网或新的具体职位编号重新开放。",
+    changeType: "profile-language-audit-closed",
+  },
+  1036: {
+    ...CURATED[1036],
+    statusKey: "live",
+    languageKey: "english",
+    language: "完整官网 JD 与申请流程均为英语；未列中文路径",
+    applicationMode: "english",
+    reason: "Algofy 官网当前仍开放 Graphic & Web Designer，覆盖 España/México/Argentina，完整 JD 为英语并有申请入口；属于英文数字设计备选。",
+    next: "仅在能用英语完成面试与跨国协作，并确认 Spain 合同、办公安排和薪资后申请。",
+    changeType: "profile-language-audit",
+  },
+  136: {
+    ...CURATED[136],
+    statusKey: "verify",
+    languageKey: "english",
+    language: "工作室官网、联系页与实习申请页均使用英语；未列中文路径",
+    applicationMode: "english",
+    reason: "Yellow Studio 联系页当前有明确的 LOOKING FOR AN INTERNSHIP? 入口，但不是公开全职职位；应按英语实习意向入口处理，不能当作已确认的正式设计岗。",
+    next: "仅在符合实习/学校协议条件时打开实习表单；先确认期限、补贴、日常语言和具体设计职责。",
+    links: ["https://yellowlab.eu/internship-application/"],
+    changeType: "profile-language-audit",
+  },
+  382: {
+    ...CURATED[382],
+    statusKey: "live",
+    languageKey: "spanishLikely",
+    language: "完整招聘说明为西班牙语；未明列等级，但本地西语工作环境很可能",
+    applicationMode: "spanishLikely",
+    reason: "SIMORRA 的 FashionJobs 页面当前仍显示可发送 CV，Barcelona、6 个月全职实习、SMI 薪资，并要求在读且可签学校协议；公开 JD 为西班牙语。",
+    next: "西语、在读身份和 convenio 都是当前主要门槛；只有三项均可满足时再投。",
+    changeType: "profile-language-audit",
+  },
+});
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
@@ -11071,8 +11257,8 @@ const state = {
   sourceLibrary: false,
   sourceLibraryView: "active",
   sourceLibraryLocation: "priority",
-  // The default is the hand-audited canonical opportunity ledger. Source
-  // libraries and historical research remain available as secondary views.
+  // The default keeps the complete audited current ledger, but the visible
+  // score/order follows the user's Chinese-first feasibility model.
   preset: "mine",
   progressFilter: "all",
   limit: 18,
@@ -11108,8 +11294,8 @@ const SOURCE_LABELS = {
 };
 
 const PRESET_NOTES = {
-  mine: "默认显示逐条打开原始招聘页后保留下来的唯一岗位：Barcelona 本地优先，其次是明确 Spain / Europe remote；关闭页、马德里岗位、重复镜像和研究线索不进入这里。分数是按你的实际可用性重新评估的匹配分。",
-  profile: "默认只显示可以先用中文联系的 Barcelona / 西班牙远程机会；需要完整英文材料或西语工作的岗位不会混进来。",
+  mine: "默认保留全部已核验当前机会，但按你的实际可行性排序：中文路径先行，Barcelona / 明确 Spain remote 次优先，品牌视觉与 VI 再加分。英语岗最高 45 分，西语硬门槛最高 30 分，只作为后排备选。",
+  profile: "只显示可以直接用中文投递的 Barcelona / 西班牙远程机会；需要完整英文材料或西语工作的岗位不会混进来。",
   actionable: "只看现在值得马上处理的机会：Barcelona / 西班牙远程、中文可先联系、有具体入口、近期发布或页面明确开放，并排除低薪风险与实习。",
   chinese: "单独查看 Barcelona / Spain remote 的中文相关机会；中文来源并不自动等于岗位真实或适合，关闭、外地和研究线索仍留在独立历史库。",
   english: "单独查看英语工作路径；需要英文简历、作品集说明或英文面试时，卡片会明确提示。",
@@ -11271,11 +11457,16 @@ function isActionableLink(value) {
 
 function toLinks(item) {
   const raw = Array.isArray(item.links) ? item.links : item.links ? [item.links] : [];
+  const curatedRaw = Array.isArray(CURATED[item.id]?.links)
+    ? CURATED[item.id].links
+    : CURATED[item.id]?.links
+      ? [CURATED[item.id].links]
+      : [];
   const contact = String(item.contact || "");
   const emails = [...contact.matchAll(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi)].map(
     (match) => `mailto:${match[0]}`,
   );
-  return [...new Set([...raw, ...emails])].filter(isActionableLink);
+  return [...new Set([...raw, ...curatedRaw, ...emails])].filter(isActionableLink);
 }
 
 function isInternshipRole(item) {
@@ -11310,8 +11501,9 @@ function hasLowPayRisk(item) {
 function riskFlags(item) {
   const flags = [];
   const applicationLanguage = applicationLanguagePath(item).key;
-  if (applicationLanguage === "spanish") flags.push("spanish");
+  if (["spanish", "spanishLikely"].includes(applicationLanguage)) flags.push("spanish");
   if (applicationLanguage === "english") flags.push("english");
+  if (applicationLanguage === "foreign") flags.push("foreign");
   if (hasLowPayRisk(item)) flags.push("lowpay");
   if (isInternshipRole(item)) flags.push("internship");
   if (applicationStatus(item).key === "verify") flags.push("verify");
@@ -11489,36 +11681,77 @@ function isFormalRole(item) {
   );
 }
 
+function locationFitPoints(item) {
+  const location = locationBucket(item);
+  if (location === "barcelona") return 22;
+  if (location !== "remote") return location === "madrid" ? 0 : 1;
+
+  const text = `${locationLabel(item)} ${item.status || ""} ${item.analysis || ""}`.toLowerCase();
+  const spainUnconfirmed =
+    /spain (?:eligibility|residen|contract|payroll|hiring|employment).{0,28}(?:confirm|unclear|unknown|not stated|待确认|需确认)|(?:西班牙|spain).{0,24}(?:资格|合同|雇佣|开票|付款).{0,14}(?:待确认|需确认)|不(?:说明|明确).{0,18}(?:西班牙|spain)|does not state.{0,18}spain/i.test(text);
+  if (spainUnconfirmed) return 4;
+  if (/spain remote|remote.{0,16}spain|españa.{0,12}remot|西班牙远程|barcelona 可居住/i.test(text)) return 18;
+  if (/europe remote|remote.{0,16}europe|emea|欧洲远程|欧盟远程/i.test(text)) return 14;
+  if (/worldwide|work from anywhere|global remote|全球远程/i.test(text)) return 8;
+  return 6;
+}
+
 function personalMatchScore(item) {
-  const tierPoints = { A: 20, B: 15, C: 8, D: 2, X: 0 };
-  const locationPoints = { barcelona: 20, remote: 18, madrid: 4, other: 1 };
+  // This is a feasibility score for this user, not a generic measure of how
+  // prestigious or professionally attractive a vacancy looks. Language is the
+  // dominant constraint because the user has explicitly said that both English
+  // and Spanish are currently weak.
+  const tierPoints = { A: 12, B: 9, C: 5, D: 1, X: -30 };
   const applicationLanguagePoints = {
-    chinese: 25,
-    chineseCheck: 18,
-    basicSpanish: 5,
-    unknown: 0,
-    english: -18,
-    spanish: -30,
+    chinese: 35,
+    chineseCheck: 27,
+    basicSpanish: 10,
+    unknown: -15,
+    english: -22,
+    spanishLikely: -30,
+    foreign: -35,
+    spanish: -35,
   };
-  const directionPoints = { brand: 20, digital: 17, motion: 18, ecommerce: 13, social: 11, production: 8, other: 0 };
-  const freshnessPoints = { week: 10, month: 7, quarter: 3, older: 0, old: -5, unknown: 0 };
+  const languageCaps = {
+    chinese: 100,
+    chineseCheck: 92,
+    basicSpanish: 68,
+    unknown: 55,
+    english: 45,
+    spanishLikely: 35,
+    foreign: 30,
+    spanish: 30,
+  };
+  const directionPoints = { brand: 20, motion: 18, digital: 16, ecommerce: 12, production: 10, social: 8, other: 0 };
+  const freshnessPoints = { week: 6, month: 4, quarter: 2, older: 0, old: -4, unknown: 0 };
+  const applicationLanguage = applicationLanguagePath(item).key;
+  const status = applicationStatus(item).key;
 
   let score =
     (tierPoints[item.tier] || 0) +
-    (locationPoints[locationBucket(item)] || 0) +
-    (applicationLanguagePoints[applicationLanguagePath(item).key] || 0) +
+    locationFitPoints(item) +
+    (applicationLanguagePoints[applicationLanguage] || 0) +
     (directionPoints[directionKey(item)] || 0) +
     (freshnessPoints[item.freshnessTag] || 0);
 
-  if (isChineseRelevant(item)) score += 10;
-  if (toLinks(item).length) score += 8;
-  if (isInternshipRole(item)) score -= 5;
-  if (hasLowPayRisk(item)) score -= 8;
-  if (isResearchOnly(item)) score -= 30;
-  if (applicationStatus(item).key === "live") score += 6;
-  if (applicationStatus(item).key === "verify") score -= 4;
-  if (applicationStatus(item).key === "closed") score -= 25;
-  return Math.max(0, Math.min(100, score));
+  if (isChineseRelevant(item)) {
+    score += ["chinese", "chineseCheck", "basicSpanish"].includes(applicationLanguage) ? 8 : 3;
+  }
+  if (toLinks(item).length) score += 5;
+  if (isFormalRole(item)) score += 3;
+  if (hasKnownCompensation(item)) score += 2;
+  if (isInternshipRole(item)) score -= 8;
+  if (hasLowPayRisk(item)) score -= 10;
+  if (hasOpaqueEmployerRisk(item)) score -= 8;
+  if (isResearchOnly(item)) score -= 35;
+  if (status === "live") score += 7;
+  if (status === "verify") score -= 5;
+  if (status === "closed") score -= 35;
+
+  // A strong portfolio match cannot erase a language hard gate. These caps are
+  // intentionally visible in the scoring guide on the page.
+  score = Math.min(score, languageCaps[applicationLanguage] ?? 55);
+  return Math.max(0, Math.min(100, Number(score.toFixed(1))));
 }
 
 function postedTimestamp(item) {
@@ -11552,21 +11785,12 @@ function confidenceScore(item) {
 }
 
 function displayedScore(item) {
-  // Sort by the number the card actually shows. The old implementation used
-  // item.score even when the profile view displayed personalMatchScore, which
-  // made the visual order appear wrong. Keep the raw score as a deterministic
-  // tie-breaker so equal displayed scores remain stable.
-  if (Object.prototype.hasOwnProperty.call(AUDITED_FIT_SCORES, item.id)) {
-    return Number(AUDITED_FIT_SCORES[item.id]) || 0;
-  }
-  if (state.preset === "profile") return Number(personalMatchScore(item)) || 0;
-  return Number(item.score) || 0;
+  return Number(personalMatchScore(item)) || 0;
 }
 
 function sortRecords(records) {
   const mode = els.sortFilter?.value || "smart";
-  const compareScore = (a, b) =>
-    displayedScore(b) - displayedScore(a) || (Number(b.score) || 0) - (Number(a.score) || 0);
+  const compareScore = (a, b) => displayedScore(b) - displayedScore(a);
   // The composite score is always the primary order. The other sort choices
   // are tie-breakers only, so no lower-scoring card can appear before a
   // higher-scoring card after the user changes the selector or reloads the
@@ -11596,7 +11820,10 @@ function sortRecords(records) {
             ? compareWeight
             : compareDefault;
 
-  records.sort((a, b) => compareScore(a, b) || tieBreaker(a, b));
+  const compareAuditedOrder = (a, b) =>
+    (AUDITED_ORDER_INDEX.get(Number(a.id)) ?? Number.MAX_SAFE_INTEGER) -
+    (AUDITED_ORDER_INDEX.get(Number(b.id)) ?? Number.MAX_SAFE_INTEGER);
+  records.sort((a, b) => compareScore(a, b) || tieBreaker(a, b) || compareAuditedOrder(a, b));
 }
 
 function matchesPreset(item) {
@@ -11899,6 +12126,18 @@ const APPLICATION_LANGUAGE_PATHS = {
     short: "英文材料",
     tone: "hard",
   },
+  spanishLikely: {
+    key: "spanishLikely",
+    label: "西语工作环境很可能，需先确认",
+    short: "西语很可能",
+    tone: "hard",
+  },
+  foreign: {
+    key: "foreign",
+    label: "其他外语工作门槛，需先确认",
+    short: "其他外语门槛",
+    tone: "hard",
+  },
   spanish: {
     key: "spanish",
     label: "西语或本地语言是硬门槛",
@@ -11907,7 +12146,7 @@ const APPLICATION_LANGUAGE_PATHS = {
   },
   unknown: {
     key: "unknown",
-    label: "投递语言未说明，先中文核实",
+    label: "投递语言未说明，先确认工作语言",
     short: "语言待问",
     tone: "check",
   },
@@ -12532,10 +12771,10 @@ function renderPriority() {
     const curated = CURATED[item.id];
     const freshness = freshnessInfo(item);
     const applicationLanguage = applicationLanguagePath(item);
-    // The priority row is about usefulness, not language. English application
-    // paths are shown explicitly on the card instead of being hidden below a
-    // collapsed warning section.
-    const isPrimary = true;
+    // The main row is reserved for a Chinese-first contact path. A role can be
+    // professionally relevant and still belong in the caution row when it
+    // requires English, Spanish or even basic Spanish for day-to-day work.
+    const isPrimary = ["chinese", "chineseCheck"].includes(applicationLanguage.key);
     const rank = isPrimary ? ++primaryRank : ++cautionRank;
 
     card.querySelector(".priority-card__rank").textContent = String(rank).padStart(2, "0");
@@ -12749,6 +12988,7 @@ function renderResultCard(item) {
     <span class="language-route language-route--${escapeHtml(applicationLanguage.tone)}">${escapeHtml(applicationLanguage.short)}</span>
     ${riskFlags(item).includes("spanish") ? '<span class="warning-badge">本地语言硬门槛</span>' : ""}
     ${riskFlags(item).includes("english") ? '<span class="warning-badge">需要英文材料 / 沟通</span>' : ""}
+    ${riskFlags(item).includes("foreign") ? '<span class="warning-badge">其他外语工作门槛</span>' : ""}
     ${riskFlags(item).includes("lowpay") ? '<span class="warning-badge">低薪 / 无薪风险</span>' : ""}
     ${riskFlags(item).includes("internship") ? '<span class="warning-badge">实习 / 协议限制</span>' : ""}
     ${riskFlags(item).includes("opaque") ? '<span class="warning-badge">匿名客户 / 聚合入口</span>' : ""}
@@ -13127,7 +13367,16 @@ function initStats() {
   ).length;
   const myStatus = getStatusSummary(myCurrentRecords);
   const myChineseRelevant = myCurrentRecords.filter(isChineseRelevant).length;
-  els.chineseStatsNote.textContent = `默认主表共 ${myCurrentRecords.length} 个独立机会：${myStatus.live} 个原始页显示可投，${myStatus.verify} 个需先确认；中文或中国公司相关 ${myChineseRelevant} 个。历史、重复、关闭和外地线索仍完整保留在来源库。`;
+  const myLanguageCounts = myCurrentRecords.reduce((counts, item) => {
+    const key = applicationLanguagePath(item).key;
+    counts[key] = (counts[key] || 0) + 1;
+    return counts;
+  }, {});
+  const chinesePathCount =
+    (myLanguageCounts.chinese || 0) +
+    (myLanguageCounts.chineseCheck || 0) +
+    (myLanguageCounts.basicSpanish || 0);
+  els.chineseStatsNote.textContent = `默认主表共 ${myCurrentRecords.length} 个独立机会：${myStatus.live} 个原始页显示可投，${myStatus.verify} 个需先确认。可先走中文路径 ${chinesePathCount} 个；英文路径 ${myLanguageCounts.english || 0} 个、西语很可能 ${myLanguageCounts.spanishLikely || 0} 个、西语硬门槛 ${myLanguageCounts.spanish || 0} 个、其他外语门槛 ${myLanguageCounts.foreign || 0} 个只排在后面。中文或中国公司相关 ${myChineseRelevant} 个；历史、重复、关闭和外地线索仍完整保留。`;
   const statusSummary = myStatus;
   els.liveCount.textContent = statusSummary.live;
   els.verifyCount.textContent = statusSummary.verify;

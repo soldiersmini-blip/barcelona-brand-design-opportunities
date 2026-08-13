@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <link rel="manifest" href="./site.webmanifest" />
     <meta name="theme-color" content="#d94b34" />
-    <link rel="stylesheet" href="./styles.css?v=round35-20260813" />
+    <link rel="stylesheet" href="./styles.css?v=profile-score-v1-20260813" />
   </head>
   <body>
     <header class="site-header">
@@ -33,10 +33,10 @@
 
       <div class="hero" id="top">
         <div class="hero__copy">
-          <p class="kicker">巴塞罗那优先 · 西班牙可落地先行 · 品牌视觉与数字延展</p>
+          <p class="kicker">中文路径优先 · 巴塞罗那本地优先 · 品牌视觉与 VI 优先</p>
           <p class="hero__intro">
-            首屏先放 Barcelona 本地、其次是明确可在西班牙落地的品牌视觉机会。每张卡都会写清楚语言、办公地点、
-            合同和状态；中文渠道可以先中文联系，英语岗位则明确标为英文申请，不再混淆。
+            默认分数先判断你能不能实际沟通和投递，再看地点与专业匹配。中文可联系的 Barcelona 机会在前；
+            英语岗位最高 45 分，西语硬门槛最高 30 分，只保留在后排备选，不再盖过中文机会。
           </p>
           <div class="hero__actions">
             <a class="button button--primary" href="#priority">查看巴塞罗那优先岗位</a>
@@ -90,30 +90,30 @@
     <main>
       <section class="apply-guide" id="how-to-apply">
         <div class="apply-guide__heading">
-          <p class="section-kicker">先按地点，再按语言</p>
-          <h2>每个岗位只做三步</h2>
-            <p>先确认岗位是否真的在 Barcelona / Spain 可落地，再按岗位语言投入材料；不把远程标签当成西班牙资格。</p>
+          <p class="section-kicker">先按语言可行性，再看地点与专业</p>
+          <h2>个人匹配分按这三层计算</h2>
+            <p>这不是岗位“含金量分”，而是你目前能否实际投递的可行性分；外语硬门槛不能被品牌匹配度抵消。</p>
         </div>
         <ol class="apply-guide__steps">
           <li>
             <span>01</span>
             <div>
-              <strong>先打开原始详情页</strong>
-              <p>确认地点、办公节奏、雇主/合同主体、是否仍开放，以及岗位到底是品牌视觉还是泛内容生产。</p>
+              <strong>语言是第一层</strong>
+              <p>中文可投最高；可先中文确认其次；基础西语、英语和西语硬门槛依次降权。英语岗封顶 45，西语岗封顶 30。</p>
             </div>
           </li>
           <li>
             <span>02</span>
             <div>
-              <strong>按语言路径准备材料</strong>
-              <p>中文渠道先发中文询问；英文岗位用英文 CV / portfolio；西语硬门槛会直接写明并降低优先级。</p>
+              <strong>地点是第二层</strong>
+              <p>Barcelona 本地最高；明确 Spain remote 其次；Europe / EMEA remote 再次；全球远程但西班牙资格不明会明显降分。</p>
             </div>
           </li>
           <li>
             <span>03</span>
             <div>
-              <strong>再决定是否投入定制材料</strong>
-              <p>没有 Spain 合同、工作语言或申请状态的书面证据，就先标记“需确认”，不把它显示成可直接投。</p>
+              <strong>岗位与证据是第三层</strong>
+              <p>品牌视觉、VI、品牌指南、数字延展与 Motion 加分；开放入口、正式合同和近期发布加分，匿名雇主、低薪、实习和待核验扣分。</p>
             </div>
           </li>
         </ol>
@@ -122,18 +122,18 @@
       <section class="priority-section" id="priority">
         <div class="section-heading">
           <div>
-            <p class="section-kicker">Barcelona 优先入口</p>
-            <h2>先处理这些本地 / 西班牙可落地机会</h2>
+            <p class="section-kicker">中文路径优先入口</p>
+            <h2>先处理这些能用中文推进的机会</h2>
           </div>
           <p>
-            这里先看地点与西班牙可落地性，再看岗位匹配和语言成本。中文、英语和西语门槛都会在卡片上写明；地点不清或只有全球远程证据的岗位不会进入这里。
+            这里保留你此前认可且仍有证据的岗位，但不再混排：能先用中文联系的放在上面；英语、西语或合同资格存在硬门槛的放进下方核验区。
           </p>
         </div>
         <div id="priorityGrid" class="priority-grid"></div>
-        <details class="language-caution">
+        <details class="language-caution" open>
           <summary>
-            <span>语言 / 合同需先确认的 Barcelona 机会</span>
-            <small>默认收起；先核验再决定是否投递</small>
+            <span>此前关注，但语言 / 合同需先确认</span>
+            <small>保留可见，不算作当前最高优先级</small>
           </summary>
           <div id="languageCautionGrid" class="priority-grid priority-grid--caution"></div>
         </details>
@@ -267,6 +267,8 @@
               <option value="chineseCheck">可先中文确认</option>
               <option value="basicSpanish">中文联系 + 基础西语</option>
               <option value="english">需要英文材料 / 沟通</option>
+              <option value="spanishLikely">西语工作环境很可能</option>
+              <option value="foreign">其他外语工作门槛</option>
               <option value="spanish">西语 / 本地语言硬门槛</option>
               <option value="unknown">语言需先确认</option>
             </select>
@@ -512,6 +514,6 @@
     </template>
 
     <script src="./data.js?v=round316-20260802"></script>
-    <script src="./app.js?v=round37-20260813"></script>
+    <script src="./app.js?v=profile-score-v1-20260813"></script>
   </body>
 </html>
