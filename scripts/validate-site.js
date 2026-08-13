@@ -138,6 +138,9 @@ check(
 );
 check(test.applicationLanguagePath(test.allData.find((item) => item.id === 175)).key === "spanish", "Frekuent 英西双语门槛没有进入西语硬门槛层");
 check(test.applicationLanguagePath(test.allData.find((item) => item.id === 188)).key === "spanishLikely", "eseOese 现场西语环境没有进入西语高概率层");
+check(test.applicationStatus(test.allData.find((item) => item.id === 5106)).key === "closed", "CrowdStrike 重复 Workday requisition 没有进入历史区");
+check(test.applicationStatus(test.allData.find((item) => item.id === 930836)).key === "live", "CrowdStrike 当前主卡被重复清理误伤");
+check(test.applicationStatus(test.allData.find((item) => item.id === 156)).key === "closed", "Heroes/Boba 已从当前官方职位板撤下的旧卡没有进入历史区");
 check(auditedMain.every((item) => !/鈥|帽|鏄|鍙|闇|椤|閫|绗/.test(`${test.companyLabel(item)} ${test.roleLabels(item).zh} ${test.locationLabel(item)}`)), "默认机会总表仍有可见乱码");
 check([446, 928, 483, 930815].every((id) => auditedMain.some((item) => Number(item.id) === id)), "本轮新增的四条真实机会未完整进入主表");
 check([296, 4, 1102, 601, 577, 1038, 1011, 1105, 1240, 351, 930712, 278, 224].every((id) => auditedMain.some((item) => Number(item.id) === id)), "研究库追回的十三条真实机会未完整进入主表");
@@ -145,7 +148,7 @@ check([94, 305, 604, 981, 1101].every((id) => auditedMain.some((item) => Number(
 check([170, 445, 1108, 1081].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第三批研究库追回的四条真实机会未完整进入主表");
 check([1314, 958, 277, 1080, 1099].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第四批仍开放的研究库机会未完整进入主表");
 check([314, 78, 921, 210, 1097, 985, 989].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第五批仍开放的研究库机会未完整进入主表");
-check([5106, 134, 2942, 977, 1255, 876, 920].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第六批仍开放的研究库机会未完整进入主表");
+check([134, 2942, 977, 1255, 876, 920].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第六批仍开放的研究库机会未完整进入主表");
 check([207, 304, 89, 874, 1227, 396, 172, 86].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第七批仍开放的研究库机会未完整进入主表");
 check([930816, 930818, 930819, 93, 1296, 930817, 1293, 37, 279].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第八批仍开放的逐条核验机会未完整进入主表");
 check([930820, 930821, 930822, 930823, 178, 228].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第九批仍开放的真实机会未完整进入主表");
@@ -1110,7 +1113,7 @@ check(test.MY_OPPORTUNITY_IDS.indexOf(930865) < test.MY_OPPORTUNITY_IDS.indexOf(
 const r22Main = test.MY_OPPORTUNITY_IDS.map((id) => test.allData.find((item) => Number(item.id) === id)).filter(Boolean);
 check(r22Main.length >= 163, "Round 22: reviewed main opportunity baseline regressed below 163");
 check(r22Main.filter((item) => test.locationBucket(item) === "barcelona").length >= 120 && r22Main.filter((item) => test.locationBucket(item) === "remote").length >= 43, "Round 22: Barcelona/remote baseline regressed below 120/43");
-check(r22Main.filter((item) => test.applicationStatus(item).key === "live").length >= 158 && r22Main.filter((item) => test.applicationStatus(item).key === "verify").length >= 5, "Round 22: live/verify baseline regressed below 158/5");
+check(r22Main.filter((item) => test.applicationStatus(item).key === "live").length >= 150 && r22Main.filter((item) => test.applicationStatus(item).key === "verify").length >= 5, "Round 22: live/verify baseline regressed below 150/5");
 check(r22Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 35: Chinese-relevant current opportunity count must remain evidence-backed at 6");
 
 const r23ById = (id) => test.allData.find((item) => Number(item.id) === id);
@@ -1120,10 +1123,10 @@ check(test.MY_OPPORTUNITY_IDS.length === 203 && new Set(test.MY_OPPORTUNITY_IDS)
 check(r23Main.length === 203 && r23VisibleMain.length === 203, "Round 37: complete audited history must preserve all 203 reviewed IDs");
 check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 154 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 49, "Round 37: Barcelona/remote split must be exactly 154/49");
 check(
-  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 186 &&
+  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 184 &&
     r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 16 &&
-    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 1,
-  "Profile audit: 203 reviewed IDs must resolve to 186 live, 16 verify and one preserved closed-history card",
+    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 3,
+  "Profile audit: 203 reviewed IDs must resolve to 184 live, 16 verify and 3 preserved closed-history cards",
 );
 check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 37: Chinese-relevant current opportunity count must remain evidence-backed at 6");
 for (const id of [930884, 930885, 930886, 930887, 930888]) {

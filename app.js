@@ -11215,6 +11215,20 @@ Object.assign(CURATED, {
     next: "先确认团队能否主要用英语协作；未得到书面确认前按西语工作环境处理，不投入定制作品集。",
     changeType: "profile-language-audit",
   },
+  5106: {
+    ...CURATED[5106],
+    statusKey: "closed",
+    reason: "与当前主卡 930836 是同一 CrowdStrike Workday requisition R29235；两个 URL 只是语言和路径形式不同，不是第二个岗位。",
+    next: "保留为重复历史证据；统一使用 930836 的当前官方 Workday 与 LinkedIn 入口，不重复投递。",
+    changeType: "profile-language-audit-duplicate",
+  },
+  156: {
+    ...CURATED[156],
+    statusKey: "closed",
+    reason: "旧 Graphic Designer 详情仍可从搜索缓存找到，但 Heroes 当前官方职位板只列出 5 个其他岗位，已不再列该职位；缓存不能作为仍开放的证据。",
+    next: "保留原职责与旧入口作为历史；只有 Heroes 官方职位板重新出现同一或新的 Graphic Designer requisition 时才恢复为可投。",
+    changeType: "profile-language-audit-closed",
+  },
 });
 
 const els = {
