@@ -276,11 +276,11 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 39/i.test(test.latestRoundSection) &&
-    [930812, 930834, 930841, 920001, 930837, 866, 224, 134, 930874, 859, 930814, 314, 1299, 345].every((id) =>
+  /Round 40/i.test(test.latestRoundSection) &&
+    [910, 930884, 425, 930826, 456, 535, 930847, 1002, 989, 854, 874, 1092, 372, 446, 84].every((id) =>
       test.latestRoundItems.some((item) => Number(item.id) === id),
     ),
-  "Round 39 high-rank language, seniority, status and card-label audit is incomplete",
+  "Round 40 ranks 26-60 language and experience audit is incomplete",
 );
 const round33AuditItems = test.allData.filter((item) => /Round 33 full-board direct-link reconciliation/i.test(String(item.section || "")));
 check(
@@ -452,7 +452,7 @@ check(
 );
 check(test.languageInfo(test.allData.find((item) => item.id === 873)).key === "light", "Talent-R 非西语岗位被错误归入西语硬门槛");
 check(test.applicationStatus(test.allData.find((item) => item.id === 874)).key === "live", "IKIGAI 官方表单没有保留当前可投状态");
-check(test.languageInfo(test.allData.find((item) => item.id === 874)).key === "light", "IKIGAI 英语岗位被误判成高西语");
+check(test.applicationLanguagePath(test.allData.find((item) => item.id === 874)).key === "unknown", "IKIGAI 未公开语言的岗位仍被误标成英语或西语");
 check(test.riskFlags(test.allData.find((item) => item.id === 875)).includes("spanish"), "CoverManager 本地语言硬门槛没有标记");
 check(test.experienceInfo(test.allData.find((item) => item.id === 876)).key === "senior", "Buzz 4–5 年岗位经验分级错误");
 check(test.hasKnownCompensation(test.allData.find((item) => item.id === 877)), "Eurofirms 公开时薪没有识别");
@@ -688,7 +688,7 @@ check(test.identityKey(test.allData.find((item) => item.id === 559)) === test.id
 check(test.identityKey(test.allData.find((item) => item.id === 35)) === test.identityKey(test.allData.find((item) => item.id === 905)), "Steneg 当前刷新没有与旧记录合并");
 check(test.dedupedData.some((item) => item.id === 1300) && !test.dedupedData.some((item) => item.id === 559), "INFiLED 当前刷新没有保留最新记录");
 check(test.applicationStatus(test.allData.find((item) => item.id === 910)).key === "live", "LABHOUSE 官方当前申请状态没有保留");
-check(test.applicationLanguagePath(test.allData.find((item) => item.id === 910)).key === "english", "LABHOUSE 没有隔离到英语岗位备选");
+check(test.applicationLanguagePath(test.allData.find((item) => item.id === 910)).key === "unknown", "LABHOUSE 未公开语言的岗位仍被误标成英语岗位");
 check(test.locationBucket(test.allData.find((item) => item.id === 910)) === "remote", "LABHOUSE Spain remote 地点没有正确分级");
 check(test.allData.find((item) => item.id === 910).tier === "B", "LABHOUSE 没有保持 B 级英语备选");
 check(test.applicationStatus(test.allData.find((item) => item.id === 911)).key === "closed", "inBeat 官方已失效角色仍被识别为可投");
@@ -1157,6 +1157,32 @@ const r39MissingRoleLabels = r23Main
   .filter((item) => !test.roleLabels(item).zh || test.roleLabels(item).zh === "undefined")
   .map((item) => Number(item.id));
 check(r39MissingRoleLabels.length === 0, `Round 39: audited cards still have empty role labels: ${r39MissingRoleLabels.join(", ")}`);
+for (const id of [910, 930884, 425, 930826, 456, 535, 930847, 1002, 989, 854, 874, 1092, 372, 446, 84]) {
+  const item = r23ById(id);
+  check(item && test.applicationLanguagePath(item).key === "unknown", `Round 40: ${id} still infers English from page language or international context`);
+}
+for (const id of [930866, 1108, 930838, 930845, 930711, 930827, 930880, 1038, 930705, 930708, 284, 238]) {
+  const item = r23ById(id);
+  check(item && test.applicationLanguagePath(item).key === "english", `Round 40: ${id} lost an explicit English requirement`);
+}
+check(test.experienceInfo(r23ById(910)).key === "junior" && test.experienceInfo(r23ById(930884)).key === "junior" && test.experienceInfo(r23ById(1092)).key === "junior", "Round 40: explicit two-year roles were not kept in the attainable junior/early-mid band");
+check(test.experienceInfo(r23ById(535)).key === "unknown" && test.experienceInfo(r23ById(1002)).key === "unknown" && test.experienceInfo(r23ById(84)).key === "unknown", "Round 40: roles without stated experience years still have invented seniority");
+const r40Current = r23Main.filter((item) => test.applicationStatus(item).key !== "closed");
+const r40LanguageCounts = r40Current.reduce((counts, item) => {
+  const key = test.applicationLanguagePath(item).key;
+  counts[key] = (counts[key] || 0) + 1;
+  return counts;
+}, {});
+check(
+  r40LanguageCounts.chineseCheck === 2 &&
+    r40LanguageCounts.basicSpanish === 1 &&
+    r40LanguageCounts.english === 88 &&
+    r40LanguageCounts.unknown === 32 &&
+    r40LanguageCounts.spanishLikely === 10 &&
+    r40LanguageCounts.spanish === 66 &&
+    r40LanguageCounts.foreign === 1,
+  `Round 40: language ledger mismatch ${JSON.stringify(r40LanguageCounts)}`,
+);
 check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 37: Chinese-relevant current opportunity count must remain evidence-backed at 6");
 for (const id of [930884, 930885, 930886, 930887, 930888]) {
   const item = r23ById(id);
