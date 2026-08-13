@@ -1134,17 +1134,17 @@ check(r22Main.filter((item) => test.isChineseRelevant(item) && test.applicationS
 const r23ById = (id) => test.allData.find((item) => Number(item.id) === id);
 const r23Main = test.MY_OPPORTUNITY_IDS.map(r23ById).filter(Boolean);
 const r23VisibleMain = test.dedupedData.filter((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id)));
-check(test.MY_OPPORTUNITY_IDS.length === 209 && new Set(test.MY_OPPORTUNITY_IDS).size === 209, "Round 50: audited ID ledger must contain exactly 209 unique opportunities after one restoration and one new role");
-check(r23Main.length === 209 && r23VisibleMain.length === 209, "Round 50: complete audited history must preserve all 209 reviewed job identities");
-check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 158 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 51, "Round 50: audited Barcelona/remote split must be exactly 158/51 including preserved closed history");
+check(test.MY_OPPORTUNITY_IDS.length === 210 && new Set(test.MY_OPPORTUNITY_IDS).size === 210, "Round 52: audited ID ledger must contain exactly 210 unique opportunities after the new CRAZE role");
+check(r23Main.length === 210 && r23VisibleMain.length === 210, "Round 52: complete audited history must preserve all 210 reviewed job identities");
+check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 159 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 51, "Round 52: audited Barcelona/remote split must be exactly 159/51 including preserved closed history");
 check(
-  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 186 &&
+  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 188 &&
     r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 13 &&
-    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 10,
-  "Round 50: 209 reviewed IDs must resolve to 186 live, 13 verify and 10 preserved closed-history cards",
+    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 9,
+  "Round 52: 210 reviewed IDs must resolve to 188 live, 13 verify and 9 preserved closed-history cards",
 );
 const r39Skyscanner = r23ById(930812);
-check(r39Skyscanner && test.applicationStatus(r39Skyscanner).key === "closed", "Round 39: Skyscanner Senior Visual Designer must remain in closed history, not the current board");
+check(r39Skyscanner && test.applicationStatus(r39Skyscanner).key === "live", "Round 52: the reopened Skyscanner Senior Visual Designer was not restored to the current board");
 for (const id of [930834, 930841, 920001, 930837, 224, 134, 859, 1036, 1287, 136, 1243, 345]) {
   const item = r23ById(id);
   check(item && test.applicationLanguagePath(item).key === "unknown", `Round 39: ${id} must not infer a work language from page language alone`);
@@ -1190,17 +1190,17 @@ const r41LanguageCounts = r41Current.reduce((counts, item) => {
   return counts;
 }, {});
 check(
-  r41Current.length === 199 &&
-    r41Current.filter((item) => test.locationBucket(item) === "barcelona").length === 148 &&
+  r41Current.length === 201 &&
+    r41Current.filter((item) => test.locationBucket(item) === "barcelona").length === 150 &&
     r41Current.filter((item) => test.locationBucket(item) === "remote").length === 51 &&
     r41LanguageCounts.chineseCheck === 2 &&
     !r41LanguageCounts.basicSpanish &&
-    r41LanguageCounts.english === 72 &&
-    r41LanguageCounts.unknown === 50 &&
+    r41LanguageCounts.english === 73 &&
+    r41LanguageCounts.unknown === 51 &&
     r41LanguageCounts.spanishLikely === 21 &&
     r41LanguageCounts.spanish === 49 &&
     r41LanguageCounts.foreign === 5,
-  `Round 48: current ledger mismatch ${JSON.stringify({ total: r41Current.length, language: r41LanguageCounts })}`,
+  `Round 52: current ledger mismatch ${JSON.stringify({ total: r41Current.length, language: r41LanguageCounts })}`,
 );
 const r51ScoringRiskCounts = r41Current.reduce((counts, item) => {
   const key = test.scoreLanguageRisk(item);
@@ -1209,8 +1209,8 @@ const r51ScoringRiskCounts = r41Current.reduce((counts, item) => {
 }, {});
 check(
   r51ScoringRiskCounts.chineseCheck === 2 &&
-    r51ScoringRiskCounts.english === 72 &&
-    r51ScoringRiskCounts.englishLikely === 48 &&
+    r51ScoringRiskCounts.english === 73 &&
+    r51ScoringRiskCounts.englishLikely === 49 &&
     !r51ScoringRiskCounts.unknown &&
     r51ScoringRiskCounts.spanishLikely === 23 &&
     r51ScoringRiskCounts.spanish === 49 &&
@@ -1279,16 +1279,19 @@ check([958, 930638].every((id) => r44AuditItems.some((item) => Number(item.id) =
 check(test.MY_OPPORTUNITY_SET.has(958) && test.applicationStatus(r44RemedyCurrent).key === "live", "Round 44: canonical Remedy Edge trainee opening was lost");
 check(r44RemedyLinks.length === 2 && r44RemedyLinks.some((url) => /omnicomhealth\/jobs\/5207339008/i.test(url)) && r44RemedyLinks.some((url) => /remedyedgespain\/jobs\/5207341008/i.test(url)), "Round 44: the canonical Remedy Edge card does not expose both current official application routes");
 check(r44RemedyHistorical && !test.MY_OPPORTUNITY_SET.has(930638) && test.applicationStatus(r44RemedyHistorical).key === "closed" && r44RemedyHistorical.tier === "X", "Round 44: removed Omnicom 4542432008 route still counts as a live independent vacancy");
-check(test.MY_OPPORTUNITY_IDS.length === 209 && new Set(test.MY_OPPORTUNITY_IDS).size === 209, "Round 50: current restoration or new official role changed the 209-seat audited ledger unexpectedly");
+check(test.MY_OPPORTUNITY_IDS.length === 210 && new Set(test.MY_OPPORTUNITY_IDS).size === 210, "Round 52: current refresh changed the 210-seat audited ledger unexpectedly");
 const r45ChineseCanonical = r23ById(778);
 const r45ChineseHistorical = r23ById(930835);
 const round48Section = "2026-08-13 Round 48 complete unknown-language source audit";
 const round49Section = "2026-08-13 Round 49 complete likely-Spanish source audit";
 const round50Section = "2026-08-13 Round 50 user-profile rescore and current-source recovery";
 const round51Section = "2026-08-13 Round 51 user-language feasibility recalibration";
+const round52Section = "2026-08-13 Round 52 Chinese-source and current-employer refresh";
 const round49LikelySpanishIds = [877, 105, 886, 930829, 1257, 1258, 382, 1237, 930876, 86, 930873, 930885, 188, 577, 864, 1296, 579, 876, 867, 930843, 351];
-check(test.latestRoundSection === round51Section, "Round 51: latest-round marker did not advance");
-check(test.latestRoundItems.length === 50 && test.latestRoundItems.every((item) => ["englishLikely", "spanishLikely"].includes(test.scoreLanguageRisk(item))), "Round 51: the 50 previously neutral language-risk records are not all present in the latest audit log");
+check(test.latestRoundSection === round52Section, "Round 52: latest-round marker did not advance");
+check(test.latestRoundItems.length === 2 && [930812, 930899].every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)), "Round 52: reopened Skyscanner or new CRAZE role is missing from the latest audit log");
+const round51AuditedItems = test.allData.filter((item) => test.CURATED[item.id]?.latestAuditSection === round51Section);
+check(round51AuditedItems.length === 50 && round51AuditedItems.every((item) => ["englishLikely", "spanishLikely"].includes(test.scoreLanguageRisk(item))), "Round 51: the 50 neutral-language risk corrections were not preserved after Round 52");
 check(test.CURATED[930898]?.latestAuditSection === round50Section && test.CURATED[427]?.latestAuditSection === round51Section, "Round 50/51: recovery provenance or subsequent language-risk audit was lost");
 check([...round49LikelySpanishIds, 930897].every((id) => test.CURATED[id]?.latestAuditSection === round49Section), "Round 49: likely-Spanish audit provenance was lost after Round 50");
 const round50RevolutEmployerBranding = r23ById(427);
@@ -1323,6 +1326,41 @@ check(
   test.displayedScore(round50RevolutEmployerBranding) < test.displayedScore(r23ById(920)) &&
     test.displayedScore(round50DragonsArtDirector) < test.displayedScore(round50RevolutEmployerBranding),
   "Round 50: foreign-language or senior roles outrank the user's Chinese/contact-first routes",
+);
+const round52Skyscanner = r23ById(930812);
+const round52Craze = r23ById(930899);
+check(
+  round52Skyscanner &&
+    test.MY_OPPORTUNITY_SET.has(930812) &&
+    test.applicationStatus(round52Skyscanner).key === "live" &&
+    test.locationBucket(round52Skyscanner) === "barcelona" &&
+    test.applicationLanguagePath(round52Skyscanner).key === "unknown" &&
+    test.scoreLanguageRisk(round52Skyscanner) === "englishLikely" &&
+    test.experienceInfo(round52Skyscanner).key === "senior" &&
+    test.displayedScore(round52Skyscanner) <= 14 &&
+    test.toLinks(round52Skyscanner).some((url) => /4451912620/i.test(url)) &&
+    test.toLinks(round52Skyscanner).some((url) => /8121646/i.test(url)),
+  "Round 52: reopened Skyscanner role lost its current status, evidence/risk distinction, seniority, score cap or exact routes",
+);
+check(
+  round52Craze &&
+    test.MY_OPPORTUNITY_SET.has(930899) &&
+    test.applicationStatus(round52Craze).key === "live" &&
+    test.locationBucket(round52Craze) === "barcelona" &&
+    test.applicationLanguagePath(round52Craze).key === "english" &&
+    test.experienceInfo(round52Craze).key === "mid" &&
+    test.displayedScore(round52Craze) === 12 &&
+    test.toLinks(round52Craze).some((url) => /4454009307/i.test(url)) &&
+    test.toLinks(round52Craze).some((url) => /craze-group\.com\/karriere/i.test(url)),
+  "Round 52: CRAZE current employer detail, English gate, 2-3 year band, score cap or application routes are wrong",
+);
+check(
+  [778, 920].every((id, index) => {
+    const sorted = r41Current.slice();
+    test.sortRecords(sorted);
+    return Number(sorted[index]?.id) === id;
+  }) && test.displayedScore(round52Craze) < test.displayedScore(r23ById(920)),
+  "Round 52: new English-language roles displaced the two Chinese/contact-first opportunities",
 );
 check([910, 866, 930814].every((id) => test.CURATED[id]?.latestAuditSection === round48Section), "Round 48: explicit-English corrections were not preserved after the next audit");
 check(

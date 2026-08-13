@@ -3246,6 +3246,11 @@ const ROUND47_CURRENT_IDS = Object.freeze([930889, 930890, 930891, 930892]);
 // one new Dragons official vacancy. Both remain subject to the same
 // user-specific language and seniority penalties as every older card.
 const ROUND50_CURRENT_IDS = Object.freeze([427, 930898]);
+// Round 52 adds one newly published, independently verified Sabadell graphic-
+// design vacancy. Its exact employer-origin LinkedIn detail is live and the
+// employer career page independently confirms both the Barcelona-area office
+// and English as the team language. It remains a low-priority English backup.
+const ROUND52_CURRENT_IDS = Object.freeze([930899]);
 // THRU still exposes the complete role brief and a future closing date, but
 // the same official page ends with "NO JOB OPENINGS". Keep the lead visible as
 // verify-first evidence without allowing the contradictory page to occupy a
@@ -3269,7 +3274,7 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
     .flatMap((id) => [id, ...(ROUND36_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND37_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND38_RANKED_INSERTIONS.get(id) || [])])
-    .concat(ROUND47_CURRENT_IDS, ROUND50_CURRENT_IDS)
+    .concat(ROUND47_CURRENT_IDS, ROUND50_CURRENT_IDS, ROUND52_CURRENT_IDS)
     .filter((id) => !ROUND37_SUPERSEDED_MAIN_IDS.has(id))
     .filter((id) => !ROUND32_EXCLUDED_IDS.has(id))
     .filter((id) => !ROUND46_RESEARCH_ONLY_MAIN_IDS.has(id)),
@@ -13091,6 +13096,82 @@ Object.assign(CURATED, {
   },
 });
 
+const ROUND52_SECTION = "2026-08-13 Round 52 Chinese-source and current-employer refresh";
+
+if (!allData.some((entry) => Number(entry.id) === 930899)) {
+  allData.push({
+    id: 930899,
+    section: ROUND52_SECTION,
+    source: "CRAZE GmbH / current LinkedIn employer detail + official careers",
+    opportunity: "Editorial Graphic Designer – Toys & Kids Products",
+    fit: "Sabadell full-time; brand identities, logos, style guides, packaging, editorial, POS, digital content and final artwork; English mandatory",
+    location: "Sabadell, Barcelona province, Spain; full-time",
+    status: "Live/current: exact LinkedIn employer detail 4454009307 was opened and read in full on 2026-08-13. It shows Sabadell, full-time and an application control. The complete brief covers magazines, catalogues, brochures, presentations, POS, packaging, digital content, brand identities, logos, style guides, print-ready artwork and licensed-brand adaptation. It requires 2–3 years, advanced Illustrator/Photoshop/InDesign, a portfolio and spoken/written English; German is only desirable. CRAZE's official careers page independently confirms a Barcelona-area location and states English is the team language, but it exposes only a general application route rather than this exact requisition.",
+    contact: "Current exact employer detail/application: https://www.linkedin.com/jobs/view/4454009307 ; official employer careers and general application: https://craze-group.com/karriere",
+    analysis: "Add as a genuine new Barcelona-province brand/graphic-design backup, not as a Chinese-language opportunity. The 2–3 year threshold and hands-on VI/packaging/editorial scope are relevant, but mandatory spoken and written English is a material gate for this user, so the personal score must remain within the explicit-English ceiling. Apply only if the portfolio and interview can be handled in English; confirm salary, contract entity, onsite rhythm and commute before investing in a tailored application.",
+    score: 12,
+    tier: "B",
+    locationTag: "Barcelona area",
+    typeTag: "Brand identity / editorial / packaging / graphic production",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-13",
+    freshnessTag: "week",
+    freshnessAgeDays: 0,
+    links: ["https://www.linkedin.com/jobs/view/4454009307", "https://craze-group.com/karriere"],
+    searchText: "CRAZE GmbH current LinkedIn employer detail 4454009307 Editorial Graphic Designer Toys Kids Products Sabadell Barcelona full time apply 2-3 years brand identities logos style guides packaging editorial catalogues brochures POS digital content final artwork English mandatory German desirable official careers Barcelona team language English",
+  });
+}
+
+Object.assign(CURATED, {
+  930812: {
+    ...CURATED[930812],
+    statusKey: "live",
+    direction: "brand",
+    company: "Skyscanner",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / 每周约 2 天办公室 / 全职",
+    titleZh: "高级视觉设计师（全球品牌系统与 Campaign）",
+    titleEs: "Senior Visual Designer",
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    language: "完整招聘正文为英语且属于全球 Brand Studio；未列正式语言等级，评分按英语环境大概率处理",
+    experienceKey: "senior",
+    experienceLabel: "资深 / 约 7 年",
+    statusEvidence: "2026-08-13 Round 52：同一 LinkedIn 雇主招聘编号 4451912620 再次公开，完整正文可读取并显示 Barcelona、hybrid、每周办公室两天和 Apply now；没有关闭提示。Skyscanner 官方 requisition 8121646 仍存在，但自动访问进入验证码页，因此以当前雇主详情作为开放证据。",
+    reason: "Brand Studio 职责高度贴近品牌系统、全球 Campaign、数字、社媒、印刷、OOH 与体验触点；但约 7 年经验和全英语国际团队环境都是重大现实门槛，只恢复为后排挑战岗。",
+    next: "仅在作品集已有系统级品牌识别、全球 Campaign、艺术指导、字体与版式案例，并能用英语讲解时投递；申请前确认薪资、Barcelona 合同、办公室节奏和面试语言。",
+    links: [
+      "https://www.linkedin.com/jobs/view/4451912620",
+      "https://www.skyscanner.net/jobs/job/8121646?gh_jid=8121646",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND52_SECTION,
+    changeType: "round-52-same-requisition-reopened",
+  },
+  930899: {
+    statusKey: "live",
+    direction: "brand",
+    company: "CRAZE GmbH",
+    locationKey: "barcelona",
+    locationLabel: "Sabadell / Barcelona 省 / 全职",
+    titleZh: "编辑与品牌平面设计师（玩具及儿童产品）",
+    titleEs: "Editorial Graphic Designer – Toys & Kids Products",
+    languageKey: "english",
+    applicationMode: "english",
+    language: "招聘正文明确要求书面和口语英语；CRAZE 官方招聘页也写明团队语言为英语；德语仅为加分项",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 2–3 年专业平面设计经验",
+    internshipKey: false,
+    statusEvidence: "2026-08-13 Round 52：LinkedIn 雇主原始详情 4454009307 可完整读取，显示 Sabadell、Full-time 与申请控制；职责、2–3 年经验和英语必需条款均来自完整正文。CRAZE 官方 Karriere 页面独立确认 Barcelona 地点与英语团队语言，但只提供通用申请入口。",
+    reason: "品牌识别、Logo、风格指南、包装、目录、POS、数字内容与印前落地高度贴合；但英语书面和口语是明确硬门槛，所以只作为后排外语备选，不能因方向强而冲到中文机会前面。",
+    next: "先判断自己能否用英语完成作品集说明和面试；若可以，再从 LinkedIn 精确岗位页申请，并确认 Sabadell 到岗频率、合同主体、薪资和工时。作品集重点放品牌系统、包装、目录版式、POS 与印前文件。",
+    links: ["https://www.linkedin.com/jobs/view/4454009307", "https://craze-group.com/karriere"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND52_SECTION,
+    changeType: "round-52-new-current-employer-detail",
+  },
+});
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
@@ -14116,6 +14197,7 @@ const APPLICATION_MODE_OVERRIDES = Object.freeze({
 // working environment probable. Treating them as neutral previously pushed
 // them above jobs that are materially more feasible for this user.
 const SCORE_LANGUAGE_RISK_OVERRIDES = new Map([
+  [930812, "englishLikely"],
   [930834, "englishLikely"],
   [427, "englishLikely"],
   [930837, "englishLikely"],
@@ -14180,6 +14262,13 @@ for (const [id, scoringLanguageRisk] of SCORE_LANGUAGE_RISK_OVERRIDES) {
         ? "The exact brief and local team context are predominantly Spanish even though no formal level is stated."
         : "The exact brief, application flow and team context are predominantly English even though no formal level is stated.",
   };
+}
+
+// 930812 was re-opened in Round 52 after the Round 51 language-risk model was
+// introduced. Keep its new status provenance while still applying the same
+// English-likely feasibility rule as comparable global Brand Studio roles.
+if (CURATED[930812]) {
+  CURATED[930812] = { ...CURATED[930812], latestAuditSection: ROUND52_SECTION };
 }
 
 function applicationLanguagePath(item) {
