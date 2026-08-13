@@ -12443,6 +12443,7 @@ for (const id of [...MY_OPPORTUNITY_IDS, 456]) {
 }
 
 const ROUND47_SECTION = "2026-08-13 Round 47 current-source and user-fit recheck";
+const ROUND48_SECTION = "2026-08-13 Round 48 complete unknown-language source audit";
 
 // Fresh current vacancies found through exact employer pages or official ATS
 // routes. Every role remains subject to the same user-specific score formula;
@@ -12786,6 +12787,54 @@ Object.assign(CURATED, {
 for (const id of [930884, 930813, 930838, 930874, 172, ...ROUND47_CURRENT_IDS, 930893, 930894, 930895, 930896]) {
   if (CURATED[id]) CURATED[id] = { ...CURATED[id], latestAuditSection: ROUND47_SECTION };
 }
+
+// Round 48 reopens every current card whose work language was still marked as
+// unknown. Only explicit wording in the vacancy itself changes the language
+// path; page chrome, translated menus, company benefits and adjacent jobs are
+// not language evidence. Three of the 52 cards contain a previously missed
+// English requirement and must be rescored below the unknown-language group.
+for (const id of [910, 866, 930814]) {
+  const item = allData.find((entry) => Number(entry.id) === id);
+  if (item) item.section = ROUND48_SECTION;
+}
+
+Object.assign(CURATED, {
+  910: {
+    ...CURATED[910],
+    languageKey: "english",
+    applicationMode: "english",
+    language: "官方 Ashby 正文明确要求 Fluent in English；Spanish is a plus，不是硬门槛",
+    statusEvidence: "2026-08-13 Round 48 逐字复核：LABHOUSE 官方 Ashby 62d820a0-f2b6-4a8f-a909-a964d867438d 仍显示 Spain Remote、Full time 与申请入口；Communication 段明确写“Fluent in English; Spanish is a plus”。",
+    reason: "Spain remote、App 品牌与增长视觉方向有效，但流利英语是明确要求，不能继续按语言未证实获得 22.7 分。",
+    next: "仅在英语面试和日常跨团队沟通可承受时投递；作品集突出 App Store、品牌元素、Logo、动效与绩效视觉。",
+    latestAuditSection: ROUND48_SECTION,
+    changeType: "round-48-explicit-english-correction",
+  },
+  866: {
+    ...CURATED[866],
+    languageKey: "english",
+    applicationMode: "english",
+    language: "官方详情明确要求 Excellent communication skills in English；未列西语或德语硬门槛",
+    statusEvidence: "2026-08-13 Round 48 逐字复核：devicenow 官方 job 19847 仍显示 Barcelona hybrid、永久全职和申请入口；What we expect from you 段明确要求“Excellent communication skills in English”。",
+    reason: "Barcelona 地点和品牌 Motion 方向仍有效，但英语沟通是明确硬门槛，必须从语言未证实组降到英语备选组。",
+    next: "仅在英语沟通可用且 Motion showreel 匹配时申请；先确认薪资、团队语言和每周到岗天数。",
+    latestAuditSection: ROUND48_SECTION,
+    changeType: "round-48-explicit-english-correction",
+  },
+  930814: {
+    ...CURATED[930814],
+    languageKey: "english",
+    applicationMode: "english",
+    language: "LinkedIn 完整正文明确要求优秀书面与口语英语；德语只是 strong advantage",
+    statusEvidence: "2026-08-13 Round 48 逐字复核：CNT LinkedIn 雇主详情 4445748221 当前可完整读取并显示 Easy Apply、Barcelona；要求段明确写“Excellent written and spoken English is required. Very good German skills are a strong advantage.”",
+    experienceKey: "senior",
+    experienceLabel: "高级品牌设计与创意内容管理",
+    reason: "企业识别与品牌系统职责真实相关，但英语明确必需、岗位资历偏高，德语虽非硬门槛也增加竞争成本，因此只保留为后排英语备选。",
+    next: "仅在英语书面和口头沟通可承担时投递；作品集需突出 Corporate Identity、Brand Identity、跨媒介系统与 Motion。",
+    latestAuditSection: ROUND48_SECTION,
+    changeType: "round-48-explicit-english-correction",
+  },
+});
 
 const els = {
   totalCount: document.querySelector("#totalCount"),

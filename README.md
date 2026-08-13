@@ -23,6 +23,7 @@
 
 ## 关键文件
 
+- `AUDIT-2026-08-13-ROUND48.md`：重新打开并检查当前 52 个“工作语言未证实”岗位的原始详情；确认 LABHOUSE、devicenow 与 CNT 实际写有英语硬要求并降分，其余页面命中的菜单、福利、设计术语和相邻岗位不误判为语言门槛。
 - `AUDIT-2026-08-13-ROUND47.md`：继续按中文、Barcelona、品牌 / VI 与真实语言门槛逐条复核；关闭已停止申请的 Ogilvy 社媒艺术指导，把 Liquid Designer 的官方表单英语必答项计入降权，双源刷新 Dragons 两岗，并新增 4 条低分真实备选与 4 条关闭历史。
 - `AUDIT-2026-08-13-ROUND46.md`：按用户真实条件重算全部卡片；品牌 / VI 与平面制作升为核心，英语、西语与复合外语设置最终得分上限，CBA 长期自荐入口移入研究库，并补充 Grupo Planeta 当前精确雇主页证据。
 - `AUDIT-2026-08-13-ROUND45.md`：复核中文高分卡的原始详情；确认 ES02 与西华两张广告店卡是同一联系方式、同一岗位并合并，保留旧薪资证据但不重复计数；同时降低未确认 Spain 资格的中国远程岗地点分。
@@ -64,6 +65,7 @@
 - `app.js`：筛选、状态判断、去重、排序和卡片渲染。
 - `data.js`：保留的完整公开机会语料。
 - `scripts/inspect-qualified-opportunities.js`：输出当前主表或指定机会的审计报告。
+- `scripts/check-source-language.js`：批量读取已知原始详情页，提取英语、西语、加泰语与语言能力上下文，供人工逐条判断；不会把网页语言菜单自动当成岗位要求。
 - `scripts/export-opportunity-ledgers.js`：生成当前主表 CSV/JSON 与完整历史总账 CSV。
 - `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 197 个机会的完整、严格降序导出。
 - `all-opportunity-ledger.csv`：1,262 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。

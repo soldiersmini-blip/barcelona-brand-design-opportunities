@@ -418,7 +418,7 @@ check(test.applicationStatus(test.allData.find((item) => item.id === 864)).key =
 check(test.experienceInfo(test.allData.find((item) => item.id === 864)).key === "senior", "Ametller 5 年以上包装岗经验分级错误");
 check(test.applicationStatus(test.allData.find((item) => item.id === 865)).key === "closed", "FIRMAMENT 地点异常岗位没有进入排除层");
 check(test.applicationStatus(test.allData.find((item) => item.id === 866)).key === "live", "devicenow 当前英语品牌视频岗没有保留可投状态");
-check(test.applicationLanguagePath(test.allData.find((item) => item.id === 866)).key === "unknown", "devicenow 未公开工作语言却被当成已确认英语或西语岗位");
+check(test.applicationLanguagePath(test.allData.find((item) => item.id === 866)).key === "english", "devicenow 官方明确英语沟通要求没有写回语言路径");
 check(test.applicationStatus(test.allData.find((item) => item.id === 867)).key === "live", "Space Go 当前动态设计岗没有保留可投状态");
 check(test.experienceInfo(test.allData.find((item) => item.id === 867)).key === "senior", "Space Go 5 年以上经验没有正确分级");
 check(test.languageInfo(test.allData.find((item) => item.id === 868)).key === "spanish", "Omnicom 流利西语硬门槛没有识别");
@@ -688,7 +688,7 @@ check(test.identityKey(test.allData.find((item) => item.id === 559)) === test.id
 check(test.identityKey(test.allData.find((item) => item.id === 35)) === test.identityKey(test.allData.find((item) => item.id === 905)), "Steneg 当前刷新没有与旧记录合并");
 check(test.dedupedData.some((item) => item.id === 1300) && !test.dedupedData.some((item) => item.id === 559), "INFiLED 当前刷新没有保留最新记录");
 check(test.applicationStatus(test.allData.find((item) => item.id === 910)).key === "live", "LABHOUSE 官方当前申请状态没有保留");
-check(test.applicationLanguagePath(test.allData.find((item) => item.id === 910)).key === "unknown", "LABHOUSE 未公开语言的岗位仍被误标成英语岗位");
+check(test.applicationLanguagePath(test.allData.find((item) => item.id === 910)).key === "english", "LABHOUSE 官方 Fluent in English 条款没有写回语言路径");
 check(test.locationBucket(test.allData.find((item) => item.id === 910)) === "remote", "LABHOUSE Spain remote 地点没有正确分级");
 check(test.allData.find((item) => item.id === 910).tier === "B", "LABHOUSE 没有保持 B 级英语备选");
 check(test.applicationStatus(test.allData.find((item) => item.id === 911)).key === "closed", "inBeat 官方已失效角色仍被识别为可投");
@@ -696,7 +696,7 @@ check(test.allData.find((item) => item.id === 911).tier === "X", "inBeat 已失�
 check(test.hasOpaqueEmployerRisk(test.allData.find((item) => item.id === 912)), "Jobgether 匿名合作方没有进入真实性风险筛选");
 check(test.identityKey(test.allData.find((item) => item.id === 882)) === test.identityKey(test.allData.find((item) => item.id === 912)), "Jobgether 状态刷新没有与旧记录合并");
 check(test.dedupedData.some((item) => item.id === 912) && !test.dedupedData.some((item) => item.id === 882), "Jobgether 状态刷新没有保留最新记录");
-check(test.CURATED[910].changeType === "new" && test.CURATED[912].changeType === "refresh", "第二十轮新增与状态刷新没有区分");
+check(test.CURATED[910].changeType === "round-48-explicit-english-correction" && test.CURATED[912].changeType === "refresh", "LABHOUSE 最新语言纠偏或第二十轮状态刷新丢失");
 check(test.applicationStatus(test.allData.find((item) => item.id === 913)).key === "closed", "ALOHAS 当前官方页已关闭但数据仍未标为历史关闭");
 check(test.applicationLanguagePath(test.allData.find((item) => item.id === 913)).key === "english", "ALOHAS 没有隔离到英语岗位备选");
 check(test.isChineseRelevant(test.allData.find((item) => item.id === 913)), "ALOHAS 中文市场岗位没有保留中文相关标记");
@@ -1139,7 +1139,7 @@ check(
 );
 const r39Skyscanner = r23ById(930812);
 check(r39Skyscanner && test.applicationStatus(r39Skyscanner).key === "closed", "Round 39: Skyscanner Senior Visual Designer must remain in closed history, not the current board");
-for (const id of [930834, 930841, 920001, 930837, 866, 224, 134, 859, 930814, 1036, 1287, 136, 1243, 345]) {
+for (const id of [930834, 930841, 920001, 930837, 224, 134, 859, 1036, 1287, 136, 1243, 345]) {
   const item = r23ById(id);
   check(item && test.applicationLanguagePath(item).key === "unknown", `Round 39: ${id} must not infer a work language from page language alone`);
 }
@@ -1157,7 +1157,7 @@ const r39MissingRoleLabels = r23Main
   .filter((item) => !test.roleLabels(item).zh || test.roleLabels(item).zh === "undefined")
   .map((item) => Number(item.id));
 check(r39MissingRoleLabels.length === 0, `Round 39: audited cards still have empty role labels: ${r39MissingRoleLabels.join(", ")}`);
-for (const id of [910, 425, 930826, 456, 535, 930847, 1002, 989, 854, 874, 1092, 372, 446, 84]) {
+for (const id of [425, 930826, 456, 535, 930847, 1002, 989, 854, 874, 1092, 372, 446, 84]) {
   const item = r23ById(id);
   check(item && test.applicationLanguagePath(item).key === "unknown", `Round 40: ${id} still infers English from page language or international context`);
 }
@@ -1189,12 +1189,12 @@ check(
     r41Current.filter((item) => test.locationBucket(item) === "remote").length === 51 &&
     r41LanguageCounts.chineseCheck === 2 &&
     !r41LanguageCounts.basicSpanish &&
-    r41LanguageCounts.english === 68 &&
-    r41LanguageCounts.unknown === 52 &&
+    r41LanguageCounts.english === 71 &&
+    r41LanguageCounts.unknown === 49 &&
     r41LanguageCounts.spanishLikely === 21 &&
     r41LanguageCounts.spanish === 49 &&
     r41LanguageCounts.foreign === 5,
-  `Round 47: current ledger mismatch ${JSON.stringify({ total: r41Current.length, language: r41LanguageCounts })}`,
+  `Round 48: current ledger mismatch ${JSON.stringify({ total: r41Current.length, language: r41LanguageCounts })}`,
 );
 for (const id of [996, 985, 1024, 1021, 1098, 930867, 942, 1029]) {
   const item = r23ById(id);
@@ -1250,8 +1250,14 @@ check(r44RemedyHistorical && !test.MY_OPPORTUNITY_SET.has(930638) && test.applic
 check(test.MY_OPPORTUNITY_IDS.length === 207 && new Set(test.MY_OPPORTUNITY_IDS).size === 207, "Round 47: current additions or preserved closed history changed the 207-seat audited ledger unexpectedly");
 const r45ChineseCanonical = r23ById(778);
 const r45ChineseHistorical = r23ById(930835);
-check(test.latestRoundSection === "2026-08-13 Round 47 current-source and user-fit recheck", "Round 47: latest-round marker did not advance");
-check([930884, 930813, 930838, 930874, 172, 930889, 930890, 930891, 930892].every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)), "Round 47: current-source corrections or new low-ranked opportunities are missing from the audit log");
+check(test.latestRoundSection === "2026-08-13 Round 48 complete unknown-language source audit", "Round 48: latest-round marker did not advance");
+check([910, 866, 930814].every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)), "Round 48: explicit-English corrections are missing from the latest audit log");
+check(
+  [930884, 930813, 930838, 930874, 172, 930889, 930890, 930891, 930892].every(
+    (id) => test.CURATED[id]?.latestAuditSection === "2026-08-13 Round 47 current-source and user-fit recheck",
+  ),
+  "Round 47: current-source corrections or new low-ranked opportunities were not preserved after the next audit",
+);
 check(test.applicationStatus(r45ChineseCanonical).key === "verify" && test.toLinks(r45ChineseCanonical).some((url) => /i184673\.html/i.test(url)) && test.toLinks(r45ChineseCanonical).some((url) => /tid=637173/i.test(url)), "Round 45: canonical Chinese advertising card lost its current and historical source pages");
 check(test.applicationStatus(r45ChineseHistorical).key === "closed" && r45ChineseHistorical.tier === "X", "Round 45: same-contact Xihua card still counts as an independent current vacancy");
 check(test.displayedScore(r23ById(920)) === 52, "Round 46: China-remote role without confirmed Spain eligibility did not receive the strengthened location penalty");
@@ -1283,6 +1289,19 @@ for (const [id, expected] of r47ExpectedCurrent) {
 for (const id of [930893, 930894, 930895, 930896]) {
   const item = r23ById(id);
   check(item && !test.MY_OPPORTUNITY_SET.has(id) && test.applicationStatus(item).key === "closed" && item.tier === "X", `Round 47: closed vacancy ${id} was lost from history or leaked into the current board`);
+}
+const r48EnglishCorrections = new Map([
+  [910, { score: 15, location: "remote", evidence: /Fluent in English/i }],
+  [866, { score: 12.8, location: "barcelona", evidence: /Excellent communication skills in English/i }],
+  [930814, { score: 3.6, location: "barcelona", evidence: /Excellent written and spoken English is required/i }],
+]);
+for (const [id, expected] of r48EnglishCorrections) {
+  const item = r23ById(id);
+  const curated = test.CURATED[id];
+  check(item && test.MY_OPPORTUNITY_SET.has(id) && test.applicationStatus(item).key === "live", `Round 48: corrected current opportunity ${id} is missing or no longer live`);
+  check(test.locationBucket(item) === expected.location && test.applicationLanguagePath(item).key === "english", `Round 48: explicit-English opportunity ${id} has the wrong location or language path`);
+  check(test.displayedScore(item) === expected.score && test.displayedScore(item) <= 18, `Round 48: explicit-English score cap drifted for opportunity ${id}`);
+  check(expected.evidence.test(`${curated?.language || ""} ${curated?.statusEvidence || ""}`), `Round 48: original language evidence is missing for opportunity ${id}`);
 }
 check(!test.MY_OPPORTUNITY_SET.has(891) && !test.MY_OPPORTUNITY_SET.has(930707), "Round 37: superseded duplicate ATS cards still occupy main-board seats");
 const r37Reboot = r23ById(930883);
