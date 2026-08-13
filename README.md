@@ -6,23 +6,24 @@
 
 ## 当前主表
 
-- 197 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
-- 146 个 Barcelona / 周边当前机会。
+- 199 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
+- 148 个 Barcelona / 周边当前机会。
 - 51 个明确允许 Spain / Europe / worldwide remote，或已单独标出 Spain 合同资格待确认的机会。
-- 184 个原始详情页或最终申请表显示可投，13 个需要先确认。
+- 186 个原始详情页或最终申请表显示可投，13 个需要先确认。
 - 5 个中文、华人圈、中国公司或中文远程相关机会。
 
 主表只收录已逐条检查过地点、岗位方向、当前状态和真实入口的机会。默认按“我的匹配分”严格从高到低排列；分数同时考虑 Barcelona/Spain 可行性、品牌视觉相关度、资历、语言门槛、状态可信度和材料投入成本。
 
 ## 数据分区
 
-- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 197 条主表。
+- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 199 条主表。
 - `华人中文全库`：华人网、中文社区、Casa Asia 和中国公司相关来源的完整线索。
 - `页面仍可复核`：详情还在，但状态、地点或申请控制需要再次确认的记录。
 - `关闭 / 历史 / 排除`：已过期、错误地点、重复、非设计岗或无法证实的记录。历史不会删除。
 
 ## 关键文件
 
+- `AUDIT-2026-08-13-ROUND50.md`：按中文、Barcelona、品牌 / VI、语言与资历硬门槛复核全榜计分；恢复同一官方 requisition 已重新开放的 Revolut Employer Branding，新增一个明确英语与资深门槛的 Dragons 后排岗位，并继续拒绝搜索缓存与无 Spain 资格的泛远程线索。
 - `AUDIT-2026-08-13-ROUND49.md`：补完当前 21 个“西语工作环境很可能”岗位的逐原始页复核；不把页面语言误写成硬门槛，修正 Eurofirms 日期、Space Go 临时合同与截止日、ICÓNICO 当前核验路径，并按用户真实语言条件重算个人分。
 - `AUDIT-2026-08-13-ROUND48.md`：重新打开并检查当前 52 个“工作语言未证实”岗位的原始详情；确认 LABHOUSE、devicenow 与 CNT 实际写有英语硬要求并降分，其余页面命中的菜单、福利、设计术语和相邻岗位不误判为语言门槛。
 - `AUDIT-2026-08-13-ROUND47.md`：继续按中文、Barcelona、品牌 / VI 与真实语言门槛逐条复核；关闭已停止申请的 Ogilvy 社媒艺术指导，把 Liquid Designer 的官方表单英语必答项计入降权，双源刷新 Dragons 两岗，并新增 4 条低分真实备选与 4 条关闭历史。
@@ -68,8 +69,8 @@
 - `scripts/inspect-qualified-opportunities.js`：输出当前主表或指定机会的审计报告。
 - `scripts/check-source-language.js`：批量读取已知原始详情页，提取英语、西语、加泰语与语言能力上下文，供人工逐条判断；不会把网页语言菜单自动当成岗位要求。
 - `scripts/export-opportunity-ledgers.js`：生成当前主表 CSV/JSON 与完整历史总账 CSV。
-- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 197 个机会的完整、严格降序导出。
-- `all-opportunity-ledger.csv`：1,263 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
+- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 199 个机会的完整、严格降序导出。
+- `all-opportunity-ledger.csv`：1,264 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
 - `scripts/validate-site.js`：验证数据、排序、状态、入口与页面结构。
 
 ## 本地验证

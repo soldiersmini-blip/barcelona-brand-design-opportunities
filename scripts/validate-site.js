@@ -605,7 +605,12 @@ check(test.allData.find((item) => item.id === 377).tier === "X" && test.isResear
 check(test.allData.find((item) => item.id === 415).tier === "X", "Codeway 官方 ATS Job not found 仍被列为开放岗位");
 check(test.allData.find((item) => item.id === 8).tier === "X", "POP MART 已停止申请的 London 岗位仍被列为欧洲远程机会");
 check(test.applicationStatus(test.allData.find((item) => item.id === 84)).key === "live" && test.locationBucket(test.allData.find((item) => item.id === 84)) === "remote", "reboot 当前 Europe remote 岗位状态或地点丢失");
-check(test.allData.find((item) => item.id === 427).tier === "X", "Revolut Employer Branding 官方 404 岗位仍被列为开放机会");
+check(
+  test.allData.find((item) => item.id === 427).tier === "B" &&
+    test.applicationStatus(test.allData.find((item) => item.id === 427)).key === "live" &&
+    test.toLinks(test.allData.find((item) => item.id === 427)).some((url) => /d47d1c9b-3e07-4878-84d7-5841dd3930d8/i.test(url)),
+  "Round 50: Revolut Employer Branding exact reopened official requisition is missing or still archived",
+);
 check(test.applicationStatus(test.allData.find((item) => item.id === 296)).key === "live" && test.locationBucket(test.allData.find((item) => item.id === 296)) === "barcelona", "Bakken & Bæck 当前 Barcelona office 岗位状态或地点丢失");
 check(test.allData.find((item) => item.id === 1331).tier === "D" && test.locationBucket(test.allData.find((item) => item.id === 1331)) === "other", "Social Scout 全球 contractor 岗位混入 Spain/Europe 默认范围");
 check(test.allData.find((item) => item.id === 1360).tier === "D" && test.isResearchOnly(test.allData.find((item) => item.id === 1360)), "RCD 通用投 CV 表单仍被当作当前平面设计岗");
@@ -1128,14 +1133,14 @@ check(r22Main.filter((item) => test.isChineseRelevant(item) && test.applicationS
 const r23ById = (id) => test.allData.find((item) => Number(item.id) === id);
 const r23Main = test.MY_OPPORTUNITY_IDS.map(r23ById).filter(Boolean);
 const r23VisibleMain = test.dedupedData.filter((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id)));
-check(test.MY_OPPORTUNITY_IDS.length === 207 && new Set(test.MY_OPPORTUNITY_IDS).size === 207, "Round 47: audited ID ledger must contain exactly 207 unique opportunities after four current additions");
-check(r23Main.length === 207 && r23VisibleMain.length === 207, "Round 47: complete audited history must preserve all 207 reviewed job identities");
-check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 156 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 51, "Round 47: audited Barcelona/remote split must be exactly 156/51 including preserved closed history");
+check(test.MY_OPPORTUNITY_IDS.length === 209 && new Set(test.MY_OPPORTUNITY_IDS).size === 209, "Round 50: audited ID ledger must contain exactly 209 unique opportunities after one restoration and one new role");
+check(r23Main.length === 209 && r23VisibleMain.length === 209, "Round 50: complete audited history must preserve all 209 reviewed job identities");
+check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 158 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 51, "Round 50: audited Barcelona/remote split must be exactly 158/51 including preserved closed history");
 check(
-  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 184 &&
+  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 186 &&
     r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 13 &&
     r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 10,
-  "Round 47: 207 reviewed IDs must resolve to 184 live, 13 verify and 10 preserved closed-history cards",
+  "Round 50: 209 reviewed IDs must resolve to 186 live, 13 verify and 10 preserved closed-history cards",
 );
 const r39Skyscanner = r23ById(930812);
 check(r39Skyscanner && test.applicationStatus(r39Skyscanner).key === "closed", "Round 39: Skyscanner Senior Visual Designer must remain in closed history, not the current board");
@@ -1184,13 +1189,13 @@ const r41LanguageCounts = r41Current.reduce((counts, item) => {
   return counts;
 }, {});
 check(
-  r41Current.length === 197 &&
-    r41Current.filter((item) => test.locationBucket(item) === "barcelona").length === 146 &&
+  r41Current.length === 199 &&
+    r41Current.filter((item) => test.locationBucket(item) === "barcelona").length === 148 &&
     r41Current.filter((item) => test.locationBucket(item) === "remote").length === 51 &&
     r41LanguageCounts.chineseCheck === 2 &&
     !r41LanguageCounts.basicSpanish &&
-    r41LanguageCounts.english === 71 &&
-    r41LanguageCounts.unknown === 49 &&
+    r41LanguageCounts.english === 72 &&
+    r41LanguageCounts.unknown === 50 &&
     r41LanguageCounts.spanishLikely === 21 &&
     r41LanguageCounts.spanish === 49 &&
     r41LanguageCounts.foreign === 5,
@@ -1247,14 +1252,49 @@ check([958, 930638].every((id) => r44AuditItems.some((item) => Number(item.id) =
 check(test.MY_OPPORTUNITY_SET.has(958) && test.applicationStatus(r44RemedyCurrent).key === "live", "Round 44: canonical Remedy Edge trainee opening was lost");
 check(r44RemedyLinks.length === 2 && r44RemedyLinks.some((url) => /omnicomhealth\/jobs\/5207339008/i.test(url)) && r44RemedyLinks.some((url) => /remedyedgespain\/jobs\/5207341008/i.test(url)), "Round 44: the canonical Remedy Edge card does not expose both current official application routes");
 check(r44RemedyHistorical && !test.MY_OPPORTUNITY_SET.has(930638) && test.applicationStatus(r44RemedyHistorical).key === "closed" && r44RemedyHistorical.tier === "X", "Round 44: removed Omnicom 4542432008 route still counts as a live independent vacancy");
-check(test.MY_OPPORTUNITY_IDS.length === 207 && new Set(test.MY_OPPORTUNITY_IDS).size === 207, "Round 47: current additions or preserved closed history changed the 207-seat audited ledger unexpectedly");
+check(test.MY_OPPORTUNITY_IDS.length === 209 && new Set(test.MY_OPPORTUNITY_IDS).size === 209, "Round 50: current restoration or new official role changed the 209-seat audited ledger unexpectedly");
 const r45ChineseCanonical = r23ById(778);
 const r45ChineseHistorical = r23ById(930835);
 const round48Section = "2026-08-13 Round 48 complete unknown-language source audit";
 const round49Section = "2026-08-13 Round 49 complete likely-Spanish source audit";
+const round50Section = "2026-08-13 Round 50 user-profile rescore and current-source recovery";
 const round49LikelySpanishIds = [877, 105, 886, 930829, 1257, 1258, 382, 1237, 930876, 86, 930873, 930885, 188, 577, 864, 1296, 579, 876, 867, 930843, 351];
-check(test.latestRoundSection === round49Section, "Round 49: latest-round marker did not advance");
-check([...round49LikelySpanishIds, 930897].every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)), "Round 49: complete likely-Spanish audit or new closed-history record is missing from the latest audit log");
+check(test.latestRoundSection === round50Section, "Round 50: latest-round marker did not advance");
+check([427, 930898].every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)), "Round 50: restored Revolut role or new Dragons role is missing from the latest audit log");
+check([...round49LikelySpanishIds, 930897].every((id) => test.CURATED[id]?.latestAuditSection === round49Section), "Round 49: likely-Spanish audit provenance was lost after Round 50");
+const round50RevolutEmployerBranding = r23ById(427);
+const round50DragonsArtDirector = r23ById(930898);
+check(
+  round50RevolutEmployerBranding &&
+    test.MY_OPPORTUNITY_SET.has(427) &&
+    test.applicationStatus(round50RevolutEmployerBranding).key === "live" &&
+    test.locationBucket(round50RevolutEmployerBranding) === "barcelona" &&
+    test.applicationLanguagePath(round50RevolutEmployerBranding).key === "unknown" &&
+    test.experienceInfo(round50RevolutEmployerBranding).key === "junior" &&
+    test.displayedScore(round50RevolutEmployerBranding) <= 28,
+  "Round 50: Revolut restoration lost its Barcelona, unknown-language, two-year or user-score constraints",
+);
+check(
+  test.identityKey(round50RevolutEmployerBranding) === "ats:revolut:d47d1c9b-3e07-4878-84d7-5841dd3930d8" &&
+    test.dedupedData.filter((item) => test.identityKey(item) === test.identityKey(round50RevolutEmployerBranding)).length === 1,
+  "Round 50: Revolut locale and LinkedIn mirrors were counted as separate opportunities",
+);
+check(
+  round50DragonsArtDirector &&
+    test.MY_OPPORTUNITY_SET.has(930898) &&
+    test.applicationStatus(round50DragonsArtDirector).key === "live" &&
+    test.locationBucket(round50DragonsArtDirector) === "barcelona" &&
+    test.applicationLanguagePath(round50DragonsArtDirector).key === "english" &&
+    test.experienceInfo(round50DragonsArtDirector).key === "senior" &&
+    test.displayedScore(round50DragonsArtDirector) <= 8 &&
+    test.toLinks(round50DragonsArtDirector).some((url) => /308025/i.test(url)),
+  "Round 50: Dragons official role lost its English, seniority, low-score or exact ATS evidence",
+);
+check(
+  test.displayedScore(round50RevolutEmployerBranding) < test.displayedScore(r23ById(920)) &&
+    test.displayedScore(round50DragonsArtDirector) < test.displayedScore(round50RevolutEmployerBranding),
+  "Round 50: foreign-language or senior roles outrank the user's Chinese/contact-first routes",
+);
 check([910, 866, 930814].every((id) => test.CURATED[id]?.latestAuditSection === round48Section), "Round 48: explicit-English corrections were not preserved after the next audit");
 check(
   round49LikelySpanishIds.every((id) => {

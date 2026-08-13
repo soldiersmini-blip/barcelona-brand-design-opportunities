@@ -3242,6 +3242,10 @@ const ROUND38_RANKED_INSERTIONS = new Map([
 // discovered in the same sweep stay in the historical corpus and never enter
 // this list.
 const ROUND47_CURRENT_IDS = Object.freeze([930889, 930890, 930891, 930892]);
+// Round 50 restores one independently evidenced Revolut requisition and adds
+// one new Dragons official vacancy. Both remain subject to the same
+// user-specific language and seniority penalties as every older card.
+const ROUND50_CURRENT_IDS = Object.freeze([427, 930898]);
 // THRU still exposes the complete role brief and a future closing date, but
 // the same official page ends with "NO JOB OPENINGS". Keep the lead visible as
 // verify-first evidence without allowing the contradictory page to occupy a
@@ -3265,7 +3269,7 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
     .flatMap((id) => [id, ...(ROUND36_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND37_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND38_RANKED_INSERTIONS.get(id) || [])])
-    .concat(ROUND47_CURRENT_IDS)
+    .concat(ROUND47_CURRENT_IDS, ROUND50_CURRENT_IDS)
     .filter((id) => !ROUND37_SUPERSEDED_MAIN_IDS.has(id))
     .filter((id) => !ROUND32_EXCLUDED_IDS.has(id))
     .filter((id) => !ROUND46_RESEARCH_ONLY_MAIN_IDS.has(id)),
@@ -12973,6 +12977,120 @@ for (const id of ROUND49_SPANISH_LIKELY_IDS) {
   if (CURATED[id]) CURATED[id] = { ...CURATED[id], latestAuditSection: ROUND49_SECTION };
 }
 
+const ROUND50_SECTION = "2026-08-13 Round 50 user-profile rescore and current-source recovery";
+
+// The same exact Revolut requisition that returned a 404 on 2026-08-09 is now
+// present again on Revolut's official careers index and localized official
+// detail, with Barcelona and Spain remote listed and an active application
+// control. Restore the identity instead of creating a duplicate, while keeping
+// its unknown work-language path visible and capped below Chinese routes.
+const round50RevolutEmployerBranding = allData.find((entry) => Number(entry.id) === 427);
+if (round50RevolutEmployerBranding) {
+  Object.assign(round50RevolutEmployerBranding, {
+    section: ROUND50_SECTION,
+    source: "Revolut / current official careers",
+    opportunity: "Graphic Designer (Employer Branding)",
+    fit: "Barcelona office or Spain remote; employer-brand static and motion design; 2+ years; work language not stated",
+    location: "Barcelona office / Spain remote; full-time",
+    status: "Current again: on 2026-08-13 Revolut's official careers index and localized official detail both list this exact requisition d47d1c9b-3e07-4878-84d7-5841dd3930d8, Barcelona among the offices, Spain among the remote locations and Apply for this role. A fresh Revolut design-recruiting post also links the same exact official URL. The role covers static and motion assets, employer-brand campaigns, internal communications and brand-aligned content. The page asks for 2+ years but does not publish a Chinese, English or Spanish language requirement, Spain salary or sponsorship terms.",
+    contact: "Current official detail/application: https://www.revolut.com/en-HU/careers/position/graphic-designer-employer-branding-d47d1c9b-3e07-4878-84d7-5841dd3930d8/ ; current employer LinkedIn detail: https://es.linkedin.com/jobs/view/4436834624",
+    analysis: "Restore the previously recognised opportunity because the exact employer requisition is independently current again. It is a strong Barcelona brand-communications match and the 2+ year threshold is relatively attainable, but it is not a Chinese-language route. Keep the application-language field unknown, cap its score below Chinese/contact-first opportunities and ask about working language before investing in tailored materials.",
+    score: 28,
+    tier: "B",
+    locationTag: "Barcelona area",
+    typeTag: "Employer brand / graphic / motion",
+    sourceGroup: "other",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: [
+      "https://www.revolut.com/en-HU/careers/position/graphic-designer-employer-branding-d47d1c9b-3e07-4878-84d7-5841dd3930d8/",
+      "https://es.linkedin.com/jobs/view/4436834624",
+    ],
+    searchText: "Revolut current official Graphic Designer Employer Branding d47d1c9b Barcelona office Spain remote full time Apply static motion employer brand campaigns internal communications 2+ years work language not stated salary sponsorship confirm",
+  });
+}
+
+if (!allData.some((entry) => Number(entry.id) === 930898)) {
+  allData.push({
+    id: 930898,
+    section: ROUND50_SECTION,
+    source: "Dragons Group / official Factorial ATS",
+    opportunity: "Senior Art Director (Beauty, Skincare, Wellness & Lifestyle)",
+    fit: "Barcelona hybrid permanent role with strong brand-building, visual-system and integrated-campaign scope; fluent English and 5–8 years are explicit",
+    location: "Barcelona, Spain; hybrid; permanent; full-time",
+    status: "Current official vacancy: Dragons' Factorial board and exact detail 308025 both show Barcelona hybrid, permanent, full-time and Apply now. The role develops visual systems and brand-building work across social, digital and integrated campaigns, then art-directs photography, video, motion, CGI and creator content. Five to eight years and fluent written/spoken English are explicit; other languages are only a plus.",
+    contact: "Current official detail: https://dragons-group.factorialhr.com/job_posting/senior-art-director-beauty-skincare-wellness-lifestyle-308025 ; official application: https://dragons-group.factorialhr.com/apply/senior-art-director-beauty-skincare-wellness-lifestyle-308025",
+    analysis: "Keep as a real but low-priority Barcelona backup. The brand/visual-system fit is strong, yet explicit fluent English, seniority, client presentation and art-direction leadership make it substantially less feasible for this user than Chinese/contact-first, junior or no-stated-language opportunities.",
+    score: 3,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Brand systems / art direction / integrated campaigns",
+    sourceGroup: "other",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: [
+      "https://dragons-group.factorialhr.com/job_posting/senior-art-director-beauty-skincare-wellness-lifestyle-308025",
+      "https://dragons-group.factorialhr.com/apply/senior-art-director-beauty-skincare-wellness-lifestyle-308025",
+    ],
+    searchText: "Dragons Group official Factorial current Senior Art Director Beauty Skincare Wellness Lifestyle Barcelona hybrid permanent full time Apply visual systems brand building social digital integrated campaigns photography video motion CGI creator content 5-8 years fluent English written spoken",
+  });
+}
+
+Object.assign(CURATED, {
+  427: {
+    statusKey: "live",
+    direction: "brand",
+    company: "Revolut",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona 办公室 / Spain remote",
+    titleZh: "雇主品牌平面设计师（静态 / 动效）",
+    titleEs: "Graphic Designer (Employer Branding)",
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    language: "官方完整职位正文未写中文、英语或西语等级；申请前先确认日常工作语言",
+    experienceKey: "junior",
+    experienceLabel: "2 年以上视觉 / 品牌 / 平面设计",
+    internshipKey: false,
+    statusEvidence: "2026-08-13 Round 50：Revolut 官方职位总表和本地化官方详情重新列出同一 requisition，地点明确含 Barcelona 与 Spain remote，页面显示 Apply for this role；招聘方最新设计岗位帖也链接同一官方 URL。",
+    reason: "岗位与品牌视觉、企业传播、静态和动态延展高度相关，且 2 年门槛比多数高级岗现实；但没有中文工作证据，语言仍需先问，所以得分受“语言未说明”上限约束，不能超过中文机会。",
+    next: "先通过官方页面确认仍可提交，再用简短英文询问 Barcelona 团队的实际工作语言、办公室频率、Spain 合同与薪资；确认沟通可承受后再定制雇主品牌 / campaign / motion 案例。",
+    links: [
+      "https://www.revolut.com/en-HU/careers/position/graphic-designer-employer-branding-d47d1c9b-3e07-4878-84d7-5841dd3930d8/",
+      "https://es.linkedin.com/jobs/view/4436834624",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND50_SECTION,
+    changeType: "round-50-exact-requisition-reopened",
+  },
+  930898: {
+    statusKey: "live",
+    direction: "brand",
+    company: "Dragons Group",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / permanent full-time",
+    titleZh: "高级艺术指导（美妆、护肤与生活方式品牌）",
+    titleEs: "Senior Art Director (Beauty, Skincare, Wellness & Lifestyle)",
+    languageKey: "english",
+    applicationMode: "english",
+    language: "官方正文明确要求流利书面与口语英语，并需能用英语自信提案；其他语言仅为加分项",
+    experienceKey: "senior",
+    experienceLabel: "5–8 年创意机构或品牌经验",
+    internshipKey: false,
+    statusEvidence: "2026-08-13 Round 50：Dragons 官方 Factorial 总表与精确职位 308025 均显示 Barcelona hybrid、permanent、full-time 和 Apply now。",
+    reason: "品牌系统、campaign、摄影、视频、motion 与 CGI 方向很贴，但流利英语、5–8 年资历及客户提案都是现实硬门槛，因此只保留为后排挑战岗。",
+    next: "不要优先投入；只有在英语提案和高级艺术指导案例已足够时再投。作品集应突出美妆 / 生活方式品牌系统、整合 campaign、社媒内容体系和跨制作团队落地。",
+    links: [
+      "https://dragons-group.factorialhr.com/job_posting/senior-art-director-beauty-skincare-wellness-lifestyle-308025",
+      "https://dragons-group.factorialhr.com/apply/senior-art-director-beauty-skincare-wellness-lifestyle-308025",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND50_SECTION,
+    changeType: "round-50-new-current-official",
+  },
+});
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
@@ -14403,6 +14521,15 @@ function linkifyOriginal(value) {
 
 function identityKey(item) {
   const links = toLinks(item);
+  // Revolut can expose the same requisition through locale-specific career
+  // URLs and LinkedIn mirrors. Reopening the exact role must replace its old
+  // closed snapshot, not create a second deduped identity.
+  if (
+    links.some((link) => /graphic-designer-employer-branding-d47d1c9b-3e07-4878-84d7-5841dd3930d8/i.test(link)) ||
+    /d47d1c9b-3e07-4878-84d7-5841dd3930d8/i.test(`${item.contact || ""} ${item.searchText || ""}`)
+  ) {
+    return "ats:revolut:d47d1c9b-3e07-4878-84d7-5841dd3930d8";
+  }
   // This requisition has repeatedly re-entered the tracker as a fresh row
   // after Teamtailor closed it. Match the official requisition before legacy
   // id aliases so the closure audit and every regenerated mirror share one
