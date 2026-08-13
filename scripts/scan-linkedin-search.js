@@ -60,25 +60,42 @@ async function fetchPage(keyword, start) {
   url.searchParams.set("location", location);
   url.searchParams.set("f_TPR", "r604800");
   url.searchParams.set("start", String(start));
-  const response = await fetch(url, {
-    headers: {
-      "accept-language": "en-US,en;q=0.9,es;q=0.8",
-      "user-agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/136.0 Safari/537.36",
-    },
-  });
-  return {
-    keyword,
-    start,
-    statusCode: response.status,
-    jobs: response.ok ? parseCards(await response.text(), keyword) : [],
-  };
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
+  try {
+    const response = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        "accept-language": "en-US,en;q=0.9,es;q=0.8",
+        "user-agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/136.0 Safari/537.36",
+      },
+    });
+    return {
+      keyword,
+      start,
+      statusCode: response.status,
+      jobs: response.ok ? parseCards(await response.text(), keyword) : [],
+    };
+  } catch (error) {
+    return {
+      keyword,
+      start,
+      statusCode: 0,
+      error: error.name === "AbortError" ? "timeout" : error.message,
+      jobs: [],
+    };
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 async function main() {
   const pages = [];
-  for (const keyword of keywords) {
-    for (const start of starts) pages.push(await fetchPage(keyword, start));
+  const requests = keywords.flatMap((keyword) => starts.map((start) => ({ keyword, start })));
+  for (let offset = 0; offset < requests.length; offset += 6) {
+    const batch = requests.slice(offset, offset + 6);
+    pages.push(...(await Promise.all(batch.map(({ keyword, start }) => fetchPage(keyword, start)))));
   }
   const jobs = new Map();
   for (const page of pages) {
@@ -94,10 +111,11 @@ async function main() {
         scannedAt: new Date().toISOString(),
         location,
         keywords,
-        pages: pages.map(({ keyword, start, statusCode, jobs: pageJobs }) => ({
+        pages: pages.map(({ keyword, start, statusCode, error, jobs: pageJobs }) => ({
           keyword,
           start,
           statusCode,
+          error,
           count: pageJobs.length,
         })),
         jobs: [...jobs.values()].sort((a, b) => b.postedAt.localeCompare(a.postedAt) || a.title.localeCompare(b.title)),

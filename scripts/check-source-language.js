@@ -8,6 +8,8 @@ if (!urls.length) {
 }
 
 const languagePattern = /\b(?:english|spanish|catalan|castilian|language|languages|fluent|fluency|proficient|proficiency|bilingual|native)\b|ingl[eé]s|espa[nñ]ol|castellano|catal[aà]n|idioma|idiomas/giu;
+const experiencePattern = /\b(?:\d+\+?\s*(?:years?|yrs?)|(?:minimum|at least|over)\s+\d+\s+years?|years?\s+of\s+(?:relevant\s+)?experience|senior|lead|intern(?:ship)?)\b|\b(?:\d+\+?\s*años|(?:mínimo|al menos|más de)\s+\d+\s+años|años\s+de\s+experiencia|prácticas|becari[oa]|convenio)\b/giu;
+const contractPattern = /\b(?:full[- ]time|part[- ]time|freelance|contract(?:or)?|permanent|temporary|remote|hybrid|salary|compensation|payroll|work authori[sz]ation|visa|sponsorship)\b|\b(?:jornada completa|media jornada|autónom[oa]|indefinid[oa]|temporal|remoto|híbrido|salario|sueldo|retribución|permiso de trabajo|visado)\b/giu;
 
 function decodeEntities(value) {
   return value
@@ -35,11 +37,11 @@ function normalizeHtml(raw, removeScripts) {
   return decodeEntities(value).replace(/\s+/g, " ").trim();
 }
 
-function contexts(text, limit = 16) {
+function contexts(text, pattern = languagePattern, limit = 16) {
   const matches = [];
   const seen = new Set();
-  languagePattern.lastIndex = 0;
-  for (const match of text.matchAll(languagePattern)) {
+  pattern.lastIndex = 0;
+  for (const match of text.matchAll(pattern)) {
     const start = Math.max(0, match.index - 180);
     const end = Math.min(text.length, match.index + match[0].length + 220);
     const excerpt = text.slice(start, end).trim();
@@ -99,14 +101,18 @@ async function inspect(url) {
     const title = decodeEntities(raw.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || "")
       .replace(/\s+/g, " ")
       .trim();
-    const visibleContexts = contexts(visible);
+    const visibleLanguageContexts = contexts(visible, languagePattern);
+    const visibleExperienceContexts = contexts(visible, experiencePattern);
+    const visibleContractContexts = contexts(visible, contractPattern);
     return {
       requested_url: url,
       final_url: response.url,
       status: response.status,
       title,
       visible_text_length: visible.length,
-      language_contexts: visibleContexts.length ? visibleContexts : contexts(embedded),
+      language_contexts: visibleLanguageContexts.length ? visibleLanguageContexts : contexts(embedded, languagePattern),
+      experience_contexts: visibleExperienceContexts.length ? visibleExperienceContexts : contexts(embedded, experiencePattern),
+      contract_contexts: visibleContractContexts.length ? visibleContractContexts : contexts(embedded, contractPattern),
       job_postings: structuredJobPostings(raw),
     };
   } catch (error) {

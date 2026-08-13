@@ -3293,6 +3293,8 @@ const AUDITED_ORDER_INDEX = new Map(MY_OPPORTUNITY_IDS.map((id, index) => [id, i
 const IDENTITY_ALIASES = Object.freeze({
   778: "barcelona-chinese-advertising-company-current-graphic-designer",
   930835: "barcelona-chinese-advertising-company-historical-same-contact-post",
+  178: "bending-spoons-media-designer-69d588c142e4c7b7a3dd14ee",
+  930900: "bending-spoons-media-designer-69d588c142e4c7b7a3dd14ee",
   95: "qustodio-digital-designer-marketing",
   20: "infiled-emea-graphic-designer",
   23: "top-doctors-marketing-designer",
@@ -14933,6 +14935,344 @@ Object.assign(CURATED, {
   },
 });
 
+const ROUND56_SECTION = "2026-08-13 Round 56 ranked 91-120 original-page, language-gate and duplicate recheck";
+const ROUND56_AUDITED_IDS = Object.freeze([
+  1002, 985, 178, 930900, 977, 1021, 990001, 990, 930818, 37, 12,
+  1299, 1255, 958, 1257, 1258, 1026, 1061, 930865, 930829, 382,
+  1237, 930812, 1287, 930637, 238, 930843, 305, 27, 930708, 922,
+]);
+
+for (const id of ROUND56_AUDITED_IDS) {
+  if (CURATED[id]) {
+    CURATED[id] = {
+      ...CURATED[id],
+      latestAuditSection: ROUND56_SECTION,
+      changeType: "round-56-ranked-91-120-original-page-recheck",
+    };
+  }
+}
+
+function updateRound56Item(id, patch) {
+  const item = allData.find((entry) => Number(entry.id) === id);
+  if (!item) return;
+  Object.assign(item, { section: ROUND56_SECTION, ...patch });
+  item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+    .filter(Boolean)
+    .join(" ");
+}
+
+// Two tracker rows pointed to the exact same Bending Spoons requisition.
+// Preserve the older audit row as duplicate history and keep the newer row as
+// the sole current card exposing the official detail, application and employer
+// LinkedIn evidence.
+updateRound56Item(178, {
+  status:
+    "Closed/history duplicate: this row and current canonical record 930900 resolve to Bending Spoons requisition 69d588c142e4c7b7a3dd14ee. The title, scope, locations, proficient-English requirement, application form and first-months-in-Milan condition are identical.",
+  analysis:
+    "Preserve this older row as duplicate-source history only. Use current card 930900 for the official detail, application and LinkedIn employer evidence; do not count or rank this as a second vacancy.",
+  tier: "X",
+});
+
+updateRound56Item(930900, {
+  status:
+    "Live/current canonical vacancy: the official Bending Spoons detail and application for requisition 69d588c142e4c7b7a3dd14ee were reopened on 2026-08-13 and still expose Media Designer and Apply. Employer LinkedIn 4450907880 is the same vacancy and gives a 2026-09-07 valid-through date.",
+  contact:
+    "Official detail: https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee ; official application: https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee/apply ; employer LinkedIn: https://es.linkedin.com/jobs/view/media-designer-at-bending-spoons-4450907880",
+  analysis:
+    "Keep one canonical card. The visual scope is relevant, but proficient English, several hours of tests, uncertain Spain eligibility and spending most days in Milan during the first months make it an English-first remote backup, not a Barcelona priority.",
+  links: [
+    "https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee",
+    "https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee/apply",
+    "https://es.linkedin.com/jobs/view/media-designer-at-bending-spoons-4450907880",
+  ],
+});
+
+Object.assign(CURATED, {
+  178: {
+    ...CURATED[178],
+    statusKey: "closed",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "open",
+    experienceLabel: "未写固定年限 / 以能力测试为主",
+    links: [
+      "https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee",
+      "https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee/apply",
+      "https://es.linkedin.com/jobs/view/media-designer-at-bending-spoons-4450907880",
+    ],
+    preferCuratedLinks: true,
+    reason: "与 930900 是同一个 Bending Spoons requisition，不再作为第二个当前机会计数。",
+    next: "只使用当前规范卡 930900；本条仅保留为重复来源历史。",
+    statusEvidence: "2026-08-13 复核合并：官方编号、职位名、职责、地点、语言要求及申请表完全相同。",
+    latestAuditSection: ROUND56_SECTION,
+    changeType: "round-56-duplicate-source-merged",
+  },
+  930900: {
+    ...CURATED[930900],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "open",
+    experienceLabel: "未写固定年限 / 以能力测试为主",
+    links: [
+      "https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee",
+      "https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee/apply",
+      "https://es.linkedin.com/jobs/view/media-designer-at-bending-spoons-4450907880",
+    ],
+    preferCuratedLinks: true,
+    statusEvidence: "2026-08-13 复核：官方详情与申请表仍开放；LinkedIn 4450907880 是同一职位并标注 2026-09-07 有效期。",
+    latestAuditSection: ROUND56_SECTION,
+    changeType: "refresh",
+  },
+  1002: {
+    ...CURATED[1002],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "unknown",
+    experienceKey: "unknown",
+    experienceLabel: "需要 performance motion 经验，但未写固定年限",
+    statusEvidence: "2026-08-13 复核：官方 Ashby 当前可申请，Remote International，偏好欧洲时区；未写语言等级或固定年限。",
+  },
+  985: {
+    ...CURATED[985],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "unknown",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 3 年以上 / freelance",
+    statusEvidence: "2026-08-13 复核：官方 Visual Designer 页面保留 EU timezones remote、freelance、3+ 年及申请表；未列语言条款。",
+  },
+  977: {
+    ...CURATED[977],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 3–5 年",
+    statusEvidence: "2026-08-13 复核：官方 Ashby 当前可申请，Europe remote，明确要求 3–5 年及 fluent English。",
+  },
+  1021: {
+    ...CURATED[1021],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "unknown",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 2–5 年 performance creative",
+    statusEvidence: "2026-08-13 复核：官方 Ashby 当前可申请，UK/EU remote，要求约 2–5 年；未单列语言等级。",
+  },
+  990001: {
+    ...CURATED[990001],
+    statusKey: "live",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    statusEvidence: "2026-08-13 复核：LinkedIn 雇主详情仍可申请并标注 2026-08-27 有效期；native/advanced Castilian 是明确硬门槛。",
+  },
+  990: {
+    ...CURATED[990],
+    statusKey: "verify",
+    languageKey: "light",
+    applicationMode: "unknown",
+    statusEvidence: "2026-08-13 复核：官方独立详情触发安全检查，无法重新读取完整正文；保留 Spain-remote 线索并继续先确认。",
+  },
+  930818: {
+    ...CURATED[930818],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "intern",
+    experienceLabel: "实习 / 在读或已获相关学位",
+    statusEvidence: "2026-08-13 复核：Infor 官方职位当前可申请，Barcelona hybrid 全职实习，并明确要求 good command of English。",
+  },
+  37: {
+    ...CURATED[37],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "unknown",
+    experienceKey: "intern",
+    experienceLabel: "实习 / 学生或应届生",
+    statusEvidence: "2026-08-13 复核：ALEA 官方 Teamtailor 仍有 Apply；学生/应届和作品集为条件，语言等级未明写。",
+  },
+  12: {
+    ...CURATED[12],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "unknown",
+    experienceKey: "unknown",
+    experienceLabel: "未写固定年限",
+    statusEvidence: "2026-08-13 复核：turbopuffer 当前申请页仍开放；未写语言等级或固定年限，按国际远程团队记英语高概率。",
+  },
+  1299: {
+    ...CURATED[1299],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "intern",
+    experienceLabel: "12 个月实习 / 必须在读并可签全程大学协议",
+    statusEvidence: "2026-08-13 复核：Agilent 官方 Workday 当前可申请；fluent English、在读身份和全程 university agreement 均为硬条件。",
+  },
+  1255: {
+    ...CURATED[1255],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "intern",
+    experienceLabel: "实习 / 合同措辞冲突需先确认",
+    statusEvidence: "2026-08-13 复核：Gameloft 官方申请表仍可提交；Graphic Design Intern 与 permanent 字段冲突，合同和语言需先问清。",
+  },
+  958: {
+    ...CURATED[958],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "intern",
+    experienceLabel: "实习 / 必须可签大学协议",
+    statusEvidence: "2026-08-13 复核：Remedy Entertainment 官方 Greenhouse 申请仍开放；advanced English 与 university internship agreement 明确。",
+  },
+  1257: {
+    ...CURATED[1257],
+    statusKey: "live",
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    experienceKey: "open",
+    experienceLabel: "未要求工作经验",
+    statusEvidence: "2026-08-13 复核：JOB TODAY 原始详情仍显示全职、无需经验及 2026-09-05 有效期；本地西语环境很可能。",
+  },
+  1258: {
+    ...CURATED[1258],
+    statusKey: "live",
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    statusEvidence: "2026-08-13 复核：JOB TODAY 原始详情仍可读且为 Barcelona 全职；正文未写语言等级，按本地西语环境处理。",
+  },
+  1026: {
+    ...CURATED[1026],
+    statusKey: "live",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    statusEvidence: "2026-08-13 复核：Labhouse 官方 Ashby 当前可申请，并明确要求 good spoken and written English and Spanish。",
+  },
+  1061: {
+    ...CURATED[1061],
+    statusKey: "live",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    statusEvidence: "2026-08-13 复核：Dragons 官方 Factorial 当前可申请；English mandatory 与 Spanish mandatory 均为明确硬门槛。",
+  },
+  930865: {
+    ...CURATED[930865],
+    statusKey: "verify",
+    languageKey: "light",
+    applicationMode: "unknown",
+    opaqueEmployer: true,
+    statusEvidence: "2026-08-13 复核：Jobgether/LinkedIn 详情仍暴露远程 UI/visual brief，但实际客户未公开；必须先确认雇主和 Spain 合同。",
+  },
+  930829: {
+    ...CURATED[930829],
+    statusKey: "live",
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    experienceKey: "intern",
+    experienceLabel: "实习 / trainee",
+    statusEvidence: "2026-08-13 复核：Raventós Codorníu 雇主详情仍可申请并标注 2026-08-19 有效期；未写语言等级，按本地西语实习环境处理。",
+  },
+  382: {
+    ...CURATED[382],
+    statusKey: "live",
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    experienceKey: "intern",
+    experienceLabel: "6 个月实习 / 需学生或大学协议",
+    statusEvidence: "2026-08-13 复核：精确 FashionJobs 详情本轮受 Cloudflare 限制；最近完整正文仍为 6 个月、SMI 补助和 convenio，未见关闭证据。",
+  },
+  1237: {
+    ...CURATED[1237],
+    statusKey: "verify",
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    statusEvidence: "2026-08-13 复核：Indeed 精确详情受安全检查限制，LinkedIn 镜像已过期；保留邮箱确认路线，不标成已验证开放。",
+  },
+  930812: {
+    ...CURATED[930812],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "资深 / 约 7 年",
+    statusEvidence: "2026-08-13 复核：Skyscanner 当前雇主详情与官方 requisition 仍存在；约 7 年经验，正文未列语言等级，按国际英语团队处理。",
+  },
+  1287: {
+    ...CURATED[1287],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "unknown",
+    experienceKey: "intern",
+    experienceLabel: "实习 / €800–1,000",
+    statusEvidence: "2026-08-13 复核：Welcome to the Jungle 明确显示 Open for applications；Barcelona 实习、€800–1,000，语言未明写。",
+  },
+  930637: {
+    ...CURATED[930637],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    statusEvidence: "2026-08-13 复核：Dragons 官方 Factorial 与雇主 LinkedIn 仍有当前 Senior Packaging/POS 职位；fluent English 明确。",
+  },
+  238: {
+    ...CURATED[238],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "mid",
+    experienceLabel: "中高级 / 4 年以上",
+    statusEvidence: "2026-08-13 复核：Publicis 官方 requisition 165712 当前可申请且标注 2027-07-10 有效期；4+ 年与 advanced English 明确。",
+  },
+  930843: {
+    ...CURATED[930843],
+    statusKey: "live",
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    experienceKey: "intern",
+    experienceLabel: "实习 / 必须可签 convenio / €271 税前每月",
+    statusEvidence: "2026-08-13 复核：TalentClue 与 LinkedIn 是同一当前实习；convenio 和 €271/月为明确硬门槛。",
+    changeType: "refresh",
+  },
+  305: {
+    ...CURATED[305],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    statusEvidence: "2026-08-13 复核：Hostinger 官方 Ashby 当前可申请、Spain remote；Senior 与 fluent English 明确。",
+  },
+  27: {
+    ...CURATED[27],
+    statusKey: "live",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    experienceKey: "lead",
+    experienceLabel: "负责人 / 5 年以上管理经验",
+    statusEvidence: "2026-08-13 复核：TWOJEYS 官方 Personio 当前可申请；5+ 年品牌领导经验及高水平 Spanish/English 均明确。",
+  },
+  930708: {
+    ...CURATED[930708],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 6–10 年且需医疗领域经验",
+    statusEvidence: "2026-08-13 复核：Dragons 官方 Factorial 当前可申请；6–10 年、医疗/制药背景和 fluent English 明确。",
+  },
+  922: {
+    ...CURATED[922],
+    statusKey: "live",
+    languageKey: "light",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 3 年以上",
+    statusEvidence: "2026-08-13 复核：Solidgate 官方职位当前可申请、Europe remote；3+ 年与 English B1+ 明确。",
+  },
+});
+
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
   const explicitMode = curated?.applicationMode || APPLICATION_MODE_OVERRIDES[item.id];
@@ -15367,6 +15707,16 @@ function linkifyOriginal(value) {
 
 function identityKey(item) {
   const links = toLinks(item);
+  // Bending Spoons exposes the same Media Designer requisition through an
+  // official detail, an application route and employer LinkedIn mirrors.
+  // Normalize every representation before ID aliases so a refreshed mirror
+  // cannot reappear as an extra vacancy.
+  if (
+    links.some((link) => /69d588c142e4c7b7a3dd14ee|4450907880/i.test(link)) ||
+    /69d588c142e4c7b7a3dd14ee|4450907880/i.test(`${item.contact || ""} ${item.searchText || ""}`)
+  ) {
+    return "ats:bending-spoons:69d588c142e4c7b7a3dd14ee";
+  }
   // Revolut can expose the same requisition through locale-specific career
   // URLs and LinkedIn mirrors. Reopening the exact role must replace its old
   // closed snapshot, not create a second deduped identity.
