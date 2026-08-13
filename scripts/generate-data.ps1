@@ -7713,6 +7713,33 @@ foreach ($finalRecord in $records) {
   }
 }
 
+# Round 45 / 2026-08-13: the current ES02 184673 repost and Xihua 637173
+# record have the same Barcelona role, requirements, contact Chen, phone
+# 644055418 and WeChat A644055418. Preserve both pages on one canonical record
+# and archive the older source identity instead of counting two vacancies.
+foreach ($finalRecord in $records) {
+  if ([int]$finalRecord.id -eq 778) {
+    $finalRecord.section = '2026-08-13 Round 45 Chinese-source identity and remote-eligibility audit'
+    $finalRecord.status = 'Verify first, canonical current repost: ES02 184673 remains readable and was posted 2026-08-06. Its Barcelona full-time graphic-designer duties, requirements, contact Chen, phone 644055418 and WeChat A644055418 exactly match Xihua 637173, so both pages represent one vacancy.'
+    $finalRecord.contact = 'Current ES02 detail: https://www.es02.com/jobs/Recruitment/barcelona/i184673.html ; historical same-contact Xihua evidence: https://xihua.es/forum.php?mod=viewthread&tid=637173 ; WeChat A644055418 ; phone +34 644 055 418'
+    $finalRecord.links = @('https://www.es02.com/jobs/Recruitment/barcelona/i184673.html', 'https://xihua.es/forum.php?mod=viewthread&tid=637173')
+  }
+  if ([int]$finalRecord.id -eq 930835) {
+    $finalRecord.section = '2026-08-13 Round 45 Chinese-source identity and remote-eligibility audit'
+    $finalRecord.status = 'Closed/duplicate history: Xihua 637173 is the older same-contact version of canonical current ES02 card 778. Both use the same Barcelona full-time designer brief, contact Chen, phone 644055418 and WeChat A644055418.'
+    $finalRecord.analysis = 'Preserve the old Xihua page and its EUR1,410-1,600 net salary field as historical evidence, but do not count it as a second vacancy. Verify the current need through canonical card 778.'
+    $finalRecord.tier = 'X'
+    $finalRecord.locationTag = 'Barcelona area; historical duplicate'
+    $finalRecord.typeTag = 'Closed same-contact duplicate'
+    $finalRecord.searchText = 'closed duplicate Xihua 637173 same canonical ES02 184673 Barcelona full-time graphic designer Chen 644055418 A644055418'
+  }
+  if ([int]$finalRecord.id -eq 920) {
+    $finalRecord.section = '2026-08-13 Round 45 Chinese-source identity and remote-eligibility audit'
+    $finalRecord.status = '2026-08-13 recheck: the original Zhaopin page remains readable and shows immediate chat. It is a Chengdu/Jinjiang part-time or project-based Brand Visual Designer opening for ten people with a CNY10,000-15,000 salary field, but it does not state Spain residency, overseas contracting or international payment eligibility.'
+    $finalRecord.analysis = 'Keep in the Chinese manual queue because the VI and Chinese-language fit are strong. Do not treat the word remote as Spain eligibility: ask about Barcelona residency, contract entity, weekly hours, timezone, cross-border payment and tax before preparing a full application.'
+  }
+}
+
 # Round 643: location and status integrity guards for two high-scoring cards.
 # Adsmurai's official page is a Madrid requisition despite a contradictory
 # Barcelona mention in a repeated vacancy widget. Preply's current careers

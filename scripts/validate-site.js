@@ -77,9 +77,9 @@ check(test.applicationStatus(test.allData.find((item) => item.id === 872)).key =
 check(test.allData.find((item) => item.id === 872).tier === "X", "AQIPA named vacancy must be excluded");
 
 check(test.allData.length > 700, "机会数据没有完整载入");
-check(test.priorityItems.length === 6, "首页重点机会数量不是当前六条人工保留入口");
+check(test.priorityItems.length === 5, "首页重点机会数量不是当前五条独立人工保留入口");
 check(
-  [778, 920, 930835, 1300, 24, 25].every((id) =>
+  [778, 920, 1300, 24, 25].every((id) =>
     test.priorityItems.some((item) => item.id === id),
   ),
   "中文路径与此前认可岗位未完整进入首页",
@@ -163,7 +163,7 @@ check([930816, 930818, 930819, 93, 1296, 930817, 1293, 37, 279].every((id) => au
 check([930820, 930821, 930822, 930823, 178, 228].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第九批仍开放的真实机会未完整进入主表");
 check([930824, 930825, 930826, 930827, 930829].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十批仍然开放的真实机会未完整进入主表");
 check([930831, 930832, 930833].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十一批逐条核验的三条真实机会未完整进入主表");
-check([930834, 930835, 930836, 930837].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十二批新增的四条机会未完整进入主表");
+check([930834, 930836, 930837].every((id) => auditedMain.some((item) => Number(item.id) === id)) && !auditedMain.some((item) => Number(item.id) === 930835), "第十二批当前独立机会或同联系方式重复归档不完整");
 check([930838, 930840, 930841, 930842, 930843, 930844].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十三批仍开放的六条机会未完整进入主表");
 check([930838, 930840, 930841, 930842, 930843, 930844].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十三批仍开放的雇主岗位未全部进入 live");
 check([930845, 930847].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第十四批仍有效的真实机会未完整进入主表");
@@ -180,7 +180,7 @@ check([160, 930715].every((id) => test.applicationStatus(test.allData.find((item
 check(!auditedMain.some((item) => [160, 930715].includes(Number(item.id))), "第十四批已关闭岗位泄漏进默认主表");
 check(test.toLinks(test.allData.find((item) => Number(item.id) === 279)).some((url) => /4448026093/i.test(url)), "DORTOKA 新的当前招聘编号未写入卡片");
 check(test.toLinks(test.allData.find((item) => Number(item.id) === 958)).some((url) => /omnicomhealth\/jobs\/5207339008/i.test(url)), "Remedy Edge 当前官方实习入口未写入卡片");
-check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 930835)).key === "verify", "匿名华人广告店线索不得在未确认雇主前提升为 live");
+check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 930835)).key === "closed", "同联系方式华人广告店旧帖没有进入重复历史");
 check([914, 2942, 134, 977, 1255, 279].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "live"), "第十二批其余官方可投岗位未全部提升为 live");
 check([1239, 216, 930720, 206, 183, 239, 1294, 1241].every((id) => test.applicationStatus(test.allData.find((item) => Number(item.id) === id)).key === "closed"), "第十二批已关闭或无具体 vacancy 的旧卡未全部移入历史区");
 check(test.applicationStatus(test.allData.find((item) => Number(item.id) === 930708)).key === "live", "Dragons 医疗艺术指导的官方可投状态未恢复");
@@ -1123,7 +1123,7 @@ const r22Main = test.MY_OPPORTUNITY_IDS.map((id) => test.allData.find((item) => 
 check(r22Main.length >= 163, "Round 22: reviewed main opportunity baseline regressed below 163");
 check(r22Main.filter((item) => test.locationBucket(item) === "barcelona").length >= 120 && r22Main.filter((item) => test.locationBucket(item) === "remote").length >= 43, "Round 22: Barcelona/remote baseline regressed below 120/43");
 check(r22Main.filter((item) => test.applicationStatus(item).key === "live").length >= 150 && r22Main.filter((item) => test.applicationStatus(item).key === "verify").length >= 5, "Round 22: live/verify baseline regressed below 150/5");
-check(r22Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 35: Chinese-relevant current opportunity count must remain evidence-backed at 6");
+check(r22Main.filter((item) => test.isChineseRelevant(item) && test.applicationStatus(item).key !== "closed").length === 5, "Round 45: Chinese-relevant current opportunity count must remain evidence-backed at 5");
 
 const r23ById = (id) => test.allData.find((item) => Number(item.id) === id);
 const r23Main = test.MY_OPPORTUNITY_IDS.map(r23ById).filter(Boolean);
@@ -1133,9 +1133,9 @@ check(r23Main.length === 204 && r23VisibleMain.length === 204, "Round 39: comple
 check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 155 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 49, "Round 39: Barcelona/remote split must be exactly 155/49");
 check(
   r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 182 &&
-    r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 14 &&
-    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 8,
-  "Profile audit: 204 reviewed IDs must resolve to 182 live, 14 verify and 8 preserved closed-history cards",
+    r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 13 &&
+    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 9,
+  "Profile audit: 204 reviewed IDs must resolve to 182 live, 13 verify and 9 preserved closed-history cards",
 );
 const r39Skyscanner = r23ById(930812);
 check(r39Skyscanner && test.applicationStatus(r39Skyscanner).key === "closed", "Round 39: Skyscanner Senior Visual Designer must remain in closed history, not the current board");
@@ -1184,11 +1184,11 @@ const r41LanguageCounts = r41Current.reduce((counts, item) => {
   return counts;
 }, {});
 check(
-  r41Current.length === 196 &&
-    r41Current.filter((item) => test.locationBucket(item) === "barcelona").length === 147 &&
+  r41Current.length === 195 &&
+    r41Current.filter((item) => test.locationBucket(item) === "barcelona").length === 146 &&
     r41Current.filter((item) => test.locationBucket(item) === "remote").length === 49 &&
     r41LanguageCounts.chineseCheck === 2 &&
-    r41LanguageCounts.basicSpanish === 1 &&
+    !r41LanguageCounts.basicSpanish &&
     r41LanguageCounts.english === 64 &&
     r41LanguageCounts.unknown === 54 &&
     r41LanguageCounts.spanishLikely === 21 &&
@@ -1236,18 +1236,26 @@ check(test.toLinks(r23ById(930712)).length === 1 && /8634604002/i.test(test.toLi
 check(test.toLinks(r23ById(579))[0] === "https://www.infojobs.net/castelldefels/disenador-grafico/of-id70f73ce2843f2842d228801f65a9e", "Round 43: Gestión Hostelocio exact InfoJobs detail was not recovered as the primary route");
 const r43Sorted = r41Current.slice();
 test.sortRecords(r43Sorted);
-check([778, 920, 930835].every((id, index) => Number(r43Sorted[index]?.id) === id), "Round 43: the three Chinese/contact-first opportunities are no longer the first three cards");
-check(r43Sorted.slice(3, 10).every((item) => test.applicationLanguagePath(item).key === "unknown"), "Round 43: explicit foreign-language jobs still outrank the best no-stated-language backups");
+check([778, 920].every((id, index) => Number(r43Sorted[index]?.id) === id), "Round 45: the two independent Chinese/contact-first opportunities are no longer the first two cards");
+check(r43Sorted.slice(2, 9).every((item) => test.applicationLanguagePath(item).key === "unknown"), "Round 45: explicit foreign-language jobs still outrank the best no-stated-language backups");
 
 const r44RemedyCurrent = r23ById(958);
 const r44RemedyHistorical = r23ById(930638);
 const r44RemedyLinks = test.toLinks(r44RemedyCurrent);
-check(test.latestRoundSection === "2026-08-13 Round 44 official-board duplicate reconciliation", "Round 44: latest-round marker did not advance");
+const r44AuditItems = test.allData.filter((item) => /Round 44 official-board duplicate reconciliation/i.test(test.CURATED[item.id]?.auditSection || item.section || ""));
+check([958, 930638].every((id) => r44AuditItems.some((item) => Number(item.id) === id)), "Round 44: official-board duplicate reconciliation history is incomplete");
 check(test.MY_OPPORTUNITY_SET.has(958) && test.applicationStatus(r44RemedyCurrent).key === "live", "Round 44: canonical Remedy Edge trainee opening was lost");
 check(r44RemedyLinks.length === 2 && r44RemedyLinks.some((url) => /omnicomhealth\/jobs\/5207339008/i.test(url)) && r44RemedyLinks.some((url) => /remedyedgespain\/jobs\/5207341008/i.test(url)), "Round 44: the canonical Remedy Edge card does not expose both current official application routes");
 check(r44RemedyHistorical && !test.MY_OPPORTUNITY_SET.has(930638) && test.applicationStatus(r44RemedyHistorical).key === "closed" && r44RemedyHistorical.tier === "X", "Round 44: removed Omnicom 4542432008 route still counts as a live independent vacancy");
 check(test.MY_OPPORTUNITY_IDS.length === 204 && new Set(test.MY_OPPORTUNITY_IDS).size === 204, "Round 44: duplicate Remedy Edge board route changed the 204-seat audited ledger");
-check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 37: Chinese-relevant current opportunity count must remain evidence-backed at 6");
+const r45ChineseCanonical = r23ById(778);
+const r45ChineseHistorical = r23ById(930835);
+check(test.latestRoundSection === "2026-08-13 Round 45 Chinese-source identity and remote-eligibility audit", "Round 45: latest-round marker did not advance");
+check([778, 920, 930835].every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)), "Round 45: canonical, China-remote and historical same-contact cards are not all preserved in the audit log");
+check(test.applicationStatus(r45ChineseCanonical).key === "verify" && test.toLinks(r45ChineseCanonical).some((url) => /i184673\.html/i.test(url)) && test.toLinks(r45ChineseCanonical).some((url) => /tid=637173/i.test(url)), "Round 45: canonical Chinese advertising card lost its current and historical source pages");
+check(test.applicationStatus(r45ChineseHistorical).key === "closed" && r45ChineseHistorical.tier === "X", "Round 45: same-contact Xihua card still counts as an independent current vacancy");
+check(test.displayedScore(r23ById(920)) === 56, "Round 45: China-remote role without confirmed Spain eligibility did not receive the location penalty");
+check(r23Main.filter((item) => test.isChineseRelevant(item) && test.applicationStatus(item).key !== "closed").length === 5, "Round 45: Chinese-relevant current opportunity count must remain evidence-backed at 5");
 for (const id of [930884, 930885, 930886, 930887]) {
   const item = r23ById(id);
   check(item && test.MY_OPPORTUNITY_SET.has(id) && test.locationBucket(item) === "barcelona" && test.applicationStatus(item).key === "live" && test.toLinks(item).length === 1, `Round 37: current Barcelona detail ${id} is missing, misclassified or lacks its exact route`);

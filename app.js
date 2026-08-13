@@ -3145,7 +3145,7 @@ const meta = window.JOB_META || {};
 // are the current Chinese-linked opportunities that the user has already
 // reviewed, not a generic list of attractive English-language design jobs.
 // Roles with an English/Spanish gate remain visible in the caution column.
-const PRIORITY_IDS = [778, 920, 930835, 1300, 24, 25];
+const PRIORITY_IDS = [778, 920, 1300, 24, 25];
 
 // Canonical, evidence-backed opportunities for the user. The generated corpus
 // remains searchable, but only these independently reviewed identities enter
@@ -3268,6 +3268,8 @@ const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
 const AUDITED_ORDER_INDEX = new Map(MY_OPPORTUNITY_IDS.map((id, index) => [id, index]));
 
 const IDENTITY_ALIASES = Object.freeze({
+  778: "barcelona-chinese-advertising-company-current-graphic-designer",
+  930835: "barcelona-chinese-advertising-company-historical-same-contact-post",
   95: "qustodio-digital-designer-marketing",
   20: "infiled-emea-graphic-designer",
   23: "top-doctors-marketing-designer",
@@ -12311,6 +12313,77 @@ if (round44RemedyHistorical) {
   });
 }
 
+const ROUND45_SECTION = "2026-08-13 Round 45 Chinese-source identity and remote-eligibility audit";
+const ROUND45_CHINESE_AD_LINKS = Object.freeze([
+  "https://www.es02.com/jobs/Recruitment/barcelona/i184673.html",
+  "https://xihua.es/forum.php?mod=viewthread&tid=637173",
+]);
+
+// The August ES02 repost and the older Xihua/Huaxin record are the same
+// Barcelona vacancy: role, requirements, publisher identity, phone and WeChat
+// all match exactly. Keep the fresh ES02 record as canonical and preserve the
+// older salary evidence as history instead of counting two opportunities.
+Object.assign(CURATED, {
+  778: {
+    ...CURATED[778],
+    statusKey: "verify",
+    links: [...ROUND45_CHINESE_AD_LINKS],
+    preferCuratedLinks: true,
+    statusEvidence: "2026-08-13 复核：ES02 184673 仍可直接读取，发布于 2026-08-06，岗位是 Barcelona 全职平面设计师，要求有经验、会 AI/Illustrator、备工作居留并写明全保；联系人小陈、电话 644055418、微信 A644055418。其岗位、要求、地点和联系方式与西华 637173 完全一致，因此只计一个现行机会。",
+    reason: "这是同一华人广告店岗位的最新规范卡。ES02 8 月重发负责证明近期需求，旧西华帖补充了 €1,410–1,600 税后薪资栏；两者不能重复计数。公司全称、CIF、地址、工时、合同和日常工作语言仍需中文确认。",
+    next: "先通过微信或电话确认公司全称/CIF、地址、岗位仍开放、实际薪资、工时、合同、试用期和工作语言；主体和书面条件明确前，不发居留证扫描件、护照或可编辑源文件。",
+    auditSection: ROUND45_SECTION,
+    changeType: "round-45-canonical-chinese-repost-merge",
+  },
+  930835: {
+    ...CURATED[930835],
+    statusKey: "closed",
+    reason: "西华 637173 与当前规范卡 778 使用完全相同的 Barcelona 全职设计岗位、要求、联系人陈、电话 644055418 和微信 A644055418；它是同一岗位的旧帖，不是第二个机会。",
+    next: "保留旧帖及 €1,410–1,600 税后薪资栏作为历史证据；当前核验和联系统一从卡片 778 进行。",
+    auditSection: ROUND45_SECTION,
+    changeType: "round-45-closed-same-contact-duplicate",
+  },
+  920: {
+    ...CURATED[920],
+    statusKey: "verify",
+    statusEvidence: "2026-08-13 复核：智联招聘原始详情仍可完整读取并显示立即沟通。岗位为成都锦江、兼职 / 项目制、招聘 10 人、月薪栏 ¥10,000–15,000，职责精确覆盖社媒、网站、宣传物料、品牌 VI 一致性；但没有说明接受西班牙居民、境外签约或跨境付款。",
+    reason: "中文和 VI 方向高度匹配，但‘远程协作’只描述工作方式，不等于 Spain remote。未确认西班牙居住资格、合同与跨境付款前，必须低于 Barcelona 本地机会和明确 Spain / Europe remote 岗位。",
+    next: "只先通过智联询问是否接受 Barcelona 常住者、合同主体、人民币区间口径、每周工时、时区重叠、跨境付款与税务；得到书面确认后再按正式远程机会准备材料。",
+    auditSection: ROUND45_SECTION,
+    changeType: "round-45-china-remote-eligibility-penalty",
+  },
+});
+
+const round45ChineseAdCurrent = allData.find((entry) => Number(entry.id) === 778);
+if (round45ChineseAdCurrent) {
+  Object.assign(round45ChineseAdCurrent, {
+    section: ROUND45_SECTION,
+    status: "Verify first, canonical current repost: ES02 detail 184673 remains readable and was posted 2026-08-06 for one full-time Barcelona graphic designer with experience, Illustrator/AI, valid work residence and full social insurance. Publisher Xiao Chen, phone 644055418 and WeChat A644055418 exactly match Xihua 637173, so the two source pages represent one vacancy.",
+    contact: `Current ES02 detail: ${ROUND45_CHINESE_AD_LINKS[0]} ; historical same-contact Xihua evidence: ${ROUND45_CHINESE_AD_LINKS[1]} ; WeChat A644055418 ; phone +34 644 055 418`,
+    links: [...ROUND45_CHINESE_AD_LINKS],
+    analysis: "Keep one canonical current card. The August ES02 repost proves recent demand and the older Xihua page preserves its EUR1,410-1,600 net salary field, but identical contact and vacancy details mean they are not separate jobs. Confirm employer identity and written terms in Chinese before sending sensitive documents or editable source files.",
+  });
+}
+
+const round45ChineseAdHistorical = allData.find((entry) => Number(entry.id) === 930835);
+if (round45ChineseAdHistorical) {
+  Object.assign(round45ChineseAdHistorical, {
+    section: ROUND45_SECTION,
+    status: "Closed/duplicate history: Xihua 637173 is the older same-contact version of canonical current ES02 card 778. Both name a Barcelona full-time designer, experience plus Illustrator/AI, work residence, full social insurance, contact Chen, phone 644055418 and WeChat A644055418.",
+    analysis: "Preserve the old Xihua page and its EUR1,410-1,600 net salary field as historical evidence, but do not count or rank it as a second vacancy. Verify the current need through canonical card 778.",
+    tier: "X",
+  });
+}
+
+const round45ChinaRemote = allData.find((entry) => Number(entry.id) === 920);
+if (round45ChinaRemote) {
+  Object.assign(round45ChinaRemote, {
+    section: ROUND45_SECTION,
+    status: "2026-08-13 recheck: the original Zhaopin page remains readable and shows immediate chat. It is a Chengdu/Jinjiang part-time or project-based Brand Visual Designer opening for ten people with a CNY10,000-15,000 salary field, but it does not state Spain residency, overseas contracting or international payment eligibility.",
+    analysis: "Keep in the Chinese manual queue because the VI and Chinese-language fit are strong. Do not treat the word remote as Spain eligibility: ask about Barcelona residency, contract entity, weekly hours, timezone, cross-border payment and tax before preparing a full application.",
+  });
+}
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
@@ -12811,8 +12884,11 @@ function locationFitPoints(item) {
 
   const text = `${locationLabel(item)} ${item.status || ""} ${item.analysis || ""}`.toLowerCase();
   const spainUnconfirmed =
-    /spain (?:eligibility|residen|contract|payroll|hiring|employment).{0,28}(?:confirm|unclear|unknown|not stated|待确认|需确认)|(?:西班牙|spain).{0,24}(?:资格|合同|雇佣|开票|付款).{0,14}(?:待确认|需确认)|不(?:说明|明确).{0,18}(?:西班牙|spain)|does not state.{0,18}spain/i.test(text);
-  if (spainUnconfirmed) return 4;
+    /spain (?:eligibility|residen|contract|payroll|hiring|employment).{0,28}(?:confirm|unclear|unknown|not stated|待确认|需确认)|(?:西班牙|spain).{0,24}(?:资格|合同|雇佣|开票|付款).{0,14}(?:待确认|需确认|未确认)|(?:待确认|需确认|未确认).{0,16}(?:西班牙|spain).{0,16}(?:资格|合同|雇佣|开票|付款)|不(?:说明|明确).{0,18}(?:西班牙|spain)|does not state.{0,18}spain/i.test(text);
+  // A China/other-country remote label is not practically Barcelona-accessible
+  // until the employer confirms Spain residency, contracting and payment.
+  // Give it a real penalty instead of the small positive score used before.
+  if (spainUnconfirmed) return -4;
   if (/spain remote|remote.{0,16}spain|españa.{0,12}remot|西班牙远程|barcelona 可居住/i.test(text)) return 18;
   if (/europe remote|remote.{0,16}europe|emea|欧洲远程|欧盟远程/i.test(text)) return 14;
   if (/worldwide|work from anywhere|global remote|全球远程/i.test(text)) return 8;
