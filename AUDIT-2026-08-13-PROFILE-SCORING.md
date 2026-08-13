@@ -24,16 +24,17 @@
 - Qoria / Qustodio 记录 314 仍在官方 Rippling 职位板，且完整 JD 明确要求 Fluent English；继续保留为英语高级备选，不重复建卡。
 - Agilent、Domingo Studio 等 15 张当前或历史卡补齐中文 / 西语岗位标题；Hays 正式岗不再因为正文提到“相关实习经历”而误受实习扣分。
 - 第 26–60 名继续使用同一证据规则：LABHOUSE、Ogilvy Social、Revolut、Carati、CBA、Supabase、Xapo、Pocket Worlds、Storisell、Netenders、IKIGAI、Codeway、Molin、Refokus 与 reboot 改为“工作语言未证实”；明确写出英语要求的 Preply、Glovo、Dragons、Omnicom、JUNGLE、Zurich、Lodgify、MANGO、EuroLeague 与 Publicis 保持英语路径。
+- 第 61–100 名继续复核：Synthesia、SIERRA、Bakken、THRU、Revolut Motion、turbopuffer、SLAPS、COCUNAT 与 DuckDuckGo 改为“工作语言未证实”；FunPlus Graphic Design Intern 已从官方板移除，bsport `7207663` 再次返回 410 且无同名新编号，两张都转入历史。
 
 ## 数量守恒
 
 - 完整去重来源库：1,254 条。
 - 已审核席位：204 条，全部保留。
-- 当前可用 / 待核验主表：200 条。
-- 历史席位：4 条，包括一个精确重复 requisition，以及三个已从当前招聘面撤下或无法继续证实开放的旧岗位。
-- 当前地点：Barcelona / 周边 151 条，Spain / Europe / worldwide remote 49 条。
-- 当前状态：184 条 live，16 条 verify。
-- 当前语言：中文核验 2、基础西语 1、英语 88、工作语言未证实 32、西语高概率 10、西语硬门槛 66、其他外语 1。
+- 当前可用 / 待核验主表：198 条。
+- 历史席位：6 条，包括一个精确重复 requisition，以及五个已从当前招聘面撤下或无法继续证实开放的旧岗位。
+- 当前地点：Barcelona / 周边 149 条，Spain / Europe / worldwide remote 49 条。
+- 当前状态：182 条 live，16 条 verify。
+- 当前语言：中文核验 2、基础西语 1、英语 77、工作语言未证实 41、西语高概率 10、西语硬门槛 66、其他外语 1。
 
 ## 排序验证
 

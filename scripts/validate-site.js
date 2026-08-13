@@ -146,8 +146,8 @@ check(test.applicationStatus(test.allData.find((item) => item.id === 930836)).ke
 check(test.applicationStatus(test.allData.find((item) => item.id === 156)).key === "closed", "Heroes/Boba 已从当前官方职位板撤下的旧卡没有进入历史区");
 check(test.applicationLanguagePath(test.allData.find((item) => item.id === 78)).key === "unknown", "Textura 未公开的团队语言仍被误标成已确认英语路径");
 check(test.applicationLanguagePath(test.allData.find((item) => item.id === 55)).key === "unknown", "BCome 未公开的团队语言仍被误标成已确认英语路径");
-check(test.applicationStatus(test.allData.find((item) => item.id === 209)).key === "live", "bsport 重新开放的官方 requisition 没有恢复");
-check(test.toLinks(test.allData.find((item) => item.id === 209)).some((url) => /7207663-lead-ui-visual-designer/i.test(url)), "bsport 重新开放的官方申请入口缺失");
+check(test.applicationStatus(test.allData.find((item) => item.id === 209)).key === "closed", "bsport 7207663 已再次返回 410 却仍留在当前主表");
+check(test.toLinks(test.allData.find((item) => item.id === 209)).some((url) => /7207663-lead-ui-visual-designer/i.test(url)), "bsport 历史官方申请入口没有保留");
 check(test.toLinks(test.allData.find((item) => item.id === 209)).some((url) => /4435255506/i.test(url)) && !test.toLinks(test.allData.find((item) => item.id === 209)).some((url) => /4382873380/i.test(url)), "bsport 新旧 LinkedIn 入口没有正确切换");
 check(test.toLinks(test.allData.find((item) => item.id === 930823))[0]?.includes("paid-motion-designer-306539") && !test.toLinks(test.allData.find((item) => item.id === 930823)).some((url) => /316734/i.test(url)), "Factorial Paid Motion Designer 当前官方 requisition 没有成为第一投递入口");
 check(auditedMain.every((item) => !/鈥|帽|鏄|鍙|闇|椤|閫|绗/.test(`${test.companyLabel(item)} ${test.roleLabels(item).zh} ${test.locationLabel(item)}`)), "默认机会总表仍有可见乱码");
@@ -276,11 +276,11 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 40/i.test(test.latestRoundSection) &&
-    [910, 930884, 425, 930826, 456, 535, 930847, 1002, 989, 854, 874, 1092, 372, 446, 84].every((id) =>
+  /Round 41/i.test(test.latestRoundSection) &&
+    [930844, 601, 1105, 1107, 990, 930870, 12, 2942, 1020, 443, 209].every((id) =>
       test.latestRoundItems.some((item) => Number(item.id) === id),
     ),
-  "Round 40 ranks 26-60 language and experience audit is incomplete",
+  "Round 41 ranks 61-100 status, language and experience audit is incomplete",
 );
 const round33AuditItems = test.allData.filter((item) => /Round 33 full-board direct-link reconciliation/i.test(String(item.section || "")));
 check(
@@ -625,7 +625,7 @@ check(test.applicationStatus(test.allData.find((item) => item.id === 313)).key =
 check(test.allData.find((item) => item.id === 313).tier === "C", "Mapit 母语西语硬门槛岗位没有降为 C 级");
 check(test.languageInfo(test.allData.find((item) => item.id === 313)).key === "spanish", "Mapit 母语西语硬门槛没有进入语言筛选");
 check(test.applicationStatus(test.allData.find((item) => item.id === 1020)).key === "live", "COCUNAT 当前官方职位没有保留可投状态");
-check(test.languageInfo(test.allData.find((item) => item.id === 1020)).key === "english", "COCUNAT 英文官方页被误判为西语或待确认岗位");
+check(test.applicationLanguagePath(test.allData.find((item) => item.id === 1020)).key === "unknown", "COCUNAT 未公开语言却仍因英文页面被标成英语岗位");
 check(test.applicationStatus(test.allData.find((item) => item.id === 989)).key === "live", "Storisell 当前官方 Motion Designer 没有保留为可投");
 check(test.allData.find((item) => item.id === 989).tier === "C", "Storisell 的宽泛 motion 角色被错误排入高优先级");
 check(test.applicationStatus(test.allData.find((item) => item.id === 874)).key === "live", "IKIGAI 当前官方申请表没有保留为可投");
@@ -852,7 +852,7 @@ const r655Xinming = test.allData.find((item) => item.id === 1280);
 const r656RemoteChina = test.allData.find((item) => item.id === 916);
 check(r651Ogilvy && test.applicationStatus(r651Ogilvy).key === "closed" && r651Ogilvy.tier === "X", "Round 651: expired Ogilvy/CBA Brand Designer remained active");
 check(test.dedupedData.some((item) => [92, 437].includes(item.id) && test.applicationStatus(item).key === "closed"), "Round 651: Ogilvy/CBA closed evidence disappeared after deduplication");
-check(r652Bsport && test.applicationStatus(r652Bsport).key === "live" && test.MY_OPPORTUNITY_SET.has(209) && test.toLinks(r652Bsport).some((url) => /careers\.bsport\.io\/jobs\/7207663/i.test(url)), "Round 38: bsport reopened official requisition was not restored to the main board");
+check(r652Bsport && test.applicationStatus(r652Bsport).key === "closed" && test.MY_OPPORTUNITY_SET.has(209) && test.toLinks(r652Bsport).some((url) => /careers\.bsport\.io\/jobs\/7207663/i.test(url)), "Round 41: bsport re-closed requisition or preserved historical route is missing");
 check(r653Qonto && test.applicationStatus(r653Qonto).key === "closed" && r653Qonto.tier === "X", "Round 653: Qonto LinkedIn-only mirror remained active after official-board absence");
 check(r654OneKey && r654OneKey.score === 64 && test.toLinks(r654OneKey).some((url) => /onekeyhq\.atlassian\.net\/wiki\/spaces\/OC\/pages\/127238234/i.test(url)) && /do(?:es)? not explicitly confirm Barcelona, Spain|Spain eligibility/i.test(r654OneKey.status), "Round 654: OneKey Spain-eligibility warning or official route regressed");
 check(r655Xinming && r655Xinming.score === 66 && /Global remote|global remote/i.test(r655Xinming.location) && test.toLinks(r655Xinming).some((url) => /xinming\.sg\/about-careers/i.test(url)), "Round 655: Xinming global-remote visual-system evidence regressed");
@@ -1132,10 +1132,10 @@ check(test.MY_OPPORTUNITY_IDS.length === 204 && new Set(test.MY_OPPORTUNITY_IDS)
 check(r23Main.length === 204 && r23VisibleMain.length === 204, "Round 39: complete audited history must preserve all 204 reviewed IDs");
 check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 155 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 49, "Round 39: Barcelona/remote split must be exactly 155/49");
 check(
-  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 184 &&
+  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 182 &&
     r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 16 &&
-    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 4,
-  "Profile audit: 204 reviewed IDs must resolve to 184 live, 16 verify and 4 preserved closed-history cards",
+    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 6,
+  "Profile audit: 204 reviewed IDs must resolve to 182 live, 16 verify and 6 preserved closed-history cards",
 );
 const r39Skyscanner = r23ById(930812);
 check(r39Skyscanner && test.applicationStatus(r39Skyscanner).key === "closed", "Round 39: Skyscanner Senior Visual Designer must remain in closed history, not the current board");
@@ -1167,21 +1167,34 @@ for (const id of [930866, 1108, 930838, 930845, 930711, 930827, 930880, 1038, 93
 }
 check(test.experienceInfo(r23ById(910)).key === "junior" && test.experienceInfo(r23ById(930884)).key === "junior" && test.experienceInfo(r23ById(1092)).key === "junior", "Round 40: explicit two-year roles were not kept in the attainable junior/early-mid band");
 check(test.experienceInfo(r23ById(535)).key === "unknown" && test.experienceInfo(r23ById(1002)).key === "unknown" && test.experienceInfo(r23ById(84)).key === "unknown", "Round 40: roles without stated experience years still have invented seniority");
-const r40Current = r23Main.filter((item) => test.applicationStatus(item).key !== "closed");
-const r40LanguageCounts = r40Current.reduce((counts, item) => {
+for (const id of [930844, 601, 1105, 1107, 990, 12, 2942, 1020, 443]) {
+  const item = r23ById(id);
+  check(item && test.applicationLanguagePath(item).key === "unknown", `Round 41: ${id} still infers English without a stated language requirement`);
+}
+for (const id of [1299, 1101, 1255, 930637, 305, 958, 314, 209]) {
+  const item = r23ById(id);
+  check(item && test.applicationLanguagePath(item).key === "english", `Round 41: ${id} lost an explicit English requirement`);
+}
+check(test.applicationStatus(r23ById(930870)).key === "closed" && test.applicationStatus(r23ById(209)).key === "closed", "Round 41: FunPlus or bsport removed requisition is still current");
+check(test.experienceInfo(r23ById(1107)).key === "junior" && test.experienceInfo(r23ById(443)).key === "lead", "Round 41: THRU two-year role or DuckDuckGo 9+ year lead role has the wrong seniority gate");
+const r41Current = r23Main.filter((item) => test.applicationStatus(item).key !== "closed");
+const r41LanguageCounts = r41Current.reduce((counts, item) => {
   const key = test.applicationLanguagePath(item).key;
   counts[key] = (counts[key] || 0) + 1;
   return counts;
 }, {});
 check(
-  r40LanguageCounts.chineseCheck === 2 &&
-    r40LanguageCounts.basicSpanish === 1 &&
-    r40LanguageCounts.english === 88 &&
-    r40LanguageCounts.unknown === 32 &&
-    r40LanguageCounts.spanishLikely === 10 &&
-    r40LanguageCounts.spanish === 66 &&
-    r40LanguageCounts.foreign === 1,
-  `Round 40: language ledger mismatch ${JSON.stringify(r40LanguageCounts)}`,
+  r41Current.length === 198 &&
+    r41Current.filter((item) => test.locationBucket(item) === "barcelona").length === 149 &&
+    r41Current.filter((item) => test.locationBucket(item) === "remote").length === 49 &&
+    r41LanguageCounts.chineseCheck === 2 &&
+    r41LanguageCounts.basicSpanish === 1 &&
+    r41LanguageCounts.english === 77 &&
+    r41LanguageCounts.unknown === 41 &&
+    r41LanguageCounts.spanishLikely === 10 &&
+    r41LanguageCounts.spanish === 66 &&
+    r41LanguageCounts.foreign === 1,
+  `Round 41: current ledger mismatch ${JSON.stringify({ total: r41Current.length, language: r41LanguageCounts })}`,
 );
 check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 37: Chinese-relevant current opportunity count must remain evidence-backed at 6");
 for (const id of [930884, 930885, 930886, 930887, 930888]) {
@@ -1262,10 +1275,11 @@ const r27Archived = [355, 1013, 1047, 1316, 1317, 574, 999, 338, 594, 571, 44, 9
 check(r27Archived.every((id) => !test.MY_OPPORTUNITY_SET.has(id) && test.applicationStatus(r23ById(id)).key === "closed"), "Round 27: audited duplicate, stale, inaccessible or off-scope records leaked back into the current board");
 check(r23ById(930871) && /Familia Torres/i.test(r23ById(930871).source) && /Hungry Minds/i.test(r23ById(1310).source), "Round 27: the duplicated raw id 1310 was not split into stable Familia Torres and Hungry Minds identities");
 
-for (const id of [886, 930711, 930870]) {
+for (const id of [886, 930711]) {
   const item = r23ById(id);
   check(item && test.MY_OPPORTUNITY_SET.has(id) && test.locationBucket(item) === "barcelona" && test.applicationStatus(item).key === "live" && test.toLinks(item).length > 0, `Round 26: current Barcelona visual/content opportunity ${id} is missing or misclassified`);
 }
+check(test.applicationStatus(r23ById(930870)).key === "closed" && test.toLinks(r23ById(930870)).length > 0, "Round 41: removed FunPlus graphic-design internship did not retain its historical route");
 const r26Cba = r23ById(456);
 check(r26Cba && test.MY_OPPORTUNITY_SET.has(456) && test.locationBucket(r26Cba) === "barcelona" && test.applicationStatus(r26Cba).key === "verify" && /cba-design\.com\/spain/i.test(test.toLinks(r26Cba).join(" ")), "Round 26: CBA Barcelona speculative brand-design route is missing or presented as a confirmed vacancy");
 check([253, 376, 613, 644, 1088, 1100, 1266, 6, 635, 422, 900, 1034, 1089].every((id) => !test.MY_OPPORTUNITY_SET.has(id) && test.applicationStatus(r23ById(id)).key === "closed" && r23ById(id).tier === "X"), "Round 26: closed or off-scope candidate leaked into the current design board");
@@ -1287,7 +1301,7 @@ check(test.locationBucket(r23ById(4)) === "remote" && /lever\.co\/lodgify/i.test
 check(test.locationBucket(r23ById(375)) === "barcelona" && /failfast\.design\/jobs\/senior-motion-designer/i.test(test.toLinks(r23ById(375)).join(" ")), "Round 23: Fail Fast Barcelona application route regressed");
 check(test.locationBucket(r23ById(84)) === "remote" && /reboot\.studio\/apply/i.test(test.toLinks(r23ById(84)).join(" ")) && /Web Designer/i.test(r23ById(84).opportunity), "Round 23: reboot canonical current Web Designer regressed");
 check(test.locationBucket(r23ById(990001)) === "barcelona" && /4430227072|2686782/i.test(test.toLinks(r23ById(990001)).join(" ")) && test.applicationLanguagePath(r23ById(990001)).key === "spanish", "Round 23: TWOJEYS current design role or Spanish gate regressed");
-check(test.locationBucket(r23ById(443)) === "remote" && /duck-duck-go\/2b76bbee/i.test(test.toLinks(r23ById(443)).join(" ")) && test.experienceInfo(r23ById(443)).key === "senior", "Round 23: DuckDuckGo Spain-remote lead route regressed");
+check(test.locationBucket(r23ById(443)) === "remote" && /duck-duck-go\/2b76bbee/i.test(test.toLinks(r23ById(443)).join(" ")) && test.experienceInfo(r23ById(443)).key === "lead", "Round 41: DuckDuckGo Spain-remote 9+ year lead gate regressed");
 check(/textura-interiors\.com/i.test(test.toLinks(r23ById(78)).join(" ")) && /2713006/i.test(test.toLinks(r23ById(284)).join(" ")) && /workable\.com/i.test(test.toLinks(r23ById(483)).join(" ")), "Round 23: Textura, EuroLeague or Act Second canonical source refresh regressed");
 
 for (const id of [264, 1655, 993020, 2269, 2273, 2334, 1031, 1040, 1311, 1131]) {

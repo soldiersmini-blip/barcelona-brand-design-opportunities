@@ -1534,6 +1534,7 @@ const ROUND37_SECTION = "2026-08-13 Round 37 Barcelona exact-detail consolidatio
 const ROUND38_SECTION = "2026-08-13 Round 38 profile-first reopening and language audit";
 const ROUND39_SECTION = "2026-08-13 Round 39 high-rank language, seniority and status audit";
 const ROUND40_SECTION = "2026-08-13 Round 40 ranks 26-60 language and experience audit";
+const ROUND41_SECTION = "2026-08-13 Round 41 ranks 61-100 status language and experience audit";
 
 // Round 20: a visible email or a fresh search-card timestamp cannot override a
 // closed original detail. Conversely, employer-owned ATS pages with an active
@@ -11788,6 +11789,131 @@ Object.assign(CURATED, {
     statusEvidence: "2026-08-13 复核：reboot 官方申请页仍返回 Web Designer (Europe)、Full-time、Remote (Europe) 和职位正文；没有公开语言、固定年限、国家雇佣清单或合同主体。",
     auditSection: ROUND40_SECTION,
     changeType: "profile-language-experience-audit",
+  },
+});
+
+// Round 41 extends the audit through ranks 61-100. Two current cards lost
+// their employer-owned requisitions and move to history; the remaining
+// language corrections preserve the roles while removing inferred English.
+Object.assign(CURATED, {
+  930844: {
+    ...CURATED[930844],
+    languageKey: "unknown",
+    language: "Synthesia 官方 Ashby 正文没有单列工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 6 年以上 / 出差要求",
+    statusEvidence: "2026-08-13 复核：Synthesia 官方 Ashby 75c90455 仍返回 200、Senior Brand Designer, Experiential 与申请入口；6+ 年和欧美出差为硬门槛，但正文未列语言要求。",
+    auditSection: ROUND41_SECTION,
+    changeType: "profile-language-audit-unknown",
+  },
+  601: {
+    ...CURATED[601],
+    languageKey: "unknown",
+    language: "官方职位页使用英语，但未公开英语或西语等级",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "艺术指导 / 年限未公开",
+    statusEvidence: "2026-08-13 复核：SIERRA 官方 jobs 页当前限制自动访问；最近一次完整官方页仍列 1 open position、Art Director、Barcelona 40 小时和直接申请邮箱，但没有语言条款。",
+    auditSection: ROUND41_SECTION,
+    changeType: "profile-language-experience-audit",
+  },
+  1105: {
+    ...CURATED[1105],
+    languageKey: "unknown",
+    language: "Bakken & Bæck 当前官方正文未列工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级自由职业 / 5 年以上",
+    statusEvidence: "2026-08-13 复核：Bakken & Bæck 官方 Freelance Senior Art Director 页面仍返回 200、申请入口与 5+ 年要求；正文没有英语、西语或其他语言条款。",
+    auditSection: ROUND41_SECTION,
+    changeType: "profile-language-audit-unknown",
+  },
+  1107: {
+    ...CURATED[1107],
+    languageKey: "unknown",
+    language: "THRU 正文仅写 Spanish is a plus，没有另列英语等级",
+    applicationMode: "unknown",
+    experienceKey: "junior",
+    experienceLabel: "初中级 / 2 年以上",
+    statusEvidence: "2026-08-13 复核：THRU 官方 jobs 页仍返回 200、完整 Graphic Designer with Motion Skills 正文、2 年门槛与申请邮箱；同页仍同时出现 NO JOB OPENINGS，继续保持 verify-first。",
+    auditSection: ROUND41_SECTION,
+    changeType: "profile-language-experience-audit",
+  },
+  990: {
+    ...CURATED[990],
+    languageKey: "unknown",
+    language: "Revolut 搜索结果与受保护详情未提供明确工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "unknown",
+    experienceLabel: "年限与完整门槛待确认",
+    statusEvidence: "2026-08-13 复核：Revolut 官方搜索仍保留 Motion Designer 的 Spain remote 线索，但独立详情受安全检查 / cache miss 影响；继续 verify-first，不把英文职位名当作英语证据。",
+    auditSection: ROUND41_SECTION,
+    changeType: "profile-language-experience-audit",
+  },
+  930870: {
+    ...CURATED[930870],
+    statusKey: "closed",
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    statusEvidence: "2026-08-13 复核：FunPlus 原 job 293622 现在只落到通用职位板，正文不再出现 Graphic Design Intern；当前官方板只列 Senior Brand Manager，已没有该设计实习。",
+    reason: "原来可投的 Barcelona Graphic Design Intern 已从雇主当前职位板撤下。",
+    next: "完整保留为历史；只有 FunPlus 官方板出现新的 Graphic Design / Brand Design requisition 时再恢复。",
+    auditSection: ROUND41_SECTION,
+    changeType: "profile-status-audit-closed",
+  },
+  12: {
+    ...CURATED[12],
+    languageKey: "unknown",
+    language: "turbopuffer 官方 Ashby 正文未列工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "unknown",
+    experienceLabel: "年限未公开 / 首位综合设计师",
+    statusEvidence: "2026-08-13 复核：turbopuffer 官方 Ashby f3d9a49d 仍返回 200、Designer、Europe remote 与当前申请入口；岗位覆盖产品、品牌、Web 和 Campaign，但未列语言或固定年限。",
+    auditSection: ROUND41_SECTION,
+    changeType: "profile-language-experience-audit",
+  },
+  2942: {
+    ...CURATED[2942],
+    languageKey: "unknown",
+    language: "SLAPS 当前 careers 与申请页未列工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "junior",
+    experienceLabel: "初级 / Full Time 或 Internship 条款待确认",
+    statusEvidence: "2026-08-13 复核：SLAPS 官方 careers 仍返回 200 并列 Junior Graphic Designer、Barcelona、Full Time / Internship；申请页仍可启动，但没有语言、薪资或最终合同类型。",
+    auditSection: ROUND41_SECTION,
+    changeType: "profile-language-experience-audit",
+  },
+  1020: {
+    ...CURATED[1020],
+    languageKey: "unknown",
+    language: "COCUNAT 官方英文职位页未列英语或西语等级",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 4 年以上",
+    statusEvidence: "2026-08-13 复核：COCUNAT 官方 Personio 2210442 仍返回 200、Senior Video Ads Designer、Barcelona、全职长期与申请入口；明确 4+ 年，但正文未列语言要求。",
+    auditSection: ROUND41_SECTION,
+    changeType: "profile-language-experience-audit",
+  },
+  443: {
+    ...CURATED[443],
+    languageKey: "unknown",
+    language: "DuckDuckGo 官方 Ashby 正文未列工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "lead",
+    experienceLabel: "负责人 / 9 年以上",
+    statusEvidence: "2026-08-13 复核：DuckDuckGo 官方 Ashby 2b76bbee 仍返回 200、Spain remote 与当前申请入口；9+ 年和 hands-on lead 为硬门槛，正文未列语言等级。",
+    auditSection: ROUND41_SECTION,
+    changeType: "profile-language-experience-audit",
+  },
+  209: {
+    ...CURATED[209],
+    statusKey: "closed",
+    statusEvidence: "2026-08-13 再复核：bsport 官方 7207663 当前再次返回 HTTP 410；官方职位板返回 200，但没有 Lead UI 或 Visual Designer，也没有同名新 requisition。",
+    reason: "该职位曾短暂恢复，但当前雇主详情和职位板都已撤下这一具体岗位。",
+    next: "保留在历史并监控 bsport 官方板；不要用现有 Senior Product Designer 代替品牌 / 视觉岗。",
+    auditSection: ROUND41_SECTION,
+    changeType: "profile-status-audit-closed",
   },
 });
 
