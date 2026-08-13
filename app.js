@@ -11197,6 +11197,24 @@ Object.assign(CURATED, {
     next: "西语、在读身份和 convenio 都是当前主要门槛；只有三项均可满足时再投。",
     changeType: "profile-language-audit",
   },
+  175: {
+    ...CURATED[175],
+    languageKey: "spanish",
+    language: "英语或西班牙语须有一门流利，另一门至少中级；两门都构成实际工作门槛",
+    applicationMode: "spanish",
+    reason: "官方 Factorial 当前仍可申请，品牌与 Campaign 职责高度相关；但原文明确要求英语或西班牙语一门流利、另一门至少中级，不能再按单一英文路径处理。",
+    next: "语言条件不符合当前主攻。只有一门达到流利、另一门达到中级，并满足 4 年以上 Campaign 经验时再投。",
+    changeType: "profile-language-audit",
+  },
+  188: {
+    ...CURATED[188],
+    languageKey: "spanishLikely",
+    language: "西语官网 JD 与 Barcelona 现场品牌团队表明日常西语很可能；另明确要求中高英语",
+    applicationMode: "spanishLikely",
+    reason: "官方职位仍显示 ¡Aplica ahora!、Barcelona 现场全职和 4 年以上要求。职责很贴近品牌宇宙、Campaign、零售与视觉一致性，但整份 JD 和本地团队语境为西班牙语，同时明确要求中高英语。",
+    next: "先确认团队能否主要用英语协作；未得到书面确认前按西语工作环境处理，不投入定制作品集。",
+    changeType: "profile-language-audit",
+  },
 });
 
 const els = {
@@ -11706,11 +11724,11 @@ function personalMatchScore(item) {
     chinese: 35,
     chineseCheck: 27,
     basicSpanish: 10,
-    unknown: -15,
-    english: -22,
-    spanishLikely: -30,
-    foreign: -35,
-    spanish: -35,
+    unknown: 0,
+    english: 0,
+    spanishLikely: 0,
+    foreign: 0,
+    spanish: 0,
   };
   const languageCaps = {
     chinese: 100,
@@ -11721,6 +11739,13 @@ function personalMatchScore(item) {
     spanishLikely: 35,
     foreign: 30,
     spanish: 30,
+  };
+  const languageScales = {
+    unknown: 0.55,
+    english: 0.45,
+    spanishLikely: 0.35,
+    foreign: 0.3,
+    spanish: 0.3,
   };
   const directionPoints = { brand: 20, motion: 18, digital: 16, ecommerce: 12, production: 10, social: 8, other: 0 };
   const freshnessPoints = { week: 6, month: 4, quarter: 2, older: 0, old: -4, unknown: 0 };
@@ -11748,9 +11773,15 @@ function personalMatchScore(item) {
   if (status === "verify") score -= 5;
   if (status === "closed") score -= 35;
 
-  // A strong portfolio match cannot erase a language hard gate. These caps are
-  // intentionally visible in the scoring guide on the page.
-  score = Math.min(score, languageCaps[applicationLanguage] ?? 55);
+  // Foreign-language routes are scaled after the professional/location score
+  // is calculated. This preserves meaningful ordering within each backup
+  // language group while preventing a strong portfolio match from erasing the
+  // user's actual communication barrier.
+  if (languageScales[applicationLanguage]) {
+    score = Math.max(0, Math.min(100, score)) * languageScales[applicationLanguage];
+  } else {
+    score = Math.min(score, languageCaps[applicationLanguage] ?? 55);
+  }
   return Math.max(0, Math.min(100, Number(score.toFixed(1))));
 }
 

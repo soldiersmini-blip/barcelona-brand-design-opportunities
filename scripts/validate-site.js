@@ -136,6 +136,8 @@ check(
   test.MY_OPPORTUNITY_SET.has(1249) && test.applicationStatus(test.allData.find((item) => item.id === 1249)).key === "closed",
   "Henna Morena 已关闭岗位没有保留在完整历史中",
 );
+check(test.applicationLanguagePath(test.allData.find((item) => item.id === 175)).key === "spanish", "Frekuent 英西双语门槛没有进入西语硬门槛层");
+check(test.applicationLanguagePath(test.allData.find((item) => item.id === 188)).key === "spanishLikely", "eseOese 现场西语环境没有进入西语高概率层");
 check(auditedMain.every((item) => !/鈥|帽|鏄|鍙|闇|椤|閫|绗/.test(`${test.companyLabel(item)} ${test.roleLabels(item).zh} ${test.locationLabel(item)}`)), "默认机会总表仍有可见乱码");
 check([446, 928, 483, 930815].every((id) => auditedMain.some((item) => Number(item.id) === id)), "本轮新增的四条真实机会未完整进入主表");
 check([296, 4, 1102, 601, 577, 1038, 1011, 1105, 1240, 351, 930712, 278, 224].every((id) => auditedMain.some((item) => Number(item.id) === id)), "研究库追回的十三条真实机会未完整进入主表");
