@@ -1532,6 +1532,7 @@ const ROUND37_SECTION = "2026-08-13 Round 37 Barcelona exact-detail consolidatio
 });
 
 const ROUND38_SECTION = "2026-08-13 Round 38 profile-first reopening and language audit";
+const ROUND39_SECTION = "2026-08-13 Round 39 high-rank language, seniority and status audit";
 
 // Round 20: a visible email or a fresh search-card timestamp cannot override a
 // closed original detail. Conversely, employer-owned ATS pages with an active
@@ -11297,6 +11298,325 @@ Object.assign(CURATED, {
   },
 });
 
+// Round 39 applies one evidence rule consistently across the high-ranked
+// backup set: an English-language page is not proof that English is the
+// working language. Explicit requirements remain `english`; roles whose
+// public brief does not name a working language become `unknown` and must be
+// confirmed before a tailored application. Seniority is recorded separately
+// so a prestigious lead role cannot outrank an attainable designer role.
+Object.assign(CURATED, {
+  930812: {
+    ...CURATED[930812],
+    statusKey: "closed",
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 约 7 年",
+    statusEvidence: "2026-08-13 复核：Skyscanner 官方 Design 分类当前显示 0 jobs，官方当前职位列表也不再列 Senior Visual Designer；原独立链接只进入验证码页，旧 LinkedIn 结果不能单独证明仍开放。",
+    reason: "这曾是很贴近全球品牌系统与 Campaign 的 Barcelona 岗，但当前官方职位板已撤下该具体职位。",
+    next: "完整保留为历史和作品集对标；只有 Skyscanner 官方职位板出现新的独立 requisition 与申请入口时再恢复。",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-status-audit-closed",
+  },
+  930834: {
+    ...CURATED[930834],
+    languageKey: "unknown",
+    language: "官方 Ashby 正文为英文，但没有明确列出工作语言等级",
+    applicationMode: "unknown",
+    experienceKey: "junior",
+    experienceLabel: "初中级 / 2 年以上",
+    statusEvidence: "2026-08-13 复核：Linear 官方 Ashby requisition 仍返回完整 Production Designer 正文、Europe remote、全职与申请入口；要求约 2 年经验，但没有单列工作语言。",
+    reason: "Europe remote 与品牌、Web、Campaign 制作方向有效，但不能把英文 JD 自动标成已确认英语路径。",
+    next: "先确认西班牙雇佣资格、团队工作语言、时区和薪资；得到明确答复后再投入定制材料。",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-audit-unknown",
+  },
+  930841: {
+    ...CURATED[930841],
+    languageKey: "unknown",
+    language: "公开详情未明确工作语言；英文职位正文不能替代语言要求",
+    applicationMode: "unknown",
+    experienceKey: "lead",
+    experienceLabel: "负责人 / 10–15 年及 5 年以上领导经验",
+    statusEvidence: "2026-08-13 复核：当前详情仍指向 Barcelona 的欧洲视觉陈列负责人岗位；公开职责要求 10–15+ 年视觉陈列经验及至少 5 年领导经验，但未列明确工作语言。",
+    reason: "零售 VI 系统方向相关，但这是欧洲负责人级别，不是当前可优先推进的设计师岗位。",
+    next: "作为高阶行业画像保留；除非资历与领导经验完全匹配，否则不要占用主申请时间。",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-seniority-audit",
+  },
+  920001: {
+    ...CURATED[920001],
+    languageKey: "unknown",
+    language: "官方职位正文为英文，但没有公开工作语言或英语等级要求",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 4 年以上品牌与包装经验",
+    statusEvidence: "2026-08-13 复核：PepsiCo 官方 requisition 464555 的 JobPosting 结构、完整职位正文、Cornellà de Llobregat / Barcelona 地点与 Apply Now 仍存在；页面通用错误文案不是本岗关闭提示。职位本身未列语言等级。",
+    reason: "品牌战略、产品架构、视觉识别与包装方向很贴合，但资历偏高且工作语言没有被官方正文证实。",
+    next: "先确认团队工作语言、Barcelona 办公节奏、薪资和四年以上包装深度；确认可行后再准备食品品牌与包装系统案例。",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-audit-unknown",
+  },
+  930837: {
+    ...CURATED[930837],
+    languageKey: "unknown",
+    language: "公开正文未列英语或西语等级；需要与纽约团队协作不等于语言要求已证实",
+    applicationMode: "unknown",
+    experienceKey: "junior",
+    experienceLabel: "初中级 / 2 年以上",
+    statusEvidence: "2026-08-13 复核：当前 LinkedIn 原始详情仍显示 Spain、申请按钮、100% remote、€30,000–40,000 与完整职责；要求 2+ 年并覆盖纽约团队到 18:00，但没有明确语言条款。",
+    reason: "Spain remote 与电商品牌延展有效，薪资透明；工作语言仍须先确认。",
+    next: "先确认工作语言、西班牙雇佣主体、合同类型和纽约时区重叠，再决定是否投递。",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-audit-unknown",
+  },
+  866: {
+    ...CURATED[866],
+    languageKey: "unknown",
+    language: "官方详情只有英文网页版本，没有列出英语、西语或德语工作门槛",
+    applicationMode: "unknown",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 视频与 Motion 经验",
+    statusEvidence: "2026-08-13 复核：devicenow 官方职位板与 job 19847 仍显示 Barcelona hybrid、Video & Motion Graphics Specialist、Apply now 和表单；页面语言切换器不能作为英语工作要求证据。",
+    reason: "岗位当前有效且地点合适，但偏视频与 Motion，工作语言未公开。",
+    next: "先确认团队工作语言、薪资、合同与混合办公天数；可行后再用品牌视频和 Motion showreel 申请。",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-audit-unknown",
+  },
+  224: {
+    ...CURATED[224],
+    languageKey: "unknown",
+    language: "官方完整 JD 未列工作语言；英文职位正文不能视为英语要求已确认",
+    applicationMode: "unknown",
+    experienceKey: "lead",
+    experienceLabel: "艺术负责人 / 需已上线游戏与团队领导经验",
+    statusEvidence: "2026-08-13 复核：King 官方 Workday requisition R027791 仍显示 Apply、Barcelona 可选地点、全职和完整正文；硬门槛是已上线游戏的艺术指导与团队领导，语言未列。",
+    reason: "包含 style guide 和 brand guideline，但核心是新手游艺术方向与团队领导，不是常规商业 VI 岗。",
+    next: "除非具备已上线游戏和团队领导案例，否则仅作高阶参考；申请前先确认工作语言与 Barcelona 办公安排。",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-seniority-audit",
+  },
+  134: {
+    ...CURATED[134],
+    languageKey: "unknown",
+    language: "官方 careers 与申请页没有公开工作语言要求",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级艺术指导 / 年限待确认",
+    statusEvidence: "2026-08-13 复核：SLAPS 官方 careers 仍列 Senior Art Director、Barcelona、Full Time，岗位申请页仍有 Start；语言、薪资和完整表单条件未公开。",
+    reason: "品牌 Campaign 方向相关，但高级资历与工作语言都需要先确认。",
+    next: "先确认语言、资历、薪资和表单可提交性；未确认前不投入大型定制提案。",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-audit-unknown",
+  },
+  930874: {
+    ...CURATED[930874],
+    languageKey: "unknown",
+    language: "Ogilvy 原始正文未列英语、西语或加泰语要求；英文文案本身不是工作语言证据",
+    applicationMode: "unknown",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 2–4 年且至少 2 年 agency",
+    statusEvidence: "2026-08-13 复核：Ogilvy 雇主原始 LinkedIn 详情仍显示 Barcelona、Solicitar 和完整 JD；要求 2–4 年及至少 2 年 agency，正文没有语言条款。",
+    reason: "数字资产、短视频、Motion 与国际品牌延展有效，但工作语言必须先确认。",
+    next: "先询问团队日常语言、客户会议语言与薪资；确认可行后再准备社媒视频和动态品牌延展案例。",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-audit-unknown",
+  },
+  859: {
+    ...CURATED[859],
+    languageKey: "unknown",
+    language: "Stripe 官方详情未单列工作语言；优秀书面与口头沟通不等于明确英语等级",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上 Motion 与 3D",
+    statusEvidence: "2026-08-13 复核：Stripe 官方 Motion Designer, Identity 详情仍显示 Apply now、Barcelona、Remote in Spain、全职及 €74,800–112,200；要求 5+ 年、After Effects 与 C4D/Houdini，但未列语言。",
+    reason: "动态 VI 系统极度相关，但资历、3D 工具和未知工作语言都是实质门槛。",
+    next: "先确认工作语言和 Barcelona/Spain remote 条件；只有 Motion 系统、3D 与五年以上资历匹配时再重点投递。",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-seniority-audit",
+  },
+  930814: {
+    ...CURATED[930814],
+    languageKey: "unknown",
+    language: "当前可读页面没有完整语言要求；国际公司环境不能替代本岗语言证据",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级品牌设计与内容管理 / 完整门槛待确认",
+    statusEvidence: "2026-08-13 复核：CNT 当前 LinkedIn 原始入口仍显示 Barcelona 与 Easy Apply，但完整岗位正文仍无法读取；因此语言、资历、实际设计占比与薪资都不能视为已核定。",
+    reason: "职位标题相关，但证据完整度不足，不能继续作为已确认英语高分卡。",
+    next: "先打开申请表或向 recruiting@cnt-online.com 索取完整 JD；确认工作语言和动手设计占比后再评估。",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-audit-unknown",
+  },
+  314: {
+    ...CURATED[314],
+    statusKey: "live",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上",
+    statusEvidence: "2026-08-13 复核：Qoria 官方 Rippling 职位板当前仍列 Digital Designer (Marketing)、Qustodio、Barcelona，并提供 exact job ce85988a-73a6-4314-a820-8d403dc527c9；完整 JD 明确要求 Fluent English，Spanish 仅 highly valued。",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-current-board-recheck",
+  },
+  1299: {
+    ...CURATED[1299],
+    titleZh: "EMEA 营销传播与内容实习生（12 个月）",
+    titleEs: "Prácticas de comunicación de marketing y contenidos EMEA (12 meses)",
+    internshipKey: true,
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-card-label-repair",
+  },
+  345: {
+    ...CURATED[345],
+    titleZh: "品牌平面设计师 / 平面设计实习生",
+    titleEs: "Diseño gráfico de marca / Prácticas de diseño gráfico",
+    languageKey: "unknown",
+    language: "官方页面和申请材料使用英语，但没有公开规定日常工作语言",
+    applicationMode: "unknown",
+    experienceKey: "unknown",
+    experienceLabel: "中高级正式岗或实习岗两个入口",
+    internshipKey: false,
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-label-repair",
+  },
+  1257: {
+    ...CURATED[1257],
+    titleZh: "Instagram 社媒与平面设计师",
+    titleEs: "Community Manager de Instagram y Diseñador Gráfico",
+    languageKey: "spanishLikely",
+    language: "西语招聘页和 Barcelona 本地餐饮团队；未列等级，但日常西语沟通风险高",
+    applicationMode: "spanishLikely",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-label-repair",
+  },
+  1258: {
+    ...CURATED[1258],
+    titleZh: "平面设计师（社媒方向）",
+    titleEs: "Diseñador/a Gráfico/a",
+    languageKey: "spanishLikely",
+    language: "西语招聘页和 Viladecans 本地岗位；未列等级，需先确认能否主要用英语工作",
+    applicationMode: "spanishLikely",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-label-repair",
+  },
+  317: {
+    ...CURATED[317],
+    titleZh: "包装制稿与图稿经理",
+    titleEs: "Artwork Manager",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-card-label-repair",
+  },
+  579: {
+    ...CURATED[579],
+    titleZh: "高级平面设计师（餐饮品牌）",
+    titleEs: "Diseñador/a Gráfico/a Senior",
+    languageKey: "spanishLikely",
+    language: "Castelldefels 线下餐饮品牌团队，招聘与协作语境为西语；未列正式等级",
+    applicationMode: "spanishLikely",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-label-repair",
+  },
+  294: {
+    ...CURATED[294],
+    titleZh: "品牌激活与营销设计实习生",
+    titleEs: "Prácticas de Marketing y Activación de Marca",
+    languageKey: "spanish",
+    language: "加泰罗尼亚语与西班牙语母语级、英语高级均为明确硬门槛",
+    applicationMode: "spanish",
+    internshipKey: true,
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-label-repair",
+  },
+  1237: {
+    ...CURATED[1237],
+    titleZh: "平面与多媒体内容设计师",
+    titleEs: "Diseñador/a Gráfico/a y Multimedia",
+    languageKey: "spanishLikely",
+    language: "Barcelona 本地西语招聘路径；公开详情未列语言等级，需先确认英语能否工作",
+    applicationMode: "spanishLikely",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-label-repair",
+  },
+  1036: {
+    ...CURATED[1036],
+    titleZh: "平面与网页设计师",
+    titleEs: "Diseñador/a Gráfico/a y Web",
+    languageKey: "unknown",
+    language: "官网和申请页使用英语，但公开 JD 没有单列工作语言要求",
+    applicationMode: "unknown",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-label-repair",
+  },
+  1061: {
+    ...CURATED[1061],
+    titleZh: "创意制作人（护肤与时尚）",
+    titleEs: "Creative Producer (Skincare & Fashion)",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-card-label-repair",
+  },
+  1287: {
+    ...CURATED[1287],
+    titleZh: "平面设计与品牌策略实习生",
+    titleEs: "Prácticas de Diseño Gráfico y Estrategia de Marca",
+    languageKey: "unknown",
+    language: "公开招聘页没有证明中文、西语或英语的工作等级",
+    applicationMode: "unknown",
+    internshipKey: true,
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-label-repair",
+  },
+  136: {
+    ...CURATED[136],
+    titleZh: "平面设计实习生",
+    titleEs: "Prácticas de Diseño Gráfico",
+    languageKey: "unknown",
+    language: "官网使用英语，但岗位语言、学生协议和薪资仍需确认",
+    applicationMode: "unknown",
+    internshipKey: true,
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-label-repair",
+  },
+  382: {
+    ...CURATED[382],
+    titleZh: "平面设计实习生（时尚品牌）",
+    titleEs: "Becaria/o de Diseño Gráfico",
+    internshipKey: true,
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-card-label-repair",
+  },
+  860: {
+    ...CURATED[860],
+    titleZh: "营销协调员（平面设计方向）",
+    titleEs: "Coordinador/a de Marketing con Diseño Gráfico",
+    internshipKey: false,
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-card-label-repair",
+  },
+  581: {
+    ...CURATED[581],
+    titleZh: "平面设计师（品牌与包装执行）",
+    titleEs: "Diseñador/a Gráfico/a",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-card-label-repair",
+  },
+  1243: {
+    ...CURATED[1243],
+    titleZh: "高级自由职业平面设计师（落地页与 Web）",
+    titleEs: "Senior Graphic Designer Freelance (Landing Pages y Web)",
+    languageKey: "unknown",
+    language: "国际远程申请页未公开团队工作语言；需先确认英语或西语沟通要求",
+    applicationMode: "unknown",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-language-label-repair",
+  },
+  1249: {
+    ...CURATED[1249],
+    titleZh: "平面与数字设计师（用户体验与 AI）",
+    titleEs: "Diseñador/a Gráfico/a y Digital (UX e IA)",
+    auditSection: ROUND39_SECTION,
+    changeType: "profile-card-label-repair",
+  },
+});
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
@@ -11576,6 +11896,9 @@ function toLinks(item) {
 }
 
 function isInternshipRole(item) {
+  if (typeof CURATED[item.id]?.internshipKey === "boolean") {
+    return CURATED[item.id].internshipKey;
+  }
   return /internship|intern\b|trainee|prácticas|practicas|beca\b|working student|实习|学生协议|学校协议/i.test(
     String(item.searchText || ""),
   );
@@ -11836,6 +12159,15 @@ function personalMatchScore(item) {
     spanish: 0.3,
   };
   const directionPoints = { brand: 20, motion: 18, digital: 16, ecommerce: 12, production: 10, social: 8, other: 0 };
+  const experienceAdjustments = {
+    open: 3,
+    junior: 3,
+    mid: 0,
+    unknown: -2,
+    senior: -8,
+    lead: -14,
+    internship: -8,
+  };
   const freshnessPoints = { week: 6, month: 4, quarter: 2, older: 0, old: -4, unknown: 0 };
   const applicationLanguage = applicationLanguagePath(item).key;
   const status = applicationStatus(item).key;
@@ -11870,6 +12202,13 @@ function personalMatchScore(item) {
   } else {
     score = Math.min(score, languageCaps[applicationLanguage] ?? 55);
   }
+  // Seniority is an independent feasibility gate. Apply it after the language
+  // scale so a 10–15 year lead role still receives a meaningful penalty rather
+  // than having that penalty diluted to a few points by the language factor.
+  score += experienceAdjustments[experienceInfo(item).key] ?? experienceAdjustments.unknown;
+  // Preserve the real university-agreement and temporary-role constraint after
+  // foreign-language scaling; otherwise an internship penalty nearly vanishes.
+  if (isInternshipRole(item)) score -= 8;
   return Math.max(0, Math.min(100, Number(score.toFixed(1))));
 }
 

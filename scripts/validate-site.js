@@ -276,9 +276,11 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 38/i.test(test.latestRoundSection) &&
-    [209, 930823, 78, 55].every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)),
-  "Round 38 的重新开放与语言复核没有完整进入‘本轮变化’",
+  /Round 39/i.test(test.latestRoundSection) &&
+    [930812, 930834, 930841, 920001, 930837, 866, 224, 134, 930874, 859, 930814, 314, 1299, 345].every((id) =>
+      test.latestRoundItems.some((item) => Number(item.id) === id),
+    ),
+  "Round 39 high-rank language, seniority, status and card-label audit is incomplete",
 );
 const round33AuditItems = test.allData.filter((item) => /Round 33 full-board direct-link reconciliation/i.test(String(item.section || "")));
 check(
@@ -416,7 +418,7 @@ check(test.applicationStatus(test.allData.find((item) => item.id === 864)).key =
 check(test.experienceInfo(test.allData.find((item) => item.id === 864)).key === "senior", "Ametller 5 年以上包装岗经验分级错误");
 check(test.applicationStatus(test.allData.find((item) => item.id === 865)).key === "closed", "FIRMAMENT 地点异常岗位没有进入排除层");
 check(test.applicationStatus(test.allData.find((item) => item.id === 866)).key === "live", "devicenow 当前英语品牌视频岗没有保留可投状态");
-check(test.languageInfo(test.allData.find((item) => item.id === 866)).key === "light", "devicenow 英语岗位被误判为高西语");
+check(test.applicationLanguagePath(test.allData.find((item) => item.id === 866)).key === "unknown", "devicenow 未公开工作语言却被当成已确认英语或西语岗位");
 check(test.applicationStatus(test.allData.find((item) => item.id === 867)).key === "live", "Space Go 当前动态设计岗没有保留可投状态");
 check(test.experienceInfo(test.allData.find((item) => item.id === 867)).key === "senior", "Space Go 5 年以上经验没有正确分级");
 check(test.languageInfo(test.allData.find((item) => item.id === 868)).key === "spanish", "Omnicom 流利西语硬门槛没有识别");
@@ -1126,15 +1128,35 @@ check(r22Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Roun
 const r23ById = (id) => test.allData.find((item) => Number(item.id) === id);
 const r23Main = test.MY_OPPORTUNITY_IDS.map(r23ById).filter(Boolean);
 const r23VisibleMain = test.dedupedData.filter((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id)));
-check(test.MY_OPPORTUNITY_IDS.length === 204 && new Set(test.MY_OPPORTUNITY_IDS).size === 204, "Round 38: audited ID ledger must contain exactly 204 unique opportunities");
-check(r23Main.length === 204 && r23VisibleMain.length === 204, "Round 38: complete audited history must preserve all 204 reviewed IDs");
-check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 155 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 49, "Round 38: Barcelona/remote split must be exactly 155/49");
+check(test.MY_OPPORTUNITY_IDS.length === 204 && new Set(test.MY_OPPORTUNITY_IDS).size === 204, "Round 39: audited ID ledger must contain exactly 204 unique opportunities");
+check(r23Main.length === 204 && r23VisibleMain.length === 204, "Round 39: complete audited history must preserve all 204 reviewed IDs");
+check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 155 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 49, "Round 39: Barcelona/remote split must be exactly 155/49");
 check(
-  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 185 &&
+  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 184 &&
     r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 16 &&
-    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 3,
-  "Profile audit: 204 reviewed IDs must resolve to 185 live, 16 verify and 3 preserved closed-history cards",
+    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 4,
+  "Profile audit: 204 reviewed IDs must resolve to 184 live, 16 verify and 4 preserved closed-history cards",
 );
+const r39Skyscanner = r23ById(930812);
+check(r39Skyscanner && test.applicationStatus(r39Skyscanner).key === "closed", "Round 39: Skyscanner Senior Visual Designer must remain in closed history, not the current board");
+for (const id of [930834, 930841, 920001, 930837, 866, 224, 134, 930874, 859, 930814, 1036, 1287, 136, 1243, 345]) {
+  const item = r23ById(id);
+  check(item && test.applicationLanguagePath(item).key === "unknown", `Round 39: ${id} must not infer a work language from page language alone`);
+}
+const r39Qoria = r23ById(314);
+check(
+  r39Qoria &&
+    test.applicationStatus(r39Qoria).key === "live" &&
+    test.applicationLanguagePath(r39Qoria).key === "english" &&
+    test.toLinks(r39Qoria).some((url) => /ats\.rippling\.com\/qoria\/jobs\/ce85988a-73a6-4314-a820-8d403dc527c9/i.test(url)),
+  "Round 39: Qoria current official English-required requisition is missing or misclassified",
+);
+check(test.experienceInfo(r23ById(930841)).key === "lead" && test.experienceInfo(r23ById(224)).key === "lead", "Round 39: lead-level gates were not retained for Lenskart and King");
+check(test.displayedScore(r23ById(930841)) < test.displayedScore(r23ById(930813)), "Round 39: a 10-15 year lead role still outranks an attainable junior designer role");
+const r39MissingRoleLabels = r23Main
+  .filter((item) => !test.roleLabels(item).zh || test.roleLabels(item).zh === "undefined")
+  .map((item) => Number(item.id));
+check(r39MissingRoleLabels.length === 0, `Round 39: audited cards still have empty role labels: ${r39MissingRoleLabels.join(", ")}`);
 check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 37: Chinese-relevant current opportunity count must remain evidence-backed at 6");
 for (const id of [930884, 930885, 930886, 930887, 930888]) {
   const item = r23ById(id);
