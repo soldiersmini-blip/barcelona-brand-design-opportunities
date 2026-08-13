@@ -12836,6 +12836,143 @@ Object.assign(CURATED, {
   },
 });
 
+const ROUND49_SECTION = "2026-08-13 Round 49 complete likely-Spanish source audit";
+const ROUND49_SPANISH_LIKELY_IDS = Object.freeze([
+  877, 105, 886, 930829, 1257, 1258, 382, 1237, 930876, 86, 930873, 930885, 188, 577, 864, 1296, 579,
+  876, 867, 930843, 351,
+]);
+
+const round49Eurofirms = allData.find((entry) => Number(entry.id) === 877);
+if (round49Eurofirms) {
+  Object.assign(round49Eurofirms, {
+    postedAt: "2026-06-25",
+    freshnessTag: "quarter",
+    status: "2026-08-13 Round 49 recheck: JOB TODAY detail 6g3oVr still returns the exact Eurofirms Cerdanyola packaging-artwork vacancy and structured JobPosting data. datePosted is 2026-06-25, not the previously inferred August date; it is full-time temporary work at EUR12.78/hour with possible employer incorporation. The vacancy itself contains no explicit language clause.",
+  });
+}
+
+const round49Iconico = allData.find((entry) => Number(entry.id) === 1237);
+if (round49Iconico) {
+  Object.assign(round49Iconico, {
+    status: "Verify-first/current lead: the exact LinkedIn detail 4440947485 now redirects with expired_jd_redirect. The exact Indeed key ae95a5929ce854cb remains indexed with the complete Barcelona onsite, indefinite full-time, EUR22,000 multimedia/content-designer brief, but direct automated access currently stops at Indeed's security check and the employer site exposes no job section. Confirm availability by email before preparing an application.",
+  });
+}
+
+const round49SpaceGo = allData.find((entry) => Number(entry.id) === 867);
+if (round49SpaceGo) {
+  Object.assign(round49SpaceGo, {
+    status: "2026-08-13 Round 49 recheck: LinkedIn employer detail 4440457390 still returns the exact Creative Motion Grapher JobPosting, Sant Cugat hybrid, posted 2026-07-29, valid through 2026-09-19 and TEMPORARY. The complete Spanish brief covers 2D/3D motion, brand campaigns, identity-aligned animation, performance assets and AI workflows, but does not state a language level.",
+  });
+}
+
+if (!allData.some((entry) => Number(entry.id) === 930897)) {
+  allData.push({
+    id: 930897,
+    section: ROUND49_SECTION,
+    source: "ICÓNICO Design for Architecture / expired LinkedIn employer detail",
+    opportunity: "Diseñador/a Gráfico/a en prácticas",
+    fit: "Historical Cardedeu design internship for social content, catalogues, flyers, dossiers, exhibition materials and multi-format adaptation",
+    location: "Cardedeu, Barcelona province / historical internship",
+    status: "Closed/history: exact LinkedIn employer detail 4402687906 was reopened on 2026-08-13 and redirects to expired_jd_redirect with no current application control. The former brief offered flexible hours, EUR8/hour and direct email application to marketing@iconico.com.",
+    contact: "Expired original detail: https://es.linkedin.com/jobs/view/4402687906 ; historical application email: marketing@iconico.com",
+    analysis: "Preserve as evidence of a local junior design route, but do not count it as current. Restore only if ICÓNICO publishes a new independent requisition or confirms the internship is open again.",
+    score: 0,
+    tier: "X",
+    locationTag: "Barcelona area",
+    typeTag: "Closed graphic-design internship",
+    sourceGroup: "linkedin",
+    freshnessTag: "unknown",
+    links: ["https://es.linkedin.com/jobs/view/4402687906", "mailto:marketing@iconico.com"],
+    searchText: "ICÓNICO Design for Architecture closed expired LinkedIn 4402687906 Cardedeu Barcelona graphic design internship EUR 8 hour marketing iconico",
+  });
+}
+
+Object.assign(CURATED, {
+  877: {
+    ...CURATED[877],
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    language: "现场包装生产岗位与完整正文均为西语；未列等级，按本地西语高概率而非硬门槛处理",
+    statusEvidence: "2026-08-13 Round 49：JOB TODAY 结构化正文确认发布日期为 2026-06-25、全职临时合同、€12.78/小时和当前原始详情；此前写成 8 月发布已修正。岗位正文没有明确语言条款。",
+    reason: "包装完稿方向和地点真实，但发布日期较早、临时合同、时薪和现场西语环境均降低可行性。",
+    latestAuditSection: ROUND49_SECTION,
+    changeType: "round-49-date-and-language-evidence-correction",
+  },
+  1237: {
+    ...CURATED[1237],
+    statusKey: "verify",
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    language: "Barcelona 现场传播团队与完整职位正文均为西语；未列明确语言等级",
+    statusEvidence: "2026-08-13 Round 49：LinkedIn 4440947485 已重定向至 expired_jd_redirect；Indeed 精确 key ae95a5929ce854cb 仍被索引并保留完整的 Barcelona 现场、无固定期限、€22,000 正文，但直接访问受安全检查限制，公司官网没有职位区。",
+    reason: "职责与品牌内容相关，但当前只剩仍被索引的 Indeed 详情和通用联系邮箱；必须先确认岗位仍开放，不能当作页面已确认可投。",
+    next: "先邮件询问职位是否仍开放以及工作语言；得到明确回复后再投作品集。",
+    latestAuditSection: ROUND49_SECTION,
+    changeType: "round-49-final-route-verify-first",
+  },
+  867: {
+    ...CURATED[867],
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    language: "Sant Cugat 本地团队与完整西语正文；未列语言等级，按西语工作环境高概率处理",
+    statusEvidence: "2026-08-13 Round 49：LinkedIn 4440457390 的 JobPosting 仍显示 Sant Cugat hybrid、2026-07-29 发布、2026-09-19 截止及 TEMPORARY；正文未写语言等级。",
+    latestAuditSection: ROUND49_SECTION,
+    changeType: "round-49-current-structured-detail-recheck",
+  },
+  930873: {
+    ...CURATED[930873],
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    language: "中级以上英语为明确要求；西语出版与现场编辑协作环境高概率，但未列西语等级",
+    statusEvidence: "2026-08-13 Round 49：Grupo Planeta 官方 TalentClue 127111935 仍显示 Barcelona 现场、无固定期限全职和申请表；完整正文明确要求中级以上英语，并说明为西班牙语出版品牌制作封面。",
+    latestAuditSection: ROUND49_SECTION,
+    changeType: "round-49-explicit-english-plus-local-spanish-risk",
+  },
+  188: {
+    ...CURATED[188],
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    language: "官方正文明确要求中高英语；Barcelona 现场时尚品牌团队的西语环境高概率",
+    statusEvidence: "2026-08-13 Round 49：eseOese 官方 ATS 48acdfae-9231-4ff0-b658-cd6af24b41f5 仍显示 Barcelona 现场全职和申请入口；要求段明确写 Inglés nivel medio-alto。",
+    latestAuditSection: ROUND49_SECTION,
+    changeType: "round-49-explicit-english-plus-local-spanish-risk",
+  },
+  864: {
+    ...CURATED[864],
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    language: "完整官方 JD 全部为加泰语，岗位需密切协调内部团队、供应商、采购和质量；未列等级但本地语言风险很高",
+    statusEvidence: "2026-08-13 Round 49：Ametller 官方 Workday JR107430 仍返回完整 JobPosting；正文全为加泰语，并明确 5 年以上、Olèrdola/Numància、驾照和自有车辆要求。",
+    latestAuditSection: ROUND49_SECTION,
+    changeType: "round-49-catalan-context-confirmation",
+  },
+  930897: {
+    statusKey: "closed",
+    direction: "production",
+    company: "ICÓNICO Design for Architecture",
+    locationKey: "barcelona",
+    locationLabel: "Cardedeu / Barcelona 省 / 历史实习",
+    titleZh: "平面设计实习（已关闭）",
+    titleEs: "Diseñador/a Gráfico/a en prácticas",
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    language: "历史职位全文为西语；未列语言等级",
+    experienceKey: "internship",
+    experienceLabel: "学生实习 / €8 每小时",
+    statusEvidence: "2026-08-13：LinkedIn 精确详情 4402687906 已重定向至 expired_jd_redirect，没有当前申请按钮。",
+    reason: "曾是 Barcelona 省内真实初级设计入口，但当前已关闭，只保留为历史和未来复发监控。",
+    next: "不要按旧帖直接申请；等待新职位编号或公司书面确认重新开放。",
+    links: ["https://es.linkedin.com/jobs/view/4402687906", "mailto:marketing@iconico.com"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND49_SECTION,
+    changeType: "round-49-new-closed-history",
+  },
+});
+
+for (const id of ROUND49_SPANISH_LIKELY_IDS) {
+  if (CURATED[id]) CURATED[id] = { ...CURATED[id], latestAuditSection: ROUND49_SECTION };
+}
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),

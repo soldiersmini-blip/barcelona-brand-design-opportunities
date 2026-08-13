@@ -885,12 +885,12 @@
       "internship": false,
       "score": 14,
       "source_score": 29,
-      "posted_at": "2026-07-24",
+      "posted_at": "2026-06-25",
       "primary_url": "https://jobtoday.com/es/trabajo/disenador-a-grafico-6g3oVr",
       "all_links": [
         "https://jobtoday.com/es/trabajo/disenador-a-grafico-6g3oVr"
       ],
-      "status_evidence": "Live/current: the original Job Today detail 6g3oVr was opened and read in full on 2026-08-12. It was posted 2026-08-06, still shows Inscríbete and covers packaging artwork, legal text, braille, barcodes, prepress, production coordination and sustainable packaging in Cerdanyola del Vallès.",
+      "status_evidence": "2026-08-13 Round 49：JOB TODAY 结构化正文确认发布日期为 2026-06-25、全职临时合同、€12.78/小时和当前原始详情；此前写成 8 月发布已修正。岗位正文没有明确语言条款。",
       "analysis": "Recover as a lower-priority packaging-production option. The EUR12.78/hour temporary contract and final-art focus are major tradeoffs, but the location and application route are real."
     },
     {
@@ -4014,7 +4014,7 @@
         "https://iconico.es/contacto/",
         "mailto:hola@iconico.es"
       ],
-      "status_evidence": "**Verify-first / 当前线索**：Indeed 搜索结果仍显示 Barcelona、全职、长期项目及约 €22,000 gross/year；雇主 LinkedIn 结果显示约 2 天、已有申请者，但直接详情页本轮 cache miss；工作语言未写明",
+      "status_evidence": "2026-08-13 Round 49：LinkedIn 4440947485 已重定向至 expired_jd_redirect；Indeed 精确 key ae95a5929ce854cb 仍被索引并保留完整的 Barcelona 现场、无固定期限、€22,000 正文，但直接访问受安全检查限制，公司官网没有职位区。",
       "analysis": "新增 1 条 Barcelona 本地品牌视觉/内容延展卡。先通过 Indeed 按钮或 `hola@iconico.es` 确认是否仍招、合同/入职时间、语言、实际工作点（Poblenou/Cardedeu）和作品集格式；未确认前不标为已验证开放，也不计入中文岗。"
     },
     {
@@ -4216,7 +4216,7 @@
         "https://www.linkedin.com/jobs/view/4440282206/",
         "https://jobs.planeta.es/"
       ],
-      "status_evidence": "2026-08-13 复核：Grupo Planeta 官方 TalentClue 127111935 仍提供 Barcelona 申请表；雇主 LinkedIn 精确页 4440282206 同时显示 Solicitar，未显示关闭。正文明确 5 年以上与中级以上英语；现场西语编辑团队语境仍按高概率门槛处理。",
+      "status_evidence": "2026-08-13 Round 49：Grupo Planeta 官方 TalentClue 127111935 仍显示 Barcelona 现场、无固定期限全职和申请表；完整正文明确要求中级以上英语，并说明为西班牙语出版品牌制作封面。",
       "analysis": "A real, high-quality Barcelona graphic-design route, but not a junior VI role. The work is editorial art direction, cover design, typography and launch graphics; it requires at least five years, Adobe Creative Cloud, intermediate-or-higher English and a portfolio. Confirm salary and the daily Spanish working level before applying."
     },
     {
@@ -4302,7 +4302,7 @@
         "https://jobs.eseoese.com/jobs/art-director-48acdfae-9231-4ff0-b658-cd6af24b41f5",
         "https://es.linkedin.com/jobs/view/art-director-at-eseoese-4433079676"
       ],
-      "status_evidence": "Current official role verified on 2026-08-09. The role-specific eseOese ATS detail 48acdfae-9231-4ff0-b658-cd6af24b41f5 was opened directly and visibly shows Barcelona, full-time, onsite, publication 2026-06-25 and 鈥溌plica ahora!鈥? It assigns creative direction for campaigns, editorials, launches and events; shooting concept through post-production; brand storytelling; digital content, landings, newsletters, retail, visual merchandising and events; cross-functional work with marketing/e-commerce/product; and internal/external collaborator coordination. It asks for 4+ years, campaign/editorial/branding portfolio, Adobe and medium-high English; Spanish is not stated as a hard requirement.",
+      "status_evidence": "2026-08-13 Round 49：eseOese 官方 ATS 48acdfae-9231-4ff0-b658-cd6af24b41f5 仍显示 Barcelona 现场全职和申请入口；要求段明确写 Inglés nivel medio-alto。",
       "analysis": "Verified Barcelona B-tier brand-direction opportunity. It is highly relevant to visual identity and 360 brand expression, but the centre is fashion/lifestyle art direction, storytelling and production rather than a pure VI-system graphic-designer role; onsite work and 4+ years are material gates. Apply only with campaign, editorial, branding, retail/VM and end-to-end shoot cases, and confirm salary, Spanish day-to-day expectations, office cadence and work authorisation."
     },
     {
@@ -4447,7 +4447,7 @@
         "https://ametllerorigen.wd3.myworkdayjobs.com/es/CareerSite/job/OLERDOLA/LIDER-D-ART-EN-PACKAGING_JR107430",
         "https://corp.ametllerorigen.com/es/trabaja-con-nosotros/"
       ],
-      "status_evidence": "2026-08-13 复核：Ametller 官方 Workday API 当前以 packaging 搜到新 requisition JR107430，标题 LIDER D'ART EN PACKAGING，2026-07-24 发布且无结束日期；正文要求 5 年以上，旧 JR106376 已被新编号替代。",
+      "status_evidence": "2026-08-13 Round 49：Ametller 官方 Workday JR107430 仍返回完整 JobPosting；正文全为加泰语，并明确 5 年以上、Olèrdola/Numància、驾照和自有车辆要求。",
       "analysis": "Keep as a C-tier verification card, not a direct-apply recommendation. The role is materially relevant to packaging and physical VI, but the official application URL currently fails; confirm through Ametller HR or a newly indexed Workday requisition before using it."
     },
     {
@@ -4938,7 +4938,7 @@
       "all_links": [
         "https://es.linkedin.com/jobs/view/creative-motion-grapher-at-space-go-4440457390"
       ],
-      "status_evidence": "Live/current: LinkedIn employer detail 4440457390 was opened and its JobPosting data read on 2026-08-12. It lists Creative Motion Grapher, Sant Cugat del Vallès, hybrid, posted 2026-07-29 and an active application route. The work covers 2D/3D motion, brand campaigns, identity-aligned animation, performance assets and AI workflows.",
+      "status_evidence": "2026-08-13 Round 49：LinkedIn 4440457390 的 JobPosting 仍显示 Sant Cugat hybrid、2026-07-29 发布、2026-09-19 截止及 TEMPORARY；正文未写语言等级。",
       "analysis": "列 C 级资深挑战岗。方向和技术含量很强，但经验门槛及西语团队语境不适合当下优先于 devicenow、Stripe 或 Revolut。若资历足够，先用英文询问工作语言、临时合同期限和薪资；作品集应展示品牌动态规范、2D / 3D campaign、模板系统、短视频变体和转化导向迭代。"
     },
     {

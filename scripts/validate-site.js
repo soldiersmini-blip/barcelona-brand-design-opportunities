@@ -1250,8 +1250,51 @@ check(r44RemedyHistorical && !test.MY_OPPORTUNITY_SET.has(930638) && test.applic
 check(test.MY_OPPORTUNITY_IDS.length === 207 && new Set(test.MY_OPPORTUNITY_IDS).size === 207, "Round 47: current additions or preserved closed history changed the 207-seat audited ledger unexpectedly");
 const r45ChineseCanonical = r23ById(778);
 const r45ChineseHistorical = r23ById(930835);
-check(test.latestRoundSection === "2026-08-13 Round 48 complete unknown-language source audit", "Round 48: latest-round marker did not advance");
-check([910, 866, 930814].every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)), "Round 48: explicit-English corrections are missing from the latest audit log");
+const round48Section = "2026-08-13 Round 48 complete unknown-language source audit";
+const round49Section = "2026-08-13 Round 49 complete likely-Spanish source audit";
+const round49LikelySpanishIds = [877, 105, 886, 930829, 1257, 1258, 382, 1237, 930876, 86, 930873, 930885, 188, 577, 864, 1296, 579, 876, 867, 930843, 351];
+check(test.latestRoundSection === round49Section, "Round 49: latest-round marker did not advance");
+check([...round49LikelySpanishIds, 930897].every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)), "Round 49: complete likely-Spanish audit or new closed-history record is missing from the latest audit log");
+check([910, 866, 930814].every((id) => test.CURATED[id]?.latestAuditSection === round48Section), "Round 48: explicit-English corrections were not preserved after the next audit");
+check(
+  round49LikelySpanishIds.every((id) => {
+    const item = r23ById(id);
+    return item && test.MY_OPPORTUNITY_SET.has(id) && test.applicationLanguagePath(item).key === "spanishLikely";
+  }),
+  "Round 49: a likely-Spanish card was deleted, promoted to Chinese/unknown, or falsely labelled as a hard Spanish requirement",
+);
+const round49Eurofirms = r23ById(877);
+check(
+  round49Eurofirms?.postedAt === "2026-06-25" &&
+    round49Eurofirms?.freshnessTag === "quarter" &&
+    test.applicationStatus(round49Eurofirms).key === "live" &&
+    /12\.78|temporary|临时/i.test(`${round49Eurofirms.status} ${test.CURATED[877]?.statusEvidence || ""}`),
+  "Round 49: Eurofirms date, temporary contract or current source evidence regressed",
+);
+const round49Iconico = r23ById(1237);
+check(
+  test.applicationStatus(round49Iconico).key === "verify" &&
+    test.toLinks(round49Iconico).some((url) => /ae95a5929ce854cb/i.test(url)) &&
+    /4440947485.{0,80}expired_jd_redirect|expired_jd_redirect.{0,80}4440947485/i.test(`${round49Iconico.status} ${test.CURATED[1237]?.statusEvidence || ""}`),
+  "Round 49: ICÓNICO full-time lead must stay verify-first with its exact Indeed route and expired LinkedIn evidence",
+);
+const round49SpaceGo = r23ById(867);
+check(
+  test.applicationStatus(round49SpaceGo).key === "live" &&
+    /2026-09-19/i.test(`${round49SpaceGo.status} ${test.CURATED[867]?.statusEvidence || ""}`) &&
+    /TEMPORARY/i.test(`${round49SpaceGo.status} ${test.CURATED[867]?.statusEvidence || ""}`),
+  "Round 49: Space Go structured expiry or temporary employment evidence regressed",
+);
+const round49IconicoHistory = r23ById(930897);
+check(
+  round49IconicoHistory &&
+    !test.MY_OPPORTUNITY_SET.has(930897) &&
+    test.applicationStatus(round49IconicoHistory).key === "closed" &&
+    round49IconicoHistory.tier === "X" &&
+    test.toLinks(round49IconicoHistory).some((url) => /4402687906/i.test(url)) &&
+    test.toLinks(round49IconicoHistory).some((url) => /^mailto:marketing@iconico\.com$/i.test(url)),
+  "Round 49: expired ICÓNICO internship was not preserved as non-current Barcelona history with its exact routes",
+);
 check(
   [930884, 930813, 930838, 930874, 172, 930889, 930890, 930891, 930892].every(
     (id) => test.CURATED[id]?.latestAuditSection === "2026-08-13 Round 47 current-source and user-fit recheck",

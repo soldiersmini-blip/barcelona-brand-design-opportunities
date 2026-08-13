@@ -53,6 +53,37 @@ function contexts(text, limit = 16) {
   return matches;
 }
 
+function structuredJobPostings(raw) {
+  const postings = [];
+  const visit = (value) => {
+    if (!value) return;
+    if (Array.isArray(value)) {
+      value.forEach(visit);
+      return;
+    }
+    if (typeof value !== "object") return;
+    if (value["@type"] === "JobPosting") {
+      postings.push({
+        title: value.title || "",
+        description: normalizeHtml(String(value.description || ""), true),
+        date_posted: value.datePosted || "",
+        valid_through: value.validThrough || "",
+        employment_type: value.employmentType || "",
+      });
+    }
+    if (value["@graph"]) visit(value["@graph"]);
+  };
+  for (const match of raw.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      visit(JSON.parse(match[1]));
+    } catch {
+      // Some sites expose malformed analytics JSON-LD. Ignore it and retain
+      // the visible-text evidence instead of treating parse failure as data.
+    }
+  }
+  return postings;
+}
+
 async function inspect(url) {
   try {
     const response = await fetch(url, {
@@ -76,6 +107,7 @@ async function inspect(url) {
       title,
       visible_text_length: visible.length,
       language_contexts: visibleContexts.length ? visibleContexts : contexts(embedded),
+      job_postings: structuredJobPostings(raw),
     };
   } catch (error) {
     return { requested_url: url, error: error.message };
