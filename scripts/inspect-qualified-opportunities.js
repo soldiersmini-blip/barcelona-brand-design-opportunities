@@ -145,6 +145,7 @@ const rows = core.map((item) => ({
   personalMatch: api.personalMatchScore(item),
   links: api.toLinks(item),
   identity: api.identityKey(item),
+  latestAuditSection: api.CURATED[item.id]?.latestAuditSection || item.section || "",
 }));
 
 const summary = rows.reduce(

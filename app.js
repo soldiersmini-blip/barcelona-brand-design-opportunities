@@ -15273,6 +15273,130 @@ Object.assign(CURATED, {
   },
 });
 
+const ROUND57_SECTION = "2026-08-13 Round 57 highest-score unaudited original-page and profile-fit recheck";
+const ROUND57_AUDITED_IDS = Object.freeze([
+  778, 920, 24, 25, 930834, 930837, 1107, 1092, 372, 427,
+  930847, 890, 1300, 930813, 930863, 930832, 930711, 930817,
+  930899, 910, 604, 914, 352, 633, 930836, 94, 866, 884,
+  930820, 207,
+]);
+
+const ROUND57_STATUS_EVIDENCE = new Map([
+  [778, "2026-08-13 再次打开 ES02 184673：仍可读取 8 月 6 日 Barcelona 全职平面设计原帖、微信和电话；与西华 637173 为同一联系人和同一岗位，只计一张，主体和书面合同仍需先核实。"],
+  [920, "2026-08-13 再次打开智联原始详情：品牌视觉兼职仍显示立即沟通，但地点字段为成都，未说明接受西班牙居民、境外签约或跨境付款，继续列为中文远程待确认。"],
+  [24, "2026-08-13 重新读取 Casa Asia 索引与 HKU Europe 原始 PDF：Barcelona 直接邮箱仍存在，无截止日期或 ATS；中文、英语和西语均为明确要求。"],
+  [25, "2026-08-13 重新读取 Tea Lab 原始 PDF：Barcelona、中文/西语、社媒视频与店务混合、灵活或兼职和直接邮箱均确认；无截止日期或 ATS，继续先问是否仍招。"],
+  [930834, "2026-08-13 重新打开 Linear 官方 Ashby：Production Designer、Europe remote、全职、约 2 年及申请入口仍完整；正文未写语言等级。"],
+  [930837, "2026-08-13 重新打开 Velvet Caviar 原始详情：Spain 100% remote、全职、€30k–40k、2+ 年和申请入口仍在；正文未写语言等级。"],
+  [1107, "2026-08-13 重新打开 THRU 官方 jobs 页：Graphic Designer with Motion Skills 正文、2 年及邮箱仍在，但同页同时写 NO JOB OPENINGS，不能升级为确认可投。"],
+  [1092, "2026-08-13 重新打开 Codeway 官方 Ashby：Marketing Artist - Dramapops、Barcelona hybrid、2+ 年及完整申请入口仍在；正文未写语言等级。"],
+  [372, "2026-08-13 重新打开 Molin AI 原始详情：Barcelona contractor、€30,000 + equity、Sin experiencia 和当前职责仍可读；正文未写语言等级。"],
+  [427, "2026-08-13 复核 Revolut：本轮精确详情触发安全检查；保留同日较早的官方职位总表、Barcelona/Spain remote 和 Apply 证据，不把受阻页面误判为关闭。"],
+  [930847, "2026-08-13 重新打开 Xapo 官方 Greenhouse：全球远程、12 个月 graduate programme、0–1 年和完整申请表仍在；正文未写语言等级。"],
+  [890, "2026-08-13 重新打开 Dragons 官方 Factorial：Barcelona 永久全职混合办公、3–5 年、fluent English 和 Apply 均确认。"],
+  [1300, "2026-08-13 重新打开 INFiLED 原始 LinkedIn：Barcelona hybrid、全职、当前申请入口、品牌/市场视觉职责、mid-level or senior 与 Fluent in English 均可从完整正文读取。"],
+  [930813, "2026-08-13 重新打开 Dragons 官方 Factorial：Barcelona 永久全职、1–2 年、品牌规范延展和 Apply 均在；English 明列，Spanish 仅 preferably。"],
+  [930863, "2026-08-13 重新打开 THE/STUDIO 官方 Teamtailor：全球 100% remote、全职独立承包、1–3 年或强作品集、书面英语和 Apply 均确认。"],
+  [930832, "2026-08-13 重新打开 Exoticca 原始详情：Barcelona onsite、永久全职、渠道营销/联合品牌职责、fluent English 和申请入口均在；正文只写 proven experience，没有具体年限。"],
+  [930711, "2026-08-13 重新打开 JUNGLE/MeMe 原始 JobPosting：Barcelona 永久全职、至少 1 年、社交创意职责和申请入口仍在；正文没有英语条款，完整工作说明为西语，法语仅加分。"],
+  [930817, "2026-08-13 重新打开 Eat Nudes 原始详情：Barcelona、包装/菜单/标识/标签、Illustrator、Sin experiencia、项目合同和作品集邮箱仍在；英文正文没有列工作语言或等级。"],
+  [930899, "2026-08-13 重新打开 CRAZE 原始详情：Sabadell 全职、2–3 年、编辑/版式/品牌/包装职责、spoken and written English mandatory 和申请控制仍在。"],
+  [910, "2026-08-13 重新打开 LABHOUSE 官方 Ashby：Spain remote、全职、2+ 年、Fluent in English（Spanish only a plus）和申请入口仍在。"],
+  [604, "2026-08-13 重新打开 Canonical 官方 Greenhouse：EMEA home-based、品牌指南/UI 系统/数字产品职责、Professional written and spoken English 和完整申请表仍在；只要求有设计经历，未写固定年限。"],
+  [914, "2026-08-13 重新打开 Trivelta 官方 Greenhouse：正文为 Barcelona hybrid，元数据写 remote；1–3 年、Strong working English、三品牌多渠道职责和完整申请表均确认。"],
+  [352, "2026-08-13 重新打开 Blank Studio 官方详情：Barcelona、full-time、remote-friendly、初级 3D/包装/品牌世界职责和申请邮箱仍在；正文没有列工作语言或等级。"],
+  [633, "2026-08-13 重新打开 Puig 官方职位：Barcelona 一年 graduate programme、360 品牌形象职责和 Apply 仍在；Fluent in English and Spanish 为明确双语硬条件。"],
+  [930836, "2026-08-13 重新打开 CrowdStrike 官方 Workday：Spain - Barcelona、Remote、全职、2026-08-06 发布、2+ 年、Proficiency in English 和 Apply 均确认。"],
+  [94, "2026-08-13 重新打开 Savills 官方 Teamtailor：Barcelona hybrid、品牌/编辑/导视职责、Buen nivel de inglés 和申请入口仍在；只写需有 Brand Designer 经历，没有具体年限。"],
+  [866, "2026-08-13 重新打开 devicenow 官方 job 19847：Barcelona hybrid、永久全职、品牌视频/动态职责、Excellent communication skills in English 和申请入口均在；未写固定经验年限。"],
+  [884, "2026-08-13 重新打开 Dragons 官方 Factorial：Barcelona 永久全职混合办公、Mid Graphic Designer、医疗/健康视觉职责、fluent English 和 Apply 均确认。"],
+  [930820, "2026-08-13 重新打开 Siemens 官方职位 516087：Barcelona、当前申请入口、2D/3D 图标与 UI 视觉系统职责、advanced English 和 €42,100–67,100 薪资仍在。"],
+  [207, "2026-08-13 重新打开 Publicis 原始雇主详情：Barcelona 全职、全球品牌 campaign/数字制作、3–4+ 年、advanced English 面试考核和申请入口仍在。"],
+]);
+
+for (const id of ROUND57_AUDITED_IDS) {
+  if (!CURATED[id]) continue;
+  CURATED[id] = {
+    ...CURATED[id],
+    latestAuditSection: ROUND57_SECTION,
+    statusEvidence: ROUND57_STATUS_EVIDENCE.get(id) || CURATED[id].statusEvidence,
+    changeType: CURATED[id].changeType || "round-57-highest-score-unaudited-original-page-recheck",
+  };
+}
+
+// Correct evidence, rather than the language used to render a page, controls
+// the hard-language label. A probable team language remains a scoring risk,
+// but is never presented as an explicit requirement without a written clause.
+SCORE_LANGUAGE_RISK_OVERRIDES.set(930711, "spanishLikely");
+SCORE_LANGUAGE_RISK_OVERRIDES.set(930817, "englishLikely");
+SCORE_LANGUAGE_RISK_OVERRIDES.set(352, "englishLikely");
+
+Object.assign(CURATED, {
+  372: {
+    ...CURATED[372],
+    experienceKey: "open",
+    experienceLabel: "明确标注 Sin experiencia / 未要求经验",
+  },
+  930832: {
+    ...CURATED[930832],
+    experienceKey: "unknown",
+    experienceLabel: "要求有平面设计经历，但未写固定年限",
+  },
+  930711: {
+    ...CURATED[930711],
+    languageKey: "light",
+    applicationMode: "unknown",
+    language: "未写正式语言等级；完整本地社交创意正文为西语，法语仅加分，按西语工作环境高概率降权",
+    scoringLanguageRisk: "spanishLikely",
+    scoringLanguageRiskReason: "The exact brief contains no English requirement; it is a Spanish-language local social role, so Spanish is probable rather than formally proven.",
+    reason: "Barcelona 正式全职且品牌社交内容相关，但不是平面/VI 核心岗；正文没有此前误写的双语英语要求，真实障碍是本地西语社交语境。",
+  },
+  930817: {
+    ...CURATED[930817],
+    languageKey: "light",
+    applicationMode: "unknown",
+    language: "英文正文未列正式工作语言或等级；按英语沟通环境高概率降权",
+    scoringLanguageRisk: "englishLikely",
+    scoringLanguageRiskReason: "The exact English brief lists no language requirement, but the publisher communication and application route make English probable.",
+    experienceKey: "open",
+    experienceLabel: "明确标注 Sin experiencia / 无固定年限",
+  },
+  604: {
+    ...CURATED[604],
+    experienceKey: "unknown",
+    experienceLabel: "需有 agency/company/freelance 设计经历，但未写固定年限",
+  },
+  352: {
+    ...CURATED[352],
+    languageKey: "light",
+    applicationMode: "unknown",
+    language: "官方正文未列工作语言或等级；按国际工作室英语环境高概率降权",
+    scoringLanguageRisk: "englishLikely",
+    scoringLanguageRiskReason: "The official role text contains no formal language clause; English remains probable in the studio context.",
+  },
+  633: {
+    ...CURATED[633],
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    language: "官方正文明确要求 Fluent in English and Spanish",
+  },
+  930836: {
+    ...CURATED[930836],
+    experienceKey: "junior",
+    experienceLabel: "初中级 / 2 年以上",
+  },
+  94: {
+    ...CURATED[94],
+    experienceKey: "unknown",
+    experienceLabel: "需有 Brand Designer 经历，但未写固定年限",
+  },
+  866: {
+    ...CURATED[866],
+    experienceKey: "unknown",
+    experienceLabel: "需相关视频与 Motion 能力，但未写固定年限",
+  },
+});
+
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
   const explicitMode = curated?.applicationMode || APPLICATION_MODE_OVERRIDES[item.id];

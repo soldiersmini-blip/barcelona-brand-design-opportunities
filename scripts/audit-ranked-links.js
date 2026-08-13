@@ -6,6 +6,14 @@ const startRank = Math.max(1, Number(process.argv[2]) || 1);
 const endRank = Math.max(startRank, Number(process.argv[3]) || startRank);
 const compact = process.argv.includes("--compact");
 const ledgerMode = process.argv.includes("--candidates") ? "candidates" : "mine";
+const idsArgument = process.argv.find((argument) => argument.startsWith("--ids="));
+const requestedIds = idsArgument
+  ? idsArgument
+      .slice("--ids=".length)
+      .split(",")
+      .map(Number)
+      .filter(Number.isFinite)
+  : [];
 
 const ledger = JSON.parse(
   execFileSync(process.execPath, [path.join(__dirname, "inspect-qualified-opportunities.js"), ledgerMode], {
@@ -15,7 +23,9 @@ const ledger = JSON.parse(
   }),
 );
 
-const selected = ledger.rows.slice(startRank - 1, endRank);
+const selected = requestedIds.length
+  ? requestedIds.map((id) => ledger.rows.find((row) => Number(row.id) === id)).filter(Boolean)
+  : ledger.rows.slice(startRank - 1, endRank);
 const entityMap = new Map([
   ["&amp;", "&"],
   ["&quot;", '"'],
@@ -54,7 +64,7 @@ function evidenceWindow(text, needles) {
 
 async function inspect(row, index) {
   const url = row.links?.[0] || "";
-  if (!url) return { rank: startRank + index, id: row.id, error: "missing-link" };
+  if (!url) return { rank: requestedIds.length ? null : startRank + index, id: row.id, error: "missing-link" };
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 25000);
@@ -99,7 +109,7 @@ async function inspect(row, index) {
       "solicitar",
     ];
     return {
-      rank: startRank + index,
+      rank: requestedIds.length ? null : startRank + index,
       id: row.id,
       company: row.company,
       role: row.originalRole,
@@ -131,7 +141,7 @@ async function inspect(row, index) {
     };
   } catch (error) {
     return {
-      rank: startRank + index,
+      rank: requestedIds.length ? null : startRank + index,
       id: row.id,
       company: row.company,
       role: row.originalRole,
@@ -149,7 +159,13 @@ async function main() {
     const batch = selected.slice(offset, offset + 5);
     results.push(...(await Promise.all(batch.map((row, index) => inspect(row, offset + index)))));
   }
-  console.log(JSON.stringify({ ledgerMode, startRank, endRank, count: results.length, results }, null, 2));
+  console.log(
+    JSON.stringify(
+      { ledgerMode, startRank: requestedIds.length ? null : startRank, endRank: requestedIds.length ? null : endRank, requestedIds, count: results.length, results },
+      null,
+      2,
+    ),
+  );
 }
 
 main().catch((error) => {

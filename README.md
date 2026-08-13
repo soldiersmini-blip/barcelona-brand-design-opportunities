@@ -23,6 +23,7 @@
 
 ## 关键文件
 
+- `AUDIT-2026-08-13-ROUND57.md`：按“尚未在最近三轮复核的最高个人分”继续逐条打开 30 个原始页；纠正 JUNGLE、Eat Nudes、Blank 的语言证据误判，补上 Puig 英西双语硬门槛，清除 Canonical、Exoticca、Savills、devicenow 的无依据中级标签，并把 CrowdStrike 的 2+ 年改为初中级。同步扫描 LinkedIn 最近 7 天 69 个去重结果、华人通前 80 页 955 条近期标题和 Casa Asia 当前索引，没有把 Madrid、搬迁 Dubai、零售陈列或品牌经理误做成新卡。
 - `AUDIT-2026-08-13-ROUND56.md`：逐条打开并复核个人排名第 91–120 名；把明确外语、高概率外语环境和语言未说明分层记录，统一实习 / convenio 可行性扣分，并合并 Bending Spoons 同一 requisition 的重复卡。
 - `AUDIT-2026-08-13-ROUND55.md`：逐条打开并复核个人排名第 61–90 名；归档 AB-BIOTICS 与过期 ADG-FAD 委托，合并 Equipo Singular 重复来源，修复 Natulim、Bonita 和 Voodoo 当前入口，并按用户英语、西语都弱的条件重判明确语言门槛。
 - `AUDIT-2026-08-13-ROUND54.md`：逐条打开并复核个人排名第 31–60 名的原始详情或真实申请入口；关闭 Runroom、DDB Junior Art Director 与 Glovo Motion Designer 的失效申请路径，修复 JUNGLE 当前精确岗位，并把 3 个新发现按英语、西语、实习协议和资深门槛压到后排。
@@ -74,6 +75,8 @@
 - `data.js`：保留的完整公开机会语料。
 - `scripts/inspect-qualified-opportunities.js`：输出当前主表或指定机会的审计报告。
 - `scripts/check-source-language.js`：批量读取已知原始详情页，提取英语、西语、加泰语与语言能力上下文，供人工逐条判断；不会把网页语言菜单自动当成岗位要求。
+- `scripts/scan-linkedin-search.js`：批量扫描 LinkedIn 最近 7 天的 Barcelona 设计关键词，并按职位编号与现有库去重。
+- `scripts/scan-es02-current.js`：直接扫描华人通当前招聘分页，避免搜索引擎缓存滞后；命中标题仍必须继续打开原帖人工判断。
 - `scripts/export-opportunity-ledgers.js`：生成当前主表 CSV/JSON 与完整历史总账 CSV。
 - `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 196 个机会的完整、严格降序导出。
 - `all-opportunity-ledger.csv`：1,266 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
