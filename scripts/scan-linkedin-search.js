@@ -11,7 +11,12 @@ const keywords = process.argv.slice(2).length
       "Director de arte",
     ];
 
-const location = "Barcelona, Catalonia, Spain";
+// Defaults preserve the original Barcelona workflow. Environment overrides
+// let the long-running audit reuse the same parser for explicit Spain/EU
+// remote discovery without maintaining a second, drifting scanner.
+const location = process.env.LINKEDIN_SEARCH_LOCATION || "Barcelona, Catalonia, Spain";
+const remoteOnly = /^(?:1|true|yes)$/i.test(process.env.LINKEDIN_SEARCH_REMOTE || "");
+const recencySeconds = Math.max(3600, Number(process.env.LINKEDIN_SEARCH_RECENCY_SECONDS) || 604800);
 const starts = [0, 25, 50];
 
 function cleanHtml(value) {
@@ -58,7 +63,8 @@ async function fetchPage(keyword, start) {
   const url = new URL("https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search");
   url.searchParams.set("keywords", keyword);
   url.searchParams.set("location", location);
-  url.searchParams.set("f_TPR", "r604800");
+  url.searchParams.set("f_TPR", `r${recencySeconds}`);
+  if (remoteOnly) url.searchParams.set("f_WT", "2");
   url.searchParams.set("start", String(start));
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 15000);
@@ -110,6 +116,8 @@ async function main() {
       {
         scannedAt: new Date().toISOString(),
         location,
+        remoteOnly,
+        recencySeconds,
         keywords,
         pages: pages.map(({ keyword, start, statusCode, error, jobs: pageJobs }) => ({
           keyword,
