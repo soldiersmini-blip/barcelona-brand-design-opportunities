@@ -3055,7 +3055,6 @@ const ROUND33_CLOSED_EVIDENCE = new Map([
   [930852, "the exact Newlink Spain LinkedIn detail redirects to a generic search URL containing expired_jd_redirect"],
   [930849, "the exact Andilana JOB TODAY route now redirects to the employer profile instead of the vacancy"],
   [537, "the exact Jobgether Lever requisition now returns HTTP 404 / Not found"],
-  [930860, "Kraken's current official Ashby requisition with this exact ID is listed for United Kingdom remote, while the current board exposes separate US/UK variants and no Spain/EU version"],
 ]);
 const ROUND33_CLOSED_IDS = Object.freeze([...ROUND33_CLOSED_EVIDENCE.keys()]);
 
@@ -13337,7 +13336,7 @@ const SOURCE_LABELS = {
 };
 
 const PRESET_NOTES = {
-  mine: "默认保留全部已核验当前机会，但按你的实际可行性排序：中文路径先行，Barcelona / 明确 Spain remote 次优先，品牌视觉与 VI 再加分。英语硬门槛最高 18 分，西语硬门槛最高 8 分；语言未证实也最高 28 分，避免把英文页面误当成中文可行。",
+  mine: "默认保留全部已核验当前机会，但按你的实际可行性排序：中文路径先行，Barcelona / 明确 Spain remote 次优先，品牌视觉、VI 与平面执行再加分。明确英语最高 8 分，英语大概率最高 10 分；明确西语最高 5 分，西语大概率最高 7 分；工作语言未证实最高 12 分。非平面 / 非 VI 的邻接岗位另行降权。",
   profile: "只显示可以直接用中文投递的 Barcelona / 西班牙远程机会；需要完整英文材料或西语工作的岗位不会混进来。",
   actionable: "只看现在值得马上处理的机会：Barcelona / 西班牙远程、中文可先联系、有具体入口、近期发布或页面明确开放，并排除低薪风险与实习。",
   chinese: "单独查看 Barcelona / Spain remote 的中文相关机会；中文来源并不自动等于岗位真实或适合，关闭、外地和研究线索仍留在独立历史库。",
@@ -13816,7 +13815,7 @@ function personalMatchScore(item) {
   // The user is looking for brand/VI and hands-on graphic design first.
   // Generic motion, growth and social content are useful backups, but they
   // must not outrank an otherwise comparable identity/graphic-production job.
-  const directionPoints = { brand: 24, production: 22, digital: 14, motion: 12, ecommerce: 10, social: 6, other: 0 };
+  const directionPoints = { brand: 24, production: 22, digital: 14, motion: 12, ecommerce: 10, social: 6, other: -16 };
   const experienceAdjustments = {
     open: 4,
     junior: 4,
@@ -15819,6 +15818,143 @@ for (const item of allData) {
   if (!correction) continue;
   [item.postedAt, item.freshnessTag, item.freshnessAgeDays] = correction;
 }
+
+const ROUND61_SECTION = "2026-08-13 Round 61 full-board user-fit rescore and stale-search audit";
+
+// Round 61 recalculates every visible card with the same user-specific score.
+// Search-result timestamps never override the exact original detail or the
+// employer-owned ATS, and Chinese/local adjacency does not erase role fit.
+const round61SourceCorrections = [
+  {
+    id: 1007,
+    source: "ORBIDI / closed official Teamtailor ATS",
+    status: "Closed/history: the exact ORBIDI Teamtailor requisition 6423148 was requested directly again on 2026-08-13 and returned HTTP 410 Gone. A search-engine rendering that still exposes an Apply label is stale and is not a current application route.",
+    analysis: "Preserve the former Barcelona senior graphic and brand-visual brief as history only. Restore it only after ORBIDI publishes a new independent requisition that opens successfully on the employer ATS.",
+    tier: "X",
+  },
+  {
+    id: 153,
+    source: "UNIQLO / Fast Retailing removed official Workday requisition",
+    status: "Closed/history: the Fast Retailing Workday board was queried again on 2026-08-13 for exact requisition R00000004175039 and returned zero matching jobs. The detail shell is access-blocked and an alternate locale route returns 404; stale search cards do not prove reopening.",
+    analysis: "Keep the former in-store graphic-production scope as a portfolio reference, not as a current Barcelona application. Restore only if Fast Retailing publishes a new requisition ID on its official Workday board.",
+    tier: "X",
+  },
+  {
+    id: 1234,
+    source: "LearnWise AI / closed original LinkedIn employer detail",
+    status: "Closed/history: recent generic LinkedIn result pages and an aggregator resurfaced the title on 2026-08-13, but an exact seven-day LinkedIn search returned no LearnWise design vacancy. The preserved original employer detail 4446566881 still has the stronger stopped-accepting verdict and no new employer ATS route was found.",
+    analysis: "Do not restore this attractive brand-system brief from a fresh-looking search index. Preserve it as history; a new exact LinkedIn job ID or employer-owned application page is required before it can return to the current board.",
+    tier: "X",
+  },
+];
+
+for (const correction of round61SourceCorrections) {
+  const item = allData.find((record) => Number(record.id) === correction.id);
+  if (!item) continue;
+  Object.assign(item, correction, {
+    section: ROUND61_SECTION,
+    searchText: [correction.source, correction.status, correction.analysis].join(" "),
+  });
+}
+
+const round61KrakenCurrent = allData.find((record) => Number(record.id) === 930860);
+if (round61KrakenCurrent) {
+  Object.assign(round61KrakenCurrent, {
+    section: ROUND61_SECTION,
+    source: "Kraken / current official Ashby job-board API",
+    status: "Live/current: Kraken's official Ashby job-board API was queried on 2026-08-13 and returned 81 listed jobs. Exact requisition 8ed4c65b-aaac-40d0-9d41-423683b7a1bd is present, isListed=true, remote and has an active application URL; Spain appears explicitly among its secondary eligible locations. It was published on 2026-07-31.",
+    analysis: "Restore the exact role to the current board because the employer-owned API is authoritative. Keep its personal-fit score very low: it requires 5+ years in brand design plus fintech or top-agency experience, and the global remote interview and collaboration path is English-heavy even though the public body does not publish a formal language level.",
+    score: 94,
+    tier: "B",
+    postedAt: "2026-07-31",
+    freshnessTag: "month",
+    freshnessAgeDays: 13,
+    searchText: "Kraken current official Ashby API Sr Brand Designer Krak 8ed4c65b Spain secondary eligible location remote full-time listed apply published 2026-07-31 5+ years brand identity art direction website CRM social app store events motion 3D illustration Figma automation AI English-likely senior low personal fit",
+  });
+}
+
+const round61TeaLab = allData.find((record) => Number(record.id) === 25);
+if (round61TeaLab) {
+  round61TeaLab.analysis = "Keep as a 19.9-point Barcelona Chinese-Spanish fallback. The current Casa Asia index, original PDF and direct email make it a real lead, but it must stay below genuine brand/VI work because it combines social/video content with daily bubble-tea shop operations, an under-30 condition, a Spanish gate, flexible or part-time terms and negotiable pay. Send only a short availability check before preparing materials.";
+}
+
+Object.assign(CURATED, {
+  55: {
+    ...CURATED[55],
+    statusEvidence: "2026-08-13 reread the BCome employer careers page. The Digital Designer brief remains visible, but the page combines several vacancies; native English and Spanish C1 belong to a separate sales role and are not evidence for the designer role. The designer's formal language requirement remains unstated, while an English-heavy international workflow remains probable for scoring.",
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    scoringLanguageRisk: "englishLikely",
+    latestAuditSection: ROUND61_SECTION,
+    changeType: "round-61-company-page-language-clause-separation",
+  },
+  153: {
+    ...CURATED[153],
+    statusKey: "closed",
+    titleZh: "店内平面设计师—官方 Workday 已无此职位",
+    titleEs: "In-Store Graphic Designer — official requisition removed",
+    statusEvidence: "2026-08-13 查询 Fast Retailing 官方 Workday：精确 requisition R00000004175039 返回 0 条职位；详情入口受限且备用语言路径返回 404，搜索缓存不能作为重新开放证据。",
+    reason: "官方职位板已经找不到这个精确编号，因此继续放在关闭历史区，不算 Barcelona 当前机会。",
+    next: "保留门店视觉、印刷落地与零售物料要求作为作品集参考；只有新的 Fast Retailing 官方职位编号出现后才恢复。",
+    latestAuditSection: ROUND61_SECTION,
+    changeType: "round-61-official-board-removal-confirmed",
+  },
+  1007: {
+    ...CURATED[1007],
+    statusKey: "closed",
+    titleZh: "高级平面设计师—官方职位返回 410",
+    titleEs: "Senior Graphic Designer — official requisition returns 410",
+    statusEvidence: "2026-08-13 直接请求 ORBIDI 官方 Teamtailor requisition 6423148，结果为 HTTP 410 Gone；搜索页残留的 Apply 文案属于过期缓存。",
+    reason: "雇主官方 ATS 的 410 状态优先于搜索缓存，因此不能恢复为可投岗位。",
+    next: "保留旧职责作为作品集对标；等待 ORBIDI 发布新的独立官方 requisition。",
+    latestAuditSection: ROUND61_SECTION,
+    changeType: "round-61-official-410-confirmed",
+  },
+  1234: {
+    ...CURATED[1234],
+    statusKey: "closed",
+    titleZh: "高级品牌与营销设计师—旧搜索缓存，无新职位",
+    titleEs: "Senior Brand & Marketing Designer — stale result, no new requisition",
+    statusEvidence: "2026-08-13 的通用 LinkedIn 列表和聚合页重新露出标题，但精确近 7 天 LinkedIn 搜索没有 LearnWise 设计岗；原职位 4446566881 的停止接收状态仍是更强证据。",
+    reason: "完整职责非常匹配品牌系统、指南、Webflow、销售物料与轻量 Motion，但没有新的原始职位编号或雇主申请入口，不能因搜索时间变新而重新计分。",
+    next: "保留完整 JD 作作品集对标；只在 LearnWise 发布新 LinkedIn 编号或官方申请页时恢复。",
+    latestAuditSection: ROUND61_SECTION,
+    changeType: "round-61-stale-search-result-confirmed",
+  },
+  930860: {
+    ...CURATED[930860],
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "Spain 明确在官方 eligible locations / 远程全职",
+    titleZh: "高级品牌设计师（品牌刷新、视觉系统、Motion 与 3D）",
+    titleEs: "Sr Brand Designer - Krak",
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    scoringLanguageRisk: "englishLikely",
+    language: "官方正文没有列英语等级；全球远程、跨团队讲解设计决策的工作环境按英语大概率评分",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5+ 年品牌设计 / fintech 或顶级代理经验",
+    statusEvidence: "2026-08-13 直接查询 Kraken 官方 Ashby API：81 个当前职位中精确包含 8ed4c65b-aaac-40d0-9d41-423683b7a1bd，isListed=true、Remote、申请链接有效，secondary locations 明确含 Spain；发布于 2026-07-31。",
+    reason: "岗位真实开放且品牌 / VI 匹配很强，但 5+ 年、fintech/顶级代理资历、Motion/3D/AI 与英语远程沟通是重大门槛；恢复为当前机会不等于提升为优先投递。",
+    next: "只有在资历和英文面试可承受时再投；材料突出完整视觉识别、品牌刷新、Figma 组件、跨市场 Campaign、Motion/3D、插画和 AI 生产流程，并确认 Spain 合同与薪资。",
+    links: [
+      "https://jobs.ashbyhq.com/kraken.com/8ed4c65b-aaac-40d0-9d41-423683b7a1bd",
+      "https://jobs.ashbyhq.com/kraken.com/8ed4c65b-aaac-40d0-9d41-423683b7a1bd/application",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND61_SECTION,
+    changeType: "round-61-official-api-current-restoration",
+  },
+  930904: {
+    ...CURATED[930904],
+    reason: "这是 Barcelona 中文直联的真实邻接线索，但核心是橱窗布置与商品陈列，不是平面设计、Logo、VI、品牌指南或数字品牌系统。Round 61 的统一评分增加了非目标方向惩罚，因此它必须排在真实平面 / VI 机会之后。",
+    latestAuditSection: ROUND61_SECTION,
+    changeType: "round-61-non-target-direction-rescore",
+  },
+});
+
+SCORE_LANGUAGE_RISK_OVERRIDES.set(55, "englishLikely");
+SCORE_LANGUAGE_RISK_OVERRIDES.set(930860, "englishLikely");
 
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
