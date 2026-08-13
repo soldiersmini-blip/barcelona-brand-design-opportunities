@@ -3145,7 +3145,7 @@ const meta = window.JOB_META || {};
 // are the current Chinese-linked opportunities that the user has already
 // reviewed, not a generic list of attractive English-language design jobs.
 // Roles with an English/Spanish gate remain visible in the caution column.
-const PRIORITY_IDS = [778, 920, 1300, 24, 25];
+const PRIORITY_IDS = [778, 930904, 920, 1300, 24, 25];
 
 // Canonical, evidence-backed opportunities for the user. The generated corpus
 // remains searchable, but only these independently reviewed identities enter
@@ -3255,6 +3255,11 @@ const ROUND52_CURRENT_IDS = Object.freeze([930899]);
 // Barcelona sweep. They enter the complete board but remain subject to hard
 // English/likely-Spanish, internship and seniority penalties.
 const ROUND54_CURRENT_IDS = Object.freeze([930900, 930901, 930902]);
+// Round 60 adds one current Chinese-language Barcelona lead from the live
+// InfoHuaxin recruitment feed. It is retail window/display design rather than
+// graphic/VI ownership, so it remains below the canonical full-time graphic
+// designer even though the location and communication route are favourable.
+const ROUND60_CURRENT_IDS = Object.freeze([930904]);
 // THRU still exposes the complete role brief and a future closing date, but
 // the same official page ends with "NO JOB OPENINGS". Keep the lead visible as
 // verify-first evidence without allowing the contradictory page to occupy a
@@ -3278,7 +3283,7 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
     .flatMap((id) => [id, ...(ROUND36_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND37_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND38_RANKED_INSERTIONS.get(id) || [])])
-    .concat(ROUND47_CURRENT_IDS, ROUND50_CURRENT_IDS, ROUND52_CURRENT_IDS, ROUND54_CURRENT_IDS)
+    .concat(ROUND47_CURRENT_IDS, ROUND50_CURRENT_IDS, ROUND52_CURRENT_IDS, ROUND54_CURRENT_IDS, ROUND60_CURRENT_IDS)
     .filter((id) => !ROUND37_SUPERSEDED_MAIN_IDS.has(id))
     .filter((id) => !ROUND32_EXCLUDED_IDS.has(id))
     .filter((id) => !ROUND46_RESEARCH_ONLY_MAIN_IDS.has(id)),
@@ -13178,6 +13183,65 @@ Object.assign(CURATED, {
   },
 });
 
+const ROUND60_SECTION = "2026-08-13 Round 60 Chinese-source current-feed audit";
+
+if (!allData.some((entry) => Number(entry.id) === 930904)) {
+  allData.push({
+    id: 930904,
+    section: ROUND60_SECTION,
+    source: "ELIMHOME / InfoHuaxin current Chinese recruitment feed",
+    opportunity: "Window Display & Visual Merchandising — ELIMHOME",
+    fit: "Barcelona Chinese-language contact route; retail window concepts, seasonal display and merchandise presentation; not a graphic/VI ownership role",
+    location: "Barcelona, Spain; chain-store locations and office base not published",
+    status: "Verify-first/current lead: the InfoHuaxin Barcelona recruitment feed was opened on 2026-08-13 and visibly lists this ELIMHOME advertisement with a publication date of 2026-08-12, the full three-role text and telephone 656 656 158. The first role is window display and merchandise presentation for a nine-store chain. The exact detail route exists, but automated access to it returned a Cloudflare 403, and the legal employer entity, contract, hours, salary and application process are not published.",
+    contact: "Current original detail: https://infohuaxin.com/showinfo.asp?id=4281407 ; current recruitment index carrying the complete advertisement: https://infohuaxin.com/showclass.asp?Page=3&class1=13&class2=221&dq=12 ; direct telephone: +34 656 656 158",
+    analysis: "Keep as a current Barcelona Chinese-language adjacent design lead, but do not rank it above the canonical full-time graphic-designer vacancy. The work is physical retail window/display execution rather than brand identity, graphic systems or digital VI. Call in Chinese first and confirm the exact design duties, store locations, contract, social security, schedule, salary, language used with store teams and whether hands-on installation or lifting is required before sending documents.",
+    score: 64,
+    tier: "C",
+    locationTag: "Barcelona; Chinese direct contact; employer and employment terms to confirm",
+    typeTag: "Retail window display / visual merchandising / non-VI adjacent design",
+    sourceGroup: "chinese",
+    postedAt: "2026-08-12",
+    freshnessTag: "week",
+    freshnessAgeDays: 1,
+    links: [
+      "https://infohuaxin.com/showinfo.asp?id=4281407",
+      "https://infohuaxin.com/showclass.asp?Page=3&class1=13&class2=221&dq=12",
+      "tel:+34656656158",
+    ],
+    searchText: "ELIMHOME InfoHuaxin 4281407 current Chinese recruitment Barcelona 2026-08-12 nine-store chain window display visual merchandising seasonal display merchandise presentation retail design relevant experience preferred salary negotiable direct telephone 656656158 legal employer contract hours social insurance language confirm non graphic non VI",
+  });
+}
+
+CURATED[930904] = {
+  statusKey: "verify",
+  direction: "other",
+  company: "ELIMHOME 连锁百货（法律主体待核实）",
+  locationKey: "barcelona",
+  locationLabel: "Barcelona / 9 家连锁门店 / 具体门店与工时待确认",
+  titleZh: "橱窗设计与商品陈列（零售视觉；非平面 / VI）",
+  titleEs: "Window Display & Visual Merchandising",
+  languageKey: "unknown",
+  applicationMode: "chineseCheck",
+  language: "华新中文招聘正文和直联电话均存在，可先用中文沟通；日常与门店团队使用中文还是西语没有公开",
+  chineseFit: true,
+  allowTraditionalHuaxinDetail: true,
+  experienceKey: "unknown",
+  experienceLabel: "要求有审美和独立布置能力；零售陈列经验优先，未写固定年限",
+  internshipKey: false,
+  statusEvidence: "2026-08-13 打开华新 Barcelona 当前招聘索引：8 月 12 日 ELIMHOME 完整招聘正文、9 家门店、橱窗/节日布置/商品陈列职责和 656 656 158 均可读；精确详情 4281407 对自动访问返回 Cloudflare 403，因此先确认而不冒充官方 ATS 可投。",
+  reason: "它是当天可追踪的 Barcelona 中文直联机会，设计职责和零售视觉相关；但核心是实体橱窗、节日布置和商品陈列，不是 Logo、VI、品牌指南或数字品牌延展，所以排在华人全职平面设计师之后。",
+  next: "先用中文电话询问：现在是否仍招橱窗设计岗、具体门店、是否全职、合同与全保、薪资、工时、日常工作语言、安装搬运比例，以及是否需要现场试做。确认后只发送 PDF 作品集，优先放零售空间、橱窗、导视、活动布置和品牌陈列案例。",
+  links: [
+    "https://infohuaxin.com/showinfo.asp?id=4281407",
+    "https://infohuaxin.com/showclass.asp?Page=3&class1=13&class2=221&dq=12",
+    "tel:+34656656158",
+  ],
+  preferCuratedLinks: true,
+  latestAuditSection: ROUND60_SECTION,
+  changeType: "round-60-new-current-chinese-retail-visual-lead",
+};
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
@@ -13399,8 +13463,9 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
-function isActionableLink(value) {
+function isActionableLink(value, item = null) {
   if (/^mailto:/i.test(value)) return true;
+  if (/^tel:\+?\d[\d\s().-]{6,}$/i.test(value)) return true;
   if (!/^https?:\/\//i.test(value)) return false;
 
   let url;
@@ -13416,7 +13481,13 @@ function isActionableLink(value) {
 
   // Research/listing pages are useful as evidence, but they are not direct
   // vacancy or application routes and must not be shown as action buttons.
-  if (host === "infohuaxin.com" || host === "www.infohuaxin.com") return false;
+  if (host === "infohuaxin.com" || host === "www.infohuaxin.com") {
+    return Boolean(
+      CURATED[item?.id]?.allowTraditionalHuaxinDetail &&
+        path === "/showinfo.asp" &&
+        /^\?id=\d+$/.test(query),
+    );
+  }
   if (host === "eulam.infohuaxin.com") return /^\/info\/\d+\/?$/.test(path);
   if (/xihua\.es$/.test(host)) {
     return /mod=viewthread/.test(query) && /(?:^|&)tid=\d+/.test(query.slice(1));
@@ -13452,7 +13523,7 @@ function toLinks(item) {
     ? [...curatedRaw, ...raw, ...emails]
     : [...raw, ...curatedRaw, ...emails];
   return [...new Set(orderedLinks)].filter(
-    (url) => isActionableLink(url) && !suppressedFragments.some((fragment) => String(url).includes(fragment)),
+    (url) => isActionableLink(url, item) && !suppressedFragments.some((fragment) => String(url).includes(fragment)),
   );
 }
 
@@ -16067,6 +16138,7 @@ function contactTokens(item) {
 
 function linkLabel(href, index) {
   if (href.startsWith("mailto:")) return "发送邮件";
+  if (href.startsWith("tel:")) return "拨打招聘电话";
   if (/linkedin\.[^/]+\/jobs\/view/i.test(href)) return "领英投递";
   if (/\/(?:apply|application)(?:\/|$|\?)/i.test(href)) return "直接申请";
   if (/xihua/i.test(href)) return "查看西华招聘";
@@ -16132,7 +16204,7 @@ function renderLinks(item, node, compact = false) {
     const link = document.createElement("a");
     link.className = index === 0 ? "action-link action-link--primary" : "action-link";
     link.href = href;
-    link.target = href.startsWith("mailto:") ? "_self" : "_blank";
+    link.target = href.startsWith("mailto:") || href.startsWith("tel:") ? "_self" : "_blank";
     link.rel = "noreferrer";
     link.textContent = linkLabel(href, index);
     node.appendChild(link);

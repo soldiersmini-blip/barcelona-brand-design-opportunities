@@ -6,23 +6,24 @@
 
 ## 当前主表
 
-- 196 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
-- 145 个 Barcelona / 周边当前机会。
+- 197 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
+- 146 个 Barcelona / 周边当前机会。
 - 51 个明确允许 Spain / Europe / worldwide remote，或已单独标出 Spain 合同资格待确认的机会。
-- 183 个原始详情页或最终申请表显示可投，13 个需要先确认。
-- 5 个中文、华人圈、中国公司或中文远程相关机会。
+- 183 个原始详情页或最终申请表显示可投，14 个需要先确认。
+- 6 个中文、华人圈、中国公司或中文远程相关机会。
 
 主表只收录已逐条检查过地点、岗位方向、当前状态和真实入口的机会。默认按“我的匹配分”严格从高到低排列；分数同时考虑 Barcelona/Spain 可行性、品牌视觉相关度、资历、语言门槛、状态可信度和材料投入成本。
 
 ## 数据分区
 
-- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 196 条主表。
+- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 197 条主表。
 - `华人中文全库`：华人网、中文社区、Casa Asia 和中国公司相关来源的完整线索。
 - `页面仍可复核`：详情还在，但状态、地点或申请控制需要再次确认的记录。
 - `关闭 / 历史 / 排除`：已过期、错误地点、重复、非设计岗或无法证实的记录。历史不会删除。
 
 ## 关键文件
 
+- `AUDIT-2026-08-13-ROUND60.md`：复扫 Casa Asia、ES02 当前招聘、华新当前 Barcelona 招聘、LinkedIn 精确设计词与中文 / Mandarin 词；新增 ELIMHOME 的 Barcelona 中文“橱窗设计与商品陈列”相邻设计线索。该卡因不是平面 / VI、具体合同与原始详情仍需电话确认而只列 64 分，排在真实全职平面设计之后；主表更新为 197 张、146 张 Barcelona、51 张远程与 6 张中文相关机会。
 - `AUDIT-2026-08-13-ROUND59.md`：完成最后 30 张现行卡的原始页与官方 ATS 复核，按“中文可用性 → Barcelona / 明确 Europe remote → 品牌与 VI → 外语、资历和合同门槛”重新核分；修正 Mapit、MANGO、Dragons、eseOese、Ametller、HP、Bakken & Bæck、SIERRA 等卡的复合语言、年限与发布日期证据。同步扫描 ES02 当前 60 页 720 个标题及 LinkedIn Barcelona 最近 7 天结果，没有用 Madrid 或无关职位虚增卡片；主表保持 196 张并严格按个人分降序。
 - `AUDIT-2026-08-13-ROUND58.md`：继续逐条打开下一批 30 个最高分未做近期精确复核的原始页；新增“英西双硬门槛”和“英语明确 + 西语环境高概率”两种评分路径，修正 Ogilvy、Duna、Factorial、Preply、Brownie、RV Group、AC Marca、Synergie、Zabriskie、INCAPTO、Wecolors、Eurostars 与 Lodgify 的语言、地点或年限证据。补扫 LinkedIn 最近 7 天 77 个去重结果和华人通 ES02 最新 20 页，没有虚构新的 Barcelona 中文设计岗；两条 Ethos AI 演示文稿项目合并为一条后排研究记录。
 - `AUDIT-2026-08-13-ROUND57.md`：按“尚未在最近三轮复核的最高个人分”继续逐条打开 30 个原始页；纠正 JUNGLE、Eat Nudes、Blank 的语言证据误判，补上 Puig 英西双语硬门槛，清除 Canonical、Exoticca、Savills、devicenow 的无依据中级标签，并把 CrowdStrike 的 2+ 年改为初中级。同步扫描 LinkedIn 最近 7 天 69 个去重结果、华人通前 80 页 955 条近期标题和 Casa Asia 当前索引，没有把 Madrid、搬迁 Dubai、零售陈列或品牌经理误做成新卡。
@@ -80,8 +81,8 @@
 - `scripts/scan-linkedin-search.js`：批量扫描 LinkedIn 最近 7 天的 Barcelona 设计关键词，并按职位编号与现有库去重。
 - `scripts/scan-es02-current.js`：直接扫描华人通当前招聘分页，避免搜索引擎缓存滞后；命中标题仍必须继续打开原帖人工判断。
 - `scripts/export-opportunity-ledgers.js`：生成当前主表 CSV/JSON 与完整历史总账 CSV。
-- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 196 个机会的完整、严格降序导出。
-- `all-opportunity-ledger.csv`：1,267 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
+- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 197 个机会的完整、严格降序导出。
+- `all-opportunity-ledger.csv`：1,268 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
 - `scripts/validate-site.js`：验证数据、排序、状态、入口与页面结构。
 
 ## 本地验证
