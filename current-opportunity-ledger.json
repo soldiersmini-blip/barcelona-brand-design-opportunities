@@ -524,6 +524,36 @@
     {
       "ledger_bucket": "current-main",
       "rank": 19,
+      "id": 930900,
+      "company": "Bending Spoons",
+      "role_zh": "媒体设计师（品牌、平面与动效制作）",
+      "original_role": "Media Designer",
+      "tier": "B",
+      "status": "live",
+      "location_bucket": "remote",
+      "location": "欧洲合资格国家远程 / 前几个月需大部分时间在 Milan",
+      "language_path": "english",
+      "experience_path": "open",
+      "experience_requirement": "未写固定年限 / 以能力测试为主",
+      "direction": "brand",
+      "chinese_relevant": false,
+      "formal": true,
+      "internship": false,
+      "score": 8,
+      "source_score": 82,
+      "posted_at": "2026-08-08",
+      "primary_url": "https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee",
+      "all_links": [
+        "https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee",
+        "https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee/apply",
+        "https://es.linkedin.com/jobs/view/media-designer-at-bending-spoons-4450907880"
+      ],
+      "status_evidence": "2026-08-13 复核：官方职位与申请表 69d588c142e4c7b7a3dd14ee 均开放；LinkedIn JobPosting 同时给出 2026-09-07 有效期。",
+      "analysis": "The visual scope is strong and no fixed experience minimum is stated, but proficient spoken/written English, several hours of selection tests and spending most days in Milan during the first months are material barriers. Keep only as an English-first remote backup and confirm Spain eligibility before applying."
+    },
+    {
+      "ledger_bucket": "current-main",
+      "rank": 20,
       "id": 930899,
       "company": "CRAZE GmbH",
       "role_zh": "编辑与品牌平面设计师（玩具及儿童产品）",
@@ -552,7 +582,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 20,
+      "rank": 21,
       "id": 910,
       "company": "LABHOUSE",
       "role_zh": "ASO 视觉设计师（App 品牌与增长）",
@@ -581,7 +611,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 21,
+      "rank": 22,
       "id": 604,
       "company": "Canonical",
       "role_zh": "视觉设计师（品牌指南、UI 系统与数字产品）",
@@ -609,7 +639,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 22,
+      "rank": 23,
       "id": 914,
       "company": "Trivelta",
       "role_zh": "平面设计师（品牌、数字、活动与社媒）",
@@ -637,7 +667,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 23,
+      "rank": 24,
       "id": 352,
       "company": "Blank Studio Creative S.L.",
       "role_zh": "初级 3D 设计师（产品、包装与品牌世界）",
@@ -666,7 +696,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 24,
+      "rank": 25,
       "id": 633,
       "company": "Puig / Carolina Herrera Makeup",
       "role_zh": "品牌形象与 360 Campaign 管培项目",
@@ -694,7 +724,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 25,
+      "rank": 26,
       "id": 930836,
       "company": "CrowdStrike",
       "role_zh": "创意内容设计师（演示系统、视频与 Motion）",
@@ -723,7 +753,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 26,
+      "rank": 27,
       "id": 94,
       "company": "Savills Spain",
       "role_zh": "品牌设计师（企业视觉、编辑与空间导视）",
@@ -751,7 +781,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 27,
+      "rank": 28,
       "id": 866,
       "company": "devicenow",
       "role_zh": "品牌视频与动态视觉专员",
@@ -779,7 +809,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 28,
+      "rank": 29,
       "id": 884,
       "company": "Dragons Group",
       "role_zh": "中级平面设计师（健康与医疗）",
@@ -808,7 +838,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 29,
+      "rank": 30,
       "id": 930820,
       "company": "Siemens Digital Industries Software",
       "role_zh": "UI / 视觉设计师（图标系统与 2D/3D 视觉）",
@@ -837,7 +867,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 30,
+      "rank": 31,
       "id": 207,
       "company": "Publicis Production / Publicis Groupe España",
       "role_zh": "设计师（全球品牌 Campaign 与数字制作）",
@@ -865,7 +895,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 31,
+      "rank": 32,
       "id": 930823,
       "company": "Factorial",
       "role_zh": "付费广告动态设计师（全球市场）",
@@ -894,7 +924,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 32,
+      "rank": 33,
       "id": 930874,
       "company": "Ogilvy",
       "role_zh": "数字与动态设计师（社媒视频 / 国际品牌延展）",
@@ -925,7 +955,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 33,
+      "rank": 34,
       "id": 930840,
       "company": "Zurich Insurance",
       "role_zh": "创意策略师（社交内容与品牌平台）",
@@ -953,18 +983,18 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 34,
+      "rank": 35,
       "id": 886,
       "company": "JUNGLE / MeMe",
-      "role_zh": "社交媒体剪辑与视觉设计",
-      "original_role": "Video Social Editor MeMe Barcelona",
+      "role_zh": "社交艺术指导（图像与视频编辑）",
+      "original_role": "Social Art Director (edición de imagen y video) | MeMe Barcelona",
       "tier": "C",
       "status": "live",
       "location_bucket": "barcelona",
       "location": "巴塞罗那 / Calle Álava 111",
       "language_path": "spanishLikely",
-      "experience_path": "junior",
-      "experience_requirement": "初级或资深均可",
+      "experience_path": "open",
+      "experience_requirement": "初级或资深均可 / 未写固定年限",
       "direction": "social",
       "chinese_relevant": false,
       "formal": true,
@@ -972,17 +1002,17 @@
       "score": 7,
       "source_score": 90,
       "posted_at": "2026-08-10",
-      "primary_url": "https://wejungle.factorial.es/",
+      "primary_url": "https://wejungle.factorial.es/job_posting/social-art-director-edicion-de-imagen-y-video-meme-barcelona-314341",
       "all_links": [
-        "https://wejungle.factorial.es/",
+        "https://wejungle.factorial.es/job_posting/social-art-director-edicion-de-imagen-y-video-meme-barcelona-314341",
         "https://es.linkedin.com/jobs/view/video-social-editor-meme-barcelona-at-jungle-4441503440"
       ],
-      "status_evidence": "Live/current: the employer's current Factorial board and specific LinkedIn detail 4441503440 were checked on 2026-08-12. The Barcelona role remains open with Solicitar/Inscríbete, an indefinite full-time contract, C/ Álava 111 and a published EUR23k-28k salary band. It combines art direction, graphic design, logos, supers, boards, presentations, short-form video, Adobe, CapCut/Premiere and generative AI.",
+      "status_evidence": "2026-08-13 复核：JUNGLE 官方 Factorial 职位板仍列出精确职位 314341、Barcelona hybrid、无固定期限合同和“Inscríbete ahora”；旧卡名已按当前官方名称修正。",
       "analysis": "Recover as a current secondary Barcelona visual-content role. It is social-first rather than VI ownership, and the Spanish-first workflow must be confirmed, but the hands-on design/video scope, salary and application route are concrete."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 35,
+      "rank": 36,
       "id": 930882,
       "company": "Duna",
       "role_zh": "视觉设计师（品牌延展、网页与信息图形）",
@@ -1013,7 +1043,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 36,
+      "rank": 37,
       "id": 930825,
       "company": "Dragons Group",
       "role_zh": "视频剪辑与动态创意（品牌内容）",
@@ -1043,7 +1073,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 37,
+      "rank": 38,
       "id": 877,
       "company": "Eurofirms / 未公开包装客户",
       "role_zh": "平面设计与包装完稿专员",
@@ -1071,7 +1101,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 38,
+      "rank": 39,
       "id": 78,
       "company": "Textura Interiors",
       "role_zh": "数字设计师（视觉识别与全渠道品牌延展）",
@@ -1100,7 +1130,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 39,
+      "rank": 40,
       "id": 228,
       "company": "Bending Spoons",
       "role_zh": "应届媒体设计师（品牌资产、社媒与产品视觉）",
@@ -1125,34 +1155,6 @@
       ],
       "status_evidence": "英语流利；未见西语要求",
       "analysis": "官方申请页可直接填写，当前开放；官方并未把Barcelona列为固定工作地"
-    },
-    {
-      "ledger_bucket": "current-main",
-      "rank": 40,
-      "id": 105,
-      "company": "Runroom",
-      "role_zh": "数字营销设计师（学生支持岗）",
-      "original_role": "Digital Marketing Designer (student support)",
-      "tier": "C",
-      "status": "live",
-      "location_bucket": "barcelona",
-      "location": "Barcelona / 100% remote、hybrid 或本地办公",
-      "language_path": "spanishLikely",
-      "experience_path": "junior",
-      "experience_requirement": "学生 / 无经验要求",
-      "direction": "digital",
-      "chinese_relevant": false,
-      "formal": true,
-      "internship": false,
-      "score": 7,
-      "source_score": 78,
-      "posted_at": "",
-      "primary_url": "https://es.linkedin.com/jobs/view/digital-marketing-designer-runroom-at-universia-brasil-4442768685",
-      "all_links": [
-        "https://es.linkedin.com/jobs/view/digital-marketing-designer-runroom-at-universia-brasil-4442768685"
-      ],
-      "status_evidence": "Current original LinkedIn detail was opened directly on 2026-08-10 and visibly shows Digital Marketing Designer (Runroom), Barcelona, publication about one week earlier and 172 applications. The brief is explicitly for a design student with no experience required, supporting digital assets for social, newsletters, landing pages, web case studies, style guides/design systems, animated banners/video and corporate templates. It lists full-time employment and allows 100% remote, hybrid or Barcelona work, but the public detail does not expose salary, language requirements or a stable application button.",
-      "analysis": "Downgrade from the previous inflated senior-brand score. Keep as a current Barcelona digital-brand entry-level backup: the visual-system, campaign and motion overlap is useful, but the student/no-experience positioning makes it materially below professional brand/VI roles. Confirm whether a non-student applicant is eligible and how to apply."
     },
     {
       "ledger_bucket": "current-main",
@@ -1299,34 +1301,6 @@
     {
       "ledger_bucket": "current-main",
       "rank": 46,
-      "id": 1108,
-      "company": "Glovo",
-      "role_zh": "动态设计师（品牌 × Performance Marketing）",
-      "original_role": "Motion Designer (They/She/He)",
-      "tier": "C",
-      "status": "live",
-      "location_bucket": "barcelona",
-      "location": "Barcelona / 全职 / Brand Design 团队",
-      "language_path": "english",
-      "experience_path": "mid",
-      "experience_requirement": "中高级 / 3 年以上 Performance Motion",
-      "direction": "motion",
-      "chinese_relevant": false,
-      "formal": true,
-      "internship": false,
-      "score": 6.4,
-      "source_score": 90,
-      "posted_at": "",
-      "primary_url": "https://careers.glovoapp.com/job/motion-designer-they-she-he-in-barcelona-jid-744000116926787/",
-      "all_links": [
-        "https://careers.glovoapp.com/job/motion-designer-they-she-he-in-barcelona-jid-744000116926787/"
-      ],
-      "status_evidence": "Current official careers detail was opened directly on 2026-08-09. It visibly lists Motion Designer, Barcelona, Full-time and Apply via SmartRecruiters. It sits in Brand Design but primarily supports performance marketing/user acquisition and retention: approximately 80% of work adapts, iterates and optimizes high-volume creatives across channels. It requires 3+ years, professional English, paid-social experience, portfolio, advanced After Effects and good Figma/Illustrator/Photoshop/AI; salary, Spanish and work-authorisation terms are not stated.",
-      "analysis": "Verified Barcelona motion opening but not a core identity/VI role. Keep as a C-tier performance-motion backup below brand-system positions; use paid-social, motion-template, A/B iteration and data-informed campaign examples."
-    },
-    {
-      "ledger_bucket": "current-main",
-      "rank": 47,
       "id": 930827,
       "company": "Zurich Insurance",
       "role_zh": "创意专员（社媒与短视频内容）",
@@ -1355,7 +1329,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 48,
+      "rank": 47,
       "id": 425,
       "company": "Revolut",
       "role_zh": "数字品牌设计师（当前官方可投）",
@@ -1384,7 +1358,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 49,
+      "rank": 48,
       "id": 345,
       "company": "Domingo Studio",
       "role_zh": "品牌平面设计师 / 平面设计实习生",
@@ -1413,7 +1387,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 50,
+      "rank": 49,
       "id": 4,
       "company": "Lodgify",
       "role_zh": "创意设计师（品牌、营销与 Figma 系统）",
@@ -1442,7 +1416,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 51,
+      "rank": 50,
       "id": 284,
       "company": "EuroLeague Basketball",
       "role_zh": "高级平面设计师（体育品牌、社媒与动态）",
@@ -1470,7 +1444,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 52,
+      "rank": 51,
       "id": 55,
       "company": "BCome",
       "role_zh": "数字设计师（企业识别、SaaS 与 Motion）",
@@ -1500,7 +1474,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 53,
+      "rank": 52,
       "id": 1038,
       "company": "Lodgify",
       "role_zh": "动态设计师（品牌动效与可扩展模板）",
@@ -1529,36 +1503,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 54,
-      "id": 960,
-      "company": "DDB Spain",
-      "role_zh": "初级艺术指导（社媒与 Campaign）",
-      "original_role": "Art Director Junior",
-      "tier": "C",
-      "status": "live",
-      "location_bucket": "barcelona",
-      "location": "巴塞罗那 / hybrid / 初级全职",
-      "language_path": "spanish",
-      "experience_path": "junior",
-      "experience_requirement": "初级 / 1–2 年",
-      "direction": "social",
-      "chinese_relevant": false,
-      "formal": true,
-      "internship": false,
-      "score": 5,
-      "source_score": 92,
-      "posted_at": "",
-      "primary_url": "https://job-boards.greenhouse.io/uneteaddbspain/jobs/5229098008",
-      "all_links": [
-        "https://job-boards.greenhouse.io/uneteaddbspain/jobs/5229098008",
-        "https://www.ddb.com/"
-      ],
-      "status_evidence": "Current official DDB Spain Greenhouse detail was opened directly on 2026-08-10 and visibly shows Art Director Junior, Barcelona, Apply and a complete application form. The brief covers disruptive social-media concepts, campaign assets, layout, photo/video shoots, video editing and collaboration with art/copy teams. It asks for a graphic design/advertising degree, 1-2 years in an agency or studio, Photoshop, Premiere, Figma, Adobe, art-direction judgement and digital/social experience. The page states hybrid work and requires portfolio URL/password, salary expectation, office-day availability and work-permit answers; the body is Spanish and no English/Chinese requirement is stated.",
-      "analysis": "Keep as a current Barcelona junior visual/art-direction opportunity with a real ATS route. Score below senior brand-system roles because it is agency/social-led, junior and Spanish-first, but the campaign, layout, video and visual-direction scope is materially relevant. Confirm daily language and office cadence before applying."
-    },
-    {
-      "ledger_bucket": "current-main",
-      "rank": 55,
+      "rank": 53,
       "id": 930816,
       "company": "Brownie",
       "role_zh": "初级平面设计师（360° 品牌、包装、门店与电商）",
@@ -1586,7 +1531,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 56,
+      "rank": 54,
       "id": 396,
       "company": "RV Group — Rodriguez Villar",
       "role_zh": "初级 Motion Graphics 与视觉设计师",
@@ -1614,7 +1559,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 57,
+      "rank": 55,
       "id": 930819,
       "company": "AC Marca",
       "role_zh": "包装平面设计师（品牌手册国际落地与完稿）",
@@ -1642,7 +1587,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 58,
+      "rank": 56,
       "id": 856,
       "company": "SYNERGIE ESPAÑA / 未公开零售客户",
       "role_zh": "零售与电商品牌平面设计师",
@@ -1670,7 +1615,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 59,
+      "rank": 57,
       "id": 930868,
       "company": "ZABRISKIE STUDIO / GRUPO NATURA",
       "role_zh": "初级平面设计师（包装、品牌与印刷落地）",
@@ -1698,7 +1643,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 60,
+      "rank": 58,
       "id": 930831,
       "company": "INCAPTO",
       "role_zh": "平面设计师（包装与产品视觉）",
@@ -1726,7 +1671,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 61,
+      "rank": 59,
       "id": 930833,
       "company": "Wecolors",
       "role_zh": "产品平面设计师（美妆包装与完稿）",
@@ -1754,7 +1699,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 62,
+      "rank": 60,
       "id": 930821,
       "company": "Eurostars Hotel Company / Hospitaliti",
       "role_zh": "初级标识与图形制作专员（空间 VI）",
@@ -1783,7 +1728,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 63,
+      "rank": 61,
       "id": 175,
       "company": "Frekuent",
       "role_zh": "品牌与 Campaign 设计师",
@@ -1812,7 +1757,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 64,
+      "rank": 62,
       "id": 454,
       "company": "ADG-FAD",
       "role_zh": "Laus 2027 视觉活动付费委托（非雇佣）",
@@ -1842,7 +1787,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 65,
+      "rank": 63,
       "id": 1253,
       "company": "TheBusinessLook BCN / Museum Merchandising",
       "role_zh": "初级平面设计师（半职，先确认名额）",
@@ -1872,7 +1817,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 66,
+      "rank": 64,
       "id": 317,
       "company": "AB-BIOTICS",
       "role_zh": "包装制稿与图稿经理",
@@ -1901,7 +1846,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 67,
+      "rank": 65,
       "id": 863,
       "company": "Grup Ametller Origen",
       "role_zh": "数字平面设计专员（品牌数字延展）",
@@ -1930,7 +1875,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 68,
+      "rank": 66,
       "id": 930718,
       "company": "Capitole",
       "role_zh": "邮件与数字设计系统设计师",
@@ -1959,7 +1904,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 69,
+      "rank": 67,
       "id": 930719,
       "company": "Adsmurai",
       "role_zh": "数字平面设计师（360° Campaign）",
@@ -1987,7 +1932,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 70,
+      "rank": 68,
       "id": 908,
       "company": "Top Doctors Group",
       "role_zh": "营销设计师（多品牌视觉）",
@@ -2016,7 +1961,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 71,
+      "rank": 69,
       "id": 279,
       "company": "DORTOKA disseny",
       "role_zh": "平面与 Web 设计师",
@@ -2047,7 +1992,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 72,
+      "rank": 70,
       "id": 930854,
       "company": "Jungle / PS21Barna",
       "role_zh": "广告视频剪辑与基础动态视觉",
@@ -2075,7 +2020,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 73,
+      "rank": 71,
       "id": 889,
       "company": "Dragons Group",
       "role_zh": "食品饮料行业中级平面设计师",
@@ -2105,7 +2050,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 74,
+      "rank": 72,
       "id": 535,
       "company": "Supabase",
       "role_zh": "品牌设计师（开发者品牌、活动与多渠道视觉）",
@@ -2133,7 +2078,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 75,
+      "rank": 73,
       "id": 278,
       "company": "Avidalia",
       "role_zh": "数字内容设计师（品牌视觉与基础动效，兼职）",
@@ -2162,7 +2107,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 76,
+      "rank": 74,
       "id": 1081,
       "company": "Eximia Studio",
       "role_zh": "效果创意设计师（广告、数字内容与少量 VI）",
@@ -2190,7 +2135,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 77,
+      "rank": 75,
       "id": 860,
       "company": "Hays 官方招聘",
       "role_zh": "营销协调员（平面设计方向）",
@@ -2219,7 +2164,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 78,
+      "rank": 76,
       "id": 930869,
       "company": "NEWEYES TECH S.L.",
       "role_zh": "多媒体设计与内容创作",
@@ -2247,7 +2192,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 79,
+      "rank": 77,
       "id": 874,
       "company": "IKIGAI Talent Group / 移动应用客户",
       "role_zh": "视频剪辑与动态设计师（获客广告 / 品牌动态）",
@@ -2276,7 +2221,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 80,
+      "rank": 78,
       "id": 1301,
       "company": "The Colour Monster",
       "role_zh": "品牌识别与视觉系统设计师",
@@ -2304,7 +2249,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 81,
+      "rank": 79,
       "id": 1303,
       "company": "CATORCE / DDB Group",
       "role_zh": "工作室视觉设计师与 HTML 程序员",
@@ -2332,7 +2277,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 82,
+      "rank": 80,
       "id": 1227,
       "company": "Natulim",
       "role_zh": "视频剪辑与 Motion Graphics 设计师（品牌社媒）",
@@ -2360,7 +2305,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 83,
+      "rank": 81,
       "id": 930879,
       "company": "DashBook",
       "role_zh": "初级艺术指导（书籍封面、编辑设计与排版）",
@@ -2388,7 +2333,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 84,
+      "rank": 82,
       "id": 84,
       "company": "reboot",
       "role_zh": "网页设计师（端到端视觉落地）",
@@ -2416,7 +2361,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 85,
+      "rank": 83,
       "id": 868,
       "company": "Omnicom Health",
       "role_zh": "医疗品牌视频制作与动态视觉",
@@ -2444,7 +2389,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 86,
+      "rank": 84,
       "id": 989,
       "company": "Storisell",
       "role_zh": "动态设计师（Spain / Barcelona 团队）",
@@ -2473,7 +2418,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 87,
+      "rank": 85,
       "id": 854,
       "company": "Netenders / Wordans",
       "role_zh": "高产量电商服装图形设计师",
@@ -2502,7 +2447,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 88,
+      "rank": 86,
       "id": 921,
       "company": "Oh / OhChat",
       "role_zh": "平面设计师（Campaign、产品内素材与基础 Motion）",
@@ -2530,7 +2475,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 89,
+      "rank": 87,
       "id": 1293,
       "company": "Bonita Digital",
       "role_zh": "自由职业平面与创意设计师（品牌重塑、社媒与 Campaign）",
@@ -2559,7 +2504,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 90,
+      "rank": 88,
       "id": 1053,
       "company": "DDB Spain",
       "role_zh": "社交媒体内容创作者",
@@ -2587,7 +2532,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 91,
+      "rank": 89,
       "id": 1036,
       "company": "Algofy / official careers",
       "role_zh": "平面与网页设计师",
@@ -2616,7 +2561,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 92,
+      "rank": 90,
       "id": 930815,
       "company": "SIDN Digital Thinking",
       "role_zh": "平面设计师（信息设计与数字营销视觉）",
@@ -2644,7 +2589,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 93,
+      "rank": 91,
       "id": 930890,
       "company": "Double Tap",
       "role_zh": "社交媒体经理（足球品牌内容、拍摄与发布）",
@@ -2673,7 +2618,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 94,
+      "rank": 92,
       "id": 2942,
       "company": "SLAPS",
       "role_zh": "初级平面设计师（品牌机构路线）",
@@ -2702,7 +2647,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 95,
+      "rank": 93,
       "id": 1002,
       "company": "Pocket Worlds / Highrise",
       "role_zh": "Motion Designer（Marketing / Highrise）",
@@ -2730,7 +2675,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 96,
+      "rank": 94,
       "id": 985,
       "company": "The Builder Studios",
       "role_zh": "视觉设计师（品牌视觉 + motion）",
@@ -2758,7 +2703,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 97,
+      "rank": 95,
       "id": 178,
       "company": "Bending Spoons",
       "role_zh": "媒体设计师（品牌资产、社媒、产品视觉与 AI）",
@@ -2786,7 +2731,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 98,
+      "rank": 96,
       "id": 977,
       "company": "Injective",
       "role_zh": "数字设计师（品牌 Campaign 与视觉一致性）",
@@ -2814,7 +2759,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 99,
+      "rank": 97,
       "id": 1021,
       "company": "ZOE",
       "role_zh": "创意效果设计师（中级）",
@@ -2842,7 +2787,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 100,
+      "rank": 98,
       "id": 990001,
       "company": "TWOJEYS",
       "role_zh": "服装平面设计师（图案、印花与产品 Artwork）",
@@ -2870,7 +2815,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 101,
+      "rank": 99,
       "id": 990,
       "company": "Revolut",
       "role_zh": "动态设计师（Brand Studio / Spain remote）",
@@ -2898,7 +2843,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 102,
+      "rank": 100,
       "id": 930818,
       "company": "Infor",
       "role_zh": "多渠道品牌设计实习（指南、提案、Web 与基础视频）",
@@ -2927,7 +2872,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 103,
+      "rank": 101,
       "id": 37,
       "company": "ALEA",
       "role_zh": "平面设计实习生（游戏视觉资产与规范执行）",
@@ -2956,7 +2901,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 104,
+      "rank": 102,
       "id": 12,
       "company": "turbopuffer",
       "role_zh": "综合设计师（产品、品牌、Web 与营销）",
@@ -2984,7 +2929,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 105,
+      "rank": 103,
       "id": 1299,
       "company": "Agilent / official Workday",
       "role_zh": "EMEA 营销传播与内容实习生（12 个月）",
@@ -3012,7 +2957,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 106,
+      "rank": 104,
       "id": 1255,
       "company": "Gameloft",
       "role_zh": "平面设计实习岗位（合同类型待核实）",
@@ -3040,7 +2985,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 107,
+      "rank": 105,
       "id": 958,
       "company": "Remedy Edge Spain / Omnicom Health",
       "role_zh": "平面设计实习生（Logo、品牌指南与数字物料）",
@@ -3069,7 +3014,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 108,
+      "rank": 106,
       "id": 1257,
       "company": "Iôsif Bar / JOB TODAY",
       "role_zh": "Instagram 社媒与平面设计师",
@@ -3098,7 +3043,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 109,
+      "rank": 107,
       "id": 1258,
       "company": "Media Electronics SL / JOB TODAY",
       "role_zh": "平面设计师（社媒方向）",
@@ -3128,7 +3073,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 110,
+      "rank": 108,
       "id": 1026,
       "company": "Labhouse",
       "role_zh": "营销视频剪辑师（性能广告 / AI 视频）",
@@ -3156,7 +3101,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 111,
+      "rank": 109,
       "id": 1061,
       "company": "Dragons Group / official Factorial",
       "role_zh": "创意制作人（护肤与时尚）",
@@ -3184,7 +3129,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 112,
+      "rank": 110,
       "id": 930865,
       "company": "Jobgether / 匿名合作公司",
       "role_zh": "UI/UX 与视觉设计师（匿名雇主，先核验）",
@@ -3212,7 +3157,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 113,
+      "rank": 111,
       "id": 930829,
       "company": "Raventós Codorníu",
       "role_zh": "包装平面设计实习（新品牌与印前制作）",
@@ -3240,7 +3185,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 114,
+      "rank": 112,
       "id": 382,
       "company": "SIMORRA",
       "role_zh": "平面设计实习生（时尚品牌）",
@@ -3269,7 +3214,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 115,
+      "rank": 113,
       "id": 1237,
       "company": "ICÓNICO / ÚNICO",
       "role_zh": "平面与多媒体内容设计师",
@@ -3301,7 +3246,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 116,
+      "rank": 114,
       "id": 930812,
       "company": "Skyscanner",
       "role_zh": "高级视觉设计师（全球品牌系统与 Campaign）",
@@ -3330,7 +3275,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 117,
+      "rank": 115,
       "id": 1287,
       "company": "haddock (YC W22)",
       "role_zh": "平面设计与品牌策略实习生",
@@ -3359,7 +3304,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 118,
+      "rank": 116,
       "id": 930637,
       "company": "Dragons Group",
       "role_zh": "高级包装与 POS 设计师",
@@ -3389,7 +3334,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 119,
+      "rank": 117,
       "id": 238,
       "company": "Publicis Production / Publicis Groupe España",
       "role_zh": "艺术指导（整合 Campaign）",
@@ -3418,7 +3363,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 120,
+      "rank": 118,
       "id": 305,
       "company": "Hostinger",
       "role_zh": "高级平面设计师（品牌与创意）",
@@ -3447,7 +3392,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 121,
+      "rank": 119,
       "id": 27,
       "company": "TWOJEYS",
       "role_zh": "品牌负责人（策略、Campaign 与团队统筹）",
@@ -3476,7 +3421,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 122,
+      "rank": 120,
       "id": 930708,
       "company": "Dragons Group",
       "role_zh": "高级艺术指导（医疗与制药）",
@@ -3505,7 +3450,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 123,
+      "rank": 121,
       "id": 922,
       "company": "Solidgate",
       "role_zh": "高级平面设计师（品牌与营销）",
@@ -3533,7 +3478,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 124,
+      "rank": 122,
       "id": 313,
       "company": "Mapit IoT",
       "role_zh": "营销与品牌系统设计师（母语西语门槛）",
@@ -3563,7 +3508,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 125,
+      "rank": 123,
       "id": 920001,
       "company": "PepsiCo / Alvalle",
       "role_zh": "高级设计师（食品品牌、包装与产品架构）",
@@ -3592,7 +3537,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 126,
+      "rank": 124,
       "id": 928,
       "company": "Circle",
       "role_zh": "高级品牌设计师（科技品牌系统与 Campaign）",
@@ -3621,7 +3566,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 127,
+      "rank": 125,
       "id": 188,
       "company": "eseOese",
       "role_zh": "艺术指导（时尚品牌与 360° Campaign）",
@@ -3650,7 +3595,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 128,
+      "rank": 126,
       "id": 930712,
       "company": "VML",
       "role_zh": "艺术指导（品牌识别与整合 Campaign）",
@@ -3678,7 +3623,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 129,
+      "rank": 127,
       "id": 170,
       "company": "Dragons Group",
       "role_zh": "高级 UX/UI 与网页设计师（品牌数字延展）",
@@ -3707,7 +3652,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 130,
+      "rank": 128,
       "id": 224,
       "company": "King / Microsoft",
       "role_zh": "新游戏艺术指导（视觉风格与品牌指南）",
@@ -3737,7 +3682,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 131,
+      "rank": 129,
       "id": 1240,
       "company": "MANGO",
       "role_zh": "橱窗创意设计师（零售品牌空间与 3D）",
@@ -3766,7 +3711,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 132,
+      "rank": 130,
       "id": 930838,
       "company": "Dragons Group",
       "role_zh": "高级平面设计师（健康与医疗品牌）",
@@ -3795,7 +3740,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 133,
+      "rank": 131,
       "id": 930880,
       "company": "Dragons Group",
       "role_zh": "高级平面设计师（美妆护肤品牌视觉）",
@@ -3824,7 +3769,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 134,
+      "rank": 132,
       "id": 930844,
       "company": "Synthesia",
       "role_zh": "高级体验式品牌设计师",
@@ -3853,7 +3798,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 135,
+      "rank": 133,
       "id": 172,
       "company": "Ogilvy",
       "role_zh": "初级艺术指导（数字品牌与多渠道创意实习）",
@@ -3884,7 +3829,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 136,
+      "rank": 134,
       "id": 864,
       "company": "Grup Ametller Origen",
       "role_zh": "包装艺术负责人（品牌治理与生产落地）",
@@ -3913,7 +3858,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 137,
+      "rank": 135,
       "id": 88,
       "company": "Dragons Group",
       "role_zh": "平面设计负责人（品牌系统与团队管理）",
@@ -3942,7 +3887,36 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 138,
+      "rank": 136,
+      "id": 930902,
+      "company": "Ogilvy",
+      "role_zh": "高级艺术指导（医药整合 Campaign）",
+      "original_role": "Senior Art Director",
+      "tier": "C",
+      "status": "live",
+      "location_bucket": "barcelona",
+      "location": "Barcelona / 官方职位 / 办公节奏待确认",
+      "language_path": "spanishLikely",
+      "experience_path": "senior",
+      "experience_requirement": "高级 / 5 年以上 agency Art Director",
+      "direction": "brand",
+      "chinese_relevant": false,
+      "formal": false,
+      "internship": false,
+      "score": 0,
+      "source_score": 76,
+      "posted_at": "2026-08-05",
+      "primary_url": "https://www.ogilvy.com/careers/4721164005?gh_jid=4721164005",
+      "all_links": [
+        "https://www.ogilvy.com/careers/4721164005?gh_jid=4721164005",
+        "https://boards-api.greenhouse.io/v1/boards/ogilvy/jobs/4721164005"
+      ],
+      "status_evidence": "2026-08-13 复核：Ogilvy 官方 Greenhouse API 4721164005 返回 Barcelona、完整职位正文和当前申请入口，更新时间 2026-08-05。",
+      "analysis": "This is a true current Barcelona art-direction opening, but it requires more than five years as an agency Art Director and the complete public brief is Spanish. Keep as a zero-score senior Spanish backup, not a realistic current priority."
+    },
+    {
+      "ledger_bucket": "current-main",
+      "rank": 137,
       "id": 930824,
       "company": "Dragons Group",
       "role_zh": "中级平面设计师（高端护肤与生活方式品牌）",
@@ -3972,7 +3946,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 139,
+      "rank": 138,
       "id": 930891,
       "company": "BJAK",
       "role_zh": "高级平面设计师（数字 Campaign、品牌系统与 Motion）",
@@ -4001,7 +3975,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 140,
+      "rank": 139,
       "id": 930878,
       "company": "Lateral Thinking",
       "role_zh": "艺术指导（品牌体验、视觉识别与空间导视）",
@@ -4029,7 +4003,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 141,
+      "rank": 140,
       "id": 930881,
       "company": "Dragons Group",
       "role_zh": "高级视频剪辑与动态创意（品牌内容）",
@@ -4058,7 +4032,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 142,
+      "rank": 141,
       "id": 162,
       "company": "HP",
       "role_zh": "平面设计师（实际偏市场传播与物料统筹）",
@@ -4086,7 +4060,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 143,
+      "rank": 142,
       "id": 876,
       "company": "Buzz Marketing Networks",
       "role_zh": "AI 方向动态设计与视频剪辑",
@@ -4114,7 +4088,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 144,
+      "rank": 143,
       "id": 930876,
       "company": "IEBS Business School",
       "role_zh": "平面设计实习生（活动与社媒品牌适配）",
@@ -4144,7 +4118,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 145,
+      "rank": 144,
       "id": 930814,
       "company": "CNT Management Consulting",
       "role_zh": "高级品牌设计与创意内容经理",
@@ -4172,7 +4146,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 146,
+      "rank": 145,
       "id": 930841,
       "company": "Lenskart.com",
       "role_zh": "欧洲视觉陈列负责人（零售 VI 系统）",
@@ -4200,7 +4174,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 147,
+      "rank": 146,
       "id": 867,
       "company": "Space Go",
       "role_zh": "创意动态设计师（品牌 campaign / 社交广告）",
@@ -4228,7 +4202,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 148,
+      "rank": 147,
       "id": 930886,
       "company": "Establishment Labs",
       "role_zh": "项目协调与平面设计实习（30% 设计）",
@@ -4256,7 +4230,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 149,
+      "rank": 148,
       "id": 930887,
       "company": "Lateral Thinking",
       "role_zh": "高级空间设计师（品牌体验与沉浸式环境）",
@@ -4281,6 +4255,35 @@
       ],
       "status_evidence": "Live/current with a stale-template caveat. The exact LinkedIn employer detail 4452412973 was opened on 2026-08-13. It visibly shows Barcelona, Solicitar, publication one day earlier and no closed marker. The role creates brand-driven spatial stories, immersive environments and installations and requires 5+ years, 3D rendering, CAD/floorplans, Adobe and fluent Spanish. The brief still says an ideal January 2026 start, so the recruiter should confirm that this refreshed requisition is genuinely active and correct the start-date text.",
       "analysis": "A real but off-core brand-experience extension. Keep low because fluent Spanish, five years and specialist spatial/CAD/3D experience are hard gates and the start date is stale. Confirm the opening before tailoring anything."
+    },
+    {
+      "ledger_bucket": "current-main",
+      "rank": 149,
+      "id": 930901,
+      "company": "Equipo Singular",
+      "role_zh": "平面与视频青年人才实习",
+      "original_role": "Jóvenes Talentos Diseño Gráfico y Vídeo (Barcelona)",
+      "tier": "C",
+      "status": "live",
+      "location_bucket": "barcelona",
+      "location": "Barcelona / 早班混合实习 / €271 税前/月",
+      "language_path": "spanishLikely",
+      "experience_path": "intern",
+      "experience_requirement": "实习 / 必须可签学校或大学 convenio",
+      "direction": "brand",
+      "chinese_relevant": false,
+      "formal": false,
+      "internship": true,
+      "score": 0,
+      "source_score": 38,
+      "posted_at": "2026-08-12",
+      "primary_url": "https://es.linkedin.com/jobs/view/j%C3%B3venes-talentos-dise%C3%B1o-gr%C3%A1fico-y-v%C3%ADdeo-barcelona-at-equipo-singular-4452389902",
+      "all_links": [
+        "https://es.linkedin.com/jobs/view/j%C3%B3venes-talentos-dise%C3%B1o-gr%C3%A1fico-y-v%C3%ADdeo-barcelona-at-equipo-singular-4452389902",
+        "mailto:people@equiposingular.com"
+      ],
+      "status_evidence": "2026-08-13 复核：LinkedIn JobPosting 明确 2026-08-12 发布、2026-09-11 截止、INTERN、学校协议与 €271/月。",
+      "analysis": "The actual design scope is useful, but the mandatory convenio and very low €271/month grant make it impractical unless the user is currently eligible and intentionally wants a short training route. The complete brief is Spanish and no Chinese path exists."
     },
     {
       "ledger_bucket": "current-main",

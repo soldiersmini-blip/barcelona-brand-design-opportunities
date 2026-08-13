@@ -3251,6 +3251,10 @@ const ROUND50_CURRENT_IDS = Object.freeze([427, 930898]);
 // employer career page independently confirms both the Barcelona-area office
 // and English as the team language. It remains a low-priority English backup.
 const ROUND52_CURRENT_IDS = Object.freeze([930899]);
+// Round 54 adds three independently opened current roles found in the latest
+// Barcelona sweep. They enter the complete board but remain subject to hard
+// English/likely-Spanish, internship and seniority penalties.
+const ROUND54_CURRENT_IDS = Object.freeze([930900, 930901, 930902]);
 // THRU still exposes the complete role brief and a future closing date, but
 // the same official page ends with "NO JOB OPENINGS". Keep the lead visible as
 // verify-first evidence without allowing the contradictory page to occupy a
@@ -3274,7 +3278,7 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
     .flatMap((id) => [id, ...(ROUND36_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND37_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND38_RANKED_INSERTIONS.get(id) || [])])
-    .concat(ROUND47_CURRENT_IDS, ROUND50_CURRENT_IDS, ROUND52_CURRENT_IDS)
+    .concat(ROUND47_CURRENT_IDS, ROUND50_CURRENT_IDS, ROUND52_CURRENT_IDS, ROUND54_CURRENT_IDS)
     .filter((id) => !ROUND37_SUPERSEDED_MAIN_IDS.has(id))
     .filter((id) => !ROUND32_EXCLUDED_IDS.has(id))
     .filter((id) => !ROUND46_RESEARCH_ONLY_MAIN_IDS.has(id)),
@@ -14370,6 +14374,312 @@ if (round53FactorialPaidMotion) {
     reason:
       "Official Factorial requisition 316734 is the current Global Markets vacancy; the older 306539 Spanish-market route is removed.",
     changeType: "profile-current-requisition-repair",
+  };
+}
+
+const ROUND54_SECTION = "2026-08-13 Round 54 ranked 31-60 original-page and application-path recheck";
+
+[
+  {
+    id: 930900,
+    section: ROUND54_SECTION,
+    source: "Bending Spoons / official careers and current LinkedIn employer detail",
+    opportunity: "Media Designer",
+    fit: "Europe-remote visual-production role spanning brand assets, paid and organic social, product visuals, decks, motion, graphic design and AI-assisted creative workflows",
+    location: "Eligible-country remote / Spain eligibility requires application confirmation / first months mostly Milan",
+    status:
+      "Live/current: Bending Spoons' official careers detail and application 69d588c142e4c7b7a3dd14ee were opened on 2026-08-13 and list Media Designer, permanent or fixed-term full-time, Apply, Madrid or fully remote from eligible countries. The current LinkedIn employer detail 4450907880 independently exposes the complete brief and a 2026-09-07 valid-through date.",
+    contact:
+      "Official detail: https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee ; official application: https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee/apply ; employer LinkedIn: https://es.linkedin.com/jobs/view/media-designer-at-bending-spoons-4450907880",
+    analysis:
+      "The visual scope is strong and no fixed experience minimum is stated, but proficient spoken/written English, several hours of selection tests and spending most days in Milan during the first months are material barriers. Keep only as an English-first remote backup and confirm Spain eligibility before applying.",
+    score: 82,
+    tier: "B",
+    locationTag: "Remote Europe",
+    typeTag: "Graphic / motion / brand production",
+    sourceGroup: "official",
+    postedAt: "2026-08-08",
+    freshnessTag: "week",
+    freshnessAgeDays: 5,
+    links: [
+      "https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee",
+      "https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee/apply",
+      "https://es.linkedin.com/jobs/view/media-designer-at-bending-spoons-4450907880",
+    ],
+    searchText:
+      "Bending Spoons current official Media Designer Europe eligible countries remote Madrid permanent fixed-term full-time brand assets paid organic social product visuals decks motion graphic design AI proficient English selection tests several hours first months mostly Milan 2026-09-07",
+  },
+  {
+    id: 930901,
+    section: ROUND54_SECTION,
+    source: "Equipo Singular / current LinkedIn employer detail",
+    opportunity: "Jóvenes Talentos Diseño Gráfico y Vídeo (Barcelona)",
+    fit: "Barcelona morning internship supporting campaign graphics, visual consistency, moodboards, newsletters, web, events, social, basic video and branding",
+    location: "Barcelona / hybrid mornings / internship agreement required / €271 gross monthly grant",
+    status:
+      "Live/current: LinkedIn employer detail 4452389902 was opened and read in full on 2026-08-13. Its JobPosting data gives 2026-08-12 publication, 2026-09-11 valid-through and INTERN employment. The role requires a school or university convenio and offers a €271 gross monthly grant for 09:00-14:00 hybrid work.",
+    contact:
+      "Current employer detail/application: https://es.linkedin.com/jobs/view/j%C3%B3venes-talentos-dise%C3%B1o-gr%C3%A1fico-y-v%C3%ADdeo-barcelona-at-equipo-singular-4452389902 ; questions: mailto:people@equiposingular.com",
+    analysis:
+      "The actual design scope is useful, but the mandatory convenio and very low €271/month grant make it impractical unless the user is currently eligible and intentionally wants a short training route. The complete brief is Spanish and no Chinese path exists.",
+    score: 38,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Internship / graphic / video / brand production",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-12",
+    freshnessTag: "week",
+    freshnessAgeDays: 1,
+    links: [
+      "https://es.linkedin.com/jobs/view/j%C3%B3venes-talentos-dise%C3%B1o-gr%C3%A1fico-y-v%C3%ADdeo-barcelona-at-equipo-singular-4452389902",
+      "mailto:people@equiposingular.com",
+    ],
+    searchText:
+      "Equipo Singular current Barcelona Jovenes Talentos Diseno Grafico Video internship hybrid mornings mandatory school university convenio €271 gross month campaigns graphics branding visual consistency moodboards social web newsletters events Premiere CapCut After Effects Spanish brief 2026-09-11",
+  },
+  {
+    id: 930902,
+    section: ROUND54_SECTION,
+    source: "Ogilvy / official Greenhouse API and employer careers",
+    opportunity: "Senior Art Director",
+    fit: "Barcelona integrated-campaign art direction from concept through final visual execution for regulated healthcare and pharmaceutical brands",
+    location: "Barcelona / official Ogilvy application / office model and compensation not stated",
+    status:
+      "Live/current: Ogilvy's official Greenhouse API and employer careers route 4721164005 were opened on 2026-08-13 and return Senior Art Director, Barcelona, a complete brief and current application route. The official record was updated on 2026-08-05.",
+    contact:
+      "Official detail/application: https://www.ogilvy.com/careers/4721164005?gh_jid=4721164005 ; official API evidence: https://boards-api.greenhouse.io/v1/boards/ogilvy/jobs/4721164005",
+    analysis:
+      "This is a true current Barcelona art-direction opening, but it requires more than five years as an agency Art Director and the complete public brief is Spanish. Keep as a zero-score senior Spanish backup, not a realistic current priority.",
+    score: 76,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Senior art direction / integrated campaigns",
+    sourceGroup: "official",
+    postedAt: "2026-08-05",
+    freshnessTag: "month",
+    freshnessAgeDays: 8,
+    links: [
+      "https://www.ogilvy.com/careers/4721164005?gh_jid=4721164005",
+      "https://boards-api.greenhouse.io/v1/boards/ogilvy/jobs/4721164005",
+    ],
+    searchText:
+      "Ogilvy current official Greenhouse Senior Art Director Barcelona healthcare pharma integrated campaigns concept visual execution Spanish brief more than 5 years agency portfolio 2026-08-05",
+  },
+].forEach((record) => {
+  if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
+});
+
+Object.assign(CURATED, {
+  930900: {
+    statusKey: "live",
+    direction: "brand",
+    company: "Bending Spoons",
+    locationKey: "remote",
+    locationLabel: "欧洲合资格国家远程 / 前几个月需大部分时间在 Milan",
+    titleZh: "媒体设计师（品牌、平面与动效制作）",
+    titleEs: "Media Designer",
+    languageKey: "english",
+    applicationMode: "english",
+    language: "明确要求熟练阅读、写作和口语英语",
+    experienceKey: "open",
+    experienceLabel: "未写固定年限 / 以能力测试为主",
+    reason:
+      "品牌资产、平面、动效、社媒和 AI 制作方向匹配，官方职位和申请表均开放；但熟练英语、数小时测试与前期 Milan 到岗要求使其只能作为外语备选。",
+    next:
+      "先确认 Spain 是否属于可远程雇佣国家，以及前几个月 Milan 到岗的具体频率和费用；只有可接受英语筛选与测试投入时再申请。",
+    statusEvidence:
+      "2026-08-13 复核：官方职位与申请表 69d588c142e4c7b7a3dd14ee 均开放；LinkedIn JobPosting 同时给出 2026-09-07 有效期。",
+    links: [
+      "https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee",
+      "https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee/apply",
+      "https://es.linkedin.com/jobs/view/media-designer-at-bending-spoons-4450907880",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND54_SECTION,
+    changeType: "round-54-current-official-discovery",
+  },
+  930901: {
+    statusKey: "live",
+    direction: "brand",
+    company: "Equipo Singular",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 早班混合实习 / €271 税前/月",
+    titleZh: "平面与视频青年人才实习",
+    titleEs: "Jóvenes Talentos Diseño Gráfico y Vídeo",
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    language: "完整招聘正文为西语，未列等级；Barcelona 本地代理团队很可能以西语工作",
+    experienceKey: "intern",
+    experienceLabel: "实习 / 必须可签学校或大学 convenio",
+    reason:
+      "品牌、平面、视频与多渠道视觉职责真实且本地，但学校协议和 €271/月低补助是实质硬门槛，不能因方向贴合而高分。",
+    next:
+      "只有目前确实可签 convenio 且愿意接受低补助时才考虑；先邮件确认实习期限、每日工作语言和转正可能。",
+    statusEvidence:
+      "2026-08-13 复核：LinkedIn JobPosting 明确 2026-08-12 发布、2026-09-11 截止、INTERN、学校协议与 €271/月。",
+    links: [
+      "https://es.linkedin.com/jobs/view/j%C3%B3venes-talentos-dise%C3%B1o-gr%C3%A1fico-y-v%C3%ADdeo-barcelona-at-equipo-singular-4452389902",
+      "mailto:people@equiposingular.com",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND54_SECTION,
+    changeType: "round-54-current-internship-discovery",
+  },
+  930902: {
+    statusKey: "live",
+    direction: "brand",
+    company: "Ogilvy",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 官方职位 / 办公节奏待确认",
+    titleZh: "高级艺术指导（医药整合 Campaign）",
+    titleEs: "Senior Art Director",
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    language: "完整官方招聘正文为西语，未列正式等级；本地创意与客户环境很可能要求西语",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上 agency Art Director",
+    reason:
+      "Barcelona 官方岗位真实开放且方向相关，但 5 年以上艺术指导资历、医药监管环境和西语团队语境均远高于当前可行门槛。",
+    next:
+      "仅作为高级行业画像保留；除非资历和工作西语均满足，否则不投入申请时间。",
+    statusEvidence:
+      "2026-08-13 复核：Ogilvy 官方 Greenhouse API 4721164005 返回 Barcelona、完整职位正文和当前申请入口，更新时间 2026-08-05。",
+    links: [
+      "https://www.ogilvy.com/careers/4721164005?gh_jid=4721164005",
+      "https://boards-api.greenhouse.io/v1/boards/ogilvy/jobs/4721164005",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND54_SECTION,
+    changeType: "round-54-current-official-discovery",
+  },
+});
+
+// A readable description is not enough to remain in the current queue. These
+// three records now have direct closure evidence from the real submission
+// path: LinkedIn stopped accepting applications, Greenhouse redirects the
+// exact requisition to error=true, or SmartRecruiters marks the job expired.
+const ROUND54_CLOSED = new Map([
+  [
+    105,
+    {
+      status:
+        "Closed/history: the exact LinkedIn detail 4442768685 still preserves the Digital Marketing Designer description but explicitly says applications are no longer accepted.",
+      analysis:
+        "Preserve the Runroom student-support brief in history, but do not count or rank it as a current opportunity. Restore only after a new independent employer requisition appears.",
+      reason:
+        "The readable LinkedIn description is historical evidence only; the page explicitly says applications are no longer accepted.",
+      next: "历史保留；等待 Runroom 或其招聘伙伴发布新的独立职位编号。",
+    },
+  ],
+  [
+    960,
+    {
+      status:
+        "Closed/history: the exact DDB Spain Greenhouse requisition 5229098008 now redirects to the employer job board with error=true and no Art Director Junior application form.",
+      analysis:
+        "Preserve the junior art-direction brief in history. A generic employer board is not an open vacancy; restore only if DDB publishes a new exact requisition.",
+      reason:
+        "The exact Greenhouse job ID has disappeared and redirects to the generic DDB Spain board with error=true.",
+      next: "历史保留；仅在 DDB Spain 出现新的 Barcelona 初级艺术指导独立申请页时恢复。",
+    },
+  ],
+  [
+    1108,
+    {
+      status:
+        "Closed/history: Glovo's branded job page still renders the old description, but its Apply link redirects to SmartRecruiters /expired and the structured validThrough date is 2026-03-26.",
+      analysis:
+        "Preserve the Brand Design motion brief in history, but do not treat the stale Glovo shell as an open application. Restore only after a new SmartRecruiters publication or employer requisition appears.",
+      reason:
+        "The real SmartRecruiters submission route says This job ad has expired, overriding the stale employer-page Apply shell.",
+      next: "历史保留；等待 Glovo 发布新的 Motion Designer 职位编号。",
+    },
+  ],
+]);
+
+for (const [id, correction] of ROUND54_CLOSED) {
+  const item = allData.find((entry) => Number(entry.id) === id);
+  if (item) {
+    Object.assign(item, {
+      section: ROUND54_SECTION,
+      status: correction.status,
+      analysis: correction.analysis,
+      tier: "X",
+    });
+    item.searchText = [
+      item.source,
+      item.opportunity,
+      item.fit,
+      item.location,
+      item.status,
+      item.contact,
+      item.analysis,
+    ]
+      .filter(Boolean)
+      .join(" ");
+  }
+  if (CURATED[id]) {
+    CURATED[id] = {
+      ...CURATED[id],
+      statusKey: "closed",
+      latestAuditSection: ROUND54_SECTION,
+      reason: correction.reason,
+      next: correction.next,
+      changeType: "round-54-original-application-closed",
+    };
+  }
+}
+
+// JUNGLE did not close this opportunity: the old generic-board link concealed
+// a current renamed requisition. Point the card at the exact official job so
+// the user lands on the real description and Inscríbete ahora control.
+const round54Jungle = allData.find((item) => Number(item.id) === 886);
+if (round54Jungle) {
+  Object.assign(round54Jungle, {
+    section: ROUND54_SECTION,
+    opportunity: "Social Art Director (edición de imagen y video) | MeMe Barcelona",
+    status:
+      "Live/current after exact-route repair on 2026-08-13: JUNGLE's official Factorial board lists requisition 314341, Social Art Director (edición de imagen y video) | MeMe Barcelona, hybrid, indefinite and Inscríbete ahora. The brief accepts both junior and senior profiles and does not state a formal language level; its Spanish brief and local-team context remain a likely Spanish working-language risk.",
+    contact:
+      "Official detail/application: https://wejungle.factorial.es/job_posting/social-art-director-edicion-de-imagen-y-video-meme-barcelona-314341 ; employer LinkedIn detail: https://es.linkedin.com/jobs/view/video-social-editor-meme-barcelona-at-jungle-4441503440",
+    links: [
+      "https://wejungle.factorial.es/job_posting/social-art-director-edicion-de-imagen-y-video-meme-barcelona-314341",
+      "https://es.linkedin.com/jobs/view/video-social-editor-meme-barcelona-at-jungle-4441503440",
+    ],
+  });
+  round54Jungle.searchText = [
+    round54Jungle.source,
+    round54Jungle.opportunity,
+    round54Jungle.fit,
+    round54Jungle.location,
+    round54Jungle.status,
+    round54Jungle.contact,
+    round54Jungle.analysis,
+  ]
+    .filter(Boolean)
+    .join(" ");
+}
+if (CURATED[886]) {
+  CURATED[886] = {
+    ...CURATED[886],
+    statusKey: "live",
+    titleZh: "社交艺术指导（图像与视频编辑）",
+    titleEs: "Social Art Director — edición de imagen y video",
+    experienceKey: "open",
+    experienceLabel: "初级或资深均可 / 未写固定年限",
+    links: [
+      "https://wejungle.factorial.es/job_posting/social-art-director-edicion-de-imagen-y-video-meme-barcelona-314341",
+      "https://es.linkedin.com/jobs/view/video-social-editor-meme-barcelona-at-jungle-4441503440",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND54_SECTION,
+    statusEvidence:
+      "2026-08-13 复核：JUNGLE 官方 Factorial 职位板仍列出精确职位 314341、Barcelona hybrid、无固定期限合同和“Inscríbete ahora”；旧卡名已按当前官方名称修正。",
+    reason:
+      "当前岗位包含社媒图像/视频编辑、TikTok/Reels、基础动效、Logo 与品牌视觉延展，但公开正文为西语且没有中文路径，因此仅保留为低分西语备选。",
+    next:
+      "先用简短消息确认日常工作语言以及 junior 档位的薪资和职责；未确认可接受当前语言水平前，不投入定制申请材料。",
+    changeType: "round-54-current-requisition-repair",
   };
 }
 

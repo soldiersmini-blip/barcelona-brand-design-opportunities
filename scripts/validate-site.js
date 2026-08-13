@@ -156,7 +156,7 @@ check(auditedMain.every((item) => !/鈥|帽|鏄|鍙|闇|椤|閫|绗/.test(`${tes
 check([446, 928, 483, 930815].every((id) => auditedMain.some((item) => Number(item.id) === id)), "本轮新增的四条真实机会未完整进入主表");
 check([296, 4, 1102, 601, 577, 1038, 1011, 1105, 1240, 351, 930712, 278, 224].every((id) => auditedMain.some((item) => Number(item.id) === id)), "研究库追回的十三条真实机会未完整进入主表");
 check([94, 305, 604, 981, 1101].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第二批研究库追回的五条真实机会未完整进入主表");
-check([170, 445, 1108, 1081].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第三批研究库追回的四条真实机会未完整进入主表");
+check([170, 445, 1081].every((id) => auditedMain.some((item) => Number(item.id) === id)) && test.applicationStatus(test.allData.find((item) => Number(item.id) === 1108)).key === "closed", "第三批研究库记录未保留当前机会或 Glovo 过期历史状态");
 check([1314, 958, 277, 1080, 1099].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第四批仍开放的研究库机会未完整进入主表");
 check([314, 78, 921, 210, 1097, 985, 989].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第五批仍开放的研究库机会未完整进入主表");
 check([134, 2942, 977, 1255, 876, 920].every((id) => auditedMain.some((item) => Number(item.id) === id)), "第六批仍开放的研究库机会未完整进入主表");
@@ -955,9 +955,9 @@ check(r700Mylva && test.applicationStatus(r700Mylva).key === "closed" && /No se 
 const r700BusinessLook = test.allData.find((item) => item.id === 1253);
 check(r700BusinessLook && test.applicationStatus(r700BusinessLook).key !== "closed" && r700BusinessLook.score === 84 && test.locationBucket(r700BusinessLook) === "barcelona", "Round 700: TheBusinessLook LinkedIn refresh regressed");
 const r701Runroom = test.allData.find((item) => item.id === 105);
-check(r701Runroom && test.applicationStatus(r701Runroom).key !== "closed" && r701Runroom.score === 78 && test.locationBucket(r701Runroom) === "barcelona", "Round 701: Runroom student-scope recalibration regressed");
+check(r701Runroom && test.applicationStatus(r701Runroom).key === "closed" && r701Runroom.tier === "X" && test.locationBucket(r701Runroom) === "barcelona", "Round 54: Runroom no-longer-accepting correction regressed");
 const r701DdbJunior = test.allData.find((item) => item.id === 960);
-check(r701DdbJunior && test.applicationStatus(r701DdbJunior).key === "live" && r701DdbJunior.score === 92 && test.locationBucket(r701DdbJunior) === "barcelona", "Round 701: DDB Art Director Junior ATS refresh regressed");
+check(r701DdbJunior && test.applicationStatus(r701DdbJunior).key === "closed" && r701DdbJunior.tier === "X" && test.locationBucket(r701DdbJunior) === "barcelona", "Round 54: DDB Art Director Junior error-redirect correction regressed");
 const r701Savills = test.allData.find((item) => item.id === 33);
 check(r701Savills && r701Savills.tier === "D" && test.locationBucket(r701Savills) !== "barcelona" && test.applicationStatus(r701Savills).key !== "closed", "Round 701: Savills Málaga location correction regressed");
 const r701StripeLegacy = test.allData.find((item) => item.id === 99);
@@ -1135,14 +1135,14 @@ check(r22Main.filter((item) => test.isChineseRelevant(item) && test.applicationS
 const r23ById = (id) => test.allData.find((item) => Number(item.id) === id);
 const r23Main = test.MY_OPPORTUNITY_IDS.map(r23ById).filter(Boolean);
 const r23VisibleMain = test.dedupedData.filter((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id)));
-check(test.MY_OPPORTUNITY_IDS.length === 210 && new Set(test.MY_OPPORTUNITY_IDS).size === 210, "Round 52: audited ID ledger must contain exactly 210 unique opportunities after the new CRAZE role");
-check(r23Main.length === 210 && r23VisibleMain.length === 210, "Round 52: complete audited history must preserve all 210 reviewed job identities");
-check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 159 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 51, "Round 52: audited Barcelona/remote split must be exactly 159/51 including preserved closed history");
+check(test.MY_OPPORTUNITY_IDS.length === 213 && new Set(test.MY_OPPORTUNITY_IDS).size === 213, "Round 54: audited ID ledger must contain exactly 213 unique opportunities after three current discoveries");
+check(r23Main.length === 213 && r23VisibleMain.length === 213, "Round 54: complete audited history must preserve all 213 reviewed job identities");
+check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 161 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 52, "Round 54: audited Barcelona/remote split must be exactly 161/52 including preserved closed history");
 check(
   r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 187 &&
     r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 13 &&
-    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 10,
-  "Round 53: 210 reviewed IDs must resolve to 187 live, 13 verify and 10 preserved closed-history cards",
+    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 13,
+  "Round 54: 213 reviewed IDs must resolve to 187 live, 13 verify and 13 preserved closed-history cards",
 );
 const r39Skyscanner = r23ById(930812);
 check(r39Skyscanner && test.applicationStatus(r39Skyscanner).key === "live", "Round 52: the reopened Skyscanner Senior Visual Designer was not restored to the current board");
@@ -1192,16 +1192,16 @@ const r41LanguageCounts = r41Current.reduce((counts, item) => {
 }, {});
 check(
   r41Current.length === 200 &&
-    r41Current.filter((item) => test.locationBucket(item) === "barcelona").length === 149 &&
-    r41Current.filter((item) => test.locationBucket(item) === "remote").length === 51 &&
+    r41Current.filter((item) => test.locationBucket(item) === "barcelona").length === 148 &&
+    r41Current.filter((item) => test.locationBucket(item) === "remote").length === 52 &&
     r41LanguageCounts.chineseCheck === 2 &&
     !r41LanguageCounts.basicSpanish &&
     r41LanguageCounts.english === 72 &&
     r41LanguageCounts.unknown === 51 &&
-    r41LanguageCounts.spanishLikely === 21 &&
-    r41LanguageCounts.spanish === 49 &&
+    r41LanguageCounts.spanishLikely === 22 &&
+    r41LanguageCounts.spanish === 48 &&
     r41LanguageCounts.foreign === 5,
-  `Round 53: current ledger mismatch ${JSON.stringify({ total: r41Current.length, language: r41LanguageCounts })}`,
+  `Round 54: current ledger mismatch ${JSON.stringify({ total: r41Current.length, language: r41LanguageCounts })}`,
 );
 const r51ScoringRiskCounts = r41Current.reduce((counts, item) => {
   const key = test.scoreLanguageRisk(item);
@@ -1214,10 +1214,10 @@ check(
     r51ScoringRiskCounts.english === 72 &&
     r51ScoringRiskCounts.englishLikely === 49 &&
     !r51ScoringRiskCounts.unknown &&
-    r51ScoringRiskCounts.spanishLikely === 23 &&
-    r51ScoringRiskCounts.spanish === 47 &&
+    r51ScoringRiskCounts.spanishLikely === 24 &&
+    r51ScoringRiskCounts.spanish === 46 &&
     r51ScoringRiskCounts.foreign === 5,
-  `Round 53: profile-based scoring-risk ledger mismatch ${JSON.stringify(r51ScoringRiskCounts)}`,
+  `Round 54: profile-based scoring-risk ledger mismatch ${JSON.stringify(r51ScoringRiskCounts)}`,
 );
 for (const id of [930834, 427, 930837, 345, 874, 136, 930892]) {
   check(test.applicationLanguagePath(r23ById(id)).key === "unknown" && test.scoreLanguageRisk(r23ById(id)) === "englishLikely", `Round 51: ${id} lost the distinction between formal language evidence and likely English working environment`);
@@ -1281,7 +1281,7 @@ check([958, 930638].every((id) => r44AuditItems.some((item) => Number(item.id) =
 check(test.MY_OPPORTUNITY_SET.has(958) && test.applicationStatus(r44RemedyCurrent).key === "live", "Round 44: canonical Remedy Edge trainee opening was lost");
 check(r44RemedyLinks.length === 2 && r44RemedyLinks.some((url) => /omnicomhealth\/jobs\/5207339008/i.test(url)) && r44RemedyLinks.some((url) => /remedyedgespain\/jobs\/5207341008/i.test(url)), "Round 44: the canonical Remedy Edge card does not expose both current official application routes");
 check(r44RemedyHistorical && !test.MY_OPPORTUNITY_SET.has(930638) && test.applicationStatus(r44RemedyHistorical).key === "closed" && r44RemedyHistorical.tier === "X", "Round 44: removed Omnicom 4542432008 route still counts as a live independent vacancy");
-check(test.MY_OPPORTUNITY_IDS.length === 210 && new Set(test.MY_OPPORTUNITY_IDS).size === 210, "Round 52: current refresh changed the 210-seat audited ledger unexpectedly");
+check(test.MY_OPPORTUNITY_IDS.length === 213 && new Set(test.MY_OPPORTUNITY_IDS).size === 213, "Round 54: current refresh changed the 213-seat audited ledger unexpectedly");
 const r45ChineseCanonical = r23ById(778);
 const r45ChineseHistorical = r23ById(930835);
 const round48Section = "2026-08-13 Round 48 complete unknown-language source audit";
@@ -1290,14 +1290,24 @@ const round50Section = "2026-08-13 Round 50 user-profile rescore and current-sou
 const round51Section = "2026-08-13 Round 51 user-language feasibility recalibration";
 const round52Section = "2026-08-13 Round 52 Chinese-source and current-employer refresh";
 const round53Section = "2026-08-13 Round 53 Chinese-advantage and foreign-language feasibility rescore";
+const round54Section = "2026-08-13 Round 54 ranked 31-60 original-page and application-path recheck";
 const round49LikelySpanishIds = [877, 105, 886, 930829, 1257, 1258, 382, 1237, 930876, 86, 930873, 930885, 188, 577, 864, 1296, 579, 876, 867, 930843, 351];
-check(test.latestRoundSection === round53Section, "Round 53: latest-round marker did not advance");
-check(test.latestRoundItems.length === 4 && [24, 25, 930822, 930823].every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)), "Round 53: rescore, closure or canonical-link repair is missing from the latest audit log");
+check(test.latestRoundSection === round54Section, "Round 54: latest-round marker did not advance");
+check(test.latestRoundItems.length === 7 && [105, 886, 960, 1108, 930900, 930901, 930902].every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)), "Round 54: closure, canonical-link repair or current discovery is missing from the latest audit log");
+check([24, 25, 930822, 930823].every((id) => test.CURATED[id]?.latestAuditSection === round53Section), "Round 53: Chinese-advantage, closure or canonical-link provenance was lost after Round 54");
+check([105, 960, 1108].every((id) => test.applicationStatus(r23ById(id)).key === "closed" && !r41Current.some((item) => Number(item.id) === id)), "Round 54: a directly closed application route still leaks into the current board");
+check(test.applicationStatus(r23ById(886)).key === "live" && test.toLinks(r23ById(886))[0]?.includes("social-art-director-edicion-de-imagen-y-video-meme-barcelona-314341"), "Round 54: JUNGLE current renamed requisition was not repaired to the exact official route");
+const round54BendingSpoons = r23ById(930900);
+const round54EquipoSingular = r23ById(930901);
+const round54OgilvySenior = r23ById(930902);
+check(round54BendingSpoons && test.applicationStatus(round54BendingSpoons).key === "live" && test.locationBucket(round54BendingSpoons) === "remote" && test.applicationLanguagePath(round54BendingSpoons).key === "english" && test.experienceInfo(round54BendingSpoons).key === "open" && test.displayedScore(round54BendingSpoons) === 8 && test.toLinks(round54BendingSpoons).some((url) => /69d588c142e4c7b7a3dd14ee/i.test(url)), "Round 54: Bending Spoons Media Designer lost its official route, English gate, open seniority or score cap");
+check(round54EquipoSingular && test.applicationStatus(round54EquipoSingular).key === "live" && test.locationBucket(round54EquipoSingular) === "barcelona" && test.applicationLanguagePath(round54EquipoSingular).key === "spanishLikely" && test.isInternshipRole(round54EquipoSingular) && test.displayedScore(round54EquipoSingular) === 0 && test.toLinks(round54EquipoSingular).some((url) => /4452389902/i.test(url)), "Round 54: Equipo Singular internship lost its Barcelona, convenio, language-risk or low-pay score evidence");
+check(round54OgilvySenior && test.applicationStatus(round54OgilvySenior).key === "live" && test.locationBucket(round54OgilvySenior) === "barcelona" && test.applicationLanguagePath(round54OgilvySenior).key === "spanishLikely" && test.experienceInfo(round54OgilvySenior).key === "senior" && test.displayedScore(round54OgilvySenior) === 0 && test.toLinks(round54OgilvySenior).some((url) => /4721164005/i.test(url)), "Round 54: Ogilvy Senior Art Director lost its official route, Spanish-likely gate, seniority or score floor");
 check([930812, 930899].every((id) => test.CURATED[id]?.latestAuditSection === round52Section), "Round 52: Skyscanner or CRAZE provenance was lost after Round 53");
 const round51AuditedItems = test.allData.filter((item) => test.CURATED[item.id]?.latestAuditSection === round51Section);
 check(round51AuditedItems.length === 50 && round51AuditedItems.every((item) => ["englishLikely", "spanishLikely"].includes(test.scoreLanguageRisk(item))), "Round 51: the 50 neutral-language risk corrections were not preserved after Round 52");
 check(test.CURATED[930898]?.latestAuditSection === round50Section && test.CURATED[427]?.latestAuditSection === round51Section, "Round 50/51: recovery provenance or subsequent language-risk audit was lost");
-check([...round49LikelySpanishIds, 930897].every((id) => test.CURATED[id]?.latestAuditSection === round49Section), "Round 49: likely-Spanish audit provenance was lost after Round 50");
+check([...round49LikelySpanishIds.filter((id) => ![105, 886].includes(id)), 930897].every((id) => test.CURATED[id]?.latestAuditSection === round49Section) && [105, 886].every((id) => test.CURATED[id]?.latestAuditSection === round54Section), "Round 49/54: likely-Spanish audit provenance was lost after the current recheck");
 const round50RevolutEmployerBranding = r23ById(427);
 const round50DragonsArtDirector = r23ById(930898);
 check(
