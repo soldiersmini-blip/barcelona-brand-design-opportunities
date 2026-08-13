@@ -14683,6 +14683,256 @@ if (CURATED[886]) {
   };
 }
 
+const ROUND55_SECTION = "2026-08-13 Round 55 ranked 61-90 original-page and source-deduplication recheck";
+const ROUND55_AUDITED_IDS = Object.freeze([
+  175, 454, 1253, 317, 863, 930718, 930719, 908, 279, 930854,
+  889, 535, 278, 1081, 860, 930869, 874, 1301, 1303, 1227,
+  930879, 84, 868, 989, 854, 921, 1293, 1053, 1036, 930815,
+]);
+
+for (const id of ROUND55_AUDITED_IDS) {
+  if (CURATED[id]) {
+    CURATED[id] = {
+      ...CURATED[id],
+      latestAuditSection: ROUND55_SECTION,
+      changeType: "round-55-ranked-61-90-original-page-recheck",
+    };
+  }
+}
+
+function updateRound55Item(id, patch) {
+  const item = allData.find((entry) => Number(entry.id) === id);
+  if (!item) return;
+  Object.assign(item, { section: ROUND55_SECTION, ...patch });
+  item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+    .filter(Boolean)
+    .join(" ");
+}
+
+// A readable shell or a generic company feed is not proof that an exact
+// vacancy remains open. Preserve both records in history after checking the
+// employer sources, and keep the genuine current Equipo Singular job under
+// its original employer ATS identity rather than counting a LinkedIn mirror.
+const ROUND55_CLOSED = new Map([
+  [
+    317,
+    {
+      status:
+        "Closed/history: AB-BIOTICS' official Factorial board was reopened on 2026-08-13 and lists only Auxiliar de mantenimiento, Operari de producción and Operario de almacén. The old Artwork Manager URL returns a generic company shell without the title, description or application control.",
+      analysis:
+        "Preserve the former packaging-artwork brief and exact 241907 URL in history. Do not restore it until AB-BIOTICS publishes a new independent Artwork Manager requisition.",
+      reason:
+        "官方 Factorial 当前职位板不再列出 Artwork Manager；旧 241907 只剩通用公司壳，没有岗位正文或申请按钮。",
+      next: "历史保留；只在 AB-BIOTICS 发布新的独立 Artwork Manager 职位编号时恢复。",
+      changeType: "round-55-official-board-removed",
+    },
+  ],
+  [
+    454,
+    {
+      status:
+        "Closed/history pending a new exact call: the linked ADG-FAD brief is Campaña de los Premios ADG Laus 2026 and its body sets the portfolio deadline at 17 September 2025, with selection and delivery milestones in 2025-2026. The generic LinkedIn company page is not an individual current application route.",
+      analysis:
+        "Preserve the EUR8,000 design-commission brief as historical professional-opportunity evidence. A conflicting future date in indexed metadata does not override the dated 2025 body; restore only from a new exact ADG-FAD call with a coherent 2026 deadline.",
+      reason:
+        "原始委托正文写明 2025-09-17 截止，后续日程也从 2025 年开始；通用公司主页不能证明存在新的 Laus 2027 委托。",
+      next: "历史保留；等待 ADG-FAD 发布年份与截止日一致的新独立征集页。",
+      changeType: "round-55-stale-commission-body",
+    },
+  ],
+  [
+    930901,
+    {
+      status:
+        "Closed/history duplicate: LinkedIn 4452389902 is the same Equipo Singular morning internship as canonical employer ATS record 930843. Company, duties, hybrid schedule, mandatory school convenio, EUR271 gross monthly grant and people@equiposingular.com all match.",
+      analysis:
+        "Keep this LinkedIn route as duplicate-source evidence, but count one vacancy only. The current canonical card is 930843 and now exposes both the official TalentClue application and the employer LinkedIn detail.",
+      reason:
+        "与官方 TalentClue 记录 930843 是同一个 Equipo Singular 实习：职责、时间、convenio、€271 补助和联系人完全一致。",
+      next: "使用保留的 930843 官方卡片；该 LinkedIn 镜像不再单独计数。",
+      changeType: "round-55-duplicate-source-merged",
+    },
+  ],
+]);
+
+for (const [id, correction] of ROUND55_CLOSED) {
+  updateRound55Item(id, {
+    status: correction.status,
+    analysis: correction.analysis,
+    tier: "X",
+  });
+  if (CURATED[id]) {
+    CURATED[id] = {
+      ...CURATED[id],
+      statusKey: "closed",
+      latestAuditSection: ROUND55_SECTION,
+      reason: correction.reason,
+      next: correction.next,
+      changeType: correction.changeType,
+    };
+  }
+}
+
+updateRound55Item(1227, {
+  opportunity: "Videógrafo especialista en Edición de Vídeos",
+  status:
+    "Live/current: Natulim's former Motion Graphics URL redirects to the same requisition 290359 under its current official title, Videógrafo especialista en Edición de Vídeos. The exact page shows Barcelona hybrid, indefinite full-time work and Inscríbete ahora; motion graphics remains part of the required production toolkit.",
+  contact:
+    "Current official detail/application: https://natulim.factorial.es/job_posting/videografo-especialista-en-edicion-de-videos-290359",
+  links: ["https://natulim.factorial.es/job_posting/videografo-especialista-en-edicion-de-videos-290359"],
+});
+
+updateRound55Item(1293, {
+  status:
+    "Live/current after canonical-route refresh: Bonita Digital's former Join requisition redirects to current job 16563075, which shows the complete Barcelona hybrid freelance Social Media graphic/creative brief and Aplicar ahora.",
+  contact:
+    "Current employer-origin detail/application: https://join.com/companies/bonita/16563075-disenador-grafico-y-creativo-freelance-social-media ; employer site: https://www.bonita.digital/",
+  links: [
+    "https://join.com/companies/bonita/16563075-disenador-grafico-y-creativo-freelance-social-media",
+    "https://www.bonita.digital/",
+  ],
+});
+
+updateRound55Item(930842, {
+  status:
+    "Live/current: Voodoo's official Ashby requisition 7ceb7481 and application remain open. Current employer LinkedIn mirror 4452453717 independently shows publication on 2026-08-11, valid-through 2026-09-10, CET +/-3h remote, 4+ years, hands-on Unity UI motion and fluent English.",
+  contact:
+    "Official detail: https://jobs.ashbyhq.com/voodoo/7ceb7481-56e0-4db7-94fb-494e132908c7/ ; official application: https://jobs.ashbyhq.com/voodoo/7ceb7481-56e0-4db7-94fb-494e132908c7/application ; employer LinkedIn mirror: https://es.linkedin.com/jobs/view/senior-technical-ui-motion-designer-at-voodoo-4452453717",
+  links: [
+    "https://jobs.ashbyhq.com/voodoo/7ceb7481-56e0-4db7-94fb-494e132908c7/",
+    "https://jobs.ashbyhq.com/voodoo/7ceb7481-56e0-4db7-94fb-494e132908c7/application",
+    "https://es.linkedin.com/jobs/view/senior-technical-ui-motion-designer-at-voodoo-4452453717",
+  ],
+});
+
+updateRound55Item(930843, {
+  status:
+    "Live/current canonical vacancy: Equipo Singular's official TalentClue application and employer LinkedIn detail describe the same Barcelona hybrid morning internship. Both require a school or university convenio and list a EUR271 gross monthly grant; the LinkedIn mirror 930901 is preserved only as duplicate history.",
+  contact:
+    "Official TalentClue detail/application: https://equiposingular.talentclue.com/node/127743936/66909823 ; employer LinkedIn detail: https://es.linkedin.com/jobs/view/j%C3%B3venes-talentos-dise%C3%B1o-gr%C3%A1fico-y-v%C3%ADdeo-barcelona-at-equipo-singular-4452389902 ; questions: people@equiposingular.com",
+  analysis:
+    "Keep one canonical card. The design scope is real, but the mandatory convenio, Spanish-local environment and EUR271/month grant make it a zero-score training route rather than a practical current job priority.",
+  links: [
+    "https://equiposingular.talentclue.com/node/127743936/66909823",
+    "https://es.linkedin.com/jobs/view/j%C3%B3venes-talentos-dise%C3%B1o-gr%C3%A1fico-y-v%C3%ADdeo-barcelona-at-equipo-singular-4452389902",
+    "mailto:people@equiposingular.com",
+  ],
+});
+
+Object.assign(CURATED, {
+  175: {
+    ...CURATED[175],
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    language: "西语或英语其中一门需流利，另一门至少中级（书面与口语）",
+    statusEvidence: "2026-08-13 复核：Frekuent 官方 Factorial 296730 仍有 Apply now；正文明确一门西语/英语流利，另一门至少中级，并要求 4 年以上。",
+  },
+  930718: {
+    ...CURATED[930718],
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    language: "职业级西语与英语均为明确要求",
+    statusEvidence: "2026-08-13 复核：LinkedIn 4438065600 仍显示 Solicitar；正文明确 Español e inglés profesionales。",
+  },
+  889: {
+    ...CURATED[889],
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    language: "高级西语与流利英语均为明确要求",
+    statusEvidence: "2026-08-13 复核：Dragons 官方 Factorial 308047 仍有 Apply now；正文语言栏明确 Advanced Spanish 与 Fluent English。",
+  },
+  860: {
+    ...CURATED[860],
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    language: "流利或母语西语，加中级英语",
+    statusEvidence: "2026-08-13 复核：Hays 1125336 当前正文和申请入口仍在；要求 Español fluido o nativo 与 Inglés nivel intermedio。",
+  },
+  930869: {
+    ...CURATED[930869],
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    language: "InfoJobs 结构化要求为高级英语；Barcelona 现场西语工作环境亦是现实门槛",
+    statusEvidence: "2026-08-13 复核：InfoJobs 当前仍有 Inscribirme、无固定期限全职并标明 Inglés - Avanzado；不是无语言要求岗位。",
+  },
+  1301: {
+    ...CURATED[1301],
+    languageKey: "foreign",
+    applicationMode: "foreign",
+    language: "加泰语母语/双语、西语母语/双语，并要求职业级英语",
+    statusEvidence: "2026-08-13 复核：原始 LinkedIn 4446592473 正文明确三重语言门槛；页面仍无独立申请表，因此保持先确认并按其他外语硬门槛计分。",
+  },
+  1303: {
+    ...CURATED[1303],
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    language: "英语与西语口语、书面均需流利",
+    statusEvidence: "2026-08-13 复核：CATORCE 官方 Greenhouse 5034293008 仍有完整申请表；正文明确 Fluency in English and Spanish (oral and written)。",
+  },
+  868: {
+    ...CURATED[868],
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    language: "国际项目要求流利西语与英语",
+    statusEvidence: "2026-08-13 复核：LinkedIn 4425688048 仍保留完整正文但无当前申请按钮；正文明确 Fluent in Spanish and English，继续保持先确认。",
+  },
+  1227: {
+    ...CURATED[1227],
+    titleZh: "视频剪辑专家（含 Motion Graphics）",
+    titleEs: "Videógrafo especialista en Edición de Vídeos",
+    links: ["https://natulim.factorial.es/job_posting/videografo-especialista-en-edicion-de-videos-290359"],
+    preferCuratedLinks: true,
+    statusEvidence: "2026-08-13 复核：旧 slug 自动迁移到同一 290359 当前官方页；页面显示 Barcelona hybrid、无固定期限全职与 Inscríbete ahora。",
+  },
+  1293: {
+    ...CURATED[1293],
+    links: [
+      "https://join.com/companies/bonita/16563075-disenador-grafico-y-creativo-freelance-social-media",
+      "https://www.bonita.digital/",
+    ],
+    preferCuratedLinks: true,
+    statusEvidence: "2026-08-13 复核：旧 Join 编号自动跳转到当前 16563075，完整职位与 Aplicar ahora 均存在。",
+  },
+  930842: {
+    ...CURATED[930842],
+    languageKey: "light",
+    applicationMode: "english",
+    language: "明确要求流利英语；不要求西语",
+    links: [
+      "https://jobs.ashbyhq.com/voodoo/7ceb7481-56e0-4db7-94fb-494e132908c7/",
+      "https://jobs.ashbyhq.com/voodoo/7ceb7481-56e0-4db7-94fb-494e132908c7/application",
+      "https://es.linkedin.com/jobs/view/senior-technical-ui-motion-designer-at-voodoo-4452453717",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND55_SECTION,
+    statusEvidence: "2026-08-13 复核：官方 Ashby 仍可申请；雇主 LinkedIn 4452453717 给出 2026-09-10 有效期、CET ±3h、4 年以上与 fluent English。",
+    changeType: "round-55-current-mirror-merged",
+  },
+  930843: {
+    ...CURATED[930843],
+    statusKey: "live",
+    titleZh: "平面与视频青年人才实习",
+    titleEs: "Jóvenes Talentos Diseño Gráfico y Vídeo",
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    experienceKey: "intern",
+    experienceLabel: "实习 / 必须可签学校或大学 convenio / €271 税前每月",
+    reason: "官方 TalentClue 与雇主 LinkedIn 是同一个 Barcelona 上午实习，只保留一张卡；方向相关，但 convenio、低补助与西语环境使其为零分训练路线。",
+    next: "只有可签 convenio 且接受 €271/月时再考虑；使用官方 TalentClue 入口申请。",
+    links: [
+      "https://equiposingular.talentclue.com/node/127743936/66909823",
+      "https://es.linkedin.com/jobs/view/j%C3%B3venes-talentos-dise%C3%B1o-gr%C3%A1fico-y-v%C3%ADdeo-barcelona-at-equipo-singular-4452389902",
+      "mailto:people@equiposingular.com",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND55_SECTION,
+    statusEvidence: "2026-08-13 复核合并：TalentClue 与 LinkedIn 4452389902 的职责、9–14 时段、convenio、€271/月和联系人完全相同。",
+    // `refresh` gives the live employer ATS record precedence over the newer
+    // LinkedIn duplicate when the complete source ledger is deduplicated.
+    changeType: "refresh",
+  },
+});
+
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
   const explicitMode = curated?.applicationMode || APPLICATION_MODE_OVERRIDES[item.id];
