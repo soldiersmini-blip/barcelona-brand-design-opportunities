@@ -2,7 +2,7 @@
 
 const pageCount = Math.max(1, Math.min(250, Number(process.argv[2]) || 60));
 const base = "https://www.es02.com/jobs/jobs.html";
-const designPattern = /(?:平面|设计|品牌|视觉|美工|新媒体|小红书|抖音|视频|剪辑|摄影|修图|电商|运营|网页|网站|广告|海报|包装|art\s*director|graphic|visual|brand|designer|motion)/i;
+const designPattern = /(?:平面|设计|品牌|视觉|美工|新媒体|小红书|抖音|视频|剪辑|摄影|修图|电商|运营|网页|网站|广告|海报|包装|陈列|橱窗|art\s*director|graphic|visual|brand|designer|motion)/i;
 
 function decode(value) {
   return String(value || "")

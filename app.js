@@ -17864,6 +17864,145 @@ Object.assign(CURATED, {
   },
 });
 
+const ROUND67_SECTION = "2026-08-14 Round 67 current ATS conflict and stale-search audit";
+
+// Search engines can keep complete-looking job descriptions after an ATS has
+// removed the requisition.  Round 67 records the current employer-system
+// verdict for each conflict and keeps the attractive historical brief without
+// allowing it back into the live ranking.
+const round67RecordPatches = new Map([
+  [859, {
+    section: ROUND67_SECTION,
+    source: "Stripe / current official careers detail",
+    status: "Live/current: Stripe official requisition 7769564 returned 200 on 2026-08-14 and currently names the role Motion Designer, Stripe Identity. The page exposes Apply now, Barcelona, Remote in Spain, full-time, EUR74,800-112,200 and a 5+ year motion-design requirement. The body covers motion principles, timing tokens, animation guidelines and reusable identity components; Spanish is not listed.",
+    contact: "Current official detail/application: https://stripe.com/careers/listing/motion-designer-stripe-identity/7769564",
+    analysis: "Keep one live canonical card under the official current Motion Designer title. Do not create a second Brand Designer card from the stale LinkedIn/search label tied to the same 7769564 route. The professional fit is strong, but 5+ years plus advanced motion/3D and an English-led international workflow keep the personal-fit score at the floor.",
+  }],
+  [920003, {
+    section: ROUND67_SECTION,
+    source: "Stripe / stale LinkedIn Brand Designer result versus current official requisition",
+    status: "Closed/history after current-title conflict check: LinkedIn still surfaces Brand Designer, Identity, but its legacy route points to requisition 7769564. Opening that requisition on Stripe's official site on 2026-08-14 redirects to and displays Motion Designer, Stripe Identity, not a separate Brand Designer opening. The older Brand Designer requisition 7760378 is not present as a current official role.",
+    contact: "Historical LinkedIn detail: https://es.linkedin.com/jobs/view/brand-designer-identity-at-stripe-4427094050 ; current official requisition that proves the different role: https://stripe.com/careers/listing/motion-designer-stripe-identity/7769564 ; official search evidence: https://stripe.com/careers/search?gh_jid=7760378",
+    analysis: "Preserve the historical identity brief, but do not count or apply to it as an independent current vacancy. Only the canonical Motion Designer requisition is live.",
+    score: 0,
+    tier: "X",
+  }],
+  [930839, {
+    section: ROUND67_SECTION,
+    source: "CATORCE / current official Greenhouse API and board",
+    status: "Closed/history: the official Greenhouse API for requisition 4797510008 returned 404 on 2026-08-14, and CATORCE's current Greenhouse board returned 200 without Visual Designer or that requisition ID. Search-engine copies still showing Apply are stale and do not override the employer ATS.",
+    contact: "Historical exact page: https://job-boards.greenhouse.io/catorce/jobs/4797510008 ; current official board API: https://boards-api.greenhouse.io/v1/boards/catorce/jobs",
+    analysis: "Retain the strong Barcelona branding/campaign brief in history, but remove it from the current ranking. Restore only if CATORCE publishes a new requisition ID on its live board.",
+    score: 0,
+    tier: "X",
+  }],
+  [930840, {
+    section: ROUND67_SECTION,
+    source: "Zurich Insurance / current official careers detail",
+    status: "Live/current: Zurich official requisition 1368922057 returned 200 on 2026-08-14 and still contains Creative Strategist, Barcelona and an Apply route. The official body asks for around four years of experience and a high level of English and focuses on social-first strategy, narratives, briefs, concept cards and creative-platform guidelines.",
+    contact: "Current official detail/application: https://www.careers.zurich.com/job/Barcelona-Creative-Strategist/1368922057/",
+    analysis: "Keep as a low-scored Barcelona brand-adjacent option. It is strategy and briefing rather than hands-on VI production, and high English is explicit; it must stay below direct visual-design roles that are easier for this profile to pursue.",
+  }],
+]);
+
+for (const item of allData) {
+  const patch = round67RecordPatches.get(Number(item.id));
+  if (patch) Object.assign(item, patch);
+}
+
+const round67AuditItems = [
+  {
+    id: 930948,
+    section: ROUND67_SECTION,
+    source: "FYST / current official Ashby job-board API",
+    opportunity: "Presentation & Visual Designer",
+    fit: "Historical Spain-remote visual-design lead; Russian and English gate",
+    location: "Spain remote in the cached vacancy; no current official requisition",
+    status: "Closed/history: FYST's official Ashby job-board API returned 200 on 2026-08-14 but no longer contains Presentation & Visual Designer or requisition ee3a3ced-6232-46b4-89c6-1fe43c78b205e. The exact URL now returns only an Ashby shell without the role title or application control. A search-engine copy with the old job body is stale.",
+    contact: "Historical exact route: https://jobs.ashbyhq.com/fyst/ee3a3ced-6232-46b4-89c6-1fe43c78b205e ; current official board API: https://api.ashbyhq.com/posting-api/job-board/fyst",
+    analysis: "Do not add this to the current board. Even when open, the role required fluent Russian plus at least intermediate English, so it would be a poor personal-language fit despite Spain-remote and brand-guideline work.",
+    score: 0,
+    tier: "X",
+    locationTag: "Spain remote; historical closed",
+    typeTag: "Historical presentation / visual design",
+    sourceGroup: "official",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: [
+      "https://jobs.ashbyhq.com/fyst/ee3a3ced-6232-46b4-89c6-1fe43c78b205e",
+      "https://api.ashbyhq.com/posting-api/job-board/fyst",
+    ],
+    searchText: "FYST Presentation Visual Designer Spain remote stale search result official Ashby current board missing requisition fluent Russian intermediate English closed history",
+  },
+];
+
+allData.push(...round67AuditItems);
+
+Object.assign(CURATED, {
+  859: {
+    ...CURATED[859],
+    statusKey: "live",
+    statusEvidence: "2026-08-14：Stripe 官方 requisition 7769564 当前标题为 Motion Designer, Stripe Identity，并显示 Apply now、Barcelona、Remote in Spain、全职、5 年以上及 €74,800–112,200；未列西语要求。",
+    links: ["https://stripe.com/careers/listing/motion-designer-stripe-identity/7769564"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND67_SECTION,
+    changeType: "round-67-current-official-title-conflict-resolved",
+  },
+  920003: {
+    ...CURATED[920003],
+    statusKey: "closed",
+    statusEvidence: "2026-08-14：旧 Brand Designer 搜索结果仍存在，但其 7769564 路径在 Stripe 官方站当前明确是 Motion Designer；旧 requisition 7760378 不在当前官方职位中。",
+    latestAuditSection: ROUND67_SECTION,
+    changeType: "round-67-stale-title-history",
+  },
+  930839: {
+    ...CURATED[930839],
+    statusKey: "closed",
+    statusEvidence: "2026-08-14：CATORCE Greenhouse 精确 API 4797510008 返回 404，当前职位板没有该 ID 或 Visual Designer；搜索缓存中的 Apply 表单已失效。",
+    links: [
+      "https://job-boards.greenhouse.io/catorce/jobs/4797510008",
+      "https://boards-api.greenhouse.io/v1/boards/catorce/jobs",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND67_SECTION,
+    changeType: "round-67-current-board-confirms-closed",
+  },
+  930840: {
+    ...CURATED[930840],
+    statusKey: "live",
+    statusEvidence: "2026-08-14：Zurich 官方 requisition 1368922057 返回 200，Creative Strategist、Barcelona、约 4 年、高水平英语与 Apply 入口仍在；岗位偏策略而非 VI 执行。",
+    links: ["https://www.careers.zurich.com/job/Barcelona-Creative-Strategist/1368922057/"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND67_SECTION,
+    changeType: "round-67-current-official-page-refreshed",
+  },
+  930948: {
+    statusKey: "closed",
+    direction: "brand",
+    company: "FYST",
+    locationKey: "remote",
+    locationLabel: "Spain remote（旧正文）/ 当前官方职位已移除",
+    titleZh: "演示与视觉设计师（历史岗位）",
+    titleEs: "Presentation & Visual Designer",
+    languageKey: "foreign",
+    applicationMode: "foreign",
+    language: "旧正文明确要求流利俄语及至少中级英语",
+    experienceKey: "mid",
+    experienceLabel: "2 年以上（历史要求）",
+    statusEvidence: "2026-08-14：FYST 当前 Ashby board API 返回 200，但已无该职位和 requisition；精确 URL 仅剩页面壳，没有标题或申请入口。",
+    reason: "当前已关闭；即使恢复，俄语和英语双重门槛也不符合用户当前语言条件。",
+    next: "仅作为搜索缓存误判样本保留；除非 FYST 发布新 requisition 且语言条件改变，否则不投。",
+    links: [
+      "https://jobs.ashbyhq.com/fyst/ee3a3ced-6232-46b4-89c6-1fe43c78b205e",
+      "https://api.ashbyhq.com/posting-api/job-board/fyst",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND67_SECTION,
+    changeType: "round-67-stale-search-result-archived",
+  },
+});
+
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
   const explicitMode = curated?.applicationMode || APPLICATION_MODE_OVERRIDES[item.id];

@@ -1319,6 +1319,7 @@ const round63Section = "2026-08-13 Round 63 Barcelona exact-detail discovery and
 const round64Section = "2026-08-14 Round 64 latest-source discovery, duplicate merge and language-fit correction";
 const round65Section = "2026-08-14 Round 65 Spain-Europe remote discovery, canonical restoration and false-positive audit";
 const round66Section = "2026-08-14 Round 66 thirteen verify-first records exact-source status audit";
+const round67Section = "2026-08-14 Round 67 current ATS conflict and stale-search audit";
 const round49LikelySpanishIds = [877, 105, 886, 930829, 1257, 1258, 382, 1237, 930876, 86, 930873, 930885, 577, 1296, 579, 876, 867, 930843, 351];
 const round55ExpectedIds = [175, 454, 1253, 317, 863, 930718, 930719, 908, 279, 930854, 889, 535, 278, 1081, 860, 930869, 874, 1301, 1303, 1227, 930879, 84, 868, 989, 854, 921, 1293, 1053, 1036, 930815, 930842, 930843];
 const round56ExpectedIds = [1002, 985, 930900, 977, 1021, 990001, 990, 930818, 37, 12, 1299, 1255, 958, 1257, 1258, 1026, 1061, 930865, 930829, 382, 1237, 930812, 1287, 930637, 238, 930843, 305, 27, 930708, 922];
@@ -1326,12 +1327,70 @@ const round57ExpectedIds = [778, 920, 24, 25, 930834, 930837, 1107, 1092, 372, 4
 const round58ExpectedMainIds = [930823, 930874, 930840, 930882, 930825, 877, 78, 228, 446, 930866, 930889, 930845, 930826, 930827, 425, 345, 4, 284, 55, 1038, 930816, 396, 930819, 856, 930868, 930831, 930833, 930821, 930890, 2942];
 const round58ExpectedIds = [...round58ExpectedMainIds, 930903];
 const round59ExpectedIds = [313, 920001, 928, 188, 930712, 170, 224, 1240, 930838, 930880, 930844, 172, 864, 88, 930824, 930891, 930878, 930881, 162, 876, 930876, 930814, 930841, 867, 930886, 930887, 859, 1029, 296, 601];
-check(test.latestRoundSection === round66Section, "Round 66: latest-round marker did not advance");
+check(test.latestRoundSection === round67Section, "Round 67: latest-round marker did not advance");
+check(
+  [859, 920003, 930839, 930840, 930948].every((id) =>
+    test.latestRoundItems.some((item) => Number(item.id) === id),
+  ) && test.latestRoundItems.length === 5,
+  "Round 67: the five current-ATS conflict decisions are missing from the latest audit log",
+);
+const round66Items = test.dedupedData.filter(
+  (item) => test.CURATED[item.id]?.latestAuditSection === round66Section,
+);
 check(
   [25, 136, 778, 868, 920, 990, 1107, 1237, 1243, 1253, 1301, 930865, 930892].every((id) =>
-    test.latestRoundItems.some((item) => Number(item.id) === id),
-  ) && test.latestRoundItems.length === 13,
+    round66Items.some((item) => Number(item.id) === id),
+  ) && round66Items.length === 13,
   "Round 66: the thirteen verify-first exact-source decisions are missing from the latest audit log",
+);
+const round67StripeMotion = r23ById(859);
+const round67StripeBrandHistory = r23ById(920003);
+const round67CatorceHistory = r23ById(930839);
+const round67Zurich = r23ById(930840);
+const round67FystHistory = r23ById(930948);
+check(
+  round67StripeMotion &&
+    test.applicationStatus(round67StripeMotion).key === "live" &&
+    test.locationBucket(round67StripeMotion) === "barcelona" &&
+    test.displayedScore(round67StripeMotion) === 0 &&
+    /Motion Designer, Stripe Identity/i.test(round67StripeMotion.status) &&
+    test.toLinks(round67StripeMotion).some((url) => /stripe\.com\/careers\/listing\/motion-designer-stripe-identity\/7769564/i.test(url)),
+  "Round 67: Stripe's current Motion Designer requisition, official title or profile score was lost",
+);
+check(
+  round67StripeBrandHistory &&
+    test.applicationStatus(round67StripeBrandHistory).key === "closed" &&
+    round67StripeBrandHistory.tier === "X" &&
+    !r41Current.some((item) => Number(item.id) === 920003) &&
+    /different role|not a separate Brand Designer|not present as a current official role/i.test(round67StripeBrandHistory.status),
+  "Round 67: the stale Stripe Brand Designer search result leaked back into the current board",
+);
+check(
+  round67CatorceHistory &&
+    test.applicationStatus(round67CatorceHistory).key === "closed" &&
+    round67CatorceHistory.tier === "X" &&
+    /returned 404/i.test(round67CatorceHistory.status) &&
+    test.toLinks(round67CatorceHistory).some((url) => /boards-api\.greenhouse\.io\/v1\/boards\/catorce\/jobs/i.test(url)),
+  "Round 67: CATORCE's official 404/current-board closure evidence was not preserved",
+);
+check(
+  round67Zurich &&
+    test.applicationStatus(round67Zurich).key === "live" &&
+    test.locationBucket(round67Zurich) === "barcelona" &&
+    test.applicationLanguagePath(round67Zurich).key === "english" &&
+    test.displayedScore(round67Zurich) === 7.1 &&
+    test.toLinks(round67Zurich).some((url) => /1368922057/i.test(url)),
+  "Round 67: Zurich's current official application or English-gated low score was lost",
+);
+check(
+  round67FystHistory &&
+    test.applicationStatus(round67FystHistory).key === "closed" &&
+    round67FystHistory.tier === "X" &&
+    test.locationBucket(round67FystHistory) === "remote" &&
+    !test.MY_OPPORTUNITY_SET.has(930948) &&
+    /no longer contains|only an Ashby shell/i.test(round67FystHistory.status) &&
+    test.toLinks(round67FystHistory).some((url) => /api\.ashbyhq\.com\/posting-api\/job-board\/fyst/i.test(url)),
+  "Round 67: the stale FYST search result was not archived with current-board evidence",
 );
 const round66VerifyIds = [25, 136, 778, 868, 920, 990, 1253, 930865, 930892];
 check(
@@ -1573,7 +1632,7 @@ check(
   }) && /4415503040/.test(test.toLinks(r23ById(153)).join(" ")),
   "Round 63: Liados, Sitges or UNIQLO closure evidence leaked into the current board or lost its exact source",
 );
-check(round59ExpectedIds.every((id) => test.CURATED[id]?.latestAuditSection === round59Section), "Round 59: provenance was lost after the Chinese-source current-feed audit");
+check(round59ExpectedIds.filter((id) => id !== 859).every((id) => test.CURATED[id]?.latestAuditSection === round59Section) && test.CURATED[859]?.latestAuditSection === round67Section, "Round 59/67: provenance was lost after the Chinese-source current-feed audit or current Stripe refresh");
 const round60Elimhome = r23ById(930904);
 const round60ElimhomeLinks = test.toLinks(round60Elimhome);
 check(
@@ -1629,8 +1688,8 @@ for (const [id, expectedScore] of [[930832, 6.1], [604, 5], [94, 4.9], [866, 4.7
 }
 check(test.experienceInfo(r23ById(930836)).key === "junior" && test.displayedScore(r23ById(930836)) === 8, "Round 57: CrowdStrike explicit 2+ years was not corrected to the attainable junior/early-mid band");
 check(test.experienceInfo(r23ById(372)).key === "open" && test.experienceInfo(r23ById(930817)).key === "open", "Round 57: explicit Sin experiencia evidence was not preserved");
-check(round58ExpectedMainIds.filter((id) => ![55, 396, 930866].includes(id)).every((id) => test.CURATED[id]?.latestAuditSection === round58Section), "Round 58: one or more unchanged next-highest main cards lost exact-page provenance");
-check(round59ExpectedIds.every((id) => test.CURATED[id]?.latestAuditSection === round59Section), "Round 59: one or more remaining current cards lost exact-page provenance");
+check(round58ExpectedMainIds.filter((id) => ![55, 396, 930840, 930866].includes(id)).every((id) => test.CURATED[id]?.latestAuditSection === round58Section) && test.CURATED[930840]?.latestAuditSection === round67Section, "Round 58/67: one or more unchanged next-highest main cards lost exact-page provenance or Zurich's current refresh");
+check(round59ExpectedIds.filter((id) => id !== 859).every((id) => test.CURATED[id]?.latestAuditSection === round59Section) && test.CURATED[859]?.latestAuditSection === round67Section, "Round 59/67: one or more remaining current cards lost exact-page provenance or Stripe's current refresh");
 for (const id of [313, 1240, 88, 930824]) {
   check(test.applicationLanguagePath(r23ById(id)).key === "englishSpanish" && test.displayedScore(r23ById(id)) <= 3, `Round 59: ${id} lost its explicit English-and-Spanish compound gate`);
 }
@@ -1938,7 +1997,7 @@ check(/expired_jd_redirect/i.test(r23ById(1241).status) && /60 jobs/i.test(r23By
 check(/HTTP 404/i.test(r23ById(905).status) && test.hasOpaqueEmployerRisk(r23ById(905)), "Round 30: Steneg 404 or anonymous-employer risk is missing");
 
 check(!test.MY_OPPORTUNITY_SET.has(930839) && test.applicationStatus(r23ById(930839)).key === "closed" && r23ById(930839).tier === "X", "Round 31: closed CATORCE Visual Designer route remained in the current board");
-check(/error=true/i.test(r23ById(930839).status) && test.toLinks(r23ById(930839)).some((url) => /4797510008/i.test(url)), "Round 31: CATORCE direct-route closure evidence is missing");
+check(/returned 404/i.test(r23ById(930839).status) && test.toLinks(r23ById(930839)).some((url) => /4797510008/i.test(url)) && test.toLinks(r23ById(930839)).some((url) => /boards-api\.greenhouse\.io\/v1\/boards\/catorce\/jobs/i.test(url)), "Round 31/67: CATORCE direct-route and current-board closure evidence is missing");
 check(test.MY_OPPORTUNITY_SET.has(1107) && test.applicationStatus(r23ById(1107)).key === "closed" && r23ById(1107).tier === "X" && /NO JOB OPENINGS/i.test(r23ById(1107).status), "Round 66: THRU explicit employer no-openings state was not preserved in history");
 check(
   !r41Current.some((item) => Number(item.id) === 1107) && !test.priorityItems.some((item) => item.id === 1107),

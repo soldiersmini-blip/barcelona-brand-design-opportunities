@@ -99,4 +99,10 @@ node .\scripts\validate-site.js
 node .\scripts\inspect-qualified-opportunities.js mine
 ```
 
+## Round 67（2026-08-14）
+
+- 处理搜索缓存与当前官方 ATS 冲突：Stripe `7769564` 官方当前仍是 Motion Designer，并非第二个 Brand Designer；CATORCE 精确 API 404 且当前职位板已无 Visual Designer；Zurich 官方 Creative Strategist 仍可投但因高英语与非 VI 执行保持低分；FYST 旧 Spain-remote 视觉岗已从当前 Ashby board 移除并转入历史。
+- 主表仍为 210 张：152 张 Barcelona、58 张远程、201 张开放、9 张待确认、6 张中文相关机会。
+- 完整证据见 `AUDIT-2026-08-14-ROUND67.md`。
+
 网站由 GitHub Pages 静态托管，不依赖会休眠的应用服务器。
