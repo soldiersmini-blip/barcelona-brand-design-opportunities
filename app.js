@@ -13485,7 +13485,7 @@ function hasLowPayRisk(item) {
 function riskFlags(item) {
   const flags = [];
   const applicationLanguage = scoreLanguageRisk(item);
-  if (["spanish", "spanishLikely"].includes(applicationLanguage)) flags.push("spanish");
+  if (["spanish", "spanishLikely", "chineseForeign"].includes(applicationLanguage)) flags.push("spanish");
   if (["english", "englishLikely"].includes(applicationLanguage)) flags.push("english");
   if (applicationLanguage === "foreign") flags.push("foreign");
   if (hasLowPayRisk(item)) flags.push("lowpay");
@@ -13692,6 +13692,7 @@ function personalMatchScore(item) {
   const applicationLanguagePoints = {
     chinese: 40,
     chineseCheck: 30,
+    chineseForeign: 10,
     basicSpanish: 8,
     unknown: 0,
     english: 0,
@@ -13703,21 +13704,23 @@ function personalMatchScore(item) {
   const languageCaps = {
     chinese: 100,
     chineseCheck: 84,
-    basicSpanish: 50,
-    unknown: 14,
-    english: 12,
-    englishLikely: 14,
-    spanishLikely: 10,
-    foreign: 6,
-    spanish: 6,
+    chineseForeign: 38,
+    basicSpanish: 35,
+    unknown: 12,
+    english: 8,
+    englishLikely: 10,
+    spanishLikely: 7,
+    foreign: 4,
+    spanish: 5,
   };
   const languageScales = {
-    unknown: 0.18,
-    english: 0.2,
-    englishLikely: 0.18,
-    spanishLikely: 0.16,
-    foreign: 0.1,
-    spanish: 0.1,
+    chineseForeign: 0.45,
+    unknown: 0.16,
+    english: 0.12,
+    englishLikely: 0.14,
+    spanishLikely: 0.1,
+    foreign: 0.06,
+    spanish: 0.08,
   };
   // The user is looking for brand/VI and hands-on graphic design first.
   // Generic motion, growth and social content are useful backups, but they
@@ -13745,7 +13748,7 @@ function personalMatchScore(item) {
     (freshnessPoints[item.freshnessTag] || 0);
 
   if (isChineseRelevant(item)) {
-    score += ["chinese", "chineseCheck", "basicSpanish"].includes(applicationLanguage) ? 8 : 3;
+    score += ["chinese", "chineseCheck", "chineseForeign", "basicSpanish"].includes(applicationLanguage) ? 8 : 3;
   }
   if (toLinks(item).length) score += 4;
   if (isFormalRole(item)) score += 3;
@@ -14141,6 +14144,12 @@ const APPLICATION_LANGUAGE_PATHS = {
     short: "中文先问",
     tone: "check",
   },
+  chineseForeign: {
+    key: "chineseForeign",
+    label: "中文是优势，但英语 / 西语仍是明确工作门槛",
+    short: "中文优势 + 外语门槛",
+    tone: "hard",
+  },
   basicSpanish: {
     key: "basicSpanish",
     label: "可中文联系，但工作需基础西语",
@@ -14271,6 +14280,99 @@ if (CURATED[930812]) {
   CURATED[930812] = { ...CURATED[930812], latestAuditSection: ROUND52_SECTION };
 }
 
+const ROUND53_SECTION = "2026-08-13 Round 53 Chinese-advantage and foreign-language feasibility rescore";
+const ROUND53_CHINESE_FOREIGN_ROLES = new Map([
+  [
+    24,
+    "Chinese is an explicit job requirement and a real candidate advantage, but English and Spanish are also essential. Score it above pure foreign-language roles while retaining a hard feasibility penalty.",
+  ],
+  [
+    25,
+    "Chinese is an explicit job requirement and the employer provides a direct contact route, but Spanish is required for the content and shop-operations scope. Keep it visible as a Chinese-advantage fallback, not a language-easy role.",
+  ],
+]);
+for (const [id, scoringLanguageRiskReason] of ROUND53_CHINESE_FOREIGN_ROLES) {
+  SCORE_LANGUAGE_RISK_OVERRIDES.set(id, "chineseForeign");
+  if (!CURATED[id]) continue;
+  CURATED[id] = {
+    ...CURATED[id],
+    latestAuditSection: ROUND53_SECTION,
+    scoringLanguageRisk: "chineseForeign",
+    scoringLanguageRiskReason,
+  };
+}
+
+const round53DragonsJuniorArtDirector = allData.find((item) => Number(item.id) === 930822);
+if (round53DragonsJuniorArtDirector) {
+  Object.assign(round53DragonsJuniorArtDirector, {
+    section: ROUND53_SECTION,
+    status:
+      "Closed/history after direct recheck on 2026-08-13: the exact official Factorial URL now renders only the generic Dragons jobs board, the current board source contains neither requisition 317709 nor Junior Art Director, and LinkedIn explicitly says applications are no longer accepted.",
+    analysis:
+      "Preserve the social-first art-direction brief and original links in history, but do not count or rank it as a current opportunity. Restore only if Dragons publishes a new independent requisition.",
+    tier: "X",
+  });
+  round53DragonsJuniorArtDirector.searchText = [
+    round53DragonsJuniorArtDirector.source,
+    round53DragonsJuniorArtDirector.opportunity,
+    round53DragonsJuniorArtDirector.fit,
+    round53DragonsJuniorArtDirector.location,
+    round53DragonsJuniorArtDirector.status,
+    round53DragonsJuniorArtDirector.contact,
+    round53DragonsJuniorArtDirector.analysis,
+  ]
+    .filter(Boolean)
+    .join(" ");
+  CURATED[930822] = {
+    ...CURATED[930822],
+    statusKey: "closed",
+    latestAuditSection: ROUND53_SECTION,
+    reason:
+      "The exact Factorial requisition has disappeared from the employer board and LinkedIn now says applications are no longer accepted.",
+    next: "历史保留；等待 Dragons 发布新的独立招聘编号后再恢复。",
+    changeType: "profile-status-audit-closed",
+  };
+}
+
+const round53FactorialPaidMotion = allData.find((item) => Number(item.id) === 930823);
+if (round53FactorialPaidMotion) {
+  Object.assign(round53FactorialPaidMotion, {
+    section: ROUND53_SECTION,
+    status:
+      "Live/current after canonical-link repair on 2026-08-13: official requisition 316734 returns the complete Marketing Paid Motion Designer Global Markets brief and application page; the old 306539 Spanish-market URL now renders only the generic Factorial jobs board.",
+    contact:
+      "Official detail/application: https://careers.factorialhr.com/job_posting/marketing-paid-motion-designer-global-markets-316734 ; current LinkedIn employer detail: https://www.linkedin.com/jobs/view/4451516366",
+    links: [
+      "https://careers.factorialhr.com/job_posting/marketing-paid-motion-designer-global-markets-316734",
+      "https://www.linkedin.com/jobs/view/4451516366",
+    ],
+  });
+  round53FactorialPaidMotion.searchText = [
+    round53FactorialPaidMotion.source,
+    round53FactorialPaidMotion.opportunity,
+    round53FactorialPaidMotion.fit,
+    round53FactorialPaidMotion.location,
+    round53FactorialPaidMotion.status,
+    round53FactorialPaidMotion.contact,
+    round53FactorialPaidMotion.analysis,
+  ]
+    .filter(Boolean)
+    .join(" ");
+  CURATED[930823] = {
+    ...CURATED[930823],
+    latestAuditSection: ROUND53_SECTION,
+    links: [
+      "https://careers.factorialhr.com/job_posting/marketing-paid-motion-designer-global-markets-316734",
+      "https://www.linkedin.com/jobs/view/4451516366",
+    ],
+    preferCuratedLinks: true,
+    suppressLinkFragments: ["306539"],
+    reason:
+      "Official Factorial requisition 316734 is the current Global Markets vacancy; the older 306539 Spanish-market route is removed.",
+    changeType: "profile-current-requisition-repair",
+  };
+}
+
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
   const explicitMode = curated?.applicationMode || APPLICATION_MODE_OVERRIDES[item.id];
@@ -14317,8 +14419,7 @@ function applicationLanguagePath(item) {
 
 function scoreLanguageRisk(item) {
   const evidencePath = applicationLanguagePath(item).key;
-  if (evidencePath !== "unknown") return evidencePath;
-  return SCORE_LANGUAGE_RISK_OVERRIDES.get(Number(item.id)) || "unknown";
+  return SCORE_LANGUAGE_RISK_OVERRIDES.get(Number(item.id)) || evidencePath;
 }
 
 function displayApplicationLanguagePath(item) {

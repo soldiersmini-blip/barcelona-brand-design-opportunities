@@ -6,23 +6,24 @@
 
 ## 当前主表
 
-- 201 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
-- 150 个 Barcelona / 周边当前机会。
+- 200 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
+- 149 个 Barcelona / 周边当前机会。
 - 51 个明确允许 Spain / Europe / worldwide remote，或已单独标出 Spain 合同资格待确认的机会。
-- 188 个原始详情页或最终申请表显示可投，13 个需要先确认。
+- 187 个原始详情页或最终申请表显示可投，13 个需要先确认。
 - 5 个中文、华人圈、中国公司或中文远程相关机会。
 
 主表只收录已逐条检查过地点、岗位方向、当前状态和真实入口的机会。默认按“我的匹配分”严格从高到低排列；分数同时考虑 Barcelona/Spain 可行性、品牌视觉相关度、资历、语言门槛、状态可信度和材料投入成本。
 
 ## 数据分区
 
-- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 201 条主表。
+- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 200 条主表。
 - `华人中文全库`：华人网、中文社区、Casa Asia 和中国公司相关来源的完整线索。
 - `页面仍可复核`：详情还在，但状态、地点或申请控制需要再次确认的记录。
 - `关闭 / 历史 / 排除`：已过期、错误地点、重复、非设计岗或无法证实的记录。历史不会删除。
 
 ## 关键文件
 
+- `AUDIT-2026-08-13-ROUND53.md`：按用户“中文优先、Barcelona 优先、品牌 / VI 优先、英语西语都弱”的真实条件重算全部卡片；把 HKU 与 Tea Lab 从纯西语误判中恢复为“中文优势 + 外语门槛”，关闭已停止申请的 Dragons 317709，并修复 Factorial Global Markets 的 316734 官方入口。
 - `AUDIT-2026-08-13-ROUND52.md`：复扫中文来源与 Barcelona / EU remote 当前设计结果；新增 CRAZE Sabadell 品牌、编辑与包装平面岗，恢复用同一招聘编号重新公开的 Skyscanner Senior Visual Designer，并继续按英语和资历门槛压低两者分数。
 - `AUDIT-2026-08-13-ROUND51.md`：保留全部 199 张当前卡片；把此前 50 个证据层“语言未说明”岗位进一步分为 48 个英语环境大概率和 2 个西语环境大概率，并按用户英语、西语都不强的真实条件设置独立得分上限。
 - `AUDIT-2026-08-13-ROUND50.md`：按中文、Barcelona、品牌 / VI、语言与资历硬门槛复核全榜计分；恢复同一官方 requisition 已重新开放的 Revolut Employer Branding，新增一个明确英语与资深门槛的 Dragons 后排岗位，并继续拒绝搜索缓存与无 Spain 资格的泛远程线索。
@@ -71,7 +72,7 @@
 - `scripts/inspect-qualified-opportunities.js`：输出当前主表或指定机会的审计报告。
 - `scripts/check-source-language.js`：批量读取已知原始详情页，提取英语、西语、加泰语与语言能力上下文，供人工逐条判断；不会把网页语言菜单自动当成岗位要求。
 - `scripts/export-opportunity-ledgers.js`：生成当前主表 CSV/JSON 与完整历史总账 CSV。
-- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 201 个机会的完整、严格降序导出。
+- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 200 个机会的完整、严格降序导出。
 - `all-opportunity-ledger.csv`：1,265 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
 - `scripts/validate-site.js`：验证数据、排序、状态、入口与页面结构。
 
