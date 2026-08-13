@@ -12259,6 +12259,58 @@ for (const id of [930888, 581]) {
   if (item) item.tier = "X";
 }
 
+const ROUND44_SECTION = "2026-08-13 Round 44 official-board duplicate reconciliation";
+const ROUND44_REMEDY_LINKS = Object.freeze([
+  "https://job-boards.greenhouse.io/omnicomhealth/jobs/5207339008",
+  "https://job-boards.greenhouse.io/remedyedgespain/jobs/5207341008",
+]);
+
+// Greenhouse exposes this one Remedy Edge trainee opening through two current
+// Omnicom boards. Their normalized 1,806-character bodies, location and
+// updated_at values are identical, so keep one opportunity with two resilient
+// official application routes instead of inflating the vacancy count.
+const round44RemedyCurrent = allData.find((entry) => Number(entry.id) === 958);
+if (round44RemedyCurrent) {
+  Object.assign(round44RemedyCurrent, {
+    section: ROUND44_SECTION,
+    status: "2026-08-13 official-board reconciliation: Omnicom Health requisition 5207339008 and Remedy Edge Spain requisition 5207341008 are both open and show complete application forms. Their normalized 1,806-character vacancy bodies, Barcelona location and 2026-07-14 update timestamp are identical, so they are one paid Graphic Designer Trainee opening, not two vacancies. The role covers editorial, landing pages, banners, web, social, logos and brand guidelines; advanced English and a university internship agreement are mandatory.",
+    contact: `Canonical Omnicom application: ${ROUND44_REMEDY_LINKS[0]} ; alternate Remedy Edge Spain application: ${ROUND44_REMEDY_LINKS[1]}`,
+    links: [...ROUND44_REMEDY_LINKS],
+  });
+}
+
+Object.assign(CURATED, {
+  958: {
+    ...CURATED[958],
+    statusKey: "live",
+    links: [...ROUND44_REMEDY_LINKS],
+    preferCuratedLinks: true,
+    statusEvidence: "2026-08-13 复核：Omnicom 5207339008 与 Remedy Edge Spain 5207341008 均有完整申请表；两页的 1,806 字规范化正文、Barcelona 地点和更新时间完全一致，因此合并为一个现行实习岗位、保留两个官方投递入口，不重复计数。",
+    reason: "同一 Remedy Edge 带薪平面设计实习经两个 Omnicom Greenhouse 招聘板发布。职责包含编辑、数字物料、logo 与品牌指南，但明确要求高级英语和大学实习协议，因此仍是低分备选，不因出现两个入口而加分。",
+    next: "只有能签大学实习协议且能承担高级英语工作时再投；优先使用 Omnicom 主入口，若提交异常再使用 Remedy Edge Spain 备用入口。",
+    auditSection: ROUND44_SECTION,
+    changeType: "round-44-canonical-two-route-merge",
+  },
+  930638: {
+    ...CURATED[930638],
+    statusKey: "closed",
+    reason: "旧 Omnicom Greenhouse requisition 4542432008 于 2026-08-13 返回 404；其职责与现行 Remedy Edge 实习相同，不再作为独立可投岗位。",
+    next: "保留在关闭/历史区作旧入口证据；现行投递只使用合并后的 5207339008 / 5207341008 卡片。",
+    auditSection: ROUND44_SECTION,
+    changeType: "round-44-closed-duplicate-route",
+  },
+});
+
+const round44RemedyHistorical = allData.find((entry) => Number(entry.id) === 930638);
+if (round44RemedyHistorical) {
+  Object.assign(round44RemedyHistorical, {
+    section: ROUND44_SECTION,
+    status: "Closed/duplicate history: the former Omnicom Greenhouse requisition 4542432008 now returns 404. Its Graphic Designer Internship brief is represented by the current canonical Remedy Edge opening 5207339008 / 5207341008, so this old route must not count as a separate live vacancy.",
+    analysis: "Keep only as historical evidence. Do not apply through the removed 4542432008 route; use the single current Remedy Edge trainee card and its two verified official application links.",
+    tier: "X",
+  });
+}
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),

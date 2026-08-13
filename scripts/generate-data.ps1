@@ -7688,6 +7688,31 @@ if (-not (@($records | Where-Object { (@($_.links) | ForEach-Object { [string]$_
   $records = @($records) + @([pscustomobject]$omnicomIntern)
 }
 
+# Round 642b / 2026-08-13: official-board duplicate reconciliation. The old
+# 4542432008 route now returns 404. Omnicom 5207339008 and Remedy Edge Spain
+# 5207341008 remain open, but their normalized vacancy bodies, Barcelona
+# location and updated_at value are identical; preserve both application
+# routes on one canonical vacancy and archive the removed predecessor.
+foreach ($finalRecord in $records) {
+  $finalLinks = (@($finalRecord.links) | ForEach-Object { [string]$_ }) -join ' '
+  if ($finalLinks -match 'omnicomhealth/jobs/4542432008') {
+    $finalRecord.section = '2026-08-13 Round 44 official-board duplicate reconciliation'
+    $finalRecord.status = 'Closed/duplicate history: former Omnicom Greenhouse requisition 4542432008 now returns 404. Its Graphic Designer Internship brief is represented by current canonical Remedy Edge requisitions 5207339008 / 5207341008 and must not count as a separate live vacancy.'
+    $finalRecord.analysis = 'Keep only as historical evidence. Do not apply through 4542432008; use the single current Remedy Edge trainee card and its two verified official application routes.'
+    $finalRecord.tier = 'X'
+    $finalRecord.locationTag = 'Barcelona area; historical duplicate'
+    $finalRecord.typeTag = 'Closed duplicate internship route'
+    $finalRecord.searchText = 'closed duplicate history Omnicom 4542432008 404 same Remedy Edge Graphic Designer Trainee current 5207339008 5207341008'
+  }
+  if ($finalLinks -match 'omnicomhealth/jobs/5207339008') {
+    $finalRecord.section = '2026-08-13 Round 44 official-board duplicate reconciliation'
+    $finalRecord.status = 'Both Omnicom Health 5207339008 and Remedy Edge Spain 5207341008 are open with complete application forms. Their normalized 1,806-character bodies, Barcelona location and 2026-07-14 update timestamp are identical, so they are one paid Graphic Designer Trainee opening, not two vacancies.'
+    $finalRecord.contact = 'Canonical application: https://job-boards.greenhouse.io/omnicomhealth/jobs/5207339008 ; alternate official application: https://job-boards.greenhouse.io/remedyedgespain/jobs/5207341008'
+    $finalRecord.links = @('https://job-boards.greenhouse.io/omnicomhealth/jobs/5207339008', 'https://job-boards.greenhouse.io/remedyedgespain/jobs/5207341008')
+    $finalRecord.searchText = "$($finalRecord.searchText) canonical duplicate boards same vacancy Remedy Edge Spain 5207341008"
+  }
+}
+
 # Round 643: location and status integrity guards for two high-scoring cards.
 # Adsmurai's official page is a Madrid requisition despite a contradictory
 # Barcelona mention in a repeated vacancy widget. Preply's current careers

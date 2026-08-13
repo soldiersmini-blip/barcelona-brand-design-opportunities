@@ -275,11 +275,11 @@ check(
     ),
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
+const round43AuditItems = test.allData.filter((item) => /Round 43 ranks 141-198/i.test(test.CURATED[item.id]?.auditSection || item.section || ""));
 check(
-  /Round 43/i.test(test.latestRoundSection) &&
-    [930842, 1000, 930873, 1024, 930885, 37, 224, 483, 996, 1036, 1098, 930867, 1097, 1240, 88, 930824, 930878, 930888, 577, 942, 1029, 1237, 313, 930712, 172, 981, 277, 1287, 375, 382, 867, 445, 579, 25, 210, 1296, 1314, 443, 136, 930829, 93, 1094, 581, 930876, 294, 86, 930865, 351, 89, 1011, 27, 930887, 930886, 1093, 1099, 930843, 1243, 304].every((id) =>
-      test.latestRoundItems.some((item) => Number(item.id) === id),
-    ),
+  [930842, 1000, 930873, 1024, 930885, 37, 224, 483, 996, 1036, 1098, 930867, 1097, 1240, 88, 930824, 930878, 930888, 577, 942, 1029, 1237, 313, 930712, 172, 981, 277, 1287, 375, 382, 867, 445, 579, 25, 210, 1296, 1314, 443, 136, 930829, 93, 1094, 581, 930876, 294, 86, 930865, 351, 89, 1011, 27, 930887, 930886, 1093, 1099, 930843, 1243, 304].every((id) =>
+    round43AuditItems.some((item) => Number(item.id) === id),
+  ),
   "Round 43 ranks 141-198 status, language, experience and duplicate audit is incomplete",
 );
 const round33AuditItems = test.allData.filter((item) => /Round 33 full-board direct-link reconciliation/i.test(String(item.section || "")));
@@ -1238,6 +1238,15 @@ const r43Sorted = r41Current.slice();
 test.sortRecords(r43Sorted);
 check([778, 920, 930835].every((id, index) => Number(r43Sorted[index]?.id) === id), "Round 43: the three Chinese/contact-first opportunities are no longer the first three cards");
 check(r43Sorted.slice(3, 10).every((item) => test.applicationLanguagePath(item).key === "unknown"), "Round 43: explicit foreign-language jobs still outrank the best no-stated-language backups");
+
+const r44RemedyCurrent = r23ById(958);
+const r44RemedyHistorical = r23ById(930638);
+const r44RemedyLinks = test.toLinks(r44RemedyCurrent);
+check(test.latestRoundSection === "2026-08-13 Round 44 official-board duplicate reconciliation", "Round 44: latest-round marker did not advance");
+check(test.MY_OPPORTUNITY_SET.has(958) && test.applicationStatus(r44RemedyCurrent).key === "live", "Round 44: canonical Remedy Edge trainee opening was lost");
+check(r44RemedyLinks.length === 2 && r44RemedyLinks.some((url) => /omnicomhealth\/jobs\/5207339008/i.test(url)) && r44RemedyLinks.some((url) => /remedyedgespain\/jobs\/5207341008/i.test(url)), "Round 44: the canonical Remedy Edge card does not expose both current official application routes");
+check(r44RemedyHistorical && !test.MY_OPPORTUNITY_SET.has(930638) && test.applicationStatus(r44RemedyHistorical).key === "closed" && r44RemedyHistorical.tier === "X", "Round 44: removed Omnicom 4542432008 route still counts as a live independent vacancy");
+check(test.MY_OPPORTUNITY_IDS.length === 204 && new Set(test.MY_OPPORTUNITY_IDS).size === 204, "Round 44: duplicate Remedy Edge board route changed the 204-seat audited ledger");
 check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 37: Chinese-relevant current opportunity count must remain evidence-backed at 6");
 for (const id of [930884, 930885, 930886, 930887]) {
   const item = r23ById(id);
