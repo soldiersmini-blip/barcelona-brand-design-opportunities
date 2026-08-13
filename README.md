@@ -6,23 +6,24 @@
 
 ## 当前主表
 
-- 202 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
-- 150 个 Barcelona / 周边当前机会。
+- 206 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
+- 154 个 Barcelona / 周边当前机会。
 - 52 个明确允许 Spain / Europe / worldwide remote，或已单独标出 Spain 合同资格待确认的机会。
-- 188 个原始详情页或最终申请表显示可投，14 个需要先确认。
+- 193 个原始详情页或最终申请表显示可投，13 个需要先确认。
 - 6 个中文、华人圈、中国公司或中文远程相关机会。
 
 主表只收录已逐条检查过地点、岗位方向、当前状态和真实入口的机会。默认按“我的匹配分”严格从高到低排列；分数同时考虑 Barcelona/Spain 可行性、品牌视觉相关度、资历、语言门槛、状态可信度和材料投入成本。
 
 ## 数据分区
 
-- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 202 条主表。
+- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 206 条主表。
 - `华人中文全库`：华人网、中文社区、Casa Asia 和中国公司相关来源的完整线索。
 - `页面仍可复核`：详情还在，但状态、地点或申请控制需要再次确认的记录。
 - `关闭 / 历史 / 排除`：已过期、错误地点、重复、非设计岗或无法证实的记录。历史不会删除。
 
 ## 关键文件
 
+- `AUDIT-2026-08-14-ROUND64.md`：再次复扫 Casa Asia、华人通 ES02、华新、西华及 Barcelona 最近设计 / 社媒视觉来源，逐字读取并裁决本轮精确详情页。新增 4 个真实 Barcelona 次级备选，但按用户英语、西语薄弱以及非 VI / 实习门槛压到 0–7 分；ELIM HOME 用当前雇主页确认开放，并从 48 重算为 25.6 分；Equipo Singular 与 Preply 新镜像合并进原卡。当前主表为 206 张、154 张 Barcelona、52 张远程、193 张开放、13 张待确认，中文相关仍为证据充分的 6 张。
 - `AUDIT-2026-08-13-ROUND63.md`：逐字读取 Mylva、NUDE PROJECT、RV Group、Tenth Revolution、Liados、Sitges 与 UNIQLO 的精确职位页；新增 4 个独立 Barcelona 当前岗位，把 RV Group 重复路由合并到原卡，并将 3 个明确关闭结果只留历史。所有新增仍按用户英语 / 西语薄弱、资历与自由职业门槛低分处理；主表更新为 202 张、150 张 Barcelona、52 张远程、188 张开放与 14 张待确认，中文相关仍为 6 张。
 - `AUDIT-2026-08-13-ROUND62.md`：复扫华信、西华与 Casa Asia，并逐字读取本轮 5 个新命中的精确原始页。Michael Kors 零售视觉陈列和 Factorial DACH 品牌经理因方向 / 德语英语硬门槛进入排除历史；3 个 Jobgether Spain remote 设计岗因实际雇主、合同与薪资不公开进入待复核库。没有虚增主榜：仍为 198 张、146 张 Barcelona、52 张明确远程、184 张开放与 14 张待确认。
 - `AUDIT-2026-08-13-ROUND61.md`：按用户“中文可沟通、Barcelona、品牌 / VI、英语西语都弱”的条件重新核定全站 198 张当前卡；新增非目标方向惩罚与更严格的外语分数上限，把 ELIMHOME 从 64 修正为 48，并保持所有卡按显示分严格降序。官方 Kraken API 同时证明一条此前误判为 UK-only 的高级品牌岗明确允许 Spain，已恢复为当前远程卡，但因英语环境与 5+ 年门槛只列 0 分；主表更新为 198 张、146 张 Barcelona、52 张远程、184 张开放与 14 张待确认。
@@ -84,8 +85,8 @@
 - `scripts/scan-linkedin-search.js`：批量扫描 LinkedIn 最近 7 天的 Barcelona 设计关键词，并按职位编号与现有库去重。
 - `scripts/scan-es02-current.js`：直接扫描华人通当前招聘分页，避免搜索引擎缓存滞后；命中标题仍必须继续打开原帖人工判断。
 - `scripts/export-opportunity-ledgers.js`：生成当前主表 CSV/JSON 与完整历史总账 CSV。
-- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 198 个机会的完整、严格降序导出。
-- `all-opportunity-ledger.csv`：1,273 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
+- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 206 个机会的完整、严格降序导出。
+- `all-opportunity-ledger.csv`：1,288 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
 - `scripts/validate-site.js`：验证数据、排序、状态、入口与页面结构。
 
 ## 本地验证
