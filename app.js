@@ -3247,6 +3247,10 @@ const ROUND35_DEMOTED_IDS = new Set([1107]);
 // duplicates occupy two seats in the reviewed current board.
 const ROUND37_SUPERSEDED_MAIN_IDS = new Set([891, 930707, 930883]);
 const ROUND32_EXCLUDED_IDS = new Set([930839, ...ROUND32_CLOSED_IDS, ...ROUND33_CLOSED_IDS]);
+// CBA's page is a standing portfolio/open-application route, not a current
+// vacancy. Preserve it in the complete research library, but do not count it
+// among the user's live/verify job cards.
+const ROUND46_RESEARCH_ONLY_MAIN_IDS = new Set([456]);
 const MY_OPPORTUNITY_IDS = Object.freeze(
   ROUND28_AUDITED_OPPORTUNITY_IDS
     .flatMap((id) => [id, ...(ROUND29_RANKED_INSERTIONS.get(id) || [])])
@@ -3258,7 +3262,8 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
     .flatMap((id) => [id, ...(ROUND37_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND38_RANKED_INSERTIONS.get(id) || [])])
     .filter((id) => !ROUND37_SUPERSEDED_MAIN_IDS.has(id))
-    .filter((id) => !ROUND32_EXCLUDED_IDS.has(id)),
+    .filter((id) => !ROUND32_EXCLUDED_IDS.has(id))
+    .filter((id) => !ROUND46_RESEARCH_ONLY_MAIN_IDS.has(id)),
 );
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
 
@@ -12384,6 +12389,54 @@ if (round45ChinaRemote) {
   });
 }
 
+const ROUND46_SECTION = "2026-08-13 Round 46 user-fit score recalibration";
+const ROUND46_PLANETA_LINKS = Object.freeze([
+  "https://grupoplaneta.talentclue.com/es/node/127111935/4590/modal",
+  "https://www.linkedin.com/jobs/view/4440282206/",
+  "https://jobs.planeta.es/",
+]);
+
+// The exact current LinkedIn employer page independently confirms that the
+// official Grupo Planeta requisition is still accepting applications. Keep
+// the TalentClue form canonical and retain LinkedIn only as current evidence.
+const round46Planeta = allData.find((entry) => Number(entry.id) === 930873);
+if (round46Planeta) {
+  Object.assign(round46Planeta, {
+    section: ROUND46_SECTION,
+    status: "2026-08-13 current-source refresh: official TalentClue requisition 127111935 still exposes the Barcelona application form, and exact LinkedIn employer detail 4440282206 visibly shows Solicitar and no closed marker. The role designs non-fiction book covers and launch graphics, leads selected art-direction projects and requires at least five years plus intermediate-or-higher English.",
+    contact: `Official application: ${ROUND46_PLANETA_LINKS[0]} ; current employer detail: ${ROUND46_PLANETA_LINKS[1]} ; careers hub: ${ROUND46_PLANETA_LINKS[2]}`,
+    links: [...ROUND46_PLANETA_LINKS],
+  });
+}
+
+Object.assign(CURATED, {
+  930873: {
+    ...CURATED[930873],
+    links: [...ROUND46_PLANETA_LINKS],
+    preferCuratedLinks: true,
+    statusEvidence: "2026-08-13 复核：Grupo Planeta 官方 TalentClue 127111935 仍提供 Barcelona 申请表；雇主 LinkedIn 精确页 4440282206 同时显示 Solicitar，未显示关闭。正文明确 5 年以上与中级以上英语；现场西语编辑团队语境仍按高概率门槛处理。",
+    reason: "这是真实开放的 Barcelona 平面与编辑设计岗，覆盖封面概念、字体、艺术指导、上市物料和生产；但 5 年以上、英语中级以上与现场西语环境都是真实门槛，因此保留但不能高排。",
+    latestAuditSection: ROUND46_SECTION,
+    changeType: "round-46-current-source-and-score-refresh",
+  },
+  456: {
+    ...CURATED[456],
+    statusKey: "verify",
+    statusEvidence: "2026-08-13 计分复核：CBA Spain 页面是长期开放的作品集 / 自荐入口，没有当前职位名、独立 requisition、发布日期或岗位申请表；它不是一个现行招聘名额。",
+    reason: "保留 CBA Barcelona 品牌机构联系入口作为研究与冷联系资源，但不再计入当前岗位数量，也不参与现役卡片排名。",
+    next: "只有 CBA 发布带职位名、职责、地点与独立申请入口的具体空缺后，再恢复为当前岗位卡。",
+    latestAuditSection: ROUND46_SECTION,
+    changeType: "round-46-non-vacancy-research-route",
+  },
+});
+
+// This round applies one user-specific formula to every reviewed identity, so
+// the "latest round" view intentionally exposes the full audited set instead
+// of cherry-picking only the cards whose numeric position changed most.
+for (const id of [...MY_OPPORTUNITY_IDS, 456]) {
+  if (CURATED[id]) CURATED[id] = { ...CURATED[id], latestAuditSection: ROUND46_SECTION };
+}
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
@@ -12834,7 +12887,7 @@ function isResearchOnly(item) {
       opportunity,
     );
   const opportunityIsRoute =
-    /(?:job[- ]?board|jobs?) (?:channel|route|recheck)|channel (?:recheck|status|monitor)|(?:monitor|watchlist|watch route|research route)|no (?:new|current).{0,35}(?:job|vacancy|opening)|no confirmed|not (?:a |an )?(?:current |confirmed )?(?:job|vacancy|opening)|speculative (?:creative\/brand\/packaging )?application|self[- ]application|status correction|historical lead|current .{0,35}(?:employer|ecosystem)$|(?:company|platform|classifieds) (?:target|route|monitor)|institutional.{0,35}route|service category|招聘频道|招聘渠道|监控|观察入口|研究线索|当前无.{0,20}(?:岗位|职位)/i.test(
+    /(?:job[- ]?board|jobs?) (?:channel|route|recheck)|channel (?:recheck|status|monitor)|(?:monitor|watchlist|watch route|research route)|no (?:new|current).{0,35}(?:job|vacancy|opening)|no confirmed|not (?:a |an )?(?:current |confirmed )?(?:job|vacancy|opening)|(?:open|speculative|spontaneous) (?:creative\/brand\/packaging )?application|self[- ]application|status correction|historical lead|current .{0,35}(?:employer|ecosystem)$|(?:company|platform|classifieds) (?:target|route|monitor)|institutional.{0,35}route|service category|招聘频道|招聘渠道|监控|观察入口|研究线索|开放投递|非具体空缺|自荐(?:申请|投递|岗位)|当前无.{0,20}(?:岗位|职位)/i.test(
       opportunity,
     );
   const detailsOnlyResearch =
@@ -12879,8 +12932,8 @@ function isFormalRole(item) {
 
 function locationFitPoints(item) {
   const location = locationBucket(item);
-  if (location === "barcelona") return 22;
-  if (location !== "remote") return location === "madrid" ? 0 : 1;
+  if (location === "barcelona") return 24;
+  if (location !== "remote") return location === "madrid" ? -12 : -4;
 
   const text = `${locationLabel(item)} ${item.status || ""} ${item.analysis || ""}`.toLowerCase();
   const spainUnconfirmed =
@@ -12888,11 +12941,11 @@ function locationFitPoints(item) {
   // A China/other-country remote label is not practically Barcelona-accessible
   // until the employer confirms Spain residency, contracting and payment.
   // Give it a real penalty instead of the small positive score used before.
-  if (spainUnconfirmed) return -4;
-  if (/spain remote|remote.{0,16}spain|españa.{0,12}remot|西班牙远程|barcelona 可居住/i.test(text)) return 18;
+  if (spainUnconfirmed) return -8;
+  if (/spain remote|remote.{0,16}spain|españa.{0,12}remot|西班牙远程|barcelona 可居住/i.test(text)) return 20;
   if (/europe remote|remote.{0,16}europe|emea|欧洲远程|欧盟远程/i.test(text)) return 14;
-  if (/worldwide|work from anywhere|global remote|全球远程/i.test(text)) return 8;
-  return 6;
+  if (/worldwide|work from anywhere|global remote|全球远程/i.test(text)) return 6;
+  return 4;
 }
 
 function personalMatchScore(item) {
@@ -12900,11 +12953,11 @@ function personalMatchScore(item) {
   // prestigious or professionally attractive a vacancy looks. Language is the
   // dominant constraint because the user has explicitly said that both English
   // and Spanish are currently weak.
-  const tierPoints = { A: 12, B: 9, C: 5, D: 1, X: -30 };
+  const tierPoints = { A: 10, B: 8, C: 4, D: 0, X: -30 };
   const applicationLanguagePoints = {
-    chinese: 35,
-    chineseCheck: 27,
-    basicSpanish: 10,
+    chinese: 40,
+    chineseCheck: 30,
+    basicSpanish: 8,
     unknown: 0,
     english: 0,
     spanishLikely: 0,
@@ -12913,32 +12966,36 @@ function personalMatchScore(item) {
   };
   const languageCaps = {
     chinese: 100,
-    chineseCheck: 92,
-    basicSpanish: 68,
-    unknown: 40,
-    english: 28,
-    spanishLikely: 24,
-    foreign: 18,
-    spanish: 18,
+    chineseCheck: 84,
+    basicSpanish: 50,
+    unknown: 28,
+    english: 18,
+    spanishLikely: 14,
+    foreign: 8,
+    spanish: 8,
   };
   const languageScales = {
-    unknown: 0.4,
-    english: 0.28,
-    spanishLikely: 0.24,
-    foreign: 0.18,
-    spanish: 0.18,
+    unknown: 0.34,
+    english: 0.2,
+    spanishLikely: 0.16,
+    foreign: 0.1,
+    spanish: 0.1,
   };
-  const directionPoints = { brand: 20, motion: 18, digital: 16, ecommerce: 12, production: 10, social: 8, other: 0 };
+  // The user is looking for brand/VI and hands-on graphic design first.
+  // Generic motion, growth and social content are useful backups, but they
+  // must not outrank an otherwise comparable identity/graphic-production job.
+  const directionPoints = { brand: 24, production: 22, digital: 14, motion: 12, ecommerce: 10, social: 6, other: 0 };
   const experienceAdjustments = {
-    open: 3,
-    junior: 3,
+    open: 4,
+    junior: 4,
     mid: 0,
-    unknown: -2,
-    senior: -8,
-    lead: -14,
-    internship: -8,
+    unknown: -3,
+    senior: -10,
+    lead: -18,
+    intern: -12,
+    internship: -12,
   };
-  const freshnessPoints = { week: 6, month: 4, quarter: 2, older: 0, old: -4, unknown: 0 };
+  const freshnessPoints = { week: 5, month: 3, quarter: 1, older: 0, old: -4, unknown: 0 };
   const applicationLanguage = applicationLanguagePath(item).key;
   const status = applicationStatus(item).key;
 
@@ -12952,16 +13009,15 @@ function personalMatchScore(item) {
   if (isChineseRelevant(item)) {
     score += ["chinese", "chineseCheck", "basicSpanish"].includes(applicationLanguage) ? 8 : 3;
   }
-  if (toLinks(item).length) score += 5;
+  if (toLinks(item).length) score += 4;
   if (isFormalRole(item)) score += 3;
   if (hasKnownCompensation(item)) score += 2;
-  if (isInternshipRole(item)) score -= 8;
-  if (hasLowPayRisk(item)) score -= 10;
-  if (hasOpaqueEmployerRisk(item)) score -= 8;
-  if (isResearchOnly(item)) score -= 35;
-  if (status === "live") score += 7;
-  if (status === "verify") score -= 5;
-  if (status === "closed") score -= 35;
+  if (hasLowPayRisk(item)) score -= 12;
+  if (hasOpaqueEmployerRisk(item)) score -= 12;
+  if (isResearchOnly(item)) score -= 45;
+  if (status === "live") score += 6;
+  if (status === "verify") score -= 8;
+  if (status === "closed") score -= 45;
 
   // Foreign-language routes are scaled after the professional/location score
   // is calculated. This preserves meaningful ordering within each backup
@@ -12978,7 +13034,12 @@ function personalMatchScore(item) {
   score += experienceAdjustments[experienceInfo(item).key] ?? experienceAdjustments.unknown;
   // Preserve the real university-agreement and temporary-role constraint after
   // foreign-language scaling; otherwise an internship penalty nearly vanishes.
-  if (isInternshipRole(item)) score -= 8;
+  if (isInternshipRole(item)) score -= 10;
+
+  // Apply the language ceiling last. A junior bonus or a fresh posting must
+  // never lift a foreign-language role above the user's actual communication
+  // ceiling. This is the number shown on every card and used for all ordering.
+  score = Math.min(score, languageCaps[applicationLanguage] ?? 50);
   return Math.max(0, Math.min(100, Number(score.toFixed(1))));
 }
 
@@ -13856,7 +13917,7 @@ function dedupe(records) {
 
 const dedupedData = dedupe(allData);
 function auditSection(item) {
-  return String(CURATED[item.id]?.auditSection || item.section || "");
+  return String(CURATED[item.id]?.latestAuditSection || CURATED[item.id]?.auditSection || item.section || "");
 }
 
 function roundRank(item) {
