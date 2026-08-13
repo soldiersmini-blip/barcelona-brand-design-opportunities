@@ -3259,6 +3259,10 @@ const ROUND54_CURRENT_IDS = Object.freeze([930900, 930901, 930902]);
 // graphic/VI ownership, so it remains below the canonical full-time graphic
 // designer even though the location and communication route are favourable.
 const ROUND60_CURRENT_IDS = Object.freeze([930904]);
+// Round 63 adds five newly opened Barcelona details. They all stay on the
+// complete board, but their displayed score is still controlled by the user's
+// real language, seniority and contract constraints: local does not mean easy.
+const ROUND63_CURRENT_IDS = Object.freeze([930910, 930911, 930913, 930914]);
 // THRU still exposes the complete role brief and a future closing date, but
 // the same official page ends with "NO JOB OPENINGS". Keep the lead visible as
 // verify-first evidence without allowing the contradictory page to occupy a
@@ -3282,7 +3286,14 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
     .flatMap((id) => [id, ...(ROUND36_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND37_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND38_RANKED_INSERTIONS.get(id) || [])])
-    .concat(ROUND47_CURRENT_IDS, ROUND50_CURRENT_IDS, ROUND52_CURRENT_IDS, ROUND54_CURRENT_IDS, ROUND60_CURRENT_IDS)
+    .concat(
+      ROUND47_CURRENT_IDS,
+      ROUND50_CURRENT_IDS,
+      ROUND52_CURRENT_IDS,
+      ROUND54_CURRENT_IDS,
+      ROUND60_CURRENT_IDS,
+      ROUND63_CURRENT_IDS,
+    )
     .filter((id) => !ROUND37_SUPERSEDED_MAIN_IDS.has(id))
     .filter((id) => !ROUND32_EXCLUDED_IDS.has(id))
     .filter((id) => !ROUND46_RESEARCH_ONLY_MAIN_IDS.has(id)),
@@ -16179,6 +16190,359 @@ Object.assign(CURATED, {
 
 SCORE_LANGUAGE_RISK_OVERRIDES.set(930907, "englishLikely");
 SCORE_LANGUAGE_RISK_OVERRIDES.set(930909, "englishLikely");
+
+const ROUND63_SECTION = "2026-08-13 Round 63 Barcelona exact-detail discovery and user-fit scoring";
+
+// Round 63 keeps the complete discovery history while separating genuinely
+// open Barcelona roles from attractive but expired search results. Every live
+// record below was read at the exact job-detail level; none receives a language
+// or seniority exemption merely because its design scope is attractive.
+const round63AuditItems = [
+  {
+    id: 930910,
+    section: ROUND63_SECTION,
+    source: "Mylva S.A. / current JobToday exact detail and InfoJobs mirror",
+    opportunity: "Diseñador/a Gráfico & Web",
+    fit: "Barcelona hybrid graphic, brand-identity, editorial, packaging and digital-production role",
+    location: "48 Via Augusta, Gràcia, Barcelona; hybrid 3 office + 2 home; full-time",
+    status: "Live/current: the exact JobToday detail was opened and read on 2026-08-13. It shows Apply now, a 2026-07-27 publication date, a stable contract, hybrid work, EUR26,000 gross/year and a central Barcelona office. The independently indexed InfoJobs detail identifies an indefinite full-time contract and at least four years of experience; JobToday asks for more than five years.",
+    contact: "Current exact JobToday application: https://jobtoday.com/es/trabajo/disenador-a-grafico-and-web-PwVnx9 ; independently indexed InfoJobs mirror: https://www.infojobs.net/barcelona/disenador-grafico-web/of-i2261626aa54c9b86b9903cbc8f444e",
+    analysis: "The work is highly relevant—identity, editorial, packaging, campaigns, social, email, video, WordPress and brand-guideline consistency—but it is not a high personal-fit card. The local Spanish-language workflow is probable and the four-to-five-plus-year threshold is a substantial seniority gate. Keep it as a low-ranked Barcelona stretch, not a priority application.",
+    score: 88,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Brand / graphic / editorial / packaging / web",
+    sourceGroup: "other",
+    postedAt: "2026-07-27",
+    freshnessTag: "month",
+    freshnessAgeDays: 17,
+    links: [
+      "https://jobtoday.com/es/trabajo/disenador-a-grafico-and-web-PwVnx9",
+      "https://www.infojobs.net/barcelona/disenador-grafico-web/of-i2261626aa54c9b86b9903cbc8f444e",
+    ],
+    searchText: "Mylva current exact JobToday Diseñador Gráfico Web Barcelona Gràcia hybrid 3 office 2 home full-time stable indefinite contract EUR 26000 identity brand editorial catalogues leaflets events packaging digital campaigns social email newsletters After Effects Premiere WordPress brand guidelines 4 years 5+ years Spanish local environment likely",
+  },
+  {
+    id: 930911,
+    section: ROUND63_SECTION,
+    source: "NUDE PROJECT / current original LinkedIn employer detail 4385975298",
+    opportunity: "Freelance Graphic Designer",
+    fit: "Barcelona junior fashion-brand graphic role across web, newsletters, social, print, merchandise and events",
+    location: "Barcelona 22@ office; freelance/part-time contract; 16-20 hours",
+    status: "Live/current: the exact employer-posted LinkedIn detail was opened and read on 2026-08-13. It visibly shows Solicitar, Barcelona, one week old and more than 200 applications. The body specifies a 16-20 hour contract and offices in Barcelona's 22@ district.",
+    contact: "Current original employer detail/application: https://es.linkedin.com/jobs/view/freelance-graphic-designer-at-nude-project-4385975298",
+    analysis: "This is a genuine junior Barcelona brand-extension opportunity: online and offline pieces, concepts, visual-identity adaptations and event graphics, with only one-to-two years requested. Keep it below Chinese-accessible roles because the public brief is Spanish and no alternative working language is stated; the 16-20 hour freelance arrangement and missing pay are additional practical constraints.",
+    score: 82,
+    tier: "B",
+    locationTag: "Barcelona area",
+    typeTag: "Brand implementation / graphic / fashion",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-06",
+    freshnessTag: "week",
+    freshnessAgeDays: 7,
+    links: ["https://es.linkedin.com/jobs/view/freelance-graphic-designer-at-nude-project-4385975298"],
+    searchText: "NUDE PROJECT current employer LinkedIn 4385975298 Solicitar Barcelona 22@ freelance part-time 16-20 hours junior 1-2 years graphic designer web newsletters social media posters merchandising invitations postcards creative concepts visual identity adaptations events Spanish local environment likely pay undisclosed",
+  },
+  {
+    id: 930913,
+    section: ROUND63_SECTION,
+    source: "Tenth Revolution Group / current exact LinkedIn employer detail 4398479910",
+    opportunity: "Freelance Graphic Designer – Digital Assets",
+    fit: "Barcelona-area freelance digital assets, events and brand-guideline implementation",
+    location: "Barcelona area; long-term freelance project; exact onsite rhythm and client identity not published",
+    status: "Live/current with caution: the exact employer-posted LinkedIn result was read in full on 2026-08-13 and showed a current application, a direct recruiter email and a posting age of about 20 hours. It requests more than one year of experience, autónomo status and English B2 or higher; the end client, fee and contract duration are not disclosed.",
+    contact: "Current exact LinkedIn detail/application: https://es.linkedin.com/jobs/view/graphic-designer-%E2%80%93-digital-assets-at-tenth-revolution-group-4398479910 ; recruiter email: a.soffia@tenthrevolution.com",
+    analysis: "The scope is useful—email, web, social, landing pages, events, stands, activations and brand guidelines—but this is a recruiter-mediated freelance assignment. Explicit English B2, probable local Spanish coordination, autónomo registration and undisclosed client/pay make it a low personal-fit backup despite the good design match.",
+    score: 74,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Digital graphic / events / brand implementation",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-13",
+    freshnessTag: "week",
+    freshnessAgeDays: 0,
+    links: [
+      "https://es.linkedin.com/jobs/view/graphic-designer-%E2%80%93-digital-assets-at-tenth-revolution-group-4398479910",
+      "mailto:a.soffia@tenthrevolution.com",
+    ],
+    searchText: "Tenth Revolution current exact LinkedIn 4398479910 Freelance Graphic Designer Digital Assets Barcelona area long-term project +1 year autonomous autónomo mandatory English B2 higher email web social landing pages events stands activations brand guidelines Adobe Photoshop Illustrator basic video Figma AI recruiter client pay undisclosed Spanish local likely",
+  },
+  {
+    id: 930914,
+    section: ROUND63_SECTION,
+    source: "Tenth Revolution Group / current exact LinkedIn employer detail 4398679901",
+    opportunity: "Freelance Graphic Designer with Blender",
+    fit: "Barcelona-area freelance UI, visual, 3D, motion and brand-experience production",
+    location: "Barcelona area; freelance project; exact onsite rhythm and client identity not published",
+    status: "Live/current with caution: the exact employer-posted LinkedIn result was read in full on 2026-08-13 and showed Solicitar, a direct recruiter email and a posting age of about six hours. It requires more than one year of experience, professional Blender work, autónomo status and English B2 or higher; the dermocosmetics client, fee and duration are not disclosed.",
+    contact: "Current exact LinkedIn detail/application: https://es.linkedin.com/jobs/view/freelance-graphic-designer-with-blender-at-tenth-revolution-group-4398679901 ; recruiter email: a.soffia@tenthrevolution.com",
+    analysis: "This is a specialist 3D/UI/motion assignment rather than the user's core VI role. Keep it as a low-ranked Barcelona backup only: English B2, probable local Spanish coordination, Blender depth, autónomo status and opaque client/pay all reduce practical feasibility.",
+    score: 70,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "3D / UI visual / motion",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-13",
+    freshnessTag: "week",
+    freshnessAgeDays: 0,
+    links: [
+      "https://es.linkedin.com/jobs/view/freelance-graphic-designer-with-blender-at-tenth-revolution-group-4398679901",
+      "mailto:a.soffia@tenthrevolution.com",
+    ],
+    searchText: "Tenth Revolution current exact LinkedIn 4398679901 Freelance Graphic Designer Blender Barcelona area dermocosmetics UI visual web app 3D modelling materials textures shading lighting rendering animation motion brand identity +1 year autonomous autónomo mandatory English B2 higher Figma Adobe client pay duration undisclosed Spanish local likely",
+  },
+  {
+    id: 930915,
+    section: ROUND63_SECTION,
+    source: "Liados / expired original LinkedIn employer detail 4437151743",
+    opportunity: "Art Director & Graphic Design — expired",
+    fit: "Strong Barcelona identity, key-visual, campaign, print and digital brief; no longer a current vacancy",
+    location: "Poblenou, Barcelona; former 37.5-hour indefinite full-time role",
+    status: "Closed/history: the exact LinkedIn job URL was opened on 2026-08-13 and redirected to a generic Director de Arte search carrying expired_jd_redirect. The indexed original text described one-to-two years of experience, visual identities, key visuals, final artwork, print/digital adaptation and jobs@liadosclab.com, but the expired redirect is stronger current-status evidence.",
+    contact: "Expired original LinkedIn detail: https://es.linkedin.com/jobs/view/art-director-graphic-design-at-liados-4437151743 ; historical recruitment email: jobs@liadosclab.com",
+    analysis: "Preserve the attractive brief in history so it is not lost again, but do not show it as currently open. Restore only when Liados publishes a new exact requisition or confirms in writing that it is still accepting applications for this role.",
+    score: 0,
+    tier: "X",
+    locationTag: "Barcelona area",
+    typeTag: "Brand / art direction / graphic — closed",
+    sourceGroup: "linkedin",
+    postedAt: "2026-07-30",
+    freshnessTag: "month",
+    freshnessAgeDays: 14,
+    links: [
+      "https://es.linkedin.com/jobs/view/art-director-graphic-design-at-liados-4437151743",
+      "mailto:jobs@liadosclab.com",
+    ],
+    searchText: "Liados expired original LinkedIn 4437151743 Art Director Graphic Design Barcelona Poblenou 1-2 years visual identities key visuals campaigns Adobe final artwork digital print indefinite 37.5 hours jobs email expired_jd_redirect closed history",
+  },
+  {
+    id: 930916,
+    section: ROUND63_SECTION,
+    source: "Sitges Film Festival / expired official Factorial detail",
+    opportunity: "Dissenyador/a Gràfic 2026 — deadline passed",
+    fit: "Sitges graphic-production, layout, communications, signage and festival-material role; application deadline passed",
+    location: "08870 Sitges, Barcelona province; fixed-discontinuous full-time period 2026-08-03 to 2026-10-22",
+    status: "Closed/history: the official Factorial detail was identified and its complete indexed text was read on 2026-08-13. Although a stale Inscríbete ahora label remains indexed, the body explicitly sets the application deadline at 12:00 on 2026-05-25. It asks for at least three years and values English C2; gross monthly pay was EUR1,853.",
+    contact: "Expired official detail: https://sitgesfilmfestival.factorial.es/job_posting/dissenyador-a-grafic-2026-300959",
+    analysis: "The explicit deadline overrides the surviving Apply label. Preserve the layout, signage and festival-communication brief as history only; wait for a 2027 requisition or another independently dated opening.",
+    score: 0,
+    tier: "X",
+    locationTag: "Barcelona area",
+    typeTag: "Graphic production / signage / festival — closed",
+    sourceGroup: "other",
+    postedAt: "2026-05-25",
+    freshnessTag: "quarter",
+    freshnessAgeDays: 80,
+    links: ["https://sitgesfilmfestival.factorial.es/job_posting/dissenyador-a-grafic-2026-300959"],
+    searchText: "Sitges Film Festival official Factorial 300959 Dissenyador Grafic 2026 Sitges Barcelona layout originals communications signage 3 years English C2 valued fixed discontinuous 2026-08-03 2026-10-22 EUR 1853 monthly explicit application deadline 2026-05-25 passed closed history stale apply label",
+  },
+];
+
+allData.push(...round63AuditItems);
+
+const round63RvGroup = allData.find((item) => Number(item.id) === 396);
+if (round63RvGroup) {
+  Object.assign(round63RvGroup, {
+    section: ROUND63_SECTION,
+    source: "RV Group - Rodriguez Villar / current JobToday exact details",
+    status: "Live/current canonical role: a newly exposed exact JobToday route DLOPKX was opened and read on 2026-08-13 and again shows Apply now, a verified employer, central Barcelona, 100% onsite full-time work and the complete Junior Motion Graphics & Visual Designer brief. It is the same vacancy identity as the already preserved 9wP83M route, not a second job. Both fluent Spanish and fluent English remain mandatory.",
+    contact: "Current exact JobToday routes: https://jobtoday.com/es/trabajo/junior-motion-graphics-and-visual-designer-DLOPKX ; https://jobtoday.com/es/trabajo/junior-motion-graphics-and-visual-designer-9wP83M",
+    analysis: "Keep one canonical card and both exact source routes. The junior level and Barcelona location are useful, but motion/video dominates and fluent Spanish plus fluent English are explicit hard gates, so its personal-fit score remains near the bottom.",
+    links: [
+      "https://jobtoday.com/es/trabajo/junior-motion-graphics-and-visual-designer-DLOPKX",
+      "https://jobtoday.com/es/trabajo/junior-motion-graphics-and-visual-designer-9wP83M",
+    ],
+    searchText: "RV Group Rodriguez Villar current canonical JobToday DLOPKX 9wP83M Junior Motion Graphics Visual Designer Barcelona central 100% onsite full-time verified employer Apply now fluent Castellano Spanish and English both mandatory Adobe After Effects Premiere Photoshop Illustrator campaigns social digital signage flyers posters menus brand consistency junior duplicate source routes one vacancy",
+  });
+}
+
+const round63Uniqlo = allData.find((item) => Number(item.id) === 153);
+if (round63Uniqlo) {
+  round63Uniqlo.links = [
+    ...(Array.isArray(round63Uniqlo.links) ? round63Uniqlo.links : []),
+    "https://es.linkedin.com/jobs/view/in-store-graphic-designer-at-uniqlo-4415503040",
+  ];
+}
+
+Object.assign(CURATED, {
+  396: {
+    ...CURATED[396],
+    statusKey: "live",
+    direction: "motion",
+    company: "RV Group — Rodriguez Villar",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona 市中心 / 100% 现场 / 全职",
+    titleZh: "初级 Motion Graphics 与视觉设计师",
+    titleEs: "Junior Motion Graphics & Visual Designer",
+    languageKey: "foreign",
+    applicationMode: "englishSpanish",
+    language: "明确要求流利西班牙语与流利英语，两者均为必须",
+    experienceKey: "junior",
+    experienceLabel: "初级；接受个人、学业、实习或自由职业作品",
+    statusEvidence: "2026-08-13 逐字读取新 JobToday 精确路由 DLOPKX：Apply now、验证雇主、Barcelona 市中心全职；正文和语言栏明确 Spanish Advanced + English Advanced。它与原 9wP83M 是同一职位，不重复计数。",
+    reason: "级别和地点友好，也覆盖品牌一致性与平面延展；但 Motion/视频为主，且英西双语流利是明写硬门槛，所以个人适配分继续接近底部。",
+    next: "当前不优先投。只有两门语言能完成现场协作时再用 Motion reel、Campaign、digital signage、社媒与印刷适配案例申请。",
+    links: [
+      "https://jobtoday.com/es/trabajo/junior-motion-graphics-and-visual-designer-DLOPKX",
+      "https://jobtoday.com/es/trabajo/junior-motion-graphics-and-visual-designer-9wP83M",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND63_SECTION,
+    changeType: "round-63-current-duplicate-route-merged",
+  },
+  930910: {
+    statusKey: "live",
+    direction: "brand",
+    company: "Mylva S.A.",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / Gràcia / hybrid 3+2 / 全职",
+    titleZh: "平面与网页设计师（品牌、编辑、包装与数字延展）",
+    titleEs: "Diseñador/a Gráfico & Web",
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    language: "职位全文与 Barcelona 本地工作环境为西语；未写正式等级，但日常西语很可能",
+    experienceKey: "senior",
+    experienceLabel: "至少 4 年；JobToday 正文写 5+ 年",
+    statusEvidence: "2026-08-13 逐字读取 JobToday 精确页：显示 Apply now、2026-07-27 发布、Barcelona 市中心、hybrid 3+2、全职稳定合同与 €26,000/年；InfoJobs 独立镜像写无固定期限全职和至少 4 年。",
+    reason: "品牌识别、编辑、包装、Campaign、社媒、邮件、视频、WordPress 与品牌指南很匹配，但 4–5+ 年资历和西语本地环境是重大门槛，不能因职责漂亮而高分。",
+    next: "先用极短西语消息确认日常语言是否可接受英文辅助，以及 4 年以下是否会考虑；得到肯定答复后再准备品牌系统、包装、编辑与数字延展案例。",
+    links: [
+      "https://jobtoday.com/es/trabajo/disenador-a-grafico-and-web-PwVnx9",
+      "https://www.infojobs.net/barcelona/disenador-grafico-web/of-i2261626aa54c9b86b9903cbc8f444e",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND63_SECTION,
+    changeType: "round-63-new-current-barcelona-senior-spanish-likely",
+  },
+  930911: {
+    statusKey: "live",
+    direction: "brand",
+    company: "NUDE PROJECT",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 22@ / 16–20 小时自由职业",
+    titleZh: "自由职业平面设计师（品牌视觉延展）",
+    titleEs: "Freelance Graphic Designer",
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    language: "西语职位正文与 Barcelona 本地团队环境；未写正式语言等级，先按西语大概率评分",
+    experienceKey: "junior",
+    experienceLabel: "初级 / 1–2 年",
+    statusEvidence: "2026-08-13 打开 LinkedIn 雇主原始详情 4385975298：显示 Solicitar、Barcelona、约 1 周、200+ 申请；正文明确 16–20 小时合同和 22@ 办公室。",
+    reason: "初级、品牌视觉延展和 Barcelona 都匹配，但西语工作环境未确认替代路径，且只有 16–20 小时、薪资未公开；因此是低分但真实的本地机会。",
+    next: "先问日常语言、每周具体排班、自由职业还是劳动合同及小时费率；确认可沟通后，用时装/青年品牌视觉、社媒、印刷、周边和活动物料案例投递。",
+    links: ["https://es.linkedin.com/jobs/view/freelance-graphic-designer-at-nude-project-4385975298"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND63_SECTION,
+    changeType: "round-63-new-current-barcelona-junior-freelance",
+  },
+  930913: {
+    statusKey: "live",
+    direction: "digital",
+    company: "Tenth Revolution Group / 客户未披露",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona 周边 / 长期自由职业 / 客户未披露",
+    titleZh: "自由职业数字平面设计师（英语 B2、需 autónomo）",
+    titleEs: "Freelance Graphic Designer – Digital Assets",
+    languageKey: "english",
+    applicationMode: "english",
+    scoringLanguageRisk: "englishSpanishLikely",
+    language: "英语 B2+ 明确必需；Barcelona 本地客户协作的西语环境也很可能",
+    experienceKey: "junior",
+    experienceLabel: "1+ 年；中介页标注中级",
+    statusEvidence: "2026-08-13 完整读取 LinkedIn 雇主职位 4398479910：约 20 小时、可申请、招聘人邮箱可见；明确 1+ 年、autónomo 与 English B2+，终端客户、费率和期限未公开。",
+    reason: "数字资产、活动与品牌指南相关，但英语 B2、自雇注册、本地西语概率及客户/费用不透明共同降权。",
+    next: "先用邮件只问客户行业、日常语言、地点/远程节奏、项目期限、小时费率和发票条件；信息明确前不发送完整个人资料。",
+    links: [
+      "https://es.linkedin.com/jobs/view/graphic-designer-%E2%80%93-digital-assets-at-tenth-revolution-group-4398479910",
+      "mailto:a.soffia@tenthrevolution.com",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND63_SECTION,
+    changeType: "round-63-new-current-recruiter-freelance-english-b2",
+  },
+  930914: {
+    statusKey: "live",
+    direction: "digital",
+    company: "Tenth Revolution Group / 药妆客户未披露",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona 周边 / 自由职业 / 客户未披露",
+    titleZh: "自由职业 3D 与视觉设计师（Blender、英语 B2）",
+    titleEs: "Freelance Graphic Designer with Blender",
+    languageKey: "english",
+    applicationMode: "english",
+    scoringLanguageRisk: "englishSpanishLikely",
+    language: "英语 B2+ 明确必需；Barcelona 本地客户协作的西语环境也很可能",
+    experienceKey: "junior",
+    experienceLabel: "1+ 年；另需成熟 Blender 作品",
+    statusEvidence: "2026-08-13 完整读取 LinkedIn 雇主职位 4398679901：约 6 小时、显示 Solicitar 与招聘人邮箱；明确 1+ 年、Blender、autónomo 与 English B2+，客户、费率和期限未公开。",
+    reason: "方向偏 UI、3D 与 Motion，不是核心 VI；英语 B2、Blender 深度、自雇与不透明客户进一步降低可行性。",
+    next: "仅当 Blender/3D 已是成熟能力时先问语言、客户、费率、地点和期限；否则不投入申请时间。",
+    links: [
+      "https://es.linkedin.com/jobs/view/freelance-graphic-designer-with-blender-at-tenth-revolution-group-4398679901",
+      "mailto:a.soffia@tenthrevolution.com",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND63_SECTION,
+    changeType: "round-63-new-current-specialist-3d-english-b2",
+  },
+  930915: {
+    statusKey: "closed",
+    direction: "brand",
+    company: "Liados",
+    locationKey: "barcelona",
+    locationLabel: "Poblenou, Barcelona / 原 37.5 小时无固定期限职位",
+    titleZh: "艺术指导与平面设计—精确页已过期",
+    titleEs: "Art Director & Graphic Design — expired",
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    language: "原职位与 Barcelona 工作室语境为西语；未写正式等级",
+    experienceKey: "junior",
+    experienceLabel: "原要求 1–2 年",
+    statusEvidence: "2026-08-13 打开精确 LinkedIn 4437151743，跳转至带 expired_jd_redirect 的通用 Art Director 搜索页；不能用两周前缓存和邮箱证明仍在招。",
+    reason: "职责很匹配视觉识别、KV、Campaign、完稿和数字/印刷适配，但职位已经过期；保留而不冒充可投。",
+    next: "等待新职位编号，或先发一封不附敏感材料的状态确认邮件；对方明确仍收材料后再恢复。",
+    links: [
+      "https://es.linkedin.com/jobs/view/art-director-graphic-design-at-liados-4437151743",
+      "mailto:jobs@liadosclab.com",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND63_SECTION,
+    changeType: "round-63-expired-exact-detail-history",
+  },
+  930916: {
+    statusKey: "closed",
+    direction: "production",
+    company: "Sitges Film Festival",
+    locationKey: "barcelona",
+    locationLabel: "Sitges, Barcelona 省 / 2026-08-03 至 2026-10-22",
+    titleZh: "电影节平面设计师—申请截止日已过",
+    titleEs: "Dissenyador/a Gràfic 2026 — deadline passed",
+    languageKey: "foreign",
+    applicationMode: "spanish",
+    language: "职位正文为加泰语；English C2 被列为加分项",
+    experienceKey: "mid",
+    experienceLabel: "至少 3 年",
+    statusEvidence: "官方 Factorial 索引正文明确写申请截止时间为 2026-05-25 12:00；残留的 Inscríbete ahora 不能覆盖正文截止日。",
+    reason: "排版、传播物料和导视相关，但截止日期已经过去，必须留在历史区。",
+    next: "等待 2027 新 requisition；当前不投。",
+    links: ["https://sitgesfilmfestival.factorial.es/job_posting/dissenyador-a-grafic-2026-300959"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND63_SECTION,
+    changeType: "round-63-explicit-deadline-history",
+  },
+  153: {
+    ...CURATED[153],
+    statusKey: "closed",
+    statusEvidence: "2026-08-13 再开 LinkedIn 雇主详情 4415503040：页面明确写“Ya no se aceptan solicitudes”；正文同时要求母语加泰语和西语、工作英语、4+ 年及英文 CV。官方 Workday 精确编号此前也已从职位板消失。",
+    reason: "LinkedIn 停止接收和 Workday 移除相互印证，不能恢复为当前机会；语言与资历也不符合现阶段优先条件。",
+    next: "保留零售空间平面、POS、橱窗、欧洲规范本地化和供应商管理要求作历史参考；等待新的 Fast Retailing requisition。",
+    latestAuditSection: ROUND63_SECTION,
+    changeType: "round-63-linkedin-closed-and-language-gates-confirmed",
+  },
+});
+
+SCORE_LANGUAGE_RISK_OVERRIDES.set(930913, "englishSpanishLikely");
+SCORE_LANGUAGE_RISK_OVERRIDES.set(930914, "englishSpanishLikely");
 
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
