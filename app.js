@@ -13403,9 +13403,9 @@ function hasLowPayRisk(item) {
 
 function riskFlags(item) {
   const flags = [];
-  const applicationLanguage = applicationLanguagePath(item).key;
+  const applicationLanguage = scoreLanguageRisk(item);
   if (["spanish", "spanishLikely"].includes(applicationLanguage)) flags.push("spanish");
-  if (applicationLanguage === "english") flags.push("english");
+  if (["english", "englishLikely"].includes(applicationLanguage)) flags.push("english");
   if (applicationLanguage === "foreign") flags.push("foreign");
   if (hasLowPayRisk(item)) flags.push("lowpay");
   if (isInternshipRole(item)) flags.push("internship");
@@ -13614,6 +13614,7 @@ function personalMatchScore(item) {
     basicSpanish: 8,
     unknown: 0,
     english: 0,
+    englishLikely: 0,
     spanishLikely: 0,
     foreign: 0,
     spanish: 0,
@@ -13622,15 +13623,17 @@ function personalMatchScore(item) {
     chinese: 100,
     chineseCheck: 84,
     basicSpanish: 50,
-    unknown: 28,
-    english: 18,
-    spanishLikely: 14,
-    foreign: 8,
-    spanish: 8,
+    unknown: 14,
+    english: 12,
+    englishLikely: 14,
+    spanishLikely: 10,
+    foreign: 6,
+    spanish: 6,
   };
   const languageScales = {
-    unknown: 0.34,
+    unknown: 0.18,
     english: 0.2,
+    englishLikely: 0.18,
     spanishLikely: 0.16,
     foreign: 0.1,
     spanish: 0.1,
@@ -13650,7 +13653,7 @@ function personalMatchScore(item) {
     internship: -12,
   };
   const freshnessPoints = { week: 5, month: 3, quarter: 1, older: 0, old: -4, unknown: 0 };
-  const applicationLanguage = applicationLanguagePath(item).key;
+  const applicationLanguage = scoreLanguageRisk(item);
   const status = applicationStatus(item).key;
 
   let score =
@@ -13834,7 +13837,7 @@ function matchesPreset(item) {
   if (state.preset === "english") {
     return (
       ["barcelona", "remote"].includes(location) &&
-      applicationLanguagePath(item).key === "english" &&
+      ["english", "englishLikely"].includes(scoreLanguageRisk(item)) &&
       !isResearchOnly(item) &&
       applicationStatus(item).key !== "closed"
     );
@@ -14069,6 +14072,12 @@ const APPLICATION_LANGUAGE_PATHS = {
     short: "英文材料",
     tone: "hard",
   },
+  englishLikely: {
+    key: "englishLikely",
+    label: "招聘正文与团队环境显示英语大概率是工作语言，但未明写等级",
+    short: "英语环境大概率",
+    tone: "hard",
+  },
   spanishLikely: {
     key: "spanishLikely",
     label: "西语工作环境很可能，需先确认",
@@ -14100,6 +14109,78 @@ const APPLICATION_MODE_OVERRIDES = Object.freeze({
   762: "english",
   815: "spanish",
 });
+
+// Round 51 scoring-risk audit. These vacancies do not state a formal language
+// level, so their evidence classification remains "unknown". However, their
+// complete original briefs, application flow and team context make a foreign
+// working environment probable. Treating them as neutral previously pushed
+// them above jobs that are materially more feasible for this user.
+const SCORE_LANGUAGE_RISK_OVERRIDES = new Map([
+  [930834, "englishLikely"],
+  [427, "englishLikely"],
+  [930837, "englishLikely"],
+  [78, "spanishLikely"],
+  [1092, "englishLikely"],
+  [372, "englishLikely"],
+  [930826, "englishLikely"],
+  [425, "englishLikely"],
+  [345, "englishLikely"],
+  [1107, "englishLikely"],
+  [55, "englishLikely"],
+  [446, "englishLikely"],
+  [930847, "englishLikely"],
+  [2942, "englishLikely"],
+  [535, "englishLikely"],
+  [874, "englishLikely"],
+  [37, "englishLikely"],
+  [920001, "englishLikely"],
+  [134, "englishLikely"],
+  [84, "englishLikely"],
+  [989, "englishLikely"],
+  [854, "englishLikely"],
+  [601, "englishLikely"],
+  [1105, "englishLikely"],
+  [1036, "englishLikely"],
+  [930844, "englishLikely"],
+  [1002, "englishLikely"],
+  [859, "englishLikely"],
+  [990, "englishLikely"],
+  [12, "englishLikely"],
+  [1287, "englishLikely"],
+  [1020, "spanishLikely"],
+  [136, "englishLikely"],
+  [930867, "englishLikely"],
+  [942, "englishLikely"],
+  [985, "englishLikely"],
+  [1098, "englishLikely"],
+  [930841, "englishLikely"],
+  [1021, "englishLikely"],
+  [224, "englishLikely"],
+  [1024, "englishLikely"],
+  [996, "englishLikely"],
+  [443, "englishLikely"],
+  [1029, "englishLikely"],
+  [930865, "englishLikely"],
+  [445, "englishLikely"],
+  [1011, "englishLikely"],
+  [1243, "englishLikely"],
+  [304, "englishLikely"],
+  [930892, "englishLikely"],
+]);
+
+const ROUND51_SECTION = "2026-08-13 Round 51 user-language feasibility recalibration";
+for (const [id, scoringLanguageRisk] of SCORE_LANGUAGE_RISK_OVERRIDES) {
+  if (!CURATED[id]) continue;
+  CURATED[id] = {
+    ...CURATED[id],
+    latestAuditSection: ROUND51_SECTION,
+    scoringLanguageRisk,
+    scoringLanguageRiskReason:
+      scoringLanguageRisk === "spanishLikely"
+        ? "The exact brief and local team context are predominantly Spanish even though no formal level is stated."
+        : "The exact brief, application flow and team context are predominantly English even though no formal level is stated.",
+  };
+}
 
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
@@ -14143,6 +14224,21 @@ function applicationLanguagePath(item) {
 
   if (language.key === "light") return APPLICATION_LANGUAGE_PATHS.english;
   return APPLICATION_LANGUAGE_PATHS.unknown;
+}
+
+function scoreLanguageRisk(item) {
+  const evidencePath = applicationLanguagePath(item).key;
+  if (evidencePath !== "unknown") return evidencePath;
+  return SCORE_LANGUAGE_RISK_OVERRIDES.get(Number(item.id)) || "unknown";
+}
+
+function displayApplicationLanguagePath(item) {
+  const evidencePath = applicationLanguagePath(item);
+  const riskPath = scoreLanguageRisk(item);
+  if (riskPath !== evidencePath.key && APPLICATION_LANGUAGE_PATHS[riskPath]) {
+    return APPLICATION_LANGUAGE_PATHS[riskPath];
+  }
+  return evidencePath;
 }
 
 function roleLabels(item) {
@@ -14726,7 +14822,7 @@ function renderPriority() {
     const labels = roleLabels(item);
     const curated = CURATED[item.id];
     const freshness = freshnessInfo(item);
-    const applicationLanguage = applicationLanguagePath(item);
+    const applicationLanguage = displayApplicationLanguagePath(item);
     // The main row is reserved for a Chinese-first contact path. A role can be
     // professionally relevant and still belong in the caution row when it
     // requires English, Spanish or even basic Spanish for day-to-day work.
@@ -14814,7 +14910,7 @@ function matchesFilters(item, ignoreSource = false) {
   }
   if (
     els.languageFilter.value !== "all" &&
-    applicationLanguagePath(item).key !== els.languageFilter.value
+    scoreLanguageRisk(item) !== els.languageFilter.value
   ) {
     return false;
   }
@@ -14921,7 +15017,7 @@ function renderResultCard(item) {
   const role = roleLabels(item);
   const direction = DIRECTION_LABELS[directionKey(item)];
   const language = languageInfo(item);
-  const applicationLanguage = applicationLanguagePath(item);
+  const applicationLanguage = displayApplicationLanguagePath(item);
   const group = sourceGroup(item);
   const curated = CURATED[item.id];
   const freshness = freshnessInfo(item);
@@ -14981,7 +15077,7 @@ function renderResultCard(item) {
     outreachTitle.textContent = "可直接发送的中文询问";
     outreachTextNode.textContent = outreachText;
     outreachActions.appendChild(createCopyButton(outreachText));
-  } else if (applicationLanguage.key === "english") {
+  } else if (["english", "englishLikely"].includes(applicationLanguage.key)) {
     const outreach = englishOutreachText(item);
     outreachWrap.classList.add("result-card__outreach-wrap--english");
     outreachTitle.textContent = "英文询问模板（附中文意思）";
@@ -15324,7 +15420,7 @@ function initStats() {
   const myStatus = getStatusSummary(myCurrentRecords);
   const myChineseRelevant = myCurrentRecords.filter(isChineseRelevant).length;
   const myLanguageCounts = myCurrentRecords.reduce((counts, item) => {
-    const key = applicationLanguagePath(item).key;
+    const key = scoreLanguageRisk(item);
     counts[key] = (counts[key] || 0) + 1;
     return counts;
   }, {});
@@ -15332,7 +15428,8 @@ function initStats() {
     (myLanguageCounts.chinese || 0) +
     (myLanguageCounts.chineseCheck || 0) +
     (myLanguageCounts.basicSpanish || 0);
-  els.chineseStatsNote.textContent = `默认主表共 ${myCurrentRecords.length} 个独立机会：${myStatus.live} 个原始页显示可投，${myStatus.verify} 个需先确认。可先走中文路径 ${chinesePathCount} 个；英文路径 ${myLanguageCounts.english || 0} 个、西语很可能 ${myLanguageCounts.spanishLikely || 0} 个、西语硬门槛 ${myLanguageCounts.spanish || 0} 个、其他外语门槛 ${myLanguageCounts.foreign || 0} 个只排在后面。中文或中国公司相关 ${myChineseRelevant} 个；历史、重复、关闭和外地线索仍完整保留。`;
+  const englishPathCount = (myLanguageCounts.english || 0) + (myLanguageCounts.englishLikely || 0);
+  els.chineseStatsNote.textContent = `默认主表共 ${myCurrentRecords.length} 个独立机会：${myStatus.live} 个原始页显示可投，${myStatus.verify} 个需先确认。可先走中文路径 ${chinesePathCount} 个；英文路径 ${englishPathCount} 个（其中 ${myLanguageCounts.englishLikely || 0} 个为英语环境大概率但未明写等级）、西语很可能 ${myLanguageCounts.spanishLikely || 0} 个、西语硬门槛 ${myLanguageCounts.spanish || 0} 个、其他外语门槛 ${myLanguageCounts.foreign || 0} 个只排在后面。中文或中国公司相关 ${myChineseRelevant} 个；历史、重复、关闭和外地线索仍完整保留。`;
   const statusSummary = myStatus;
   els.liveCount.textContent = statusSummary.live;
   els.verifyCount.textContent = statusSummary.verify;

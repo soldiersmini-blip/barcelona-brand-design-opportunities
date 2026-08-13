@@ -37,7 +37,7 @@ vm.runInContext(dataSource, context, { filename: "data.js" });
 appSource = appSource
   .replace(/\ninitStats\(\);\nrenderPriority\(\);\nrenderResults\(\);\s*$/, "\n")
   .concat(
-    "\nglobalThis.auditApi = { CURATED, dedupedData, state, matchesPreset, toLinks, locationBucket, applicationStatus, isTargetOpportunity, isResearchOnly, hasLowPayRisk, hasOpaqueEmployerRisk, isInternshipRole, isFormalRole, isChineseRelevant, directionKey, applicationLanguagePath, experienceInfo, identityKey, personalMatchScore, displayedScore, roleLabels, companyLabel, locationLabel, MY_OPPORTUNITY_SET };\n",
+    "\nglobalThis.auditApi = { CURATED, dedupedData, state, matchesPreset, toLinks, locationBucket, applicationStatus, isTargetOpportunity, isResearchOnly, hasLowPayRisk, hasOpaqueEmployerRisk, isInternshipRole, isFormalRole, isChineseRelevant, directionKey, applicationLanguagePath, scoreLanguageRisk, experienceInfo, identityKey, personalMatchScore, displayedScore, roleLabels, companyLabel, locationLabel, MY_OPPORTUNITY_SET };\n",
   );
 vm.runInContext(appSource, context, { filename: "app.js" });
 
@@ -133,7 +133,7 @@ const rows = core.map((item) => ({
   status: api.applicationStatus(item).key,
   locationBucket: api.locationBucket(item),
   location: api.locationLabel(item),
-  languagePath: api.applicationLanguagePath(item).key,
+  languagePath: api.scoreLanguageRisk(item),
   experiencePath: api.experienceInfo(item).key,
   experienceRequirement: api.experienceInfo(item).label,
   direction: api.directionKey(item),

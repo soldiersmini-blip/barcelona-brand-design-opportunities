@@ -43,7 +43,7 @@ vm.runInContext(dataSource, context, { filename: "data.js" });
 appSource = appSource
   .replace(/\ninitStats\(\);\nrenderPriority\(\);\nrenderResults\(\);\s*$/, "\n")
   .concat(
-    "\nglobalThis.siteTest = { allData, dedupedData, latestRoundSection, latestRoundItems, priorityItems, CURATED, state, MY_OPPORTUNITY_IDS, MY_OPPORTUNITY_SET, AUDITED_ORDER_INDEX, getStatusSummary, directionKey, languageInfo, applicationLanguagePath, roleLabels, companyLabel, locationLabel, sourceGroup, locationBucket, isActionableLink, toLinks, isChineseRelevant, isResearchOnly, isTargetOpportunity, isInternshipRole, hasLowPayRisk, riskFlags, hasOpaqueEmployerRisk, isFormalRole, isFreelanceRole, hasKnownCompensation, laborConditionInfo, experienceInfo, applicationStatus, isClosedLibraryRecord, isReviewLibraryRecord, personalMatchScore, displayedScore, postedTimestamp, rankingScore, confidenceScore, sortRecords, matchesPreset, progressKey, progressValue, saveProgressValue, identityKey, englishOutreachText };\n",
+    "\nglobalThis.siteTest = { allData, dedupedData, latestRoundSection, latestRoundItems, priorityItems, CURATED, state, MY_OPPORTUNITY_IDS, MY_OPPORTUNITY_SET, AUDITED_ORDER_INDEX, getStatusSummary, directionKey, languageInfo, applicationLanguagePath, scoreLanguageRisk, roleLabels, companyLabel, locationLabel, sourceGroup, locationBucket, isActionableLink, toLinks, isChineseRelevant, isResearchOnly, isTargetOpportunity, isInternshipRole, hasLowPayRisk, riskFlags, hasOpaqueEmployerRisk, isFormalRole, isFreelanceRole, hasKnownCompensation, laborConditionInfo, experienceInfo, applicationStatus, isClosedLibraryRecord, isReviewLibraryRecord, personalMatchScore, displayedScore, postedTimestamp, rankingScore, confidenceScore, sortRecords, matchesPreset, progressKey, progressValue, saveProgressValue, identityKey, englishOutreachText };\n",
   );
 vm.runInContext(appSource, context, { filename: "app.js" });
 
@@ -124,13 +124,14 @@ check(
 );
 check(
   auditedMain.every((item) => {
-    const language = test.applicationLanguagePath(item).key;
+    const language = test.scoreLanguageRisk(item);
     const score = test.displayedScore(item);
-    if (language === "english") return score <= 18;
-    if (language === "unknown") return score <= 28;
-    if (language === "spanish") return score <= 8;
-    if (language === "spanishLikely") return score <= 14;
-    if (language === "foreign") return score <= 8;
+    if (language === "english") return score <= 12;
+    if (language === "englishLikely") return score <= 14;
+    if (language === "unknown") return score <= 14;
+    if (language === "spanish") return score <= 6;
+    if (language === "spanishLikely") return score <= 10;
+    if (language === "foreign") return score <= 6;
     return true;
   }),
   "外语岗位突破了个人语言门槛分数上限",
@@ -1201,6 +1202,32 @@ check(
     r41LanguageCounts.foreign === 5,
   `Round 48: current ledger mismatch ${JSON.stringify({ total: r41Current.length, language: r41LanguageCounts })}`,
 );
+const r51ScoringRiskCounts = r41Current.reduce((counts, item) => {
+  const key = test.scoreLanguageRisk(item);
+  counts[key] = (counts[key] || 0) + 1;
+  return counts;
+}, {});
+check(
+  r51ScoringRiskCounts.chineseCheck === 2 &&
+    r51ScoringRiskCounts.english === 72 &&
+    r51ScoringRiskCounts.englishLikely === 48 &&
+    !r51ScoringRiskCounts.unknown &&
+    r51ScoringRiskCounts.spanishLikely === 23 &&
+    r51ScoringRiskCounts.spanish === 49 &&
+    r51ScoringRiskCounts.foreign === 5,
+  `Round 51: profile-based scoring-risk ledger mismatch ${JSON.stringify(r51ScoringRiskCounts)}`,
+);
+for (const id of [930834, 427, 930837, 345, 874, 136, 930892]) {
+  check(test.applicationLanguagePath(r23ById(id)).key === "unknown" && test.scoreLanguageRisk(r23ById(id)) === "englishLikely", `Round 51: ${id} lost the distinction between formal language evidence and likely English working environment`);
+}
+for (const id of [78, 1020]) {
+  check(test.applicationLanguagePath(r23ById(id)).key === "unknown" && test.scoreLanguageRisk(r23ById(id)) === "spanishLikely", `Round 51: ${id} did not receive the source-supported likely-Spanish scoring risk`);
+}
+const r51Caps = { chinese: 100, chineseCheck: 84, basicSpanish: 50, unknown: 14, english: 12, englishLikely: 14, spanishLikely: 10, foreign: 6, spanish: 6 };
+for (const item of r41Current) {
+  const riskKey = test.scoreLanguageRisk(item);
+  check(test.displayedScore(item) <= r51Caps[riskKey], `Round 51: ${item.id} exceeds the ${riskKey} score ceiling`);
+}
 for (const id of [996, 985, 1024, 1021, 1098, 930867, 942, 1029]) {
   const item = r23ById(id);
   check(item && test.applicationLanguagePath(item).key === "unknown", `Round 42: ${id} still infers English without an explicit work-language clause`);
@@ -1242,7 +1269,7 @@ check(test.toLinks(r23ById(579))[0] === "https://www.infojobs.net/castelldefels/
 const r43Sorted = r41Current.slice();
 test.sortRecords(r43Sorted);
 check([778, 920].every((id, index) => Number(r43Sorted[index]?.id) === id), "Round 45: the two independent Chinese/contact-first opportunities are no longer the first two cards");
-check(r43Sorted.slice(2, 9).every((item) => test.applicationLanguagePath(item).key === "unknown"), "Round 45: explicit foreign-language jobs still outrank the best no-stated-language backups");
+check(Math.max(...r43Sorted.slice(2).map((item) => test.displayedScore(item))) <= 14, "Round 51: a non-Chinese backup exceeds the foreign-language feasibility ceiling");
 
 const r44RemedyCurrent = r23ById(958);
 const r44RemedyHistorical = r23ById(930638);
@@ -1258,9 +1285,11 @@ const r45ChineseHistorical = r23ById(930835);
 const round48Section = "2026-08-13 Round 48 complete unknown-language source audit";
 const round49Section = "2026-08-13 Round 49 complete likely-Spanish source audit";
 const round50Section = "2026-08-13 Round 50 user-profile rescore and current-source recovery";
+const round51Section = "2026-08-13 Round 51 user-language feasibility recalibration";
 const round49LikelySpanishIds = [877, 105, 886, 930829, 1257, 1258, 382, 1237, 930876, 86, 930873, 930885, 188, 577, 864, 1296, 579, 876, 867, 930843, 351];
-check(test.latestRoundSection === round50Section, "Round 50: latest-round marker did not advance");
-check([427, 930898].every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)), "Round 50: restored Revolut role or new Dragons role is missing from the latest audit log");
+check(test.latestRoundSection === round51Section, "Round 51: latest-round marker did not advance");
+check(test.latestRoundItems.length === 50 && test.latestRoundItems.every((item) => ["englishLikely", "spanishLikely"].includes(test.scoreLanguageRisk(item))), "Round 51: the 50 previously neutral language-risk records are not all present in the latest audit log");
+check(test.CURATED[930898]?.latestAuditSection === round50Section && test.CURATED[427]?.latestAuditSection === round51Section, "Round 50/51: recovery provenance or subsequent language-risk audit was lost");
 check([...round49LikelySpanishIds, 930897].every((id) => test.CURATED[id]?.latestAuditSection === round49Section), "Round 49: likely-Spanish audit provenance was lost after Round 50");
 const round50RevolutEmployerBranding = r23ById(427);
 const round50DragonsArtDirector = r23ById(930898);
@@ -1336,9 +1365,9 @@ check(
   "Round 49: expired ICÓNICO internship was not preserved as non-current Barcelona history with its exact routes",
 );
 check(
-  [930884, 930813, 930838, 930874, 172, 930889, 930890, 930891, 930892].every(
+  [930884, 930813, 930838, 930874, 172, 930889, 930890, 930891].every(
     (id) => test.CURATED[id]?.latestAuditSection === "2026-08-13 Round 47 current-source and user-fit recheck",
-  ),
+  ) && test.CURATED[930892]?.latestAuditSection === round51Section,
   "Round 47: current-source corrections or new low-ranked opportunities were not preserved after the next audit",
 );
 check(test.applicationStatus(r45ChineseCanonical).key === "verify" && test.toLinks(r45ChineseCanonical).some((url) => /i184673\.html/i.test(url)) && test.toLinks(r45ChineseCanonical).some((url) => /tid=637173/i.test(url)), "Round 45: canonical Chinese advertising card lost its current and historical source pages");
@@ -1374,8 +1403,8 @@ for (const id of [930893, 930894, 930895, 930896]) {
   check(item && !test.MY_OPPORTUNITY_SET.has(id) && test.applicationStatus(item).key === "closed" && item.tier === "X", `Round 47: closed vacancy ${id} was lost from history or leaked into the current board`);
 }
 const r48EnglishCorrections = new Map([
-  [910, { score: 15, location: "remote", evidence: /Fluent in English/i }],
-  [866, { score: 12.8, location: "barcelona", evidence: /Excellent communication skills in English/i }],
+  [910, { score: 12, location: "remote", evidence: /Fluent in English/i }],
+  [866, { score: 12, location: "barcelona", evidence: /Excellent communication skills in English/i }],
   [930814, { score: 3.6, location: "barcelona", evidence: /Excellent written and spoken English is required/i }],
 ]);
 for (const [id, expected] of r48EnglishCorrections) {
@@ -1383,7 +1412,7 @@ for (const [id, expected] of r48EnglishCorrections) {
   const curated = test.CURATED[id];
   check(item && test.MY_OPPORTUNITY_SET.has(id) && test.applicationStatus(item).key === "live", `Round 48: corrected current opportunity ${id} is missing or no longer live`);
   check(test.locationBucket(item) === expected.location && test.applicationLanguagePath(item).key === "english", `Round 48: explicit-English opportunity ${id} has the wrong location or language path`);
-  check(test.displayedScore(item) === expected.score && test.displayedScore(item) <= 18, `Round 48: explicit-English score cap drifted for opportunity ${id}`);
+  check(test.displayedScore(item) === expected.score && test.displayedScore(item) <= 12, `Round 51: explicit-English score cap drifted for opportunity ${id}`);
   check(expected.evidence.test(`${curated?.language || ""} ${curated?.statusEvidence || ""}`), `Round 48: original language evidence is missing for opportunity ${id}`);
 }
 check(!test.MY_OPPORTUNITY_SET.has(891) && !test.MY_OPPORTUNITY_SET.has(930707), "Round 37: superseded duplicate ATS cards still occupy main-board seats");
