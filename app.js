@@ -17647,6 +17647,223 @@ SCORE_LANGUAGE_RISK_OVERRIDES.set(930864, "englishLikely");
 SCORE_LANGUAGE_RISK_OVERRIDES.set(930932, "englishLikely");
 SCORE_LANGUAGE_RISK_OVERRIDES.set(930933, "englishLikely");
 
+const ROUND66_SECTION = "2026-08-14 Round 66 thirteen verify-first records exact-source status audit";
+
+// Recheck every record that was still marked verify-first after Round 65.  A
+// readable page alone is not treated as an open vacancy: promotion requires a
+// current vacancy-specific route or an ATS field that explicitly says active.
+// Conversely, an access challenge without a closure signal stays in review.
+const round66RecordPatches = new Map([
+  [25, {
+    section: ROUND66_SECTION,
+    source: "Tea Lab Barcelona / Casa Asia employment index and original PDF",
+    status: "Verify first after exact-source recheck: the original three-page Casa Asia PDF still returns 200 and the Casa Asia employment index still lists the 2026-06-02 Barcelona Chinese-language Social Media & Content Creator notice. The PDF supplies a direct email but no deadline, ATS or current-open statement, so the vacancy itself is not promoted to confirmed live.",
+    analysis: "Keep as a Chinese-contact Barcelona fallback, not a confirmed current vacancy. The work mixes Xiaohongshu, Instagram, TikTok, short video and AI video with daily Tea Lab shop operations; Chinese and Spanish, an under-30 condition, flexible or possible part-time terms and negotiable pay all materially reduce fit.",
+    links: [
+      "https://static.casaasia.es/2026/06/Social-Media-Content-Creator-Chino-Espanol-Tea-Lab-Barcelona.pdf",
+      "https://www.casaasia.eu/empleo-2/",
+      "mailto:han980813@gmail.com",
+    ],
+  }],
+  [136, {
+    section: ROUND66_SECTION,
+    status: "Verify first: the exact Yellow Studio contact and internship route returned a Cloudflare 403 security page on 2026-08-14. That is not closure evidence, but the current opening, student agreement, compensation and application acceptance cannot be independently confirmed.",
+  }],
+  [778, {
+    section: ROUND66_SECTION,
+    status: "Verify first, current Chinese-contact repost: ES02 detail 184673 returned 200 on 2026-08-14 with the exact Barcelona full-time graphic-designer title and no closure marker. It remains one canonical vacancy with Xihua 637173, but employer legal identity, address and written contract terms still require confirmation before documents are shared.",
+  }],
+  [868, {
+    section: ROUND66_SECTION,
+    status: "Verify first: LinkedIn detail 4425688048 returned 200 on 2026-08-14 with the exact Barcelona Video Maker title and complete role text, but no current public application control or employer ATS route was exposed. The role also requires fluent Spanish and English.",
+  }],
+  [920, {
+    section: ROUND66_SECTION,
+    status: "Verify first: Zhaopin detail CC481983130J40920987415 returned 200 on 2026-08-14 with the exact Remote Brand Visual Designer title and no closure marker. The listing is still tied to Chengdu and does not confirm Spain residence, an overseas contract, cross-border payment or tax treatment.",
+  }],
+  [990, {
+    section: ROUND66_SECTION,
+    status: "Verify first: the exact Revolut Motion Designer requisition returned only a 403 security-check page on 2026-08-14. A security challenge is not closure evidence, but the full current vacancy and application cannot be revalidated, so it remains outside the confirmed-live group.",
+  }],
+  [1107, {
+    section: ROUND66_SECTION,
+    status: "Closed/history after exact official-page conflict resolution: THRU's jobs page returned 200 on 2026-08-14 and still contained the old Graphic Designer with Motion Skills body, but the same official page explicitly says NO JOB OPENINGS. The explicit current employer statement controls over the retained role text.",
+    analysis: "Move the high-fit brief to history without deleting it. Do not send the exercise or application materials unless THRU publishes a new independent opening or replies in writing that recruiting has resumed.",
+    score: 0,
+    tier: "X",
+  }],
+  [1237, {
+    section: ROUND66_SECTION,
+    status: "Closed/history: the exact LinkedIn vacancy 4440947485 redirects with expired_jd_redirect, while the Indeed detail is blocked by a security page and the company website and email are only general contact routes. No current vacancy-specific application is independently available.",
+    analysis: "Preserve the attractive Barcelona multimedia brief, EUR22,000 salary and source links as history, but do not present a general company contact as proof that this specific seat is still open. Restore only when ICÓNICO or ÚNICO publishes a new vacancy-specific route.",
+    score: 0,
+    tier: "X",
+  }],
+  [1243, {
+    section: ROUND66_SECTION,
+    source: "Ricaris / current official Dover application and public job API",
+    location: "100% remote / International / freelance short-term project / USD20-25 per hour",
+    status: "Live/current: Dover's vacancy-specific application and public job API were opened on 2026-08-14. The API returns active=true, is_private=false, workplace_type=REMOTE, International eligibility, a complete application questionnaire, USD20-25 per hour and a short-term freelance project with possible extension.",
+    analysis: "Promote to confirmed live and correct the location from Barcelona onsite to remote: Ricaris is Barcelona-based, but the job itself is 100% remote. Keep the personal score at the floor because it is explicitly senior, freelance and web/landing-page specialised, with an English application flow and no guaranteed duration or hours.",
+    links: [
+      "https://app.dover.com/apply/ricarisjoinus/b1bcd63b-91fd-4a6d-b71b-ac6285087d10",
+      "https://ricaris.com/",
+    ],
+    locationTag: "100% remote / International",
+  }],
+  [1253, {
+    section: ROUND66_SECTION,
+    opportunity: "Diseñadora Gráfica (Media Jornada)",
+    status: "Verify first after exact-source recheck: LinkedIn detail 4409160871 returned 200 on 2026-08-14 with the complete Barcelona junior half-time brief and the direct portfolio email juanca@businesslookbcn.com. It is about three months old and exposes no current platform application control, so the email is usable for an availability check but not proof of an open seat.",
+    analysis: "Retain prominently in the review queue because prior experience is optional and the work covers catalogues, digital assets, social, newsletters, presentations and product support. Ask whether the half-time role, salary and one-to-two remote days are still current before tailoring a portfolio.",
+  }],
+  [1301, {
+    section: ROUND66_SECTION,
+    status: "Live/current but language-gated: exact LinkedIn detail 4446592473 returned 200 on 2026-08-14, was posted about one week earlier, exposes the complete Barcelona brand-identity and visual-systems brief and a direct route to the advertiser. No closure marker is present.",
+    analysis: "Promote the vacancy status because the recent exact employer detail is current, while keeping the personal score capped at the floor: it requires at least three years, native or bilingual Catalan, native or bilingual Spanish, professional English and valid Spain work authorisation with no visa support.",
+  }],
+  [930865, {
+    section: ROUND66_SECTION,
+    status: "Verify first: exact LinkedIn detail 4451696654 returned 200 on 2026-08-14 with the full Spain-remote UI/UX and Visual Designer brief and no closure marker. The partner employer, legal contracting entity, pay and work language remain undisclosed, so an application route does not remove the anonymous-employer risk.",
+  }],
+  [930892, {
+    section: ROUND66_SECTION,
+    status: "Verify first: OnHires Ashby requisition c7f7a6d4-96e4-4ac9-9f47-04d6d0c5af91 returned 200 on 2026-08-14 with the exact AI Graphic Designer title, Europe remote, full-time metadata and a complete application. The final employer, Spain contract entity, pay and working language remain undisclosed.",
+  }],
+]);
+
+for (const [id, patch] of round66RecordPatches) {
+  const item = allData.find((entry) => Number(entry.id) === id);
+  if (item) Object.assign(item, patch);
+}
+
+Object.assign(CURATED, {
+  25: {
+    ...CURATED[25],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14：Casa Asia 原始三页 PDF 与就业索引仍可打开，Barcelona、中文/西语、直接邮箱和岗位全文均可核验；但 PDF 无截止日期、无 ATS、无‘仍在招聘’声明，因此只保留为可询问的待确认线索。",
+    reason: "中文联系路径真实，但岗位是社媒/短视频与奶茶店日常运营的混合工作，还要求中文和西语、30 岁以下，工时可能为兼职、薪资面议；不能因为中文而把它排在品牌/VI 正职前面。",
+    next: "先给 han980813@gmail.com 发一封简短中文或中西双语询问，确认是否仍招、合同主体、每周工时、薪资、门店工作占比和年龄条件；收到肯定答复后再发作品集。",
+    links: [
+      "https://static.casaasia.es/2026/06/Social-Media-Content-Creator-Chino-Espanol-Tea-Lab-Barcelona.pdf",
+      "https://www.casaasia.eu/empleo-2/",
+      "mailto:han980813@gmail.com",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND66_SECTION,
+    changeType: "round-66-current-source-readable-vacancy-still-unconfirmed",
+  },
+  136: {
+    ...CURATED[136],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14：Yellow Studio 的联系/实习入口返回 Cloudflare 403。它不是关闭证据，但也无法证明当前仍招、可签学生协议或提供薪资。",
+    reason: "巴塞罗那工作室与平面实习方向相关，但当前缺少可复核的岗位正文、开放状态、合同和薪资，必须继续放在待确认区。",
+    latestAuditSection: ROUND66_SECTION,
+    changeType: "round-66-access-blocked-remains-verify",
+  },
+  778: {
+    ...CURATED[778],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14：ES02 精确页面 184673 返回 200，标题仍是 Barcelona 全职平面设计师且未出现关闭提示；与西华旧帖为同一联系人和同一岗位，只计一张。公司法定主体、地址和书面合同仍未核实。",
+    reason: "这是现有最重要的巴塞罗那中文平面设计线索之一，但‘能联系’不等于已核实雇主。分数保留中文、本地和专业方向优势，同时继续对主体与劳动条件扣分。",
+    latestAuditSection: ROUND66_SECTION,
+    changeType: "round-66-current-chinese-repost-still-identity-gated",
+  },
+  868: {
+    ...CURATED[868],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14：LinkedIn 4425688048 返回 200，Barcelona Video Maker 标题与正文完整，但公开页没有当前投递按钮或雇主 ATS；正文还明确要求西语和英语流利。",
+    reason: "视频与动态视觉职责真实，但投递入口和双外语门槛都不适合直接高排；先确认入口，再决定是否作为医疗品牌 motion 备选。",
+    latestAuditSection: ROUND66_SECTION,
+    changeType: "round-66-readable-detail-no-current-application",
+  },
+  920: {
+    ...CURATED[920],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14：智联精确详情 CC481983130J40920987415 返回 200，Remote 品牌视觉标题仍在且无关闭提示；但地点仍写成都，未确认接受西班牙居民、境外签约或跨境付款。",
+    reason: "中文与品牌 VI 高度匹配，但‘远程’不等于 Spain remote。跨境资格、合同、税务与付款未确认前，不能高于巴塞罗那本地或明确 Europe/Spain remote 的机会。",
+    latestAuditSection: ROUND66_SECTION,
+    changeType: "round-66-readable-china-remote-still-spain-unconfirmed",
+  },
+  990: {
+    ...CURATED[990],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14：Revolut 精确 Motion Designer 页面只返回 403 安全检查。安全拦截不是关闭证据，但本轮无法重新核验完整正文和投递入口，因此不升级为确认开放。",
+    latestAuditSection: ROUND66_SECTION,
+    changeType: "round-66-security-check-remains-verify",
+  },
+  1107: {
+    ...CURATED[1107],
+    statusKey: "closed",
+    statusEvidence: "2026-08-14：THRU 官方 jobs 页虽然仍保留 Graphic Designer with Motion Skills 的旧正文，但同一页明确写着 NO JOB OPENINGS。官方当前声明优先于遗留正文，岗位移入历史。",
+    reason: "专业匹配度高的旧职位说明继续保留，不能删除；但现在不应显示为可投或待确认，也不要在未收到书面确认前完成其设计测试。",
+    next: "等待 THRU 发布新的独立招聘页；如主动联系，只询问未来岗位，不按当前开放职位投递。",
+    latestAuditSection: ROUND66_SECTION,
+    changeType: "round-66-official-no-openings-closes-stale-role-body",
+  },
+  1237: {
+    ...CURATED[1237],
+    statusKey: "closed",
+    statusEvidence: "2026-08-14：LinkedIn 精确职位 4440947485 已跳转并带 expired_jd_redirect；Indeed 精确页仅返回安全检查，公司官网与邮箱只是通用联系方式，不能证明该席位仍开放。",
+    reason: "Barcelona、多媒体、22,000 欧元和品牌内容职责均保留为历史证据；没有新的岗位专用入口前，不再把通用邮箱包装成可投职位。",
+    next: "仅在 ICÓNICO / ÚNICO 发布新的独立招聘编号时恢复；当前不投。",
+    latestAuditSection: ROUND66_SECTION,
+    changeType: "round-66-exact-linkedin-expired-no-current-vacancy-route",
+  },
+  1243: {
+    ...CURATED[1243],
+    statusKey: "live",
+    company: "Ricaris",
+    locationKey: "remote",
+    locationLabel: "100% remote / International / 自由职业短项目 / USD20–25/小时",
+    statusEvidence: "2026-08-14：Dover 岗位专用投递页及其公开 API 均可读取；API 明确 active=true、is_private=false、REMOTE、International，并提供完整申请问题、USD20–25/小时和短期项目可续约条件。",
+    reason: "岗位状态可确认开放，且 Ricaris 是 Barcelona 公司；但工作本身是 100% remote、Senior、freelance、landing page/web 专项，因此只作为低分远程备选，不能因为公司在巴塞罗那而误标为本地岗位。",
+    next: "若经验与落地页作品足够，再确认预估总工时、每周最低工时、付款周期、Spain 开票、修改轮次、知识产权和主要沟通语言。",
+    links: [
+      "https://app.dover.com/apply/ricarisjoinus/b1bcd63b-91fd-4a6d-b71b-ac6285087d10",
+      "https://ricaris.com/",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND66_SECTION,
+    changeType: "round-66-official-api-active-location-corrected-to-remote",
+  },
+  1253: {
+    ...CURATED[1253],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14：LinkedIn 精确页 4409160871 返回 200，Barcelona 初级半职正文和作品集邮箱 juanca@businesslookbcn.com 完整；但发布约三个月且没有当前平台投递按钮，邮箱只足以做在招确认。",
+    reason: "经验非强制、目录/数字物料/社媒/newsletter/演示与产品支持都适合作品集，因此保留在待确认区靠前位置；但不能把旧正文与邮箱直接等同于已确认开放。",
+    next: "先发一封简短西语询问信，确认岗位、半职工时、薪资和每周 1–2 天远程是否仍有效；得到肯定答复后再定制作品集。",
+    latestAuditSection: ROUND66_SECTION,
+    changeType: "round-66-direct-email-usable-vacancy-still-unconfirmed",
+  },
+  1301: {
+    ...CURATED[1301],
+    statusKey: "live",
+    locationLabel: "Barcelona / 现场全职 / 三语硬门槛",
+    statusEvidence: "2026-08-14：LinkedIn 精确页 4446592473 返回 200，约一周前发布，Barcelona 品牌身份与视觉系统完整正文、发布者联系入口均存在，未出现关闭提示。",
+    reason: "这是专业方向最贴近 VI、品牌指南和视觉系统的岗位之一，但要求至少 3 年、加泰语母语/双语、西语母语/双语和职业英语。岗位可投不代表个人可行，分数继续被外语硬门槛压到最低档。",
+    next: "除非加泰语和西语已达到岗位写明的母语/双语水平，否则不优先投；仅作为作品集能力对标。",
+    latestAuditSection: ROUND66_SECTION,
+    changeType: "round-66-recent-exact-employer-detail-promoted-language-capped",
+  },
+  930865: {
+    ...CURATED[930865],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14：LinkedIn 精确页 4451696654 返回 200，Spain remote UI/UX & Visual 正文完整且无关闭提示；最终雇主、合同主体、薪资和工作语言仍未公开。",
+    reason: "岗位页面能申请，但匿名合作公司风险没有消失；继续作为远程待确认卡，不能因标题相关而抬高优先级。",
+    latestAuditSection: ROUND66_SECTION,
+    changeType: "round-66-current-detail-opaque-employer-remains-verify",
+  },
+  930892: {
+    ...CURATED[930892],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14：OnHires 官方 Ashby c7f7a6d4-96e4-4ac9-9f47-04d6d0c5af91 返回 200，AI Graphic Designer、Europe remote、全职和完整申请表均明确；最终雇主、Spain 合同、薪资和工作语言仍未公开。",
+    reason: "这是真实的招聘方申请页，但最终客户不透明且工作偏高量效果广告，不是 VI 所有权；继续保留为低置信远程备选。",
+    latestAuditSection: ROUND66_SECTION,
+    changeType: "round-66-current-recruiter-ats-opaque-client-remains-verify",
+  },
+});
+
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
   const explicitMode = curated?.applicationMode || APPLICATION_MODE_OVERRIDES[item.id];

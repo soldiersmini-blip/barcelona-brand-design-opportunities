@@ -106,7 +106,12 @@ fs.writeFileSync(
   path.join(root, "current-opportunity-ledger.json"),
   `${JSON.stringify(
     {
-      exportedAt: "2026-08-13",
+      exportedAt: new Intl.DateTimeFormat("en-CA", {
+        timeZone: "Europe/Madrid",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      }).format(new Date()),
       total: currentRows.length,
       rows: currentRows,
     },
