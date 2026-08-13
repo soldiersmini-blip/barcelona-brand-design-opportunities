@@ -1,6 +1,11 @@
 #!/usr/bin/env node
 
-const urls = process.argv.slice(2);
+const compact = process.argv.includes("--compact");
+const brief = process.argv.includes("--brief");
+const allowErrors = process.argv.includes("--allow-errors");
+const limitArgument = process.argv.find((argument) => argument.startsWith("--limit="));
+const contextLimit = Math.max(1, Math.min(16, Number(limitArgument?.slice("--limit=".length)) || 16));
+const urls = process.argv.slice(2).filter((argument) => !argument.startsWith("--"));
 
 if (!urls.length) {
   console.error("Usage: node scripts/check-source-language.js <url> [url ...]");
@@ -37,7 +42,7 @@ function normalizeHtml(raw, removeScripts) {
   return decodeEntities(value).replace(/\s+/g, " ").trim();
 }
 
-function contexts(text, pattern = languagePattern, limit = 16) {
+function contexts(text, pattern = languagePattern, limit = contextLimit) {
   const matches = [];
   const seen = new Set();
   pattern.lastIndex = 0;
@@ -104,6 +109,7 @@ async function inspect(url) {
     const visibleLanguageContexts = contexts(visible, languagePattern);
     const visibleExperienceContexts = contexts(visible, experiencePattern);
     const visibleContractContexts = contexts(visible, contractPattern);
+    const postings = structuredJobPostings(raw);
     return {
       requested_url: url,
       final_url: response.url,
@@ -113,7 +119,17 @@ async function inspect(url) {
       language_contexts: visibleLanguageContexts.length ? visibleLanguageContexts : contexts(embedded, languagePattern),
       experience_contexts: visibleExperienceContexts.length ? visibleExperienceContexts : contexts(embedded, experiencePattern),
       contract_contexts: visibleContractContexts.length ? visibleContractContexts : contexts(embedded, contractPattern),
-      job_postings: structuredJobPostings(raw),
+      job_postings: compact
+        ? postings.map((posting) => ({
+            title: posting.title,
+            date_posted: posting.date_posted,
+            valid_through: posting.valid_through,
+            employment_type: posting.employment_type,
+            language_contexts: contexts(posting.description, languagePattern),
+            experience_contexts: contexts(posting.description, experiencePattern),
+            contract_contexts: contexts(posting.description, contractPattern),
+          }))
+        : postings,
     };
   } catch (error) {
     return { requested_url: url, error: error.message };
@@ -121,6 +137,28 @@ async function inspect(url) {
 }
 
 Promise.all(urls.map(inspect)).then((results) => {
-  console.log(JSON.stringify(results, null, 2));
-  if (results.some((result) => result.error || result.status >= 400)) process.exitCode = 2;
+  const firstContext = (values) => (Array.isArray(values) ? values.slice(0, 1).map((value) => value.slice(0, 640)) : []);
+  const output = brief
+    ? results.map((result) => ({
+        requested_url: result.requested_url,
+        final_url: result.final_url,
+        status: result.status,
+        title: result.title,
+        error: result.error,
+        language_contexts: firstContext(result.language_contexts),
+        experience_contexts: firstContext(result.experience_contexts),
+        contract_contexts: firstContext(result.contract_contexts),
+        job_postings: (result.job_postings || []).map((posting) => ({
+          title: posting.title,
+          date_posted: posting.date_posted,
+          valid_through: posting.valid_through,
+          employment_type: posting.employment_type,
+          language_contexts: firstContext(posting.language_contexts),
+          experience_contexts: firstContext(posting.experience_contexts),
+          contract_contexts: firstContext(posting.contract_contexts),
+        })),
+      }))
+    : results;
+  console.log(JSON.stringify(output, null, 2));
+  if (!allowErrors && results.some((result) => result.error || result.status >= 400)) process.exitCode = 2;
 });

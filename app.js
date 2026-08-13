@@ -13491,8 +13491,16 @@ function hasLowPayRisk(item) {
 function riskFlags(item) {
   const flags = [];
   const applicationLanguage = scoreLanguageRisk(item);
-  if (["spanish", "spanishLikely", "chineseForeign"].includes(applicationLanguage)) flags.push("spanish");
-  if (["english", "englishLikely"].includes(applicationLanguage)) flags.push("english");
+  if (
+    ["spanish", "spanishLikely", "chineseForeign", "englishSpanish", "englishSpanishLikely"].includes(
+      applicationLanguage,
+    )
+  ) {
+    flags.push("spanish");
+  }
+  if (["english", "englishLikely", "englishSpanish", "englishSpanishLikely"].includes(applicationLanguage)) {
+    flags.push("english");
+  }
   if (applicationLanguage === "foreign") flags.push("foreign");
   if (hasLowPayRisk(item)) flags.push("lowpay");
   if (isInternshipRole(item)) flags.push("internship");
@@ -13703,6 +13711,8 @@ function personalMatchScore(item) {
     unknown: 0,
     english: 0,
     englishLikely: 0,
+    englishSpanish: 0,
+    englishSpanishLikely: 0,
     spanishLikely: 0,
     foreign: 0,
     spanish: 0,
@@ -13715,6 +13725,8 @@ function personalMatchScore(item) {
     unknown: 12,
     english: 8,
     englishLikely: 10,
+    englishSpanish: 3,
+    englishSpanishLikely: 4,
     spanishLikely: 7,
     foreign: 4,
     spanish: 5,
@@ -13724,6 +13736,8 @@ function personalMatchScore(item) {
     unknown: 0.16,
     english: 0.12,
     englishLikely: 0.14,
+    englishSpanish: 0.04,
+    englishSpanishLikely: 0.06,
     spanishLikely: 0.1,
     foreign: 0.06,
     spanish: 0.08,
@@ -13927,7 +13941,9 @@ function matchesPreset(item) {
   if (state.preset === "english") {
     return (
       ["barcelona", "remote"].includes(location) &&
-      ["english", "englishLikely"].includes(scoreLanguageRisk(item)) &&
+      ["english", "englishLikely", "englishSpanish", "englishSpanishLikely"].includes(
+        scoreLanguageRisk(item),
+      ) &&
       !isResearchOnly(item) &&
       applicationStatus(item).key !== "closed"
     );
@@ -13962,7 +13978,7 @@ function matchesPreset(item) {
       !isInternshipRole(item) &&
       !hasLowPayRisk(item) &&
       isFormalRole(item) &&
-      language !== "spanish" &&
+      !["spanish", "englishSpanish", "englishSpanishLikely"].includes(language) &&
       direction !== "other" &&
       !hasOpaqueEmployerRisk(item) &&
       !isResearchOnly(item) &&
@@ -14172,6 +14188,18 @@ const APPLICATION_LANGUAGE_PATHS = {
     key: "englishLikely",
     label: "招聘正文与团队环境显示英语大概率是工作语言，但未明写等级",
     short: "英语环境大概率",
+    tone: "hard",
+  },
+  englishSpanish: {
+    key: "englishSpanish",
+    label: "英语和西语都构成明确工作门槛，当前语言条件不适合优先投递",
+    short: "英语 + 西语双门槛",
+    tone: "hard",
+  },
+  englishSpanishLikely: {
+    key: "englishSpanishLikely",
+    label: "英语有明确要求，同时西语本地工作环境也很可能构成沟通门槛",
+    short: "英语硬门槛 + 西语环境",
     tone: "hard",
   },
   spanishLikely: {
@@ -15397,6 +15425,192 @@ Object.assign(CURATED, {
   },
 });
 
+const ROUND58_SECTION = "2026-08-13 Round 58 next-highest original-page, dual-language and current-source audit";
+const ROUND58_AUDITED_IDS = Object.freeze([
+  930823, 930874, 930840, 930882, 930825, 877, 78, 228, 446, 930866,
+  930889, 930845, 930826, 930827, 425, 345, 4, 284, 55, 1038,
+  930816, 396, 930819, 856, 930868, 930831, 930833, 930821, 930890, 2942,
+]);
+
+const ROUND58_STATUS_EVIDENCE = new Map([
+  [930823, "2026-08-13 重新打开 Factorial 官方职位 316734：Barcelona 永久全职、€30k–35k、Apply 和 Fluent in English 均明确；要求 Paid Media/UA 背景但没有固定经验年限。"],
+  [930874, "2026-08-13 重新读取 Ogilvy 官方 Greenhouse API 4712450005：Barcelona、全职、2–4 年、至少 2 年 agency、混合办公和完整申请均确认；正文没有英语等级，申请表只询问英语水平。"],
+  [930840, "2026-08-13 重新打开 Zurich 官方职位 1368922057：Barcelona 全职、约 4 年、High level of English、社交创意策略职责和 Apply now 仍在。"],
+  [930882, "2026-08-13 重新打开 Duna 官方 Ashby：Visual Designer、Remote、全职、3–6 年和完整申请仍在；正文没有正式语言条款，也没有明确 Spain 雇佣或承包资格。"],
+  [930825, "2026-08-13 重新打开 Dragons 官方 Factorial 308034：Barcelona hybrid 永久全职、3–5 年、Fluent English、视频剪辑主职与 Apply 均确认。"],
+  [877, "2026-08-13 重新打开 JOB TODAY 6g3oVr：Cerdanyola 全职早班、1 年以上、€12.78/小时、临时合同和 Apply still live；正文没有语言等级，完整工作说明为西语。"],
+  [78, "2026-08-13 重新打开 Textura 官方 Digital Designer 页面：Barcelona 邮箱投递、品牌视觉/数字延展、3+ 年和 HTML 邮件要求仍在；没有语言、薪资或合同条款。"],
+  [228, "2026-08-13 重新打开 Bending Spoons Graduate Media Designer 申请页：申请仍可填写并要求英文 CV；可选 Remote，但 Spain 资格和前期 Milan 节奏仍需确认。"],
+  [446, "2026-08-13 重新打开 Refokus 官方 Brand Designer：Remote Worldwide、Full-Time、Logo/品牌指南/手册/数字品牌和 3+ 年仍在；正文未写语言等级。"],
+  [930866, "2026-08-13 重新打开 Preply 官方 Ashby：Barcelona hybrid 全职、Brand 团队、2+ 年视频剪辑、Advanced English 与当前申请入口均确认；其他欧洲语言仅加分。"],
+  [930889, "2026-08-13 重新打开 HEREU 原始 LinkedIn：Barcelona 现场全职、€30k–35k、2–3 年、Fluent English 和申请入口均在；岗位核心仍是社媒管理而非平面/VI。"],
+  [930845, "2026-08-13 重新打开 Omnicom Health 官方 Greenhouse：Barcelona 每周 3 天到岗、freelance、2+ 年、working English、作品集和 PPT 样稿要求均确认。"],
+  [930826, "2026-08-13 重新打开 Carati Studio 原始 LinkedIn：Barcelona/Sant Antoni 部分远程自由职业、时尚平面与印花职责仍在；正文明确 Spanish is not required，只是加分，未写英语等级。"],
+  [930827, "2026-08-13 重新打开 Zurich 官方职位 1368923457：Barcelona 全职、约 3–4 年、High level of English、短视频创意执行和 Apply now 均确认。"],
+  [425, "2026-08-13 再次请求 Revolut Digital Designer (Brand) 官方链接时触发 403 安全检查；没有关闭证据，继续保留此前精确职位与申请入口，但语言和 Spain 办公节奏仍需确认。"],
+  [345, "2026-08-13 重新打开 Domingo Studio 官方团队页：Barcelona、Mid-Senior Graphic Design 与 Graphic Design Intern 两个投递入口、邮箱和作品集要求仍在；未写语言、薪资或正式岗年限。"],
+  [4, "2026-08-13 重新打开 Lodgify 官方 Lever：Europe remote freelance Creative Designer、3+ 年、Strong written and spoken English、英文申请和当前 Apply 均确认。"],
+  [284, "2026-08-13 重新打开 EuroLeague 官方 Personio：Barcelona 永久全职、3+ 年体育设计、Fluent English、合法西班牙工作身份与轮班/出差要求均确认。"],
+  [55, "2026-08-13 重新打开 BCome 官方 careers：Barcelona Digital Designer、企业视觉/广告/演示/UX/UI、邮箱申请、半现场和灵活工时仍在；页面混合多职位，设计岗自身未写语言等级。"],
+  [1038, "2026-08-13 重新打开 Lodgify 官方 Lever：EMEA remote freelance Motion Designer、英文申请、品牌动效系统和 Apply 均确认；正文没有固定经验年限。"],
+  [930816, "2026-08-13 重新打开 Brownie 原始 LinkedIn：Barcelona 现场全职、至少 2 年、Advanced English 和当前申请入口均在；正文为西语但未列正式西语等级。"],
+  [396, "2026-08-13 重新打开 RV Group 原始 JOB TODAY：Barcelona 100% 现场全职、Apply、合法工作许可，以及 Castellano e inglés fluidos—ambos imprescindibles 均确认。"],
+  [930819, "2026-08-13 重新打开 AC Marca 原始 LinkedIn：Hospitalet 一年临时项目、包装/标签/修图职责和申请仍在；English/Portuguese 仅为加分项，未列必需语言等级。"],
+  [856, "2026-08-13 重新打开 Synergie 原始 LinkedIn JobPosting：Castellgalí 现场无固定期限全职、€23k、有效至 2026-08-20；明确要求良好西语、Catalan 基础和英语沟通能力。"],
+  [930868, "2026-08-13 重新打开 Zabriskie 原始 InfoJobs：Barcelona 现场无固定期限全职、€20k–27k、2+ 年和 Inscribirme 均在；西语母语/双语、Catalan 与英语中级均明确。"],
+  [930831, "2026-08-13 重新打开 INCAPTO 原始 LinkedIn：Barcelona 3+2 hybrid、2–4 年包装、作品集和申请仍在；Castellano e inglés fluidos oral y escrito 为明确双语门槛。"],
+  [930833, "2026-08-13 重新打开 Wecolors 原始 LinkedIn：Vilassar、3–5 年、每周 1 天远程、自驾/附近居住、设计测试与中高英语均明确；正文和供应商工作为本地西语环境。"],
+  [930821, "2026-08-13 重新打开 Hospitaliti 原始 LinkedIn：Barcelona 现场全职、标识/完稿/手册/供应商和工地跟进职责仍在；没有正式语言等级，完整职责为西语。"],
+  [930890, "2026-08-13 重新打开 Double Tap 原始 LinkedIn：Barcelona 现场全职、Fluent English、Spanish 仅加分、社媒全流程和 careers 邮箱仍在；不是平面/VI 核心岗。"],
+  [2942, "2026-08-13 重新打开 SLAPS 官方申请页：Barcelona Junior Graphic Designer 申请入口仍可启动；Full Time / Internship、语言、薪资和最终合同类型仍未分开说明。"],
+]);
+
+for (const id of ROUND58_AUDITED_IDS) {
+  if (!CURATED[id]) continue;
+  CURATED[id] = {
+    ...CURATED[id],
+    latestAuditSection: ROUND58_SECTION,
+    statusEvidence: ROUND58_STATUS_EVIDENCE.get(id) || CURATED[id].statusEvidence,
+    changeType: "round-58-next-highest-original-page-dual-language-recheck",
+  };
+}
+
+Object.assign(CURATED, {
+  930823: {
+    ...CURATED[930823],
+    experienceKey: "unknown",
+    experienceLabel: "需 Paid Media / UA Motion 背景，但未写固定年限",
+  },
+  930874: {
+    ...CURATED[930874],
+    languageKey: "light",
+    applicationMode: "englishLikely",
+    language: "完整官方正文未列英语等级；申请表会询问英语水平，国际客户与英文工作环境概率高",
+  },
+  930882: {
+    ...CURATED[930882],
+    locationLabel: "Remote / Spain 雇佣或承包资格需确认",
+    languageKey: "light",
+    applicationMode: "englishLikely",
+    language: "完整英文职位正文未列正式语言等级；英语工作环境概率高",
+    reason: "视觉品牌延展方向很匹配，但官方只写 Remote，没有证明 Spain 可雇佣；3–6 年和英语工作环境也使它只能保留为低分待确认远程备选。",
+  },
+  930866: {
+    ...CURATED[930866],
+    experienceKey: "junior",
+    experienceLabel: "初中级 / 2 年以上视频剪辑",
+  },
+  930827: {
+    ...CURATED[930827],
+    statusEvidence: ROUND58_STATUS_EVIDENCE.get(930827),
+  },
+  1038: {
+    ...CURATED[1038],
+    experienceKey: "unknown",
+    experienceLabel: "需独立负责完整动效项目，但未写固定年限",
+  },
+  930816: {
+    ...CURATED[930816],
+    languageKey: "englishSpanishLikely",
+    applicationMode: "englishSpanishLikely",
+    language: "Advanced English 明确；职位正文与 Barcelona 本地团队为西语环境，但未列正式西语等级",
+  },
+  396: {
+    ...CURATED[396],
+    languageKey: "englishSpanish",
+    applicationMode: "englishSpanish",
+    language: "Castellano e inglés fluidos，正文明确写两者都必需",
+  },
+  930819: {
+    ...CURATED[930819],
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    language: "英语/葡语仅加分；完整 Barcelona 本地工作正文为西语，但没有正式西语等级",
+  },
+  856: {
+    ...CURATED[856],
+    languageKey: "englishSpanish",
+    applicationMode: "englishSpanish",
+    language: "明确要求良好西语、Catalan 基础并能用英语沟通",
+  },
+  930868: {
+    ...CURATED[930868],
+    languageKey: "englishSpanish",
+    applicationMode: "englishSpanish",
+    language: "西语母语或双语、Catalan 中级与英语中级均为明列要求",
+  },
+  930831: {
+    ...CURATED[930831],
+    languageKey: "englishSpanish",
+    applicationMode: "englishSpanish",
+    language: "Castellano e inglés fluidos，口语和书面都明确要求",
+  },
+  930833: {
+    ...CURATED[930833],
+    languageKey: "englishSpanishLikely",
+    applicationMode: "englishSpanishLikely",
+    language: "中高英语明确；完整本地职位、供应商和印刷协作为西语环境，但未列正式西语等级",
+  },
+  930821: {
+    ...CURATED[930821],
+    languageKey: "spanishLikely",
+    applicationMode: "spanishLikely",
+    language: "完整本地标识与供应商协作正文为西语，但没有正式语言等级",
+  },
+});
+
+const round58EthosRecord = {
+  id: 930903,
+  section: ROUND58_SECTION,
+  source: "Ethos / current LinkedIn employer details",
+  opportunity: "Presentation Design Lead / Slide Deck Designer — AI model training",
+  fit: "Remote presentation-system and executive-deck evaluation project for an AI lab",
+  location: "Fully remote / Spain contractor eligibility and payment route not stated",
+  status:
+    "Live/current research-library backup: two employer details were opened on 2026-08-13 and show active applications, $80/hour, 5–20 hours/week, remote scheduling and valid-through dates in September 2026. They describe the same expert-network AI-lab project and are consolidated into one record.",
+  contact:
+    "https://es.linkedin.com/jobs/view/expert-opportunity-presentation-design-lead-%2480-hr-up-to-%241-600-week-at-ethos-4453389730 ; https://es.linkedin.com/jobs/view/expert-opportunity-slide-deck-designer-%2480-hr-up-to-%241-600-week-at-ethos-4442703305",
+  analysis:
+    "Keep in the complete library, not the user's current main board. It requires 5+ years of professional executive-deck work, ideally consulting or banking, excellent written communication and independent freelance delivery; it is AI-training work rather than brand/VI ownership, and Spain contracting is unconfirmed.",
+  score: 42,
+  tier: "D",
+  locationTag: "Remote / eligibility unconfirmed",
+  typeTag: "Presentation design / AI training / freelance",
+  sourceGroup: "linkedin",
+  postedAt: "2026-08-12",
+  freshnessTag: "week",
+  freshnessAgeDays: 1,
+  links: [
+    "https://es.linkedin.com/jobs/view/expert-opportunity-presentation-design-lead-%2480-hr-up-to-%241-600-week-at-ethos-4453389730",
+    "https://es.linkedin.com/jobs/view/expert-opportunity-slide-deck-designer-%2480-hr-up-to-%241-600-week-at-ethos-4442703305",
+  ],
+  searchText:
+    "Ethos Presentation Design Lead Slide Deck Designer AI model training current remote freelance $80 hour 5-20 hours week 5+ years consulting banking executive decks English likely Spain eligibility unconfirmed 2026-09",
+};
+if (!allData.some((item) => Number(item.id) === round58EthosRecord.id)) allData.push(round58EthosRecord);
+
+CURATED[930903] = {
+  statusKey: "live",
+  direction: "digital",
+  company: "Ethos / AI lab project",
+  locationKey: "remote",
+  locationLabel: "Fully remote / 未明确 Spain 承包与付款资格",
+  titleZh: "演示文稿设计负责人（AI 训练项目）",
+  titleEs: "Presentation Design Lead / Slide Deck Designer",
+  languageKey: "light",
+  applicationMode: "englishLikely",
+  language: "英文项目说明要求优秀书面沟通，但没有单独列语言等级",
+  experienceKey: "senior",
+  experienceLabel: "高级 / 5 年以上专业 Deck，咨询或投行背景优先",
+  reason: "时薪和远程形式有吸引力，但这是高级演示文稿与 AI 训练承包项目，不是品牌/VI 岗；资历、英文写作和 Spain 承包资格均不适合当前优先投入。",
+  next: "只保留在完整资料库。除非已有 5+ 年高管 Deck 作品、可用英语处理故事线且确认 Spain 可签约，否则不申请。",
+  statusEvidence: round58EthosRecord.status,
+  links: round58EthosRecord.links,
+  preferCuratedLinks: true,
+  latestAuditSection: ROUND58_SECTION,
+  changeType: "round-58-current-duplicate-consolidated-research-backup",
+};
+
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
   const explicitMode = curated?.applicationMode || APPLICATION_MODE_OVERRIDES[item.id];
@@ -16301,7 +16515,11 @@ function renderResultCard(item) {
     outreachTitle.textContent = "可直接发送的中文询问";
     outreachTextNode.textContent = outreachText;
     outreachActions.appendChild(createCopyButton(outreachText));
-  } else if (["english", "englishLikely"].includes(applicationLanguage.key)) {
+  } else if (
+    ["english", "englishLikely", "englishSpanish", "englishSpanishLikely"].includes(
+      applicationLanguage.key,
+    )
+  ) {
     const outreach = englishOutreachText(item);
     outreachWrap.classList.add("result-card__outreach-wrap--english");
     outreachTitle.textContent = "英文询问模板（附中文意思）";
@@ -16652,8 +16870,14 @@ function initStats() {
     (myLanguageCounts.chinese || 0) +
     (myLanguageCounts.chineseCheck || 0) +
     (myLanguageCounts.basicSpanish || 0);
-  const englishPathCount = (myLanguageCounts.english || 0) + (myLanguageCounts.englishLikely || 0);
-  els.chineseStatsNote.textContent = `默认主表共 ${myCurrentRecords.length} 个独立机会：${myStatus.live} 个原始页显示可投，${myStatus.verify} 个需先确认。可先走中文路径 ${chinesePathCount} 个；英文路径 ${englishPathCount} 个（其中 ${myLanguageCounts.englishLikely || 0} 个为英语环境大概率但未明写等级）、西语很可能 ${myLanguageCounts.spanishLikely || 0} 个、西语硬门槛 ${myLanguageCounts.spanish || 0} 个、其他外语门槛 ${myLanguageCounts.foreign || 0} 个只排在后面。中文或中国公司相关 ${myChineseRelevant} 个；历史、重复、关闭和外地线索仍完整保留。`;
+  const englishPathCount =
+    (myLanguageCounts.english || 0) +
+    (myLanguageCounts.englishLikely || 0) +
+    (myLanguageCounts.englishSpanish || 0) +
+    (myLanguageCounts.englishSpanishLikely || 0);
+  const dualLanguageCount =
+    (myLanguageCounts.englishSpanish || 0) + (myLanguageCounts.englishSpanishLikely || 0);
+  els.chineseStatsNote.textContent = `默认主表共 ${myCurrentRecords.length} 个独立机会：${myStatus.live} 个原始页显示可投，${myStatus.verify} 个需先确认。可先走中文路径 ${chinesePathCount} 个；英文相关路径 ${englishPathCount} 个（其中 ${myLanguageCounts.englishLikely || 0} 个为英语环境大概率、${dualLanguageCount} 个同时存在明确或高概率西语门槛）、西语很可能 ${myLanguageCounts.spanishLikely || 0} 个、西语硬门槛 ${myLanguageCounts.spanish || 0} 个、其他外语门槛 ${myLanguageCounts.foreign || 0} 个只排在后面。中文或中国公司相关 ${myChineseRelevant} 个；历史、重复、关闭和外地线索仍完整保留。`;
   const statusSummary = myStatus;
   els.liveCount.textContent = statusSummary.live;
   els.verifyCount.textContent = statusSummary.verify;

@@ -23,6 +23,7 @@
 
 ## 关键文件
 
+- `AUDIT-2026-08-13-ROUND58.md`：继续逐条打开下一批 30 个最高分未做近期精确复核的原始页；新增“英西双硬门槛”和“英语明确 + 西语环境高概率”两种评分路径，修正 Ogilvy、Duna、Factorial、Preply、Brownie、RV Group、AC Marca、Synergie、Zabriskie、INCAPTO、Wecolors、Eurostars 与 Lodgify 的语言、地点或年限证据。补扫 LinkedIn 最近 7 天 77 个去重结果和华人通 ES02 最新 20 页，没有虚构新的 Barcelona 中文设计岗；两条 Ethos AI 演示文稿项目合并为一条后排研究记录。
 - `AUDIT-2026-08-13-ROUND57.md`：按“尚未在最近三轮复核的最高个人分”继续逐条打开 30 个原始页；纠正 JUNGLE、Eat Nudes、Blank 的语言证据误判，补上 Puig 英西双语硬门槛，清除 Canonical、Exoticca、Savills、devicenow 的无依据中级标签，并把 CrowdStrike 的 2+ 年改为初中级。同步扫描 LinkedIn 最近 7 天 69 个去重结果、华人通前 80 页 955 条近期标题和 Casa Asia 当前索引，没有把 Madrid、搬迁 Dubai、零售陈列或品牌经理误做成新卡。
 - `AUDIT-2026-08-13-ROUND56.md`：逐条打开并复核个人排名第 91–120 名；把明确外语、高概率外语环境和语言未说明分层记录，统一实习 / convenio 可行性扣分，并合并 Bending Spoons 同一 requisition 的重复卡。
 - `AUDIT-2026-08-13-ROUND55.md`：逐条打开并复核个人排名第 61–90 名；归档 AB-BIOTICS 与过期 ADG-FAD 委托，合并 Equipo Singular 重复来源，修复 Natulim、Bonita 和 Voodoo 当前入口，并按用户英语、西语都弱的条件重判明确语言门槛。
@@ -79,7 +80,7 @@
 - `scripts/scan-es02-current.js`：直接扫描华人通当前招聘分页，避免搜索引擎缓存滞后；命中标题仍必须继续打开原帖人工判断。
 - `scripts/export-opportunity-ledgers.js`：生成当前主表 CSV/JSON 与完整历史总账 CSV。
 - `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 196 个机会的完整、严格降序导出。
-- `all-opportunity-ledger.csv`：1,266 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
+- `all-opportunity-ledger.csv`：1,267 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
 - `scripts/validate-site.js`：验证数据、排序、状态、入口与页面结构。
 
 ## 本地验证
