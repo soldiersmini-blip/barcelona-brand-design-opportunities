@@ -23,6 +23,7 @@
 
 ## 关键文件
 
+- `AUDIT-2026-08-13-ROUND62.md`：复扫华信、西华与 Casa Asia，并逐字读取本轮 5 个新命中的精确原始页。Michael Kors 零售视觉陈列和 Factorial DACH 品牌经理因方向 / 德语英语硬门槛进入排除历史；3 个 Jobgether Spain remote 设计岗因实际雇主、合同与薪资不公开进入待复核库。没有虚增主榜：仍为 198 张、146 张 Barcelona、52 张明确远程、184 张开放与 14 张待确认。
 - `AUDIT-2026-08-13-ROUND61.md`：按用户“中文可沟通、Barcelona、品牌 / VI、英语西语都弱”的条件重新核定全站 198 张当前卡；新增非目标方向惩罚与更严格的外语分数上限，把 ELIMHOME 从 64 修正为 48，并保持所有卡按显示分严格降序。官方 Kraken API 同时证明一条此前误判为 UK-only 的高级品牌岗明确允许 Spain，已恢复为当前远程卡，但因英语环境与 5+ 年门槛只列 0 分；主表更新为 198 张、146 张 Barcelona、52 张远程、184 张开放与 14 张待确认。
 - `AUDIT-2026-08-13-ROUND60.md`：复扫 Casa Asia、ES02 当前招聘、华新当前 Barcelona 招聘、LinkedIn 精确设计词与中文 / Mandarin 词；新增 ELIMHOME 的 Barcelona 中文“橱窗设计与商品陈列”相邻设计线索。该卡因不是平面 / VI、具体合同与原始详情仍需电话确认而只列 64 分，排在真实全职平面设计之后；主表更新为 197 张、146 张 Barcelona、51 张远程与 6 张中文相关机会。
 - `AUDIT-2026-08-13-ROUND59.md`：完成最后 30 张现行卡的原始页与官方 ATS 复核，按“中文可用性 → Barcelona / 明确 Europe remote → 品牌与 VI → 外语、资历和合同门槛”重新核分；修正 Mapit、MANGO、Dragons、eseOese、Ametller、HP、Bakken & Bæck、SIERRA 等卡的复合语言、年限与发布日期证据。同步扫描 ES02 当前 60 页 720 个标题及 LinkedIn Barcelona 最近 7 天结果，没有用 Madrid 或无关职位虚增卡片；主表保持 196 张并严格按个人分降序。
@@ -83,7 +84,7 @@
 - `scripts/scan-es02-current.js`：直接扫描华人通当前招聘分页，避免搜索引擎缓存滞后；命中标题仍必须继续打开原帖人工判断。
 - `scripts/export-opportunity-ledgers.js`：生成当前主表 CSV/JSON 与完整历史总账 CSV。
 - `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 198 个机会的完整、严格降序导出。
-- `all-opportunity-ledger.csv`：1,268 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
+- `all-opportunity-ledger.csv`：1,273 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
 - `scripts/validate-site.js`：验证数据、排序、状态、入口与页面结构。
 
 ## 本地验证

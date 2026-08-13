@@ -1314,6 +1314,7 @@ const round58Section = "2026-08-13 Round 58 next-highest original-page, dual-lan
 const round59Section = "2026-08-13 Round 59 remaining current-card original-page and profile-fit audit";
 const round60Section = "2026-08-13 Round 60 Chinese-source current-feed audit";
 const round61Section = "2026-08-13 Round 61 full-board user-fit rescore and stale-search audit";
+const round62Section = "2026-08-13 Round 62 current-source discovery and non-main triage";
 const round49LikelySpanishIds = [877, 105, 886, 930829, 1257, 1258, 382, 1237, 930876, 86, 930873, 930885, 577, 1296, 579, 876, 867, 930843, 351];
 const round55ExpectedIds = [175, 454, 1253, 317, 863, 930718, 930719, 908, 279, 930854, 889, 535, 278, 1081, 860, 930869, 874, 1301, 1303, 1227, 930879, 84, 868, 989, 854, 921, 1293, 1053, 1036, 930815, 930842, 930843];
 const round56ExpectedIds = [1002, 985, 930900, 977, 1021, 990001, 990, 930818, 37, 12, 1299, 1255, 958, 1257, 1258, 1026, 1061, 930865, 930829, 382, 1237, 930812, 1287, 930637, 238, 930843, 305, 27, 930708, 922];
@@ -1321,10 +1322,54 @@ const round57ExpectedIds = [778, 920, 24, 25, 930834, 930837, 1107, 1092, 372, 4
 const round58ExpectedMainIds = [930823, 930874, 930840, 930882, 930825, 877, 78, 228, 446, 930866, 930889, 930845, 930826, 930827, 425, 345, 4, 284, 55, 1038, 930816, 396, 930819, 856, 930868, 930831, 930833, 930821, 930890, 2942];
 const round58ExpectedIds = [...round58ExpectedMainIds, 930903];
 const round59ExpectedIds = [313, 920001, 928, 188, 930712, 170, 224, 1240, 930838, 930880, 930844, 172, 864, 88, 930824, 930891, 930878, 930881, 162, 876, 930876, 930814, 930841, 867, 930886, 930887, 859, 1029, 296, 601];
-check(test.latestRoundSection === round61Section, "Round 61: latest-round marker did not advance");
+check(test.latestRoundSection === round62Section, "Round 62: latest-round marker did not advance");
 check(
-  [930860, 930904, 55, 1234, 153, 1007].every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)) && test.latestRoundItems.length === 6,
-  "Round 61: the six scoring/source corrections are missing from the latest audit log",
+  [930905, 930906, 930907, 930908, 930909].every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)) && test.latestRoundItems.length === 5,
+  "Round 62: the five exact-page discovery decisions are missing from the latest audit log",
+);
+check(
+  [930905, 930906].every((id) => {
+    const item = r23ById(id);
+    return item && !test.MY_OPPORTUNITY_SET.has(id) && test.applicationStatus(item).key === "closed" && item.tier === "X";
+  }),
+  "Round 62: live-but-non-target LinkedIn discoveries leaked into the user board",
+);
+check(
+  test.directionKey(r23ById(930905)) === "other" &&
+    test.applicationLanguagePath(r23ById(930905)).key === "english" &&
+    /4450187301/.test(test.toLinks(r23ById(930905))[0] || ""),
+  "Round 62: Michael Kors retail VM was mistaken for graphic/VI design or lost its exact page",
+);
+check(
+  test.directionKey(r23ById(930906)) !== "brand" &&
+    test.applicationLanguagePath(r23ById(930906)).key === "foreign" &&
+    test.experienceInfo(r23ById(930906)).key === "senior" &&
+    /4451503690/.test(test.toLinks(r23ById(930906))[0] || ""),
+  "Round 62: Factorial DACH brand-management and language gates were misclassified",
+);
+for (const id of [930907, 930908, 930909]) {
+  const item = r23ById(id);
+  check(
+    item &&
+      !test.MY_OPPORTUNITY_SET.has(id) &&
+      test.applicationStatus(item).key === "verify" &&
+      test.isReviewLibraryRecord(item) &&
+      test.locationBucket(item) === "remote" &&
+      test.hasOpaqueEmployerRisk(item) &&
+      test.toLinks(item).length === 1,
+    `Round 62: anonymous Jobgether record ${id} escaped the review-only safeguards`,
+  );
+}
+check(
+  test.applicationLanguagePath(r23ById(930908)).key === "english" &&
+    test.experienceInfo(r23ById(930908)).key === "mid" &&
+    test.scoreLanguageRisk(r23ById(930907)) === "englishLikely" &&
+    test.scoreLanguageRisk(r23ById(930909)) === "englishLikely",
+  "Round 62: Jobgether language or experience evidence drifted",
+);
+check(
+  [930860, 930904, 55, 1234, 153, 1007].every((id) => test.CURATED[id]?.latestAuditSection === round61Section),
+  "Round 61: scoring/source provenance was lost after Round 62",
 );
 check(round59ExpectedIds.every((id) => test.CURATED[id]?.latestAuditSection === round59Section), "Round 59: provenance was lost after the Chinese-source current-feed audit");
 const round60Elimhome = r23ById(930904);
@@ -1449,7 +1494,7 @@ const round51AuditedItems = [...test.SCORE_LANGUAGE_RISK_OVERRIDES.entries()].ma
 const round51Mismatches = round51AuditedItems
   .filter(({ item, risk }) => !item || test.scoreLanguageRisk(item) !== risk)
   .map(({ item, risk }) => ({ id: Number(item?.id), expected: risk, actual: item ? test.scoreLanguageRisk(item) : "missing" }));
-check(round51AuditedItems.length === 60 && round51Mismatches.length === 0, `Round 61: the 60 evidence-versus-likely-language risk corrections were not preserved after later source audits ${JSON.stringify({ total: round51AuditedItems.length, mismatches: round51Mismatches })}`);
+check(round51AuditedItems.length === 62 && round51Mismatches.length === 0, `Round 62: the 62 evidence-versus-likely-language risk corrections were not preserved after later source audits ${JSON.stringify({ total: round51AuditedItems.length, mismatches: round51Mismatches })}`);
 check(test.CURATED[930898]?.latestAuditSection === round50Section && test.CURATED[427]?.latestAuditSection === round57Section, "Round 50/57: recovery provenance or subsequent language-risk audit was lost");
 check([...round49LikelySpanishIds.filter((id) => ![105, 886, 930843, 930829, 1257, 1258, 382, 1237, 877, 876, 867, 930876].includes(id)), 930897].every((id) => test.CURATED[id]?.latestAuditSection === round49Section) && [105, 886].every((id) => test.CURATED[id]?.latestAuditSection === round54Section) && [930843, 930829, 1257, 1258, 382, 1237].every((id) => test.CURATED[id]?.latestAuditSection === round56Section) && test.CURATED[877]?.latestAuditSection === round58Section && [876, 867, 930876].every((id) => test.CURATED[id]?.latestAuditSection === round59Section), "Round 49/56/58/59: likely-Spanish audit provenance was lost after the current recheck");
 const round50RevolutEmployerBranding = r23ById(427);
