@@ -15611,6 +15611,144 @@ CURATED[930903] = {
   changeType: "round-58-current-duplicate-consolidated-research-backup",
 };
 
+const ROUND59_SECTION = "2026-08-13 Round 59 remaining current-card original-page and profile-fit audit";
+const ROUND59_AUDITED_IDS = Object.freeze([
+  313, 920001, 928, 188, 930712, 170, 224, 1240, 930838, 930880,
+  930844, 172, 864, 88, 930824, 930891, 930878, 930881, 162, 876,
+  930876, 930814, 930841, 867, 930886, 930887, 859, 1029, 296, 601,
+]);
+
+const ROUND59_STATUS_EVIDENCE = new Map([
+  [313, "2026-08-13 reopened LinkedIn employer detail 4437788118: the Barcelona full-time application remains live; the exact brief requires native Spanish, English B2 and 5+ years."],
+  [920001, "2026-08-13 reopened PepsiCo official requisition 464555: Apply Now, Cornella/Barcelona, full-time, multidisciplinary brand and packaging scope, 4+ years and 15% travel remain current; no formal language level is stated."],
+  [928, "2026-08-13 reopened Circle official Greenhouse 5368490008: the full remote application remains live; the exact brief requires 5+ years and English CEFR C2, while Spain contracting still needs confirmation."],
+  [188, "2026-08-13 reopened eseOese official ATS: Barcelona onsite, 4+ years, branding/campaign scope and medium-high English remain current; the complete local brief and operation are Spanish-first without a published Spanish level."],
+  [930712, "2026-08-13 VML exact page returned an anti-bot 403 rather than a closure. Retain the same-day official requisition evidence for Barcelona, 5-6 years, medium-high English and Catalan, but do not present the blocked response as a fresh full-body verification."],
+  [170, "2026-08-13 reopened Dragons official Senior UX/UI and Web Designer page: Apply now, Barcelona hybrid, full-time, 5+ years, English mandatory and Spanish preferred remain visible."],
+  [224, "2026-08-13 King Workday shell still returns the exact R027791 route; its CXS endpoint denied automated reading rather than reporting closure. Retain the previously read official Barcelona-option, shipped-game and team-lead evidence."],
+  [1240, "2026-08-13 reopened LinkedIn JobPosting 4444421303: MANGO Palau-solita full-time, 5+ years, retail/3D production, high English and high Spanish and the current application route are explicit."],
+  [930838, "2026-08-13 reopened Dragons official Factorial 308053: Barcelona hybrid permanent full-time, client communication in English, healthcare experience and the Apply route remain visible."],
+  [930880, "2026-08-13 reopened Dragons official Factorial 302205: Barcelona hybrid permanent full-time, 5-7+ years, English mandatory and Spanish preferred remain explicit."],
+  [930844, "2026-08-13 reopened Synthesia official Ashby 75c90455: listed Europe remote full-time since 2026-03-26, 6+ years, experiential production and international travel remain explicit; no formal language level is published."],
+  [172, "2026-08-13 read Ogilvy official Greenhouse API 4708130005 in full: the Barcelona hybrid graduate internship remains live; a degree completed in Spain and Spanish are mandatory, high English is only valued, and no prior work experience is required."],
+  [864, "2026-08-13 read Ametller official Workday CXS for JR107430: canApply=true, posted=true, full-time indefinite hybrid, 5+ years, Olèrdola, licence and own vehicle are explicit; the whole operating brief is Catalan but no language level is listed."],
+  [88, "2026-08-13 reopened Dragons official Factorial 301871: Apply now, Barcelona hybrid permanent full-time, 7-8 years, Spanish mandatory and English mandatory remain explicit."],
+  [930824, "2026-08-13 reopened Dragons official Factorial 301879: Apply now, Barcelona hybrid permanent full-time, 4-8+ years, Spanish mandatory and English mandatory remain explicit."],
+  [930891, "2026-08-13 reopened BJAK official Ashby aca9464d: listed Spain remote full-time since 2026-08-04, 5-8 years and strong English required remain explicit, with an assessment in the interview process."],
+  [930878, "2026-08-13 reopened LinkedIn employer detail 4449819011: Barcelona full-time, 5+ years, fluent Spanish and the new independent application route remain current."],
+  [930881, "2026-08-13 reopened Dragons official Factorial 308042: Barcelona hybrid permanent full-time, 7+ years, senior video/motion scope and the current Apply route remain visible; fluent English remains the recorded hard gate."],
+  [162, "2026-08-13 HP Workday shell still returns exact requisition 3165191 but the CXS endpoint denied automated reading rather than reporting closure. Retain the previously read Sant Cugat full-time and 4-7 year marketing-communications evidence; no formal language level was published."],
+  [876, "2026-08-13 reopened LinkedIn employer detail 4442212716: Barcelona 2-office/3-remote full-time, 4-5 years and motion/video/AI scope remain current; the complete local brief is Spanish but no formal language level is stated."],
+  [930876, "2026-08-13 reopened IEBS official Factorial 303264: Viladecans hybrid part-time training placement, current application, student/convenio requirement and Spanish operating brief remain visible; compensation is not published."],
+  [930814, "2026-08-13 reopened LinkedIn employer detail 4445748221: Barcelona hybrid, corporate identity ownership and the current application remain explicit. Excellent written and spoken English is required; German is only an advantage."],
+  [930841, "2026-08-13 reopened LinkedIn employer detail 4452431400: Barcelona onsite head-level visual merchandising, 10-15+ years and 5+ years of leadership remain current; no formal language level is published."],
+  [867, "2026-08-13 reopened LinkedIn JobPosting 4440457390: Sant Cugat hybrid, temporary employment, 2026-07-29 publication and 2026-09-19 validity remain current; the full local brief is Spanish without a formal language level."],
+  [930886, "2026-08-13 reopened LinkedIn JobPosting 4449830488: Barcelona hybrid internship, 2026-08-11 publication, current application, enrolment/convenio gate and fluent or native English are explicit; only about 30% of the role is design."],
+  [930887, "2026-08-13 reopened LinkedIn JobPosting 4452412973: Barcelona full-time, 5+ years, specialist spatial/CAD/3D scope and fluent Spanish remain explicit; the stale January 2026 start sentence still requires recruiter confirmation."],
+  [859, "2026-08-13 reopened Stripe official requisition 7769564: Barcelona hybrid or Spain remote, full-time, 5+ years, identity motion systems, salary range and Apply remain current; no formal language level is published."],
+  [1029, "2026-08-13 reopened Together official Senior Brand Designer page: Remote UK & Europe, £40k-65k, 8+ years and the application remain live; the page dates to 2025-09-24 and Spain employment terms and formal language level are not stated."],
+  [296, "2026-08-13 reopened Bakken & Bæck official Senior Brand Designer page: Barcelona office is eligible, remote applicants are excluded, 5+ years, identity systems and relocation support remain current; no formal English or Spanish level is published."],
+  [601, "2026-08-13 reopened SIERRA official jobs page: it still states one open position, Art Director, Barcelona office, full-time hybrid and a direct application route. The exact brief publishes neither a formal language level nor a fixed experience-year threshold."],
+]);
+
+for (const id of ROUND59_AUDITED_IDS) {
+  if (!CURATED[id]) continue;
+  CURATED[id] = {
+    ...CURATED[id],
+    latestAuditSection: ROUND59_SECTION,
+    statusEvidence: ROUND59_STATUS_EVIDENCE.get(id) || CURATED[id].statusEvidence,
+    changeType: "round-59-remaining-current-card-original-page-profile-fit-audit",
+  };
+}
+
+Object.assign(CURATED, {
+  313: {
+    ...CURATED[313],
+    languageKey: "englishSpanish",
+    applicationMode: "englishSpanish",
+    language: "Native Spanish and English B2 are explicit hard requirements.",
+  },
+  188: {
+    ...CURATED[188],
+    languageKey: "englishSpanishLikely",
+    applicationMode: "englishSpanishLikely",
+    language: "Medium-high English is explicit; the complete Barcelona fashion-team brief is Spanish, although no Spanish level is stated.",
+  },
+  1240: {
+    ...CURATED[1240],
+    languageKey: "englishSpanish",
+    applicationMode: "englishSpanish",
+    language: "High English and high Spanish are both explicit requirements.",
+  },
+  864: {
+    ...CURATED[864],
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    language: "The complete official packaging and supplier-operation brief is Catalan; no formal language level is stated.",
+    analysis: "A real current packaging/brand-governance role, confirmed by Workday canApply=true. Keep it as a low-feasibility local backup because 5+ years, Catalan operations, Olèrdola access, a driving licence and an own vehicle are material gates.",
+  },
+  88: {
+    ...CURATED[88],
+    languageKey: "englishSpanish",
+    applicationMode: "englishSpanish",
+    language: "Spanish and English are both mandatory.",
+  },
+  930824: {
+    ...CURATED[930824],
+    languageKey: "englishSpanish",
+    applicationMode: "englishSpanish",
+    language: "Spanish and English are both mandatory.",
+  },
+  162: {
+    ...CURATED[162],
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    language: "The official brief did not publish a formal language level; English remains probable in the international marketing-communications workflow.",
+  },
+  296: {
+    ...CURATED[296],
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    language: "The English official brief requires confident client presentation but does not publish a formal English or Spanish level.",
+  },
+  601: {
+    ...CURATED[601],
+    experienceKey: "unknown",
+    experienceLabel: "Art Director scope / no fixed experience-year threshold published",
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    language: "The English official brief publishes no formal working-language level; English remains probable.",
+    analysis: "A current Barcelona art-direction and visual-language opportunity with a direct email route. Its brand fit is strong, but working language, seniority expectations, salary and work authorisation must be confirmed before tailoring a full application.",
+  },
+});
+
+// Preserve the distinction between what the vacancy explicitly says and the
+// likely working-language risk used for this user's score.
+for (const [id, risk] of [[162, "englishLikely"], [296, "englishLikely"], [601, "englishLikely"], [864, "foreign"]]) {
+  SCORE_LANGUAGE_RISK_OVERRIDES.set(id, risk);
+  if (CURATED[id]) CURATED[id].scoringLanguageRisk = risk;
+}
+
+const ROUND59_DATE_CORRECTIONS = new Map([
+  [313, ["2026-07-07", "quarter", 37]],
+  [920001, ["2026-07-20", "month", 24]],
+  [1240, ["2026-07-23", "month", 21]],
+  [930844, ["2026-03-26", "older", 140]],
+  [172, ["2026-06-22", "quarter", 52]],
+  [864, ["2026-07-24", "month", 20]],
+  [930891, ["2026-08-04", "month", 9]],
+  [867, ["2026-07-29", "month", 15]],
+  [930886, ["2026-08-11", "week", 2]],
+  [930887, ["2026-08-11", "week", 2]],
+  [859, ["2026-07-22", "month", 22]],
+  [1029, ["2025-09-24", "old", 323]],
+]);
+for (const item of allData) {
+  const correction = ROUND59_DATE_CORRECTIONS.get(Number(item.id));
+  if (!correction) continue;
+  [item.postedAt, item.freshnessTag, item.freshnessAgeDays] = correction;
+}
+
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
   const explicitMode = curated?.applicationMode || APPLICATION_MODE_OVERRIDES[item.id];

@@ -1245,6 +1245,35 @@
     {
       "ledger_bucket": "current-main",
       "rank": 44,
+      "id": 601,
+      "company": "SIERRA Production House",
+      "role_zh": "艺术指导（视觉语言与品牌识别）",
+      "original_role": "Art Director",
+      "tier": "B",
+      "status": "live",
+      "location_bucket": "barcelona",
+      "location": "Barcelona / 每周 3 天办公室、2 天灵活 / 全职",
+      "language_path": "englishLikely",
+      "experience_path": "unknown",
+      "experience_requirement": "Art Director scope / no fixed experience-year threshold published",
+      "direction": "brand",
+      "chinese_relevant": false,
+      "formal": false,
+      "internship": false,
+      "score": 6.2,
+      "source_score": 106,
+      "posted_at": "",
+      "primary_url": "https://www.sierraproductionhouse.com/jobs",
+      "all_links": [
+        "https://www.sierraproductionhouse.com/jobs",
+        "mailto:tw@sierraproductionhouse.com"
+      ],
+      "status_evidence": "2026-08-13 reopened SIERRA official jobs page: it still states one open position, Art Director, Barcelona office, full-time hybrid and a direct application route. The exact brief publishes neither a formal language level nor a fixed experience-year threshold.",
+      "analysis": "Verified Barcelona B-tier art-direction opening. It owns visual direction, coherent visual languages, pitch decks and SIERRA brand identity; show campaign art direction, typography/colour/motion, photo/video production and AI-assisted creative-direction work. Confirm seniority, Spanish, salary and work-authorisation in the first exchange."
+    },
+    {
+      "ledger_bucket": "current-main",
+      "rank": 45,
       "id": 930832,
       "company": "Exoticca",
       "role_zh": "视觉设计师（渠道营销与联合品牌）",
@@ -1272,7 +1301,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 45,
+      "rank": 46,
       "id": 425,
       "company": "Revolut",
       "role_zh": "数字品牌设计师（当前官方可投）",
@@ -1301,7 +1330,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 46,
+      "rank": 47,
       "id": 345,
       "company": "Domingo Studio",
       "role_zh": "品牌平面设计师 / 平面设计实习生",
@@ -1330,7 +1359,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 47,
+      "rank": 48,
       "id": 4,
       "company": "Lodgify",
       "role_zh": "创意设计师（品牌、营销与 Figma 系统）",
@@ -1359,7 +1388,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 48,
+      "rank": 49,
       "id": 284,
       "company": "EuroLeague Basketball",
       "role_zh": "高级平面设计师（体育品牌、社媒与动态）",
@@ -1387,7 +1416,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 49,
+      "rank": 50,
       "id": 55,
       "company": "BCome",
       "role_zh": "数字设计师（企业识别、SaaS 与 Motion）",
@@ -1417,7 +1446,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 50,
+      "rank": 51,
       "id": 604,
       "company": "Canonical",
       "role_zh": "视觉设计师（品牌指南、UI 系统与数字产品）",
@@ -1445,7 +1474,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 51,
+      "rank": 52,
       "id": 175,
       "company": "Frekuent",
       "role_zh": "品牌与 Campaign 设计师",
@@ -1474,7 +1503,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 52,
+      "rank": 53,
       "id": 1253,
       "company": "TheBusinessLook BCN / Museum Merchandising",
       "role_zh": "初级平面设计师（半职，先确认名额）",
@@ -1504,7 +1533,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 53,
+      "rank": 54,
       "id": 633,
       "company": "Puig / Carolina Herrera Makeup",
       "role_zh": "品牌形象与 360 Campaign 管培项目",
@@ -1532,7 +1561,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 54,
+      "rank": 55,
       "id": 94,
       "company": "Savills Spain",
       "role_zh": "品牌设计师（企业视觉、编辑与空间导视）",
@@ -1560,7 +1589,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 55,
+      "rank": 56,
       "id": 863,
       "company": "Grup Ametller Origen",
       "role_zh": "数字平面设计专员（品牌数字延展）",
@@ -1589,7 +1618,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 56,
+      "rank": 57,
       "id": 930718,
       "company": "Capitole",
       "role_zh": "邮件与数字设计系统设计师",
@@ -1618,7 +1647,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 57,
+      "rank": 58,
       "id": 930719,
       "company": "Adsmurai",
       "role_zh": "数字平面设计师（360° Campaign）",
@@ -1646,7 +1675,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 58,
+      "rank": 59,
       "id": 866,
       "company": "devicenow",
       "role_zh": "品牌视频与动态视觉专员",
@@ -1674,7 +1703,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 59,
+      "rank": 60,
       "id": 279,
       "company": "DORTOKA disseny",
       "role_zh": "平面与 Web 设计师",
@@ -1705,7 +1734,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 60,
+      "rank": 61,
       "id": 908,
       "company": "Top Doctors Group",
       "role_zh": "营销设计师（多品牌视觉）",
@@ -1734,7 +1763,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 61,
+      "rank": 62,
       "id": 930854,
       "company": "Jungle / PS21Barna",
       "role_zh": "广告视频剪辑与基础动态视觉",
@@ -1762,7 +1791,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 62,
+      "rank": 63,
       "id": 889,
       "company": "Dragons Group",
       "role_zh": "食品饮料行业中级平面设计师",
@@ -1792,7 +1821,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 63,
+      "rank": 64,
       "id": 535,
       "company": "Supabase",
       "role_zh": "品牌设计师（开发者品牌、活动与多渠道视觉）",
@@ -1820,7 +1849,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 64,
+      "rank": 65,
       "id": 278,
       "company": "Avidalia",
       "role_zh": "数字内容设计师（品牌视觉与基础动效，兼职）",
@@ -1849,7 +1878,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 65,
+      "rank": 66,
       "id": 1081,
       "company": "Eximia Studio",
       "role_zh": "效果创意设计师（广告、数字内容与少量 VI）",
@@ -1877,7 +1906,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 66,
+      "rank": 67,
       "id": 860,
       "company": "Hays 官方招聘",
       "role_zh": "营销协调员（平面设计方向）",
@@ -1906,7 +1935,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 67,
+      "rank": 68,
       "id": 930869,
       "company": "NEWEYES TECH S.L.",
       "role_zh": "多媒体设计与内容创作",
@@ -1934,7 +1963,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 68,
+      "rank": 69,
       "id": 874,
       "company": "IKIGAI Talent Group / 移动应用客户",
       "role_zh": "视频剪辑与动态设计师（获客广告 / 品牌动态）",
@@ -1963,7 +1992,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 69,
+      "rank": 70,
       "id": 930882,
       "company": "Duna",
       "role_zh": "视觉设计师（品牌延展、网页与信息图形）",
@@ -1994,7 +2023,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 70,
+      "rank": 71,
       "id": 930823,
       "company": "Factorial",
       "role_zh": "付费广告动态设计师（全球市场）",
@@ -2023,7 +2052,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 71,
+      "rank": 72,
       "id": 1303,
       "company": "CATORCE / DDB Group",
       "role_zh": "工作室视觉设计师与 HTML 程序员",
@@ -2051,7 +2080,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 72,
+      "rank": 73,
       "id": 1227,
       "company": "Natulim",
       "role_zh": "视频剪辑专家（含 Motion Graphics）",
@@ -2079,7 +2108,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 73,
+      "rank": 74,
       "id": 930816,
       "company": "Brownie",
       "role_zh": "初级平面设计师（360° 品牌、包装、门店与电商）",
@@ -2107,7 +2136,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 74,
+      "rank": 75,
       "id": 930833,
       "company": "Wecolors",
       "role_zh": "产品平面设计师（美妆包装与完稿）",
@@ -2135,7 +2164,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 75,
+      "rank": 76,
       "id": 930879,
       "company": "DashBook",
       "role_zh": "初级艺术指导（书籍封面、编辑设计与排版）",
@@ -2163,7 +2192,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 76,
+      "rank": 77,
       "id": 84,
       "company": "reboot",
       "role_zh": "网页设计师（端到端视觉落地）",
@@ -2191,7 +2220,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 77,
+      "rank": 78,
       "id": 868,
       "company": "Omnicom Health",
       "role_zh": "医疗品牌视频制作与动态视觉",
@@ -2219,7 +2248,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 78,
+      "rank": 79,
       "id": 989,
       "company": "Storisell",
       "role_zh": "动态设计师（Spain / Barcelona 团队）",
@@ -2248,7 +2277,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 79,
+      "rank": 80,
       "id": 854,
       "company": "Netenders / Wordans",
       "role_zh": "高产量电商服装图形设计师",
@@ -2277,7 +2306,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 80,
+      "rank": 81,
       "id": 921,
       "company": "Oh / OhChat",
       "role_zh": "平面设计师（Campaign、产品内素材与基础 Motion）",
@@ -2305,7 +2334,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 81,
+      "rank": 82,
       "id": 1293,
       "company": "Bonita Digital",
       "role_zh": "自由职业平面与创意设计师（品牌重塑、社媒与 Campaign）",
@@ -2334,7 +2363,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 82,
+      "rank": 83,
       "id": 1053,
       "company": "DDB Spain",
       "role_zh": "社交媒体内容创作者",
@@ -2362,7 +2391,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 83,
+      "rank": 84,
       "id": 1036,
       "company": "Algofy / official careers",
       "role_zh": "平面与网页设计师",
@@ -2391,7 +2420,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 84,
+      "rank": 85,
       "id": 1301,
       "company": "The Colour Monster",
       "role_zh": "品牌识别与视觉系统设计师",
@@ -2419,7 +2448,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 85,
+      "rank": 86,
       "id": 930815,
       "company": "SIDN Digital Thinking",
       "role_zh": "平面设计师（信息设计与数字营销视觉）",
@@ -2447,7 +2476,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 86,
+      "rank": 87,
       "id": 930890,
       "company": "Double Tap",
       "role_zh": "社交媒体经理（足球品牌内容、拍摄与发布）",
@@ -2476,7 +2505,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 87,
+      "rank": 88,
       "id": 2942,
       "company": "SLAPS",
       "role_zh": "初级平面设计师（品牌机构路线）",
@@ -2505,7 +2534,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 88,
+      "rank": 89,
       "id": 396,
       "company": "RV Group — Rodriguez Villar",
       "role_zh": "初级 Motion Graphics 与视觉设计师",
@@ -2533,7 +2562,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 89,
+      "rank": 90,
       "id": 930868,
       "company": "ZABRISKIE STUDIO / GRUPO NATURA",
       "role_zh": "初级平面设计师（包装、品牌与印刷落地）",
@@ -2561,7 +2590,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 90,
+      "rank": 91,
       "id": 1002,
       "company": "Pocket Worlds / Highrise",
       "role_zh": "Motion Designer（Marketing / Highrise）",
@@ -2589,7 +2618,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 91,
+      "rank": 92,
       "id": 930831,
       "company": "INCAPTO",
       "role_zh": "平面设计师（包装与产品视觉）",
@@ -2617,7 +2646,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 92,
+      "rank": 93,
       "id": 856,
       "company": "SYNERGIE ESPAÑA / 未公开零售客户",
       "role_zh": "零售与电商品牌平面设计师",
@@ -2645,7 +2674,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 93,
+      "rank": 94,
       "id": 985,
       "company": "The Builder Studios",
       "role_zh": "视觉设计师（品牌视觉 + motion）",
@@ -2673,7 +2702,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 94,
+      "rank": 95,
       "id": 977,
       "company": "Injective",
       "role_zh": "数字设计师（品牌 Campaign 与视觉一致性）",
@@ -2701,7 +2730,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 95,
+      "rank": 96,
       "id": 1021,
       "company": "ZOE",
       "role_zh": "创意效果设计师（中级）",
@@ -2729,7 +2758,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 96,
+      "rank": 97,
       "id": 990001,
       "company": "TWOJEYS",
       "role_zh": "服装平面设计师（图案、印花与产品 Artwork）",
@@ -2757,7 +2786,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 97,
+      "rank": 98,
       "id": 990,
       "company": "Revolut",
       "role_zh": "动态设计师（Brand Studio / Spain remote）",
@@ -2785,7 +2814,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 98,
+      "rank": 99,
       "id": 1038,
       "company": "Lodgify",
       "role_zh": "动态设计师（品牌动效与可扩展模板）",
@@ -2814,7 +2843,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 99,
+      "rank": 100,
       "id": 12,
       "company": "turbopuffer",
       "role_zh": "综合设计师（产品、品牌、Web 与营销）",
@@ -2842,7 +2871,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 100,
+      "rank": 101,
       "id": 1258,
       "company": "Media Electronics SL / JOB TODAY",
       "role_zh": "平面设计师（社媒方向）",
@@ -2872,7 +2901,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 101,
+      "rank": 102,
       "id": 1026,
       "company": "Labhouse",
       "role_zh": "营销视频剪辑师（性能广告 / AI 视频）",
@@ -2900,7 +2929,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 102,
+      "rank": 103,
       "id": 1061,
       "company": "Dragons Group / official Factorial",
       "role_zh": "创意制作人（护肤与时尚）",
@@ -2928,7 +2957,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 103,
+      "rank": 104,
       "id": 930865,
       "company": "Jobgether / 匿名合作公司",
       "role_zh": "UI/UX 与视觉设计师（匿名雇主，先核验）",
@@ -2956,7 +2985,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 104,
+      "rank": 105,
       "id": 1237,
       "company": "ICÓNICO / ÚNICO",
       "role_zh": "平面与多媒体内容设计师",
@@ -2988,7 +3017,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 105,
+      "rank": 106,
       "id": 930812,
       "company": "Skyscanner",
       "role_zh": "高级视觉设计师（全球品牌系统与 Campaign）",
@@ -3017,7 +3046,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 106,
+      "rank": 107,
       "id": 930843,
       "company": "EQUIPO SINGULAR",
       "role_zh": "平面与视频青年人才实习",
@@ -3047,37 +3076,36 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 107,
-      "id": 313,
-      "company": "Mapit IoT",
-      "role_zh": "营销与品牌系统设计师（母语西语门槛）",
-      "original_role": "Marketing Designer",
-      "tier": "C",
+      "rank": 108,
+      "id": 859,
+      "company": "Stripe / Brand Studio",
+      "role_zh": "品牌动态设计师（Identity 动态系统）",
+      "original_role": "品牌动态设计师—Stripe Identity / Motion Designer, Stripe Identity",
+      "tier": "A",
       "status": "live",
       "location_bucket": "barcelona",
-      "location": "Barcelona / hybrid / indefinite full-time",
-      "language_path": "spanish",
+      "location": "Barcelona 混合办公 / 西班牙远程",
+      "language_path": "englishLikely",
       "experience_path": "senior",
-      "experience_requirement": "资深 / 5 年以上",
-      "direction": "brand",
+      "experience_requirement": "高级 / 5 年以上 Motion 与 3D",
+      "direction": "digital",
       "chinese_relevant": false,
       "formal": true,
       "internship": false,
       "score": 0,
-      "source_score": 82,
-      "posted_at": "",
-      "primary_url": "https://es.linkedin.com/jobs/view/marketing-designer-at-mapit-iot-4437788118",
+      "source_score": 120,
+      "posted_at": "2026-07-22",
+      "primary_url": "https://stripe.com/careers/listing/motion-designer-stripe-identity/7769564",
       "all_links": [
-        "https://es.linkedin.com/jobs/view/marketing-designer-at-mapit-iot-4437788118",
-        "https://mapit.factorial.es/job_posting/marketing-designer-311406",
-        "https://mapit.factorial.es/apply/marketing-designer-311406"
+        "https://stripe.com/careers/listing/motion-designer-stripe-identity/7769564",
+        "https://stripe.com/careers/apply/motion-designer-stripe-identity/7769564"
       ],
-      "status_evidence": "Live/current: the original LinkedIn employer detail 4437788118 was opened and read in full on 2026-08-12. It still shows a specific Barcelona full-time Marketing Designer vacancy and an application route. The role owns Mapit's visual identity, cross-market brand assets, email, landing pages, co-branding, campaigns, AI workflows, brand guides and prompts.",
-      "analysis": "Recover into the main board as a strong Barcelona brand-system role, but keep it below language-accessible jobs: 5+ years, native Spanish and English B2 are hard gates."
+      "status_evidence": "2026-08-13 reopened Stripe official requisition 7769564: Barcelona hybrid or Spain remote, full-time, 5+ years, identity motion systems, salary range and Apply remain current; no formal language level is published.",
+      "analysis": "Verified high-seniority Barcelona/Spain-remote brand-motion role. Use an English, system-level motion portfolio with identity principles, tokens/components, product animation and campaign extension; confirm remote compensation, work authorization and office rhythm before interview."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 108,
+      "rank": 109,
       "id": 920001,
       "company": "PepsiCo / Alvalle",
       "role_zh": "高级设计师（食品品牌、包装与产品架构）",
@@ -3095,18 +3123,46 @@
       "internship": false,
       "score": 0,
       "source_score": 112,
-      "posted_at": "2026-07-27",
+      "posted_at": "2026-07-20",
       "primary_url": "https://www.pepsicojobs.com/jobs/464555?lang=en-us",
       "all_links": [
         "https://www.pepsicojobs.com/jobs/464555?lang=en-us",
         "https://www.linkedin.com/jobs/view/4440194840"
       ],
-      "status_evidence": "2026-08-13 复核：PepsiCo 官方 requisition 464555 的 JobPosting 结构、完整职位正文、Cornellà de Llobregat / Barcelona 地点与 Apply Now 仍存在；页面通用错误文案不是本岗关闭提示。职位本身未列语言等级。",
+      "status_evidence": "2026-08-13 reopened PepsiCo official requisition 464555: Apply Now, Cornella/Barcelona, full-time, multidisciplinary brand and packaging scope, 4+ years and 15% travel remain current; no formal language level is stated.",
       "analysis": "Keep as a strong Barcelona consumer-brand and packaging opportunity. Four-plus years, product/packaging depth and up to 15% travel are material gates; confirm the Barcelona work mode, salary, language and Spain work-authorisation policy before applying."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 109,
+      "rank": 110,
+      "id": 1029,
+      "company": "Together",
+      "role_zh": "高级品牌设计师（B2B 科技 / 品牌系统）",
+      "original_role": "Senior Brand Designer（本轮新增）",
+      "tier": "B",
+      "status": "live",
+      "location_bucket": "remote",
+      "location": "Remote UK & Europe; Spain employment terms to confirm",
+      "language_path": "englishLikely",
+      "experience_path": "senior",
+      "experience_requirement": "高级 / 8 年以上品牌系统经验",
+      "direction": "brand",
+      "chinese_relevant": false,
+      "formal": true,
+      "internship": false,
+      "score": 0,
+      "source_score": 110,
+      "posted_at": "2025-09-24",
+      "primary_url": "https://together.agency/careers/senior-brand-designer/",
+      "all_links": [
+        "https://together.agency/careers/senior-brand-designer/"
+      ],
+      "status_evidence": "2026-08-13 reopened Together official Senior Brand Designer page: Remote UK & Europe, £40k-65k, 8+ years and the application remain live; the page dates to 2025-09-24 and Spain employment terms and formal language level are not stated.",
+      "analysis": "Verified high B-tier Europe-remote brand-system opportunity. This is an exact identity/system match, but seniority is a major gate and Spain employment terms must be confirmed. Apply in English with 8+ years of robust brand systems, B2B-tech, product/web integration and leadership evidence."
+    },
+    {
+      "ledger_bucket": "current-main",
+      "rank": 111,
       "id": 928,
       "company": "Circle",
       "role_zh": "高级品牌设计师（科技品牌系统与 Campaign）",
@@ -3130,12 +3186,12 @@
         "https://job-boards.greenhouse.io/circleso/jobs/5368490008",
         "https://careers.circle.so/"
       ],
-      "status_evidence": "Official Greenhouse requisition 5368490008 was opened again on 2026-08-12 and shows Apply plus a complete application form. Circle describes itself as fully remote with team members in 30+ countries and says it seeks people around the world. The role requires 5+ years, English CEFR C2, Figma, Adobe and technology/SaaS/AI brand experience; cash compensation is USD100,000–120,000 per year.",
+      "status_evidence": "2026-08-13 reopened Circle official Greenhouse 5368490008: the full remote application remains live; the exact brief requires 5+ years and English CEFR C2, while Spain contracting still needs confirmation.",
       "analysis": "An excellent exact brand-system match but a senior stretch. Apply with identity evolution, scalable multi-channel systems, product-launch narratives, campaign art direction and motion storyboards; confirm Spain employment/contractor eligibility, localised compensation, tax, benefits and timezone overlap before interviews."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 110,
+      "rank": 112,
       "id": 930637,
       "company": "Dragons Group",
       "role_zh": "高级包装与 POS 设计师",
@@ -3165,7 +3221,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 111,
+      "rank": 113,
       "id": 188,
       "company": "eseOese",
       "role_zh": "艺术指导（时尚品牌与 360° Campaign）",
@@ -3174,7 +3230,7 @@
       "status": "live",
       "location_bucket": "barcelona",
       "location": "Barcelona 22@ / 现场全职",
-      "language_path": "spanishLikely",
+      "language_path": "englishSpanishLikely",
       "experience_path": "senior",
       "experience_requirement": "高级 / 4 年以上",
       "direction": "brand",
@@ -3189,12 +3245,12 @@
         "https://jobs.eseoese.com/jobs/art-director-48acdfae-9231-4ff0-b658-cd6af24b41f5",
         "https://es.linkedin.com/jobs/view/art-director-at-eseoese-4433079676"
       ],
-      "status_evidence": "2026-08-13 Round 49：eseOese 官方 ATS 48acdfae-9231-4ff0-b658-cd6af24b41f5 仍显示 Barcelona 现场全职和申请入口；要求段明确写 Inglés nivel medio-alto。",
+      "status_evidence": "2026-08-13 reopened eseOese official ATS: Barcelona onsite, 4+ years, branding/campaign scope and medium-high English remain current; the complete local brief and operation are Spanish-first without a published Spanish level.",
       "analysis": "Verified Barcelona B-tier brand-direction opportunity. It is highly relevant to visual identity and 360 brand expression, but the centre is fashion/lifestyle art direction, storytelling and production rather than a pure VI-system graphic-designer role; onsite work and 4+ years are material gates. Apply only with campaign, editorial, branding, retail/VM and end-to-end shoot cases, and confirm salary, Spanish day-to-day expectations, office cadence and work authorisation."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 112,
+      "rank": 114,
       "id": 930712,
       "company": "VML",
       "role_zh": "艺术指导（品牌识别与整合 Campaign）",
@@ -3217,12 +3273,12 @@
       "all_links": [
         "https://www.vml.com/careers/job/8634604002-es-art-director"
       ],
-      "status_evidence": "Live/current: VML official requisition 17276 was opened and read on 2026-08-12. It lists Barcelona, Spain and a current ART DIRECTOR vacancy covering campaign concepts, visual direction, brand identity, Adobe and AI, with Figma, motion and video valued. The role requires 5–6 years of agency art direction plus medium-high English and Catalan.",
+      "status_evidence": "2026-08-13 VML exact page returned an anti-bot 403 rather than a closure. Retain the same-day official requisition evidence for Barcelona, 5-6 years, medium-high English and Catalan, but do not present the blocked response as a fresh full-body verification.",
       "analysis": "Add to the reviewed Barcelona board because the employer-owned VML page and requisition are current. Keep it in the lower senior-stretch section: the brand/identity scope is strong, but Catalan, 5–6 years of agency leadership and roughly four office days are meaningful barriers."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 113,
+      "rank": 115,
       "id": 170,
       "company": "Dragons Group",
       "role_zh": "高级 UX/UI 与网页设计师（品牌数字延展）",
@@ -3246,12 +3302,12 @@
         "https://joinus.dragons-group.com/jobs/senior-web-designer",
         "https://joinus.dragons-group.com/jobs"
       ],
-      "status_evidence": "Current official Dragons employer page was opened directly on 2026-08-10 and visibly shows Senior UX/UI and Web Designer, Apply, Barcelona, full-time and hybrid work. It was published 10 March 2026. The role translates brand identities into responsive websites, CMS experiences, digital design systems, web layouts and components, and works with developers. It requires 5+ years, Figma, responsive web/CMS, typography, HTML/CSS basics and a strong web portfolio; English is mandatory and Spanish preferred. The page gives no salary or Spain work-authorisation details.",
+      "status_evidence": "2026-08-13 reopened Dragons official Senior UX/UI and Web Designer page: Apply now, Barcelona hybrid, full-time, 5+ years, English mandatory and Spanish preferred remain visible.",
       "analysis": "Raise as a strong Barcelona brand-to-digital extension opportunity, below pure brand/VI leadership but above generic web production. Apply with brand-guideline-to-web case studies, design systems, responsive layouts and developer handoff; confirm salary, office cadence and contract terms."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 114,
+      "rank": 116,
       "id": 224,
       "company": "King / Microsoft",
       "role_zh": "新游戏艺术指导（视觉风格与品牌指南）",
@@ -3276,12 +3332,12 @@
         "https://es.linkedin.com/jobs/view/art-director-new-games-at-king-4440313069",
         "https://jobs.king.com/"
       ],
-      "status_evidence": "2026-08-13 复核：King 官方 Workday requisition R027791 仍显示 Apply、Barcelona 可选地点、全职和完整正文；硬门槛是已上线游戏的艺术指导与团队领导，语言未列。",
+      "status_evidence": "2026-08-13 King Workday shell still returns the exact R027791 route; its CXS endpoint denied automated reading rather than reporting closure. Retain the previously read official Barcelona-option, shipped-game and team-lead evidence.",
       "analysis": "Raise from an unverified 78-point mirror to a current 90-point Barcelona creative-direction opportunity. It is a genuine live official route and includes style/brand-guideline work, but it is primarily mobile-game art direction with a shipped-game and team-leadership gate, not a conventional commercial VI role. Confirm the Barcelona office arrangement, English workflow, compensation and work authorisation before applying."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 115,
+      "rank": 117,
       "id": 1240,
       "company": "MANGO",
       "role_zh": "橱窗创意设计师（零售品牌空间与 3D）",
@@ -3290,7 +3346,7 @@
       "status": "live",
       "location_bucket": "barcelona",
       "location": "Palau-solità i Plegamans / Barcelona 省 / 全职",
-      "language_path": "spanish",
+      "language_path": "englishSpanish",
       "experience_path": "senior",
       "experience_requirement": "高级 / 5 年以上零售与 3D",
       "direction": "brand",
@@ -3299,18 +3355,18 @@
       "internship": false,
       "score": 0,
       "source_score": 90,
-      "posted_at": "2026-08-08",
+      "posted_at": "2026-07-23",
       "primary_url": "https://es.linkedin.com/jobs/view/shop-window-creative-designer-at-mango-4444421303",
       "all_links": [
         "https://es.linkedin.com/jobs/view/shop-window-creative-designer-at-mango-4444421303",
         "https://mango.wd3.myworkdayjobs.com/"
       ],
-      "status_evidence": "Current original LinkedIn detail 4444421303 was opened directly on 2026-08-10 and visibly shows SHOP WINDOW CREATIVE DESIGNER, MANGO, Palau-solita i Plegamans, Solicitar, publication two days ago and 121 applications. The full brief covers shop-window concepts aligned with brand messaging, layouts, colour and visual elements, mock-ups, decorative finishes, materials and props, 3D renderings, supplier technical sheets and production follow-through. It explicitly requires more than 5 years in creative/retail/window-display work, Adobe Creative Suite, Rhino or other 3D tools, KeyShot or Unreal rendering, and high English and Spanish. The role is full-time; salary, contract entity and exact commute/office schedule are not published.",
+      "status_evidence": "2026-08-13 reopened LinkedIn JobPosting 4444421303: MANGO Palau-solita full-time, 5+ years, retail/3D production, high English and high Spanish and the current application route are explicit.",
       "analysis": "Restore as a 90-point C-tier Barcelona-area brand/visual opportunity. The brand-identity and physical visual-merchandising fit is strong, but Palau-solita is outside Barcelona city and the 5+ year, retail/window-display, 3D/rendering and high Spanish/English gates are substantial. Apply with retail campaign, window/display and 3D/mock-up work only if those gates are credible; confirm schedule, salary and application requisition."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 116,
+      "rank": 118,
       "id": 930818,
       "company": "Infor",
       "role_zh": "多渠道品牌设计实习（指南、提案、Web 与基础视频）",
@@ -3339,7 +3395,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 117,
+      "rank": 119,
       "id": 930838,
       "company": "Dragons Group",
       "role_zh": "高级平面设计师（健康与医疗品牌）",
@@ -3363,12 +3419,12 @@
         "https://dragons-group.factorialhr.com/job_posting/senior-graphic-designer-wellness-and-healthcare-308053",
         "https://www.linkedin.com/jobs/view/4437156739/"
       ],
-      "status_evidence": "2026-08-13 复核：Dragons 官方 Factorial 308053 与 LinkedIn 雇主详情 4437156739 均仍可申请；Barcelona 混合、永久全职、流利英语、医疗健康行业经验、客户提案与带教均为真实门槛。",
+      "status_evidence": "2026-08-13 reopened Dragons official Factorial 308053: Barcelona hybrid permanent full-time, client communication in English, healthcare experience and the Apply route remain visible.",
       "analysis": "A strong local graphic and brand-production match with fluent English, but seniority and regulated healthcare/pharma experience are meaningful gates. Apply only with system-level campaigns, information-heavy layouts, presentations and production QA examples."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 118,
+      "rank": 120,
       "id": 930880,
       "company": "Dragons Group",
       "role_zh": "高级平面设计师（美妆护肤品牌视觉）",
@@ -3392,12 +3448,12 @@
         "https://dragons-group.factorialhr.com/job_posting/senior-graphic-designer-302205",
         "https://www.linkedin.com/jobs/view/4436486942"
       ],
-      "status_evidence": "The current official Factorial requisition 302205 was opened and read in full on 2026-08-13. It shows Apply now, Permanent, Full time and Hybrid Barcelona. The role creates premium beauty, skincare, wellness and lifestyle visual assets for Instagram, TikTok, paid social, campaigns, presentations and digital ecosystems while protecting brand consistency. English is mandatory; Spanish is preferred, not required.",
+      "status_evidence": "2026-08-13 reopened Dragons official Factorial 302205: Barcelona hybrid permanent full-time, 5-7+ years, English mandatory and Spanish preferred remain explicit.",
       "analysis": "A genuine new English-first Barcelona graphic-design route, distinct from the Spanish-mandatory Mid/Senior card. It is still a senior stretch: apply only with 5-7+ years, premium consumer-brand work, strong typography/composition, social campaign systems, retouching and AI-assisted visual development. Use the official ATS as the canonical application route."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 119,
+      "rank": 121,
       "id": 930844,
       "company": "Synthesia",
       "role_zh": "高级体验式品牌设计师",
@@ -3415,18 +3471,48 @@
       "internship": false,
       "score": 0,
       "source_score": 83,
-      "posted_at": "2026-08-12",
+      "posted_at": "2026-03-26",
       "primary_url": "https://jobs.ashbyhq.com/synthesia/75c90455-75c8-44e0-ab38-887120dbb1d0/",
       "all_links": [
         "https://jobs.ashbyhq.com/synthesia/75c90455-75c8-44e0-ab38-887120dbb1d0/",
         "https://jobs.ashbyhq.com/synthesia/75c90455-75c8-44e0-ab38-887120dbb1d0/application"
       ],
-      "status_evidence": "2026-08-13 复核：Synthesia 官方 Ashby 75c90455 仍返回 200、Senior Brand Designer, Experiential 与申请入口；6+ 年和欧美出差为硬门槛，但正文未列语言要求。",
+      "status_evidence": "2026-08-13 reopened Synthesia official Ashby 75c90455: listed Europe remote full-time since 2026-03-26, 6+ years, experiential production and international travel remain explicit; no formal language level is published.",
       "analysis": "A strong pure-brand opportunity that is geographically compatible with Europe, but it is senior, travel-heavy and London/hub preference is explicit. Confirm Spain employment or contractor eligibility before tailoring an experiential portfolio."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 120,
+      "rank": 122,
+      "id": 313,
+      "company": "Mapit IoT",
+      "role_zh": "营销与品牌系统设计师（母语西语门槛）",
+      "original_role": "Marketing Designer",
+      "tier": "C",
+      "status": "live",
+      "location_bucket": "barcelona",
+      "location": "Barcelona / hybrid / indefinite full-time",
+      "language_path": "englishSpanish",
+      "experience_path": "senior",
+      "experience_requirement": "资深 / 5 年以上",
+      "direction": "brand",
+      "chinese_relevant": false,
+      "formal": true,
+      "internship": false,
+      "score": 0,
+      "source_score": 82,
+      "posted_at": "2026-07-07",
+      "primary_url": "https://es.linkedin.com/jobs/view/marketing-designer-at-mapit-iot-4437788118",
+      "all_links": [
+        "https://es.linkedin.com/jobs/view/marketing-designer-at-mapit-iot-4437788118",
+        "https://mapit.factorial.es/job_posting/marketing-designer-311406",
+        "https://mapit.factorial.es/apply/marketing-designer-311406"
+      ],
+      "status_evidence": "2026-08-13 reopened LinkedIn employer detail 4437788118: the Barcelona full-time application remains live; the exact brief requires native Spanish, English B2 and 5+ years.",
+      "analysis": "Recover into the main board as a strong Barcelona brand-system role, but keep it below language-accessible jobs: 5+ years, native Spanish and English B2 are hard gates."
+    },
+    {
+      "ledger_bucket": "current-main",
+      "rank": 123,
       "id": 172,
       "company": "Ogilvy",
       "role_zh": "初级艺术指导（数字品牌与多渠道创意实习）",
@@ -3444,7 +3530,7 @@
       "internship": true,
       "score": 0,
       "source_score": 78,
-      "posted_at": "2026-07-10",
+      "posted_at": "2026-06-22",
       "primary_url": "https://www.ogilvy.com/careers/4708130005?gh_jid=4708130005",
       "all_links": [
         "https://www.ogilvy.com/careers/4708130005?gh_jid=4708130005",
@@ -3452,12 +3538,12 @@
         "https://es.linkedin.com/jobs/view/junior-art-director-graduate-program-barcelona-at-ogilvy-4429417187",
         "https://www.ogilvy.com/es/eng/careers"
       ],
-      "status_evidence": "2026-08-13 最终落点复核：Ogilvy 官方职位页 4708130005 的标题内容不完整，但点击 Apply 后 Greenhouse 嵌入申请表仍完整出现并可提交；LinkedIn 详情 4429417187 同时仍显示 Solicitar。西语必需与西班牙学历/Graduate 条件保持硬门槛。",
+      "status_evidence": "2026-08-13 read Ogilvy official Greenhouse API 4708130005 in full: the Barcelona hybrid graduate internship remains live; a degree completed in Spain and Spanish are mandatory, high English is only valued, and no prior work experience is required.",
       "analysis": "Keep as a 78-point C-tier Barcelona fallback. It is relevant for digital branding and art-direction fundamentals, but the Spanish-mandatory gate, degree-completed-in-Spain condition and graduate/internship format make it secondary to professional brand/VI roles."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 121,
+      "rank": 124,
       "id": 864,
       "company": "Grup Ametller Origen",
       "role_zh": "包装艺术负责人（品牌治理与生产落地）",
@@ -3466,7 +3552,7 @@
       "status": "live",
       "location_bucket": "barcelona",
       "location": "Olèrdola / Numància，混合办公",
-      "language_path": "spanishLikely",
+      "language_path": "foreign",
       "experience_path": "senior",
       "experience_requirement": "高级 / 5 年以上包装与完稿经验",
       "direction": "brand",
@@ -3475,18 +3561,18 @@
       "internship": false,
       "score": 0,
       "source_score": 78,
-      "posted_at": "2026-07-26",
+      "posted_at": "2026-07-24",
       "primary_url": "https://ametllerorigen.wd3.myworkdayjobs.com/es/CareerSite/job/OLERDOLA/LIDER-D-ART-EN-PACKAGING_JR107430",
       "all_links": [
         "https://ametllerorigen.wd3.myworkdayjobs.com/es/CareerSite/job/OLERDOLA/LIDER-D-ART-EN-PACKAGING_JR107430",
         "https://corp.ametllerorigen.com/es/trabaja-con-nosotros/"
       ],
-      "status_evidence": "2026-08-13 Round 49：Ametller 官方 Workday JR107430 仍返回完整 JobPosting；正文全为加泰语，并明确 5 年以上、Olèrdola/Numància、驾照和自有车辆要求。",
+      "status_evidence": "2026-08-13 read Ametller official Workday CXS for JR107430: canApply=true, posted=true, full-time indefinite hybrid, 5+ years, Olèrdola, licence and own vehicle are explicit; the whole operating brief is Catalan but no language level is listed.",
       "analysis": "Keep as a C-tier verification card, not a direct-apply recommendation. The role is materially relevant to packaging and physical VI, but the official application URL currently fails; confirm through Ametller HR or a newly indexed Workday requisition before using it."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 122,
+      "rank": 125,
       "id": 88,
       "company": "Dragons Group",
       "role_zh": "平面设计负责人（品牌系统与团队管理）",
@@ -3495,7 +3581,7 @@
       "status": "live",
       "location_bucket": "barcelona",
       "location": "Barcelona / hybrid / permanent / 全职",
-      "language_path": "spanish",
+      "language_path": "englishSpanish",
       "experience_path": "lead",
       "experience_requirement": "负责人 / 7–8 年 / 团队带领与复杂品牌系统",
       "direction": "brand",
@@ -3510,12 +3596,12 @@
         "https://dragons-group.factorialhr.com/job_posting/lead-graphic-designer-301871",
         "https://www.linkedin.com/jobs/view/4436198704"
       ],
-      "status_evidence": "The exact official Factorial requisition 301871 was opened and read in full on 2026-08-13. It shows Apply now, Permanent, Full time and Hybrid Barcelona. The role translates brand strategy into scalable design systems, protects quality across touchpoints, leads designers and owns complex FMCG and 360-campaign delivery. Spanish and English are both mandatory.",
+      "status_evidence": "2026-08-13 reopened Dragons official Factorial 301871: Apply now, Barcelona hybrid permanent full-time, 7-8 years, Spanish mandatory and English mandatory remain explicit.",
       "analysis": "Promote from an unverified LinkedIn card to a current official-ATS opportunity, but retain a strong gate penalty. Apply only with 7-8 years, professional Spanish and English, FMCG brand systems, team leadership, client presentations and complex multi-market campaign ownership."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 123,
+      "rank": 126,
       "id": 930902,
       "company": "Ogilvy",
       "role_zh": "高级艺术指导（医药整合 Campaign）",
@@ -3544,7 +3630,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 124,
+      "rank": 127,
       "id": 930824,
       "company": "Dragons Group",
       "role_zh": "中级平面设计师（高端护肤与生活方式品牌）",
@@ -3553,7 +3639,7 @@
       "status": "live",
       "location_bucket": "barcelona",
       "location": "Barcelona / hybrid / 永久全职",
-      "language_path": "spanish",
+      "language_path": "englishSpanish",
       "experience_path": "senior",
       "experience_requirement": "中高级 / 4–8+ 年",
       "direction": "brand",
@@ -3569,12 +3655,12 @@
         "https://dragons-group.factorialhr.com/apply/mid-graphic-designer-301879",
         "https://www.linkedin.com/jobs/view/4451046673"
       ],
-      "status_evidence": "Official Factorial detail 301879 was opened on 2026-08-12 and shows Apply now, Permanent, Full time and Hybrid Barcelona. The brief requires 4–8+ years, advanced retouching/compositing, social and digital campaign systems, brand-guideline consistency, AI image tools, fluent Spanish and fluent English.",
+      "status_evidence": "2026-08-13 reopened Dragons official Factorial 301879: Apply now, Barcelona hybrid permanent full-time, 4-8+ years, Spanish mandatory and English mandatory remain explicit.",
       "analysis": "A real local brand-extension role, but the Spanish requirement and 4–8+ year experience range are material gates. Apply only with premium consumer-brand, campaign toolkit, retouching, compositing and AI-assisted production cases."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 125,
+      "rank": 128,
       "id": 930891,
       "company": "BJAK",
       "role_zh": "高级平面设计师（数字 Campaign、品牌系统与 Motion）",
@@ -3592,18 +3678,18 @@
       "internship": false,
       "score": 0,
       "source_score": 74,
-      "posted_at": "2026-08-13",
+      "posted_at": "2026-08-04",
       "primary_url": "https://jobs.ashbyhq.com/bjakcareer/aca9464d-8ba4-4aa4-b0bc-a26d6c159fdc",
       "all_links": [
         "https://jobs.ashbyhq.com/bjakcareer/aca9464d-8ba4-4aa4-b0bc-a26d6c159fdc",
         "https://www.linkedin.com/jobs/view/4452792075/"
       ],
-      "status_evidence": "2026-08-13 已核验 LinkedIn 4452792075 与官方 Ashby aca9464d-8ba4-4aa4-b0bc-a26d6c159fdc：Spain remote、全职、当前申请表、强英语与 5–8 年均明确。",
+      "status_evidence": "2026-08-13 reopened BJAK official Ashby aca9464d: listed Spain remote full-time since 2026-08-04, 5-8 years and strong English required remain explicit, with an assessment in the interview process.",
       "analysis": "A real Spain-remote design opening but a low-feasibility stretch for this user: senior level, required English, fast performance-marketing output and a practical assessment. Keep far below Chinese and language-unconfirmed junior/mid roles."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 126,
+      "rank": 129,
       "id": 930878,
       "company": "Lateral Thinking",
       "role_zh": "艺术指导（品牌体验、视觉识别与空间导视）",
@@ -3626,12 +3712,12 @@
       "all_links": [
         "https://www.linkedin.com/jobs/view/4449819011"
       ],
-      "status_evidence": "A new original LinkedIn employer detail with independent job ID 4449819011 was opened and read in full on 2026-08-13. It shows Barcelona, full-time and Apply. The vacancy was posted two days earlier and covers visual identity, brand-experience strategy, key visuals, signage, print, digital and offline assets, production and on-site installation. Five-plus years and fluent Spanish are explicit; English and Catalan are advantages.",
+      "status_evidence": "2026-08-13 reopened LinkedIn employer detail 4449819011: Barcelona full-time, 5+ years, fluent Spanish and the new independent application route remain current.",
       "analysis": "This is a genuine new requisition, not a reopening of the closed job ID 4436668875. Keep the old card in history and use only this new route. The subject fit is excellent, but apply only if five-plus years, professional Spanish and hands-on production/installation leadership are credible."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 127,
+      "rank": 130,
       "id": 930881,
       "company": "Dragons Group",
       "role_zh": "高级视频剪辑与动态创意（品牌内容）",
@@ -3655,12 +3741,12 @@
         "https://dragons-group.factorialhr.com/job_posting/senior-video-editor-motion-creative-308042",
         "https://www.linkedin.com/jobs/view/4436304499"
       ],
-      "status_evidence": "The current Dragons official jobs board and exact Factorial requisition 308042 were checked on 2026-08-13 and show a current Apply now route for Senior Video Editor & Motion Creative in hybrid Barcelona. The full employer LinkedIn brief covers campaign films, TVCs, social, branded content, motion graphics, animation, moodboards, AI workflows and collaboration with 3D artists. Fluent English is required; other languages are only a plus.",
+      "status_evidence": "2026-08-13 reopened Dragons official Factorial 308042: Barcelona hybrid permanent full-time, 7+ years, senior video/motion scope and the current Apply route remain visible; fluent English remains the recorded hard gate.",
       "analysis": "Keep as a real but secondary motion opportunity: it is editor-first rather than VI-first and requires 7+ years. Apply only with senior campaign-film editing, premium consumer-brand storytelling, Premiere Pro, After Effects and motion-design depth; use the official ATS rather than third-party reposts."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 128,
+      "rank": 131,
       "id": 162,
       "company": "HP",
       "role_zh": "平面设计师（实际偏市场传播与物料统筹）",
@@ -3669,7 +3755,7 @@
       "status": "live",
       "location_bucket": "barcelona",
       "location": "Sant Cugat del Vallès / hybrid / full-time",
-      "language_path": "english",
+      "language_path": "englishLikely",
       "experience_path": "senior",
       "experience_requirement": "中高阶 / 推荐 4–7 年市场传播或相关经验",
       "direction": "production",
@@ -3683,12 +3769,12 @@
       "all_links": [
         "https://hp.wd5.myworkdayjobs.com/en-US/externalcareersite/job/Sant-Cugat-del-Valles-Barcelona-Spain/Graphic-Designer_3165191-1"
       ],
-      "status_evidence": "HP's official Workday requisition 3165191 was opened on 2026-08-12 and shows Apply, Sant Cugat del Valles, Full time, Posted 4 Days Ago and an active application route. The title says Graphic Designer, but the detailed responsibilities are mainly marketing collateral, customer-reference management, awareness and promotional programmes, communications planning, measurement, budgets and agency coordination. Four to seven years in direct marketing, communications or a related field is recommended; no design software, salary, Spanish requirement or sponsorship policy is published.",
+      "status_evidence": "2026-08-13 HP Workday shell still returns exact requisition 3165191 but the CXS endpoint denied automated reading rather than reporting closure. Retain the previously read Sant Cugat full-time and 4-7 year marketing-communications evidence; no formal language level was published.",
       "analysis": "Add to the reviewed Barcelona board, but keep below genuine brand/VI roles. It may suit a designer with strong marketing-communications and programme-management evidence; do not assume the day-to-day is hands-on graphic design. Confirm portfolio expectations, actual creative-production share, working language, salary, hybrid days and work authorisation before applying."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 129,
+      "rank": 132,
       "id": 876,
       "company": "Buzz Marketing Networks",
       "role_zh": "AI 方向动态设计与视频剪辑",
@@ -3711,12 +3797,12 @@
       "all_links": [
         "https://es.linkedin.com/jobs/view/motion-designer-video-editor-con-foco-en-ia-at-buzz-agencia-creativa-digital-4442212716"
       ],
-      "status_evidence": "LinkedIn 独立职位编号 `4442212716` 约于 2026-07-26 发布，本轮显示约 13 小时并可申请。职责覆盖 campaign、社媒和数字内容的 motion / 剪辑、After Effects、Premiere 与 AI 视频工具；全职混合办公，公开安排为每周 2 天办公室、3 天远程。要求约 4–5 年相关经验；职位全文为西班牙语，但没有单列语言等级，薪资未公开",
+      "status_evidence": "2026-08-13 reopened LinkedIn employer detail 4442212716: Barcelona 2-office/3-remote full-time, 4-5 years and motion/video/AI scope remain current; the complete local brief is Spanish but no formal language level is stated.",
       "analysis": "列 C 级资深挑战岗。它与既有 Buzz 艺术指导是不同职位，不能合并；但当前西语与经验门槛较高。若资历足够，先用英文短消息询问团队是否接受英语工作，再提交 campaign、社媒 motion、AI 视频生成到精修的流程案例；确认薪资、合同和测试范围。"
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 130,
+      "rank": 133,
       "id": 930829,
       "company": "Raventós Codorníu",
       "role_zh": "包装平面设计实习（新品牌与印前制作）",
@@ -3744,7 +3830,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 131,
+      "rank": 134,
       "id": 930876,
       "company": "IEBS Business School",
       "role_zh": "平面设计实习生（活动与社媒品牌适配）",
@@ -3769,12 +3855,12 @@
         "https://iebschool.factorialhr.com/",
         "https://es.linkedin.com/jobs/view/pr%C3%A1cticas-dise%C3%B1o-gr%C3%A1fico-at-iebs-business-school-4417493275"
       ],
-      "status_evidence": "Live/current: IEBS Business School's official Factorial careers board was opened on 2026-08-12 and explicitly lists Prácticas Diseño Gráfico in Viladecans, Diseño, Híbrido and Inscríbete ahora. The current employer-origin LinkedIn detail 4417493275 also shows Solicitar and a complete brief covering event graphics, carousels, posts, stories, multi-format social adaptation and brand-identity consistency.",
+      "status_evidence": "2026-08-13 reopened IEBS official Factorial 303264: Viladecans hybrid part-time training placement, current application, student/convenio requirement and Spanish operating brief remain visible; compensation is not published.",
       "analysis": "A real Barcelona-province entry route, but it is social-first production rather than core VI and the ability to sign an internship agreement is mandatory. The public brief is Spanish and does not publish compensation. Confirm pay, duration, exact office days, daily working language and conversion prospects before applying."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 132,
+      "rank": 135,
       "id": 930814,
       "company": "CNT Management Consulting",
       "role_zh": "高级品牌设计与创意内容经理",
@@ -3797,12 +3883,12 @@
       "all_links": [
         "https://www.linkedin.com/jobs/view/4445748221"
       ],
-      "status_evidence": "2026-08-13 Round 48 逐字复核：CNT LinkedIn 雇主详情 4445748221 当前可完整读取并显示 Easy Apply、Barcelona；要求段明确写“Excellent written and spoken English is required. Very good German skills are a strong advantage.”",
+      "status_evidence": "2026-08-13 reopened LinkedIn employer detail 4445748221: Barcelona hybrid, corporate identity ownership and the current application remain explicit. Excellent written and spoken English is required; German is only an advantage.",
       "analysis": "A real current Barcelona application route, but not enough evidence to rank above fully readable roles. Open the form and verify the complete JD first."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 133,
+      "rank": 136,
       "id": 930841,
       "company": "Lenskart.com",
       "role_zh": "欧洲视觉陈列负责人（零售 VI 系统）",
@@ -3825,12 +3911,12 @@
       "all_links": [
         "https://www.linkedin.com/jobs/view/4452431400/"
       ],
-      "status_evidence": "2026-08-13 复核：当前详情仍指向 Barcelona 的欧洲视觉陈列负责人岗位；公开职责要求 10–15+ 年视觉陈列经验及至少 5 年领导经验，但未列明确工作语言。",
+      "status_evidence": "2026-08-13 reopened LinkedIn employer detail 4452431400: Barcelona onsite head-level visual merchandising, 10-15+ years and 5+ years of leadership remain current; no formal language level is published.",
       "analysis": "Highly relevant to physical brand systems and retail VI, but this is a head-level role requiring 10-15+ years and at least five years of leadership. Keep as a transparent stretch opportunity rather than ranking it above attainable designer roles."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 134,
+      "rank": 137,
       "id": 867,
       "company": "Space Go",
       "role_zh": "创意动态设计师（品牌 campaign / 社交广告）",
@@ -3848,17 +3934,17 @@
       "internship": false,
       "score": 0,
       "source_score": 48,
-      "posted_at": "2026-07-26",
+      "posted_at": "2026-07-29",
       "primary_url": "https://es.linkedin.com/jobs/view/creative-motion-grapher-at-space-go-4440457390",
       "all_links": [
         "https://es.linkedin.com/jobs/view/creative-motion-grapher-at-space-go-4440457390"
       ],
-      "status_evidence": "2026-08-13 Round 49：LinkedIn 4440457390 的 JobPosting 仍显示 Sant Cugat hybrid、2026-07-29 发布、2026-09-19 截止及 TEMPORARY；正文未写语言等级。",
+      "status_evidence": "2026-08-13 reopened LinkedIn JobPosting 4440457390: Sant Cugat hybrid, temporary employment, 2026-07-29 publication and 2026-09-19 validity remain current; the full local brief is Spanish without a formal language level.",
       "analysis": "列 C 级资深挑战岗。方向和技术含量很强，但经验门槛及西语团队语境不适合当下优先于 devicenow、Stripe 或 Revolut。若资历足够，先用英文询问工作语言、临时合同期限和薪资；作品集应展示品牌动态规范、2D / 3D campaign、模板系统、短视频变体和转化导向迭代。"
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 135,
+      "rank": 138,
       "id": 930886,
       "company": "Establishment Labs",
       "role_zh": "项目协调与平面设计实习（30% 设计）",
@@ -3876,17 +3962,17 @@
       "internship": true,
       "score": 0,
       "source_score": 48,
-      "posted_at": "2026-08-12",
+      "posted_at": "2026-08-11",
       "primary_url": "https://es.linkedin.com/jobs/view/junior-project-coordinator-graphic-designer-at-establishment-labs-4449830488",
       "all_links": [
         "https://es.linkedin.com/jobs/view/junior-project-coordinator-graphic-designer-at-establishment-labs-4449830488"
       ],
-      "status_evidence": "Live/current. The exact LinkedIn employer detail 4449830488 was opened on 2026-08-13. It visibly shows Barcelona, Solicitar, publication one day earlier and no closed marker. The role is approximately 70% project coordination and 30% basic graphic-design adjustment. Design work includes presentations, brochures, templates, social assets, brand-guideline consistency and print-ready files. Only students currently enrolled in a bachelor or postgraduate programme who can sign a formal internship agreement are eligible. Fluent/native English is required; Spanish and other languages are only a plus.",
+      "status_evidence": "2026-08-13 reopened LinkedIn JobPosting 4449830488: Barcelona hybrid internship, 2026-08-11 publication, current application, enrolment/convenio gate and fluent or native English are explicit; only about 30% of the role is design.",
       "analysis": "Keep as a transparent lower-priority English-first foothold, not as a core graphic-design job. Apply only if the university convenio requirement is genuinely available and project coordination is acceptable; confirm pay, duration, hours and conversion prospects first."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 136,
+      "rank": 139,
       "id": 930887,
       "company": "Lateral Thinking",
       "role_zh": "高级空间设计师（品牌体验与沉浸式环境）",
@@ -3904,17 +3990,17 @@
       "internship": false,
       "score": 0,
       "source_score": 43,
-      "posted_at": "2026-08-12",
+      "posted_at": "2026-08-11",
       "primary_url": "https://es.linkedin.com/jobs/view/we%E2%80%99re-hiring-%E2%80%93-senior-spatial-designer-at-lateral-thinking-4452412973",
       "all_links": [
         "https://es.linkedin.com/jobs/view/we%E2%80%99re-hiring-%E2%80%93-senior-spatial-designer-at-lateral-thinking-4452412973"
       ],
-      "status_evidence": "Live/current with a stale-template caveat. The exact LinkedIn employer detail 4452412973 was opened on 2026-08-13. It visibly shows Barcelona, Solicitar, publication one day earlier and no closed marker. The role creates brand-driven spatial stories, immersive environments and installations and requires 5+ years, 3D rendering, CAD/floorplans, Adobe and fluent Spanish. The brief still says an ideal January 2026 start, so the recruiter should confirm that this refreshed requisition is genuinely active and correct the start-date text.",
+      "status_evidence": "2026-08-13 reopened LinkedIn JobPosting 4452412973: Barcelona full-time, 5+ years, specialist spatial/CAD/3D scope and fluent Spanish remain explicit; the stale January 2026 start sentence still requires recruiter confirmation.",
       "analysis": "A real but off-core brand-experience extension. Keep low because fluent Spanish, five years and specialist spatial/CAD/3D experience are hard gates and the start date is stale. Confirm the opening before tailoring anything."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 137,
+      "rank": 140,
       "id": 930842,
       "company": "Voodoo",
       "role_zh": "高级技术 UI 与动态设计师",
@@ -3944,64 +4030,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 138,
-      "id": 859,
-      "company": "Stripe / Brand Studio",
-      "role_zh": "品牌动态设计师（Identity 动态系统）",
-      "original_role": "品牌动态设计师—Stripe Identity / Motion Designer, Stripe Identity",
-      "tier": "A",
-      "status": "live",
-      "location_bucket": "barcelona",
-      "location": "Barcelona 混合办公 / 西班牙远程",
-      "language_path": "englishLikely",
-      "experience_path": "senior",
-      "experience_requirement": "高级 / 5 年以上 Motion 与 3D",
-      "direction": "digital",
-      "chinese_relevant": false,
-      "formal": true,
-      "internship": false,
-      "score": 0,
-      "source_score": 120,
-      "posted_at": "",
-      "primary_url": "https://stripe.com/careers/listing/motion-designer-stripe-identity/7769564",
-      "all_links": [
-        "https://stripe.com/careers/listing/motion-designer-stripe-identity/7769564",
-        "https://stripe.com/careers/apply/motion-designer-stripe-identity/7769564"
-      ],
-      "status_evidence": "2026-08-13 复核：Stripe 官方 Motion Designer, Identity 详情仍显示 Apply now、Barcelona、Remote in Spain、全职及 €74,800–112,200；要求 5+ 年、After Effects 与 C4D/Houdini，但未列语言。",
-      "analysis": "Verified high-seniority Barcelona/Spain-remote brand-motion role. Use an English, system-level motion portfolio with identity principles, tokens/components, product animation and campaign extension; confirm remote compensation, work authorization and office rhythm before interview."
-    },
-    {
-      "ledger_bucket": "current-main",
-      "rank": 139,
-      "id": 1029,
-      "company": "Together",
-      "role_zh": "高级品牌设计师（B2B 科技 / 品牌系统）",
-      "original_role": "Senior Brand Designer（本轮新增）",
-      "tier": "B",
-      "status": "live",
-      "location_bucket": "remote",
-      "location": "Remote UK & Europe; Spain employment terms to confirm",
-      "language_path": "englishLikely",
-      "experience_path": "senior",
-      "experience_requirement": "高级 / 8 年以上品牌系统经验",
-      "direction": "brand",
-      "chinese_relevant": false,
-      "formal": true,
-      "internship": false,
-      "score": 0,
-      "source_score": 110,
-      "posted_at": "",
-      "primary_url": "https://together.agency/careers/senior-brand-designer/",
-      "all_links": [
-        "https://together.agency/careers/senior-brand-designer/"
-      ],
-      "status_evidence": "2026-08-13 复核：Together 官方 Senior Brand Designer 页面当前返回 200、Remote UK & Europe、申请表和 £40k–65k；明确 8+ 年，但未出现英语等级要求。",
-      "analysis": "Verified high B-tier Europe-remote brand-system opportunity. This is an exact identity/system match, but seniority is a major gate and Spain employment terms must be confirmed. Apply in English with 8+ years of robust brand systems, B2B-tech, product/web integration and leadership evidence."
-    },
-    {
-      "ledger_bucket": "current-main",
-      "rank": 140,
+      "rank": 141,
       "id": 305,
       "company": "Hostinger",
       "role_zh": "高级平面设计师（品牌与创意）",
@@ -4030,7 +4059,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 141,
+      "rank": 142,
       "id": 296,
       "company": "Bakken & Bæck",
       "role_zh": "高级品牌设计师（VI、视觉语言与品牌系统）",
@@ -4039,7 +4068,7 @@
       "status": "live",
       "location_bucket": "barcelona",
       "location": "Barcelona / 需到办公室 / 支持搬迁与签证协助",
-      "language_path": "english",
+      "language_path": "englishLikely",
       "experience_path": "senior",
       "experience_requirement": "高级 / 5 年以上",
       "direction": "brand",
@@ -4054,37 +4083,8 @@
         "https://bakkenbaeck.com/join/senior-brand-designer",
         "https://bakkenbaeck.teamtailor.com/jobs/6395676-senior-brand-designer/applications/new"
       ],
-      "status_evidence": "Current application is live with Apply: the official detail was opened directly on 2026-08-09. It explicitly says the role can be based in Barcelona, Amsterdam, London or Oslo and does not consider remote applicants. Scope is senior brand identity, visual narratives, design systems/guidelines, digital and physical rollout, quality ownership and art direction. It requires 5+ years plus Figma and Adobe; salary, Spanish and Spain work-authorisation terms are not stated.",
+      "status_evidence": "2026-08-13 reopened Bakken & Bæck official Senior Brand Designer page: Barcelona office is eligible, remote applicants are excluded, 5+ years, identity systems and relocation support remain current; no formal English or Spanish level is published.",
       "analysis": "High-priority Barcelona senior brand-system role, but only if office attendance and seniority fit. Apply with identity systems, guideline-led digital/physical extensions and art-direction cases; ask the Barcelona team about salary, office cadence, Spanish workflow and work-authorisation before spending heavily."
-    },
-    {
-      "ledger_bucket": "current-main",
-      "rank": 142,
-      "id": 601,
-      "company": "SIERRA Production House",
-      "role_zh": "艺术指导（视觉语言与品牌识别）",
-      "original_role": "Art Director",
-      "tier": "B",
-      "status": "live",
-      "location_bucket": "barcelona",
-      "location": "Barcelona / 每周 3 天办公室、2 天灵活 / 全职",
-      "language_path": "englishLikely",
-      "experience_path": "senior",
-      "experience_requirement": "艺术指导 / 年限未公开",
-      "direction": "brand",
-      "chinese_relevant": false,
-      "formal": false,
-      "internship": false,
-      "score": 0,
-      "source_score": 106,
-      "posted_at": "",
-      "primary_url": "https://www.sierraproductionhouse.com/jobs",
-      "all_links": [
-        "https://www.sierraproductionhouse.com/jobs",
-        "mailto:tw@sierraproductionhouse.com"
-      ],
-      "status_evidence": "2026-08-13 复核：SIERRA 官方 jobs 页当前限制自动访问；最近一次完整官方页仍列 1 open position、Art Director、Barcelona 40 小时和直接申请邮箱，但没有语言条款。",
-      "analysis": "Verified Barcelona B-tier art-direction opening. It owns visual direction, coherent visual languages, pitch decks and SIERRA brand identity; show campaign art direction, typography/colour/motion, photo/video production and AI-assisted creative-direction work. Confirm seniority, Spanish, salary and work-authorisation in the first exchange."
     },
     {
       "ledger_bucket": "current-main",
