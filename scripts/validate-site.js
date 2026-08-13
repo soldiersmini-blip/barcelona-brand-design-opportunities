@@ -126,11 +126,11 @@ check(
   auditedMain.every((item) => {
     const language = test.applicationLanguagePath(item).key;
     const score = test.displayedScore(item);
-    if (language === "english") return score <= 45;
+    if (language === "english") return score <= 28;
     if (language === "unknown") return score <= 40;
-    if (language === "spanish") return score <= 30;
-    if (language === "spanishLikely") return score <= 35;
-    if (language === "foreign") return score <= 30;
+    if (language === "spanish") return score <= 18;
+    if (language === "spanishLikely") return score <= 24;
+    if (language === "foreign") return score <= 18;
     return true;
   }),
   "外语岗位突破了个人语言门槛分数上限",
@@ -276,11 +276,11 @@ check(
   "当前最新轮次没有完整进入页面数据或缺少原始证据入口",
 );
 check(
-  /Round 42/i.test(test.latestRoundSection) &&
-    [996, 985, 864, 1000, 1024, 1021, 1098, 930867, 942, 1029].every((id) =>
+  /Round 43/i.test(test.latestRoundSection) &&
+    [930842, 1000, 930873, 1024, 930885, 37, 224, 483, 996, 1036, 1098, 930867, 1097, 1240, 88, 930824, 930878, 930888, 577, 942, 1029, 1237, 313, 930712, 172, 981, 277, 1287, 375, 382, 867, 445, 579, 25, 210, 1296, 1314, 443, 136, 930829, 93, 1094, 581, 930876, 294, 86, 930865, 351, 89, 1011, 27, 930887, 930886, 1093, 1099, 930843, 1243, 304].every((id) =>
       test.latestRoundItems.some((item) => Number(item.id) === id),
     ),
-  "Round 42 ranks 101-140 status, language and experience audit is incomplete",
+  "Round 43 ranks 141-198 status, language, experience and duplicate audit is incomplete",
 );
 const round33AuditItems = test.allData.filter((item) => /Round 33 full-board direct-link reconciliation/i.test(String(item.section || "")));
 check(
@@ -1004,7 +1004,7 @@ check(r712ColourMonster && r712ColourMonster.score === 100 && test.locationBucke
 const r712Pepsi = test.allData.find((item) => item.id === 920001);
 check(r712Pepsi && r712Pepsi.score === 112 && test.locationBucket(r712Pepsi) === "barcelona" && test.applicationStatus(r712Pepsi).key === "live" && test.toLinks(r712Pepsi).some((url) => /4440194840/i.test(url)), "Round 712: PepsiCo Senior Designer live-status audit regressed");
 const r713Bav = test.allData.find((item) => item.id === 930712);
-check(r713Bav && r713Bav.score === 104 && test.locationBucket(r713Bav) === "barcelona" && test.applicationStatus(r713Bav).key === "live" && test.toLinks(r713Bav).some((url) => /4443713564/i.test(url)), "Round 713: Bav Group Art Director discovery missing or misclassified");
+check(r713Bav && r713Bav.score === 104 && test.locationBucket(r713Bav) === "barcelona" && test.applicationStatus(r713Bav).key === "live" && test.toLinks(r713Bav).some((url) => /8634604002/i.test(url)) && !test.toLinks(r713Bav).some((url) => /4443713564/i.test(url)), "Round 43: canonical VML Art Director official route missing or unrelated LinkedIn route returned");
 const r714Desigual = test.allData.find((item) => item.id === 322);
 check(r714Desigual && r714Desigual.score === 104 && test.locationBucket(r714Desigual) === "barcelona" && test.applicationStatus(r714Desigual).key === "closed" && test.toLinks(r714Desigual).some((url) => /4363154181/i.test(url)), "Round 714/2026-08-12: Desigual no-longer-accepting state regressed");
 const r716LearnWise = test.allData.find((item) => item.id === 1234);
@@ -1132,10 +1132,10 @@ check(test.MY_OPPORTUNITY_IDS.length === 204 && new Set(test.MY_OPPORTUNITY_IDS)
 check(r23Main.length === 204 && r23VisibleMain.length === 204, "Round 39: complete audited history must preserve all 204 reviewed IDs");
 check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 155 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 49, "Round 39: Barcelona/remote split must be exactly 155/49");
 check(
-  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 183 &&
-    r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 15 &&
-    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 6,
-  "Profile audit: 204 reviewed IDs must resolve to 183 live, 15 verify and 6 preserved closed-history cards",
+  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 182 &&
+    r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 14 &&
+    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 8,
+  "Profile audit: 204 reviewed IDs must resolve to 182 live, 14 verify and 8 preserved closed-history cards",
 );
 const r39Skyscanner = r23ById(930812);
 check(r39Skyscanner && test.applicationStatus(r39Skyscanner).key === "closed", "Round 39: Skyscanner Senior Visual Designer must remain in closed history, not the current board");
@@ -1184,19 +1184,19 @@ const r41LanguageCounts = r41Current.reduce((counts, item) => {
   return counts;
 }, {});
 check(
-  r41Current.length === 198 &&
-    r41Current.filter((item) => test.locationBucket(item) === "barcelona").length === 149 &&
+  r41Current.length === 196 &&
+    r41Current.filter((item) => test.locationBucket(item) === "barcelona").length === 147 &&
     r41Current.filter((item) => test.locationBucket(item) === "remote").length === 49 &&
     r41LanguageCounts.chineseCheck === 2 &&
     r41LanguageCounts.basicSpanish === 1 &&
-    r41LanguageCounts.english === 67 &&
-    r41LanguageCounts.unknown === 50 &&
-    r41LanguageCounts.spanishLikely === 11 &&
-    r41LanguageCounts.spanish === 66 &&
-    r41LanguageCounts.foreign === 1,
-  `Round 42: current ledger mismatch ${JSON.stringify({ total: r41Current.length, language: r41LanguageCounts })}`,
+    r41LanguageCounts.english === 64 &&
+    r41LanguageCounts.unknown === 54 &&
+    r41LanguageCounts.spanishLikely === 21 &&
+    r41LanguageCounts.spanish === 49 &&
+    r41LanguageCounts.foreign === 5,
+  `Round 43: current ledger mismatch ${JSON.stringify({ total: r41Current.length, language: r41LanguageCounts })}`,
 );
-for (const id of [996, 985, 1000, 1024, 1021, 1098, 930867, 942, 1029]) {
+for (const id of [996, 985, 1024, 1021, 1098, 930867, 942, 1029]) {
   const item = r23ById(id);
   check(item && test.applicationLanguagePath(item).key === "unknown", `Round 42: ${id} still infers English without an explicit work-language clause`);
 }
@@ -1214,8 +1214,32 @@ check(
     !test.toLinks(r42Ametller).some((url) => /JR106376|3eb6ced14f3dc5cf/i.test(url)),
   "Round 42: Ametller replacement requisition, language risk, experience gate or canonical link is wrong",
 );
+for (const id of [37, 445, 930865, 1011, 304]) {
+  const item = r23ById(id);
+  check(item && test.applicationLanguagePath(item).key === "unknown", `Round 43: ${id} still invents an English requirement from page or company context`);
+}
+for (const id of [930842, 1000, 483, 1097, 375, 1314, 1099]) {
+  const item = r23ById(id);
+  check(item && test.applicationLanguagePath(item).key === "english", `Round 43: ${id} lost a directly stated English requirement`);
+}
+for (const id of [930873, 930885, 577, 867, 1296, 930829, 930876, 86, 351, 930843]) {
+  const item = r23ById(id);
+  check(item && test.applicationLanguagePath(item).key === "spanishLikely", `Round 43: ${id} confuses a local Spanish brief with a stated hard language level`);
+}
+for (const id of [930712, 981, 277, 93]) {
+  const item = r23ById(id);
+  check(item && test.applicationLanguagePath(item).key === "foreign", `Round 43: ${id} lost the explicit English-plus-Catalan compound gate`);
+}
+check(test.experienceInfo(r23ById(88)).key === "lead" && test.experienceInfo(r23ById(1094)).key === "lead", "Round 43: Dragons Lead or CATORCE Creative Director is not receiving a lead-level feasibility penalty");
+check(test.applicationStatus(r23ById(930888)).key === "closed" && test.applicationStatus(r23ById(581)).key === "closed", "Round 43: duplicate VML mirror or removed Montgat listing remained current");
+check(test.toLinks(r23ById(930712)).length === 1 && /8634604002/i.test(test.toLinks(r23ById(930712))[0]), "Round 43: canonical VML card still contains the unrelated LinkedIn route");
+check(test.toLinks(r23ById(579))[0] === "https://www.infojobs.net/castelldefels/disenador-grafico/of-id70f73ce2843f2842d228801f65a9e", "Round 43: Gestión Hostelocio exact InfoJobs detail was not recovered as the primary route");
+const r43Sorted = r41Current.slice();
+test.sortRecords(r43Sorted);
+check([778, 920, 930835].every((id, index) => Number(r43Sorted[index]?.id) === id), "Round 43: the three Chinese/contact-first opportunities are no longer the first three cards");
+check(r43Sorted.slice(3, 10).every((item) => test.applicationLanguagePath(item).key === "unknown"), "Round 43: explicit foreign-language jobs still outrank the best no-stated-language backups");
 check(r23Main.filter((item) => test.isChineseRelevant(item)).length === 6, "Round 37: Chinese-relevant current opportunity count must remain evidence-backed at 6");
-for (const id of [930884, 930885, 930886, 930887, 930888]) {
+for (const id of [930884, 930885, 930886, 930887]) {
   const item = r23ById(id);
   check(item && test.MY_OPPORTUNITY_SET.has(id) && test.locationBucket(item) === "barcelona" && test.applicationStatus(item).key === "live" && test.toLinks(item).length === 1, `Round 37: current Barcelona detail ${id} is missing, misclassified or lacks its exact route`);
 }

@@ -1536,6 +1536,7 @@ const ROUND39_SECTION = "2026-08-13 Round 39 high-rank language, seniority and s
 const ROUND40_SECTION = "2026-08-13 Round 40 ranks 26-60 language and experience audit";
 const ROUND41_SECTION = "2026-08-13 Round 41 ranks 61-100 status language and experience audit";
 const ROUND42_SECTION = "2026-08-13 Round 42 ranks 101-140 language and official-requisition audit";
+const ROUND43_SECTION = "2026-08-13 Round 43 ranks 141-198 language status and duplicate audit";
 
 // Round 20: a visible email or a fresh search-card timestamp cannot override a
 // closed original detail. Conversely, employer-owned ATS pages with an active
@@ -12044,6 +12045,220 @@ Object.assign(CURATED, {
   },
 });
 
+// Round 43 finishes the current-board language and feasibility pass. A page's
+// language only counts when the vacancy text states a requirement; a local
+// Spanish/Catalan working context without a written level remains a risk label,
+// not a fabricated hard gate. Exact duplicate and removed-listing cards move to
+// history while their original evidence remains preserved.
+Object.assign(CURATED, {
+  1000: {
+    ...CURATED[1000],
+    languageKey: "english",
+    language: "官方正文明确要求扎实的英语口头与书面沟通能力",
+    applicationMode: "english",
+    statusEvidence: "2026-08-13 再复核：Designity 官方 Motion Designer 页面当前返回 200、显示 Apply now；正文明确写出 solid verbal and written English communication skills，并要求 5+ 年 Motion。",
+    changeType: "profile-language-audit-explicit-english",
+  },
+  930873: {
+    ...CURATED[930873],
+    languageKey: "spanishLikely",
+    language: "英语中等以上明确；现场西语编辑团队语境高概率，但未列西语等级",
+    applicationMode: "spanishLikely",
+    changeType: "profile-language-audit-local-risk",
+  },
+  930885: {
+    ...CURATED[930885],
+    languageKey: "spanishLikely",
+    language: "完整公开 brief 为西语且本地客户协作；未列明确语言等级",
+    applicationMode: "spanishLikely",
+    changeType: "profile-language-audit-local-risk",
+  },
+  37: {
+    ...CURATED[37],
+    languageKey: "unknown",
+    language: "英语课是公司福利，不是招聘条件；正文未列工作语言等级",
+    applicationMode: "unknown",
+    changeType: "profile-language-audit-unknown",
+  },
+  88: {
+    ...CURATED[88],
+    experienceKey: "lead",
+    experienceLabel: "负责人 / 7–8 年 / 团队带领与复杂品牌系统",
+    changeType: "profile-experience-audit-lead",
+  },
+  930888: {
+    ...CURATED[930888],
+    statusKey: "closed",
+    languageKey: "foreign",
+    language: "中高英语与加泰语明确要求",
+    applicationMode: "foreign",
+    statusEvidence: "2026-08-13 去重复核：LinkedIn 4441238571 的正文、语言、年限和隐藏官方编号均与当前 VML requisition 8634604002 相同；保留 930712 为官方主卡，本镜像转入历史。",
+    reason: "同一个 VML Art Director requisition 的 LinkedIn 镜像，不应占第二个当前岗位名额。",
+    changeType: "profile-duplicate-archive",
+  },
+  577: {
+    ...CURATED[577],
+    languageKey: "spanishLikely",
+    language: "英语与加泰语仅列为加分项；现场本地协作的西语风险高，但未列硬等级",
+    applicationMode: "spanishLikely",
+    changeType: "profile-language-audit-local-risk",
+  },
+  930712: {
+    ...CURATED[930712],
+    languageKey: "foreign",
+    language: "中高英语与加泰语为明确要求",
+    applicationMode: "foreign",
+    links: ["https://www.vml.com/careers/job/8634604002-es-art-director"],
+    preferCuratedLinks: true,
+    suppressLinkFragments: ["4443713564"],
+    changeType: "profile-language-and-canonical-link-audit",
+  },
+  981: {
+    ...CURATED[981],
+    languageKey: "foreign",
+    language: "高水平英语与加泰语为明确要求",
+    applicationMode: "foreign",
+    changeType: "profile-language-audit-foreign",
+  },
+  277: {
+    ...CURATED[277],
+    languageKey: "foreign",
+    language: "高水平英语与加泰语为明确要求；未列西语等级",
+    applicationMode: "foreign",
+    changeType: "profile-language-audit-foreign",
+  },
+  375: {
+    ...CURATED[375],
+    languageKey: "english",
+    language: "官方正文明确要求非常高或母语级英语 C1+/C2；未列西语要求",
+    applicationMode: "english",
+    changeType: "profile-language-audit-explicit-english",
+  },
+  867: {
+    ...CURATED[867],
+    languageKey: "spanishLikely",
+    language: "Sant Cugat 本地团队与西语公开 brief；未列明确语言等级",
+    applicationMode: "spanishLikely",
+    changeType: "profile-language-audit-local-risk",
+  },
+  445: {
+    ...CURATED[445],
+    languageKey: "unknown",
+    language: "Playson 官方 Ashby 正文未列工作语言等级",
+    applicationMode: "unknown",
+    changeType: "profile-language-audit-unknown",
+  },
+  1296: {
+    ...CURATED[1296],
+    languageKey: "spanishLikely",
+    language: "西语本地 agency 语境高概率；官方正文未列西语或英语等级",
+    applicationMode: "spanishLikely",
+    changeType: "profile-language-audit-local-risk",
+  },
+  930829: {
+    ...CURATED[930829],
+    languageKey: "spanishLikely",
+    language: "酒业总部与西语公开 brief 的本地语境高概率；未列语言等级",
+    applicationMode: "spanishLikely",
+    changeType: "profile-language-audit-local-risk",
+  },
+  93: {
+    ...CURATED[93],
+    languageKey: "foreign",
+    language: "高水平英语与加泰语为明确要求",
+    applicationMode: "foreign",
+    changeType: "profile-language-audit-foreign",
+  },
+  1094: {
+    ...CURATED[1094],
+    experienceKey: "lead",
+    experienceLabel: "创意总监 / 10+ 年代理公司 / 3–4 年总监经验",
+    changeType: "profile-experience-audit-lead",
+  },
+  581: {
+    ...CURATED[581],
+    statusKey: "closed",
+    statusEvidence: "2026-08-13 复核：当前 InfoJobs Montgat 列表返回 200，但已不再出现原平面设计职位或对应详情，只剩其他职位；原线索转入历史，列表入口继续保留作证据。",
+    reason: "当前来源页已移除该设计岗位，不能继续作为可投或待确认名额。",
+    changeType: "profile-removed-listing-archive",
+  },
+  930876: {
+    ...CURATED[930876],
+    languageKey: "spanishLikely",
+    language: "Viladecans 本地实习与西语公开 brief；正文未列明确语言等级",
+    applicationMode: "spanishLikely",
+    changeType: "profile-language-audit-local-risk",
+  },
+  86: {
+    ...CURATED[86],
+    languageKey: "spanishLikely",
+    language: "Barcelona agency 实习与西语公开 brief；正文未列明确语言等级",
+    applicationMode: "spanishLikely",
+    changeType: "profile-language-audit-local-risk",
+  },
+  930865: {
+    ...CURATED[930865],
+    languageKey: "unknown",
+    language: "匿名合作公司正文未列工作语言等级",
+    applicationMode: "unknown",
+    changeType: "profile-language-audit-unknown",
+  },
+  351: {
+    ...CURATED[351],
+    languageKey: "spanishLikely",
+    language: "Barcelona paid-media agency 本地语境高概率；正文未列语言硬门槛",
+    applicationMode: "spanishLikely",
+    changeType: "profile-language-audit-local-risk",
+  },
+  1011: {
+    ...CURATED[1011],
+    languageKey: "unknown",
+    language: "JustMarkets 官方正文未列英语或其他语言等级",
+    applicationMode: "unknown",
+    changeType: "profile-language-audit-unknown",
+  },
+  930843: {
+    ...CURATED[930843],
+    languageKey: "spanishLikely",
+    language: "Barcelona 本地实习与西语公开 brief；正文未列明确语言等级",
+    applicationMode: "spanishLikely",
+    changeType: "profile-language-audit-local-risk",
+  },
+  304: {
+    ...CURATED[304],
+    languageKey: "unknown",
+    language: "Vista 官方职位正文未列英语或西语能力要求",
+    applicationMode: "unknown",
+    statusEvidence: "2026-08-13 复核：Vista 官方 Spain-remote Lead UX Designer, AI LogoMaker 页面返回 200、显示 Apply now 和完整正文；5+ 年及 Lead 资历明确，但未列工作语言等级。",
+    changeType: "profile-language-audit-unknown",
+  },
+  579: {
+    ...CURATED[579],
+    links: [
+      "https://www.infojobs.net/castelldefels/disenador-grafico/of-id70f73ce2843f2842d228801f65a9e",
+      "https://www.infojobs.net/gestion-hostelocio/em-i98545453515257711011152016245053502781",
+    ],
+    preferCuratedLinks: true,
+    suppressLinkFragments: ["/ofertas-trabajo/barcelona/castelldefels/"],
+    statusEvidence: "2026-08-13 复核：从 InfoJobs Castelldefels 列表找回精确详情 d70f73ce2843f2842d228801f65a9e；详情返回 200、未显示关闭，正文仍列 Gestión Hostelocio、现场全职、餐饮品牌视觉与高级作品集要求。",
+    changeType: "profile-canonical-link-recovery",
+  },
+});
+
+const ROUND43_AUDITED_IDS = Object.freeze([
+  930842, 1000, 930873, 1024, 930885, 37, 224, 483, 996, 1036, 1098, 930867, 1097, 1240, 88,
+  930824, 930878, 930888, 577, 942, 1029, 1237, 313, 930712, 172, 981, 277, 1287, 375, 382, 867, 445,
+  579, 25, 210, 1296, 1314, 443, 136, 930829, 93, 1094, 581, 930876, 294, 86, 930865, 351, 89, 1011,
+  27, 930887, 930886, 1093, 1099, 930843, 1243, 304,
+]);
+for (const id of ROUND43_AUDITED_IDS) {
+  if (CURATED[id]) CURATED[id] = { ...CURATED[id], auditSection: ROUND43_SECTION };
+}
+for (const id of [930888, 581]) {
+  const item = allData.find((entry) => Number(entry.id) === id);
+  if (item) item.tier = "X";
+}
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
@@ -12573,17 +12788,17 @@ function personalMatchScore(item) {
     chineseCheck: 92,
     basicSpanish: 68,
     unknown: 40,
-    english: 45,
-    spanishLikely: 35,
-    foreign: 30,
-    spanish: 30,
+    english: 28,
+    spanishLikely: 24,
+    foreign: 18,
+    spanish: 18,
   };
   const languageScales = {
     unknown: 0.4,
-    english: 0.45,
-    spanishLikely: 0.35,
-    foreign: 0.3,
-    spanish: 0.3,
+    english: 0.28,
+    spanishLikely: 0.24,
+    foreign: 0.18,
+    spanish: 0.18,
   };
   const directionPoints = { brand: 20, motion: 18, digital: 16, ecommerce: 12, production: 10, social: 8, other: 0 };
   const experienceAdjustments = {
