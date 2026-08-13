@@ -3238,6 +3238,10 @@ const ROUND37_RANKED_INSERTIONS = new Map([
 const ROUND38_RANKED_INSERTIONS = new Map([
   [930834, [209]],
 ]);
+// Round 47 adds only independently verified current vacancies. Closed pages
+// discovered in the same sweep stay in the historical corpus and never enter
+// this list.
+const ROUND47_CURRENT_IDS = Object.freeze([930889, 930890, 930891, 930892]);
 // THRU still exposes the complete role brief and a future closing date, but
 // the same official page ends with "NO JOB OPENINGS". Keep the lead visible as
 // verify-first evidence without allowing the contradictory page to occupy a
@@ -3261,6 +3265,7 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
     .flatMap((id) => [id, ...(ROUND36_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND37_RANKED_INSERTIONS.get(id) || [])])
     .flatMap((id) => [id, ...(ROUND38_RANKED_INSERTIONS.get(id) || [])])
+    .concat(ROUND47_CURRENT_IDS)
     .filter((id) => !ROUND37_SUPERSEDED_MAIN_IDS.has(id))
     .filter((id) => !ROUND32_EXCLUDED_IDS.has(id))
     .filter((id) => !ROUND46_RESEARCH_ONLY_MAIN_IDS.has(id)),
@@ -12437,6 +12442,351 @@ for (const id of [...MY_OPPORTUNITY_IDS, 456]) {
   if (CURATED[id]) CURATED[id] = { ...CURATED[id], latestAuditSection: ROUND46_SECTION };
 }
 
+const ROUND47_SECTION = "2026-08-13 Round 47 current-source and user-fit recheck";
+
+// Fresh current vacancies found through exact employer pages or official ATS
+// routes. Every role remains subject to the same user-specific score formula;
+// an English requirement, seniority or an opaque recruiter can therefore keep
+// a professionally relevant job near the bottom of the board.
+[
+  {
+    id: 930889,
+    section: ROUND47_SECTION,
+    source: "HEREU / current LinkedIn employer detail",
+    opportunity: "Social Media Manager",
+    fit: "Barcelona fashion-brand social role with brand consistency, digital storytelling and basic graphic assets",
+    location: "Barcelona, Spain; full-time; onsite studio",
+    status: "Live/current: exact LinkedIn employer detail 4450072468 was opened and read in full on 2026-08-13. It shows Easy Apply, Barcelona and no closed marker. The role owns social planning, visual-asset coordination, brand consistency, image/video adaptation and basic digital-campaign graphics. Fluent written and spoken English plus 2-3 years are explicit.",
+    contact: "Current original detail/application: https://www.linkedin.com/jobs/view/4450072468/",
+    analysis: "Keep only as a lower-ranked brand-content backup. It is primarily social strategy, community management, copy and performance reporting rather than a graphic/VI position, and fluent English is a real gate. Salary is EUR30,000-35,000 gross/year.",
+    score: 64,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Fashion brand social / basic graphic production",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-07",
+    freshnessTag: "week",
+    freshnessAgeDays: 6,
+    links: ["https://www.linkedin.com/jobs/view/4450072468/"],
+    searchText: "HEREU current LinkedIn 4450072468 Social Media Manager Barcelona full-time onsite fashion brand identity visual assets basic graphic assets digital campaigns fluent English 2-3 years salary EUR 30000 35000",
+  },
+  {
+    id: 930890,
+    section: ROUND47_SECTION,
+    source: "Double Tap / current LinkedIn employer detail and direct careers email",
+    opportunity: "Social Media Manager",
+    fit: "Barcelona football-brand social role spanning strategy, content concepts, filming and publishing",
+    location: "Barcelona, Spain; full-time; onsite; September/October 2026 start",
+    status: "Live/current: exact LinkedIn employer detail 4449105116 was opened and read in full on 2026-08-13. It shows Apply, Barcelona and no closed marker. The employer states an August 5 posting date and a direct careers email. Fluent English is mandatory; Spanish is only a bonus.",
+    contact: "Current original detail: https://www.linkedin.com/jobs/view/4449105116/ ; direct application email: careers@doubletapcontent.com",
+    analysis: "Keep as a secondary content route, not a graphic-design card. The job owns strategy and the content calendar, films and posts social content, and treats editing as a bonus. It is relevant only if football content and English communication are realistic.",
+    score: 58,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Social strategy / filming / branded content",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-05",
+    freshnessTag: "week",
+    freshnessAgeDays: 8,
+    links: ["https://www.linkedin.com/jobs/view/4449105116/", "mailto:careers@doubletapcontent.com"],
+    searchText: "Double Tap current LinkedIn 4449105116 Social Media Manager Barcelona onsite full-time football creator brand strategy content calendar filming Instagram TikTok YouTube LinkedIn fluent English Spanish bonus careers@doubletapcontent.com 5 Aug 2026",
+  },
+  {
+    id: 930891,
+    section: ROUND47_SECTION,
+    source: "BJAK / official Ashby ATS and current LinkedIn employer detail",
+    opportunity: "Senior Graphic Designer",
+    fit: "Spain-remote digital graphic role covering campaigns, brand touchpoints, social, web, ads and short-form motion",
+    location: "Spain remote; full-time; candidate must already be based in Spain",
+    status: "Live/current: LinkedIn employer detail 4452792075 and the linked official Ashby requisition aca9464d-8ba4-4aa4-b0bc-a26d6c159fdc were opened on 2026-08-13. The exact role accepts Spain-based remote applicants and covers campaign assets, brand consistency, web, ads and motion. Strong English and 5-8 years are explicit.",
+    contact: "Official detail/application: https://jobs.ashbyhq.com/bjakcareer/aca9464d-8ba4-4aa4-b0bc-a26d6c159fdc ; current employer detail: https://www.linkedin.com/jobs/view/4452792075/",
+    analysis: "A real Spain-remote design opening but a low-feasibility stretch for this user: senior level, required English, fast performance-marketing output and a practical assessment. Keep far below Chinese and language-unconfirmed junior/mid roles.",
+    score: 74,
+    tier: "B",
+    locationTag: "Spain remote",
+    typeTag: "Senior digital graphic / brand systems / motion",
+    sourceGroup: "other",
+    postedAt: "2026-08-13",
+    freshnessTag: "week",
+    freshnessAgeDays: 0,
+    links: [
+      "https://jobs.ashbyhq.com/bjakcareer/aca9464d-8ba4-4aa4-b0bc-a26d6c159fdc",
+      "https://www.linkedin.com/jobs/view/4452792075/",
+    ],
+    searchText: "BJAK official Ashby Senior Graphic Designer Spain remote full-time Spain based English main working language strong communication 5-8 years Adobe Figma After Effects Premiere brand systems campaigns social web ads motion practical assessment",
+  },
+  {
+    id: 930892,
+    section: ROUND47_SECTION,
+    source: "OnHires / official Ashby recruitment ATS",
+    opportunity: "AI Graphic Designer - Performance Ads",
+    fit: "Europe-remote production role for static DTC and ecommerce advertising with AI-assisted imagery",
+    location: "Europe remote; full-time; employer/client identity and Spain contract terms not disclosed",
+    status: "Verify first: official Ashby requisition c7f7a6d4-96e4-4ac9-9f47-04d6d0c5af91 was opened and read in full on 2026-08-13 and contains an application form. It asks for paid-social ad production, Figma/Adobe and commercial AI-image workflows, but does not identify the end employer, publish compensation, state an experience range or name a work-language requirement.",
+    contact: "Official recruiter ATS detail/application: https://jobs.ashbyhq.com/onhires/c7f7a6d4-96e4-4ac9-9f47-04d6d0c5af91",
+    analysis: "Keep as a low-confidence Europe-remote backup. It is high-volume performance production rather than VI ownership, and the end client is hidden. Confirm the legal employer, Spain eligibility, pay, working language, weekly volume, test policy and ownership before sharing a portfolio or doing any task.",
+    score: 46,
+    tier: "C",
+    locationTag: "Europe remote",
+    typeTag: "AI graphic production / performance ads / ecommerce",
+    sourceGroup: "other",
+    freshnessTag: "unknown",
+    links: ["https://jobs.ashbyhq.com/onhires/c7f7a6d4-96e4-4ac9-9f47-04d6d0c5af91"],
+    searchText: "OnHires official Ashby AI Graphic Designer Performance Ads Europe remote full-time opaque client DTC ecommerce static ads Meta Figma Photoshop Illustrator AI image generation salary language experience unknown verify",
+  },
+  {
+    id: 930893,
+    section: ROUND47_SECTION,
+    source: "Ogilvy / closed official Greenhouse requisition and conflicting LinkedIn detail",
+    opportunity: "Senior Art Director (pharma)",
+    fit: "Historical Barcelona healthcare art-direction brief covering integrated campaigns, print, digital, audiovisual and promotional work",
+    location: "Barcelona, Spain; historical hybrid role",
+    status: "Closed/history: LinkedIn detail 4446679878 still showed Solicitar on 2026-08-13, but its exact employer Greenhouse requisition 4719420005 redirects to the official Ogilvy Spain board with the explicit message that the vacancy is no longer open. The current official board lists six Madrid jobs and no Barcelona design vacancy.",
+    contact: "Closed official requisition: https://job-boards.greenhouse.io/ogilvyspain/jobs/4719420005 ; historical LinkedIn detail: https://www.linkedin.com/jobs/view/4446679878/",
+    analysis: "Do not apply through the stale LinkedIn button. Preserve the five-plus-year healthcare art-direction brief as history and restore only if Ogilvy publishes a new independent live requisition.",
+    score: 0,
+    tier: "X",
+    locationTag: "Barcelona area",
+    typeTag: "Closed senior healthcare art direction",
+    sourceGroup: "other",
+    postedAt: "2026-08-06",
+    freshnessTag: "week",
+    links: ["https://job-boards.greenhouse.io/ogilvyspain/jobs/4719420005", "https://www.linkedin.com/jobs/view/4446679878/"],
+    searchText: "Ogilvy closed official Greenhouse 4719420005 Senior Art Director pharma Barcelona LinkedIn 4446679878 no longer open",
+  },
+  {
+    id: 930894,
+    section: ROUND47_SECTION,
+    source: "Babel Profiles / closed LinkedIn employer detail",
+    opportunity: "Fashion Graphic Designer with Spanish and English",
+    fit: "Historical Barcelona fashion-graphic role for prints, artworks, collections and production-ready files",
+    location: "Barcelona / Poblenou / onsite / historical",
+    status: "Closed/history: exact LinkedIn detail 4448769440 was opened on 2026-08-13 and explicitly says applications are no longer accepted. The former role required bilingual-equivalent Spanish and functional English.",
+    contact: "Closed original detail: https://www.linkedin.com/jobs/view/4448769440/",
+    analysis: "Keep only as a fashion-portfolio benchmark. The Spanish gate and current closed state mean it must not enter the active ranking.",
+    score: 0,
+    tier: "X",
+    locationTag: "Barcelona area",
+    typeTag: "Closed fashion graphics / prints",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-07",
+    freshnessTag: "week",
+    links: ["https://www.linkedin.com/jobs/view/4448769440/"],
+    searchText: "Babel Profiles closed LinkedIn 4448769440 Fashion Graphic Designer Barcelona Spanish bilingual English functional no longer accepting applications",
+  },
+  {
+    id: 930895,
+    section: ROUND47_SECTION,
+    source: "CasinoBarcelona.es / closed LinkedIn employer detail",
+    opportunity: "Especialista de Diseño Gráfico",
+    fit: "Historical Barcelona digital-graphic role for brand identity, display, social, CRM, web and physical assets",
+    location: "Barcelona or Ceuta / historical hybrid role",
+    status: "Closed/history: exact LinkedIn detail 4450269182 was opened on 2026-08-13 and explicitly says applications are no longer accepted. The former role required native Spanish, basic English and at least two years; salary was EUR22,000-24,000 gross/year.",
+    contact: "Closed original detail: https://www.linkedin.com/jobs/view/4450269182/",
+    analysis: "Preserve the relevant digital-brand brief and public salary as history. Do not count the readable page as a current application route.",
+    score: 0,
+    tier: "X",
+    locationTag: "Barcelona area",
+    typeTag: "Closed digital graphic / brand consistency",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-06",
+    freshnessTag: "week",
+    links: ["https://www.linkedin.com/jobs/view/4450269182/"],
+    searchText: "CasinoBarcelona closed LinkedIn 4450269182 Especialista Diseño Gráfico Barcelona native Spanish basic English 2 years salary EUR 22000 24000 no longer accepting applications",
+  },
+  {
+    id: 930896,
+    section: ROUND47_SECTION,
+    source: "Savant Network / closed LinkedIn recruiter detail",
+    opportunity: "Senior Graphic Designer - Illustration & Storytelling",
+    fit: "Historical Barcelona premium fashion and lifestyle role spanning illustration, editorial design and brand storytelling",
+    location: "Barcelona / onsite / historical",
+    status: "Closed/history: exact LinkedIn detail 4451348796 was opened on 2026-08-13 and explicitly says applications are no longer accepted. The former role covered original illustration, seasonal graphics, catalogues, lookbooks, typography and brand-identity development.",
+    contact: "Closed original detail: https://www.linkedin.com/jobs/view/4451348796/",
+    analysis: "Keep only as a strong portfolio benchmark. It is senior, recruiter-mediated and closed, so it must not inflate the current Barcelona count.",
+    score: 0,
+    tier: "X",
+    locationTag: "Barcelona area",
+    typeTag: "Closed senior illustration / editorial / brand storytelling",
+    sourceGroup: "linkedin",
+    postedAt: "2026-08-09",
+    freshnessTag: "week",
+    links: ["https://www.linkedin.com/jobs/view/4451348796/"],
+    searchText: "Savant Network closed LinkedIn 4451348796 Senior Graphic Designer Illustration Storytelling Barcelona onsite fashion lifestyle editorial brand identity no longer accepting applications",
+  },
+].forEach((record) => {
+  if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
+});
+
+const round47ClosedOgilvySocial = allData.find((entry) => Number(entry.id) === 930884);
+if (round47ClosedOgilvySocial) {
+  Object.assign(round47ClosedOgilvySocial, {
+    section: ROUND47_SECTION,
+    status: "Closed/history: exact LinkedIn employer detail 4434550264 was reopened on 2026-08-13 and now explicitly says applications are no longer accepted. It contains no current Apply control. The readable social-art-direction brief remains historical evidence only.",
+    analysis: "Move out of the current board. Do not confuse a readable LinkedIn description with an open requisition; restore only if Ogilvy posts a new job ID or an official current application form.",
+    tier: "X",
+  });
+}
+
+const round47JuniorDragons = allData.find((entry) => Number(entry.id) === 930813);
+if (round47JuniorDragons) {
+  Object.assign(round47JuniorDragons, {
+    section: ROUND47_SECTION,
+    status: "2026-08-13 recheck: official Factorial requisition 317499 still shows Apply now, Permanent, Full time and Hybrid Barcelona. Current LinkedIn employer detail 4452419452 independently shows Solicitar. The full role covers global-asset localisation, brand guidelines, visual-identity systems, key visuals, digital and social assets; English is required and Spanish is preferred.",
+    contact: "Official detail/application: https://dragons-group.factorialhr.com/job_posting/junior-graphic-designer-317499 ; current employer detail: https://www.linkedin.com/jobs/view/4452419452/",
+    links: ["https://dragons-group.factorialhr.com/job_posting/junior-graphic-designer-317499", "https://www.linkedin.com/jobs/view/4452419452/"],
+  });
+}
+
+const round47SeniorDragons = allData.find((entry) => Number(entry.id) === 930838);
+if (round47SeniorDragons) {
+  Object.assign(round47SeniorDragons, {
+    section: ROUND47_SECTION,
+    status: "2026-08-13 recheck: official Factorial requisition 308053 still shows Apply now, Permanent, Full time and Hybrid Barcelona. Current LinkedIn employer detail 4437156739 independently shows Solicitar. Fluent English, regulated healthcare/pharma experience, client presentation and team mentoring are explicit.",
+    contact: "Official detail/application: https://dragons-group.factorialhr.com/job_posting/senior-graphic-designer-wellness-and-healthcare-308053 ; current employer detail: https://www.linkedin.com/jobs/view/4437156739/",
+    links: ["https://dragons-group.factorialhr.com/job_posting/senior-graphic-designer-wellness-and-healthcare-308053", "https://www.linkedin.com/jobs/view/4437156739/"],
+  });
+}
+
+Object.assign(CURATED, {
+  930884: {
+    ...CURATED[930884],
+    statusKey: "closed",
+    statusEvidence: "2026-08-13 复核：Ogilvy 雇主 LinkedIn 详情 4434550264 现在明确显示“Ya no se aceptan solicitudes”，且没有申请按钮。",
+    reason: "页面还能读到职责不代表岗位仍开放；当前已停止接收申请，必须移入历史。",
+    next: "仅保留社媒艺术指导与品牌一致性的岗位画像；等待新职位编号后再恢复。",
+    latestAuditSection: ROUND47_SECTION,
+    changeType: "round-47-closed-after-final-link-recheck",
+  },
+  930813: {
+    ...CURATED[930813],
+    links: ["https://dragons-group.factorialhr.com/job_posting/junior-graphic-designer-317499", "https://www.linkedin.com/jobs/view/4452419452/"],
+    preferCuratedLinks: true,
+    statusEvidence: "2026-08-13 复核：Dragons 官方 Factorial 317499 仍有 Apply now，当前 LinkedIn 雇主详情 4452419452 也有 Solicitar；Barcelona 混合办公、永久全职、1–2 年、品牌规范与视觉系统延展均已逐条确认。英语为明确工作语言，西语仅 preferred。",
+    latestAuditSection: ROUND47_SECTION,
+    changeType: "round-47-current-two-source-recheck",
+  },
+  930838: {
+    ...CURATED[930838],
+    links: ["https://dragons-group.factorialhr.com/job_posting/senior-graphic-designer-wellness-and-healthcare-308053", "https://www.linkedin.com/jobs/view/4437156739/"],
+    preferCuratedLinks: true,
+    statusEvidence: "2026-08-13 复核：Dragons 官方 Factorial 308053 与 LinkedIn 雇主详情 4437156739 均仍可申请；Barcelona 混合、永久全职、流利英语、医疗健康行业经验、客户提案与带教均为真实门槛。",
+    latestAuditSection: ROUND47_SECTION,
+    changeType: "round-47-current-two-source-recheck",
+  },
+  930874: {
+    ...CURATED[930874],
+    statusKey: "live",
+    links: ["https://www.ogilvy.com/careers/4712450005?gh_jid=4712450005", "https://www.linkedin.com/jobs/view/4434548567/"],
+    preferCuratedLinks: true,
+    languageKey: "english",
+    applicationMode: "english",
+    language: "官方嵌入式申请表把“Do you have a good level of English?”设为必答筛选问题；英语门槛已证实",
+    statusEvidence: "2026-08-13 最终落点复核：Ogilvy 官方职位页 4712450005 仍显示 Barcelona、Liquid Designer 和 Apply；点击后 Greenhouse 嵌入表单完整出现，并把良好英语设为必答问题。",
+    reason: "岗位仍真实可投，数字品牌延展与 motion 相关；但英语不是推测，而是申请表硬筛问题，因此按英语上限重新降分。",
+    latestAuditSection: ROUND47_SECTION,
+    changeType: "round-47-official-form-language-evidence",
+  },
+  172: {
+    ...CURATED[172],
+    statusKey: "live",
+    links: ["https://www.ogilvy.com/careers/4708130005?gh_jid=4708130005", "https://www.linkedin.com/jobs/view/4429417187/"],
+    preferCuratedLinks: true,
+    statusEvidence: "2026-08-13 最终落点复核：Ogilvy 官方职位页 4708130005 的标题内容不完整，但点击 Apply 后 Greenhouse 嵌入申请表仍完整出现并可提交；LinkedIn 详情 4429417187 同时仍显示 Solicitar。西语必需与西班牙学历/Graduate 条件保持硬门槛。",
+    latestAuditSection: ROUND47_SECTION,
+    changeType: "round-47-official-form-current-confirmation",
+  },
+  930889: {
+    statusKey: "live",
+    direction: "social",
+    company: "HEREU",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 现场工作室 / 全职 / €30k–35k",
+    titleZh: "社交媒体经理（时尚品牌一致性与基础平面）",
+    titleEs: "Social Media Manager",
+    languageKey: "english",
+    applicationMode: "english",
+    language: "流利书面与口语英语明确要求；未列西语硬门槛",
+    experienceKey: "mid",
+    experienceLabel: "中级 / 2–3 年社媒经验",
+    reason: "当前可投且在 Barcelona，包含品牌形象一致性、视觉素材协调、图片/视频适配和基础数字平面；但主体是社媒策略、文案、社群与数据，而不是 VI 设计。",
+    next: "仅作为英语内容方向备选；若投递，作品集应放时尚品牌社媒系统、短视频、多尺寸视觉延展和品牌一致性，先评估英语面试与日常沟通。",
+    statusEvidence: "2026-08-13 已逐条读取 LinkedIn 雇主详情 4450072468：Easy Apply、Barcelona、全职现场，未显示关闭；2–3 年、英语流利及 €30,000–35,000 均明确。",
+    links: ["https://www.linkedin.com/jobs/view/4450072468/"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND47_SECTION,
+    changeType: "round-47-new-current",
+  },
+  930890: {
+    statusKey: "live",
+    direction: "social",
+    company: "Double Tap",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 现场 / 全职 / 2026 年 9–10 月入职",
+    titleZh: "社交媒体经理（足球品牌内容、拍摄与发布）",
+    titleEs: "Social Media Manager",
+    languageKey: "english",
+    applicationMode: "english",
+    language: "流利英语明确要求；西语仅为加分项",
+    experienceKey: "unknown",
+    experienceLabel: "需有端到端社媒管理经验；年限未写",
+    reason: "Barcelona 当前岗位且可直接邮件申请，但工作重心是策略、排期、拍摄与发布；剪辑只是加分，并非品牌平面或 VI 主岗。",
+    next: "只在足球内容方向可接受且英语可用时考虑；先问薪资、合同与内容拍摄频率，再决定是否投。",
+    statusEvidence: "2026-08-13 已逐条读取 LinkedIn 雇主详情 4449105116：页面有 Solicitar，正文注明 2026-08-05、Barcelona 现场全职，并给出 careers@doubletapcontent.com。",
+    links: ["https://www.linkedin.com/jobs/view/4449105116/", "mailto:careers@doubletapcontent.com"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND47_SECTION,
+    changeType: "round-47-new-current",
+  },
+  930891: {
+    statusKey: "live",
+    direction: "digital",
+    company: "BJAK",
+    locationKey: "remote",
+    locationLabel: "Spain 全远程 / 全职 / 需已居住西班牙",
+    titleZh: "高级平面设计师（数字 Campaign、品牌系统与 Motion）",
+    titleEs: "Senior Graphic Designer",
+    languageKey: "english",
+    applicationMode: "english",
+    language: "英语为全球团队主要工作语言，强沟通能力明确要求",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5–8 年",
+    reason: "Spain remote 资格清楚，职责也覆盖品牌触点、Campaign、Web、社媒和 Motion；但英语、5–8 年与高节奏绩效创意都是重门槛。",
+    next: "保留为低分高级备选，不与中文或语言未证实的初中级岗位竞争；只有英语和资历真实满足时再做测试。",
+    statusEvidence: "2026-08-13 已核验 LinkedIn 4452792075 与官方 Ashby aca9464d-8ba4-4aa4-b0bc-a26d6c159fdc：Spain remote、全职、当前申请表、强英语与 5–8 年均明确。",
+    links: ["https://jobs.ashbyhq.com/bjakcareer/aca9464d-8ba4-4aa4-b0bc-a26d6c159fdc", "https://www.linkedin.com/jobs/view/4452792075/"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND47_SECTION,
+    changeType: "round-47-new-current",
+  },
+  930892: {
+    statusKey: "verify",
+    direction: "digital",
+    company: "OnHires / 未公开最终雇主",
+    locationKey: "remote",
+    locationLabel: "Europe remote / 全职 / Spain 合同条款待确认",
+    titleZh: "AI 平面设计师（DTC / 电商效果广告）",
+    titleEs: "AI Graphic Designer - Performance Ads",
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    language: "官方正文未列工作语言；英文页面本身不作为英语硬门槛证据",
+    experienceKey: "unknown",
+    experienceLabel: "需有付费社媒广告经验；年限未写",
+    opaqueEmployer: true,
+    reason: "官方 Ashby 表单存在，但招聘方没有公开最终雇主、薪资、语言和 Spain 合同主体；工作是高量效果广告制作，不是 VI 所有权。",
+    next: "先书面确认实际雇主、Spain 合规签约、薪资、语言、每周产量、测试是否付费及源文件归属，再决定是否发作品集。",
+    statusEvidence: "2026-08-13 已逐条读取 OnHires 官方 Ashby c7f7a6d4-96e4-4ac9-9f47-04d6d0c5af91：Europe remote、Full time 与申请表明确；最终客户和关键劳动条件未公开。",
+    links: ["https://jobs.ashbyhq.com/onhires/c7f7a6d4-96e4-4ac9-9f47-04d6d0c5af91"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND47_SECTION,
+    changeType: "round-47-new-verify-first",
+  },
+});
+
+for (const id of [930884, 930813, 930838, 930874, 172, ...ROUND47_CURRENT_IDS, 930893, 930894, 930895, 930896]) {
+  if (CURATED[id]) CURATED[id] = { ...CURATED[id], latestAuditSection: ROUND47_SECTION };
+}
+
 const els = {
   totalCount: document.querySelector("#totalCount"),
   priorityCount: document.querySelector("#priorityCount"),
@@ -12532,7 +12882,7 @@ const SOURCE_LABELS = {
 };
 
 const PRESET_NOTES = {
-  mine: "默认保留全部已核验当前机会，但按你的实际可行性排序：中文路径先行，Barcelona / 明确 Spain remote 次优先，品牌视觉与 VI 再加分。英语岗最高 45 分，西语硬门槛最高 30 分，只作为后排备选。",
+  mine: "默认保留全部已核验当前机会，但按你的实际可行性排序：中文路径先行，Barcelona / 明确 Spain remote 次优先，品牌视觉与 VI 再加分。英语硬门槛最高 18 分，西语硬门槛最高 8 分；语言未证实也最高 28 分，避免把英文页面误当成中文可行。",
   profile: "只显示可以直接用中文投递的 Barcelona / 西班牙远程机会；需要完整英文材料或西语工作的岗位不会混进来。",
   actionable: "只看现在值得马上处理的机会：Barcelona / 西班牙远程、中文可先联系、有具体入口、近期发布或页面明确开放，并排除低薪风险与实习。",
   chinese: "单独查看 Barcelona / Spain remote 的中文相关机会；中文来源并不自动等于岗位真实或适合，关闭、外地和研究线索仍留在独立历史库。",
