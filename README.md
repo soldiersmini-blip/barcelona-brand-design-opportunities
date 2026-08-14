@@ -26,6 +26,7 @@
 ## 关键文件
 
 - `AUDIT-2026-08-14-ROUND77.md`：重新打开 13 组当前原始页或官方 ATS；确认 ES02、INFiLED、Casa Asia、Revolut 与匿名时尚岗状态，保留言灵无界的当前公司职位证据，关闭 Omnicom Video Maker 与 Yellow 泛化实习，新增 GTE 全球远程包装/标签品牌视觉岗。主表为 211 张、149 张 Barcelona、62 张远程、205 张开放、6 张待确认、5 张中文相关；关闭历史 628 张。界面新增 110 张正分行动视图与 101 张零分高门槛备选，并移除可见 A/B/C/D 旧标签。
+- `AUDIT-2026-08-14-ROUND78.md`：复扫华新、华人通、西华与 Casa Asia，未发现新的独立 Barcelona 中文品牌/VI 岗；逐页排除八条已经关闭或从官方职位板移除的搜索缓存。Remedy Edge Spain 的 PowerPoint Specialist 已从旧 Omnicom requisition `5233982008` 无损切换到当前官方 `5233984008`，Senior Graphic Designer `5219087008` 仍开放；Adsmurai Barcelona `8109023` 与 Savills Barcelona `7557726` 也再次确认开放。主表数量和个人评分不因重复编号或失效摘要虚增。
 - `AUDIT-2026-08-14-ROUND76.md`：逐条重开下一批高位原始页并继续复扫中文、Barcelona 与 Spain remote 来源。Zurich `Creative Strategist` 虽仍开放，但完整 JD 证明它是策略、brief 与 stakeholder 管理而非执行设计，移入排除历史；NUDE PROJECT `Freelance Graphic Designer` 精确职位入口已失效，移入关闭历史；SIERRA `Art Director` 明确要求成熟 Art Director 过往经历，改按高级资历降至 0 分。BJAK 新 LinkedIn 结果确认只是现有官方 Ashby Lead Graphic Designer 的镜像，不重复计数。当前主表为 212 张、151 张 Barcelona、61 张远程、202 张开放、10 张待确认、5 张中文相关；关闭历史 626 张。
 - `AUDIT-2026-08-14-ROUND75.md`：复扫华人通 ES02 当前 100 页 1,199 条招聘、Casa Asia 当前索引及 Barcelona / Spain remote 设计来源，没有虚增新的中文品牌 / VI 岗；逐条重开九张下一批高位卡的精确雇主页。Publicis Barcelona `Designer` 已明确停止收件并转入历史；Dragons 两岗、Bending Spoons、CrowdStrike、Siemens、INFiLED、Revolut Digital Designer 与 Omnicom PowerPoint 仍开放。当前主表为 214 张、153 张 Barcelona、61 张远程、204 张开放、10 张待确认、5 张中文相关；关闭历史 624 张。
 - `AUDIT-2026-08-14-ROUND74.md`：逐条打开本轮命中的原始 ATS 与最高位外语备选。Neo 官方 Workable 仍开放且允许 Spain remote，但申请表有俄语母语硬门槛；Revolut 新增 Barcelona Lead Graphic Designer，官方职位页和独立申请表均可用，但 8 年以上与带队要求使个人适配分为 0；Distributed Crafts 的搜索缓存被官方关闭页否定。Dragons Junior、THE/STUDIO、CRAZE、Trivelta 与 Publicis 均再次确认开放。当前主表为 215 张、154 张 Barcelona、61 张远程、205 张开放、10 张待确认、5 张中文相关；关闭历史 623 张。
@@ -100,7 +101,7 @@
 - `scripts/scan-es02-current.js`：直接扫描华人通当前招聘分页，避免搜索引擎缓存滞后；命中标题仍必须继续打开原帖人工判断。
 - `scripts/export-opportunity-ledgers.js`：生成当前主表 CSV/JSON 与完整历史总账 CSV。
 - `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 211 个机会的完整、严格降序导出。
-- `all-opportunity-ledger.csv`：1,323 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
+- `all-opportunity-ledger.csv`：1,324 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属；旧 requisition 会保留为历史，不与替代它的新申请编号混成同一个来源记录。
 - `scripts/validate-site.js`：验证数据、排序、状态、入口与页面结构。
 
 ## 本地验证

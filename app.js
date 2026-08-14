@@ -19670,6 +19670,89 @@ Object.assign(CURATED, {
   },
 });
 
+const ROUND78_SECTION = "2026-08-14 Round 78 Chinese-source rescan and Remedy Edge requisition replacement audit";
+
+// A new employer-owned requisition replaces the former Omnicom Health route
+// for the same PowerPoint vacancy. Keep the canonical card and its history;
+// update the application target instead of manufacturing a duplicate opening.
+const round78RecordPatches = new Map([
+  [930845, {
+    section: ROUND78_SECTION,
+    source: "Remedy Edge Spain / official Greenhouse ATS",
+    status: "Live/current: Remedy Edge Spain's current official Greenhouse board was opened on 2026-08-14. Requisition 5233984008 shows Apply for this job, Barcelona, freelance work, at least two years of advanced PowerPoint experience, working English, a portfolio plus a PowerPoint sample and three office days per week. The former Omnicom Health requisition 5233982008 is retained only as superseded history.",
+    contact: "Current official detail/application: https://job-boards.greenhouse.io/remedyedgespain/jobs/5233984008",
+    analysis: "Keep one canonical card and replace the obsolete application route. It remains a local presentation and information-design opportunity rather than a core VI role; working English, freelance eligibility and three office days are material gates, so the personal score does not rise merely because the requisition was reposted.",
+    links: ["https://job-boards.greenhouse.io/remedyedgespain/jobs/5233984008"],
+    searchText: "Remedy Edge Spain official Greenhouse 5233984008 Freelance PowerPoint Specialist Barcelona Apply advanced PowerPoint 2 years portfolio sample working English three office days Spain freelance no sponsorship current 2026-08-14 supersedes Omnicom Health 5233982008",
+  }],
+  [1101, {
+    section: ROUND78_SECTION,
+    source: "Remedy Edge Spain / official Greenhouse ATS",
+    status: "Live/current: Remedy Edge Spain's exact official Greenhouse requisition 5219087008 was opened on 2026-08-14. It shows Apply for this job, Barcelona, freelance work, three office days per week, five-plus years of graphic-design experience, international/client-facing work and a role-specific application form that asks about English level and Spain contractor eligibility.",
+    contact: "Current official detail/application: https://job-boards.greenhouse.io/remedyedgespain/jobs/5219087008",
+    analysis: "Preserve the existing canonical senior-graphic card. This is a real local cross-media campaign role, but five-plus years, English client communication, Spain freelance eligibility and three office days keep it below the user's Chinese-accessible opportunities.",
+    links: ["https://job-boards.greenhouse.io/remedyedgespain/jobs/5219087008"],
+  }],
+  [930719, {
+    section: ROUND78_SECTION,
+    status: "Live/current: Adsmurai's official Teamtailor board and exact Barcelona requisition 8109023 were reopened on 2026-08-14. The page still shows an application control, Barcelona hybrid permanent work, three-plus years, digital campaigns, brand-guideline adaptation, paid/organic social, video, presentations and brochures. Fluent Spanish and English remain explicit hard gates; the separate Madrid requisition 7993316 is not merged into this card.",
+  }],
+  [94, {
+    section: ROUND78_SECTION,
+    status: "Live/current: Savills Spain's exact official Teamtailor requisition 7557726 was reopened on 2026-08-14. It still shows Brand Designer - Barcelona, Hybrid and an application route. The role covers corporate and business visuals, presentations, dossiers, branding, signage, advertising, banners and editorial publications; good English remains explicit and daily Spanish use is not fully disclosed.",
+  }],
+]);
+
+for (const [id, patch] of round78RecordPatches) {
+  const record = allData.find((item) => Number(item.id) === id);
+  if (!record) continue;
+  Object.assign(record, patch);
+}
+
+Object.assign(CURATED, {
+  930845: {
+    ...CURATED[930845],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 78：Remedy Edge Spain 当前官方 Greenhouse 5233984008 显示 Apply、Barcelona、freelance、2 年以上高级 PowerPoint、working English、作品集与 PPT 样稿要求，以及每周 3 天到办公室。旧 Omnicom 5233982008 已被新 requisition 替代，不另算一个岗位。",
+    reason: "这是 Barcelona 本地的演示系统、信息层级和视觉叙事岗位，但不是核心 VI；工作英语、自由职业资格和每周三天到岗仍会降低实际可投性。",
+    links: ["https://job-boards.greenhouse.io/remedyedgespain/jobs/5233984008"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND78_SECTION,
+    changeType: "round-78-current-requisition-replacement-no-duplicate",
+  },
+  1101: {
+    ...CURATED[1101],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 78：Remedy Edge Spain 官方 Greenhouse 5219087008 显示 Apply、Barcelona、freelance、每周 3 天办公室、5 年以上平面设计、国际客户沟通，并在专属表单询问英语水平与 Spain contractor 资格。",
+    reason: "跨媒体 Campaign、品牌完整性和客户呈现都真实相关；但 5 年以上、英语客户沟通、Spain 自由职业资格和到岗要求是明确硬门槛，所以继续作为低优先本地备选。",
+    links: ["https://job-boards.greenhouse.io/remedyedgespain/jobs/5219087008"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND78_SECTION,
+    changeType: "round-78-current-official-greenhouse-refresh",
+  },
+  930719: {
+    ...CURATED[930719],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 78：Adsmurai 官方职位板和 Barcelona 精确页 8109023 仍有申请入口；hybrid 永久岗、3 年以上、数字 Campaign、品牌规范、社媒、视频和演示职责均确认。流利西语和英语继续作为双硬门槛，Madrid 7993316 不并入此卡。",
+    links: [
+      "https://adsmurai.teamtailor.com/jobs/8109023-digital-graphic-designer-they-he-she",
+      "https://www.linkedin.com/jobs/view/4449119646/",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND78_SECTION,
+    changeType: "round-78-barcelona-requisition-live-refresh",
+  },
+  94: {
+    ...CURATED[94],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 78：Savills Spain 官方 Teamtailor 7557726 仍显示 Brand Designer - Barcelona、Hybrid 与申请入口；企业视觉、branding、导视、编辑、广告和演示职责确认，良好英语为明确要求，日常西语比例仍需询问。",
+    links: ["https://savills-spain.teamtailor.com/jobs/7557726-brand-designer-barcelona"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND78_SECTION,
+    changeType: "round-78-official-teamtailor-live-refresh",
+  },
+});
+
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
   const explicitMode = curated?.applicationMode || APPLICATION_MODE_OVERRIDES[item.id];

@@ -906,34 +906,6 @@
     {
       "ledger_bucket": "current-main",
       "rank": 32,
-      "id": 930845,
-      "company": "Omnicom Health / Remedy Edge",
-      "role_zh": "自由职业 PowerPoint 视觉设计师",
-      "original_role": "Freelance PowerPoint Specialist",
-      "tier": "C",
-      "status": "live",
-      "location_bucket": "barcelona",
-      "location": "Barcelona / hybrid 每周到岗 3 天 / freelance",
-      "language_path": "english",
-      "experience_path": "mid",
-      "experience_requirement": "中级 / 2 年以上 / freelance",
-      "direction": "digital",
-      "chinese_relevant": false,
-      "formal": false,
-      "internship": false,
-      "score": 6.5,
-      "source_score": 70,
-      "posted_at": "",
-      "primary_url": "https://job-boards.greenhouse.io/omnicomhealth/jobs/5233982008",
-      "all_links": [
-        "https://job-boards.greenhouse.io/omnicomhealth/jobs/5233982008"
-      ],
-      "status_evidence": "2026-08-14 Round 75：Omnicom Health 官方 Greenhouse 5233982008 仍有 Apply 和完整表单；Barcelona、2+ 年高级 PowerPoint 视觉、作品集、working English 及每周 3 天到办公室确认。",
-      "analysis": "A genuine local visual-production route, especially for presentation systems and complex information design, but not a core VI role. Apply only with polished deck systems, visual storytelling and reusable templates; confirm day rate, project duration, payment terms and expected Spanish usage."
-    },
-    {
-      "ledger_bucket": "current-main",
-      "rank": 33,
       "id": 930826,
       "company": "Carati Studio",
       "role_zh": "自由职业平面与印花设计师（时尚）",
@@ -959,6 +931,34 @@
       ],
       "status_evidence": "2026-08-13 重新打开 Carati Studio 原始 LinkedIn：Barcelona/Sant Antoni 部分远程自由职业、时尚平面与印花职责仍在；正文明确 Spanish is not required，只是加分，未写英语等级。",
       "analysis": "A genuine local freelance branch rather than a salaried VI role. Confirm the client entity, project frequency, day rate, invoicing, ownership, onsite rhythm and whether the Zara-team workload is ongoing before accepting a test."
+    },
+    {
+      "ledger_bucket": "current-main",
+      "rank": 33,
+      "id": 930845,
+      "company": "Omnicom Health / Remedy Edge",
+      "role_zh": "自由职业 PowerPoint 视觉设计师",
+      "original_role": "Freelance PowerPoint Specialist",
+      "tier": "C",
+      "status": "live",
+      "location_bucket": "barcelona",
+      "location": "Barcelona / hybrid 每周到岗 3 天 / freelance",
+      "language_path": "english",
+      "experience_path": "mid",
+      "experience_requirement": "中级 / 2 年以上 / freelance",
+      "direction": "digital",
+      "chinese_relevant": false,
+      "formal": false,
+      "internship": false,
+      "score": 6.2,
+      "source_score": 70,
+      "posted_at": "",
+      "primary_url": "https://job-boards.greenhouse.io/remedyedgespain/jobs/5233984008",
+      "all_links": [
+        "https://job-boards.greenhouse.io/remedyedgespain/jobs/5233984008"
+      ],
+      "status_evidence": "2026-08-14 Round 78：Remedy Edge Spain 当前官方 Greenhouse 5233984008 显示 Apply、Barcelona、freelance、2 年以上高级 PowerPoint、working English、作品集与 PPT 样稿要求，以及每周 3 天到办公室。旧 Omnicom 5233982008 已被新 requisition 替代，不另算一个岗位。",
+      "analysis": "Keep one canonical card and replace the obsolete application route. It remains a local presentation and information-design opportunity rather than a core VI role; working English, freelance eligibility and three office days are material gates, so the personal score does not rise merely because the requisition was reposted."
     },
     {
       "ledger_bucket": "current-main",
@@ -1447,7 +1447,7 @@
       "all_links": [
         "https://savills-spain.teamtailor.com/jobs/7557726-brand-designer-barcelona"
       ],
-      "status_evidence": "2026-08-13 重新打开 Savills 官方 Teamtailor：Barcelona hybrid、品牌/编辑/导视职责、Buen nivel de inglés 和申请入口仍在；只写需有 Brand Designer 经历，没有具体年限。",
+      "status_evidence": "2026-08-14 Round 78：Savills Spain 官方 Teamtailor 7557726 仍显示 Brand Designer - Barcelona、Hybrid 与申请入口；企业视觉、branding、导视、编辑、广告和演示职责确认，良好英语为明确要求，日常西语比例仍需询问。",
       "analysis": "Verified Barcelona B-tier core brand-visual lead. Prioritise a portfolio that shows complete identity/brand-guideline application across corporate documents, editorial, wayfinding, ad/banner systems and presentation design; prepare English materials and confirm Spanish working requirement, salary, work permit and office cadence."
     },
     {
@@ -1650,7 +1650,7 @@
         "https://adsmurai.teamtailor.com/jobs/8109023-digital-graphic-designer-they-he-she",
         "https://www.linkedin.com/jobs/view/4449119646/"
       ],
-      "status_evidence": "2026-08-14 Round 70：JobsThatFit LinkedIn 4449119646 的完整正文逐段复制 Adsmurai 公司介绍、Barcelona Creative 职责、3 年门槛与英语/西语要求；它是同一岗位镜像，不新增卡。",
+      "status_evidence": "2026-08-14 Round 78：Adsmurai 官方职位板和 Barcelona 精确页 8109023 仍有申请入口；hybrid 永久岗、3 年以上、数字 Campaign、品牌规范、社媒、视频和演示职责均确认。流利西语和英语继续作为双硬门槛，Madrid 7993316 不并入此卡。",
       "analysis": "Retain the Barcelona card only. The work covers 360-degree digital campaigns, brand-guideline adaptation, paid/organic social, video, presentations and brochures; fluent Spanish and English plus at least three years remain hard gates."
     },
     {
@@ -4664,8 +4664,8 @@
       "all_links": [
         "https://job-boards.greenhouse.io/remedyedgespain/jobs/5219087008"
       ],
-      "status_evidence": "Current official Greenhouse detail 5219087008 was opened directly on 2026-08-09. It visibly lists Freelance Senior Graphic Designer, Barcelona and Apply. The 5+ year role leads conceptual print/digital campaign solutions, client and project workflow, mentoring, Adobe/Figma and brand integrity across media. The form explicitly asks whether the candidate can work freelance in Spain, work 3 office days weekly and work without visa sponsorship; compensation is not published.",
-      "analysis": "Verified B-tier Barcelona freelance senior graphic role. It has solid campaign/brand ownership but is healthcare-agency freelance work with in-office and Spain-contractor gates. Apply with senior cross-media, healthcare/regulated (if available), client-facing and creative-direction work; confirm rate, term and invoicing."
+      "status_evidence": "2026-08-14 Round 78：Remedy Edge Spain 官方 Greenhouse 5219087008 显示 Apply、Barcelona、freelance、每周 3 天办公室、5 年以上平面设计、国际客户沟通，并在专属表单询问英语水平与 Spain contractor 资格。",
+      "analysis": "Preserve the existing canonical senior-graphic card. This is a real local cross-media campaign role, but five-plus years, English client communication, Spain freelance eligibility and three office days keep it below the user's Chinese-accessible opportunities."
     },
     {
       "ledger_bucket": "current-main",

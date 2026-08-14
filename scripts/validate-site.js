@@ -1372,6 +1372,7 @@ const round74Section = "2026-08-14 Round 74 current ATS discovery, hard-gate res
 const round75Section = "2026-08-14 Round 75 next-ranked exact-page refresh and Publicis Designer closure audit";
 const round76Section = "2026-08-14 Round 76 next-ranked exact-page refresh, non-design exclusion and NUDE closure audit";
 const round77Section = "2026-08-14 Round 77 current-source status corrections, GTE remote discovery and action-view separation";
+const round78Section = "2026-08-14 Round 78 Chinese-source rescan and Remedy Edge requisition replacement audit";
 const round73TouchedIds = [930834, 930837, 930874, 930817, 930847, 352, 1092, 372, 930933, 427];
 const round73TouchedSet = new Set(round73TouchedIds);
 const round74TouchedIds = [17, 930962, 930963, 930813, 930863, 930899, 914, 238];
@@ -1382,6 +1383,7 @@ const round76TouchedIds = [910, 930840, 930911, 78, 930825, 446, 930819, 930821,
 const round76TouchedSet = new Set(round76TouchedIds);
 const round77TouchedIds = [24, 25, 778, 920, 930892, 930865, 868, 1300, 930964, 1253, 990, 930955, 136];
 const round77TouchedSet = new Set(round77TouchedIds);
+const round78TouchedIds = [930845, 1101, 930719, 94];
 const round49LikelySpanishIds = [877, 105, 886, 930829, 1257, 1258, 382, 1237, 930876, 86, 930873, 930885, 577, 1296, 579, 876, 867, 930843, 351];
 const round55ExpectedIds = [175, 454, 1253, 317, 863, 930718, 930719, 908, 279, 930854, 889, 535, 278, 1081, 860, 930869, 874, 1301, 1303, 1227, 930879, 84, 868, 989, 854, 921, 1293, 1053, 1036, 930815, 930842, 930843];
 const round56ExpectedIds = [1002, 985, 930900, 977, 1021, 990001, 990, 930818, 37, 12, 1299, 1255, 958, 1257, 1258, 1026, 1061, 930865, 930829, 382, 1237, 930812, 1287, 930637, 238, 930843, 305, 27, 930708, 922];
@@ -1389,12 +1391,11 @@ const round57ExpectedIds = [778, 920, 24, 25, 930834, 930837, 1107, 1092, 372, 4
 const round58ExpectedMainIds = [930823, 930874, 930840, 930882, 930825, 877, 78, 228, 446, 930866, 930889, 930845, 930826, 930827, 425, 345, 4, 284, 55, 1038, 930816, 396, 930819, 856, 930868, 930831, 930833, 930821, 930890, 2942];
 const round58ExpectedIds = [...round58ExpectedMainIds, 930903];
 const round59ExpectedIds = [313, 920001, 928, 188, 930712, 170, 224, 1240, 930838, 930880, 930844, 172, 864, 88, 930824, 930891, 930878, 930881, 162, 876, 930876, 930814, 930841, 867, 930886, 930887, 859, 1029, 296, 601];
-check(test.latestRoundSection === round77Section, "Round 77: latest-round marker did not advance");
 check(
   round77TouchedIds.every((id) =>
-    test.latestRoundItems.some((item) => Number(item.id) === id),
-  ) && test.latestRoundItems.length === round77TouchedIds.length,
-  "Round 77: the thirteen status, source, discovery and view-separation decisions are missing from the latest audit log",
+    test.CURATED[id]?.latestAuditSection === round77Section || String(r23ById(id)?.section || "") === round77Section,
+  ),
+  "Round 77: the thirteen status, source, discovery and view-separation decisions lost their audit provenance",
 );
 const round77Gte = r23ById(930964);
 check(
@@ -1425,6 +1426,33 @@ for (const id of [778, 920, 25, 1253, 930865, 930892]) {
 check(
   r41Current.every((item) => !/^[ABCDX]\s*·/.test(test.personalFitBadge(item).label)),
   "Round 77: a visible current card still exposes the legacy source-tier label",
+);
+check(test.latestRoundSection === round78Section, "Round 78: latest-round marker did not advance");
+check(
+  round78TouchedIds.every((id) => test.latestRoundItems.some((item) => Number(item.id) === id)) &&
+    test.latestRoundItems.length === round78TouchedIds.length,
+  "Round 78: the four exact-page refreshes are missing from the latest audit log",
+);
+const round78PowerPoint = r23ById(930845);
+const round78SeniorGraphic = r23ById(1101);
+check(
+  round78PowerPoint &&
+    test.applicationStatus(round78PowerPoint).key === "live" &&
+    test.locationBucket(round78PowerPoint) === "barcelona" &&
+    test.toLinks(round78PowerPoint).some((url) => /remedyedgespain\/jobs\/5233984008/i.test(url)) &&
+    !test.toLinks(round78PowerPoint).some((url) => /5233982008/i.test(url)),
+  "Round 78: PowerPoint Specialist did not move cleanly to the replacement Remedy Edge requisition",
+);
+check(
+  round78SeniorGraphic &&
+    test.applicationStatus(round78SeniorGraphic).key === "live" &&
+    test.locationBucket(round78SeniorGraphic) === "barcelona" &&
+    test.toLinks(round78SeniorGraphic).some((url) => /remedyedgespain\/jobs\/5219087008/i.test(url)),
+  "Round 78: Remedy Edge Senior Graphic Designer lost its current official application route",
+);
+check(
+  [930719, 94].every((id) => test.applicationStatus(r23ById(id)).key === "live" && test.locationBucket(r23ById(id)) === "barcelona"),
+  "Round 78: refreshed Barcelona official roles escaped the current local board",
 );
 const round76Zurich = r23ById(930840);
 const round76Nude = r23ById(930911);
@@ -1487,7 +1515,8 @@ check(
 );
 for (const id of [890, 884, 930900, 930836, 930820, 425, 930845]) {
   check(
-    test.applicationStatus(r23ById(id)).key === "live" && test.CURATED[id]?.latestAuditSection === round75Section,
+    test.applicationStatus(r23ById(id)).key === "live" &&
+      test.CURATED[id]?.latestAuditSection === (id === 930845 ? round78Section : round75Section),
     `Round 75: exact current-page refresh was not preserved for ${id}`,
   );
 }
@@ -1568,9 +1597,9 @@ check(
 );
 const round70Items = test.dedupedData.filter((item) => test.CURATED[item.id]?.latestAuditSection === round70Section);
 check(
-  [930719, 930953, 930954, 930956, 930957, 930958].every((id) =>
+  [930953, 930954, 930956, 930957, 930958].every((id) =>
     round70Items.some((item) => Number(item.id) === id),
-  ) && round70Items.length === 6,
+  ) && round70Items.length === 5,
   "Round 70: the six untouched exact-page decisions were not preserved after Round 77",
 );
 const round69Items = test.dedupedData.filter((item) => test.CURATED[item.id]?.latestAuditSection === round69Section);
@@ -1812,7 +1841,7 @@ for (const [id, route, evidence] of [
   );
 }
 check(
-  test.CURATED[930719]?.latestAuditSection === round70Section &&
+  test.CURATED[930719]?.latestAuditSection === round78Section &&
     /adsmurai\.teamtailor\.com\/jobs\/8109023-digital-graphic-designer/i.test(test.toLinks(r23ById(930719))[0] || "") &&
     test.toLinks(r23ById(930719)).some((url) => /4449119646/i.test(url)) &&
     test.toLinks(r23ById(930719)).some((url) => /8109023-digital-graphic-designer/i.test(url)) &&
@@ -2139,7 +2168,7 @@ for (const [id, evidence] of [[1007, /410 Gone|HTTP 410/i], [153, /R000000041750
     `Round 61: stale search evidence incorrectly restored closed opportunity ${id}`,
   );
 }
-check(round57ExpectedIds.filter((id) => ![24, 25, 778, 920, 1107, 1300].includes(id) && !round73TouchedSet.has(id) && !round74TouchedSet.has(id) && !round75TouchedSet.has(id) && !round76TouchedSet.has(id)).every((id) => test.CURATED[id]?.latestAuditSection === round57Section), "Round 57: provenance was lost after the next original-page audit");
+check(round57ExpectedIds.filter((id) => ![24, 25, 778, 920, 1107, 1300].includes(id) && !round73TouchedSet.has(id) && !round74TouchedSet.has(id) && !round75TouchedSet.has(id) && !round76TouchedSet.has(id) && !round78TouchedIds.includes(id)).every((id) => test.CURATED[id]?.latestAuditSection === round57Section), "Round 57: provenance was lost after the next original-page audit");
 check(round56ExpectedIds.filter((id) => ![930843, 990, 930865, 1237, 930900].includes(id) && !round74TouchedSet.has(id)).every((id) => test.CURATED[id]?.latestAuditSection === round56Section), "Round 56: provenance was lost after the next profile-fit audit");
 check(round55ExpectedIds.filter((id) => ![930719, 930843, 1253, 1301, 868].includes(id)).every((id) => test.CURATED[id]?.latestAuditSection === round55Section), "Round 55: provenance was lost after the next ranked audit");
 check(test.CURATED[24]?.latestAuditSection === round77Section && test.CURATED[25]?.latestAuditSection === round77Section && test.CURATED[930822]?.latestAuditSection === round53Section && test.CURATED[930823]?.latestAuditSection === round58Section, "Round 53/58/77: Chinese-advantage, closure or canonical-link provenance was lost after the current audit");
