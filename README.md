@@ -6,23 +6,24 @@
 
 ## 当前主表
 
-- 215 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
+- 216 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
 - 156 个 Barcelona / 周边当前机会。
-- 59 个明确允许 Spain / Europe / worldwide remote，或已单独标出 Spain 合同资格待确认的机会。
-- 205 个原始详情页或最终申请表显示可投，10 个需要先确认。
+- 60 个明确允许 Spain / Europe / worldwide remote，或已单独标出 Spain 合同资格待确认的机会。
+- 206 个原始详情页或最终申请表显示可投，10 个需要先确认。
 - 6 个中文、华人圈、中国公司或中文远程相关机会。
 
 主表只收录已逐条检查过地点、岗位方向、当前状态和真实入口的机会。默认按“我的匹配分”严格从高到低排列；分数同时考虑 Barcelona/Spain 可行性、品牌视觉相关度、资历、语言门槛、状态可信度和材料投入成本。
 
 ## 数据分区
 
-- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 215 条主表。
+- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 216 条主表。
 - `华人中文全库`：华人网、中文社区、Casa Asia 和中国公司相关来源的完整线索。
 - `页面仍可复核`：详情还在，但状态、地点或申请控制需要再次确认的记录。
 - `关闭 / 历史 / 排除`：已过期、错误地点、重复、非设计岗或无法证实的记录。历史不会删除。
 
 ## 关键文件
 
+- `AUDIT-2026-08-14-ROUND71.md`：继续复扫 ES02、LinkedIn Barcelona 与 Spain remote，并把搜索线索追到雇主官方职位板。新增 BJAK `Creative Design Lead` 的独立 Spain-remote 官方 Ashby 职位，但按强英语、4–6 年、带队和测试门槛保持 0 分后排；Doist 官方当前明确无开放岗位，Speexx 官方当前职位表没有品牌制作设计岗，两条聚合搜索结果只留历史。当前主表为 216 张、156 张 Barcelona、60 张远程、206 张开放、10 张待确认、6 张中文相关。
 - `AUDIT-2026-08-14-ROUND70.md`：逐字复核本轮新命中的精确雇主页。新增 Empresa Confidencial 匿名时尚 Web/数字平面岗为 3.5 分待确认卡、Cosmo 香氛社媒品牌内容岗为 2.1 分、Fitness Park 品牌视频岗为 0 分；三者均在 Barcelona，但按匿名雇主、高英语或英西双硬门槛保持后排。Amazon Producer 与 Criteo 非执行策略岗只留研究历史，Mindrift Workable 精确职位已移除；JobsThatFit 与 Blank Studio 镜像合并进既有规范卡。当前主表为 215 张、156 张 Barcelona、59 张远程、205 张开放、10 张待确认、6 张中文相关。
 - `AUDIT-2026-08-14-ROUND69.md`：复扫 ES02 当前 80 页 955 条招聘、LinkedIn Barcelona 与 Spain remote 结果，并逐条打开新命中和最高分原始页。新增 Amazon Barcelona Creative Manager 作为 0 分高阶观察项；Bending Spoons 的 Barcelona/Madrid LinkedIn 结果确认为同一官方岗位镜像；MiiN Head of Creative and Content 由精确雇主页确认关闭；前五名原始页全部重新返回 200 且排名不变。当前主表为 212 张、153 张 Barcelona、59 张远程、203 张开放、9 张待确认、6 张中文相关。
 - `AUDIT-2026-08-14-ROUND68.md`：复扫中文来源、ES02 60 页与 Barcelona / Spain remote 设计结果。恢复 Flummox 当前雇主 JOIN 的 Spain-remote 兼职电商品牌平面岗，但按流利英语、兼职和薪资未公开压到 2.8 分；Musky 旧实习、MiiN 新 UUID 关闭页及 Eeze 英国 3D 动画误报只留历史。当前主表为 211 张、152 张 Barcelona、59 张远程、202 张开放、9 张待确认、6 张中文相关。
@@ -90,8 +91,8 @@
 - `scripts/scan-linkedin-search.js`：批量扫描 LinkedIn 最近 7 天的 Barcelona 设计关键词，并按职位编号与现有库去重。
 - `scripts/scan-es02-current.js`：直接扫描华人通当前招聘分页，避免搜索引擎缓存滞后；命中标题仍必须继续打开原帖人工判断。
 - `scripts/export-opportunity-ledgers.js`：生成当前主表 CSV/JSON 与完整历史总账 CSV。
-- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 212 个机会的完整、严格降序导出。
-- `all-opportunity-ledger.csv`：1,311 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
+- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 216 个机会的完整、严格降序导出。
+- `all-opportunity-ledger.csv`：1,320 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
 - `scripts/validate-site.js`：验证数据、排序、状态、入口与页面结构。
 
 ## 本地验证
@@ -134,5 +135,13 @@ node .\scripts\inspect-qualified-opportunities.js mine
 - JobsThatFit 的完整正文确认是 Adsmurai Barcelona `Digital Graphic Designer` 镜像；Blank Studio 新 LinkedIn 编号也是既有 Junior 3D Designer 镜像。两组都合并进原卡，不虚增岗位。
 - 主表更新为 215 张：156 张 Barcelona、59 张远程、205 张开放、10 张待确认、6 张中文相关；30 分以上 3 张、10 分以上 13 张、有正分 116 张、0 分 99 张，仍严格按页面显示分降序。
 - 完整证据见 `AUDIT-2026-08-14-ROUND70.md`。
+
+## Round 71（2026-08-14）
+
+- ES02 当前 80 页 960 条标题仍没有新增 Barcelona 中文品牌 / VI 岗；LinkedIn Barcelona 和 Spain remote 新结果继续按职位编号、地点和现有规范卡去重。
+- BJAK 官方 Ashby `6a2445a5-6d17-4362-b35e-05033634b39d` 明确是 Spain remote、全职、当前列出的独立 `Creative Design Lead` requisition；品牌识别和视觉系统方向准确，但 strong English、4–6 年、带队与测试流程使个人分为 0。
+- Doist 官方当前显示 `No open roles`；Speexx 官方职位表没有 Brand Production Designer，Spain 可见项是 Madrid 非设计岗位。两条第三方搜索残留只进入关闭历史，不虚增当前数量。
+- 主表更新为 216 张：156 张 Barcelona、60 张远程、206 张开放、10 张待确认、6 张中文相关；30 分以上 3 张、10 分以上 13 张、有正分 116 张、0 分 100 张，严格按页面显示分降序。
+- 完整证据见 `AUDIT-2026-08-14-ROUND71.md`。
 
 网站由 GitHub Pages 静态托管，不依赖会休眠的应用服务器。

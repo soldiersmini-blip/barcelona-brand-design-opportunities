@@ -3284,6 +3284,12 @@ const ROUND69_CURRENT_IDS = Object.freeze([930952]);
 // The anonymous fashion role remains verify-first, while the two content roles
 // stay current but are capped by explicit English-and-Spanish requirements.
 const ROUND70_CURRENT_IDS = Object.freeze([930955, 930956, 930957]);
+// Round 71 adds one independently listed Spain-remote brand-lead requisition
+// after the employer's public Ashby board confirmed the exact Spain posting.
+// It remains a zero-score stretch because strong English, 4-6 years and team
+// leadership are explicit, while stale Doist and Speexx search results stay
+// outside the current board.
+const ROUND71_CURRENT_IDS = Object.freeze([930959]);
 // Round 68 restores Flummox only after locating a current employer-owned JOIN
 // requisition.  The old LinkedIn mirror remains unusable, but it no longer
 // controls the vacancy status because the employer board now exposes a new,
@@ -3323,6 +3329,7 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
       ROUND65_CURRENT_IDS,
       ROUND69_CURRENT_IDS,
       ROUND70_CURRENT_IDS,
+      ROUND71_CURRENT_IDS,
     )
     .filter((id) => !ROUND37_SUPERSEDED_MAIN_IDS.has(id))
     .filter(
@@ -18590,6 +18597,124 @@ Object.assign(CURATED, {
     preferCuratedLinks: true,
     latestAuditSection: ROUND70_SECTION,
     changeType: "round-70-linkedin-mirror-merged-into-blank-studio-canonical",
+  },
+});
+
+const ROUND71_SECTION = "2026-08-14 Round 71 official-board Spain-remote lead and stale-search rejection audit";
+
+allData.push(...[
+  {
+    id: 930959,
+    section: ROUND71_SECTION,
+    source: "BJAK / official Ashby requisition 6a2445a5-6d17-4362-b35e-05033634b39d",
+    opportunity: "Creative Design Lead - UK (Spain requisition)",
+    fit: "Spain-remote ownership of brand identity, visual systems, campaigns and multi-channel execution; explicit lead-level English barrier",
+    location: "Spain remote; full-time; applicants must already be based in Spain",
+    status: "Live/current: BJAK's public Ashby job-board API and exact requisition were opened on 2026-08-14. The listing isListed=true, published 2026-08-04 and names Spain as the location despite the employer's title suffix '- UK'. It owns brand identity and visual systems across digital, social, product and offline channels, leads a small multidisciplinary creative team and remains hands-on. Four to six years, proven team leadership, strong English and an online assessment or practical task are explicit.",
+    contact: "Official detail/application: https://jobs.ashbyhq.com/bjakcareer/6a2445a5-6d17-4362-b35e-05033634b39d",
+    analysis: "Keep as a real Spain-remote brand-system vacancy but a zero-score stretch for this user. The direction is excellent; the decisive barriers are strong English, lead responsibility, four-to-six years and a rapid assessment/CEO process. It must stay behind every realistic Chinese-contact, junior or language-unconfirmed route.",
+    score: 90,
+    tier: "C",
+    postedAt: "2026-08-04",
+    freshnessTag: "month",
+    freshnessAgeDays: 10,
+    sourceGroup: "official",
+    links: ["https://jobs.ashbyhq.com/bjakcareer/6a2445a5-6d17-4362-b35e-05033634b39d"],
+    searchText: "BJAK official Ashby Creative Design Lead UK Spain requisition remote full-time must already be based in Spain isListed published 2026-08-04 own brand identity visual systems digital social product offline campaigns lead mentor small multidisciplinary creative team hands-on 4-6 years strong English practical task CEO final",
+  },
+  {
+    id: 930960,
+    section: ROUND71_SECTION,
+    source: "Doist / official careers board",
+    opportunity: "Brand Design Lead (stale third-party search result)",
+    fit: "Former globally remote brand-design search lead; no current employer requisition",
+    location: "Doist is globally remote, but no current role-specific location or application exists",
+    status: "Closed/history search rejection: Doist's official careers page was opened on 2026-08-14 and explicitly displayed 'No open roles'. It contains no Brand Design Lead title, role-specific description or application form. A third-party search result cannot override the employer's current empty board.",
+    contact: "Current official careers board: https://doist.com/careers",
+    analysis: "Preserve the searched title as history so it is not rediscovered and inflated later. Restore only when Doist publishes a new exact role with a title, full brief and active application route.",
+    score: 0,
+    tier: "X",
+    sourceGroup: "official",
+    links: ["https://doist.com/careers"],
+    searchText: "Doist Brand Design Lead stale third-party search result official careers No open roles no exact requisition no application closed history globally remote",
+  },
+  {
+    id: 930961,
+    section: ROUND71_SECTION,
+    source: "Speexx / official all-jobs board",
+    opportunity: "Brand Production Designer (stale third-party search result)",
+    fit: "Former brand-production search lead; absent from the employer's current jobs board",
+    location: "No current design requisition; current Spain openings on the official board are Madrid non-design roles",
+    status: "Closed/history search rejection: Speexx's official all-jobs board was opened on 2026-08-14. The current departments list contains no Brand Production Designer or other hands-on brand/graphic vacancy; visible Spain roles are Madrid accounting, content marketing and revenue positions. The third-party result is not a current application route.",
+    contact: "Current official jobs board: https://www.speexx.com/all-jobs",
+    analysis: "Keep as a rejected search-cache record, not a Barcelona or Spain-remote design card. Restore only if the employer board publishes a new exact design requisition with eligible location and an active form.",
+    score: 0,
+    tier: "X",
+    sourceGroup: "official",
+    links: ["https://www.speexx.com/all-jobs"],
+    searchText: "Speexx Brand Production Designer stale third-party search result official all jobs no design vacancy Spain Madrid accounting content marketing revenue non-design no exact application closed history",
+  },
+]);
+
+Object.assign(CURATED, {
+  930959: {
+    statusKey: "live",
+    direction: "brand",
+    company: "BJAK",
+    locationKey: "remote",
+    locationLabel: "Spain remote / 全职 / 必须已居住西班牙",
+    titleZh: "创意设计负责人（品牌识别与视觉系统）",
+    titleEs: "Creative Design Lead - UK (Spain requisition)",
+    applicationMode: "english",
+    language: "英语是全球团队主要工作语言，明确要求 strong English communication",
+    experienceKey: "lead",
+    experienceLabel: "4–6 年 + 带领小型多学科创意团队",
+    internshipKey: false,
+    statusEvidence: "2026-08-14：BJAK 官方 Ashby API 显示 6a2445a5 为 isListed=true、Spain、FullTime、2026-08-04 发布；精确页有完整职责与申请入口。",
+    reason: "品牌识别、视觉系统、Campaign 和多渠道一致性与目标方向高度重合，但强英语、4–6 年、带队、测试和 CEO 终面构成独立硬门槛，因此个人分保持 0。",
+    next: "只作为远程负责人级观察项；除非能够用英语完成负责人面试并证明品牌系统、数字 Campaign、带队和数据优化经验，否则不投入定制申请。",
+    links: ["https://jobs.ashbyhq.com/bjakcareer/6a2445a5-6d17-4362-b35e-05033634b39d"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND71_SECTION,
+    changeType: "round-71-new-current-spain-remote-english-lead-stretch",
+  },
+  930960: {
+    statusKey: "closed",
+    direction: "brand",
+    company: "Doist",
+    locationKey: "remote",
+    locationLabel: "全球远程公司 / 当前无开放职位",
+    titleZh: "品牌设计负责人（官方职位板当前无此岗）",
+    titleEs: "Brand Design Lead",
+    applicationMode: "englishLikely",
+    experienceKey: "lead",
+    experienceLabel: "搜索缓存未提供可核验当前要求",
+    statusEvidence: "2026-08-14：Doist 官方 careers 页面明确显示 No open roles；没有 Brand Design Lead 正文或申请表。",
+    reason: "第三方搜索结果已经失去雇主原始职位支撑，不能进入当前机会数量。",
+    next: "保留历史；只在 Doist 发布新的精确职位页后恢复。",
+    links: ["https://doist.com/careers"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND71_SECTION,
+    changeType: "round-71-doist-stale-search-official-board-empty",
+  },
+  930961: {
+    statusKey: "closed",
+    direction: "production",
+    company: "Speexx",
+    locationKey: "other",
+    locationLabel: "官方当前无设计岗 / Spain 职位集中 Madrid 非设计方向",
+    titleZh: "品牌制作设计师（官方职位板当前无此岗）",
+    titleEs: "Brand Production Designer",
+    applicationMode: "englishLikely",
+    experienceKey: "unknown",
+    experienceLabel: "搜索缓存未提供可核验当前要求",
+    statusEvidence: "2026-08-14：Speexx 官方 all-jobs 页面当前没有 Brand Production Designer 或其他品牌/平面执行岗；Spain 可见职位是 Madrid 会计、内容营销及营收岗位。",
+    reason: "没有雇主原始设计职位和申请表，且当前 Spain 列表不是 Barcelona 设计机会。",
+    next: "保留历史；只有官方职位板出现新的精确设计岗才恢复。",
+    links: ["https://www.speexx.com/all-jobs"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND71_SECTION,
+    changeType: "round-71-speexx-stale-search-no-current-design-requisition",
   },
 });
 
