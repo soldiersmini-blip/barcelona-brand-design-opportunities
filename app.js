@@ -3274,6 +3274,11 @@ const ROUND64_CURRENT_IDS = Object.freeze([930917, 930918, 930919, 930920]);
 // is still capped by the user's real English and seniority constraints.
 const ROUND65_CURRENT_IDS = Object.freeze([930929, 930930, 930931, 930932, 930933]);
 const ROUND65_RESTORED_IDS = new Set([930864]);
+// Round 69 adds one independently current Barcelona creative-production
+// management vacancy found on the employer's exact LinkedIn detail. It stays
+// at the bottom because the user is not targeting five-year people-management
+// roles and the working environment is almost certainly English-first.
+const ROUND69_CURRENT_IDS = Object.freeze([930952]);
 // Round 68 restores Flummox only after locating a current employer-owned JOIN
 // requisition.  The old LinkedIn mirror remains unusable, but it no longer
 // controls the vacancy status because the employer board now exposes a new,
@@ -3311,6 +3316,7 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
       ROUND63_CURRENT_IDS,
       ROUND64_CURRENT_IDS,
       ROUND65_CURRENT_IDS,
+      ROUND69_CURRENT_IDS,
     )
     .filter((id) => !ROUND37_SUPERSEDED_MAIN_IDS.has(id))
     .filter(
@@ -18210,6 +18216,114 @@ Object.assign(CURATED, {
     preferCuratedLinks: true,
     latestAuditSection: ROUND68_SECTION,
     changeType: "round-68-reused-requisition-outside-scope",
+  },
+});
+
+const ROUND69_SECTION = "2026-08-14 Round 69 current-source discovery, top-five refresh and mirror deduplication";
+
+allData.push({
+  id: 930952,
+  section: ROUND69_SECTION,
+  source: "Amazon / current LinkedIn employer detail",
+  opportunity: "Creative Manager, Elevated Shopping",
+  fit: "Barcelona full-time creative-production and people-management role; brand/e-commerce adjacent; very high seniority",
+  location: "Barcelona, Catalonia, Spain; full-time; Amazon Spain Services, S.L.U.",
+  status: "Live/current employer detail: LinkedIn job 4454320948 returned HTTP 200 on 2026-08-14, displayed Apply, a complete role-specific brief, Amazon Spain Services S.L.U. and internal Job ID A10501198. The role leads Barcelona Creative Hub production and directly manages Art Directors, Videographers and other creatives. Amazon's public search endpoint did not yet return A10501198 and a guessed amazon.jobs route returned 404, so the exact employer-posted LinkedIn route remains the only current application evidence.",
+  contact: "Current employer-posted detail/application: https://es.linkedin.com/jobs/view/creative-manager-elevated-shopping-at-amazon-4454320948 ; Amazon design careers category: https://www.amazon.jobs/content/en/job-categories/design",
+  analysis: "Add as a distinct current vacancy rather than reopening the former Art Director requisition 3126194. It is relevant to brand guidelines, photography, video, motion and e-commerce production, but it is primarily a people, budget and studio-operations manager role. Five-plus years of people management plus five-plus years of content strategy/management make it a zero-score stretch for this user; the brief does not state a formal language level, so record probable English rather than inventing a hard requirement.",
+  score: 72,
+  tier: "C",
+  postedAt: "2026-08-14",
+  freshnessTag: "today",
+  freshnessAgeDays: 0,
+  sourceGroup: "linkedin",
+  links: [
+    "https://es.linkedin.com/jobs/view/creative-manager-elevated-shopping-at-amazon-4454320948",
+    "https://www.amazon.jobs/content/en/job-categories/design",
+  ],
+  searchText: "Amazon Creative Manager Elevated Shopping current LinkedIn employer detail 4454320948 Barcelona full-time Amazon Spain Services S.L.U. Job ID A10501198 Apply manages Art Directors Videographers creative production video LED photography motion brand guidelines budgets 5+ years people management 5+ years content management language not stated probable English",
+});
+
+Object.assign(CURATED, {
+  930952: {
+    statusKey: "live",
+    direction: "ecommerce",
+    company: "Amazon / Elevated Shopping",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 全职 / 创意制作管理",
+    titleZh: "创意制作经理（电商、摄影、视频与动效团队）",
+    titleEs: "Creative Manager, Elevated Shopping",
+    languageKey: "unknown",
+    applicationMode: "englishLikely",
+    language: "正文未写语言等级；全球品牌、客户和高级管理沟通按英语环境高概率降权",
+    experienceKey: "lead",
+    experienceLabel: "负责人 / 5年以上人员管理 + 5年以上内容管理",
+    internshipKey: false,
+    statusEvidence: "2026-08-14：LinkedIn 雇主精确职位4454320948返回200，显示Apply、完整JD、Amazon Spain Services S.L.U.与内部Job ID A10501198；Amazon公开搜索尚未返回该ID。",
+    reason: "品牌规范、电商内容、摄影、视频、动效和AI制作相关，但核心是团队、预算、排期与供应商管理，并非个人执行VI岗位；双5年以上门槛使其只作为0分高阶观察项。",
+    next: "当前不优先投。只有确有5年以上人员管理与大型拍摄/制作管理经验时，才通过精确LinkedIn入口申请，并先确认官方Amazon.jobs链接、薪资、办公节奏和语言。",
+    links: [
+      "https://es.linkedin.com/jobs/view/creative-manager-elevated-shopping-at-amazon-4454320948",
+      "https://www.amazon.jobs/content/en/job-categories/design",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND69_SECTION,
+    changeType: "round-69-new-current-senior-barcelona-role",
+  },
+  778: {
+    ...CURATED[778],
+    statusEvidence: "2026-08-14 Round 69：ES02精确页面184673再次返回200，Barcelona全职平面设计标题仍在且没有关闭提示；公司主体、地址与书面合同仍需中文先核实。",
+    latestAuditSection: ROUND69_SECTION,
+    changeType: "round-69-top-five-current-page-refresh",
+  },
+  920: {
+    ...CURATED[920],
+    statusEvidence: "2026-08-14 Round 69：智联精确详情CC481983130J40920987415再次返回200，品牌视觉远程标题仍在且无关闭提示；Barcelona居民、境外签约与跨境付款资格仍未确认。",
+    latestAuditSection: ROUND69_SECTION,
+    changeType: "round-69-top-five-current-page-refresh",
+  },
+  24: {
+    ...CURATED[24],
+    statusEvidence: "2026-08-14 Round 69：HKU Europe原始PDF再次返回200，Barcelona、直接邮箱及中文/英语/西语要求仍可核验；没有截止日期或ATS。",
+    latestAuditSection: ROUND69_SECTION,
+    changeType: "round-69-top-five-current-page-refresh",
+  },
+  930904: {
+    ...CURATED[930904],
+    statusEvidence: "2026-08-14 Round 69：LinkedIn雇主精确职位4450494402再次返回200，Escaparatista、Sabadell和当前正文仍在；华新中文电话继续作为同一岗位的联系入口。",
+    latestAuditSection: ROUND69_SECTION,
+    changeType: "round-69-top-five-current-page-refresh",
+  },
+  25: {
+    ...CURATED[25],
+    statusEvidence: "2026-08-14 Round 69：Tea Lab原始三页PDF再次返回200，Barcelona、中文/西语和直接邮箱仍可读；仍无截止日期、ATS或新的在招声明，所以保持先询问。",
+    latestAuditSection: ROUND69_SECTION,
+    changeType: "round-69-top-five-current-page-refresh",
+  },
+  930900: {
+    ...CURATED[930900],
+    statusEvidence: "2026-08-14 Round 69：Bending Spoons官方职位69d588c142e4c7b7a3dd14ee仍是当前主卡；新LinkedIn Barcelona编号4453273680与Madrid编号4453267708均为同一Media Designer镜像，不新增岗位。",
+    links: [
+      "https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee",
+      "https://jobs.bendingspoons.com/positions/69d588c142e4c7b7a3dd14ee/apply",
+      "https://es.linkedin.com/jobs/view/media-designer-at-bending-spoons-4453273680",
+      "https://es.linkedin.com/jobs/view/media-designer-at-bending-spoons-4453267708",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND69_SECTION,
+    changeType: "round-69-location-mirror-deduplication",
+  },
+  109: {
+    ...CURATED[109],
+    statusKey: "closed",
+    statusEvidence: "2026-08-14 Round 69：MiiN雇主精确页head-of-creative-and-content-barcelona-40h返回200但明确显示Closed job listing且没有Apply；LinkedIn可读正文和当前公司职位分页不能覆盖精确雇主页关闭状态。",
+    links: [
+      "https://empleos.miin-cosmetics.com/jobs/head-of-creative-and-content-barcelona-40h",
+      "https://es.linkedin.com/jobs/view/head-of-creative-and-content-barcelona-40h-at-miin-korean-cosmetics-4434569806",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND69_SECTION,
+    changeType: "round-69-current-employer-page-confirms-closed",
   },
 });
 

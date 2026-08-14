@@ -1,3 +1,6 @@
+const fs = require("node:fs");
+const path = require("node:path");
+
 const keywords = process.argv.slice(2).length
   ? process.argv.slice(2)
   : [
@@ -17,7 +20,13 @@ const keywords = process.argv.slice(2).length
 const location = process.env.LINKEDIN_SEARCH_LOCATION || "Barcelona, Catalonia, Spain";
 const remoteOnly = /^(?:1|true|yes)$/i.test(process.env.LINKEDIN_SEARCH_REMOTE || "");
 const recencySeconds = Math.max(3600, Number(process.env.LINKEDIN_SEARCH_RECENCY_SECONDS) || 604800);
+const onlyUntracked = /^(?:1|true|yes)$/i.test(process.env.LINKEDIN_SEARCH_ONLY_UNTRACKED || "");
 const starts = [0, 25, 50];
+
+const appSource = fs.readFileSync(path.join(__dirname, "..", "app.js"), "utf8");
+const trackedExternalIds = new Set(
+  [...appSource.matchAll(/\b\d{10,12}\b/g)].map((match) => match[0]),
+);
 
 function cleanHtml(value) {
   return String(value || "")
@@ -111,6 +120,10 @@ async function main() {
       else jobs.set(job.id, { ...job, keywords: [job.keyword] });
     }
   }
+  const sortedJobs = [...jobs.values()]
+    .map((job) => ({ ...job, tracked: trackedExternalIds.has(job.id) }))
+    .sort((a, b) => b.postedAt.localeCompare(a.postedAt) || a.title.localeCompare(b.title));
+  const untrackedJobs = sortedJobs.filter((job) => !job.tracked);
   console.log(
     JSON.stringify(
       {
@@ -118,6 +131,7 @@ async function main() {
         location,
         remoteOnly,
         recencySeconds,
+        onlyUntracked,
         keywords,
         pages: pages.map(({ keyword, start, statusCode, error, jobs: pageJobs }) => ({
           keyword,
@@ -126,7 +140,10 @@ async function main() {
           error,
           count: pageJobs.length,
         })),
-        jobs: [...jobs.values()].sort((a, b) => b.postedAt.localeCompare(a.postedAt) || a.title.localeCompare(b.title)),
+        trackedCount: sortedJobs.length - untrackedJobs.length,
+        untrackedCount: untrackedJobs.length,
+        untrackedJobs,
+        jobs: onlyUntracked ? undefined : sortedJobs,
       },
       null,
       2,

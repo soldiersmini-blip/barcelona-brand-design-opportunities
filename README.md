@@ -6,23 +6,24 @@
 
 ## 当前主表
 
-- 211 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
-- 152 个 Barcelona / 周边当前机会。
+- 212 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
+- 153 个 Barcelona / 周边当前机会。
 - 59 个明确允许 Spain / Europe / worldwide remote，或已单独标出 Spain 合同资格待确认的机会。
-- 202 个原始详情页或最终申请表显示可投，9 个需要先确认。
+- 203 个原始详情页或最终申请表显示可投，9 个需要先确认。
 - 6 个中文、华人圈、中国公司或中文远程相关机会。
 
 主表只收录已逐条检查过地点、岗位方向、当前状态和真实入口的机会。默认按“我的匹配分”严格从高到低排列；分数同时考虑 Barcelona/Spain 可行性、品牌视觉相关度、资历、语言门槛、状态可信度和材料投入成本。
 
 ## 数据分区
 
-- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 211 条主表。
+- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 212 条主表。
 - `华人中文全库`：华人网、中文社区、Casa Asia 和中国公司相关来源的完整线索。
 - `页面仍可复核`：详情还在，但状态、地点或申请控制需要再次确认的记录。
 - `关闭 / 历史 / 排除`：已过期、错误地点、重复、非设计岗或无法证实的记录。历史不会删除。
 
 ## 关键文件
 
+- `AUDIT-2026-08-14-ROUND69.md`：复扫 ES02 当前 80 页 955 条招聘、LinkedIn Barcelona 与 Spain remote 结果，并逐条打开新命中和最高分原始页。新增 Amazon Barcelona Creative Manager 作为 0 分高阶观察项；Bending Spoons 的 Barcelona/Madrid LinkedIn 结果确认为同一官方岗位镜像；MiiN Head of Creative and Content 由精确雇主页确认关闭；前五名原始页全部重新返回 200 且排名不变。当前主表为 212 张、153 张 Barcelona、59 张远程、203 张开放、9 张待确认、6 张中文相关。
 - `AUDIT-2026-08-14-ROUND68.md`：复扫中文来源、ES02 60 页与 Barcelona / Spain remote 设计结果。恢复 Flummox 当前雇主 JOIN 的 Spain-remote 兼职电商品牌平面岗，但按流利英语、兼职和薪资未公开压到 2.8 分；Musky 旧实习、MiiN 新 UUID 关闭页及 Eeze 英国 3D 动画误报只留历史。当前主表为 211 张、152 张 Barcelona、59 张远程、202 张开放、9 张待确认、6 张中文相关。
 - `AUDIT-2026-08-14-ROUND66.md`：逐条复核 Round 65 剩余的 13 张待确认卡。Ricaris 的 Dover 公开 API 明确返回 `active=true`、100% remote 与 USD20–25/小时，The Colour Monster 的近期精确雇主页仍开放，二者升为可投；THRU 官方页明确写着 `NO JOB OPENINGS`，ICÓNICO 精确 LinkedIn 已过期，二者转入历史但不删除。Tea Lab、TheBusinessLook 等缺少当前开放声明的旧详情仍只作为先询问线索。当前主表为 210 张、152 张 Barcelona、58 张远程、201 张开放、9 张待确认，中文相关仍为 6 张。
 - `AUDIT-2026-08-14-ROUND65.md`：复扫 ES02、Casa Asia、西华、华新新站及 Barcelona / Spain / Europe remote 来源，逐条打开精确招聘页。新增 5 个独立远程视觉岗，并用新雇主编号恢复 Prime Insights Graphic Designer；它们全部按英语概率、明确英语与高级资历门槛压到 0–10 分。Jobgether 镜像合并进原卡，13 个非设计、志愿、Madrid、Valencia、Málaga、Lanzarote、Sofia 或 Vilnius 误报只留历史。当前主表为 212 张、154 张 Barcelona、58 张远程、199 张开放、13 张待确认，中文相关仍为证据充分的 6 张。
@@ -88,8 +89,8 @@
 - `scripts/scan-linkedin-search.js`：批量扫描 LinkedIn 最近 7 天的 Barcelona 设计关键词，并按职位编号与现有库去重。
 - `scripts/scan-es02-current.js`：直接扫描华人通当前招聘分页，避免搜索引擎缓存滞后；命中标题仍必须继续打开原帖人工判断。
 - `scripts/export-opportunity-ledgers.js`：生成当前主表 CSV/JSON 与完整历史总账 CSV。
-- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 211 个机会的完整、严格降序导出。
-- `all-opportunity-ledger.csv`：1,310 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
+- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 212 个机会的完整、严格降序导出。
+- `all-opportunity-ledger.csv`：1,311 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
 - `scripts/validate-site.js`：验证数据、排序、状态、入口与页面结构。
 
 ## 本地验证
@@ -113,5 +114,14 @@ node .\scripts\inspect-qualified-opportunities.js mine
 - Musky 旧平面实习精确编号已过期；MiiN 新 UUID 页面仍明确不可申请；Eeze 的中文 3D 搜索结果实际已复用为英国 Hammersmith 混合办公的游戏动画岗。三者只保留历史，不进入可投数量。
 - 主表更新为 211 张：152 张 Barcelona、59 张远程、202 张开放、9 张待确认、6 张中文相关；所有当前卡仍按个人分严格降序。
 - 完整证据见 `AUDIT-2026-08-14-ROUND68.md`。
+
+## Round 69（2026-08-14）
+
+- 扫描 ES02 当前 80 页 955 条招聘以及 LinkedIn Barcelona / Spain remote 设计结果；ES02 仅命中仓库电商、Madrid 运营与 Madrid 美工三条非目标结果，没有新增 Barcelona 中文品牌 / VI 岗。
+- 新增 Amazon `Creative Manager, Elevated Shopping`：Barcelona 全职、雇主发布页有完整 JD 与 Apply，但核心是管理 Art Director、摄影、视频和制作团队，要求双重 5 年以上管理经历，因此按用户条件记 0 分，不进入优先申请区。
+- Bending Spoons 新出现的 Barcelona 与 Madrid LinkedIn 编号均合并进同一个官方 Media Designer 主卡，不虚增岗位；MiiN `Head of Creative and Content` 的精确雇主页明确显示 `Closed job listing`，继续只留历史。
+- 前五名原始页重新核验：ES02 华人广告公司、言灵无界、HKU Europe、ELIM HOME 和 Tea Lab 均保持原排名与状态；其中真正应首先联系的仍是前两张中文路径，后三张分别有外语、方向或状态门槛。
+- 主表更新为 212 张：153 张 Barcelona、59 张远程、203 张开放、9 张待确认、6 张中文相关；30 分以上 3 张、10 分以上 13 张、有正分 114 张、0 分 98 张，严格按显示分降序。
+- 完整证据见 `AUDIT-2026-08-14-ROUND69.md`。
 
 网站由 GitHub Pages 静态托管，不依赖会休眠的应用服务器。
