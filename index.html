@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <link rel="manifest" href="./site.webmanifest" />
     <meta name="theme-color" content="#d94b34" />
-    <link rel="stylesheet" href="./styles.css?v=profile-score-v11-20260813" />
+    <link rel="stylesheet" href="./styles.css?v=profile-score-v12-20260814-round77" />
   </head>
   <body>
     <header class="site-header">
@@ -161,11 +161,11 @@
         <div class="quick-view-panel" aria-labelledby="quickViewTitle">
           <div class="quick-view-panel__copy">
             <strong id="quickViewTitle">直接选你要看的库</strong>
-            <p>当前卡全部保留并按匹配分降序；首屏先显示 18 张，继续下滑会自动加载，不代表岗位被删除。</p>
+            <p>正分机会进入默认行动视图；零分外语/高门槛岗位单独保留。每个栏目都按匹配分降序，首屏 18 张，继续下滑自动加载。</p>
           </div>
           <div class="quick-view-switcher" role="tablist" aria-label="岗位库快捷入口">
             <button class="quick-view-button is-active" type="button" data-quick-view="current" role="tab">
-              全部当前 <span id="quickCurrentCount">0</span>
+              可行动（正分） <span id="quickCurrentCount">0</span>
             </button>
             <button class="quick-view-button" type="button" data-quick-view="chineseCurrent" role="tab">
               中文相关 <span id="quickChineseCount">0</span>
@@ -178,6 +178,9 @@
             </button>
             <button class="quick-view-button" type="button" data-quick-view="remote" role="tab">
               远程 <span id="quickRemoteCount">0</span>
+            </button>
+            <button class="quick-view-button" type="button" data-quick-view="backup" role="tab">
+              外语 / 高门槛备选 <span id="quickBackupCount">0</span>
             </button>
             <button class="quick-view-button quick-view-button--history" type="button" data-quick-view="history" role="tab">
               关闭 / 历史 <span id="quickHistoryCount">0</span>
@@ -437,14 +440,13 @@
       </section>
 
       <details class="methodology">
-        <summary>这份看板如何排序，以及 A / B / C / D / X 代表什么？</summary>
+        <summary>这份看板如何按我的实际条件排序？</summary>
         <div class="methodology__content">
           <p>
-            首页按“我的匹配分”从高到低排序：Barcelona 本地和可在西班牙落地优先，语言、资历和合同资格单独标注。默认主表只收逐条核验后的独立岗位；A 是立即优先，B 是值得投递或先询问，C 是备选；D、X、研究线索和历史记录不进入默认主表。
-            X 是已过期、明显不匹配或存在风险的记录。
+            首页按“我的匹配分”从高到低排序：中文工作或中文联系优先，Barcelona 本地和可在西班牙落地其次，品牌视觉、VI、品牌指南和数字延展再加分；外语、资历和合同资格分别降权。卡片直接显示“中文先询问”“中文 + 外语门槛”“外语一线备选”或“零分 · 高门槛”，不再展示容易与个人分冲突的 A / B / C / D 旧标签。
           </p>
           <p>
-            “我的匹配分”同时考虑地点、原始页状态、岗位方向、资历和语言成本；中文相关会加分，但不会压过岗位真实性。你仍可单独查看中文来源全库、英语路径、全部历史和原始资料。
+            默认“可行动”栏目只显示正分当前机会；零分但页面仍开放的外语、高级、实习或方向偏离岗位集中到独立备选，关闭和失效记录进入历史。三类记录全部保留，不会因分栏而删除。
           </p>
         </div>
       </details>
@@ -545,6 +547,6 @@
     </template>
 
     <script src="./data.js?v=round316-20260802"></script>
-    <script src="./app.js?v=profile-score-v31-20260814-round76"></script>
+    <script src="./app.js?v=profile-score-v32-20260814-round77"></script>
   </body>
 </html>

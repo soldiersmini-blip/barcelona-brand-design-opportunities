@@ -3295,6 +3295,10 @@ const ROUND71_CURRENT_IDS = Object.freeze([930959]);
 // Graphic Designer requisition. Both remain zero-score stretch routes because
 // their original forms expose decisive language or seniority gates.
 const ROUND74_CURRENT_IDS = Object.freeze([17, 930963]);
+// Round 77 adds one independently verified employer-owned, worldwide-remote
+// product-label and visual-design vacancy. Spain employment/contracting is not
+// stated, so it remains an English-first backup instead of a priority route.
+const ROUND77_CURRENT_IDS = Object.freeze([930964]);
 // Round 68 restores Flummox only after locating a current employer-owned JOIN
 // requisition.  The old LinkedIn mirror remains unusable, but it no longer
 // controls the vacancy status because the employer board now exposes a new,
@@ -3336,6 +3340,7 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
       ROUND70_CURRENT_IDS,
       ROUND71_CURRENT_IDS,
       ROUND74_CURRENT_IDS,
+      ROUND77_CURRENT_IDS,
     )
     .filter((id) => !ROUND37_SUPERSEDED_MAIN_IDS.has(id))
     .filter(
@@ -13329,6 +13334,7 @@ const els = {
   quickChineseLibraryCount: document.querySelector("#quickChineseLibraryCount"),
   quickBarcelonaCount: document.querySelector("#quickBarcelonaCount"),
   quickRemoteCount: document.querySelector("#quickRemoteCount"),
+  quickBackupCount: document.querySelector("#quickBackupCount"),
   quickHistoryCount: document.querySelector("#quickHistoryCount"),
   quickViewNote: document.querySelector("#quickViewNote"),
   searchInput: document.querySelector("#searchInput"),
@@ -13414,11 +13420,12 @@ const PRESET_NOTES = {
 };
 
 const QUICK_VIEW_NOTES = {
-  current: "当前显示全部已逐条核验、地点可行且未关闭的独立机会；分数始终从高到低。",
+  current: "当前只显示个人匹配分大于 0 的可行动机会；全部严格按分数从高到低。零分岗位没有删除，集中在“外语 / 高门槛备选”。",
   chineseCurrent: "只显示当前主表中的中文工作、中文联系或中国公司相关机会；不会混入旧帖和 Madrid 岗位。",
   chineseLibrary: "华人来源全库保留当前、待复核和关闭历史；默认先显示 Barcelona / 欧洲远程的可用分栏，可在下方切换状态和全部地点。",
-  barcelona: "只显示当前主表中的 Barcelona 与周边机会，仍按你的匹配分从高到低。",
-  remote: "只显示明确允许 Spain / Europe / worldwide remote 或已标明 Spain 资格需确认的当前机会。",
+  barcelona: "只显示 Barcelona 与周边且个人分大于 0 的当前机会，仍按分数从高到低。",
+  remote: "只显示明确允许 Spain / Europe / worldwide remote、个人分大于 0 的当前机会。",
+  backup: "集中显示仍有原始招聘证据、但因英语/西语、资历、实习或岗位方向而得到 0 分的当前备选；它们不再挤占主行动视图。",
   history: "只显示已经关闭、失效、排除或研究留档的记录；这些记录没有被删除，也不计入当前机会数量。",
 };
 
@@ -19481,6 +19488,188 @@ Object.assign(CURATED, {
   },
 });
 
+const ROUND77_SECTION = "2026-08-14 Round 77 current-source status corrections, GTE remote discovery and action-view separation";
+
+// Preserve the complete source records while moving two no-longer-actionable
+// leads into history. A generic contact page or a readable old job body is not
+// sufficient evidence that a vacancy still accepts applications.
+const round77ClosedRecords = new Map([
+  [868, {
+    status: "Closed/history: Omnicom Health's exact LinkedIn employer requisition 4425688048 was reopened on 2026-08-14 and explicitly displayed 'Ya no se aceptan solicitudes'. The Barcelona hybrid/full-time Video Maker brief, three-plus-year requirement and fluent Spanish-and-English gate remain historical evidence only.",
+    analysis: "Move the role out of the current board because the original application control is closed. Preserve the full video/motion brief and employer link so a future independent requisition can be compared without treating this closed seat as actionable.",
+  }],
+  [136, {
+    status: "Closed/history: Yellow Studio's public contact route was rechecked on 2026-08-14, but it does not expose a current Graphic Design Intern vacancy, role-specific brief or application form. The former generic internship lead therefore cannot remain in the current opportunity count.",
+    analysis: "Keep the studio and historical lead in the research ledger, but restore it only when Yellow publishes a new exact vacancy with location, duties and a role-specific application path.",
+  }],
+]);
+
+for (const [id, patch] of round77ClosedRecords) {
+  const record = allData.find((item) => Number(item.id) === id);
+  if (!record) continue;
+  Object.assign(record, {
+    ...patch,
+    section: ROUND77_SECTION,
+    score: 0,
+    tier: "X",
+  });
+}
+
+const round77OnHires = allData.find((item) => Number(item.id) === 930892);
+if (round77OnHires) {
+  Object.assign(round77OnHires, {
+    section: ROUND77_SECTION,
+    postedAt: "2026-08-12",
+    freshnessTag: "week",
+    freshnessAgeDays: 2,
+  });
+}
+
+allData.push({
+  id: 930964,
+  section: ROUND77_SECTION,
+  source: "GTE Brands / official Teamtailor",
+  opportunity: "AI Product Label & Visual Designer",
+  fit: "Worldwide-remote product-label, packaging and e-commerce visual role with strong brand-extension overlap; English-first and Spain contract eligibility not stated",
+  location: "GTE Headquarters; fully remote; Netherlands-based company with a distributed global team; Spain hiring or contractor terms not published",
+  status: "Live/current: GTE Brands' exact official Teamtailor requisition 7732621 was opened on 2026-08-14. It displayed Apply for this job, a complete role-specific application form and the full AI Product Label & Visual Designer brief. The work covers supplement labels, packaging, Shopify product visuals, typography, branding, Adobe/Figma and AI tools. The page states fully remote and describes more than 160 remote staff worldwide, but does not publish a Spain entity, compensation, formal language level or posting date.",
+  contact: "Official detail/application: https://work.gtebrands.com/jobs/7732621-ai-product-label-visual-designer",
+  analysis: "Add one canonical current card because this is a named employer-owned requisition rather than an anonymous aggregator mirror. The packaging, product-label and brand-extension scope is relevant, but the English application environment and unknown Spain contracting terms keep it below every workable Chinese route.",
+  score: 86,
+  tier: "C",
+  freshnessTag: "unknown",
+  sourceGroup: "official",
+  links: ["https://work.gtebrands.com/jobs/7732621-ai-product-label-visual-designer"],
+  searchText: "GTE Brands official Teamtailor 7732621 AI Product Label Visual Designer GTE Headquarters fully remote Netherlands distributed team 160 remote staff worldwide Apply for this job complete form supplement labels packaging Shopify product page visuals typography branding Adobe Photoshop Illustrator Figma Midjourney AI tools Spain contract salary language posting date not stated English application",
+});
+
+Object.assign(CURATED, {
+  778: {
+    ...CURATED[778],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14 Round 77：ES02 精确详情 184673 再次完整显示 2026-08-06 发布、BARCELONA、全职平面设计师、AI、工作居留、全保以及微信/电话 644055418；页面没有关闭提示。雇主法定主体、办公地址、薪资与书面合同仍须先用中文确认。",
+    latestAuditSection: ROUND77_SECTION,
+    changeType: "round-77-current-chinese-exact-page-refresh",
+  },
+  920: {
+    ...CURATED[920],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14 Round 77：智联精确详情 CC481983130J40920987415 当前转入登录/企业路由，不再稳定呈现职位正文；但言灵无界官方智联公司职位页仍明确列出品牌视觉设计师 Remote、1–1.5 万、全职兼职均可，并显示招聘联系人近期活跃。Barcelona 居民、境外签约、税务与付款资格仍未确认，因此保留中文待确认而不误删。",
+    links: [
+      "https://www.zhaopin.com/companydetail/jobs-CZ481983130/",
+      "https://www.zhaopin.com/jobdetail/CC481983130J40920987415.htm",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND77_SECTION,
+    changeType: "round-77-company-jobs-page-preserves-current-chinese-role",
+  },
+  24: {
+    ...CURATED[24],
+    statusEvidence: "2026-08-14 Round 77：Casa Asia 当前就业索引仍列出 2026-07-21 HKU Europe Barcelona 岗位，原始 PDF 与 ssoens@hku.hk 直投邮箱均可读取；职责包含品牌指南、官网/社媒/邮件、Campaign、物料与视觉一致性，中文、英语和西语仍为 essential。Casa Asia 2026-07-31 以后未出现新的设计岗。",
+    latestAuditSection: ROUND77_SECTION,
+    changeType: "round-77-casa-asia-index-and-pdf-refresh",
+  },
+  25: {
+    ...CURATED[25],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14 Round 77：Casa Asia 当前就业索引仍保留 2026-06-02 Tea Lab Barcelona 的中文 Social Media & Content Creator PDF 与邮箱；没有关闭说明，但也没有新的截止日期、ATS 或仍在招聘声明。中文、西语、30岁以下、门店运营和可能兼职仍是决定性限制。",
+    latestAuditSection: ROUND77_SECTION,
+    changeType: "round-77-casa-asia-current-index-refresh",
+  },
+  1300: {
+    ...CURATED[1300],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 77：INFiLED 雇主 LinkedIn 精确职位 4442833345 仍显示 Barcelona、hybrid、full-time、Easy Apply、招聘方以及完整正文；职责覆盖艺术方向、数字/印刷、网页、展会和品牌一致性，mid/senior、流利英语与 Spain 工作许可明确。",
+    reason: "这是当前开放的中国品牌 Barcelona 平面与品牌视觉岗位，职责覆盖数字、印刷、网页、展会和跨市场一致性；但中国公司背景不代表中文工作，流利英语、mid/senior 与 Spain 工作许可都是明确门槛。",
+    next: "只有能够用英语完成申请和面试时再投；作品集优先放品牌系统、数字/印刷延展、网页和展会案例，并在面试前确认薪资、合同主体与 hybrid 节奏。",
+    latestAuditSection: ROUND77_SECTION,
+    changeType: "round-77-current-employer-linkedin-refresh",
+  },
+  1253: {
+    ...CURATED[1253],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14 Round 77：TheBusinessLook LinkedIn 精确职位 4409160871 当前只返回职位壳层，不再稳定显示完整正文或申请控制；搜索索引仍保留 Barcelona、兼职、每周 1–2 天远程及 juanca@businesslookbcn.com。继续作为可直接邮件询问的低分待确认线索，不冒充明确开放。",
+    latestAuditSection: ROUND77_SECTION,
+    changeType: "round-77-linkedin-detail-no-longer-exposes-application-control",
+  },
+  868: {
+    ...CURATED[868],
+    statusKey: "closed",
+    statusEvidence: "2026-08-14 Round 77：Omnicom Health LinkedIn 精确职位 4425688048 明确显示 Ya no se aceptan solicitudes；Barcelona hybrid/full-time、3年以上以及流利英语和西语只保留为历史正文。",
+    reason: "原始雇主页已经明确停止接受申请，不能继续占用当前岗位数量。",
+    next: "保留历史；只在 Omnicom Health 发布新的独立 requisition 后恢复。",
+    latestAuditSection: ROUND77_SECTION,
+    changeType: "round-77-linkedin-explicitly-closed",
+  },
+  930955: {
+    ...CURATED[930955],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 77：匿名时尚企业 LinkedIn 精确职位 4446631402 仍显示 Greater Barcelona、现场全职、约一周前发布、actively reviewing 与 Easy Apply；完整职责为 Web/App/Email/多渠道 Campaign 数字平面，3–5年和高英语明确。雇主身份、薪资与办公地址仍未公开。",
+    latestAuditSection: ROUND77_SECTION,
+    changeType: "round-77-current-easy-apply-live-but-anonymous",
+  },
+  990: {
+    ...CURATED[990],
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "Spain remote / Portugal 等办公室或远程 / 4年以上",
+    statusEvidence: "2026-08-14 Round 77：Revolut 官方 Motion Designer 精确职位 5f707767 仍有 Apply for this role；正文列出 Madrid/Lisbon/Krakow/Dubai office 及 Remote Spain/Portugal/Poland/UAE，职责含品牌 Motion、视频、资产库、指南和本地化，4年以上明确。",
+    reason: "官方 Spain remote 入口和品牌 Motion、资产库、指南、本地化职责均真实，但工作环境大概率以英语为主，且 4 年以上使它只适合作为低优先远程备选。",
+    next: "先确认 Spain 雇佣主体、薪资、远程政策与工作语言；只有英语沟通和 4 年以上 Motion/品牌系统案例都能支撑时再定制申请。",
+    links: [
+      "https://www.revolut.com/en-CY/careers/position/motion-designer-5f707767-cb4d-484f-82ee-fff6afbfbfd6/",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND77_SECTION,
+    changeType: "round-77-official-revolut-page-live-restoration",
+  },
+  930865: {
+    ...CURATED[930865],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14 Round 77：Jobgether LinkedIn 精确职位 4451696654 仍显示 Spain remote、全职、Easy Apply、约两天前发布和超过100名申请者；最终雇主依然匿名，继续放在低分待确认区，不新增匿名镜像。",
+    latestAuditSection: ROUND77_SECTION,
+    changeType: "round-77-current-aggregator-page-still-anonymous",
+  },
+  930892: {
+    ...CURATED[930892],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14 Round 77：OnHires 官方 Ashby c7f7a6d4 当前仍返回 AI Graphic Designer – Performance Ads、2026-08-12 发布、Europe remote、全职及完整申请表；DTC/电商静态广告、Figma/Adobe/AI工具明确，但最终客户雇主、Spain 合同、薪资和工作语言未公开。",
+    latestAuditSection: ROUND77_SECTION,
+    changeType: "round-77-official-recruiter-ats-jsonld-refresh",
+  },
+  136: {
+    ...CURATED[136],
+    statusKey: "closed",
+    statusEvidence: "2026-08-14 Round 77：Yellow Studio 当前公开联系页没有 Graphic Design Intern 的职位标题、职责或专属申请表；旧的泛化实习线索不能继续计入当前岗位。",
+    reason: "当前没有可核验的具体 vacancy；保留工作室联系信息不等于存在开放岗位。",
+    next: "保留历史；只有出现新的角色专页和申请入口后恢复。",
+    latestAuditSection: ROUND77_SECTION,
+    changeType: "round-77-no-current-role-specific-vacancy",
+  },
+  930964: {
+    statusKey: "live",
+    direction: "brand",
+    company: "GTE Brands",
+    locationKey: "remote",
+    locationLabel: "全球全远程 / Spain 合同与税务需确认",
+    titleZh: "AI 产品标签与视觉设计师（包装、电商与品牌延展）",
+    titleEs: "AI Product Label & Visual Designer",
+    languageKey: "unknown",
+    applicationMode: "englishLikely",
+    language: "职位页和申请表为英文；未写正式等级，但全球远程协作按英语环境大概率降权",
+    experienceKey: "unknown",
+    experienceLabel: "年限未写；要求包装/标签、电商视觉及 Adobe/Figma/AI 作品",
+    internshipKey: false,
+    statusEvidence: "2026-08-14 Round 77：GTE Brands 官方 Teamtailor 7732621 显示 Fully Remote、完整职责、Apply for this job 和岗位专属申请表；Spain 实体、合同类型、薪资、正式语言等级与发布日期未公开。",
+    reason: "产品标签、包装、Shopify 产品页、字体、品牌延展和 AI 制作与作品方向相关，而且是具名雇主官方职位；但英文协作与西班牙签约资格未证实，只作为远程外语备选。",
+    next: "先用英文短邮件或申请表确认是否接受 Barcelona 居民、员工还是 contractor、薪资范围、时区、测试政策与知识产权，再决定是否定制包装/电商作品集。",
+    links: ["https://work.gtebrands.com/jobs/7732621-ai-product-label-visual-designer"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND77_SECTION,
+    changeType: "round-77-new-current-official-worldwide-remote-brand-visual-role",
+  },
+});
+
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
   const explicitMode = curated?.applicationMode || APPLICATION_MODE_OVERRIDES[item.id];
@@ -19593,6 +19782,27 @@ function tierLabel(tier) {
     D: "D · 冷投观察",
     X: "X · 排除",
   }[tier] || "未分级";
+}
+
+function personalFitBadge(item) {
+  const status = applicationStatus(item).key;
+  const score = displayedScore(item);
+  const language = scoreLanguageRisk(item);
+  if (status === "closed" || item.tier === "X") {
+    return { label: "历史 / 排除", tone: "closed" };
+  }
+  if (language === "chineseForeign") {
+    return { label: "中文 + 外语门槛", tone: "caution" };
+  }
+  if (["chinese", "chineseCheck", "basicSpanish"].includes(language)) {
+    if (score >= 40) {
+      return { label: status === "verify" ? "中文先询问" : "中文优先", tone: "chinese" };
+    }
+    return { label: "中文相关备选", tone: "chinese-secondary" };
+  }
+  if (score >= 8) return { label: "外语一线备选", tone: "foreign" };
+  if (score > 0) return { label: "外语低优先", tone: "secondary" };
+  return { label: status === "verify" ? "零分 · 需核验" : "零分 · 高门槛", tone: "backup" };
 }
 
 function isStale(item) {
@@ -19713,7 +19923,7 @@ function genericReason(item) {
         ? "来自领英，岗位信息通常更完整，但应仔细核对语言与身份要求。"
         : "来自公司官网或机构渠道，适合直接核对当前开放状态。";
   const freshness = isStale(item) ? "信息可能较旧，价值主要在于先询问是否仍开放。" : "";
-  return `${item.tier === "A" ? "高优先级" : item.tier === "B" ? "值得尝试" : "可作为补充"}的${direction}机会。${sourceText}${freshness}`;
+  return `${personalFitBadge(item).label}的${direction}机会。${sourceText}${freshness}`;
 }
 
 function genericNext(item) {
@@ -20132,6 +20342,7 @@ function renderPriority() {
     const curated = CURATED[item.id];
     const freshness = freshnessInfo(item);
     const applicationLanguage = displayApplicationLanguagePath(item);
+    const fitBadge = personalFitBadge(item);
     // The main row is reserved for a Chinese-first contact path. A role can be
     // professionally relevant and still belong in the caution row when it
     // requires English, Spanish or even basic Spanish for day-to-day work.
@@ -20139,7 +20350,9 @@ function renderPriority() {
     const rank = isPrimary ? ++primaryRank : ++cautionRank;
 
     card.querySelector(".priority-card__rank").textContent = String(rank).padStart(2, "0");
-    card.querySelector(".priority-card__tier").textContent = tierLabel(item.tier);
+    const priorityFit = card.querySelector(".priority-card__tier");
+    priorityFit.textContent = fitBadge.label;
+    priorityFit.classList.add(`priority-card__tier--${fitBadge.tone}`);
     card.querySelector(".priority-card__company").textContent = curated?.company || companyLabel(item);
     card.querySelector(".priority-card__title").textContent = labels.zh;
     card.querySelector(".priority-card__title-es").textContent = labels.es;
@@ -20204,6 +20417,8 @@ function matchesFilters(item, ignoreSource = false) {
   const query = els.searchInput.value.trim().toLowerCase();
   if (query && !String(item.searchText || "").toLowerCase().includes(query)) return false;
   if (!matchesPreset(item)) return false;
+  if (["current", "barcelona", "remote"].includes(state.quickView) && displayedScore(item) <= 0) return false;
+  if (state.quickView === "backup" && displayedScore(item) > 0) return false;
   if (state.quickView === "chineseCurrent" && !isChineseRelevant(item)) return false;
   if (state.quickView === "barcelona" && locationBucket(item) !== "barcelona") return false;
   if (state.quickView === "remote" && locationBucket(item) !== "remote") return false;
@@ -20338,11 +20553,12 @@ function renderResultCard(item) {
   const freshness = freshnessInfo(item);
   const application = applicationStatus(item);
   const labor = laborConditionInfo(item);
+  const fitBadge = personalFitBadge(item);
 
   card.dataset.tier = item.tier || "";
   card.dataset.score = String(displayedScore(item));
   card.querySelector(".result-card__badges").innerHTML = `
-    <span class="tier-badge tier-badge--${escapeHtml(item.tier || "none")}">${escapeHtml(tierLabel(item.tier))}</span>
+    <span class="tier-badge tier-badge--${escapeHtml(fitBadge.tone)}">${escapeHtml(fitBadge.label)}</span>
     ${curated?.changeType === "new" ? '<span class="change-badge change-badge--new">本轮新增</span>' : ""}
     ${curated?.changeType === "refresh" ? '<span class="change-badge change-badge--refresh">状态更新</span>' : ""}
     <span class="source-badge">${escapeHtml(SOURCE_LABELS[group])}</span>
@@ -20781,6 +20997,8 @@ function initStats() {
   const myCurrentRecords = dedupedData.filter(
     (item) => MY_OPPORTUNITY_SET.has(Number(item.id)) && applicationStatus(item).key !== "closed",
   );
+  const actionableCurrentRecords = myCurrentRecords.filter((item) => displayedScore(item) > 0);
+  const backupCurrentRecords = myCurrentRecords.filter((item) => displayedScore(item) <= 0);
   els.recentChineseTotal.textContent = myCurrentRecords.length;
   const recentChinese = dedupedData.filter(
     (item) =>
@@ -20790,17 +21008,18 @@ function initStats() {
   ).length;
   const myStatus = getStatusSummary(myCurrentRecords);
   const myChineseRelevant = myCurrentRecords.filter(isChineseRelevant).length;
-  els.quickCurrentCount.textContent = myCurrentRecords.length;
+  els.quickCurrentCount.textContent = actionableCurrentRecords.length;
   els.quickChineseCount.textContent = myChineseRelevant;
   els.quickChineseLibraryCount.textContent = dedupedData.filter(
     (item) => sourceGroup(item) === "chinese",
   ).length;
-  els.quickBarcelonaCount.textContent = myCurrentRecords.filter(
+  els.quickBarcelonaCount.textContent = actionableCurrentRecords.filter(
     (item) => locationBucket(item) === "barcelona",
   ).length;
-  els.quickRemoteCount.textContent = myCurrentRecords.filter(
+  els.quickRemoteCount.textContent = actionableCurrentRecords.filter(
     (item) => locationBucket(item) === "remote",
   ).length;
+  els.quickBackupCount.textContent = backupCurrentRecords.length;
   els.quickHistoryCount.textContent = dedupedData.filter(
     (item) => applicationStatus(item).key === "closed",
   ).length;
@@ -20820,7 +21039,7 @@ function initStats() {
     (myLanguageCounts.englishSpanishLikely || 0);
   const dualLanguageCount =
     (myLanguageCounts.englishSpanish || 0) + (myLanguageCounts.englishSpanishLikely || 0);
-  els.chineseStatsNote.textContent = `默认主表共 ${myCurrentRecords.length} 个独立机会：${myStatus.live} 个原始页显示可投，${myStatus.verify} 个需先确认。可先走中文路径 ${chinesePathCount} 个；英文相关路径 ${englishPathCount} 个（其中 ${myLanguageCounts.englishLikely || 0} 个为英语环境大概率、${dualLanguageCount} 个同时存在明确或高概率西语门槛）、西语很可能 ${myLanguageCounts.spanishLikely || 0} 个、西语硬门槛 ${myLanguageCounts.spanish || 0} 个、其他外语门槛 ${myLanguageCounts.foreign || 0} 个只排在后面。中文或中国公司相关 ${myChineseRelevant} 个；历史、重复、关闭和外地线索仍完整保留。`;
+  els.chineseStatsNote.textContent = `完整当前主表共 ${myCurrentRecords.length} 个独立机会：${myStatus.live} 个原始页显示可投，${myStatus.verify} 个需先确认；其中 ${actionableCurrentRecords.length} 个个人分大于 0，默认进入可行动视图，${backupCurrentRecords.length} 个零分外语/高门槛岗位集中到独立备选。可先走中文路径 ${chinesePathCount} 个；英文相关路径 ${englishPathCount} 个（其中 ${myLanguageCounts.englishLikely || 0} 个为英语环境大概率、${dualLanguageCount} 个同时存在明确或高概率西语门槛）、西语很可能 ${myLanguageCounts.spanishLikely || 0} 个、西语硬门槛 ${myLanguageCounts.spanish || 0} 个、其他外语门槛 ${myLanguageCounts.foreign || 0} 个只排在后面。中文或中国公司相关 ${myChineseRelevant} 个；历史、重复、关闭和外地线索仍完整保留。`;
   const statusSummary = myStatus;
   els.liveCount.textContent = statusSummary.live;
   els.verifyCount.textContent = statusSummary.verify;

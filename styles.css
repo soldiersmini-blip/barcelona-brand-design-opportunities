@@ -555,6 +555,19 @@ main {
   font-weight: 800;
 }
 
+.priority-card__tier--caution,
+.priority-card__tier--foreign,
+.priority-card__tier--secondary,
+.priority-card__tier--backup {
+  background: #fff1df;
+  color: #8a4d17;
+}
+
+.priority-card__tier--closed {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
 .priority-card__company,
 .result-card__company {
   margin: 20px 0 7px;
@@ -1216,6 +1229,33 @@ main {
 }
 
 .tier-badge--X {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.tier-badge--chinese {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.tier-badge--chinese-secondary {
+  background: #e8f3ec;
+  color: #35694c;
+}
+
+.tier-badge--caution,
+.tier-badge--foreign,
+.tier-badge--secondary {
+  background: #fff1df;
+  color: #8a4d17;
+}
+
+.tier-badge--backup {
+  background: var(--surface-soft);
+  color: var(--ink-soft);
+}
+
+.tier-badge--closed {
   background: var(--danger-soft);
   color: var(--danger);
 }

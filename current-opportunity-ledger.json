@@ -1,6 +1,6 @@
 {
   "exportedAt": "2026-08-14",
-  "total": 212,
+  "total": 211,
   "rows": [
     {
       "ledger_bucket": "current-main",
@@ -28,7 +28,7 @@
         "https://www.es02.com/jobs/Recruitment/barcelona/i184673.html",
         "https://xihua.es/forum.php?mod=viewthread&tid=637173"
       ],
-      "status_evidence": "2026-08-14 Round 72：ES02 精确详情 184673 在当前任务浏览器中仍完整显示 2026-08-06 发布、BARCELONA、全职平面设计师、AI、工作居留、全保以及微信/电话 644055418；页面没有关闭提示。雇主法定主体、办公地址、薪资与书面合同仍需先用中文确认。",
+      "status_evidence": "2026-08-14 Round 77：ES02 精确详情 184673 再次完整显示 2026-08-06 发布、BARCELONA、全职平面设计师、AI、工作居留、全保以及微信/电话 644055418；页面没有关闭提示。雇主法定主体、办公地址、薪资与书面合同仍须先用中文确认。",
       "analysis": "Keep one canonical current card. The August ES02 repost proves recent demand and the older Xihua page preserves its EUR1,410-1,600 net salary field, but identical contact and vacancy details mean they are not separate jobs. Confirm employer identity and written terms in Chinese before sending sensitive documents or editable source files."
     },
     {
@@ -52,11 +52,12 @@
       "score": 52,
       "source_score": 62,
       "posted_at": "2026-02-24",
-      "primary_url": "https://www.zhaopin.com/jobdetail/CC481983130J40920987415.htm",
+      "primary_url": "https://www.zhaopin.com/companydetail/jobs-CZ481983130/",
       "all_links": [
+        "https://www.zhaopin.com/companydetail/jobs-CZ481983130/",
         "https://www.zhaopin.com/jobdetail/CC481983130J40920987415.htm"
       ],
-      "status_evidence": "2026-08-14 Round 72：智联精确详情 CC481983130J40920987415 仍显示品牌视觉设计师 Remote、1–1.5 万、兼职/临时、完整品牌 VI 与社媒/网站职责、公司审核信息和立即沟通入口；没有关闭提示。地点仍标成都，Barcelona 居民、境外签约、税务和付款资格未确认，因此继续放在中文可询问的待确认层。",
+      "status_evidence": "2026-08-14 Round 77：智联精确详情 CC481983130J40920987415 当前转入登录/企业路由，不再稳定呈现职位正文；但言灵无界官方智联公司职位页仍明确列出品牌视觉设计师 Remote、1–1.5 万、全职兼职均可，并显示招聘联系人近期活跃。Barcelona 居民、境外签约、税务与付款资格仍未确认，因此保留中文待确认而不误删。",
       "analysis": "Keep in the Chinese manual queue because the VI and Chinese-language fit are strong. Do not treat the word remote as Spain eligibility: ask about Barcelona residency, contract entity, weekly hours, timezone, cross-border payment and tax before preparing a full application."
     },
     {
@@ -86,7 +87,7 @@
         "https://www.casaasia.eu/empleo-2/",
         "mailto:ssoens@hku.hk"
       ],
-      "status_evidence": "2026-08-14 Round 72：HKU Europe 原始一页 PDF 与 Casa Asia 当前就业索引仍可读取，索引继续列出 2026-07-21 Barcelona 岗位，PDF 提供 ssoens@hku.hk 直投邮箱。职责含品牌指南、数字内容、campaign 与营销物料；英文、中文和西语书面口语均为 essential，且没有截止日期或 ATS 开放声明，因此维持待确认与语言硬门槛。",
+      "status_evidence": "2026-08-14 Round 77：Casa Asia 当前就业索引仍列出 2026-07-21 HKU Europe Barcelona 岗位，原始 PDF 与 ssoens@hku.hk 直投邮箱均可读取；职责包含品牌指南、官网/社媒/邮件、Campaign、物料与视觉一致性，中文、英语和西语仍为 essential。Casa Asia 2026-07-31 以后未出现新的设计岗。",
       "analysis": "Keep as the clearest current Barcelona Chinese-branding route, but not as a pure VI role. Chinese, English and Spanish are all essential, and the work mixes brand guidelines, website/social/email, campaigns, events, suppliers, data and operational marketing. Send a short availability check first and ask about salary, contract, start date and the proportion of hands-on visual production."
     },
     {
@@ -116,7 +117,7 @@
         "https://www.casaasia.eu/empleo-2/",
         "mailto:han980813@gmail.com"
       ],
-      "status_evidence": "2026-08-14 Round 72：Casa Asia 当前就业索引仍列出 2026-06-02 Barcelona 的 Social Media & Content Creator with Chinese language skills，并继续链接原招聘 PDF；现有 PDF 邮箱入口保留。索引没有说明岗位已关闭，但也没有新的截止日期、ATS 或仍在招聘声明，所以继续作为可中文询问、需西语且偏社媒/门店运营的待确认备选。",
+      "status_evidence": "2026-08-14 Round 77：Casa Asia 当前就业索引仍保留 2026-06-02 Tea Lab Barcelona 的中文 Social Media & Content Creator PDF 与邮箱；没有关闭说明，但也没有新的截止日期、ATS 或仍在招聘声明。中文、西语、30岁以下、门店运营和可能兼职仍是决定性限制。",
       "analysis": "Keep as a Chinese-contact Barcelona fallback, not a confirmed current vacancy. The work mixes Xiaohongshu, Instagram, TikTok, short video and AI video with daily Tea Lab shop operations; Chinese and Spanish, an under-30 condition, flexible or possible part-time terms and negotiable pay all materially reduce fit."
     },
     {
@@ -467,7 +468,7 @@
         "https://www.linkedin.com/jobs/view/graphic-designer-at-infiled-4442833345",
         "https://www.infiled.com/careers/"
       ],
-      "status_evidence": "2026-08-14 Round 75：INFiLED 雇主 LinkedIn 4442833345 仍显示 Barcelona、hybrid、full-time 和 Easy Apply；艺术指导、数字/印刷、网页、展会、跨市场品牌一致性、mid/senior、流利英语与 Spain 工作许可均确认。",
+      "status_evidence": "2026-08-14 Round 77：INFiLED 雇主 LinkedIn 精确职位 4442833345 仍显示 Barcelona、hybrid、full-time、Easy Apply、招聘方以及完整正文；职责覆盖艺术方向、数字/印刷、网页、展会和品牌一致性，mid/senior、流利英语与 Spain 工作许可明确。",
       "analysis": "Keep as an A-tier, Chinese-company-linked Barcelona graphic-design lead: it is genuinely live, local and full-time. Apply through the original Easy Apply route with English/Spanish-ready digital, print, event and brand-consistency cases; verify salary, contract entity and Spain work-permit requirements before proceeding."
     },
     {
@@ -1223,6 +1224,34 @@
     {
       "ledger_bucket": "current-main",
       "rank": 43,
+      "id": 930955,
+      "company": "未公开时尚企业 / Empresa Confidencial",
+      "role_zh": "Web 与数字平面设计师（匿名时尚企业）",
+      "original_role": "Diseñador/a Gráfico Web",
+      "tier": "C",
+      "status": "live",
+      "location_bucket": "barcelona",
+      "location": "Greater Barcelona / 全职 / 雇主身份待核验",
+      "language_path": "english",
+      "experience_path": "mid",
+      "experience_requirement": "3–5 年",
+      "direction": "digital",
+      "chinese_relevant": false,
+      "formal": true,
+      "internship": false,
+      "score": 5.2,
+      "source_score": 34,
+      "posted_at": "",
+      "primary_url": "https://www.linkedin.com/jobs/view/4446631402/",
+      "all_links": [
+        "https://www.linkedin.com/jobs/view/4446631402/"
+      ],
+      "status_evidence": "2026-08-14 Round 77：匿名时尚企业 LinkedIn 精确职位 4446631402 仍显示 Greater Barcelona、现场全职、约一周前发布、actively reviewing 与 Easy Apply；完整职责为 Web/App/Email/多渠道 Campaign 数字平面，3–5年和高英语明确。雇主身份、薪资与办公地址仍未公开。",
+      "analysis": "Keep as a visible but low-scored Barcelona backup because the work is genuinely hands-on digital graphic design. Before sharing personal documents, confirm the legal employer, office address, contract, salary, daily language and whether the application is handled directly by the hiring company."
+    },
+    {
+      "ledger_bucket": "current-main",
+      "rank": 44,
       "id": 886,
       "company": "JUNGLE / MeMe",
       "role_zh": "社交艺术指导（图像与视频编辑）",
@@ -1251,7 +1280,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 44,
+      "rank": 45,
       "id": 930711,
       "company": "JUNGLE / MeMe",
       "role_zh": "社交创意（品牌内容与短视频）",
@@ -1280,7 +1309,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 45,
+      "rank": 46,
       "id": 930917,
       "company": "Avecla Realty",
       "role_zh": "社媒与营销内容制作（轻量平面 / 视频）",
@@ -1309,7 +1338,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 46,
+      "rank": 47,
       "id": 175,
       "company": "Frekuent",
       "role_zh": "品牌与 Campaign 设计师",
@@ -1338,7 +1367,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 47,
+      "rank": 48,
       "id": 1257,
       "company": "Iôsif Bar / JOB TODAY",
       "role_zh": "Instagram 社媒与平面设计师",
@@ -1367,7 +1396,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 48,
+      "rank": 49,
       "id": 633,
       "company": "Puig / Carolina Herrera Makeup",
       "role_zh": "品牌形象与 360 Campaign 管培项目",
@@ -1395,7 +1424,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 49,
+      "rank": 50,
       "id": 94,
       "company": "Savills Spain",
       "role_zh": "品牌设计师（企业视觉、编辑与空间导视）",
@@ -1423,7 +1452,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 50,
+      "rank": 51,
       "id": 930864,
       "company": "Prime Insights",
       "role_zh": "平面与品牌视觉设计师（插画、吉祥物与产品视觉）",
@@ -1452,7 +1481,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 51,
+      "rank": 52,
       "id": 866,
       "company": "devicenow",
       "role_zh": "品牌视频与动态视觉专员",
@@ -1480,7 +1509,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 52,
+      "rank": 53,
       "id": 604,
       "company": "Canonical",
       "role_zh": "视觉设计师（品牌指南、UI 系统与数字产品）",
@@ -1508,7 +1537,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 53,
+      "rank": 54,
       "id": 863,
       "company": "Grup Ametller Origen",
       "role_zh": "数字平面设计专员（品牌数字延展）",
@@ -1537,7 +1566,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 54,
+      "rank": 55,
       "id": 930718,
       "company": "Capitole",
       "role_zh": "邮件与数字设计系统设计师",
@@ -1566,7 +1595,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 55,
+      "rank": 56,
       "id": 279,
       "company": "DORTOKA disseny",
       "role_zh": "平面与 Web 设计师",
@@ -1597,7 +1626,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 56,
+      "rank": 57,
       "id": 930719,
       "company": "Adsmurai",
       "role_zh": "数字平面设计师（360° Campaign）",
@@ -1626,7 +1655,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 57,
+      "rank": 58,
       "id": 908,
       "company": "Top Doctors Group",
       "role_zh": "营销设计师（多品牌视觉）",
@@ -1655,7 +1684,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 58,
+      "rank": 59,
       "id": 1253,
       "company": "TheBusinessLook BCN / Museum Merchandising",
       "role_zh": "初级平面设计师（半职，先确认名额）",
@@ -1680,12 +1709,12 @@
         "mailto:juanca@businesslookbcn.com",
         "https://www.businesslookbcn.com/"
       ],
-      "status_evidence": "2026-08-14：LinkedIn 精确页 4409160871 返回 200，Barcelona 初级半职正文和作品集邮箱 juanca@businesslookbcn.com 完整；但发布约三个月且没有当前平台投递按钮，邮箱只足以做在招确认。",
+      "status_evidence": "2026-08-14 Round 77：TheBusinessLook LinkedIn 精确职位 4409160871 当前只返回职位壳层，不再稳定显示完整正文或申请控制；搜索索引仍保留 Barcelona、兼职、每周 1–2 天远程及 juanca@businesslookbcn.com。继续作为可直接邮件询问的低分待确认线索，不冒充明确开放。",
       "analysis": "Retain prominently in the review queue because prior experience is optional and the work covers catalogues, digital assets, social, newsletters, presentations and product support. Ask whether the half-time role, salary and one-to-two remote days are still current before tailoring a portfolio."
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 59,
+      "rank": 60,
       "id": 535,
       "company": "Supabase",
       "role_zh": "品牌设计师（开发者品牌、活动与多渠道视觉）",
@@ -1713,7 +1742,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 60,
+      "rank": 61,
       "id": 278,
       "company": "Avidalia",
       "role_zh": "数字内容设计师（品牌视觉与基础动效，兼职）",
@@ -1742,7 +1771,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 61,
+      "rank": 62,
       "id": 1081,
       "company": "Eximia Studio",
       "role_zh": "效果创意设计师（广告、数字内容与少量 VI）",
@@ -1770,7 +1799,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 62,
+      "rank": 63,
       "id": 1303,
       "company": "CATORCE / DDB Group",
       "role_zh": "工作室视觉设计师与 HTML 程序员",
@@ -1798,7 +1827,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 63,
+      "rank": 64,
       "id": 874,
       "company": "IKIGAI Talent Group / 移动应用客户",
       "role_zh": "视频剪辑与动态设计师（获客广告 / 品牌动态）",
@@ -1827,7 +1856,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 64,
+      "rank": 65,
       "id": 930854,
       "company": "Jungle / PS21Barna",
       "role_zh": "广告视频剪辑与基础动态视觉",
@@ -1855,7 +1884,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 65,
+      "rank": 66,
       "id": 930882,
       "company": "Duna",
       "role_zh": "视觉设计师（品牌延展、网页与信息图形）",
@@ -1886,7 +1915,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 66,
+      "rank": 67,
       "id": 930823,
       "company": "Factorial",
       "role_zh": "付费广告动态设计师（全球市场）",
@@ -1915,7 +1944,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 67,
+      "rank": 68,
       "id": 1227,
       "company": "Natulim",
       "role_zh": "视频剪辑专家（含 Motion Graphics）",
@@ -1943,7 +1972,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 68,
+      "rank": 69,
       "id": 860,
       "company": "Hays 官方招聘",
       "role_zh": "营销协调员（平面设计方向）",
@@ -1972,7 +2001,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 69,
+      "rank": 70,
       "id": 889,
       "company": "Dragons Group",
       "role_zh": "食品饮料行业中级平面设计师",
@@ -2002,7 +2031,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 70,
+      "rank": 71,
       "id": 1301,
       "company": "The Colour Monster",
       "role_zh": "品牌识别与视觉系统设计师",
@@ -2030,7 +2059,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 71,
+      "rank": 72,
       "id": 930816,
       "company": "Brownie",
       "role_zh": "初级平面设计师（360° 品牌、包装、门店与电商）",
@@ -2058,7 +2087,35 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 72,
+      "rank": 73,
+      "id": 990,
+      "company": "Revolut",
+      "role_zh": "动态设计师（Brand Studio / Spain remote）",
+      "original_role": "Motion Designer（本轮新增，verify-first）",
+      "tier": "C",
+      "status": "live",
+      "location_bucket": "remote",
+      "location": "Spain remote / Portugal 等办公室或远程 / 4年以上",
+      "language_path": "englishLikely",
+      "experience_path": "unknown",
+      "experience_requirement": "年限与完整门槛待确认",
+      "direction": "digital",
+      "chinese_relevant": false,
+      "formal": false,
+      "internship": false,
+      "score": 4,
+      "source_score": 78,
+      "posted_at": "",
+      "primary_url": "https://www.revolut.com/en-CY/careers/position/motion-designer-5f707767-cb4d-484f-82ee-fff6afbfbfd6/",
+      "all_links": [
+        "https://www.revolut.com/en-CY/careers/position/motion-designer-5f707767-cb4d-484f-82ee-fff6afbfbfd6/"
+      ],
+      "status_evidence": "2026-08-14 Round 77：Revolut 官方 Motion Designer 精确职位 5f707767 仍有 Apply for this role；正文列出 Madrid/Lisbon/Krakow/Dubai office 及 Remote Spain/Portugal/Poland/UAE，职责含品牌 Motion、视频、资产库、指南和本地化，4年以上明确。",
+      "analysis": "Keep as B verify-first. Reopen directly before submitting; confirm Spain payroll, seniority, salary, portfolio requirements and whether the work is brand-system motion, product motion or social production. Apply only through revolut.com and use the motion-first CV once the page is stable."
+    },
+    {
+      "ledger_bucket": "current-main",
+      "rank": 74,
       "id": 84,
       "company": "reboot",
       "role_zh": "网页设计师（端到端视觉落地）",
@@ -2086,7 +2143,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 73,
+      "rank": 75,
       "id": 930833,
       "company": "Wecolors",
       "role_zh": "产品平面设计师（美妆包装与完稿）",
@@ -2114,7 +2171,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 74,
+      "rank": 76,
       "id": 930879,
       "company": "DashBook",
       "role_zh": "初级艺术指导（书籍封面、编辑设计与排版）",
@@ -2142,35 +2199,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 75,
-      "id": 868,
-      "company": "Omnicom Health",
-      "role_zh": "医疗品牌视频制作与动态视觉",
-      "original_role": "医疗品牌视频制作与动态视觉 / Video Maker",
-      "tier": "C",
-      "status": "verify",
-      "location_bucket": "barcelona",
-      "location": "巴塞罗那",
-      "language_path": "spanish",
-      "experience_path": "mid",
-      "experience_requirement": "中级 / 3 年以上",
-      "direction": "digital",
-      "chinese_relevant": false,
-      "formal": true,
-      "internship": false,
-      "score": 3.7,
-      "source_score": 88,
-      "posted_at": "2026-07-26",
-      "primary_url": "https://es.linkedin.com/jobs/view/video-maker-at-omnicom-health-4425688048",
-      "all_links": [
-        "https://es.linkedin.com/jobs/view/video-maker-at-omnicom-health-4425688048"
-      ],
-      "status_evidence": "2026-08-14：LinkedIn 4425688048 返回 200，Barcelona Video Maker 标题与正文完整，但公开页没有当前投递按钮或雇主 ATS；正文还明确要求西语和英语流利。",
-      "analysis": "Retain as a verify-first healthcare-brand motion lead. The audiovisual scope is real and relevant, but language and application-route friction lower priority."
-    },
-    {
-      "ledger_bucket": "current-main",
-      "rank": 76,
+      "rank": 77,
       "id": 989,
       "company": "Storisell",
       "role_zh": "动态设计师（Spain / Barcelona 团队）",
@@ -2199,7 +2228,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 77,
+      "rank": 78,
       "id": 854,
       "company": "Netenders / Wordans",
       "role_zh": "高产量电商服装图形设计师",
@@ -2228,7 +2257,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 78,
+      "rank": 79,
       "id": 930913,
       "company": "Tenth Revolution Group / 客户未披露",
       "role_zh": "自由职业数字平面设计师（英语 B2、需 autónomo）",
@@ -2257,7 +2286,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 79,
+      "rank": 80,
       "id": 930914,
       "company": "Tenth Revolution Group / 药妆客户未披露",
       "role_zh": "自由职业 3D 与视觉设计师（Blender、英语 B2）",
@@ -2286,7 +2315,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 80,
+      "rank": 81,
       "id": 930869,
       "company": "NEWEYES TECH S.L.",
       "role_zh": "多媒体设计与内容创作",
@@ -2314,7 +2343,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 81,
+      "rank": 82,
       "id": 921,
       "company": "Oh / OhChat",
       "role_zh": "平面设计师（Campaign、产品内素材与基础 Motion）",
@@ -2342,7 +2371,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 82,
+      "rank": 83,
       "id": 1293,
       "company": "Bonita Digital",
       "role_zh": "自由职业平面与创意设计师（品牌重塑、社媒与 Campaign）",
@@ -2371,7 +2400,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 83,
+      "rank": 84,
       "id": 1053,
       "company": "DDB Spain",
       "role_zh": "社交媒体内容创作者",
@@ -2396,34 +2425,6 @@
       ],
       "status_evidence": "Live/current: DDB Spain's official Greenhouse board was checked on 2026-08-12 and requisition 5096089008 remains listed in Barcelona with a direct application route. The role is Social Media Content Creator, so it belongs only in the secondary content group.",
       "analysis": "Recover at low priority as a current Barcelona social-content route, not a core graphic/VI opportunity."
-    },
-    {
-      "ledger_bucket": "current-main",
-      "rank": 84,
-      "id": 930955,
-      "company": "未公开时尚企业 / Empresa Confidencial",
-      "role_zh": "Web 与数字平面设计师（匿名时尚企业）",
-      "original_role": "Diseñador/a Gráfico Web",
-      "tier": "C",
-      "status": "verify",
-      "location_bucket": "barcelona",
-      "location": "Greater Barcelona / 全职 / 雇主身份待核验",
-      "language_path": "english",
-      "experience_path": "mid",
-      "experience_requirement": "3–5 年",
-      "direction": "digital",
-      "chinese_relevant": false,
-      "formal": true,
-      "internship": false,
-      "score": 3.5,
-      "source_score": 34,
-      "posted_at": "",
-      "primary_url": "https://www.linkedin.com/jobs/view/4446631402/",
-      "all_links": [
-        "https://www.linkedin.com/jobs/view/4446631402/"
-      ],
-      "status_evidence": "2026-08-14：LinkedIn 精确页 4446631402 返回 200、显示 Apply 与完整职责；但发布者隐藏实际时尚企业名称、地址、薪资和办公模式。",
-      "analysis": "Keep as a visible but low-scored Barcelona backup because the work is genuinely hands-on digital graphic design. Before sharing personal documents, confirm the legal employer, office address, contract, salary, daily language and whether the application is handled directly by the hiring company."
     },
     {
       "ledger_bucket": "current-main",
@@ -2939,34 +2940,6 @@
     {
       "ledger_bucket": "current-main",
       "rank": 103,
-      "id": 990,
-      "company": "Revolut",
-      "role_zh": "动态设计师（Brand Studio / Spain remote）",
-      "original_role": "Motion Designer（本轮新增，verify-first）",
-      "tier": "C",
-      "status": "verify",
-      "location_bucket": "remote",
-      "location": "Spain remote（官方详情待重新打开）",
-      "language_path": "englishLikely",
-      "experience_path": "unknown",
-      "experience_requirement": "年限与完整门槛待确认",
-      "direction": "digital",
-      "chinese_relevant": false,
-      "formal": false,
-      "internship": false,
-      "score": 2,
-      "source_score": 78,
-      "posted_at": "",
-      "primary_url": "https://www.revolut.com/en-CY/careers/position/motion-designer-5f707767-cb4d-484f-82ee-fff6afbfbfd6/",
-      "all_links": [
-        "https://www.revolut.com/en-CY/careers/position/motion-designer-5f707767-cb4d-484f-82ee-fff6afbfbfd6/"
-      ],
-      "status_evidence": "2026-08-14：Revolut 精确 Motion Designer 页面只返回 403 安全检查。安全拦截不是关闭证据，但本轮无法重新核验完整正文和投递入口，因此不升级为确认开放。",
-      "analysis": "Keep as B verify-first. Reopen directly before submitting; confirm Spain payroll, seniority, salary, portfolio requirements and whether the work is brand-system motion, product motion or social production. Apply only through revolut.com and use the motion-first CV once the page is stable."
-    },
-    {
-      "ledger_bucket": "current-main",
-      "rank": 104,
       "id": 930932,
       "company": "Prime Insights",
       "role_zh": "动效设计师（广告、产品与网页动画）",
@@ -2994,7 +2967,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 105,
+      "rank": 104,
       "id": 1258,
       "company": "Media Electronics SL / JOB TODAY",
       "role_zh": "平面设计师（社媒方向）",
@@ -3024,7 +2997,63 @@
     },
     {
       "ledger_bucket": "current-main",
+      "rank": 105,
+      "id": 930865,
+      "company": "Jobgether / 匿名合作公司",
+      "role_zh": "UI/UX 与视觉设计师（匿名雇主，先核验）",
+      "original_role": "UI/UX & Visual Designer (Mid-Level)",
+      "tier": "D",
+      "status": "verify",
+      "location_bucket": "remote",
+      "location": "Spain remote / 实际雇主与合同主体未公开",
+      "language_path": "englishLikely",
+      "experience_path": "mid",
+      "experience_requirement": "中级 / 实际雇主要求待核验",
+      "direction": "digital",
+      "chinese_relevant": false,
+      "formal": true,
+      "internship": false,
+      "score": 1.5,
+      "source_score": 34,
+      "posted_at": "2026-08-12",
+      "primary_url": "https://www.linkedin.com/jobs/view/4451696654/",
+      "all_links": [
+        "https://www.linkedin.com/jobs/view/4451696654/"
+      ],
+      "status_evidence": "2026-08-14 Round 77：Jobgether LinkedIn 精确职位 4451696654 仍显示 Spain remote、全职、Easy Apply、约两天前发布和超过100名申请者；最终雇主依然匿名，继续放在低分待确认区，不新增匿名镜像。",
+      "analysis": "Keep at the bottom of the reviewable board rather than treating it as a high-confidence vacancy. The skills match is real, but do not provide identity documents, banking information, unpaid test work or private source files until the actual employer, company-domain contact, written compensation, Spain contract route and data controller are disclosed."
+    },
+    {
+      "ledger_bucket": "current-main",
       "rank": 106,
+      "id": 930964,
+      "company": "GTE Brands",
+      "role_zh": "AI 产品标签与视觉设计师（包装、电商与品牌延展）",
+      "original_role": "AI Product Label & Visual Designer",
+      "tier": "C",
+      "status": "live",
+      "location_bucket": "remote",
+      "location": "全球全远程 / Spain 合同与税务需确认",
+      "language_path": "englishLikely",
+      "experience_path": "unknown",
+      "experience_requirement": "年限未写；要求包装/标签、电商视觉及 Adobe/Figma/AI 作品",
+      "direction": "brand",
+      "chinese_relevant": false,
+      "formal": false,
+      "internship": false,
+      "score": 1.2,
+      "source_score": 86,
+      "posted_at": "",
+      "primary_url": "https://work.gtebrands.com/jobs/7732621-ai-product-label-visual-designer",
+      "all_links": [
+        "https://work.gtebrands.com/jobs/7732621-ai-product-label-visual-designer"
+      ],
+      "status_evidence": "2026-08-14 Round 77：GTE Brands 官方 Teamtailor 7732621 显示 Fully Remote、完整职责、Apply for this job 和岗位专属申请表；Spain 实体、合同类型、薪资、正式语言等级与发布日期未公开。",
+      "analysis": "Add one canonical current card because this is a named employer-owned requisition rather than an anonymous aggregator mirror. The packaging, product-label and brand-extension scope is relevant, but the English application environment and unknown Spain contracting terms keep it below every workable Chinese route."
+    },
+    {
+      "ledger_bucket": "current-main",
+      "rank": 107,
       "id": 1026,
       "company": "Labhouse",
       "role_zh": "营销视频剪辑师（性能广告 / AI 视频）",
@@ -3052,7 +3081,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 107,
+      "rank": 108,
       "id": 1061,
       "company": "Dragons Group / official Factorial",
       "role_zh": "创意制作人（护肤与时尚）",
@@ -3077,34 +3106,6 @@
       ],
       "status_evidence": "2026-08-13 复核：Dragons 官方 Factorial 当前可申请；English mandatory 与 Spanish mandatory 均为明确硬门槛。",
       "analysis": "Keep outside the homepage core and below core graphic/VI routes. Apply only if the portfolio supports campaign production, art direction, shoot coordination and brand-consistency QA—not just static identity. Confirm salary, office cadence, travel/production hours, budget ownership and whether hands-on design/editing is expected."
-    },
-    {
-      "ledger_bucket": "current-main",
-      "rank": 108,
-      "id": 930865,
-      "company": "Jobgether / 匿名合作公司",
-      "role_zh": "UI/UX 与视觉设计师（匿名雇主，先核验）",
-      "original_role": "UI/UX & Visual Designer (Mid-Level)",
-      "tier": "D",
-      "status": "verify",
-      "location_bucket": "remote",
-      "location": "Spain remote / 实际雇主与合同主体未公开",
-      "language_path": "englishLikely",
-      "experience_path": "mid",
-      "experience_requirement": "中级 / 实际雇主要求待核验",
-      "direction": "digital",
-      "chinese_relevant": false,
-      "formal": false,
-      "internship": false,
-      "score": 1.1,
-      "source_score": 34,
-      "posted_at": "2026-08-12",
-      "primary_url": "https://www.linkedin.com/jobs/view/4451696654/",
-      "all_links": [
-        "https://www.linkedin.com/jobs/view/4451696654/"
-      ],
-      "status_evidence": "2026-08-14：LinkedIn 精确页 4451696654 返回 200，Spain remote UI/UX & Visual 正文完整且无关闭提示；最终雇主、合同主体、薪资和工作语言仍未公开。",
-      "analysis": "Keep at the bottom of the reviewable board rather than treating it as a high-confidence vacancy. The skills match is real, but do not provide identity documents, banking information, unpaid test work or private source files until the actual employer, company-domain contact, written compensation, Spain contract route and data controller are disclosed."
     },
     {
       "ledger_bucket": "current-main",
@@ -4178,6 +4179,34 @@
     {
       "ledger_bucket": "current-main",
       "rank": 146,
+      "id": 930892,
+      "company": "OnHires / 未公开最终雇主",
+      "role_zh": "AI 平面设计师（DTC / 电商效果广告）",
+      "original_role": "AI Graphic Designer - Performance Ads",
+      "tier": "C",
+      "status": "verify",
+      "location_bucket": "remote",
+      "location": "Europe remote / 全职 / Spain 合同条款待确认",
+      "language_path": "englishLikely",
+      "experience_path": "unknown",
+      "experience_requirement": "需有付费社媒广告经验；年限未写",
+      "direction": "digital",
+      "chinese_relevant": false,
+      "formal": true,
+      "internship": false,
+      "score": 0,
+      "source_score": 46,
+      "posted_at": "2026-08-12",
+      "primary_url": "https://jobs.ashbyhq.com/onhires/c7f7a6d4-96e4-4ac9-9f47-04d6d0c5af91",
+      "all_links": [
+        "https://jobs.ashbyhq.com/onhires/c7f7a6d4-96e4-4ac9-9f47-04d6d0c5af91"
+      ],
+      "status_evidence": "2026-08-14 Round 77：OnHires 官方 Ashby c7f7a6d4 当前仍返回 AI Graphic Designer – Performance Ads、2026-08-12 发布、Europe remote、全职及完整申请表；DTC/电商静态广告、Figma/Adobe/AI工具明确，但最终客户雇主、Spain 合同、薪资和工作语言未公开。",
+      "analysis": "Keep as a low-confidence Europe-remote backup. It is high-volume performance production rather than VI ownership, and the end client is hidden. Confirm the legal employer, Spain eligibility, pay, working language, weekly volume, test policy and ownership before sharing a portfolio or doing any task."
+    },
+    {
+      "ledger_bucket": "current-main",
+      "rank": 147,
       "id": 930887,
       "company": "Lateral Thinking",
       "role_zh": "高级空间设计师（品牌体验与沉浸式环境）",
@@ -4205,7 +4234,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 147,
+      "rank": 148,
       "id": 930918,
       "company": "Grupo Planeta / Geoilustrados",
       "role_zh": "编辑传播与营销实习（视频、动画、Banner）",
@@ -4234,7 +4263,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 148,
+      "rank": 149,
       "id": 930920,
       "company": "CoverManager / Hospitality Tech Group",
       "role_zh": "社媒内容实习（模板、Reels 与视频）",
@@ -4262,7 +4291,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 149,
+      "rank": 150,
       "id": 930842,
       "company": "Voodoo",
       "role_zh": "高级技术 UI 与动态设计师",
@@ -4292,7 +4321,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 150,
+      "rank": 151,
       "id": 930843,
       "company": "Equipo Singular",
       "role_zh": "平面与视频设计实习（必须 convenio；€271/月）",
@@ -4323,7 +4352,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 151,
+      "rank": 152,
       "id": 930929,
       "company": "BJAK",
       "role_zh": "首席平面设计师（品牌营销与动效管理）",
@@ -4352,7 +4381,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 152,
+      "rank": 153,
       "id": 930963,
       "company": "Revolut",
       "role_zh": "品牌平面设计负责人（设计系统与视觉指导）",
@@ -4381,7 +4410,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 153,
+      "rank": 154,
       "id": 305,
       "company": "Hostinger",
       "role_zh": "高级平面设计师（品牌与创意）",
@@ -4410,7 +4439,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 154,
+      "rank": 155,
       "id": 296,
       "company": "Bakken & Bæck",
       "role_zh": "高级品牌设计师（VI、视觉语言与品牌系统）",
@@ -4439,7 +4468,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 155,
+      "rank": 156,
       "id": 601,
       "company": "SIERRA Production House",
       "role_zh": "艺术指导（视觉语言与品牌识别）",
@@ -4468,7 +4497,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 156,
+      "rank": 157,
       "id": 1102,
       "company": "AtomiQ Tech",
       "role_zh": "视觉设计负责人（沉浸式视觉、动效与系统）",
@@ -4497,7 +4526,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 157,
+      "rank": 158,
       "id": 375,
       "company": "Fail Fast Studio",
       "role_zh": "高级动态设计师（2D / 3D / AI）",
@@ -4526,7 +4555,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 158,
+      "rank": 159,
       "id": 981,
       "company": "VML",
       "role_zh": "高级艺术指导（360 Campaign 与品牌叙事）",
@@ -4555,7 +4584,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 159,
+      "rank": 160,
       "id": 134,
       "company": "SLAPS",
       "role_zh": "高级艺术指导（大型 Campaign 与品牌视觉）",
@@ -4584,7 +4613,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 160,
+      "rank": 161,
       "id": 1011,
       "company": "JustMarkets",
       "role_zh": "设计负责人（品牌识别 × 产品设计系统）",
@@ -4612,7 +4641,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 161,
+      "rank": 162,
       "id": 1101,
       "company": "Remedy Edge Spain / Omnicom Health",
       "role_zh": "自由职业高级平面设计师（跨媒体 Campaign）",
@@ -4640,7 +4669,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 162,
+      "rank": 163,
       "id": 930705,
       "company": "MANGO",
       "role_zh": "时尚艺术指导（品牌识别与 360 Campaign）",
@@ -4668,7 +4697,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 163,
+      "rank": 164,
       "id": 27,
       "company": "TWOJEYS",
       "role_zh": "品牌负责人（策略、Campaign 与团队统筹）",
@@ -4697,7 +4726,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 164,
+      "rank": 165,
       "id": 483,
       "company": "Act Second",
       "role_zh": "高级品牌与营销设计师（兼职远程）",
@@ -4725,7 +4754,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 165,
+      "rank": 166,
       "id": 1105,
       "company": "Bakken & Bæck",
       "role_zh": "自由职业高级艺术指导（影像叙事与品牌世界）",
@@ -4754,7 +4783,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 166,
+      "rank": 167,
       "id": 89,
       "company": "Dragons Group",
       "role_zh": "中高级平面设计师（美妆健康品牌 Campaign 与社媒）",
@@ -4782,7 +4811,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 167,
+      "rank": 168,
       "id": 93,
       "company": "McCann",
       "role_zh": "设计师（品牌视觉体系、Campaign 与数字/印刷）",
@@ -4811,7 +4840,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 168,
+      "rank": 169,
       "id": 930708,
       "company": "Dragons Group",
       "role_zh": "高级艺术指导（医疗与制药）",
@@ -4840,7 +4869,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 169,
+      "rank": 170,
       "id": 945,
       "company": "OFF+BRAND",
       "role_zh": "高级品牌设计师（VI、指南与数字品牌系统）",
@@ -4869,7 +4898,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 170,
+      "rank": 171,
       "id": 210,
       "company": "Fail Fast Studio",
       "role_zh": "视觉设计师（视觉系统、品牌概念与数字/印刷）",
@@ -4898,7 +4927,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 171,
+      "rank": 172,
       "id": 277,
       "company": "Hamlet Strategic Makers",
       "role_zh": "中高级艺术指导（品牌系统、指南与 Campaign）",
@@ -4927,7 +4956,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 172,
+      "rank": 173,
       "id": 577,
       "company": "SALVI Lighting",
       "role_zh": "高级平面设计师（品牌识别与数字延展）",
@@ -4956,7 +4985,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 173,
+      "rank": 174,
       "id": 351,
       "company": "Rocket Digital / Jungle",
       "role_zh": "付费媒体艺术指导（Key Visual 与效果广告）",
@@ -4985,7 +5014,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 174,
+      "rank": 175,
       "id": 1314,
       "company": "CM Creative International",
       "role_zh": "平面设计师与活动制作（品牌延展、印刷与展会）",
@@ -5014,7 +5043,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 175,
+      "rank": 176,
       "id": 445,
       "company": "Playson",
       "role_zh": "高级营销设计师（品牌书、Campaign 与数字延展）",
@@ -5042,7 +5071,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 176,
+      "rank": 177,
       "id": 1020,
       "company": "COCUNAT",
       "role_zh": "Senior Video Ads Designer（品牌 × Performance 视频）",
@@ -5071,7 +5100,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 177,
+      "rank": 178,
       "id": 1080,
       "company": "GameHouse Europe",
       "role_zh": "高级 UX/UI 设计师（设计系统与品牌一致性）",
@@ -5100,7 +5129,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 178,
+      "rank": 179,
       "id": 1255,
       "company": "Gameloft",
       "role_zh": "平面设计实习岗位（合同类型待核实）",
@@ -5128,7 +5157,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 179,
+      "rank": 180,
       "id": 275,
       "company": "Factorial",
       "role_zh": "创意负责人（付费获客与 AI 生产）",
@@ -5157,7 +5186,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 180,
+      "rank": 181,
       "id": 382,
       "company": "SIMORRA",
       "role_zh": "平面设计实习生（时尚品牌）",
@@ -5186,7 +5215,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 181,
+      "rank": 182,
       "id": 1099,
       "company": "LABHOUSE",
       "role_zh": "UI/UX 视觉负责人（移动产品与设计系统）",
@@ -5215,7 +5244,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 182,
+      "rank": 183,
       "id": 1287,
       "company": "haddock (YC W22)",
       "role_zh": "平面设计与品牌策略实习生",
@@ -5244,7 +5273,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 183,
+      "rank": 184,
       "id": 314,
       "company": "Qoria / Qustodio",
       "role_zh": "数字设计师（品牌指南、网页、CRM 与 Campaign）",
@@ -5273,7 +5302,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 184,
+      "rank": 185,
       "id": 922,
       "company": "Solidgate",
       "role_zh": "高级平面设计师（品牌与营销）",
@@ -5301,7 +5330,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 185,
+      "rank": 186,
       "id": 37,
       "company": "ALEA",
       "role_zh": "平面设计实习生（游戏视觉资产与规范执行）",
@@ -5330,7 +5359,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 186,
+      "rank": 187,
       "id": 996,
       "company": "PriorityChef",
       "role_zh": "Amazon Creative Designer / 3D（电商视觉）",
@@ -5358,7 +5387,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 187,
+      "rank": 188,
       "id": 1098,
       "company": "Codeway / Learna",
       "role_zh": "高级创意营销经理（AI 与绩效创意）",
@@ -5387,7 +5416,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 188,
+      "rank": 189,
       "id": 1243,
       "company": "Ricaris",
       "role_zh": "高级自由职业平面设计师（落地页与 Web）",
@@ -5416,7 +5445,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 189,
+      "rank": 190,
       "id": 1296,
       "company": "Fuego Camina Conmigo",
       "role_zh": "艺术指导（数字优先 Campaign、摄影与编辑）",
@@ -5444,7 +5473,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 190,
+      "rank": 191,
       "id": 1097,
       "company": "Olixir / Omnicom Health",
       "role_zh": "自由职业品牌负责人（Campaign 质量与品牌一致性）",
@@ -5472,7 +5501,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 191,
+      "rank": 192,
       "id": 1310,
       "company": "Hungry Minds / current LinkedIn employer detail",
       "role_zh": "艺术指导（电商创意部门）",
@@ -5500,7 +5529,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 192,
+      "rank": 193,
       "id": 1000,
       "company": "Designity",
       "role_zh": "动态设计师（AI 驱动的品牌与 Campaign）",
@@ -5528,7 +5557,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 193,
+      "rank": 194,
       "id": 930873,
       "company": "Grupo Planeta",
       "role_zh": "高级平面与编辑设计师（书籍封面 / 艺术指导）",
@@ -5555,35 +5584,6 @@
       ],
       "status_evidence": "2026-08-13 Round 49：Grupo Planeta 官方 TalentClue 127111935 仍显示 Barcelona 现场、无固定期限全职和申请表；完整正文明确要求中级以上英语，并说明为西班牙语出版品牌制作封面。",
       "analysis": "A real, high-quality Barcelona graphic-design route, but not a junior VI role. The work is editorial art direction, cover design, typography and launch graphics; it requires at least five years, Adobe Creative Cloud, intermediate-or-higher English and a portfolio. Confirm salary and the daily Spanish working level before applying."
-    },
-    {
-      "ledger_bucket": "current-main",
-      "rank": 194,
-      "id": 136,
-      "company": "Yellow Studio",
-      "role_zh": "平面设计实习生",
-      "original_role": "Graphic Design Internship",
-      "tier": "C",
-      "status": "verify",
-      "location_bucket": "barcelona",
-      "location": "巴塞罗那 / studio",
-      "language_path": "englishLikely",
-      "experience_path": "junior",
-      "experience_requirement": "初级 / 实习",
-      "direction": "digital",
-      "chinese_relevant": false,
-      "formal": false,
-      "internship": true,
-      "score": 0,
-      "source_score": 80,
-      "posted_at": "",
-      "primary_url": "https://www.yellowlab.eu/contact/",
-      "all_links": [
-        "https://www.yellowlab.eu/contact/",
-        "https://yellowlab.eu/internship-application/"
-      ],
-      "status_evidence": "2026-08-14：Yellow Studio 的联系/实习入口返回 Cloudflare 403。它不是关闭证据，但也无法证明当前仍招、可签学生协议或提供薪资。",
-      "analysis": "官网明确设置“Looking for an internship?”并提供直接申请邮箱；不是已确认的具体招聘名额"
     },
     {
       "ledger_bucket": "current-main",
@@ -5987,34 +5987,6 @@
     {
       "ledger_bucket": "current-main",
       "rank": 209,
-      "id": 930892,
-      "company": "OnHires / 未公开最终雇主",
-      "role_zh": "AI 平面设计师（DTC / 电商效果广告）",
-      "original_role": "AI Graphic Designer - Performance Ads",
-      "tier": "C",
-      "status": "verify",
-      "location_bucket": "remote",
-      "location": "Europe remote / 全职 / Spain 合同条款待确认",
-      "language_path": "englishLikely",
-      "experience_path": "unknown",
-      "experience_requirement": "需有付费社媒广告经验；年限未写",
-      "direction": "digital",
-      "chinese_relevant": false,
-      "formal": true,
-      "internship": false,
-      "score": 0,
-      "source_score": 46,
-      "posted_at": "",
-      "primary_url": "https://jobs.ashbyhq.com/onhires/c7f7a6d4-96e4-4ac9-9f47-04d6d0c5af91",
-      "all_links": [
-        "https://jobs.ashbyhq.com/onhires/c7f7a6d4-96e4-4ac9-9f47-04d6d0c5af91"
-      ],
-      "status_evidence": "2026-08-14：OnHires 官方 Ashby c7f7a6d4-96e4-4ac9-9f47-04d6d0c5af91 返回 200，AI Graphic Designer、Europe remote、全职和完整申请表均明确；最终雇主、Spain 合同、薪资和工作语言仍未公开。",
-      "analysis": "Keep as a low-confidence Europe-remote backup. It is high-volume performance production rather than VI ownership, and the end client is hidden. Confirm the legal employer, Spain eligibility, pay, working language, weekly volume, test policy and ownership before sharing a portfolio or doing any task."
-    },
-    {
-      "ledger_bucket": "current-main",
-      "rank": 210,
       "id": 930898,
       "company": "Dragons Group",
       "role_zh": "高级艺术指导（美妆、护肤与生活方式品牌）",
@@ -6043,7 +6015,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 211,
+      "rank": 210,
       "id": 930930,
       "company": "BJAK",
       "role_zh": "动效设计负责人",
@@ -6071,7 +6043,7 @@
     },
     {
       "ledger_bucket": "current-main",
-      "rank": 212,
+      "rank": 211,
       "id": 930931,
       "company": "BJAK",
       "role_zh": "高级动效设计师",

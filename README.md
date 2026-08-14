@@ -6,23 +6,26 @@
 
 ## 当前主表
 
-- 212 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
-- 151 个 Barcelona / 周边当前机会。
-- 61 个明确允许 Spain / Europe / worldwide remote，或已单独标出 Spain 合同资格待确认的机会。
-- 202 个原始详情页或最终申请表显示可投，10 个需要先确认。
+- 211 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
+- 149 个 Barcelona / 周边当前机会。
+- 62 个明确允许 Spain / Europe / worldwide remote，或已单独标出 Spain 合同资格待确认的机会。
+- 205 个原始详情页或最终申请表显示可投，6 个需要先确认。
 - 5 个中文、华人圈、中国公司或中文远程相关当前机会；ELIM HOME 已明确停止收件并完整转存历史。
+- 110 个个人适配分大于 0 的机会进入默认“可行动”视图；101 个零分外语、高级、实习或方向偏离岗位集中到独立备选，没有删除。
 
 主表只收录已逐条检查过地点、岗位方向、当前状态和真实入口的机会。默认按“我的匹配分”严格从高到低排列；分数同时考虑 Barcelona/Spain 可行性、品牌视觉相关度、资历、语言门槛、状态可信度和材料投入成本。
 
 ## 数据分区
 
-- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 212 条主表。
+- `可行动（正分）`：211 条完整当前主表中个人适配分大于 0 的 110 条；默认严格降序显示。
+- `外语 / 高门槛备选`：仍有当前招聘证据、但按用户语言、资历、实习或方向条件得到 0 分的 101 条；独立保留，不挤占行动视图。
 - `华人中文全库`：华人网、中文社区、Casa Asia 和中国公司相关来源的完整线索。
 - `页面仍可复核`：详情还在，但状态、地点或申请控制需要再次确认的记录。
 - `关闭 / 历史 / 排除`：已过期、错误地点、重复、非设计岗或无法证实的记录。历史不会删除。
 
 ## 关键文件
 
+- `AUDIT-2026-08-14-ROUND77.md`：重新打开 13 组当前原始页或官方 ATS；确认 ES02、INFiLED、Casa Asia、Revolut 与匿名时尚岗状态，保留言灵无界的当前公司职位证据，关闭 Omnicom Video Maker 与 Yellow 泛化实习，新增 GTE 全球远程包装/标签品牌视觉岗。主表为 211 张、149 张 Barcelona、62 张远程、205 张开放、6 张待确认、5 张中文相关；关闭历史 628 张。界面新增 110 张正分行动视图与 101 张零分高门槛备选，并移除可见 A/B/C/D 旧标签。
 - `AUDIT-2026-08-14-ROUND76.md`：逐条重开下一批高位原始页并继续复扫中文、Barcelona 与 Spain remote 来源。Zurich `Creative Strategist` 虽仍开放，但完整 JD 证明它是策略、brief 与 stakeholder 管理而非执行设计，移入排除历史；NUDE PROJECT `Freelance Graphic Designer` 精确职位入口已失效，移入关闭历史；SIERRA `Art Director` 明确要求成熟 Art Director 过往经历，改按高级资历降至 0 分。BJAK 新 LinkedIn 结果确认只是现有官方 Ashby Lead Graphic Designer 的镜像，不重复计数。当前主表为 212 张、151 张 Barcelona、61 张远程、202 张开放、10 张待确认、5 张中文相关；关闭历史 626 张。
 - `AUDIT-2026-08-14-ROUND75.md`：复扫华人通 ES02 当前 100 页 1,199 条招聘、Casa Asia 当前索引及 Barcelona / Spain remote 设计来源，没有虚增新的中文品牌 / VI 岗；逐条重开九张下一批高位卡的精确雇主页。Publicis Barcelona `Designer` 已明确停止收件并转入历史；Dragons 两岗、Bending Spoons、CrowdStrike、Siemens、INFiLED、Revolut Digital Designer 与 Omnicom PowerPoint 仍开放。当前主表为 214 张、153 张 Barcelona、61 张远程、204 张开放、10 张待确认、5 张中文相关；关闭历史 624 张。
 - `AUDIT-2026-08-14-ROUND74.md`：逐条打开本轮命中的原始 ATS 与最高位外语备选。Neo 官方 Workable 仍开放且允许 Spain remote，但申请表有俄语母语硬门槛；Revolut 新增 Barcelona Lead Graphic Designer，官方职位页和独立申请表均可用，但 8 年以上与带队要求使个人适配分为 0；Distributed Crafts 的搜索缓存被官方关闭页否定。Dragons Junior、THE/STUDIO、CRAZE、Trivelta 与 Publicis 均再次确认开放。当前主表为 215 张、154 张 Barcelona、61 张远程、205 张开放、10 张待确认、5 张中文相关；关闭历史 623 张。
@@ -96,8 +99,8 @@
 - `scripts/scan-linkedin-search.js`：批量扫描 LinkedIn 最近 7 天的 Barcelona 设计关键词，并按职位编号与现有库去重。
 - `scripts/scan-es02-current.js`：直接扫描华人通当前招聘分页，避免搜索引擎缓存滞后；命中标题仍必须继续打开原帖人工判断。
 - `scripts/export-opportunity-ledgers.js`：生成当前主表 CSV/JSON 与完整历史总账 CSV。
-- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 212 个机会的完整、严格降序导出。
-- `all-opportunity-ledger.csv`：1,322 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
+- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 211 个机会的完整、严格降序导出。
+- `all-opportunity-ledger.csv`：1,323 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
 - `scripts/validate-site.js`：验证数据、排序、状态、入口与页面结构。
 
 ## 本地验证

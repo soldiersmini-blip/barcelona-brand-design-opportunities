@@ -44,7 +44,7 @@ vm.runInContext(dataSource, context, { filename: "data.js" });
 appSource = appSource
   .replace(/\ninitStats\(\);\nrenderPriority\(\);\nrenderResults\(\);\s*$/, "\n")
   .concat(
-    "\nglobalThis.siteTest = { allData, dedupedData, latestRoundSection, latestRoundItems, priorityItems, CURATED, SCORE_LANGUAGE_RISK_OVERRIDES, state, MY_OPPORTUNITY_IDS, MY_OPPORTUNITY_SET, AUDITED_ORDER_INDEX, getStatusSummary, directionKey, languageInfo, applicationLanguagePath, scoreLanguageRisk, roleLabels, companyLabel, locationLabel, sourceGroup, locationBucket, isActionableLink, toLinks, isChineseRelevant, isResearchOnly, isTargetOpportunity, isInternshipRole, hasLowPayRisk, riskFlags, hasOpaqueEmployerRisk, isFormalRole, isFreelanceRole, hasKnownCompensation, laborConditionInfo, experienceInfo, applicationStatus, isClosedLibraryRecord, isReviewLibraryRecord, personalMatchScore, displayedScore, postedTimestamp, rankingScore, confidenceScore, sortRecords, matchesPreset, baseRecords, matchesFilters, progressKey, progressValue, saveProgressValue, identityKey, englishOutreachText };\n",
+    "\nglobalThis.siteTest = { allData, dedupedData, latestRoundSection, latestRoundItems, priorityItems, CURATED, SCORE_LANGUAGE_RISK_OVERRIDES, state, MY_OPPORTUNITY_IDS, MY_OPPORTUNITY_SET, AUDITED_ORDER_INDEX, getStatusSummary, directionKey, languageInfo, applicationLanguagePath, scoreLanguageRisk, roleLabels, companyLabel, locationLabel, sourceGroup, locationBucket, isActionableLink, toLinks, isChineseRelevant, isResearchOnly, isTargetOpportunity, isInternshipRole, hasLowPayRisk, riskFlags, hasOpaqueEmployerRisk, isFormalRole, isFreelanceRole, hasKnownCompensation, laborConditionInfo, experienceInfo, applicationStatus, isClosedLibraryRecord, isReviewLibraryRecord, personalMatchScore, personalFitBadge, displayedScore, postedTimestamp, rankingScore, confidenceScore, sortRecords, matchesPreset, baseRecords, matchesFilters, progressKey, progressValue, saveProgressValue, identityKey, englishOutreachText };\n",
   );
 vm.runInContext(appSource, context, { filename: "app.js" });
 
@@ -62,7 +62,7 @@ function check(condition, message) {
   if (!condition) failures.push(message);
 }
 
-check((indexHtml.match(/data-quick-view=/g) || []).length === 6, "Round 72: the simplified board must expose exactly six quick views");
+check((indexHtml.match(/data-quick-view=/g) || []).length === 7, "Round 77: the simplified board must expose seven complete quick views including zero-score backup");
 check(/class="personal-filter"[^>]*hidden/.test(indexHtml), "Round 72: legacy personal-filter panel must stay hidden");
 check(/class="scope-switcher"[^>]*hidden/.test(indexHtml), "Round 72: legacy scope switcher must stay hidden");
 check(/class="filters" hidden/.test(indexHtml), "Round 72: legacy advanced filters must stay hidden");
@@ -75,21 +75,27 @@ check(/state\.quickView === "remote" && locationBucket\(item\) !== "remote"/.tes
 const quickCurrentRecords = test.dedupedData.filter(
   (item) => test.MY_OPPORTUNITY_SET.has(Number(item.id)) && test.applicationStatus(item).key !== "closed",
 );
+const quickActionableRecords = quickCurrentRecords.filter((item) => test.displayedScore(item) > 0);
+const quickBackupRecords = quickCurrentRecords.filter((item) => test.displayedScore(item) <= 0);
 const quickViewCounts = {
-  current: quickCurrentRecords.length,
+  current: quickActionableRecords.length,
+  backup: quickBackupRecords.length,
   chineseCurrent: quickCurrentRecords.filter(test.isChineseRelevant).length,
-  barcelona: quickCurrentRecords.filter((item) => test.locationBucket(item) === "barcelona").length,
-  remote: quickCurrentRecords.filter((item) => test.locationBucket(item) === "remote").length,
+  barcelona: quickActionableRecords.filter((item) => test.locationBucket(item) === "barcelona").length,
+  remote: quickActionableRecords.filter((item) => test.locationBucket(item) === "remote").length,
   history: test.dedupedData.filter((item) => test.applicationStatus(item).key === "closed").length,
 };
 check(
-  quickViewCounts.current === 212 &&
+  quickViewCounts.current + quickViewCounts.backup === 211 &&
+    quickViewCounts.current > 0 &&
+    quickViewCounts.backup > 0 &&
     quickViewCounts.chineseCurrent === 5 &&
-    quickViewCounts.barcelona === 151 &&
-    quickViewCounts.remote === 61 &&
-    quickViewCounts.history === 626,
-  `Round 76: quick-view ledgers diverged ${JSON.stringify(quickViewCounts)}`,
+    quickViewCounts.barcelona + quickViewCounts.remote === quickViewCounts.current &&
+    quickViewCounts.history === 628,
+  `Round 77: action/backup quick-view ledgers diverged ${JSON.stringify(quickViewCounts)}`,
 );
+check(indexHtml.includes('data-quick-view="backup"') && indexHtml.includes('id="quickBackupCount"'), "Round 77: zero-score current records lost their dedicated backup view");
+check(!appSource.includes("tierLabel(item.tier)"), "Round 77: visible cards still render the legacy A/B/C/D tier label instead of personal-fit wording");
 check(
   test.priorityItems.every((item, index, rows) => index === 0 || test.displayedScore(rows[index - 1]) >= test.displayedScore(item)),
   "Homepage priority roles must be sorted by composite score descending",
@@ -328,7 +334,7 @@ check(
 );
 check(indexHtml.includes("current-opportunity-ledger.csv") && indexHtml.includes("all-opportunity-ledger.csv"), "机会总账下载入口缺失");
 check(fs.existsSync(path.join(root, "current-opportunity-ledger.csv")) && fs.existsSync(path.join(root, "all-opportunity-ledger.csv")), "机会总账导出文件缺失");
-check(/当前 212 个机会的完整、严格降序导出/.test(readmeSource), "README 当前主表导出数量没有与 212 张现行卡同步");
+check(/当前 211 个机会的完整、严格降序导出/.test(readmeSource), "README 当前主表导出数量没有与 211 张现行卡同步");
 check(!/id="excludeLowPay"[^>]*checked/.test(indexHtml), "默认主表仍会暗中排除低薪风险卡片，导致总数与可见卡片不一致");
 check(!appSource.includes("item.postingDate"), "页面仍引用不存在的 postingDate 字段");
 check(!indexHtml.includes("\uFFFD") && !appSource.includes("\uFFFD"), "页面源码中出现了损坏字符");
@@ -1180,14 +1186,14 @@ check(r22Main.filter((item) => test.isChineseRelevant(item) && test.applicationS
 const r23ById = (id) => test.allData.find((item) => Number(item.id) === id);
 const r23Main = test.MY_OPPORTUNITY_IDS.map(r23ById).filter(Boolean);
 const r23VisibleMain = test.dedupedData.filter((item) => test.MY_OPPORTUNITY_SET.has(Number(item.id)));
-check(test.MY_OPPORTUNITY_IDS.length === 237 && new Set(test.MY_OPPORTUNITY_IDS).size === 237, "Round 74: audited ID ledger must contain exactly 237 unique opportunities after the Neo restoration and Revolut addition");
-check(r23Main.length === 237 && r23VisibleMain.length === 236, `Round 74: complete audited history must preserve all 237 reviewed IDs while the established duplicate identity merges in the visible corpus (${r23Main.length}/${r23VisibleMain.length})`);
-check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 175 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 62, "Round 74: audited Barcelona/remote split must be exactly 175/62 including preserved closed history");
+check(test.MY_OPPORTUNITY_IDS.length === 238 && new Set(test.MY_OPPORTUNITY_IDS).size === 238, "Round 77: audited ID ledger must contain exactly 238 unique opportunities after adding GTE");
+check(r23Main.length === 238 && r23VisibleMain.length === 237, `Round 77: complete audited history must preserve all 238 reviewed IDs while the established duplicate identity merges in the visible corpus (${r23Main.length}/${r23VisibleMain.length})`);
+check(r23Main.filter((item) => test.locationBucket(item) === "barcelona").length === 175 && r23Main.filter((item) => test.locationBucket(item) === "remote").length === 63, "Round 77: audited Barcelona/remote split must be exactly 175/63 including preserved closed history");
 check(
-  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 202 &&
-    r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 10 &&
-    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 25,
-  "Round 76: 237 reviewed IDs must resolve to 202 live, 10 verify and 25 preserved closed-history records",
+  r23Main.filter((item) => test.applicationStatus(item).key === "live").length === 205 &&
+    r23Main.filter((item) => test.applicationStatus(item).key === "verify").length === 6 &&
+    r23Main.filter((item) => test.applicationStatus(item).key === "closed").length === 27,
+  "Round 77: 238 reviewed IDs must resolve to 205 live, 6 verify and 27 preserved closed-history records",
 );
 const r39Skyscanner = r23ById(930812);
 check(r39Skyscanner && test.applicationStatus(r39Skyscanner).key === "live", "Round 52: the reopened Skyscanner Senior Visual Designer was not restored to the current board");
@@ -1237,20 +1243,20 @@ const r41LanguageCounts = r41Current.reduce((counts, item) => {
   return counts;
 }, {});
 check(
-  r41Current.length === 212 &&
-    r41Current.filter((item) => test.locationBucket(item) === "barcelona").length === 151 &&
-    r41Current.filter((item) => test.locationBucket(item) === "remote").length === 61 &&
+  r41Current.length === 211 &&
+    r41Current.filter((item) => test.locationBucket(item) === "barcelona").length === 149 &&
+    r41Current.filter((item) => test.locationBucket(item) === "remote").length === 62 &&
     r41LanguageCounts.chineseCheck === 2 &&
     !r41LanguageCounts.basicSpanish &&
     r41LanguageCounts.english === 70 &&
-    r41LanguageCounts.unknown === 59 &&
-    r41LanguageCounts.englishLikely === 2 &&
+    r41LanguageCounts.unknown === 58 &&
+    r41LanguageCounts.englishLikely === 3 &&
     r41LanguageCounts.englishSpanishLikely === 3 &&
     r41LanguageCounts.spanishLikely === 23 &&
-    r41LanguageCounts.spanish === 34 &&
+    r41LanguageCounts.spanish === 33 &&
     r41LanguageCounts.englishSpanish === 11 &&
     r41LanguageCounts.foreign === 8,
-  `Round 76: current ledger mismatch ${JSON.stringify({ total: r41Current.length, language: r41LanguageCounts })}`,
+  `Round 77: current ledger mismatch ${JSON.stringify({ total: r41Current.length, language: r41LanguageCounts })}`,
 );
 const r51ScoringRiskCounts = r41Current.reduce((counts, item) => {
   const key = test.scoreLanguageRisk(item);
@@ -1265,10 +1271,10 @@ check(
     r51ScoringRiskCounts.englishSpanishLikely === 5 &&
     !r51ScoringRiskCounts.unknown &&
     r51ScoringRiskCounts.spanishLikely === 26 &&
-    r51ScoringRiskCounts.spanish === 32 &&
+    r51ScoringRiskCounts.spanish === 31 &&
     r51ScoringRiskCounts.englishSpanish === 11 &&
     r51ScoringRiskCounts.foreign === 9,
-  `Round 76: profile-based scoring-risk ledger mismatch ${JSON.stringify(r51ScoringRiskCounts)}`,
+  `Round 77: profile-based scoring-risk ledger mismatch ${JSON.stringify(r51ScoringRiskCounts)}`,
 );
 for (const id of [930834, 427, 930837, 345, 874, 136, 930892]) {
   check(test.applicationLanguagePath(r23ById(id)).key === "unknown" && test.scoreLanguageRisk(r23ById(id)) === "englishLikely", `Round 51: ${id} lost the distinction between formal language evidence and likely English working environment`);
@@ -1333,7 +1339,7 @@ check([958, 930638].every((id) => r44AuditItems.some((item) => Number(item.id) =
 check(test.MY_OPPORTUNITY_SET.has(958) && test.applicationStatus(r44RemedyCurrent).key === "live", "Round 44: canonical Remedy Edge trainee opening was lost");
 check(r44RemedyLinks.length === 2 && r44RemedyLinks.some((url) => /omnicomhealth\/jobs\/5207339008/i.test(url)) && r44RemedyLinks.some((url) => /remedyedgespain\/jobs\/5207341008/i.test(url)), "Round 44: the canonical Remedy Edge card does not expose both current official application routes");
 check(r44RemedyHistorical && !test.MY_OPPORTUNITY_SET.has(930638) && test.applicationStatus(r44RemedyHistorical).key === "closed" && r44RemedyHistorical.tier === "X", "Round 44: removed Omnicom 4542432008 route still counts as a live independent vacancy");
-check(test.MY_OPPORTUNITY_IDS.length === 237 && new Set(test.MY_OPPORTUNITY_IDS).size === 237, "Round 74: current refresh changed the 237-seat audited ledger unexpectedly");
+check(test.MY_OPPORTUNITY_IDS.length === 238 && new Set(test.MY_OPPORTUNITY_IDS).size === 238, "Round 77: current refresh changed the 238-seat audited ledger unexpectedly");
 const r45ChineseCanonical = r23ById(778);
 const r45ChineseHistorical = r23ById(930835);
 const round48Section = "2026-08-13 Round 48 complete unknown-language source audit";
@@ -1365,6 +1371,7 @@ const round73Section = "2026-08-14 Round 73 top-ranked live-page closure and for
 const round74Section = "2026-08-14 Round 74 current ATS discovery, hard-gate restoration and exact-page refresh";
 const round75Section = "2026-08-14 Round 75 next-ranked exact-page refresh and Publicis Designer closure audit";
 const round76Section = "2026-08-14 Round 76 next-ranked exact-page refresh, non-design exclusion and NUDE closure audit";
+const round77Section = "2026-08-14 Round 77 current-source status corrections, GTE remote discovery and action-view separation";
 const round73TouchedIds = [930834, 930837, 930874, 930817, 930847, 352, 1092, 372, 930933, 427];
 const round73TouchedSet = new Set(round73TouchedIds);
 const round74TouchedIds = [17, 930962, 930963, 930813, 930863, 930899, 914, 238];
@@ -1373,6 +1380,8 @@ const round75TouchedIds = [207, 890, 884, 930900, 930836, 930820, 1300, 425, 930
 const round75TouchedSet = new Set(round75TouchedIds);
 const round76TouchedIds = [910, 930840, 930911, 78, 930825, 446, 930819, 930821, 877, 601, 930929];
 const round76TouchedSet = new Set(round76TouchedIds);
+const round77TouchedIds = [24, 25, 778, 920, 930892, 930865, 868, 1300, 930964, 1253, 990, 930955, 136];
+const round77TouchedSet = new Set(round77TouchedIds);
 const round49LikelySpanishIds = [877, 105, 886, 930829, 1257, 1258, 382, 1237, 930876, 86, 930873, 930885, 577, 1296, 579, 876, 867, 930843, 351];
 const round55ExpectedIds = [175, 454, 1253, 317, 863, 930718, 930719, 908, 279, 930854, 889, 535, 278, 1081, 860, 930869, 874, 1301, 1303, 1227, 930879, 84, 868, 989, 854, 921, 1293, 1053, 1036, 930815, 930842, 930843];
 const round56ExpectedIds = [1002, 985, 930900, 977, 1021, 990001, 990, 930818, 37, 12, 1299, 1255, 958, 1257, 1258, 1026, 1061, 930865, 930829, 382, 1237, 930812, 1287, 930637, 238, 930843, 305, 27, 930708, 922];
@@ -1380,12 +1389,42 @@ const round57ExpectedIds = [778, 920, 24, 25, 930834, 930837, 1107, 1092, 372, 4
 const round58ExpectedMainIds = [930823, 930874, 930840, 930882, 930825, 877, 78, 228, 446, 930866, 930889, 930845, 930826, 930827, 425, 345, 4, 284, 55, 1038, 930816, 396, 930819, 856, 930868, 930831, 930833, 930821, 930890, 2942];
 const round58ExpectedIds = [...round58ExpectedMainIds, 930903];
 const round59ExpectedIds = [313, 920001, 928, 188, 930712, 170, 224, 1240, 930838, 930880, 930844, 172, 864, 88, 930824, 930891, 930878, 930881, 162, 876, 930876, 930814, 930841, 867, 930886, 930887, 859, 1029, 296, 601];
-check(test.latestRoundSection === round76Section, "Round 76: latest-round marker did not advance");
+check(test.latestRoundSection === round77Section, "Round 77: latest-round marker did not advance");
 check(
-  round76TouchedIds.every((id) =>
+  round77TouchedIds.every((id) =>
     test.latestRoundItems.some((item) => Number(item.id) === id),
-  ) && test.latestRoundItems.length === round76TouchedIds.length,
-  "Round 76: the eleven exact-page refresh, exclusion, closure and mirror decisions are missing from the latest audit log",
+  ) && test.latestRoundItems.length === round77TouchedIds.length,
+  "Round 77: the thirteen status, source, discovery and view-separation decisions are missing from the latest audit log",
+);
+const round77Gte = r23ById(930964);
+check(
+  round77Gte &&
+    test.MY_OPPORTUNITY_SET.has(930964) &&
+    test.applicationStatus(round77Gte).key === "live" &&
+    test.locationBucket(round77Gte) === "remote" &&
+    test.scoreLanguageRisk(round77Gte) === "englishLikely" &&
+    test.directionKey(round77Gte) === "brand" &&
+    test.displayedScore(round77Gte) > 0 &&
+    test.displayedScore(round77Gte) <= 10 &&
+    test.toLinks(round77Gte).some((url) => /work\.gtebrands\.com\/jobs\/7732621/i.test(url)),
+  "Round 77: GTE official worldwide-remote brand-visual role is missing or escaped its English/Spain safeguards",
+);
+for (const id of [868, 136]) {
+  const item = r23ById(id);
+  check(
+    item && test.applicationStatus(item).key === "closed" && item.tier === "X" && test.displayedScore(item) === 0,
+    `Round 77: closed/no-vacancy record ${id} still leaks into the current board`,
+  );
+}
+for (const id of [930955, 990]) {
+  check(test.applicationStatus(r23ById(id)).key === "live", `Round 77: exact current application route ${id} was not promoted to live`);
+}
+for (const id of [778, 920, 25, 1253, 930865, 930892]) {
+  check(test.applicationStatus(r23ById(id)).key === "verify", `Round 77: evidence-limited route ${id} lost verify-first status`);
+}
+check(
+  r41Current.every((item) => !/^[ABCDX]\s*·/.test(test.personalFitBadge(item).label)),
+  "Round 77: a visible current card still exposes the legacy source-tier label",
 );
 const round76Zurich = r23ById(930840);
 const round76Nude = r23ById(930911);
@@ -1446,12 +1485,16 @@ check(
     /Ya no se aceptan solicitudes/i.test(`${round75PublicisDesigner.status} ${test.CURATED[207]?.statusEvidence || ""}`),
   "Round 75: Publicis Designer exact LinkedIn closure was not preserved in history",
 );
-for (const id of [890, 884, 930900, 930836, 930820, 1300, 425, 930845]) {
+for (const id of [890, 884, 930900, 930836, 930820, 425, 930845]) {
   check(
     test.applicationStatus(r23ById(id)).key === "live" && test.CURATED[id]?.latestAuditSection === round75Section,
     `Round 75: exact current-page refresh was not preserved for ${id}`,
   );
 }
+check(
+  test.applicationStatus(r23ById(1300)).key === "live" && test.CURATED[1300]?.latestAuditSection === round77Section,
+  "Round 77: INFiLED current employer-page refresh was not preserved",
+);
 check(
   test.locationBucket(r23ById(425)) === "remote" &&
     test.toLinks(r23ById(425)).some((url) => /careers\/apply\/6692237e-d90a-47ec-9a78-9b9699ff67bd/i.test(url)) &&
@@ -1525,10 +1568,10 @@ check(
 );
 const round70Items = test.dedupedData.filter((item) => test.CURATED[item.id]?.latestAuditSection === round70Section);
 check(
-  [930719, 930953, 930954, 930955, 930956, 930957, 930958].every((id) =>
+  [930719, 930953, 930954, 930956, 930957, 930958].every((id) =>
     round70Items.some((item) => Number(item.id) === id),
-  ) && round70Items.length === 7,
-  "Round 70: the seven untouched exact-page decisions were not preserved after Round 73",
+  ) && round70Items.length === 6,
+  "Round 70: the six untouched exact-page decisions were not preserved after Round 77",
 );
 const round69Items = test.dedupedData.filter((item) => test.CURATED[item.id]?.latestAuditSection === round69Section);
 check(
@@ -1555,10 +1598,10 @@ const round66Items = test.dedupedData.filter(
   (item) => test.CURATED[item.id]?.latestAuditSection === round66Section,
 );
 check(
-  [136, 868, 990, 1107, 1237, 1243, 1253, 1301, 930865, 930892].every((id) =>
+  [1107, 1237, 1243, 1301].every((id) =>
     round66Items.some((item) => Number(item.id) === id),
-  ) && round66Items.length === 10,
-  "Round 66: the ten unchanged verify-first exact-source decisions are missing from the audit log",
+  ) && round66Items.length === 4,
+  "Round 66: the four untouched exact-source decisions are missing after Round 77",
 );
 const round67StripeMotion = r23ById(859);
 const round67StripeBrandHistory = r23ById(920003);
@@ -1671,19 +1714,19 @@ for (const [id, statusKey, score] of [[778, "verify", 81], [920, "verify", 52], 
   const item = r23ById(id);
   check(
     item &&
-      test.CURATED[id]?.latestAuditSection === round72Section &&
+      test.CURATED[id]?.latestAuditSection === round77Section &&
       test.applicationStatus(item).key === statusKey &&
       test.displayedScore(item) === score &&
       test.toLinks(item).length > 0,
-    `Round 72: current top-priority page refresh or profile score drifted for ${id}`,
+    `Round 77: current top-priority page refresh or profile score drifted for ${id}`,
   );
 }
 check(
-  test.CURATED[1300]?.latestAuditSection === round75Section &&
+  test.CURATED[1300]?.latestAuditSection === round77Section &&
     test.applicationStatus(r23ById(1300)).key === "live" &&
     test.displayedScore(r23ById(1300)) === 8 &&
     test.toLinks(r23ById(1300)).length > 0,
-  "Round 75: INFiLED current employer-page refresh or profile score drifted",
+  "Round 77: INFiLED current employer-page refresh or profile score drifted",
 );
 check(
   test.CURATED[930904]?.latestAuditSection === round72Section &&
@@ -1717,14 +1760,14 @@ const round70AnonymousFashion = r23ById(930955);
 check(
   round70AnonymousFashion &&
     test.MY_OPPORTUNITY_SET.has(930955) &&
-    test.applicationStatus(round70AnonymousFashion).key === "verify" &&
+    test.applicationStatus(round70AnonymousFashion).key === "live" &&
     test.locationBucket(round70AnonymousFashion) === "barcelona" &&
     test.applicationLanguagePath(round70AnonymousFashion).key === "english" &&
     test.experienceInfo(round70AnonymousFashion).key === "mid" &&
     test.hasOpaqueEmployerRisk(round70AnonymousFashion) &&
     test.displayedScore(round70AnonymousFashion) <= 8 &&
     test.toLinks(round70AnonymousFashion).some((url) => /4446631402/i.test(url)),
-  "Round 70: anonymous Barcelona fashion web-design role lost its verify-first, English, experience or employer-risk safeguards",
+  "Round 77: anonymous Barcelona fashion web-design role lost its live page, English, experience or employer-risk safeguards",
 );
 const round70Fitness = r23ById(930956);
 check(
@@ -1812,13 +1855,13 @@ for (const [id, route, evidence] of [
     `Round 71: stale official-board search result ${id} leaked into the current board or lost its rejection evidence`,
   );
 }
-const round66VerifyIds = [25, 136, 778, 868, 920, 990, 1253, 930865, 930892];
+const round66VerifyIds = [25, 778, 920, 1253, 930865, 930892];
 check(
   round66VerifyIds.every((id) => {
     const item = r23ById(id);
     return item && test.applicationStatus(item).key === "verify" && test.toLinks(item).length > 0;
   }),
-  "Round 66: an evidence-limited route escaped the nine-record verify-first queue or lost its source",
+  "Round 77: an evidence-limited route escaped the six-record verify-first queue or lost its source",
 );
 const round66Ricaris = r23ById(1243);
 check(
@@ -2099,7 +2142,7 @@ for (const [id, evidence] of [[1007, /410 Gone|HTTP 410/i], [153, /R000000041750
 check(round57ExpectedIds.filter((id) => ![24, 25, 778, 920, 1107, 1300].includes(id) && !round73TouchedSet.has(id) && !round74TouchedSet.has(id) && !round75TouchedSet.has(id) && !round76TouchedSet.has(id)).every((id) => test.CURATED[id]?.latestAuditSection === round57Section), "Round 57: provenance was lost after the next original-page audit");
 check(round56ExpectedIds.filter((id) => ![930843, 990, 930865, 1237, 930900].includes(id) && !round74TouchedSet.has(id)).every((id) => test.CURATED[id]?.latestAuditSection === round56Section), "Round 56: provenance was lost after the next profile-fit audit");
 check(round55ExpectedIds.filter((id) => ![930719, 930843, 1253, 1301, 868].includes(id)).every((id) => test.CURATED[id]?.latestAuditSection === round55Section), "Round 55: provenance was lost after the next ranked audit");
-check(test.CURATED[24]?.latestAuditSection === round72Section && test.CURATED[25]?.latestAuditSection === round72Section && test.CURATED[930822]?.latestAuditSection === round53Section && test.CURATED[930823]?.latestAuditSection === round58Section, "Round 53/58/72: Chinese-advantage, closure or canonical-link provenance was lost after the current audit");
+check(test.CURATED[24]?.latestAuditSection === round77Section && test.CURATED[25]?.latestAuditSection === round77Section && test.CURATED[930822]?.latestAuditSection === round53Section && test.CURATED[930823]?.latestAuditSection === round58Section, "Round 53/58/77: Chinese-advantage, closure or canonical-link provenance was lost after the current audit");
 check(test.applicationLanguagePath(r23ById(352)).key === "unknown" && test.scoreLanguageRisk(r23ById(352)) === "englishLikely" && test.displayedScore(r23ById(352)) === 10, "Round 73: Blank Studio lost its evidence-unknown / English-likely distinction or brand-direction ceiling");
 check(test.applicationStatus(r23ById(930817)).key === "closed" && test.displayedScore(r23ById(930817)) === 0, "Round 73: Eat Nudes exact closed state or zero-score history safeguard regressed");
 check(test.applicationLanguagePath(r23ById(930711)).key === "unknown" && test.scoreLanguageRisk(r23ById(930711)) === "spanishLikely" && test.displayedScore(r23ById(930711)) === 5, "Round 73: JUNGLE/MeMe retained the false bilingual-English claim or escaped the social-direction ceiling");
@@ -2317,8 +2360,8 @@ check(
     test.CURATED[930813]?.latestAuditSection === round74Section &&
     [930889, 930890].every((id) => test.CURATED[id]?.latestAuditSection === round58Section) &&
     test.CURATED[930874]?.latestAuditSection === round73Section &&
-    test.CURATED[930892]?.latestAuditSection === round66Section,
-  "Round 47/66/74: current-source corrections or new low-ranked opportunities were not preserved after the next audit",
+    test.CURATED[930892]?.latestAuditSection === round77Section,
+  "Round 47/74/77: current-source corrections or new low-ranked opportunities were not preserved after the next audit",
 );
 check(test.applicationStatus(r45ChineseCanonical).key === "verify" && test.toLinks(r45ChineseCanonical).some((url) => /i184673\.html/i.test(url)) && test.toLinks(r45ChineseCanonical).some((url) => /tid=637173/i.test(url)), "Round 45: canonical Chinese advertising card lost its current and historical source pages");
 check(test.applicationStatus(r45ChineseHistorical).key === "closed" && r45ChineseHistorical.tier === "X", "Round 45: same-contact Xihua card still counts as an independent current vacancy");
