@@ -13656,9 +13656,25 @@ function hasOpaqueEmployerRisk(item) {
   );
 }
 
+function employmentEvidenceText(item) {
+  const curated = CURATED[item.id];
+  return [
+    item.source,
+    item.opportunity,
+    item.fit,
+    item.location,
+    item.status,
+    item.contact,
+    curated?.statusEvidence,
+    curated?.experienceLabel,
+  ]
+    .filter(Boolean)
+    .join(" ");
+}
+
 function isFreelanceRole(item) {
   return /freelance|freelancer|autónom|autonom|contractor|project[-\s]?based|daily rate|day rate|自由职业|项目制|项目合作|按项目|日薪/i.test(
-    String(item.searchText || ""),
+    employmentEvidenceText(item),
   );
 }
 
@@ -13809,12 +13825,12 @@ function isTargetOpportunity(item) {
 }
 
 function isFormalRole(item) {
-  const text = String(item.searchText || "");
+  const text = employmentEvidenceText(item);
   return (
     /full[\s-]?time|jornada completa|permanent contract|contrato (?:indefinido|laboral|temporal)|payroll|正式合同|全职|永久合同|无固定期限|劳动合同/i.test(
       text,
     ) &&
-    !/part[\s-]?time|media jornada|freelance|autónom|兼职|自由职业|项目制/i.test(text)
+    !/part[\s-]?time|media jornada|freelance|autónom|contractor|project[-\s]?based|兼职|自由职业|项目制/i.test(text)
   );
 }
 
@@ -13881,6 +13897,20 @@ function personalMatchScore(item) {
     foreign: 0.06,
     spanish: 0.08,
   };
+  // Foreign-language routes still need to reflect the user's professional
+  // priorities inside their already-low language ceiling. Without this second
+  // factor, a social-content role and a true brand/VI role frequently collapse
+  // to the same displayed maximum (for example, ten points for English-likely),
+  // which hides the distinction the board is meant to make.
+  const foreignDirectionCeilingFactors = {
+    brand: 1,
+    production: 0.96,
+    digital: 0.9,
+    motion: 0.86,
+    ecommerce: 0.82,
+    social: 0.72,
+    other: 0.5,
+  };
   // The user is looking for brand/VI and hands-on graphic design first.
   // Generic motion, growth and social content are useful backups, but they
   // must not outrank an otherwise comparable identity/graphic-production job.
@@ -13944,7 +13974,14 @@ function personalMatchScore(item) {
   // Apply the language ceiling last. A junior bonus or a fresh posting must
   // never lift a foreign-language role above the user's actual communication
   // ceiling. This is the number shown on every card and used for all ordering.
-  score = Math.min(score, languageCaps[applicationLanguage] ?? 50);
+  const baseLanguageCap = languageCaps[applicationLanguage] ?? 50;
+  const directionSensitiveLanguage = !["chinese", "chineseCheck", "basicSpanish"].includes(
+    applicationLanguage,
+  );
+  const effectiveLanguageCap = directionSensitiveLanguage
+    ? baseLanguageCap * (foreignDirectionCeilingFactors[directionKey(item)] ?? 0.5)
+    : baseLanguageCap;
+  score = Math.min(score, effectiveLanguageCap);
   return Math.max(0, Math.min(100, Number(score.toFixed(1))));
 }
 
@@ -18796,6 +18833,138 @@ Object.assign(CURATED, {
     changeType: "round-72-exact-employer-page-no-longer-accepting",
   },
 });
+
+const ROUND73_SECTION = "2026-08-14 Round 73 top-ranked live-page closure and foreign-language score-separation audit";
+
+const round73RecordPatches = new Map([
+  [930817, {
+    section: ROUND73_SECTION,
+    status: "Closed/history: the exact Eat Nudes LinkedIn employer page 4446052477 was opened in the signed-in browser on 2026-08-14. It still preserves the complete Barcelona packaging, menu, signage, label and Illustrator brief, but now explicitly says Ya no se aceptan solicitudes. The direct portfolio email remains historical contact evidence, not proof of an open seat.",
+    analysis: "Move the previously high-ranked local production-design lead into history without deleting its brief or contact route. Restore only if Eat Nudes publishes a new requisition or confirms a newly open paid project in writing.",
+    score: 0,
+    tier: "X",
+  }],
+  [427, {
+    section: ROUND73_SECTION,
+    status: "Closed/history: Revolut's exact Employer Branding Graphic Designer page now says We can’t find that one, and LinkedIn employer detail 4436834624 explicitly says Ya no se aceptan solicitudes. The former Spain-remote static and motion employer-brand brief remains preserved for comparison only.",
+    analysis: "Move this former current card into history. Do not substitute a general Revolut careers page for the closed vacancy; restore only when Revolut publishes a new vacancy-specific requisition.",
+    score: 0,
+    tier: "X",
+  }],
+  [930834, {
+    section: ROUND73_SECTION,
+    status: "Live/current: Linear's official Ashby requisition 5b9997fd was opened directly on 2026-08-14. It still shows Production Designer, Europe, full-time, remote, around two years of experience and a complete application route. The role covers web, brand, campaigns, sales decks and launch materials; no formal language level is stated.",
+  }],
+  [930837, {
+    section: ROUND73_SECTION,
+    status: "Live/current: the signed-in LinkedIn employer page 4413468201 was opened on 2026-08-14 and shows Spain remote, full-time, Easy Apply, actively reviewing applications and a complete e-commerce fashion-brand brief. It was shared three days earlier, requires two or more years and lists EUR30,000-40,000; no formal language level is stated, but the role works with the New York team until 18:00.",
+    postedAt: "2026-08-11",
+  }],
+  [352, {
+    section: ROUND73_SECTION,
+    status: "Live/current: Blank Studio's official Junior 3D Designer page was opened on 2026-08-14 and still shows full-time, Barcelona, remote-friendly, the complete product, packaging and brand-world brief, plus a direct portfolio email. The page does not state a formal language level or compensation.",
+  }],
+  [1092, {
+    section: ROUND73_SECTION,
+    status: "Live/current: Codeway's official Ashby requisition d62c23b7 was opened directly on 2026-08-14. It still shows Marketing Artist - Dramapops, Barcelona, hybrid, full-time, two or more years, a complete application and full visa and relocation support. The work is performance video and paid-social motion rather than core VI; no formal language level is stated.",
+  }],
+  [372, {
+    section: ROUND73_SECTION,
+    status: "Live/current: Molin AI's signed-in LinkedIn employer detail 4429533464 was opened on 2026-08-14 and still exposes Easy Apply, Barcelona hybrid project work and the complete social video and image content brief. It requires frequent in-person filming and occasional event travel; it is content creation rather than a brand-system design seat.",
+  }],
+  [930933, {
+    section: ROUND73_SECTION,
+    status: "Live/current: Forwwward Studio's signed-in LinkedIn employer detail 4453673807 was opened on 2026-08-14. It was refreshed about seventeen hours earlier, shows full-time remote, welcomes applicants anywhere in Europe and keeps Easy Apply. The role requires one to two years, visual and brand design, Figma and production Webflow experience.",
+  }],
+  [930847, {
+    section: ROUND73_SECTION,
+    status: "Live/current: Xapo Bank's official Greenhouse requisition 7800947003 was fetched on 2026-08-14 and still shows Apply, a complete application form, a twelve-month graduate contract and 100% remote work from anywhere. It covers brand assets, campaigns, motion, AI and visual-identity consistency and asks for zero to one year of experience; no formal language level is stated.",
+  }],
+  [930874, {
+    section: ROUND73_SECTION,
+    status: "Live/current but English-gated: Ogilvy's official requisition 4712450005 was opened directly on 2026-08-14. It shows Liquid Designer, Barcelona, posted 2026-08-04, full-time hybrid, two to four years, Apply and a complete form. The form explicitly asks whether the applicant has a good level of English, so the language path is corrected from English-likely to explicit English.",
+    postedAt: "2026-08-04",
+  }],
+]);
+
+for (const [id, patch] of round73RecordPatches) {
+  const item = allData.find((entry) => Number(entry.id) === id);
+  if (item) Object.assign(item, patch);
+}
+
+Object.assign(CURATED, {
+  930817: {
+    ...CURATED[930817],
+    statusKey: "closed",
+    statusEvidence: "2026-08-14 Round 73：Eat Nudes 雇主 LinkedIn 精确职位 4446052477 明确显示 Ya no se aceptan solicitudes。完整包装、菜单、标识、标签和 Illustrator 职责以及 pr@eatnudes.com 均保留为历史证据，但不再作为当前可投岗位。",
+    reason: "这是专业方向很贴近的 Barcelona 本地平面制作机会，但雇主页面已经停止收件；页面和邮箱仍存在不能覆盖明确的关闭状态。",
+    next: "当前不投。只有出现新的职位编号，或雇主书面确认重新开放付费项目后才恢复。",
+    latestAuditSection: ROUND73_SECTION,
+    changeType: "round-73-exact-linkedin-no-longer-accepting",
+  },
+  427: {
+    ...CURATED[427],
+    statusKey: "closed",
+    statusEvidence: "2026-08-14 Round 73：Revolut Employer Branding 官方精确页显示 We can’t find that one；LinkedIn 雇主职位 4436834624 同时明确显示 Ya no se aceptan solicitudes。两条雇主证据一致，岗位移入历史。",
+    reason: "原职位的静态、动效与雇主品牌方向仍有参考价值，但当前没有 vacancy-specific 申请入口，不能继续留在可投区。",
+    next: "等待 Revolut 发布新的 Employer Branding / Graphic Designer requisition；不要用通用 careers 页替代已关闭职位。",
+    latestAuditSection: ROUND73_SECTION,
+    changeType: "round-73-official-page-missing-and-linkedin-closed",
+  },
+  930834: {
+    ...CURATED[930834],
+    statusEvidence: "2026-08-14 Round 73：Linear 官方 Ashby 精确职位仍显示 Europe remote、全职、约 2 年、完整 Production Designer 职责与申请入口；正文未写正式语言等级。",
+    latestAuditSection: ROUND73_SECTION,
+    changeType: "round-73-official-ashby-live-refresh",
+  },
+  930837: {
+    ...CURATED[930837],
+    statusEvidence: "2026-08-14 Round 73：Velvet Caviar 雇主 LinkedIn 精确页仍显示 Spain remote、全职、Easy Apply、actively reviewing、2+ 年与 €30k–40k；正文未写正式语言等级，但需与纽约团队协作到 18:00。",
+    latestAuditSection: ROUND73_SECTION,
+    changeType: "round-73-linkedin-live-refresh",
+  },
+  352: {
+    ...CURATED[352],
+    statusEvidence: "2026-08-14 Round 73：Blank Studio 官方 Junior 3D Designer 页仍显示 Barcelona、全职、remote-friendly、产品/包装/品牌世界职责与作品集邮箱；薪资和正式语言等级未公开。",
+    latestAuditSection: ROUND73_SECTION,
+    changeType: "round-73-employer-careers-live-refresh",
+  },
+  1092: {
+    ...CURATED[1092],
+    statusEvidence: "2026-08-14 Round 73：Codeway 官方 Ashby 精确职位仍显示 Barcelona hybrid、全职、2+ 年、完整申请以及签证和搬迁支持；职责偏 performance video / paid-social motion，正文未写正式语言等级。",
+    latestAuditSection: ROUND73_SECTION,
+    changeType: "round-73-official-ashby-live-refresh",
+  },
+  372: {
+    ...CURATED[372],
+    statusEvidence: "2026-08-14 Round 73：Molin AI 雇主 LinkedIn 精确页仍显示 Easy Apply、Barcelona hybrid project 与完整社媒视频/图片职责；需频繁现场拍摄和活动出行，属于内容创作而非品牌系统岗。",
+    latestAuditSection: ROUND73_SECTION,
+    changeType: "round-73-linkedin-live-refresh",
+  },
+  930933: {
+    ...CURATED[930933],
+    statusEvidence: "2026-08-14 Round 73：Forwwward Studio 雇主 LinkedIn 精确页约 17 小时前刷新，仍显示全职远程、欢迎 Europe 各地申请、Easy Apply、1–2 年、Visual/Brand、Figma 与 Webflow。",
+    latestAuditSection: ROUND73_SECTION,
+    changeType: "round-73-europe-remote-live-refresh",
+  },
+  930847: {
+    ...CURATED[930847],
+    statusEvidence: "2026-08-14 Round 73：Xapo Bank 官方 Greenhouse 精确页仍显示完整 Apply 表单、12 个月 graduate programme、0–1 年与 work from anywhere；职责覆盖品牌资产、campaign、motion、AI 与视觉一致性。",
+    latestAuditSection: ROUND73_SECTION,
+    changeType: "round-73-greenhouse-live-refresh",
+  },
+  930874: {
+    ...CURATED[930874],
+    applicationMode: "english",
+    languageKey: "english",
+    language: "官方申请表明确询问是否具备良好英语水平，按英语明确门槛计分",
+    statusEvidence: "2026-08-14 Round 73：Ogilvy 官方精确职位仍显示 Barcelona、2026-08-04 发布、全职混合办公、2–4 年、Apply 与完整申请表；申请表明确询问是否具备良好英语水平，因此改按英语明确门槛计分。",
+    latestAuditSection: ROUND73_SECTION,
+    changeType: "round-73-live-refresh-and-explicit-english-correction",
+  },
+});
+
+SCORE_LANGUAGE_RISK_OVERRIDES.set(930874, "english");
 
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
