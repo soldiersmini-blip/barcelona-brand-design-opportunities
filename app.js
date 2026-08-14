@@ -19190,6 +19190,131 @@ Object.assign(CURATED, {
 SCORE_LANGUAGE_RISK_OVERRIDES.set(17, "foreign");
 SCORE_LANGUAGE_RISK_OVERRIDES.set(930963, "englishLikely");
 
+const ROUND75_SECTION = "2026-08-14 Round 75 next-ranked exact-page refresh and Publicis Designer closure audit";
+
+const round75RecordPatches = new Map([
+  [207, {
+    section: ROUND75_SECTION,
+    status: "Closed/history: Publicis Groupe España's exact employer LinkedIn requisition 4431861080 was opened in the signed-in browser on 2026-08-14. The complete Barcelona Designer brief remains readable, but the page explicitly says Ya no se aceptan solicitudes. Searches of the employer's official careers domain found a different Madrid Designer requisition, not a replacement Barcelona application for this identity.",
+    analysis: "Move this previously current Barcelona production-design card into history without deleting its global-brand campaign, digital-asset and advanced-English evidence. The separate official Barcelona Art Director requisition 165712 remains current and must not be confused with this closed Designer vacancy.",
+    score: 0,
+    tier: "X",
+  }],
+  [890, {
+    section: ROUND75_SECTION,
+    status: "Live/current: Dragons Group's exact official Factorial requisition 308022 was reopened on 2026-08-14 and still shows Apply now, Permanent, Full time and Hybrid Barcelona. The full brief confirms three to five years, wellness/lifestyle art direction, integrated campaigns, fluent written and spoken English and no required Spanish level.",
+  }],
+  [884, {
+    section: ROUND75_SECTION,
+    status: "Live/current: Dragons Group's exact official Factorial requisition 308056 was reopened on 2026-08-14 and still shows Apply now, Permanent, Full time and Hybrid Barcelona. The role remains a hands-on midweight healthcare graphic-design position with fluent written and spoken English; no required Spanish level or salary is published.",
+  }],
+  [930900, {
+    section: ROUND75_SECTION,
+    status: "Live/current: Bending Spoons' exact official requisition 69d588c142e4c7b7a3dd14ee was reopened and read in full on 2026-08-14. It still exposes Apply, permanent or fixed-term employment and Madrid or eligible-country remote work. Proficient English, several hours of selection tests and spending most days in Milan during the first months are explicit. The current official page also publishes a typical annual European salary range of EUR54,346-82,557, with higher exceptional offers possible.",
+  }],
+  [930836, {
+    section: ROUND75_SECTION,
+    status: "Live/current: CrowdStrike's exact official Workday requisition R29235 was reopened on 2026-08-14 and still shows Apply, Spain - Barcelona, full-time and Posted 7 Days Ago. The complete brief confirms remote work, two or more years, presentation systems, information design, video and motion production, reusable templates, brand consistency and proficiency in English.",
+  }],
+  [930820, {
+    section: ROUND75_SECTION,
+    status: "Live/current: Siemens' exact official requisition 516087 was reopened on 2026-08-14 and still shows Apply, Barcelona among eligible Spain locations, full-time permanent hybrid work and a publication date of 2026-08-11. The full brief confirms UI visual systems, 2D/3D iconography, Figma, Adobe, Blender, advanced English and a Spain salary range of EUR42,100-67,100.",
+  }],
+  [1300, {
+    section: ROUND75_SECTION,
+    status: "Live/current: INFiLED's signed-in employer LinkedIn requisition 4442833345 was reopened on 2026-08-14 and still shows Barcelona, hybrid, full-time and Easy Apply. The complete brief confirms art direction, digital and print assets, web updates, events and stand design, cross-market brand consistency, mid/senior experience, fluent English and a Spain work-permit requirement.",
+  }],
+  [425, {
+    section: ROUND75_SECTION,
+    status: "Live/current: Revolut's exact official requisition 6692237e-d90a-47ec-9a78-9b9699ff67bd and employer LinkedIn mirror 4436828746 were both opened on 2026-08-14. The official page still lists Barcelona office and Spain remote, exposes Apply for this role and covers brand identity inside digital products, app/web systems, brand guardianship and animation as a plus. No formal language level, fixed experience years or Spain compensation is published.",
+  }],
+  [930845, {
+    section: ROUND75_SECTION,
+    status: "Live/current: Omnicom Health's exact official Greenhouse requisition 5233982008 was reopened on 2026-08-14 and still shows Apply, Barcelona and a complete application form. It requires at least two years of advanced PowerPoint presentation design, a portfolio and working knowledge of English; the form also asks whether the candidate can work hybrid three days per week in the office.",
+  }],
+]);
+
+for (const [id, patch] of round75RecordPatches) {
+  const item = allData.find((entry) => Number(entry.id) === id);
+  if (!item) continue;
+  Object.assign(item, patch);
+  item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+    .filter(Boolean)
+    .join(" ");
+}
+
+Object.assign(CURATED, {
+  207: {
+    ...CURATED[207],
+    statusKey: "closed",
+    statusEvidence: "2026-08-14 Round 75：Publicis Designer 雇主 LinkedIn 精确职位 4431861080 明确显示 Ya no se aceptan solicitudes；官方站搜到的是 Madrid 的另一个 Designer requisition，不是 Barcelona 替代入口。",
+    reason: "职责中的全球品牌 Campaign、数字资产、key visual 和制作落地仍有参考价值，但精确职位已停止收件。它与仍开放的 Publicis Barcelona Art Director 165712 是两个独立职位。",
+    next: "转入完整历史库，当前不投。只有 Publicis 发布新的 Barcelona Designer 职位编号后才恢复。",
+    latestAuditSection: ROUND75_SECTION,
+    changeType: "round-75-exact-linkedin-no-longer-accepting",
+  },
+  890: {
+    ...CURATED[890],
+    statusEvidence: "2026-08-14 Round 75：Dragons 官方 Factorial 308022 仍有 Apply now；Barcelona 混合、永久全职、3–5 年、健康/生活方式艺术指导与书面口语英语流利均从完整正文复核；未要求西语。",
+    latestAuditSection: ROUND75_SECTION,
+    changeType: "round-75-official-factorial-live-refresh",
+  },
+  884: {
+    ...CURATED[884],
+    statusEvidence: "2026-08-14 Round 75：Dragons 官方 Factorial 308056 仍有 Apply now；Barcelona 混合、永久全职、医疗健康平面执行、品牌一致性与流利英语均确认，未公开西语要求或薪资。",
+    latestAuditSection: ROUND75_SECTION,
+    changeType: "round-75-official-factorial-live-refresh",
+  },
+  930900: {
+    ...CURATED[930900],
+    statusEvidence: "2026-08-14 Round 75：Bending Spoons 官方职位 69d588c142e4c7b7a3dd14ee 仍有 Apply，允许 Madrid 或合资格国家远程；英语熟练、数小时测试和入职前几月多数时间在 Milan 均明确。官方同时公开欧洲常见年薪 €54,346–82,557。",
+    reason: "平面、品牌资产、产品视觉、演示与动效范围相关，且薪资透明；但熟练英语、高强度测试和前期 Milan 驻留仍是实际门槛，保持外语备选分。",
+    latestAuditSection: ROUND75_SECTION,
+    changeType: "round-75-official-careers-live-and-compensation-refresh",
+  },
+  930836: {
+    ...CURATED[930836],
+    statusEvidence: "2026-08-14 Round 75：CrowdStrike 官方 Workday R29235 仍显示 Apply、Spain - Barcelona、Remote、全职和 Posted 7 Days Ago；2+ 年、演示系统、信息设计、视频/动效、模板与英语熟练均确认。",
+    latestAuditSection: ROUND75_SECTION,
+    changeType: "round-75-official-workday-live-refresh",
+  },
+  930820: {
+    ...CURATED[930820],
+    statusEvidence: "2026-08-14 Round 75：Siemens 官方职位 516087 仍显示申请入口、Barcelona、混合、永久全职与 2026-08-11 发布；2D/3D 图标、UI 视觉系统、Figma/Adobe/Blender、高级英语和 Spain €42,100–67,100 均确认。",
+    latestAuditSection: ROUND75_SECTION,
+    changeType: "round-75-official-siemens-live-refresh",
+  },
+  1300: {
+    ...CURATED[1300],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 75：INFiLED 雇主 LinkedIn 4442833345 仍显示 Barcelona、hybrid、full-time 和 Easy Apply；艺术指导、数字/印刷、网页、展会、跨市场品牌一致性、mid/senior、流利英语与 Spain 工作许可均确认。",
+    latestAuditSection: ROUND75_SECTION,
+    changeType: "round-75-current-employer-linkedin-refresh",
+  },
+  425: {
+    ...CURATED[425],
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "Barcelona office / Spain remote / 全职",
+    statusEvidence: "2026-08-14 Round 75：Revolut 官方 Digital Designer (Brand) 6692237e 仍列出 Barcelona office、Spain remote 和 Apply for this role；LinkedIn 雇主镜像 4436828746 同时显示 Spain remote 全职与官方申请。正文没有写正式语言等级或固定年限。",
+    reason: "这是直接针对数字品牌系统的 Spain-remote 机会：品牌识别与产品设计结合、app/web、系统化、品牌守护和动画加分项均明确。但全球英文团队环境大概率需要英语沟通，所以仍不超过中文路线。",
+    links: [
+      "https://www.revolut.com/careers/position/digital-designer-brand-6692237e-d90a-47ec-9a78-9b9699ff67bd/",
+      "https://www.revolut.com/careers/apply/6692237e-d90a-47ec-9a78-9b9699ff67bd/",
+      "https://www.linkedin.com/jobs/view/4436828746",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND75_SECTION,
+    changeType: "round-75-official-and-employer-mirror-live-refresh",
+  },
+  930845: {
+    ...CURATED[930845],
+    statusEvidence: "2026-08-14 Round 75：Omnicom Health 官方 Greenhouse 5233982008 仍有 Apply 和完整表单；Barcelona、2+ 年高级 PowerPoint 视觉、作品集、working English 及每周 3 天到办公室确认。",
+    latestAuditSection: ROUND75_SECTION,
+    changeType: "round-75-official-greenhouse-live-refresh",
+  },
+});
+
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
   const explicitMode = curated?.applicationMode || APPLICATION_MODE_OVERRIDES[item.id];

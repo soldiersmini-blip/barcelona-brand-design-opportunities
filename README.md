@@ -6,23 +6,24 @@
 
 ## 当前主表
 
-- 215 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
-- 154 个 Barcelona / 周边当前机会。
+- 214 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
+- 153 个 Barcelona / 周边当前机会。
 - 61 个明确允许 Spain / Europe / worldwide remote，或已单独标出 Spain 合同资格待确认的机会。
-- 205 个原始详情页或最终申请表显示可投，10 个需要先确认。
+- 204 个原始详情页或最终申请表显示可投，10 个需要先确认。
 - 5 个中文、华人圈、中国公司或中文远程相关当前机会；ELIM HOME 已明确停止收件并完整转存历史。
 
 主表只收录已逐条检查过地点、岗位方向、当前状态和真实入口的机会。默认按“我的匹配分”严格从高到低排列；分数同时考虑 Barcelona/Spain 可行性、品牌视觉相关度、资历、语言门槛、状态可信度和材料投入成本。
 
 ## 数据分区
 
-- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 215 条主表。
+- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 214 条主表。
 - `华人中文全库`：华人网、中文社区、Casa Asia 和中国公司相关来源的完整线索。
 - `页面仍可复核`：详情还在，但状态、地点或申请控制需要再次确认的记录。
 - `关闭 / 历史 / 排除`：已过期、错误地点、重复、非设计岗或无法证实的记录。历史不会删除。
 
 ## 关键文件
 
+- `AUDIT-2026-08-14-ROUND75.md`：复扫华人通 ES02 当前 100 页 1,199 条招聘、Casa Asia 当前索引及 Barcelona / Spain remote 设计来源，没有虚增新的中文品牌 / VI 岗；逐条重开九张下一批高位卡的精确雇主页。Publicis Barcelona `Designer` 已明确停止收件并转入历史；Dragons 两岗、Bending Spoons、CrowdStrike、Siemens、INFiLED、Revolut Digital Designer 与 Omnicom PowerPoint 仍开放。当前主表为 214 张、153 张 Barcelona、61 张远程、204 张开放、10 张待确认、5 张中文相关；关闭历史 624 张。
 - `AUDIT-2026-08-14-ROUND74.md`：逐条打开本轮命中的原始 ATS 与最高位外语备选。Neo 官方 Workable 仍开放且允许 Spain remote，但申请表有俄语母语硬门槛；Revolut 新增 Barcelona Lead Graphic Designer，官方职位页和独立申请表均可用，但 8 年以上与带队要求使个人适配分为 0；Distributed Crafts 的搜索缓存被官方关闭页否定。Dragons Junior、THE/STUDIO、CRAZE、Trivelta 与 Publicis 均再次确认开放。当前主表为 215 张、154 张 Barcelona、61 张远程、205 张开放、10 张待确认、5 张中文相关；关闭历史 623 张。
 - `AUDIT-2026-08-14-ROUND73.md`：复扫中文渠道、Casa Asia、Barcelona 与 Spain/Europe remote 来源，并打开当前最高分外语备选的精确雇主页。Eat Nudes 与 Revolut Employer Branding 均被原始页面明确证实停止收件，完整转入历史；Linear、Velvet Caviar、Blank Studio、Codeway、Molin AI、Forwwward、Xapo 与 Ogilvy 仍可申请。新增“外语路径 × 专业方向”上限，品牌/VI 高于数字延展，数字延展高于 motion/社媒，避免英语环境下的社媒岗与品牌系统岗同分。当前主表为 213 张、153 张 Barcelona、60 张远程、203 张开放、10 张待确认、5 张中文相关；关闭历史 623 张。
 - `AUDIT-2026-08-14-ROUND72.md`：重开六张最高优先中文/中国公司相关卡的精确原始页，并完成简化导航的浏览器验收。ELIM HOME 雇主 LinkedIn 精确页明确显示不再接受申请，因此从当前主表移入历史但不删除；其余 ES02、言灵无界、INFiLED、HKU Europe 与 Tea Lab 维持各自开放或待确认状态。当前主表为 215 张、155 张 Barcelona、60 张远程、205 张开放、10 张待确认、5 张中文相关；关闭历史 621 张。
@@ -94,7 +95,7 @@
 - `scripts/scan-linkedin-search.js`：批量扫描 LinkedIn 最近 7 天的 Barcelona 设计关键词，并按职位编号与现有库去重。
 - `scripts/scan-es02-current.js`：直接扫描华人通当前招聘分页，避免搜索引擎缓存滞后；命中标题仍必须继续打开原帖人工判断。
 - `scripts/export-opportunity-ledgers.js`：生成当前主表 CSV/JSON 与完整历史总账 CSV。
-- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 215 个机会的完整、严格降序导出。
+- `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 214 个机会的完整、严格降序导出。
 - `all-opportunity-ledger.csv`：1,322 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属。
 - `scripts/validate-site.js`：验证数据、排序、状态、入口与页面结构。
 
