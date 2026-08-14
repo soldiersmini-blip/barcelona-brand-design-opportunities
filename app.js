@@ -3317,6 +3317,11 @@ const ROUND32_EXCLUDED_IDS = new Set([930839, ...ROUND32_CLOSED_IDS, ...ROUND33_
 // vacancy. Preserve it in the complete research library, but do not count it
 // among the user's live/verify job cards.
 const ROUND46_RESEARCH_ONLY_MAIN_IDS = new Set([456]);
+// Round 79 promotes the current employer-owned Bitpanda requisition after its
+// exact Greenhouse page and application form were opened again.  It remains a
+// zero-score senior/English backup, but a real Barcelona vacancy belongs in
+// the current board instead of the unaudited research shelf.
+const ROUND79_CURRENT_IDS = Object.freeze([966]);
 const MY_OPPORTUNITY_IDS = Object.freeze(
   ROUND28_AUDITED_OPPORTUNITY_IDS
     .flatMap((id) => [id, ...(ROUND29_RANKED_INSERTIONS.get(id) || [])])
@@ -3341,6 +3346,7 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
       ROUND71_CURRENT_IDS,
       ROUND74_CURRENT_IDS,
       ROUND77_CURRENT_IDS,
+      ROUND79_CURRENT_IDS,
     )
     .filter((id) => !ROUND37_SUPERSEDED_MAIN_IDS.has(id))
     .filter(
@@ -19753,6 +19759,290 @@ Object.assign(CURATED, {
   },
 });
 
+const ROUND79_SECTION = "2026-08-14 Round 79 anonymous-mirror triage, Restate location correction and Dragons Junior closure audit";
+
+// Preserve the two newly opened Jobgether pages as research evidence without
+// manufacturing extra current jobs.  The Production Designer text and benefit
+// package match Linear's employer-owned Europe requisition, while the senior
+// design-system page still withholds the partner employer and contract entity.
+allData.push(
+  {
+    id: 930965,
+    section: ROUND79_SECTION,
+    source: "Jobgether / hosted Lever intermediary duplicate",
+    opportunity: "Production Designer (anonymous mirror of Linear Europe)",
+    fit: "Spain-remote mirror of the current Linear brand, web, campaign and launch-production role",
+    location: "Spain remote on the intermediary page; canonical employer role is Europe remote",
+    status: "Duplicate/history: the exact Jobgether Lever page b8a6c941 was opened on 2026-08-14. Its Production Designer scope and distinctive benefits—competitive salary and equity, paid co-working, daily meal and coffee stipend, health coverage, five weeks of leave, parental leave and remote-first work—match Linear's current employer-owned Europe requisition 5b9997fd. The Linear page remains the only canonical application route.",
+    contact: "Anonymous mirror: https://jobs.lever.co/jobgether/b8a6c941-9aa3-4dc5-936d-ee58511b3fb2 ; canonical official role: https://jobs.ashbyhq.com/Linear/5b9997fd-7507-4437-8fd7-14178c99ab5d",
+    analysis: "Do not count or apply to the anonymous mirror. Preserve it as duplicate evidence and use only the named employer's official Ashby page, where the employer, Europe eligibility and application data controller are visible.",
+    score: 0,
+    tier: "X",
+    sourceGroup: "official",
+    locationTag: "Spain / Europe remote",
+    postedAt: "2026-08-14",
+    freshnessTag: "week",
+    freshnessAgeDays: 0,
+    links: [
+      "https://jobs.lever.co/jobgether/b8a6c941-9aa3-4dc5-936d-ee58511b3fb2",
+      "https://jobs.ashbyhq.com/Linear/5b9997fd-7507-4437-8fd7-14178c99ab5d",
+    ],
+    searchText: "Jobgether anonymous partner Spain remote Production Designer exact duplicate Linear Europe brand web campaign launch marketing assets distinctive daily meal coffee stipend paid coworking official Ashby canonical do not double count",
+  },
+  {
+    id: 930966,
+    section: ROUND79_SECTION,
+    source: "Jobgether / hosted Lever anonymous partner",
+    opportunity: "Senior Design System Designer",
+    fit: "Spain-remote product design-system work; anonymous employer, five-plus years and non-core VI scope",
+    location: "Remote in Spain; full-time; employer and Spain contract entity undisclosed",
+    status: "Verify-first research lead: the exact Jobgether Lever page afeb4e70 was opened on 2026-08-14 and shows an application form, Spain remote, full-time work, five-plus years, Figma components, variables, libraries, design tokens, UI reviews, Storybook familiarity and product/engineering collaboration. Jobgether withholds the partner employer, compensation and contracting entity.",
+    contact: "Intermediary detail/application: https://jobs.lever.co/jobgether/afeb4e70-c0ec-48b5-968e-5bf3b4383e10",
+    analysis: "Keep outside the current board. It is a senior product-design-system role rather than brand identity, and the anonymous application path creates unnecessary data and contract risk when Bitpanda already exposes a named, current Barcelona design-system requisition.",
+    score: 0,
+    tier: "D",
+    sourceGroup: "official",
+    locationTag: "Spain / Europe remote",
+    postedAt: "2026-08-14",
+    freshnessTag: "week",
+    freshnessAgeDays: 0,
+    links: ["https://jobs.lever.co/jobgether/afeb4e70-c0ec-48b5-968e-5bf3b4383e10"],
+    searchText: "Jobgether anonymous employer Spain remote Senior Design System Designer 5+ years Figma components variables libraries branching tokens Storybook product UI English likely employer compensation contract undisclosed research only",
+  },
+);
+
+const round79RecordPatches = new Map([
+  [997, {
+    section: ROUND79_SECTION,
+    status: "Current but excluded from Spain: Restate's exact official Ashby requisition 1192a1a4 was reopened on 2026-08-14 and again shows Founding Brand Designer, a complete application form, 50% paid contract work and remote work in Europe. The structured eligible locations are United Kingdom, Germany, Italy and Netherlands; Spain is not listed.",
+    contact: "Current official out-of-scope requisition: https://jobs.ashbyhq.com/restate/1192a1a4-6574-4c54-afe8-356235f82dad/",
+    analysis: "Correct the old generic-shell closure statement, but keep the role in excluded history. The brand-system, web, motion and technical-storytelling scope is excellent; the explicit country list still prevents a Barcelona resident from treating it as a Spain-eligible remote opening.",
+    tier: "X",
+    links: ["https://jobs.ashbyhq.com/restate/1192a1a4-6574-4c54-afe8-356235f82dad/"],
+  }],
+  [930813, {
+    section: ROUND79_SECTION,
+    status: "Closed/history: the employer-owned Dragons Junior Graphic Designer page was opened on 2026-08-14 and explicitly displays Closed job listing. The current Dragons Barcelona board no longer lists Junior Graphic Designer, while third-party search pages still repeat the old brief.",
+    contact: "Closed official detail: https://joinus.dragons-group.com/jobs/junior-graphic-designer ; current employer board: https://dragons-group.factorialhr.com/",
+    analysis: "Remove the former junior role from the current ranking but retain its brand-guideline, multi-format and 1–2 year brief in history. Do not restore it from Indeed, Glassdoor or another mirror unless Dragons publishes a new employer-owned requisition.",
+    tier: "X",
+    links: [
+      "https://joinus.dragons-group.com/jobs/junior-graphic-designer",
+      "https://dragons-group.factorialhr.com/",
+    ],
+  }],
+  [930834, {
+    section: ROUND79_SECTION,
+    status: "Live/current: Linear's exact official Ashby requisition 5b9997fd was fetched directly on 2026-08-14 and returned HTTP 200 with Production Designer, Europe remote and the full role body. A newly opened Jobgether Spain page repeats the same scope and distinctive benefit package, so it is classified as an anonymous mirror rather than a second vacancy.",
+    contact: "Canonical official detail/application: https://jobs.ashbyhq.com/Linear/5b9997fd-7507-4437-8fd7-14178c99ab5d",
+    analysis: "Keep Linear as the only current card. The role remains a strong brand-production and digital-extension route, but English-first collaboration and Spain payroll or contractor terms must be confirmed before investing in a tailored application.",
+    links: [
+      "https://jobs.ashbyhq.com/Linear/5b9997fd-7507-4437-8fd7-14178c99ab5d",
+      "https://jobs.ashbyhq.com/Linear",
+    ],
+  }],
+  [930837, {
+    section: ROUND79_SECTION,
+    status: "Live/current: Velvet Caviar's exact employer LinkedIn job 4413468201 was reopened on 2026-08-14 and still shows Apply, Spain, full-time, 100% remote, EUR30,000–40,000, two-plus years and responsibility for email, social, website, Amazon, advertising, retouching and motion assets.",
+  }],
+  [930847, {
+    section: ROUND79_SECTION,
+    status: "Live/current: Xapo Bank's exact official Greenhouse requisition 7800947003 returned HTTP 200 on 2026-08-14, and the current employer board still lists Visual Designer Graduate under Design with Remote - Work from Anywhere. The twelve-month graduate contract and eventual full-time possibility remain part of the programme.",
+  }],
+  [890, {
+    section: ROUND79_SECTION,
+    status: "Live/current: Dragons' current employer board was reopened on 2026-08-14 and still lists Art Director (Wellness & Lifestyle) under Barcelona hybrid roles with an Apply control. The separate Junior Graphic Designer page is closed and is not evidence against this distinct requisition.",
+  }],
+  [238, {
+    section: ROUND79_SECTION,
+    status: "Live/current: Publicis Groupe's exact employer careers page 165712 was reopened on 2026-08-14 and still shows Apply, Barcelona, hybrid, intermediate Art Director, integrated online/offline campaigns, Adobe/Figma/motion, four-plus years or relevant degree and advanced English assessed in interview.",
+  }],
+  [930908, {
+    section: ROUND79_SECTION,
+    status: "Verify-first intermediary lead: Jobgether's exact Lever page cba85b73 was reopened on 2026-08-14 and still exposes Spain remote, full-time, three-plus years and English B2/C1. The health-technology employer, salary and Spain contract entity remain undisclosed, so it stays outside the current board.",
+  }],
+  [930909, {
+    section: ROUND79_SECTION,
+    status: "Verify-first intermediary lead: Jobgether's exact Lever page 4fa8bb95 was reopened on 2026-08-14 and still exposes Spain remote, full-time UI/UX, CRO, Figma-system, logo, banner and campaign work. The employer, compensation, working language and Spain contract entity remain undisclosed.",
+  }],
+  [966, {
+    section: ROUND79_SECTION,
+    source: "Bitpanda / official Greenhouse ATS",
+    status: "Live/current: Bitpanda's exact official Greenhouse requisition 4905680101 and current employer board were opened on 2026-08-14. They show Senior Design System Designer, Barcelona, hybrid, a complete application form, five-plus years, Figma/Miro/JIRA, design-system ownership and excellent spoken and written English.",
+    contact: "Official detail/application: https://job-boards.greenhouse.io/bitpanda/jobs/4905680101",
+    analysis: "Promote from the research shelf into the zero-score current backup. This is a real Barcelona vacancy with a named employer, but it is senior product/design-system work rather than brand VI and requires excellent English, so it must not compete with the user's actionable Chinese routes.",
+    tier: "D",
+    links: ["https://job-boards.greenhouse.io/bitpanda/jobs/4905680101"],
+  }],
+]);
+
+for (const [id, patch] of round79RecordPatches) {
+  const record = allData.find((item) => Number(item.id) === id);
+  if (!record) continue;
+  Object.assign(record, patch);
+  record.searchText = [record.source, record.opportunity, record.fit, record.location, record.status, record.contact, record.analysis]
+    .filter(Boolean)
+    .join(" ");
+}
+
+Object.assign(CURATED, {
+  997: {
+    ...CURATED[997],
+    statusKey: "closed",
+    locationKey: "other",
+    locationLabel: "Europe remote / 仅 UK、Germany、Italy、Netherlands；Spain 不在许可国家",
+    titleZh: "创始品牌设计师（当前开放但 Spain 不适用）",
+    titleEs: "Founding Brand Designer — remote countries exclude Spain",
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    experienceKey: "lead",
+    experienceLabel: "Founding / 高自主 senior IC",
+    statusEvidence: "2026-08-14 Round 79：Restate 官方 Ashby 1192a1a4 当前重新显示完整职位和申请表；50% paid contract、Europe remote 均存在，但结构化地点只列英国、德国、意大利和荷兰，不含 Spain。",
+    reason: "专业上高度匹配品牌系统、网站、motion、技术叙事和可扩展视觉语言，但招聘页面的明确国家列表不接受 Spain，不能作为 Barcelona 可投岗位。",
+    next: "保留排除历史并监测地点变化；只有官方把 Spain 加入结构化许可国家后再恢复。",
+    links: ["https://jobs.ashbyhq.com/restate/1192a1a4-6574-4c54-afe8-356235f82dad/"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND79_SECTION,
+    changeType: "round-79-current-but-spain-excluded-correction",
+  },
+  930813: {
+    ...CURATED[930813],
+    statusKey: "closed",
+    titleZh: "初级平面设计师（官方页面已关闭）",
+    statusEvidence: "2026-08-14 Round 79：Dragons 雇主原始 Junior Graphic Designer 页面明确显示 Closed job listing，当前 Barcelona 官方职位板也没有该职位；聚合站近期展示不能覆盖雇主关闭状态。",
+    reason: "原岗位专业和年限曾经很合适，但当前已停止收件，不能继续占据第 12 名或正分行动栏。",
+    next: "保留历史；等待 Dragons 发布新的 Junior Graphic Designer 招聘编号。",
+    links: [
+      "https://joinus.dragons-group.com/jobs/junior-graphic-designer",
+      "https://dragons-group.factorialhr.com/",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND79_SECTION,
+    changeType: "round-79-employer-page-explicitly-closed",
+  },
+  930834: {
+    ...CURATED[930834],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 79：Linear 官方 Ashby 5b9997fd 直接返回 HTTP 200 与完整 Production Designer / Europe remote 正文；Jobgether 新 Spain 页面与其职责及福利逐项相同，判定为匿名镜像，不重复计数。",
+    links: [
+      "https://jobs.ashbyhq.com/Linear/5b9997fd-7507-4437-8fd7-14178c99ab5d",
+      "https://jobs.ashbyhq.com/Linear",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND79_SECTION,
+    changeType: "round-79-official-live-anonymous-mirror-merged",
+  },
+  930837: {
+    ...CURATED[930837],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 79：Velvet Caviar 雇主 LinkedIn 4413468201 仍显示 Spain、100% remote、全职、€30k–40k、2 年以上与申请入口。",
+    latestAuditSection: ROUND79_SECTION,
+    changeType: "round-79-current-employer-linkedin-refresh",
+  },
+  930847: {
+    ...CURATED[930847],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 79：Xapo 官方 Greenhouse 7800947003 返回 HTTP 200，当前职位板仍列出 Visual Designer Graduate / Remote - Work from Anywhere。",
+    latestAuditSection: ROUND79_SECTION,
+    changeType: "round-79-current-official-greenhouse-refresh",
+  },
+  890: {
+    ...CURATED[890],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 79：Dragons 当前官方 Barcelona 职位板仍列 Art Director (Wellness & Lifestyle) 与 Apply；不要与已关闭的 Junior Graphic Designer 混淆。",
+    latestAuditSection: ROUND79_SECTION,
+    changeType: "round-79-current-employer-board-refresh",
+  },
+  238: {
+    ...CURATED[238],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 79：Publicis 官方 165712 仍显示 Apply、Barcelona hybrid、Art Director、4 年以上或相关学历，以及面试评估 advanced English。",
+    latestAuditSection: ROUND79_SECTION,
+    changeType: "round-79-current-official-careers-refresh",
+  },
+  930908: {
+    ...CURATED[930908],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14 Round 79：Jobgether Lever cba85b73 仍开放，但雇主、薪资和 Spain 合同主体不公开，并明确英语 B2/C1、3 年以上。",
+    latestAuditSection: ROUND79_SECTION,
+    changeType: "round-79-anonymous-intermediary-refresh",
+  },
+  930909: {
+    ...CURATED[930909],
+    statusKey: "verify",
+    statusEvidence: "2026-08-14 Round 79：Jobgether Lever 4fa8bb95 仍开放，但雇主、薪资、语言和 Spain 合同主体继续缺失；方向主要是 UI/UX、CRO 与数字视觉。",
+    latestAuditSection: ROUND79_SECTION,
+    changeType: "round-79-anonymous-intermediary-refresh",
+  },
+  966: {
+    direction: "digital",
+    company: "Bitpanda",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / hybrid / 全职",
+    titleZh: "高级设计系统设计师（产品与 UI 系统）",
+    titleEs: "Senior Design System Designer",
+    languageKey: "english",
+    language: "优秀英语为明确要求",
+    applicationMode: "english",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上设计系统经验",
+    statusEvidence: "2026-08-14 Round 79：Bitpanda 官方 Greenhouse 4905680101 与当前职位板均显示 Barcelona、hybrid、完整 Apply 表单、5 年以上、Figma/Miro/JIRA 和 excellent English。",
+    reason: "这是雇主透明、入口真实的 Barcelona 设计系统岗位，但属于高级产品/UI系统方向，并非品牌 VI；5 年以上与优秀英语都会把个人分压到 0。",
+    next: "只放外语/高门槛备选；除非作品集有成熟 components、tokens、libraries、文档与工程协作案例，否则不优先投入。",
+    links: ["https://job-boards.greenhouse.io/bitpanda/jobs/4905680101"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND79_SECTION,
+    changeType: "round-79-current-official-barcelona-promoted-to-backup",
+  },
+  930965: {
+    direction: "brand",
+    company: "Jobgether / Linear 匿名镜像",
+    statusKey: "closed",
+    locationKey: "remote",
+    locationLabel: "Spain remote 镜像 / 规范岗位为 Linear Europe remote",
+    titleZh: "制作设计师（Linear 官方岗位的匿名镜像）",
+    titleEs: "Production Designer — duplicate of Linear Europe",
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    experienceKey: "junior",
+    experienceLabel: "约 2 年以上",
+    statusEvidence: "2026-08-14 Round 79：Jobgether b8a6c941 与 Linear 5b9997fd 的职责和特征福利一致；只保留 Linear 官方卡，匿名镜像作为重复历史。",
+    reason: "同一岗位的匿名中介镜像，不能增加机会数量或替代雇主 ATS。",
+    next: "使用 Linear 官方 Ashby，不向匿名镜像重复提交个人资料。",
+    links: [
+      "https://jobs.lever.co/jobgether/b8a6c941-9aa3-4dc5-936d-ee58511b3fb2",
+      "https://jobs.ashbyhq.com/Linear/5b9997fd-7507-4437-8fd7-14178c99ab5d",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND79_SECTION,
+    changeType: "round-79-anonymous-mirror-duplicate",
+  },
+  930966: {
+    direction: "digital",
+    company: "Jobgether / 匿名合作公司",
+    statusKey: "verify",
+    locationKey: "remote",
+    locationLabel: "Spain remote / 雇主与合同主体未公开",
+    titleZh: "高级设计系统设计师（匿名雇主，仅研究）",
+    titleEs: "Senior Design System Designer — anonymous partner",
+    languageKey: "unknown",
+    language: "正文未列正式等级；跨国英文协作概率高",
+    applicationMode: "unknown",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 5 年以上",
+    statusEvidence: "2026-08-14 Round 79：Jobgether Lever afeb4e70 可申请并写 Spain remote，但不披露实际雇主、薪资与 Spain 合同实体。",
+    reason: "高级产品设计系统方向，既不是品牌 VI，又存在匿名雇主和 5 年门槛；不进入当前卡片。",
+    next: "只保留研究。若以后识别出真实雇主，再转到该公司的官方 ATS 核验。",
+    links: ["https://jobs.lever.co/jobgether/afeb4e70-c0ec-48b5-968e-5bf3b4383e10"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND79_SECTION,
+    changeType: "round-79-anonymous-senior-design-system-research-only",
+  },
+});
+
+SCORE_LANGUAGE_RISK_OVERRIDES.set(930966, "englishLikely");
+
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
   const explicitMode = curated?.applicationMode || APPLICATION_MODE_OVERRIDES[item.id];
@@ -20209,6 +20499,15 @@ function linkifyOriginal(value) {
 
 function identityKey(item) {
   const links = toLinks(item);
+  // Round 79: Jobgether republishes Linear's current Production Designer with
+  // the same duties and distinctive benefits while hiding the employer.  Both
+  // pages are one vacancy; prefer the employer-owned Ashby requisition.
+  if (
+    links.some((link) => /5b9997fd-7507-4437-8fd7-14178c99ab5d|b8a6c941-9aa3-4dc5-936d-ee58511b3fb2/i.test(link)) ||
+    /5b9997fd-7507-4437-8fd7-14178c99ab5d|b8a6c941-9aa3-4dc5-936d-ee58511b3fb2/i.test(`${item.contact || ""} ${item.searchText || ""}`)
+  ) {
+    return "ats:linear:production-designer-europe";
+  }
   // Bending Spoons exposes the same Media Designer requisition through an
   // official detail, an application route and employer LinkedIn mirrors.
   // Normalize every representation before ID aliases so a refreshed mirror

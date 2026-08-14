@@ -11,20 +11,21 @@
 - 62 个明确允许 Spain / Europe / worldwide remote，或已单独标出 Spain 合同资格待确认的机会。
 - 205 个原始详情页或最终申请表显示可投，6 个需要先确认。
 - 5 个中文、华人圈、中国公司或中文远程相关当前机会；ELIM HOME 已明确停止收件并完整转存历史。
-- 110 个个人适配分大于 0 的机会进入默认“可行动”视图；101 个零分外语、高级、实习或方向偏离岗位集中到独立备选，没有删除。
+- 109 个个人适配分大于 0 的机会进入默认“可行动”视图；102 个零分外语、高级、实习或方向偏离岗位集中到独立备选，没有删除。
 
 主表只收录已逐条检查过地点、岗位方向、当前状态和真实入口的机会。默认按“我的匹配分”严格从高到低排列；分数同时考虑 Barcelona/Spain 可行性、品牌视觉相关度、资历、语言门槛、状态可信度和材料投入成本。
 
 ## 数据分区
 
-- `可行动（正分）`：211 条完整当前主表中个人适配分大于 0 的 110 条；默认严格降序显示。
-- `外语 / 高门槛备选`：仍有当前招聘证据、但按用户语言、资历、实习或方向条件得到 0 分的 101 条；独立保留，不挤占行动视图。
+- `可行动（正分）`：211 条完整当前主表中个人适配分大于 0 的 109 条；默认严格降序显示。
+- `外语 / 高门槛备选`：仍有当前招聘证据、但按用户语言、资历、实习或方向条件得到 0 分的 102 条；独立保留，不挤占行动视图。
 - `华人中文全库`：华人网、中文社区、Casa Asia 和中国公司相关来源的完整线索。
 - `页面仍可复核`：详情还在，但状态、地点或申请控制需要再次确认的记录。
 - `关闭 / 历史 / 排除`：已过期、错误地点、重复、非设计岗或无法证实的记录。历史不会删除。
 
 ## 关键文件
 
+- `AUDIT-2026-08-14-ROUND79.md`：逐页复核四张 Jobgether Spain remote 精确页，确认 Production Designer 是 Linear 官方岗的匿名镜像，其余三张因匿名雇主、英语或资历门槛只留低分研究记录；Restate 当前岗明确不含 Spain，退出主表；Dragons Junior 精确雇主页明确关闭，移入历史；Bitpanda Barcelona Senior Design System Designer 官方页仍开放，但按 5+ 年和 excellent English 保持 0 分备选。当前主表仍为 211 张、149 张 Barcelona、62 张远程、205 张开放、6 张待确认、5 张中文相关；109 张正分、102 张零分；关闭历史 629 张，完整去重来源 1,325 条。
 - `AUDIT-2026-08-14-ROUND77.md`：重新打开 13 组当前原始页或官方 ATS；确认 ES02、INFiLED、Casa Asia、Revolut 与匿名时尚岗状态，保留言灵无界的当前公司职位证据，关闭 Omnicom Video Maker 与 Yellow 泛化实习，新增 GTE 全球远程包装/标签品牌视觉岗。主表为 211 张、149 张 Barcelona、62 张远程、205 张开放、6 张待确认、5 张中文相关；关闭历史 628 张。界面新增 110 张正分行动视图与 101 张零分高门槛备选，并移除可见 A/B/C/D 旧标签。
 - `AUDIT-2026-08-14-ROUND78.md`：复扫华新、华人通、西华与 Casa Asia，未发现新的独立 Barcelona 中文品牌/VI 岗；逐页排除八条已经关闭或从官方职位板移除的搜索缓存。Remedy Edge Spain 的 PowerPoint Specialist 已从旧 Omnicom requisition `5233982008` 无损切换到当前官方 `5233984008`，Senior Graphic Designer `5219087008` 仍开放；Adsmurai Barcelona `8109023` 与 Savills Barcelona `7557726` 也再次确认开放。主表数量和个人评分不因重复编号或失效摘要虚增。
 - `AUDIT-2026-08-14-ROUND76.md`：逐条重开下一批高位原始页并继续复扫中文、Barcelona 与 Spain remote 来源。Zurich `Creative Strategist` 虽仍开放，但完整 JD 证明它是策略、brief 与 stakeholder 管理而非执行设计，移入排除历史；NUDE PROJECT `Freelance Graphic Designer` 精确职位入口已失效，移入关闭历史；SIERRA `Art Director` 明确要求成熟 Art Director 过往经历，改按高级资历降至 0 分。BJAK 新 LinkedIn 结果确认只是现有官方 Ashby Lead Graphic Designer 的镜像，不重复计数。当前主表为 212 张、151 张 Barcelona、61 张远程、202 张开放、10 张待确认、5 张中文相关；关闭历史 626 张。
@@ -101,7 +102,7 @@
 - `scripts/scan-es02-current.js`：直接扫描华人通当前招聘分页，避免搜索引擎缓存滞后；命中标题仍必须继续打开原帖人工判断。
 - `scripts/export-opportunity-ledgers.js`：生成当前主表 CSV/JSON 与完整历史总账 CSV。
 - `current-opportunity-ledger.csv` / `current-opportunity-ledger.json`：当前 211 个机会的完整、严格降序导出。
-- `all-opportunity-ledger.csv`：1,324 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属；旧 requisition 会保留为历史，不与替代它的新申请编号混成同一个来源记录。
+- `all-opportunity-ledger.csv`：1,325 条去重来源记录及其主表、待确认、外地、Madrid、关闭历史归属；旧 requisition 会保留为历史，不与替代它的新申请编号混成同一个来源记录。
 - `scripts/validate-site.js`：验证数据、排序、状态、入口与页面结构。
 
 ## 本地验证
