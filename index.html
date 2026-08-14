@@ -158,6 +158,34 @@
           <a class="button button--quiet" href="./all-opportunity-ledger.csv" download>下载完整历史总账 CSV</a>
         </div>
 
+        <div class="quick-view-panel" aria-labelledby="quickViewTitle">
+          <div class="quick-view-panel__copy">
+            <strong id="quickViewTitle">直接选你要看的库</strong>
+            <p>当前卡全部保留并按匹配分降序；首屏先显示 18 张，继续下滑会自动加载，不代表岗位被删除。</p>
+          </div>
+          <div class="quick-view-switcher" role="tablist" aria-label="岗位库快捷入口">
+            <button class="quick-view-button is-active" type="button" data-quick-view="current" role="tab">
+              全部当前 <span id="quickCurrentCount">0</span>
+            </button>
+            <button class="quick-view-button" type="button" data-quick-view="chineseCurrent" role="tab">
+              中文相关 <span id="quickChineseCount">0</span>
+            </button>
+            <button class="quick-view-button" type="button" data-quick-view="chineseLibrary" role="tab">
+              华人来源全库 <span id="quickChineseLibraryCount">0</span>
+            </button>
+            <button class="quick-view-button" type="button" data-quick-view="barcelona" role="tab">
+              Barcelona <span id="quickBarcelonaCount">0</span>
+            </button>
+            <button class="quick-view-button" type="button" data-quick-view="remote" role="tab">
+              远程 <span id="quickRemoteCount">0</span>
+            </button>
+            <button class="quick-view-button quick-view-button--history" type="button" data-quick-view="history" role="tab">
+              关闭 / 历史 <span id="quickHistoryCount">0</span>
+            </button>
+          </div>
+          <p id="quickViewNote" class="quick-view-panel__note">当前显示已逐条核验、地点可行且未关闭的独立机会。</p>
+        </div>
+
         <div class="personal-filter" aria-labelledby="personalFilterTitle" hidden>
           <div class="personal-filter__intro">
             <div>
@@ -201,7 +229,7 @@
           </div>
         </div>
 
-        <div class="scope-switcher" role="group" aria-label="结果范围">
+        <div class="scope-switcher" role="group" aria-label="结果范围" hidden>
           <button class="scope-button" type="button" data-scope="latestRound">
             本轮变化
             <small>只看最新核验变化</small>
@@ -351,7 +379,7 @@
           <button id="resetFilters" class="reset-button" type="button">清除筛选</button>
         </div>
 
-        <div class="progress-filter-bar" aria-label="我的投递进度">
+        <div class="progress-filter-bar" aria-label="我的投递进度" hidden>
           <div class="progress-filter-bar__intro">
             <strong>我的投递进度</strong>
             <small>只保存在当前浏览器，不上传个人信息</small>
@@ -365,7 +393,7 @@
           </div>
         </div>
 
-        <div class="source-tabs" role="tablist" aria-label="招聘来源">
+        <div class="source-tabs" role="tablist" aria-label="招聘来源" hidden>
           <button class="source-tab is-active" type="button" data-source="all" role="tab">
             全部来源 <span id="allSourceCount">0</span>
           </button>
@@ -379,7 +407,7 @@
             公司官网 / 其他 <span id="otherCount">0</span>
           </button>
         </div>
-        <p id="sourceTabsNote" class="source-tabs__note"></p>
+        <p id="sourceTabsNote" class="source-tabs__note" hidden></p>
 
         <div id="chineseLibraryViews" class="source-library-filter" hidden aria-label="中文来源状态分栏">
           <span class="source-library-filter__label">中文来源分栏</span>

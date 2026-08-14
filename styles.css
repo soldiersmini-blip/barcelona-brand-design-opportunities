@@ -768,6 +768,93 @@ main {
   padding-inline: 1rem;
 }
 
+.quick-view-panel {
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  background: var(--surface-soft);
+}
+
+.quick-view-panel__copy {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.quick-view-panel__copy strong {
+  flex: 0 0 auto;
+  font-size: 0.9rem;
+}
+
+.quick-view-panel__copy p,
+.quick-view-panel__note {
+  margin: 0;
+  color: var(--ink-faint);
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
+.quick-view-panel__copy p {
+  max-width: 720px;
+  text-align: right;
+}
+
+.quick-view-switcher {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 13px;
+}
+
+.quick-view-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px 10px;
+  background: var(--surface);
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.quick-view-button span {
+  display: inline-grid;
+  min-width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(23, 33, 29, 0.08);
+  font-size: 0.66rem;
+}
+
+.quick-view-button:hover,
+.quick-view-button.is-active {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--surface);
+}
+
+.quick-view-button.is-active span {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.quick-view-button--history:not(.is-active) {
+  border-color: rgba(199, 56, 38, 0.28);
+  color: var(--danger);
+}
+
+.quick-view-panel__note {
+  margin-top: 10px;
+}
+
 .personal-filter {
   margin-top: 30px;
   border: 1px solid var(--line);
@@ -2002,13 +2089,33 @@ a.contact-token:hover {
   }
 }
 
-/* The board is for reading opportunity cards; keep the data controls in the
-   runtime for compatibility, but remove the unused filter dashboard from the
-   user-facing layout. Source tabs and the Chinese active/review/history split
-   remain available because they are the meaningful browsing sections. */
+/* Keep legacy controls in the runtime for compatibility, but expose only the
+   compact quick-view row and the Chinese active/review/history split. */
 .database-section > .personal-filter,
 .database-section > .scope-switcher,
 .database-section > .filters,
-.database-section > .progress-filter-bar {
+.database-section > .progress-filter-bar,
+.database-section > .source-tabs,
+.database-section > .source-tabs__note {
   display: none !important;
+}
+
+@media (max-width: 980px) {
+  .quick-view-switcher {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .quick-view-panel__copy {
+    display: grid;
+  }
+
+  .quick-view-panel__copy p {
+    text-align: left;
+  }
+
+  .quick-view-switcher {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }

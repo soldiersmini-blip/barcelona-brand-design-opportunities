@@ -3144,7 +3144,7 @@ const meta = window.JOB_META || {};
 // are the current Chinese-linked opportunities that the user has already
 // reviewed, not a generic list of attractive English-language design jobs.
 // Roles with an English/Spanish gate remain visible in the caution column.
-const PRIORITY_IDS = [778, 930904, 920, 1300, 24, 25];
+const PRIORITY_IDS = [778, 920, 1300, 24, 25];
 
 // Canonical, evidence-backed opportunities for the user. The generated corpus
 // remains searchable, but only these independently reviewed identities enter
@@ -13318,6 +13318,13 @@ const els = {
   chineseActiveCount: document.querySelector("#chineseActiveCount"),
   chineseReviewCount: document.querySelector("#chineseReviewCount"),
   chineseClosedCount: document.querySelector("#chineseClosedCount"),
+  quickCurrentCount: document.querySelector("#quickCurrentCount"),
+  quickChineseCount: document.querySelector("#quickChineseCount"),
+  quickChineseLibraryCount: document.querySelector("#quickChineseLibraryCount"),
+  quickBarcelonaCount: document.querySelector("#quickBarcelonaCount"),
+  quickRemoteCount: document.querySelector("#quickRemoteCount"),
+  quickHistoryCount: document.querySelector("#quickHistoryCount"),
+  quickViewNote: document.querySelector("#quickViewNote"),
   searchInput: document.querySelector("#searchInput"),
   directionFilter: document.querySelector("#directionFilter"),
   locationFilter: document.querySelector("#locationFilter"),
@@ -13341,6 +13348,7 @@ const els = {
   chineseLibraryLocationButtons: [...document.querySelectorAll("[data-library-location]")],
   progressFilterButtons: [...document.querySelectorAll(".progress-filter-button")],
   statusSummaryButtons: [...document.querySelectorAll(".status-summary__item")],
+  quickViewButtons: [...document.querySelectorAll(".quick-view-button")],
 
 };
 
@@ -13350,6 +13358,7 @@ const state = {
   sourceLibrary: false,
   sourceLibraryView: "active",
   sourceLibraryLocation: "priority",
+  quickView: "current",
   // The default keeps the complete audited current ledger, but the visible
   // score/order follows the user's Chinese-first feasibility model.
   preset: "mine",
@@ -13396,6 +13405,15 @@ const PRESET_NOTES = {
   stable: "优先全职、正式合同或明确长期岗位；排除实习、兼职、自由职业、匿名客户入口，以及已识别的低薪或无薪风险。",
   core: "只看品牌系统、VI、数字品牌和 motion 交叉的硬核岗位；排除实习、低薪、匿名客户、研究线索与已关闭记录，不受语言筛选限制。",
   none: "不套用个人画像；仅按下方范围、来源和手动条件筛选。",
+};
+
+const QUICK_VIEW_NOTES = {
+  current: "当前显示全部已逐条核验、地点可行且未关闭的独立机会；分数始终从高到低。",
+  chineseCurrent: "只显示当前主表中的中文工作、中文联系或中国公司相关机会；不会混入旧帖和 Madrid 岗位。",
+  chineseLibrary: "华人来源全库保留当前、待复核和关闭历史；默认先显示 Barcelona / 欧洲远程的可用分栏，可在下方切换状态和全部地点。",
+  barcelona: "只显示当前主表中的 Barcelona 与周边机会，仍按你的匹配分从高到低。",
+  remote: "只显示明确允许 Spain / Europe / worldwide remote 或已标明 Spain 资格需确认的当前机会。",
+  history: "只显示已经关闭、失效、排除或研究留档的记录；这些记录没有被删除，也不计入当前机会数量。",
 };
 
 const DIRECTION_LABELS = {
@@ -13880,6 +13898,11 @@ function personalMatchScore(item) {
   const freshnessPoints = { week: 5, month: 3, quarter: 1, older: 0, old: -4, unknown: 0 };
   const applicationLanguage = scoreLanguageRisk(item);
   const status = applicationStatus(item).key;
+
+  // Closed/history records stay fully preserved, but they are not actionable
+  // opportunities. Return zero before language or experience bonuses can
+  // accidentally lift a closed Chinese-contact card above other history rows.
+  if (status === "closed") return 0;
 
   let score =
     (tierPoints[item.tier] || 0) +
@@ -18718,6 +18741,62 @@ Object.assign(CURATED, {
   },
 });
 
+const ROUND72_SECTION = "2026-08-14 Round 72 top-priority exact-page closure and simplified-navigation audit";
+
+const round72Elim = allData.find((item) => Number(item.id) === 930904);
+if (round72Elim) {
+  Object.assign(round72Elim, {
+    section: ROUND72_SECTION,
+    status: "Closed/history after exact employer-page recheck: LinkedIn employer detail 4450494402 was opened in the signed-in browser on 2026-08-14. The title, Sabadell location and complete visual-merchandising brief remain readable, but the page explicitly says 'Ya no se aceptan solicitudes'. The retained InfoHuaxin telephone is background contact evidence, not proof that this exact vacancy still accepts applications.",
+    analysis: "Move the previously recognised ELIM HOME lead out of the current board without deleting it. Preserve the complete Spanish brief, Chinese-source route and telephone in history, but do not spend application time unless the employer publishes a new requisition or confirms a newly open seat in writing.",
+    score: 0,
+    tier: "X",
+  });
+}
+
+Object.assign(CURATED, {
+  778: {
+    ...CURATED[778],
+    statusEvidence: "2026-08-14 Round 72：ES02 精确详情 184673 在当前任务浏览器中仍完整显示 2026-08-06 发布、BARCELONA、全职平面设计师、AI、工作居留、全保以及微信/电话 644055418；页面没有关闭提示。雇主法定主体、办公地址、薪资与书面合同仍需先用中文确认。",
+    latestAuditSection: ROUND72_SECTION,
+    changeType: "round-72-current-chinese-exact-page-refresh",
+  },
+  920: {
+    ...CURATED[920],
+    statusEvidence: "2026-08-14 Round 72：智联精确详情 CC481983130J40920987415 仍显示品牌视觉设计师 Remote、1–1.5 万、兼职/临时、完整品牌 VI 与社媒/网站职责、公司审核信息和立即沟通入口；没有关闭提示。地点仍标成都，Barcelona 居民、境外签约、税务和付款资格未确认，因此继续放在中文可询问的待确认层。",
+    latestAuditSection: ROUND72_SECTION,
+    changeType: "round-72-current-china-remote-exact-page-refresh",
+  },
+  1300: {
+    ...CURATED[1300],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 72：LinkedIn 雇主精确职位 4442833345 在已登录浏览器中显示 Barcelona、两周前、hybrid、full-time、Easy Apply 与完整正文；岗位负责艺术方向、数字/印刷资产、网页、展会和跨市场品牌一致性，并明确要求 mid/senior、流利英语以及 Spain 工作许可。",
+    latestAuditSection: ROUND72_SECTION,
+    changeType: "round-72-current-employer-linkedin-refresh",
+  },
+  24: {
+    ...CURATED[24],
+    statusEvidence: "2026-08-14 Round 72：HKU Europe 原始一页 PDF 与 Casa Asia 当前就业索引仍可读取，索引继续列出 2026-07-21 Barcelona 岗位，PDF 提供 ssoens@hku.hk 直投邮箱。职责含品牌指南、数字内容、campaign 与营销物料；英文、中文和西语书面口语均为 essential，且没有截止日期或 ATS 开放声明，因此维持待确认与语言硬门槛。",
+    latestAuditSection: ROUND72_SECTION,
+    changeType: "round-72-casa-asia-pdf-and-index-refresh",
+  },
+  25: {
+    ...CURATED[25],
+    statusEvidence: "2026-08-14 Round 72：Casa Asia 当前就业索引仍列出 2026-06-02 Barcelona 的 Social Media & Content Creator with Chinese language skills，并继续链接原招聘 PDF；现有 PDF 邮箱入口保留。索引没有说明岗位已关闭，但也没有新的截止日期、ATS 或仍在招聘声明，所以继续作为可中文询问、需西语且偏社媒/门店运营的待确认备选。",
+    latestAuditSection: ROUND72_SECTION,
+    changeType: "round-72-casa-asia-current-index-refresh",
+  },
+  930904: {
+    ...CURATED[930904],
+    statusKey: "closed",
+    statusEvidence: "2026-08-14 Round 72：LinkedIn 雇主精确职位 4450494402 在已登录浏览器中明确显示“Ya no se aceptan solicitudes（不再接受申请）”。标题、Sabadell 地点和完整橱窗/商品陈列正文仍可读，但页面留存不等于岗位开放；华新电话只作为历史联系方式保留。",
+    reason: "这是此前认可过的 Barcelona 华人相关视觉陈列线索，因此完整保留而不是删除；但雇主精确页已经明确停止收件，且岗位本身也偏实体橱窗安装和商品陈列，不是平面、Logo、VI 或数字品牌系统。",
+    next: "当前不要按开放岗位投递。只有 ELIM HOME 发布新的职位编号，或联系人书面确认出现新的可申请席位时，才恢复为当前卡；历史正文、中文来源和电话继续保留用于比对。",
+    latestAuditSection: ROUND72_SECTION,
+    changeType: "round-72-exact-employer-page-no-longer-accepting",
+  },
+});
+
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
   const explicitMode = curated?.applicationMode || APPLICATION_MODE_OVERRIDES[item.id];
@@ -19418,6 +19497,9 @@ function baseRecords() {
           : !isClosedLibraryRecord(item) && !isReviewLibraryRecord(item),
     );
   }
+  if (state.quickView === "history") {
+    return dedupedData.filter((item) => applicationStatus(item).key === "closed");
+  }
   if (state.scope === "latestRound") {
     return latestRoundItems;
   }
@@ -19438,6 +19520,9 @@ function matchesFilters(item, ignoreSource = false) {
   const query = els.searchInput.value.trim().toLowerCase();
   if (query && !String(item.searchText || "").toLowerCase().includes(query)) return false;
   if (!matchesPreset(item)) return false;
+  if (state.quickView === "chineseCurrent" && !isChineseRelevant(item)) return false;
+  if (state.quickView === "barcelona" && locationBucket(item) !== "barcelona") return false;
+  if (state.quickView === "remote" && locationBucket(item) !== "remote") return false;
   if (els.validRouteOnly.checked && toLinks(item).length === 0) return false;
   if (els.excludeLowPay.checked && hasLowPayRisk(item)) return false;
   if (els.excludeInternships.checked && isInternshipRole(item)) return false;
@@ -19672,7 +19757,7 @@ function renderResults() {
     els.resultsList.innerHTML = `
       <div class="empty-state">
         <strong>没有符合当前条件的机会</strong>
-        <p>可以清除部分筛选，或切换到“A / B 值得投”“可投 + 冷联系”和“排除 / 已过期”。</p>
+        <p>请切换上方“全部当前”“中文相关”“Barcelona”“远程”或“关闭 / 历史”入口。</p>
       </div>
     `;
     els.loadMore.hidden = true;
@@ -19688,11 +19773,9 @@ function renderResults() {
   });
   els.resultsList.appendChild(fragment);
 
+  els.loadMore.textContent = `已显示 ${Math.min(state.limit, visible.length)} / ${visible.length} · 继续下滑自动加载`;
   els.loadMore.hidden = visible.length <= state.limit;
   els.loadMore.parentElement.hidden = els.loadMore.hidden;
-  if (!els.loadMore.hidden) {
-    els.loadMore.textContent = `继续加载（还有 ${visible.length - state.limit} 条）`;
-  }
 }
 
 function loadMoreResults() {
@@ -19746,7 +19829,52 @@ function syncProgressFilterUi() {
   );
 }
 
+function syncQuickViewUi() {
+  els.quickViewButtons.forEach((button) =>
+    button.classList.toggle("is-active", button.dataset.quickView === state.quickView),
+  );
+  els.quickViewNote.textContent = QUICK_VIEW_NOTES[state.quickView] || QUICK_VIEW_NOTES.current;
+}
+
+function activateQuickView(view) {
+  state.quickView = view;
+  if (view === "chineseLibrary") {
+    activateChineseLibrary();
+    syncQuickViewUi();
+    return;
+  }
+
+  const history = view === "history";
+  state.scope = history ? "history" : "all";
+  state.source = "all";
+  state.sourceLibrary = false;
+  state.sourceLibraryView = "active";
+  state.progressFilter = "all";
+  state.preset = history ? "none" : "mine";
+  els.searchInput.value = "";
+  els.directionFilter.value = "all";
+  els.locationFilter.value = history ? "all" : "priority";
+  els.languageFilter.value = "all";
+  els.statusFilter.value = history ? "all" : "open";
+  els.freshnessFilter.value = "all";
+  els.sortFilter.value = "smart";
+  els.laborFilter.value = "all";
+  els.experienceFilter.value = "all";
+  els.riskFilter.value = "all";
+  els.validRouteOnly.checked = !history;
+  els.excludeLowPay.checked = false;
+  els.excludeInternships.checked = false;
+  syncPresetUi();
+  syncScopeUi();
+  syncSourceUi();
+  syncChineseLibraryUi();
+  syncProgressFilterUi();
+  syncQuickViewUi();
+  resetLimitAndRender();
+}
+
 function applyPreset(preset) {
+  state.quickView = "current";
   state.preset = preset;
   state.scope = ["mine", "profile", "actionable", "chinese", "core", "none"].includes(preset) ? "all" : "ab";
   state.source = "all";
@@ -19776,10 +19904,12 @@ function applyPreset(preset) {
   syncSourceUi();
   syncChineseLibraryUi();
   syncProgressFilterUi();
+  syncQuickViewUi();
   resetLimitAndRender();
 }
 
 function clearPresetForManualFilters() {
+  state.quickView = "current";
   state.preset = "none";
   state.sourceLibrary = false;
   state.sourceLibraryView = "active";
@@ -19789,9 +19919,11 @@ function clearPresetForManualFilters() {
   els.sortFilter.value = "smart";
   syncPresetUi();
   syncChineseLibraryUi();
+  syncQuickViewUi();
 }
 
 function activateChineseLibrary(view = "active") {
+  state.quickView = "chineseLibrary";
   state.scope = "all";
   state.source = "chinese";
   state.sourceLibrary = "chinese";
@@ -19824,8 +19956,13 @@ function activateChineseLibrary(view = "active") {
   syncSourceUi();
   syncChineseLibraryUi();
   syncProgressFilterUi();
+  syncQuickViewUi();
   resetLimitAndRender();
 }
+
+els.quickViewButtons.forEach((button) => {
+  button.addEventListener("click", () => activateQuickView(button.dataset.quickView));
+});
 
 els.presetButtons.forEach((button) => {
   button.addEventListener("click", () => applyPreset(button.dataset.preset));
@@ -19969,6 +20106,20 @@ function initStats() {
   ).length;
   const myStatus = getStatusSummary(myCurrentRecords);
   const myChineseRelevant = myCurrentRecords.filter(isChineseRelevant).length;
+  els.quickCurrentCount.textContent = myCurrentRecords.length;
+  els.quickChineseCount.textContent = myChineseRelevant;
+  els.quickChineseLibraryCount.textContent = dedupedData.filter(
+    (item) => sourceGroup(item) === "chinese",
+  ).length;
+  els.quickBarcelonaCount.textContent = myCurrentRecords.filter(
+    (item) => locationBucket(item) === "barcelona",
+  ).length;
+  els.quickRemoteCount.textContent = myCurrentRecords.filter(
+    (item) => locationBucket(item) === "remote",
+  ).length;
+  els.quickHistoryCount.textContent = dedupedData.filter(
+    (item) => applicationStatus(item).key === "closed",
+  ).length;
   const myLanguageCounts = myCurrentRecords.reduce((counts, item) => {
     const key = scoreLanguageRisk(item);
     counts[key] = (counts[key] || 0) + 1;
@@ -19994,6 +20145,7 @@ function initStats() {
 }
 
 syncChineseLibraryUi();
+syncQuickViewUi();
 initStats();
 renderPriority();
 renderResults();
