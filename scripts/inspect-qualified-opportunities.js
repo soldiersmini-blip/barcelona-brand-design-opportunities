@@ -44,6 +44,7 @@ vm.runInContext(appSource, context, { filename: "app.js" });
 const api = context.auditApi;
 const mode = process.argv[2] || "core";
 const presetByMode = {
+  top: "mine",
   mine: "mine",
   stable: "stable",
   chinese: "chinese",
@@ -58,6 +59,7 @@ const searchNeedle = mode === "search" ? process.argv.slice(3).join(" ").trim().
 // record was correctly archived.
 const requestedAll = mode === "all" || mode === "search" || mode === "ids";
 const requestedCandidates = mode === "candidates";
+const topLimit = mode === "top" ? Math.max(1, Number(process.argv[3]) || 25) : null;
 
 function normalizedLink(value) {
   try {
@@ -118,7 +120,9 @@ const core = api.dedupedData
   )
   .sort((a, b) => api.displayedScore(b) - api.displayedScore(a));
 
-const rows = core.map((item) => ({
+const selected = topLimit ? core.slice(0, topLimit) : core;
+
+const rows = selected.map((item) => ({
   id: item.id,
   company: api.companyLabel(item),
   role: api.roleLabels(item).zh,

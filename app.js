@@ -3290,6 +3290,11 @@ const ROUND70_CURRENT_IDS = Object.freeze([930955, 930956, 930957]);
 // leadership are explicit, while stale Doist and Speexx search results stay
 // outside the current board.
 const ROUND71_CURRENT_IDS = Object.freeze([930959]);
+// Round 74 restores Neo only after its exact Workable detail and application
+// form were reopened, and adds Revolut's independently current Barcelona Lead
+// Graphic Designer requisition. Both remain zero-score stretch routes because
+// their original forms expose decisive language or seniority gates.
+const ROUND74_CURRENT_IDS = Object.freeze([17, 930963]);
 // Round 68 restores Flummox only after locating a current employer-owned JOIN
 // requisition.  The old LinkedIn mirror remains unusable, but it no longer
 // controls the vacancy status because the employer board now exposes a new,
@@ -3330,6 +3335,7 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
       ROUND69_CURRENT_IDS,
       ROUND70_CURRENT_IDS,
       ROUND71_CURRENT_IDS,
+      ROUND74_CURRENT_IDS,
     )
     .filter((id) => !ROUND37_SUPERSEDED_MAIN_IDS.has(id))
     .filter(
@@ -18965,6 +18971,224 @@ Object.assign(CURATED, {
 });
 
 SCORE_LANGUAGE_RISK_OVERRIDES.set(930874, "english");
+
+const ROUND74_SECTION = "2026-08-14 Round 74 current ATS discovery, hard-gate restoration and exact-page refresh";
+
+[
+  {
+    id: 930962,
+    section: ROUND74_SECTION,
+    source: "Distributed Crafts / official Workable ATS",
+    opportunity: "Brand Visual Designer",
+    fit: "Former Spain/Europe remote contractor brief with brand identity, visual systems and digital extensions; exact official page is closed",
+    location: "Spain / Europe remote in the former listing; no current opening",
+    status: "Closed/history: the exact official Workable requisition 21AE44A2A0 was opened on 2026-08-14 and explicitly says This job is no longer available. The employer board also says Sorry, no job openings at the moment. Search and apply-page snippets are stale and do not prove a current vacancy.",
+    contact: "Closed official detail: https://apply.workable.com/distributedcrafts/j/21AE44A2A0/",
+    analysis: "Preserve the relevant Brand Visual Designer brief as search history, but do not count or rank it as a current Spain/Europe remote opportunity. Restore only if Distributed Crafts publishes a new requisition with a working application form.",
+    score: 0,
+    tier: "X",
+    locationTag: "Spain / Europe remote history",
+    typeTag: "Closed brand visual design",
+    sourceGroup: "other",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: ["https://apply.workable.com/distributedcrafts/j/21AE44A2A0/"],
+    searchText: "Distributed Crafts official Workable 21AE44A2A0 Brand Visual Designer Spain Europe remote closed no longer available no openings history",
+  },
+  {
+    id: 930963,
+    section: ROUND74_SECTION,
+    source: "Revolut / official careers and application",
+    opportunity: "Lead Graphic Designer",
+    fit: "Barcelona office; brand systems, guidelines, visual direction, motion and brand guardianship; 8+ years and creative leadership are hard gates",
+    location: "Barcelona office is explicitly eligible; additional office and remote locations are listed; contract type and Spain compensation are not published",
+    status: "Live/current: Revolut's exact official requisition 4bb06532-5d7a-452c-9b32-bd56cace5b3e was opened and read in full on 2026-08-14. It lists Barcelona among office locations, exposes Apply for this role, and its independent application page loads a complete form headed You are applying for Lead Graphic Designer.",
+    contact: "Official detail: https://www.revolut.com/careers/position/lead-graphic-designer-4bb06532-5d7a-452c-9b32-bd56cace5b3e/ ; official application: https://www.revolut.com/careers/apply/4bb06532-5d7a-452c-9b32-bd56cace5b3e/",
+    analysis: "The professional direction is an excellent match—brand documentation, design systems, guidelines, visual and motion assets, creative direction and identity guardianship—but the original page explicitly requires 8+ years, experience leading or supervising design work, mentorship and senior stakeholder influence. Preserve as a real Barcelona challenge route with a zero personal-feasibility score; do not present it as a priority application for the user's current profile.",
+    score: 112,
+    tier: "C",
+    locationTag: "Barcelona area",
+    typeTag: "Lead graphic / brand systems / visual direction",
+    sourceGroup: "other",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: [
+      "https://www.revolut.com/careers/position/lead-graphic-designer-4bb06532-5d7a-452c-9b32-bd56cace5b3e/",
+      "https://www.revolut.com/careers/apply/4bb06532-5d7a-452c-9b32-bd56cace5b3e/",
+    ],
+    searchText: "Revolut official current Lead Graphic Designer Barcelona office apply 8+ years brand systems brand guidelines documentation visual direction motion creative leadership mentorship English international environment Spain compensation interview",
+  },
+].forEach((record) => {
+  if (!allData.some((item) => Number(item.id) === record.id)) allData.push(record);
+});
+
+const round74RecordPatches = new Map([
+  [17, {
+    section: ROUND74_SECTION,
+    source: "Neo Group / official Workable ATS",
+    opportunity: "Lead Brand Designer",
+    fit: "Spain-eligible remote brand-systems role; 3+ years; native Russian is a mandatory application-form gate",
+    location: "Spain remote is explicitly listed among eligible countries; full-time",
+    status: "Live/current with a decisive language gate: Neo Group's exact official Workable requisition 1D7B5D402B was opened on 2026-08-14 and shows Remote, Full time, Spain among eligible locations, a complete role brief and an active application form. The form explicitly requires an answer to Are you a native Russian speaker?",
+    contact: "Official detail: https://apply.workable.com/neo-gg/j/1D7B5D402B/ ; official application: https://apply.workable.com/neo-gg/j/1D7B5D402B/apply/",
+    analysis: "Restore the live vacancy because it is genuinely open and professionally relevant to brand assets, typography, palettes, guidelines, templates and visual identity. Keep it at zero personal-fit score because native Russian is an explicit hard gate and the role includes lead and mentoring responsibilities.",
+    score: 74,
+    tier: "C",
+    links: [
+      "https://apply.workable.com/neo-gg/j/1D7B5D402B/",
+      "https://apply.workable.com/neo-gg/j/1D7B5D402B/apply/",
+    ],
+  }],
+  [930813, {
+    section: ROUND74_SECTION,
+    status: "Live/current: Dragons Group's exact official Factorial requisition 317499 was reopened on 2026-08-14 and still shows Apply now, Barcelona, Permanent, Full time and Hybrid. The complete brief confirms 1-2 years, brand-guideline and visual-system adaptation, social/digital/deck assets, required English and Spanish only as a preference.",
+  }],
+  [930863, {
+    section: ROUND74_SECTION,
+    status: "Live/current: THE/STUDIO's exact official Teamtailor requisition 682135 was reopened on 2026-08-14 and still shows Apply for this role, full-time independent contractor and fully remote worldwide. The complete brief confirms 1-3 years or a strong portfolio, brand-identity-to-merchandise concepts, Figma Slides, AI mockups and strong written English.",
+  }],
+  [930899, {
+    section: ROUND74_SECTION,
+    status: "Live/current: CRAZE's signed-in LinkedIn employer requisition 4454009307 was opened on 2026-08-14 and shows Sabadell, onsite, full-time, Easy Apply, a posting about sixteen hours old and active application review. The complete brief confirms editorial layout, branding, logos, style guides, packaging, print/digital/event assets, 2-3 years and mandatory spoken and written English; German is only desirable.",
+    postedAt: "2026-08-14",
+    freshnessTag: "week",
+    freshnessAgeDays: 0,
+  }],
+  [914, {
+    section: ROUND74_SECTION,
+    status: "Live/current: Trivelta's exact official Greenhouse requisition 4235534009 was reopened on 2026-08-14 and still shows Apply for this job, a complete application form and Submit application. The body specifies a Barcelona-based hybrid role, 1-3 years, three brand systems, digital/print/social/event assets and strong working English; the page metadata still says remote, so office cadence should be confirmed.",
+  }],
+  [238, {
+    section: ROUND74_SECTION,
+    status: "Live/current: Publicis Groupe's exact official requisition 165712 was reopened on 2026-08-14 and still shows Art Director, Barcelona, intermediate, hybrid, an application route and a 2026-07-10 publication date. The complete brief covers integrated online/offline campaigns, graphic and motion design, Adobe, Figma and AI; a relevant degree or 4+ years and advanced English assessed in interview are explicit.",
+    postedAt: "2026-07-10",
+    freshnessTag: "month",
+    freshnessAgeDays: 35,
+  }],
+]);
+
+for (const [id, patch] of round74RecordPatches) {
+  const item = allData.find((entry) => Number(entry.id) === id);
+  if (!item) continue;
+  Object.assign(item, patch);
+  item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+    .filter(Boolean)
+    .join(" ");
+}
+
+Object.assign(CURATED, {
+  17: {
+    ...CURATED[17],
+    direction: "brand",
+    company: "Neo Group",
+    statusKey: "live",
+    locationKey: "remote",
+    locationLabel: "Spain remote / 全职",
+    titleZh: "品牌设计负责人（品牌系统与视觉识别）",
+    titleEs: "Lead Brand Designer",
+    languageKey: "hard",
+    applicationMode: "foreign",
+    language: "官方申请表明确询问是否为俄语母语；这是硬门槛",
+    experienceKey: "lead",
+    experienceLabel: "3 年以上，同时承担 lead / mentor 职责",
+    statusEvidence: "2026-08-14 Round 74：Neo 官方 Workable 精确职位与独立申请表均可打开；页面明确 Remote、Full time、Spain 可申请，表单同时强制询问是否为 native Russian speaker。",
+    reason: "岗位本身覆盖品牌资产、字体、色板、模板、品牌指南和视觉识别，专业方向吻合；但俄语母语是原始申请表的明确门槛，且包含带教职责，因此只能作为真实开放的 0 分挑战岗，不能放进优先投递梯队。",
+    next: "除非具备俄语母语能力，否则不投入定制时间；保留链接用于状态追踪和同类职位监控。",
+    links: [
+      "https://apply.workable.com/neo-gg/j/1D7B5D402B/",
+      "https://apply.workable.com/neo-gg/j/1D7B5D402B/apply/",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND74_SECTION,
+    changeType: "round-74-official-workable-live-with-native-russian-gate",
+  },
+  930962: {
+    direction: "brand",
+    company: "Distributed Crafts",
+    statusKey: "closed",
+    locationKey: "remote",
+    locationLabel: "Spain / Europe remote（历史）",
+    titleZh: "品牌视觉设计师（已关闭）",
+    titleEs: "Brand Visual Designer",
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    language: "关闭页不再提供可核验的完整语言条件",
+    experienceKey: "unknown",
+    experienceLabel: "已关闭，当前不作为投递条件",
+    statusEvidence: "2026-08-14 Round 74：官方 Workable 精确职位明确写 This job is no longer available，公司职位板同时写 Sorry, no job openings at the moment。",
+    reason: "搜索摘要与旧 apply 路径仍可能显示职位标题，但雇主原始页已经明确关闭；完整保留为历史，不计入当前可投数量。",
+    next: "等待新的 vacancy-specific requisition，不使用缓存或搜索摘要投递。",
+    links: ["https://apply.workable.com/distributedcrafts/j/21AE44A2A0/"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND74_SECTION,
+    changeType: "round-74-stale-search-result-officially-closed",
+  },
+  930963: {
+    direction: "brand",
+    company: "Revolut",
+    statusKey: "live",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona office / 其他办公与远程地点并列",
+    titleZh: "品牌平面设计负责人（设计系统与视觉指导）",
+    titleEs: "Lead Graphic Designer",
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    language: "官方正文未写正式语言等级；全球英文招聘与申请流程按英语工作环境大概率计分",
+    experienceKey: "lead",
+    experienceLabel: "负责人 / 8 年以上 / 带领与指导设计师",
+    statusEvidence: "2026-08-14 Round 74：Revolut 官方精确职位列出 Barcelona office、Apply for this role；独立申请页显示 You are applying for Lead Graphic Designer，并提供完整表单。",
+    reason: "品牌指南、设计系统、视觉方向、motion、品牌守护和跨团队创意决策与目标高度一致；但 8 年以上、带领或监督设计工作、指导其他设计师和高级利益相关方沟通均为明确硬门槛，所以真实开放但个人适配分为 0。",
+    next: "当前只作为职业方向与作品集标杆，不优先投递；若资历已经接近 8 年并能用英语完成高级沟通，再从官方表单尝试。",
+    links: [
+      "https://www.revolut.com/careers/position/lead-graphic-designer-4bb06532-5d7a-452c-9b32-bd56cace5b3e/",
+      "https://www.revolut.com/careers/apply/4bb06532-5d7a-452c-9b32-bd56cace5b3e/",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND74_SECTION,
+    changeType: "round-74-new-official-barcelona-lead-graphic-designer",
+  },
+  930813: {
+    ...CURATED[930813],
+    statusEvidence: "2026-08-14 Round 74：Dragons 官方 Factorial 317499 仍有 Apply now；Barcelona 混合、永久全职、1–2 年、品牌规范和视觉系统延展、英语必需与西语 preferred 均从完整正文复核。",
+    latestAuditSection: ROUND74_SECTION,
+    changeType: "round-74-official-factorial-live-refresh",
+  },
+  930863: {
+    ...CURATED[930863],
+    statusEvidence: "2026-08-14 Round 74：THE/STUDIO 官方 Teamtailor 精确页仍有 Apply for this role，明确全球远程、全职 independent contractor、1–3 年或强作品集、品牌概念、Figma Slides、AI mockup 与书面英语。",
+    latestAuditSection: ROUND74_SECTION,
+    changeType: "round-74-official-teamtailor-live-refresh",
+  },
+  930899: {
+    ...CURATED[930899],
+    statusEvidence: "2026-08-14 Round 74：CRAZE 雇主 LinkedIn 精确职位 4454009307 仍显示 Sabadell 现场全职、Easy Apply、约 16 小时前发布；正文明确 2–3 年、品牌/Logo/风格指南/包装/印刷与数字延展，以及书面口语英语必需。",
+    latestAuditSection: ROUND74_SECTION,
+    changeType: "round-74-current-employer-linkedin-refresh",
+  },
+  914: {
+    ...CURATED[914],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 74：Trivelta 官方 Greenhouse 4235534009 仍有完整 Apply 表单；正文明确 Barcelona-based hybrid、1–3 年、三套品牌系统和强工作英语，页面元数据仍写 remote，故仅保留办公节奏确认项。",
+    latestAuditSection: ROUND74_SECTION,
+    changeType: "round-74-official-greenhouse-live-refresh",
+  },
+  238: {
+    ...CURATED[238],
+    statusKey: "live",
+    applicationMode: "english",
+    languageKey: "light",
+    experienceKey: "mid",
+    experienceLabel: "中高级 / 相关学历或 4 年以上",
+    statusEvidence: "2026-08-14 Round 74：Publicis 官方 requisition 165712 仍显示 Art Director、Barcelona、Intermediate、Hybrid、2026-07-10 发布与申请入口；高级英语在面试评估，相关学历或 4 年以上为明确门槛。",
+    latestAuditSection: ROUND74_SECTION,
+    changeType: "round-74-official-publicis-live-refresh",
+  },
+});
+
+SCORE_LANGUAGE_RISK_OVERRIDES.set(17, "foreign");
+SCORE_LANGUAGE_RISK_OVERRIDES.set(930963, "englishLikely");
 
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
