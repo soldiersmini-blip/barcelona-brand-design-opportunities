@@ -19315,6 +19315,172 @@ Object.assign(CURATED, {
   },
 });
 
+const ROUND76_SECTION = "2026-08-14 Round 76 next-ranked exact-page refresh, non-design exclusion and NUDE closure audit";
+
+const round76RecordPatches = new Map([
+  [910, {
+    section: ROUND76_SECTION,
+    status: "Live/current: LABHOUSE's exact official Ashby requisition 62d820a0-f2b6-4a8f-a909-a964d867438d was reopened on 2026-08-14. It still shows Spain remote, full-time permanent work and an active application. The role requires two or more years, fluent English and app-store assets, logos, branding elements and style guides; Barcelona office attendance is optional for Barcelona-based employees.",
+  }],
+  [930840, {
+    section: ROUND76_SECTION,
+    status: "Research-only/current but excluded: Zurich's exact official requisition 1368922057 was reopened on 2026-08-14 and still shows Apply, Barcelona, full-time, around four years and high English. The complete brief is a creative-strategy, social-first content, briefing, stakeholder and creative-territory role rather than hands-on graphic, brand-identity or VI execution.",
+    analysis: "Preserve the exact open employer page as a title false-positive, but remove it from the design-opportunity main board. The decisive issue is non-executional scope; the English and four-year gates are secondary reasons not to spend application time.",
+    score: 0,
+    tier: "X",
+  }],
+  [930911, {
+    section: ROUND76_SECTION,
+    status: "Closed/history: NUDE PROJECT's exact LinkedIn employer requisition 4385975298 was reopened in the signed-in browser on 2026-08-14 and no longer loads the vacancy, title, application control or role-specific brief. The previously preserved sixteen-to-twenty-hour Barcelona freelance brand-extension description remains historical evidence only.",
+    analysis: "Move the former junior Barcelona freelance graphic-design card into history without deleting its brief. Restore only if NUDE PROJECT publishes a new independent requisition or provides a current role-specific application route.",
+    score: 0,
+    tier: "X",
+  }],
+  [78, {
+    section: ROUND76_SECTION,
+    status: "Live/current: Textura Interiors' official Digital Designer page was reopened on 2026-08-14 and still shows the complete Barcelona brief plus direct application email cv@textura-interiors.com. The role covers visual identity, brand toolkit, campaigns, social, web, landing pages, POS and email with three or more years; language, salary, contract and office cadence are not published.",
+  }],
+  [930825, {
+    section: ROUND76_SECTION,
+    status: "Live/current: Dragons Group's exact official Factorial requisition 308034 was reopened on 2026-08-14 and still shows Apply now, Barcelona, hybrid, permanent and full-time. Video editing is primary and motion complementary; three to five years and fluent English are explicit, while Spanish is not listed as a requirement.",
+  }],
+  [446, {
+    section: ROUND76_SECTION,
+    status: "Live/current: Refokus' official Brand Designer page and application form were reopened on 2026-08-14. The full-time worldwide-remote brief still covers logos, identity systems, guidelines and manuals, pitch and sales systems, social, promotional, AI-generated assets and digital/web extensions. Three or more years are explicit; formal language, Spain contract entity and compensation are not published.",
+  }],
+  [930819, {
+    section: ROUND76_SECTION,
+    status: "Live/current: AC Marca's signed-in LinkedIn employer requisition 4448018251 was reopened on 2026-08-14 and still shows Easy Apply, Hospitalet, onsite, full-time and a temporary one-year contract. The work implements packaging identity from brand books through final art, colour proofing and mock-ups. English and Portuguese are valued rather than mandatory; the complete public brief is Spanish.",
+  }],
+  [930821, {
+    section: ROUND76_SECTION,
+    status: "Live/current: Hospitaliti's signed-in LinkedIn employer requisition 4451125314 was reopened on 2026-08-14 and still shows Barcelona, onsite, full-time, a complete junior signage and graphic-production brief and an external application control. The role covers manuals and standards, final art, visualisations, suppliers and site visits; no formal language level, salary or contract type is published.",
+  }],
+  [877, {
+    section: ROUND76_SECTION,
+    status: "Live/current: Eurofirms' exact JobToday detail was reopened on 2026-08-14 and still shows Apply now, Cerdanyola, full-time morning hours and a fresh update about seventeen hours earlier. The role covers packaging final art, regulatory adaptation, production and sustainable packaging; it asks for at least one year and publishes EUR12.78 gross per hour with a temporary-to-possible-hire arrangement.",
+    postedAt: "2026-08-14",
+    freshnessTag: "today",
+    freshnessAgeDays: 0,
+  }],
+  [601, {
+    section: ROUND76_SECTION,
+    status: "Live/current but senior: SIERRA Production House's official jobs page was reopened on 2026-08-14 and still says one open position, Art Director, Barcelona office, full-time hybrid and a direct email application. The role owns visual languages, pitch decks, SIERRA brand identity and photo, video, motion and AI direction. The brief asks for a significant track record as an Art Director even though it does not publish a fixed year count.",
+  }],
+  [930929, {
+    section: ROUND76_SECTION,
+    status: "Live/current mirror refresh: signed-in LinkedIn employer requisition 4452780415 was opened on 2026-08-14 and its company-site application resolves to the already tracked official BJAK Ashby requisition b2946157-811b-481b-9bc4-16c2cd1de29c. It is the same Spain-remote Lead Graphic Designer vacancy, not a new seat. Five-plus years, strong English, a practical assessment and a CEO round remain explicit.",
+    postedAt: "2026-08-13",
+    freshnessTag: "week",
+    freshnessAgeDays: 1,
+  }],
+]);
+
+for (const [id, patch] of round76RecordPatches) {
+  const item = allData.find((entry) => Number(entry.id) === id);
+  if (!item) continue;
+  Object.assign(item, patch);
+  item.searchText = [item.source, item.opportunity, item.fit, item.location, item.status, item.contact, item.analysis]
+    .filter(Boolean)
+    .join(" ");
+}
+
+Object.assign(CURATED, {
+  910: {
+    ...CURATED[910],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 76：LABHOUSE 官方 Ashby 62d820a0 仍有完整申请；Spain remote、永久全职、2 年以上、流利英语、App Store 资产、Logo、品牌元素与 style guide 均确认；Barcelona 员工可选择每周两天办公室。",
+    latestAuditSection: ROUND76_SECTION,
+    changeType: "round-76-official-ashby-live-refresh",
+  },
+  930840: {
+    ...CURATED[930840],
+    statusKey: "closed",
+    direction: "other",
+    titleZh: "创意策略师（非执行设计岗；排除）",
+    titleEs: "Creative Strategist",
+    statusEvidence: "2026-08-14 Round 76：Zurich 官方 1368922057 仍有 Apply、Barcelona、全职、约 4 年和高英语；逐段阅读完整 JD 后确认核心是内容策略、创意 territory、brief 与 stakeholder 管理，不亲自执行平面、品牌识别或 VI。",
+    reason: "页面开放不等于属于你的设计岗位。该职位负责定义策略、指导创意与协调利益相关方，而不是制作品牌视觉系统或平面资产，因此从设计主榜排除。",
+    next: "不投；保留精确官方页作为 Creative Strategist 标题误报样本。",
+    latestAuditSection: ROUND76_SECTION,
+    changeType: "round-76-current-but-non-executional-strategy-exclusion",
+  },
+  930911: {
+    ...CURATED[930911],
+    statusKey: "closed",
+    statusEvidence: "2026-08-14 Round 76：NUDE PROJECT LinkedIn 雇主精确职位 4385975298 已无法加载该 vacancy，也不再提供岗位标题、正文或申请控制；旧的 16–20 小时自由职业说明只保留为历史。",
+    reason: "原岗位方向确实相关，但当前精确职位入口已经失效，不能继续占用 Barcelona 可投数量。",
+    next: "转入历史；只在 NUDE PROJECT 发布新的独立职位编号或新的职位专属申请页后恢复。",
+    latestAuditSection: ROUND76_SECTION,
+    changeType: "round-76-exact-employer-route-removed",
+  },
+  78: {
+    ...CURATED[78],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 76：Textura 官方 Digital Designer 页仍显示 Barcelona、完整 VI/brand toolkit、Campaign、社媒、Web、Landing、POS 与邮件职责，以及 cv@textura-interiors.com 直投邮箱；3 年以上明确，语言、薪资、合同和办公节奏未公开。",
+    latestAuditSection: ROUND76_SECTION,
+    changeType: "round-76-official-employer-page-live-refresh",
+  },
+  930825: {
+    ...CURATED[930825],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 76：Dragons 官方 Factorial 308034 仍有 Apply now；Barcelona、hybrid、永久全职、3–5 年、视频剪辑为主、Motion 为辅和流利英语均确认；未要求西语。",
+    latestAuditSection: ROUND76_SECTION,
+    changeType: "round-76-official-factorial-live-refresh",
+  },
+  446: {
+    ...CURATED[446],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 76：Refokus 官方 Brand Designer 页和申请表仍开放；全球远程、全职、3 年以上、Logo、品牌系统、指南/手册、提案、社媒、AI 资产与数字/Web 延展均确认；未公开正式语言、Spain 合同实体或薪资。",
+    latestAuditSection: ROUND76_SECTION,
+    changeType: "round-76-official-employer-form-live-refresh",
+  },
+  930819: {
+    ...CURATED[930819],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 76：AC Marca 雇主 LinkedIn 4448018251 仍显示 Easy Apply、Hospitalet、现场全职和一年临时合同；包装品牌规范落地、完稿、色彩打样与 mock-up 均确认，英语和葡语仅为加分项。",
+    latestAuditSection: ROUND76_SECTION,
+    changeType: "round-76-current-employer-linkedin-live-refresh",
+  },
+  930821: {
+    ...CURATED[930821],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 76：Hospitaliti 雇主 LinkedIn 4451125314 仍显示 Barcelona、现场全职、完整初级标识/平面制作职责和外部申请控制；规范手册、完稿、可视化、供应商与现场走访明确，语言等级、薪资和合同类型未公开。",
+    latestAuditSection: ROUND76_SECTION,
+    changeType: "round-76-current-employer-linkedin-live-refresh",
+  },
+  877: {
+    ...CURATED[877],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 76：Eurofirms 精确 JobToday 页仍有 Apply now，并在约 17 小时前更新；Cerdanyola、包装完稿、监管适配、生产、1 年以上、早班全职、EUR12.78 毛时薪及临时转长期可能性均确认。",
+    latestAuditSection: ROUND76_SECTION,
+    changeType: "round-76-current-jobtoday-live-and-date-refresh",
+  },
+  601: {
+    ...CURATED[601],
+    statusKey: "live",
+    experienceKey: "senior",
+    experienceLabel: "高级 / 要求成熟 Art Director 过往经历（未量化年限）",
+    statusEvidence: "2026-08-14 Round 76：SIERRA 官方 jobs 页仍写 1 个开放岗位、Art Director、Barcelona office、全职 hybrid 与 tw@sierraproductionhouse.com 直投；正文要求 significant track record as an Art Director，故不能继续按经验未知计分。",
+    reason: "视觉语言、品牌识别、提案、摄影、视频、Motion 和 AI 方向相关，但这是成熟 Art Director 席位，不是普通品牌设计师岗位；英语环境概率和高级资历都必须降权。",
+    next: "只在作品集能证明完整 Art Direction、Campaign 视觉语言与跨媒介制作统筹时考虑；先邮件确认薪资、语言、合同和三天办公室节奏。",
+    latestAuditSection: ROUND76_SECTION,
+    changeType: "round-76-official-page-seniority-gate-correction",
+  },
+  930929: {
+    ...CURATED[930929],
+    statusKey: "live",
+    statusEvidence: "2026-08-14 Round 76：LinkedIn 雇主职位 4452780415 的公司申请按钮精确跳转既有官方 Ashby b2946157；Spain remote、5 年以上、强英语、实操测试与 CEO 终面均确认，它是同一岗位镜像而不是新席位。",
+    links: [
+      "https://jobs.ashbyhq.com/bjakcareer/b2946157-811b-481b-9bc4-16c2cd1de29c",
+      "https://www.linkedin.com/jobs/view/4452780415",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND76_SECTION,
+    changeType: "round-76-linkedin-mirror-merged-into-existing-bjak-card",
+  },
+});
+
 function applicationLanguagePath(item) {
   const curated = CURATED[item.id];
   const explicitMode = curated?.applicationMode || APPLICATION_MODE_OVERRIDES[item.id];
