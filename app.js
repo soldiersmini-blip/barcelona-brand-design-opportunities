@@ -3274,6 +3274,11 @@ const ROUND64_CURRENT_IDS = Object.freeze([930917, 930918, 930919, 930920]);
 // is still capped by the user's real English and seniority constraints.
 const ROUND65_CURRENT_IDS = Object.freeze([930929, 930930, 930931, 930932, 930933]);
 const ROUND65_RESTORED_IDS = new Set([930864]);
+// Round 68 restores Flummox only after locating a current employer-owned JOIN
+// requisition.  The old LinkedIn mirror remains unusable, but it no longer
+// controls the vacancy status because the employer board now exposes a new,
+// role-specific Spain-remote application route.
+const ROUND68_RESTORED_IDS = new Set([870]);
 // THRU still exposes the complete role brief and a future closing date, but
 // the same official page ends with "NO JOB OPENINGS". Keep the lead visible as
 // verify-first evidence without allowing the contradictory page to occupy a
@@ -3308,7 +3313,10 @@ const MY_OPPORTUNITY_IDS = Object.freeze(
       ROUND65_CURRENT_IDS,
     )
     .filter((id) => !ROUND37_SUPERSEDED_MAIN_IDS.has(id))
-    .filter((id) => !ROUND32_EXCLUDED_IDS.has(id) || ROUND65_RESTORED_IDS.has(id))
+    .filter(
+      (id) =>
+        !ROUND32_EXCLUDED_IDS.has(id) || ROUND65_RESTORED_IDS.has(id) || ROUND68_RESTORED_IDS.has(id),
+    )
     .filter((id) => !ROUND46_RESEARCH_ONLY_MAIN_IDS.has(id)),
 );
 const MY_OPPORTUNITY_SET = new Set(MY_OPPORTUNITY_IDS);
@@ -18000,6 +18008,208 @@ Object.assign(CURATED, {
     preferCuratedLinks: true,
     latestAuditSection: ROUND67_SECTION,
     changeType: "round-67-stale-search-result-archived",
+  },
+});
+
+const ROUND68_SECTION = "2026-08-14 Round 68 Chinese-source rescan and current-employer restoration";
+
+// A dead mirror is not permanent closure evidence when the employer later
+// publishes a new exact requisition.  Conversely, a fresh search card does not
+// reopen a role when the exact employer page says the offer is unavailable.
+const round68Flummox = allData.find((item) => Number(item.id) === 870);
+if (round68Flummox) {
+  Object.assign(round68Flummox, {
+    section: ROUND68_SECTION,
+    source: "Flummox / current employer JOIN job board",
+    opportunity: "E-commerce Graphic Designer (Part-time, Remote-first)",
+    fit: "Spain remote part-time; brand identities, Amazon assets, packaging, web, 3D and product content; fluent English gate",
+    location: "Remote in Spain; minimum 20 hours per week; part-time",
+    status: "Live/current: Flummox's employer JOIN requisition 16464525 and the company job board both returned HTTP 200 on 2026-08-14. The exact page exposes Apply now, Remote (Spain), employee metadata, a minimum of 20 hours per week and a complete role-specific application form. Its JobPosting data gives 2026-05-27 as the publication date and Spain as the applicant location.",
+    contact: "Current employer detail/application: https://join.com/companies/goflummox/16464525-e-commerce-graphic-designer-part-time-remote-first-online-brand-house ; current employer board: https://join.com/companies/goflummox",
+    analysis: "Restore the existing canonical card instead of adding a duplicate. The work is professionally relevant to brand identity, Amazon, packaging, web and 3D, and Spain residency is explicitly supported. It is still a low personal-priority backup because fluent English is mandatory, the role is part-time, compensation is undisclosed and the application text contains a likely copy error referring to the finance department.",
+    score: 96,
+    tier: "B",
+    postedAt: "2026-05-27",
+    freshnessTag: "older",
+    freshnessAgeDays: 79,
+    sourceGroup: "official",
+    links: [
+      "https://join.com/companies/goflummox/16464525-e-commerce-graphic-designer-part-time-remote-first-online-brand-house",
+      "https://join.com/companies/goflummox",
+      "https://es.linkedin.com/jobs/view/e-commerce-graphic-designer-part-time-remote-first-%40-online-brand-house-at-flummox-4433816578",
+    ],
+    searchText: "Flummox current employer JOIN 16464525 e-commerce graphic designer part-time remote-first Spain employee minimum 20 hours weekly Apply now published 2026-05-27 brand identities Amazon listings packaging website 3D renders ads product content photoshoots fluent English mandatory other European languages plus compensation undisclosed",
+  });
+}
+
+const round68RejectedSearchResults = [
+  {
+    id: 930949,
+    section: ROUND68_SECTION,
+    source: "Musky by GCO Ventures / exact LinkedIn employer detail",
+    opportunity: "Prácticas Diseño Gráfico (Marketing)",
+    fit: "Historical Barcelona paid graphic-design internship; Spanish and school-agreement gates",
+    location: "Barcelona hybrid in the old brief; current exact route expired",
+    status: "Closed/history: the exact employer-posted LinkedIn requisition 4409977351 was requested on 2026-08-14 and redirected to a generic jobs page with expired_jd_redirect. Search and Indeed pages still expose the former role text, but they do not provide a current employer application route.",
+    contact: "Expired exact employer detail: https://es.linkedin.com/jobs/view/pr%C3%A1cticas-dise%C3%B1o-gr%C3%A1fico-marketing-at-musky-by-gco-ventures-4409977351",
+    analysis: "Do not add the search result to the current board. The former work covered web, content campaigns, social, corporate identity, events, merchandising, presentations, image/video editing and product support, but it required current design studies, a six-month school agreement and good Spanish communication.",
+    score: 0,
+    tier: "X",
+    locationTag: "Barcelona area; historical",
+    typeTag: "Closed graphic-design internship",
+    sourceGroup: "linkedin",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: [
+      "https://es.linkedin.com/jobs/view/pr%C3%A1cticas-dise%C3%B1o-gr%C3%A1fico-marketing-at-musky-by-gco-ventures-4409977351",
+    ],
+    searchText: "Musky GCO Ventures Practicas Diseno Grafico Marketing Barcelona expired_jd_redirect closed history paid internship hybrid Spanish school agreement web campaigns social identity events merchandising presentations video",
+  },
+  {
+    id: 930950,
+    section: ROUND68_SECTION,
+    source: "The Skin Lounge 012 / MiiN current employer page status check",
+    opportunity: "Graphic Designer - Barcelona - 40h (new UUID search result)",
+    fit: "Strong historical Korean-beauty brand, packaging, retail and digital brief; employer page unavailable for applications",
+    location: "Barcelona hybrid in the old brief; current employer page says unavailable",
+    status: "Closed/history: the newly surfaced employer URL with UUID f7f67953-9839-4bfb-b1a2-031cba7861b2 returned HTTP 200 on 2026-08-14 but explicitly displayed the unavailable-offer state and no live application control. The older MiiN 40h page and the graphic-design internship page also retain their unavailable-offer notices.",
+    contact: "Current status evidence: https://empleos.miin-cosmetics.com/jobs/graphic-designer-barcelona-40h-f7f67953-9839-4bfb-b1a2-031cba7861b2 ; older closed employer route: https://empleos.miin-cosmetics.com/jobs/graphic-designer-barcelona-40h",
+    analysis: "Do not restore MiiN from a search result that displays an Apply label. The exact employer page is stronger evidence and confirms the new-looking UUID is not accepting applications. Keep the beauty-brand scope as a benchmark and monitor for a genuinely new requisition.",
+    score: 0,
+    tier: "X",
+    locationTag: "Barcelona area; historical",
+    typeTag: "Closed brand / graphic design",
+    sourceGroup: "official",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: [
+      "https://empleos.miin-cosmetics.com/jobs/graphic-designer-barcelona-40h-f7f67953-9839-4bfb-b1a2-031cba7861b2",
+      "https://empleos.miin-cosmetics.com/jobs/graphic-designer-barcelona-40h",
+    ],
+    searchText: "The Skin Lounge 012 MiiN Graphic Designer Barcelona 40h new UUID exact employer page closed unavailable offer no current application Korean beauty brand packaging retail digital history",
+  },
+  {
+    id: 930951,
+    section: ROUND68_SECTION,
+    source: "Eeze / current official Teamtailor detail and reused requisition",
+    opportunity: "Former 3D Designer / Artist (Chinese preferred) route now shows 3D Animator",
+    fit: "Current role is Hammersmith hybrid game animation, not Barcelona, Spain remote or brand/VI design",
+    location: "Hammersmith, United Kingdom; hybrid",
+    status: "Excluded/current-route conflict: the old Chinese-speaking 3D Designer search URL now redirects on Eeze's official Teamtailor site to a current 3D Animator role. The page has Apply now and lists Chinese and English, but it is Hammersmith hybrid and requires 3-6 years of Blender, Unreal Engine, VFX and casino-game animation.",
+    contact: "Current official redirected detail: https://careers.eeze.com/jobs/6093226-3d-animator",
+    analysis: "Preserve this as a Chinese-keyword false positive, not a Spain opportunity. The current requisition is outside the user's location scope and professional core; a stale search title must not be presented as a remote Chinese visual-design job.",
+    score: 0,
+    tier: "X",
+    locationTag: "United Kingdom / hybrid",
+    typeTag: "Game 3D animation / outside scope",
+    sourceGroup: "official",
+    postedAt: "",
+    freshnessTag: "unknown",
+    freshnessAgeDays: null,
+    links: ["https://careers.eeze.com/jobs/6093226-3d-animator"],
+    searchText: "Eeze 6093226 current official Teamtailor 3D Animator Hammersmith hybrid Chinese English Blender Unreal Engine VFX casino game outside Spain Barcelona remote brand VI excluded",
+  },
+];
+
+allData.push(...round68RejectedSearchResults);
+
+Object.assign(CURATED, {
+  870: {
+    ...CURATED[870],
+    statusKey: "live",
+    direction: "ecommerce",
+    company: "Flummox / Online Brand House",
+    locationKey: "remote",
+    locationLabel: "Spain remote / 兼职 / 每周至少 20 小时",
+    titleZh: "远程兼职电商品牌平面设计师（Amazon、包装与VI）",
+    titleEs: "E-commerce Graphic Designer — part-time, remote-first",
+    languageKey: "unknown",
+    applicationMode: "english",
+    language: "流利英语为硬门槛；其他欧洲语言只是加分，未要求西语",
+    experienceKey: "unknown",
+    experienceLabel: "未写固定年限；要求对应平台作品集",
+    internshipKey: false,
+    statusEvidence: "2026-08-14：Flummox 雇主JOIN精确职位16464525及公司职位板均返回200；页面明确Remote (Spain)、Apply now、每周至少20小时、职位专用表单和2026-05-27发布日期。",
+    reason: "品牌识别、Amazon A+与listing、包装、网站、广告、3D和拍摄都很匹配，而且明确接受Spain remote；但流利英语、兼职、薪资未公开和申请文案中的‘finance department’复制错误，使它只能作为低分外语备选。",
+    next: "只有能用英语完成申请和面试时再投；先确认时薪或月薪、每周保证工时、雇佣或autónomo、付款周期、Spain合同主体、试稿是否有薪，并请对方确认申请文案中的部门名称。",
+    links: [
+      "https://join.com/companies/goflummox/16464525-e-commerce-graphic-designer-part-time-remote-first-online-brand-house",
+      "https://join.com/companies/goflummox",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND68_SECTION,
+    changeType: "round-68-current-employer-requisition-restoration",
+  },
+  930949: {
+    statusKey: "closed",
+    direction: "brand",
+    company: "Musky by GCO Ventures",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 旧实习职位已过期",
+    titleZh: "平面设计实习（历史）",
+    titleEs: "Prácticas Diseño Gráfico (Marketing)",
+    languageKey: "spanish",
+    applicationMode: "spanish",
+    language: "旧正文要求良好西语沟通",
+    experienceKey: "internship",
+    experienceLabel: "学生 / 必须学校协议 / 约6个月",
+    internshipKey: true,
+    statusEvidence: "2026-08-14：精确LinkedIn职位4409977351跳转到expired_jd_redirect；搜索和Indeed残留正文不能证明当前开放。",
+    reason: "旧职责有品牌与平面价值，但职位已经失去招聘专用入口，而且西语和学校协议均为硬门槛。",
+    next: "只在Musky发布新职位编号时重新核验。",
+    links: [
+      "https://es.linkedin.com/jobs/view/pr%C3%A1cticas-dise%C3%B1o-gr%C3%A1fico-marketing-at-musky-by-gco-ventures-4409977351",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND68_SECTION,
+    changeType: "round-68-stale-search-internship-archived",
+  },
+  930950: {
+    statusKey: "closed",
+    direction: "brand",
+    company: "The Skin Lounge 012 / MiiN Cosmetics",
+    locationKey: "barcelona",
+    locationLabel: "Barcelona / 雇主页明确不可申请",
+    titleZh: "品牌平面设计师（新UUID页面仍已关闭）",
+    titleEs: "Graphic Designer - Barcelona - 40h",
+    languageKey: "unknown",
+    applicationMode: "unknown",
+    experienceKey: "unknown",
+    experienceLabel: "历史要求",
+    statusEvidence: "2026-08-14：新UUID雇主页返回200但明确显示职位不可用，且没有当前申请控件；旧40h页和实习页也仍显示关闭。",
+    reason: "不能用搜索结果中的Apply字样覆盖雇主页面的关闭状态。",
+    next: "继续监控MiiN雇主职位板；只用新的可提交requisition恢复。",
+    links: [
+      "https://empleos.miin-cosmetics.com/jobs/graphic-designer-barcelona-40h-f7f67953-9839-4bfb-b1a2-031cba7861b2",
+      "https://empleos.miin-cosmetics.com/jobs/graphic-designer-barcelona-40h",
+    ],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND68_SECTION,
+    changeType: "round-68-new-looking-employer-url-still-closed",
+  },
+  930951: {
+    statusKey: "closed",
+    direction: "motion",
+    company: "Eeze",
+    locationKey: "other",
+    locationLabel: "Hammersmith / UK hybrid / 不符合Spain范围",
+    titleZh: "3D动画师（中文+英语；英国混合办公，排除）",
+    titleEs: "3D Animator",
+    languageKey: "foreign",
+    applicationMode: "foreign",
+    language: "中文与英语；但工作地点为英国Hammersmith",
+    experienceKey: "mid",
+    experienceLabel: "3–6年游戏3D/VFX",
+    internshipKey: false,
+    statusEvidence: "2026-08-14：旧Chinese-speaking 3D Designer URL已被官方复用/重定向为Hammersmith hybrid的3D Animator；并非Spain remote。",
+    reason: "虽然中文是当前页面语言要求之一，但地点和工作内容都不符合本项目范围。",
+    next: "不投；仅作为中文关键词误报证据保留。",
+    links: ["https://careers.eeze.com/jobs/6093226-3d-animator"],
+    preferCuratedLinks: true,
+    latestAuditSection: ROUND68_SECTION,
+    changeType: "round-68-reused-requisition-outside-scope",
   },
 });
 
