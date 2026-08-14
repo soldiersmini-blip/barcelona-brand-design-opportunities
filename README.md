@@ -6,23 +6,24 @@
 
 ## 当前主表
 
-- 212 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
-- 153 个 Barcelona / 周边当前机会。
+- 215 个去重后的当前已审计机会；关闭、重复、外地与研究线索完整保留在历史库中。
+- 156 个 Barcelona / 周边当前机会。
 - 59 个明确允许 Spain / Europe / worldwide remote，或已单独标出 Spain 合同资格待确认的机会。
-- 203 个原始详情页或最终申请表显示可投，9 个需要先确认。
+- 205 个原始详情页或最终申请表显示可投，10 个需要先确认。
 - 6 个中文、华人圈、中国公司或中文远程相关机会。
 
 主表只收录已逐条检查过地点、岗位方向、当前状态和真实入口的机会。默认按“我的匹配分”严格从高到低排列；分数同时考虑 Barcelona/Spain 可行性、品牌视觉相关度、资历、语言门槛、状态可信度和材料投入成本。
 
 ## 数据分区
 
-- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 212 条主表。
+- `我的全部机会`：当前独立、相关、地点可行且有真实入口或可直接联系发布者确认的 215 条主表。
 - `华人中文全库`：华人网、中文社区、Casa Asia 和中国公司相关来源的完整线索。
 - `页面仍可复核`：详情还在，但状态、地点或申请控制需要再次确认的记录。
 - `关闭 / 历史 / 排除`：已过期、错误地点、重复、非设计岗或无法证实的记录。历史不会删除。
 
 ## 关键文件
 
+- `AUDIT-2026-08-14-ROUND70.md`：逐字复核本轮新命中的精确雇主页。新增 Empresa Confidencial 匿名时尚 Web/数字平面岗为 3.5 分待确认卡、Cosmo 香氛社媒品牌内容岗为 2.1 分、Fitness Park 品牌视频岗为 0 分；三者均在 Barcelona，但按匿名雇主、高英语或英西双硬门槛保持后排。Amazon Producer 与 Criteo 非执行策略岗只留研究历史，Mindrift Workable 精确职位已移除；JobsThatFit 与 Blank Studio 镜像合并进既有规范卡。当前主表为 215 张、156 张 Barcelona、59 张远程、205 张开放、10 张待确认、6 张中文相关。
 - `AUDIT-2026-08-14-ROUND69.md`：复扫 ES02 当前 80 页 955 条招聘、LinkedIn Barcelona 与 Spain remote 结果，并逐条打开新命中和最高分原始页。新增 Amazon Barcelona Creative Manager 作为 0 分高阶观察项；Bending Spoons 的 Barcelona/Madrid LinkedIn 结果确认为同一官方岗位镜像；MiiN Head of Creative and Content 由精确雇主页确认关闭；前五名原始页全部重新返回 200 且排名不变。当前主表为 212 张、153 张 Barcelona、59 张远程、203 张开放、9 张待确认、6 张中文相关。
 - `AUDIT-2026-08-14-ROUND68.md`：复扫中文来源、ES02 60 页与 Barcelona / Spain remote 设计结果。恢复 Flummox 当前雇主 JOIN 的 Spain-remote 兼职电商品牌平面岗，但按流利英语、兼职和薪资未公开压到 2.8 分；Musky 旧实习、MiiN 新 UUID 关闭页及 Eeze 英国 3D 动画误报只留历史。当前主表为 211 张、152 张 Barcelona、59 张远程、202 张开放、9 张待确认、6 张中文相关。
 - `AUDIT-2026-08-14-ROUND66.md`：逐条复核 Round 65 剩余的 13 张待确认卡。Ricaris 的 Dover 公开 API 明确返回 `active=true`、100% remote 与 USD20–25/小时，The Colour Monster 的近期精确雇主页仍开放，二者升为可投；THRU 官方页明确写着 `NO JOB OPENINGS`，ICÓNICO 精确 LinkedIn 已过期，二者转入历史但不删除。Tea Lab、TheBusinessLook 等缺少当前开放声明的旧详情仍只作为先询问线索。当前主表为 210 张、152 张 Barcelona、58 张远程、201 张开放、9 张待确认，中文相关仍为 6 张。
@@ -123,5 +124,15 @@ node .\scripts\inspect-qualified-opportunities.js mine
 - 前五名原始页重新核验：ES02 华人广告公司、言灵无界、HKU Europe、ELIM HOME 和 Tea Lab 均保持原排名与状态；其中真正应首先联系的仍是前两张中文路径，后三张分别有外语、方向或状态门槛。
 - 主表更新为 212 张：153 张 Barcelona、59 张远程、203 张开放、9 张待确认、6 张中文相关；30 分以上 3 张、10 分以上 13 张、有正分 114 张、0 分 98 张，严格按显示分降序。
 - 完整证据见 `AUDIT-2026-08-14-ROUND69.md`。
+
+## Round 70（2026-08-14）
+
+- 完成 ES02 80/80 页、955 条当前标题复扫；仅命中 Barcelona 仓库电商误报和两条 Madrid 岗位，没有新增 Barcelona 中文品牌 / VI 岗。
+- 新增三张 Barcelona 次级当前卡：匿名时尚企业 Web/数字平面设计 3.5 分、Cosmo 香氛社媒品牌内容 2.1 分、Fitness Park 品牌视频 0 分。三者均有精确 Apply 页面，但分别存在匿名雇主、高英语、香氛经验、英西双硬门槛或频繁出差限制。
+- Amazon `Producer, Elevated Shopping` 的实际职责是制片排期、预算、人才与拍摄协调；Criteo `Creative Strategist EMEA` 明确写明不是执行岗。两者均只留研究历史，不占设计岗位数量。
+- Mindrift `Freelance Graphic Designer` 的精确 Workable 地址已退回通用 `Current Openings` 职位板，岗位标题与专属申请表均消失，转入关闭历史。
+- JobsThatFit 的完整正文确认是 Adsmurai Barcelona `Digital Graphic Designer` 镜像；Blank Studio 新 LinkedIn 编号也是既有 Junior 3D Designer 镜像。两组都合并进原卡，不虚增岗位。
+- 主表更新为 215 张：156 张 Barcelona、59 张远程、205 张开放、10 张待确认、6 张中文相关；30 分以上 3 张、10 分以上 13 张、有正分 116 张、0 分 99 张，仍严格按页面显示分降序。
+- 完整证据见 `AUDIT-2026-08-14-ROUND70.md`。
 
 网站由 GitHub Pages 静态托管，不依赖会休眠的应用服务器。
